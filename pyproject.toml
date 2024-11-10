@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "magic_hour"
+version = "0.0.1"
+description = ""
+readme = "README.md"
+authors = []
+packages = [{ include = "magic_hour" }]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+httpx = "^0.26.0"
+pydantic = "^2.5.0"
+typing_extensions = ">= 4.0.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^1.8.0"
+pytest = "^7.4.0"
+pytest-asyncio = "^0.23.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
