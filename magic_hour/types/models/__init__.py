@@ -8,6 +8,7 @@ from .get_v1_image_projects_id_response_downloads_item import (
 from .get_v1_video_projects_id_response_download import (
     GetV1VideoProjectsIdResponseDownload,
 )
+from .post_v1_ai_headshot_generator_response import PostV1AiHeadshotGeneratorResponse
 from .post_v1_ai_image_generator_response import PostV1AiImageGeneratorResponse
 from .post_v1_face_swap_response import PostV1FaceSwapResponse
 from .post_v1_face_swap_photo_response import PostV1FaceSwapPhotoResponse
@@ -28,6 +29,7 @@ __all__ = [
     "GetV1ImageProjectsIdResponseDownloadsItem",
     "GetV1VideoProjectsIdResponse",
     "GetV1VideoProjectsIdResponseDownload",
+    "PostV1AiHeadshotGeneratorResponse",
     "PostV1AiImageGeneratorResponse",
     "PostV1FaceSwapPhotoResponse",
     "PostV1FaceSwapResponse",
