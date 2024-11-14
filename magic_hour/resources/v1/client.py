@@ -11,6 +11,10 @@ from magic_hour.resources.v1.video_projects import (
     AsyncVideoProjectsClient,
     VideoProjectsClient,
 )
+from magic_hour.resources.v1.ai_headshot_generator import (
+    AiHeadshotGeneratorClient,
+    AsyncAiHeadshotGeneratorClient,
+)
 from magic_hour.resources.v1.ai_image_generator import (
     AiImageGeneratorClient,
     AsyncAiImageGeneratorClient,
@@ -42,6 +46,9 @@ class V1Client:
         # register sync resources (keep comment for code generation)
         self.image_projects = ImageProjectsClient(base_client=self._base_client)
         self.video_projects = VideoProjectsClient(base_client=self._base_client)
+        self.ai_headshot_generator = AiHeadshotGeneratorClient(
+            base_client=self._base_client
+        )
         self.ai_image_generator = AiImageGeneratorClient(base_client=self._base_client)
         self.face_swap = FaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = FaceSwapPhotoClient(base_client=self._base_client)
@@ -60,6 +67,9 @@ class AsyncV1Client:
         # register async resources (keep comment for code generation)
         self.image_projects = AsyncImageProjectsClient(base_client=self._base_client)
         self.video_projects = AsyncVideoProjectsClient(base_client=self._base_client)
+        self.ai_headshot_generator = AsyncAiHeadshotGeneratorClient(
+            base_client=self._base_client
+        )
         self.ai_image_generator = AsyncAiImageGeneratorClient(
             base_client=self._base_client
         )
