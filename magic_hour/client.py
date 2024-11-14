@@ -17,7 +17,7 @@ class Client:
         base_url: typing.Optional[str] = None,
         timeout: typing.Optional[float] = 60,
         httpx_client: typing.Optional[httpx.Client] = None,
-        environment: Environment = Environment.DEFAULT,
+        environment: Environment = Environment.ENVIRONMENT,
         token: typing.Optional[str] = None,
     ):
         self._base_client = SyncBaseClient(
@@ -43,7 +43,7 @@ class AsyncClient:
         base_url: typing.Optional[str] = None,
         timeout: typing.Optional[float] = 60,
         httpx_client: typing.Optional[httpx.AsyncClient] = None,
-        environment: Environment = Environment.DEFAULT,
+        environment: Environment = Environment.ENVIRONMENT,
         token: typing.Optional[str] = None,
     ):
         self._base_client = AsyncBaseClient(

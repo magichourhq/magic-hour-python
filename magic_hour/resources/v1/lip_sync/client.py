@@ -27,7 +27,10 @@ class LipSyncClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1LipSyncResponse:
         """
-        Create a Lip Sync video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered
+        Create a Lip Sync video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+
+        Get more information about this mode at our [product page](/products/lip-sync).
+
         """
         # start -- build request data (keep comment for code generation)
         _json = to_encodable(item=data, dump_with=params._SerializerPostV1LipSyncBody)
@@ -58,7 +61,10 @@ class AsyncLipSyncClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1LipSyncResponse:
         """
-        Create a Lip Sync video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered
+        Create a Lip Sync video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+
+        Get more information about this mode at our [product page](/products/lip-sync).
+
         """
         # start -- build request data (keep comment for code generation)
         _json = to_encodable(item=data, dump_with=params._SerializerPostV1LipSyncBody)

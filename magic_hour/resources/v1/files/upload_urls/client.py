@@ -44,7 +44,7 @@ For example using curl
 ```
 curl -X PUT -H 'Content-Type: application/octet-stream' \
   --data '@/path/to/file/video.mp4' \
-  https://videos.staging.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
+  https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
 ```
 
 """
@@ -96,7 +96,7 @@ For example using curl
 ```
 curl -X PUT -H 'Content-Type: application/octet-stream' \
   --data '@/path/to/file/video.mp4' \
-  https://videos.staging.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
+  https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
 ```
 
 """

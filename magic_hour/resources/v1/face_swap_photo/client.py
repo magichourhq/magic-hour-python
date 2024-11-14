@@ -14,7 +14,7 @@ from magic_hour.core import (
 from magic_hour.types import models, params
 
 
-class ImageToVideoClient:
+class FaceSwapPhotoClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
         # register sync resources (keep comment for code generation)
@@ -23,34 +23,31 @@ class ImageToVideoClient:
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1ImageToVideoBody] = None,
+        data: typing.Optional[params.PostV1FaceSwapPhotoBody] = None,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1ImageToVideoResponse:
+    ) -> models.PostV1FaceSwapPhotoResponse:
         """
-        Create a Image To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
-
-        Get more information about this mode at our [product page](/products/image-to-video).
-
+        Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
         """
         # start -- build request data (keep comment for code generation)
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1ImageToVideoBody
+            item=data, dump_with=params._SerializerPostV1FaceSwapPhotoBody
         )
         # end -- build request data (keep comment for code generation)
 
         # start -- send sync request (keep comment for code generation)
         return self._base_client.request(
             method="POST",
-            path="/v1/image-to-video",
+            path="/v1/face-swap-photo",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1ImageToVideoResponse,
+            cast_to=models.PostV1FaceSwapPhotoResponse,
             request_options=request_options or default_request_options(),
         )
         # end -- send sync request (keep comment for code generation)
 
 
-class AsyncImageToVideoClient:
+class AsyncFaceSwapPhotoClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
         # register async resources (keep comment for code generation)
@@ -59,28 +56,25 @@ class AsyncImageToVideoClient:
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1ImageToVideoBody] = None,
+        data: typing.Optional[params.PostV1FaceSwapPhotoBody] = None,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1ImageToVideoResponse:
+    ) -> models.PostV1FaceSwapPhotoResponse:
         """
-        Create a Image To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
-
-        Get more information about this mode at our [product page](/products/image-to-video).
-
+        Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
         """
         # start -- build request data (keep comment for code generation)
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1ImageToVideoBody
+            item=data, dump_with=params._SerializerPostV1FaceSwapPhotoBody
         )
         # end -- build request data (keep comment for code generation)
 
         # start -- send async request (keep comment for code generation)
         return await self._base_client.request(
             method="POST",
-            path="/v1/image-to-video",
+            path="/v1/face-swap-photo",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1ImageToVideoResponse,
+            cast_to=models.PostV1FaceSwapPhotoResponse,
             request_options=request_options or default_request_options(),
         )
         # end -- send async request (keep comment for code generation)

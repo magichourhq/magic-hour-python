@@ -6,5 +6,4 @@ import enum
 
 
 class Environment(enum.Enum):
-    DEFAULT = "https://api.magichour.ai"
-    ENVIRONMENT = "http://api.local.magichour.ai:3000"
+    ENVIRONMENT = "https://api.magichour.ai"

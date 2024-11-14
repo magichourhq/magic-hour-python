@@ -27,7 +27,10 @@ class TextToVideoClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1TextToVideoResponse:
         """
-        Create a Text To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered
+        Create a Text To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+
+        Get more information about this mode at our [product page](/products/text-to-video).
+
         """
         # start -- build request data (keep comment for code generation)
         _json = to_encodable(
@@ -60,7 +63,10 @@ class AsyncTextToVideoClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1TextToVideoResponse:
         """
-        Create a Text To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered
+        Create a Text To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+
+        Get more information about this mode at our [product page](/products/text-to-video).
+
         """
         # start -- build request data (keep comment for code generation)
         _json = to_encodable(
