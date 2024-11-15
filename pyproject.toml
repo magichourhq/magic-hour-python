@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "magic_hour"
 version = "0.0.6"
-description = ""
+description = "s"
 readme = "README.md"
 authors = []
 packages = [{ include = "magic_hour" }]
