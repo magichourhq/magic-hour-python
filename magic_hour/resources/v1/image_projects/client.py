@@ -35,6 +35,7 @@ class ImageProjectsClient:
 
         """
         # start -- build request data (keep comment for code generation)
+
         # end -- build request data (keep comment for code generation)
 
         # start -- send sync request (keep comment for code generation)
@@ -70,6 +71,7 @@ class AsyncImageProjectsClient:
 
         """
         # start -- build request data (keep comment for code generation)
+
         # end -- build request data (keep comment for code generation)
 
         # start -- send async request (keep comment for code generation)
