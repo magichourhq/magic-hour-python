@@ -1,0 +1,78 @@
+name: checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled, unlabeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  version-bump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - name: ensure lockfile is up to date
+        run: cargo build
+
+      - name: Get current version from main
+        run: |
+          git fetch origin main
+          MAIN_VERSION=$(git show origin/main:pyproject.toml | grep '^version =' | cut -d'"' -f2)
+          echo "MAIN_VERSION=$MAIN_VERSION" >> $GITHUB_ENV
+
+      - name: Determine version bump type
+        id: bump-type
+        run: |
+          if [[ $(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' | grep -c "major") -gt 0 ]]; then
+            echo "TYPE=major" >> $GITHUB_OUTPUT
+          elif [[ $(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' | grep -c "minor") -gt 0 ]]; then
+            echo "TYPE=minor" >> $GITHUB_OUTPUT
+          elif [[ $(gh pr view ${{ github.event.pull_request.number }} --json labels -q '.labels[].name' | grep -c "patch") -gt 0 ]]; then
+            echo "TYPE=patch" >> $GITHUB_OUTPUT
+          else
+            echo "TYPE=none" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Bump version
+        if: steps.bump-type.outputs.TYPE != 'none'
+        id: bump-version
+        continue-on-error: true
+        run: |
+          VERSION_PARTS=(${MAIN_VERSION//./ })
+          MAJOR=${VERSION_PARTS[0]}
+          MINOR=${VERSION_PARTS[1]}
+          PATCH=${VERSION_PARTS[2]}
+
+          if [ "${{ steps.bump-type.outputs.TYPE }}" == "major" ]; then
+            NEW_VERSION="$((MAJOR + 1)).0.0"
+          elif [ "${{ steps.bump-type.outputs.TYPE }}" == "minor" ]; then
+            NEW_VERSION="${MAJOR}.$((MINOR + 1)).0"
+          else
+            NEW_VERSION="${MAJOR}.${MINOR}.$((PATCH + 1))"
+          fi
+
+          sed -i "s/^version = \".*\"/version = \"$NEW_VERSION\"/" Cargo.toml
+
+      - name: Commit changes
+        if: steps.bump-version.outcome == 'success'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add Cargo.toml Cargo.lock
+          git commit -m "chore: version bump" || echo "No changes to commit"
+          git push
