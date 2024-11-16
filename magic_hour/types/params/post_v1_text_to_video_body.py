@@ -16,7 +16,7 @@ class PostV1TextToVideoBody(typing_extensions.TypedDict):
     """ """
 
     end_seconds: typing_extensions.Required[float]
-    name: typing.Optional[str]
+    name: typing_extensions.NotRequired[str]
     orientation: typing_extensions.Required[
         typing_extensions.Literal["landscape", "portrait", "square"]
     ]
@@ -34,7 +34,7 @@ class _SerializerPostV1TextToVideoBody(pydantic.BaseModel):
     )
 
     end_seconds: float = pydantic.Field(alias="end_seconds")
-    name: typing.Optional[str] = pydantic.Field(alias="name")
+    name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     orientation: typing_extensions.Literal["landscape", "portrait", "square"] = (
         pydantic.Field(alias="orientation")
     )
