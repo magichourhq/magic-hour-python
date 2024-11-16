@@ -16,7 +16,7 @@ class PostV1AiQrCodeGeneratorBody(typing_extensions.TypedDict):
     """ """
 
     content: typing_extensions.Required[str]
-    name: typing.Optional[str]
+    name: typing_extensions.NotRequired[str]
     style: typing_extensions.Required[PostV1AiQrCodeGeneratorBodyStyle]
 
 
@@ -31,5 +31,5 @@ class _SerializerPostV1AiQrCodeGeneratorBody(pydantic.BaseModel):
     )
 
     content: str = pydantic.Field(alias="content")
-    name: typing.Optional[str] = pydantic.Field(alias="name")
+    name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     style: _SerializerPostV1AiQrCodeGeneratorBodyStyle = pydantic.Field(alias="style")

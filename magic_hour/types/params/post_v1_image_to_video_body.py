@@ -22,7 +22,7 @@ class PostV1ImageToVideoBody(typing_extensions.TypedDict):
     assets: typing_extensions.Required[PostV1ImageToVideoBodyAssets]
     end_seconds: typing_extensions.Required[float]
     height: typing_extensions.Required[float]
-    name: typing.Optional[str]
+    name: typing_extensions.NotRequired[str]
     style: typing_extensions.Required[PostV1ImageToVideoBodyStyle]
     width: typing_extensions.Required[float]
 
@@ -40,6 +40,6 @@ class _SerializerPostV1ImageToVideoBody(pydantic.BaseModel):
     assets: _SerializerPostV1ImageToVideoBodyAssets = pydantic.Field(alias="assets")
     end_seconds: float = pydantic.Field(alias="end_seconds")
     height: float = pydantic.Field(alias="height")
-    name: typing.Optional[str] = pydantic.Field(alias="name")
+    name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     style: _SerializerPostV1ImageToVideoBodyStyle = pydantic.Field(alias="style")
     width: float = pydantic.Field(alias="width")

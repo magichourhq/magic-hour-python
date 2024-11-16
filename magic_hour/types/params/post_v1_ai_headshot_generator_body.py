@@ -16,7 +16,7 @@ class PostV1AiHeadshotGeneratorBody(typing_extensions.TypedDict):
     """ """
 
     assets: typing_extensions.Required[PostV1AiHeadshotGeneratorBodyAssets]
-    name: typing.Optional[str]
+    name: typing_extensions.NotRequired[str]
 
 
 class _SerializerPostV1AiHeadshotGeneratorBody(pydantic.BaseModel):
@@ -32,4 +32,4 @@ class _SerializerPostV1AiHeadshotGeneratorBody(pydantic.BaseModel):
     assets: _SerializerPostV1AiHeadshotGeneratorBodyAssets = pydantic.Field(
         alias="assets"
     )
-    name: typing.Optional[str] = pydantic.Field(alias="name")
+    name: typing.Optional[str] = pydantic.Field(alias="name", default=None)

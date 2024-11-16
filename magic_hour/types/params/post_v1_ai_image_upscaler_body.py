@@ -20,7 +20,7 @@ class PostV1AiImageUpscalerBody(typing_extensions.TypedDict):
     """ """
 
     assets: typing_extensions.Required[PostV1AiImageUpscalerBodyAssets]
-    name: typing.Optional[str]
+    name: typing_extensions.NotRequired[str]
     scale_factor: typing_extensions.Required[float]
     style: typing_extensions.Required[PostV1AiImageUpscalerBodyStyle]
 
@@ -36,6 +36,6 @@ class _SerializerPostV1AiImageUpscalerBody(pydantic.BaseModel):
     )
 
     assets: _SerializerPostV1AiImageUpscalerBodyAssets = pydantic.Field(alias="assets")
-    name: typing.Optional[str] = pydantic.Field(alias="name")
+    name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     scale_factor: float = pydantic.Field(alias="scale_factor")
     style: _SerializerPostV1AiImageUpscalerBodyStyle = pydantic.Field(alias="style")

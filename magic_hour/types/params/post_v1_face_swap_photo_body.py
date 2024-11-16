@@ -16,7 +16,7 @@ class PostV1FaceSwapPhotoBody(typing_extensions.TypedDict):
     """ """
 
     assets: typing_extensions.Required[PostV1FaceSwapPhotoBodyAssets]
-    name: typing.Optional[str]
+    name: typing_extensions.NotRequired[str]
 
 
 class _SerializerPostV1FaceSwapPhotoBody(pydantic.BaseModel):
@@ -30,4 +30,4 @@ class _SerializerPostV1FaceSwapPhotoBody(pydantic.BaseModel):
     )
 
     assets: _SerializerPostV1FaceSwapPhotoBodyAssets = pydantic.Field(alias="assets")
-    name: typing.Optional[str] = pydantic.Field(alias="name")
+    name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
