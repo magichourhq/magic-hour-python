@@ -13,7 +13,9 @@ from .post_v1_files_upload_urls_body_items_item import (
 
 
 class PostV1FilesUploadUrlsBody(typing_extensions.TypedDict):
-    """ """
+    """
+    PostV1FilesUploadUrlsBody
+    """
 
     items: typing_extensions.Required[typing.List[PostV1FilesUploadUrlsBodyItemsItem]]
 
@@ -21,7 +23,7 @@ class PostV1FilesUploadUrlsBody(typing_extensions.TypedDict):
 class _SerializerPostV1FilesUploadUrlsBody(pydantic.BaseModel):
     """
     Serializer for PostV1FilesUploadUrlsBody handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

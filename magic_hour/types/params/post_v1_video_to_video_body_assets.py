@@ -9,20 +9,28 @@ import pydantic
 
 class PostV1VideoToVideoBodyAssets(typing_extensions.TypedDict):
     """
-    Provide the assets for video-to-video. For video, The &#x60;video_source&#x60; field determines whether &#x60;video_file_path&#x60; or &#x60;youtube_url&#x60; field is used
+    Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
     """
 
     video_file_path: typing_extensions.NotRequired[str]
+    """
+    The path of the input video. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls). This field is required if `video_source` is `file`
+    """
+
     video_source: typing_extensions.Required[
         typing_extensions.Literal["file", "youtube"]
     ]
+
     youtube_url: typing_extensions.NotRequired[str]
+    """
+    Using a youtube video as the input source. This field is required if `video_source` is `youtube`
+    """
 
 
 class _SerializerPostV1VideoToVideoBodyAssets(pydantic.BaseModel):
     """
     Serializer for PostV1VideoToVideoBodyAssets handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

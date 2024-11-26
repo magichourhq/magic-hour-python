@@ -13,16 +13,25 @@ from .post_v1_ai_headshot_generator_body_assets import (
 
 
 class PostV1AiHeadshotGeneratorBody(typing_extensions.TypedDict):
-    """ """
+    """
+    PostV1AiHeadshotGeneratorBody
+    """
 
     assets: typing_extensions.Required[PostV1AiHeadshotGeneratorBodyAssets]
+    """
+    Provide the assets for headshot photo
+    """
+
     name: typing_extensions.NotRequired[str]
+    """
+    The name of image
+    """
 
 
 class _SerializerPostV1AiHeadshotGeneratorBody(pydantic.BaseModel):
     """
     Serializer for PostV1AiHeadshotGeneratorBody handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

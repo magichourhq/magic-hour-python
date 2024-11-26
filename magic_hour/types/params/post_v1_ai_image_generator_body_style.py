@@ -7,15 +7,20 @@ import pydantic
 
 
 class PostV1AiImageGeneratorBodyStyle(typing_extensions.TypedDict):
-    """ """
+    """
+    PostV1AiImageGeneratorBodyStyle
+    """
 
     prompt: typing_extensions.Required[str]
+    """
+    The prompt used for the image.
+    """
 
 
 class _SerializerPostV1AiImageGeneratorBodyStyle(pydantic.BaseModel):
     """
     Serializer for PostV1AiImageGeneratorBodyStyle handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

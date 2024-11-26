@@ -7,15 +7,20 @@ import pydantic
 
 
 class PostV1TextToVideoBodyStyle(typing_extensions.TypedDict):
-    """ """
+    """
+    PostV1TextToVideoBodyStyle
+    """
 
     prompt: typing_extensions.Required[str]
+    """
+    The prompt used for the video.
+    """
 
 
 class _SerializerPostV1TextToVideoBodyStyle(pydantic.BaseModel):
     """
     Serializer for PostV1TextToVideoBodyStyle handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

@@ -1,7 +1,6 @@
 
 # Magic Hour API Python SDK
 
-
 ## Overview
 
 # Introduction 
@@ -27,7 +26,6 @@ Then, add the `Authorization` header to the request.
 > **Warning**: any API call that renders a video will utilize frames in your account.
 
 
-
 ### Synchronous Client
 
 ```python
@@ -36,7 +34,6 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 ```
-
 
 ### Asynchronous Client
 
@@ -47,5 +44,58 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 ```
 
-### SDK Usage 
- See [SDK Examples](SDK_EXAMPLES.md) for example usage of all SDK functionality
+## Module Documentation and Snippets
+
+### [v1.ai_headshot_generator](magic_hour/resources/v1/ai_headshot_generator/README.md)
+
+* [create](magic_hour/resources/v1/ai_headshot_generator/README.md#create) - Create AI Headshots
+
+### [v1.ai_image_generator](magic_hour/resources/v1/ai_image_generator/README.md)
+
+* [create](magic_hour/resources/v1/ai_image_generator/README.md#create) - Create AI Images
+
+### [v1.ai_image_upscaler](magic_hour/resources/v1/ai_image_upscaler/README.md)
+
+* [create](magic_hour/resources/v1/ai_image_upscaler/README.md#create) - Create Upscaled Image
+
+### [v1.ai_qr_code_generator](magic_hour/resources/v1/ai_qr_code_generator/README.md)
+
+* [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - Create AI QR Code
+
+### [v1.face_swap](magic_hour/resources/v1/face_swap/README.md)
+
+* [create](magic_hour/resources/v1/face_swap/README.md#create) - Create Face Swap video
+
+### [v1.face_swap_photo](magic_hour/resources/v1/face_swap_photo/README.md)
+
+* [create](magic_hour/resources/v1/face_swap_photo/README.md#create) - Create Face Swap Photo
+
+### [v1.files.upload_urls](magic_hour/resources/v1/files/upload_urls/README.md)
+
+* [create](magic_hour/resources/v1/files/upload_urls/README.md#create) - Generate asset upload urls
+
+### [v1.image_projects](magic_hour/resources/v1/image_projects/README.md)
+
+* [get](magic_hour/resources/v1/image_projects/README.md#get) - Get image project details
+
+### [v1.image_to_video](magic_hour/resources/v1/image_to_video/README.md)
+
+* [create](magic_hour/resources/v1/image_to_video/README.md#create) - Create Image-to-Video
+
+### [v1.lip_sync](magic_hour/resources/v1/lip_sync/README.md)
+
+* [create](magic_hour/resources/v1/lip_sync/README.md#create) - Create Lip Sync video
+
+### [v1.text_to_video](magic_hour/resources/v1/text_to_video/README.md)
+
+* [create](magic_hour/resources/v1/text_to_video/README.md#create) - Create Text-to-Video
+
+### [v1.video_projects](magic_hour/resources/v1/video_projects/README.md)
+
+* [get](magic_hour/resources/v1/video_projects/README.md#get) - Get video project details
+
+### [v1.video_to_video](magic_hour/resources/v1/video_to_video/README.md)
+
+* [create](magic_hour/resources/v1/video_to_video/README.md#create) - Create Video-to-Video
+
+<!-- MODULE DOCS END -->

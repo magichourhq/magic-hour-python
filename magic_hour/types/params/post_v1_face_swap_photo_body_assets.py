@@ -12,13 +12,20 @@ class PostV1FaceSwapPhotoBodyAssets(typing_extensions.TypedDict):
     """
 
     source_file_path: typing_extensions.Required[str]
+    """
+    This is the image from which the face is extracted. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls)
+    """
+
     target_file_path: typing_extensions.Required[str]
+    """
+    This is the image where the face from the source image will be placed. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls)
+    """
 
 
 class _SerializerPostV1FaceSwapPhotoBodyAssets(pydantic.BaseModel):
     """
     Serializer for PostV1FaceSwapPhotoBodyAssets handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

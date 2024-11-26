@@ -17,9 +17,9 @@ from magic_hour.types import models, params
 class FaceSwapPhotoClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources (keep comment for code generation)
+        # register sync resources
 
-    # register sync api methods (keep comment for code generation)
+    # register sync api methods
     def create(
         self,
         *,
@@ -28,14 +28,17 @@ class FaceSwapPhotoClient:
     ) -> models.PostV1FaceSwapPhotoResponse:
         """
         Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+
+        POST /v1/face-swap-photo
         """
-        # start -- build request data (keep comment for code generation)
+
+        # start -- build request data
         _json = to_encodable(
             item=data, dump_with=params._SerializerPostV1FaceSwapPhotoBody
         )
-        # end -- build request data (keep comment for code generation)
+        # end -- build request data
 
-        # start -- send sync request (keep comment for code generation)
+        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/face-swap-photo",
@@ -44,15 +47,15 @@ class FaceSwapPhotoClient:
             cast_to=models.PostV1FaceSwapPhotoResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request (keep comment for code generation)
+        # end -- send sync request
 
 
 class AsyncFaceSwapPhotoClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources (keep comment for code generation)
+        # register async resources
 
-    # register async api methods (keep comment for code generation)
+    # register async api methods
     async def create(
         self,
         *,
@@ -61,14 +64,17 @@ class AsyncFaceSwapPhotoClient:
     ) -> models.PostV1FaceSwapPhotoResponse:
         """
         Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+
+        POST /v1/face-swap-photo
         """
-        # start -- build request data (keep comment for code generation)
+
+        # start -- build request data
         _json = to_encodable(
             item=data, dump_with=params._SerializerPostV1FaceSwapPhotoBody
         )
-        # end -- build request data (keep comment for code generation)
+        # end -- build request data
 
-        # start -- send async request (keep comment for code generation)
+        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/face-swap-photo",
@@ -77,4 +83,4 @@ class AsyncFaceSwapPhotoClient:
             cast_to=models.PostV1FaceSwapPhotoResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request (keep comment for code generation)
+        # end -- send async request

@@ -6,10 +6,18 @@ import pydantic
 
 
 class PostV1AiHeadshotGeneratorResponse(pydantic.BaseModel):
+    """
+    Success
+    """
+
     model_config = pydantic.ConfigDict(
         arbitrary_types_allowed=True,
         populate_by_name=True,
     )
 
     frame_cost: float = pydantic.Field(alias="frame_cost")
+
     id: str = pydantic.Field(alias="id")
+    """
+    Unique ID of the image. This value can be used in the [get image project API](/api/tag/image-projects/get/v1/image-projects/{id}) to fetch additional details such as status
+    """

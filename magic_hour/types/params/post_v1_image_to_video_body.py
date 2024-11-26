@@ -17,20 +17,42 @@ from .post_v1_image_to_video_body_style import (
 
 
 class PostV1ImageToVideoBody(typing_extensions.TypedDict):
-    """ """
+    """
+    PostV1ImageToVideoBody
+    """
 
     assets: typing_extensions.Required[PostV1ImageToVideoBodyAssets]
+    """
+    Provide the assets for image-to-video.
+    """
+
     end_seconds: typing_extensions.Required[float]
+    """
+    The total duration of the output video in seconds.
+    """
+
     height: typing_extensions.Required[float]
+    """
+    The height of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
+    """
+
     name: typing_extensions.NotRequired[str]
+    """
+    The name of video
+    """
+
     style: typing_extensions.Required[PostV1ImageToVideoBodyStyle]
+
     width: typing_extensions.Required[float]
+    """
+    The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
+    """
 
 
 class _SerializerPostV1ImageToVideoBody(pydantic.BaseModel):
     """
     Serializer for PostV1ImageToVideoBody handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

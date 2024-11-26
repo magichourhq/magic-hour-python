@@ -16,9 +16,9 @@ from magic_hour.types import models
 class ImageProjectsClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources (keep comment for code generation)
+        # register sync resources
 
-    # register sync api methods (keep comment for code generation)
+    # register sync api methods
     def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
     ) -> models.GetV1ImageProjectsIdResponse:
@@ -33,12 +33,15 @@ class ImageProjectsClient:
         - `error` - an error occurred during rendering
         - `canceled` - image render is canceled by the user
 
+
+        GET /v1/image-projects/{id}
         """
-        # start -- build request data (keep comment for code generation)
 
-        # end -- build request data (keep comment for code generation)
+        # start -- build request data
 
-        # start -- send sync request (keep comment for code generation)
+        # end -- build request data
+
+        # start -- send sync request
         return self._base_client.request(
             method="GET",
             path=f"/v1/image-projects/{id}",
@@ -46,15 +49,15 @@ class ImageProjectsClient:
             cast_to=models.GetV1ImageProjectsIdResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request (keep comment for code generation)
+        # end -- send sync request
 
 
 class AsyncImageProjectsClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources (keep comment for code generation)
+        # register async resources
 
-    # register async api methods (keep comment for code generation)
+    # register async api methods
     async def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
     ) -> models.GetV1ImageProjectsIdResponse:
@@ -69,12 +72,15 @@ class AsyncImageProjectsClient:
         - `error` - an error occurred during rendering
         - `canceled` - image render is canceled by the user
 
+
+        GET /v1/image-projects/{id}
         """
-        # start -- build request data (keep comment for code generation)
 
-        # end -- build request data (keep comment for code generation)
+        # start -- build request data
 
-        # start -- send async request (keep comment for code generation)
+        # end -- build request data
+
+        # start -- send async request
         return await self._base_client.request(
             method="GET",
             path=f"/v1/image-projects/{id}",
@@ -82,4 +88,4 @@ class AsyncImageProjectsClient:
             cast_to=models.GetV1ImageProjectsIdResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request (keep comment for code generation)
+        # end -- send async request

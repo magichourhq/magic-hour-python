@@ -17,9 +17,9 @@ from magic_hour.types import models, params
 class AiImageGeneratorClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources (keep comment for code generation)
+        # register sync resources
 
-    # register sync api methods (keep comment for code generation)
+    # register sync api methods
     def create(
         self,
         *,
@@ -28,14 +28,17 @@ class AiImageGeneratorClient:
     ) -> models.PostV1AiImageGeneratorResponse:
         """
         Create an AI image. Each image costs 5 frames.
+
+        POST /v1/ai-image-generator
         """
-        # start -- build request data (keep comment for code generation)
+
+        # start -- build request data
         _json = to_encodable(
             item=data, dump_with=params._SerializerPostV1AiImageGeneratorBody
         )
-        # end -- build request data (keep comment for code generation)
+        # end -- build request data
 
-        # start -- send sync request (keep comment for code generation)
+        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/ai-image-generator",
@@ -44,15 +47,15 @@ class AiImageGeneratorClient:
             cast_to=models.PostV1AiImageGeneratorResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request (keep comment for code generation)
+        # end -- send sync request
 
 
 class AsyncAiImageGeneratorClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources (keep comment for code generation)
+        # register async resources
 
-    # register async api methods (keep comment for code generation)
+    # register async api methods
     async def create(
         self,
         *,
@@ -61,14 +64,17 @@ class AsyncAiImageGeneratorClient:
     ) -> models.PostV1AiImageGeneratorResponse:
         """
         Create an AI image. Each image costs 5 frames.
+
+        POST /v1/ai-image-generator
         """
-        # start -- build request data (keep comment for code generation)
+
+        # start -- build request data
         _json = to_encodable(
             item=data, dump_with=params._SerializerPostV1AiImageGeneratorBody
         )
-        # end -- build request data (keep comment for code generation)
+        # end -- build request data
 
-        # start -- send async request (keep comment for code generation)
+        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-image-generator",
@@ -77,4 +83,4 @@ class AsyncAiImageGeneratorClient:
             cast_to=models.PostV1AiImageGeneratorResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request (keep comment for code generation)
+        # end -- send async request

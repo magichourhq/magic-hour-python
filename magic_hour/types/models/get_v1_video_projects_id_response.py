@@ -12,25 +12,66 @@ from .get_v1_video_projects_id_response_download import (
 
 
 class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
+    """
+    Success
+    """
+
     model_config = pydantic.ConfigDict(
         arbitrary_types_allowed=True,
         populate_by_name=True,
     )
 
     created_at: str = pydantic.Field(alias="created_at")
+
     download: typing.Optional[GetV1VideoProjectsIdResponseDownload] = pydantic.Field(
         alias="download", default=None
     )
+    """
+    The download url and expiration date of the video project
+    """
+
     end_seconds: float = pydantic.Field(alias="end_seconds")
+    """
+    The end time of the input video in seconds
+    """
+
     fps: float = pydantic.Field(alias="fps")
+    """
+    Frame rate of the video. If the status is not 'complete', the frame rate is an estimate and will be adjusted when the video completes.
+    """
+
     height: float = pydantic.Field(alias="height")
+    """
+    The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    """
+
     id: str = pydantic.Field(alias="id")
+    """
+    Unique ID of the video. This value can be used in the [get video project API](/api/tag/video-projects/get/v1/video-projects/{id}) to fetch additional details such as status
+    """
+
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
+    """
+    The name of the video.
+    """
+
     start_seconds: float = pydantic.Field(alias="start_seconds")
+    """
+    The start time of the input video in seconds
+    """
+
     status: typing_extensions.Literal[
         "canceled", "complete", "draft", "error", "queued", "rendering"
     ] = pydantic.Field(alias="status")
+    """
+    The status of the video.
+    """
+
     total_frame_cost: float = pydantic.Field(alias="total_frame_cost")
+    """
+    The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
+    """
+
     type_field: typing_extensions.Literal[
         "ANIMATION",
         "FACE_SWAP",
@@ -39,4 +80,8 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
         "TEXT_TO_VIDEO",
         "VIDEO_TO_VIDEO",
     ] = pydantic.Field(alias="type")
+
     width: float = pydantic.Field(alias="width")
+    """
+    The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    """
