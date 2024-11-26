@@ -12,12 +12,15 @@ class PostV1AiHeadshotGeneratorBodyAssets(typing_extensions.TypedDict):
     """
 
     image_file_path: typing_extensions.Required[str]
+    """
+    The image used to generate the headshot. This image must contain one detectable face. This is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls)
+    """
 
 
 class _SerializerPostV1AiHeadshotGeneratorBodyAssets(pydantic.BaseModel):
     """
     Serializer for PostV1AiHeadshotGeneratorBodyAssets handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

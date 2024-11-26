@@ -11,6 +11,10 @@ from .post_v1_files_upload_urls_response_items_item import (
 
 
 class PostV1FilesUploadUrlsResponse(pydantic.BaseModel):
+    """
+    Success
+    """
+
     model_config = pydantic.ConfigDict(
         arbitrary_types_allowed=True,
         populate_by_name=True,

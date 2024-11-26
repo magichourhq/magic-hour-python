@@ -17,18 +17,29 @@ from .post_v1_ai_image_upscaler_body_style import (
 
 
 class PostV1AiImageUpscalerBody(typing_extensions.TypedDict):
-    """ """
+    """
+    PostV1AiImageUpscalerBody
+    """
 
     assets: typing_extensions.Required[PostV1AiImageUpscalerBodyAssets]
+    """
+    Provide the assets for upscaling
+    """
+
     name: typing_extensions.NotRequired[str]
+    """
+    The name of image
+    """
+
     scale_factor: typing_extensions.Required[float]
+
     style: typing_extensions.Required[PostV1AiImageUpscalerBodyStyle]
 
 
 class _SerializerPostV1AiImageUpscalerBody(pydantic.BaseModel):
     """
     Serializer for PostV1AiImageUpscalerBody handling case conversions
-    and file omitions as dictated by the API
+    and file omissions as dictated by the API
     """
 
     model_config = pydantic.ConfigDict(

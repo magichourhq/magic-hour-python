@@ -51,7 +51,7 @@ from magic_hour.resources.v1.video_to_video import (
 class V1Client:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources (keep comment for code generation)
+        # register sync resources
         self.image_projects = ImageProjectsClient(base_client=self._base_client)
         self.video_projects = VideoProjectsClient(base_client=self._base_client)
         self.ai_headshot_generator = AiHeadshotGeneratorClient(
@@ -70,13 +70,13 @@ class V1Client:
         self.text_to_video = TextToVideoClient(base_client=self._base_client)
         self.video_to_video = VideoToVideoClient(base_client=self._base_client)
 
-    # register sync api methods (keep comment for code generation)
+    # register sync api methods
 
 
 class AsyncV1Client:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources (keep comment for code generation)
+        # register async resources
         self.image_projects = AsyncImageProjectsClient(base_client=self._base_client)
         self.video_projects = AsyncVideoProjectsClient(base_client=self._base_client)
         self.ai_headshot_generator = AsyncAiHeadshotGeneratorClient(
@@ -99,4 +99,4 @@ class AsyncV1Client:
         self.text_to_video = AsyncTextToVideoClient(base_client=self._base_client)
         self.video_to_video = AsyncVideoToVideoClient(base_client=self._base_client)
 
-    # register async api methods (keep comment for code generation)
+    # register async api methods

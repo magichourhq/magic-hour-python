@@ -6,11 +6,17 @@ import pydantic
 
 
 class PostV1FilesUploadUrlsResponseItemsItem(pydantic.BaseModel):
+    """
+    PostV1FilesUploadUrlsResponseItemsItem
+    """
+
     model_config = pydantic.ConfigDict(
         arbitrary_types_allowed=True,
         populate_by_name=True,
     )
 
     expires_at: str = pydantic.Field(alias="expires_at")
+
     file_path: str = pydantic.Field(alias="file_path")
+
     upload_url: str = pydantic.Field(alias="upload_url")

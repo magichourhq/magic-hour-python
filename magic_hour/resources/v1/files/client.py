@@ -12,16 +12,16 @@ from magic_hour.resources.v1.files.upload_urls import (
 class FilesClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources (keep comment for code generation)
+        # register sync resources
         self.upload_urls = UploadUrlsClient(base_client=self._base_client)
 
-    # register sync api methods (keep comment for code generation)
+    # register sync api methods
 
 
 class AsyncFilesClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources (keep comment for code generation)
+        # register async resources
         self.upload_urls = AsyncUploadUrlsClient(base_client=self._base_client)
 
-    # register async api methods (keep comment for code generation)
+    # register async api methods
