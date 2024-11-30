@@ -55,5 +55,10 @@ class GetV1ImageProjectsIdResponse(pydantic.BaseModel):
     """
 
     type_field: typing_extensions.Literal[
-        "AI_HEADSHOT", "AI_IMAGE", "FACE_SWAP", "IMAGE_UPSCALER", "QR_CODE"
+        "AI_HEADSHOT",
+        "AI_IMAGE",
+        "FACE_SWAP",
+        "IMAGE_UPSCALER",
+        "PHOTO_EDITOR",
+        "QR_CODE",
     ] = pydantic.Field(alias="type")
