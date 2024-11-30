@@ -23,6 +23,10 @@ from magic_hour.resources.v1.ai_image_upscaler import (
     AiImageUpscalerClient,
     AsyncAiImageUpscalerClient,
 )
+from magic_hour.resources.v1.ai_photo_editor import (
+    AiPhotoEditorClient,
+    AsyncAiPhotoEditorClient,
+)
 from magic_hour.resources.v1.ai_qr_code_generator import (
     AiQrCodeGeneratorClient,
     AsyncAiQrCodeGeneratorClient,
@@ -59,6 +63,7 @@ class V1Client:
         )
         self.ai_image_generator = AiImageGeneratorClient(base_client=self._base_client)
         self.ai_image_upscaler = AiImageUpscalerClient(base_client=self._base_client)
+        self.ai_photo_editor = AiPhotoEditorClient(base_client=self._base_client)
         self.ai_qr_code_generator = AiQrCodeGeneratorClient(
             base_client=self._base_client
         )
@@ -88,6 +93,7 @@ class AsyncV1Client:
         self.ai_image_upscaler = AsyncAiImageUpscalerClient(
             base_client=self._base_client
         )
+        self.ai_photo_editor = AsyncAiPhotoEditorClient(base_client=self._base_client)
         self.ai_qr_code_generator = AsyncAiQrCodeGeneratorClient(
             base_client=self._base_client
         )

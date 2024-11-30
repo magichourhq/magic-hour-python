@@ -58,6 +58,10 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 
 * [create](magic_hour/resources/v1/ai_image_upscaler/README.md#create) - Create Upscaled Image
 
+### [v1.ai_photo_editor](magic_hour/resources/v1/ai_photo_editor/README.md)
+
+* [create](magic_hour/resources/v1/ai_photo_editor/README.md#create) - AI Photo Editor
+
 ### [v1.ai_qr_code_generator](magic_hour/resources/v1/ai_qr_code_generator/README.md)
 
 * [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - Create AI QR Code

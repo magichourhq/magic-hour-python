@@ -11,6 +11,7 @@ from .get_v1_video_projects_id_response_download import (
 from .post_v1_ai_headshot_generator_response import PostV1AiHeadshotGeneratorResponse
 from .post_v1_ai_image_generator_response import PostV1AiImageGeneratorResponse
 from .post_v1_ai_image_upscaler_response import PostV1AiImageUpscalerResponse
+from .post_v1_ai_photo_editor_response import PostV1AiPhotoEditorResponse
 from .post_v1_ai_qr_code_generator_response import PostV1AiQrCodeGeneratorResponse
 from .post_v1_face_swap_response import PostV1FaceSwapResponse
 from .post_v1_face_swap_photo_response import PostV1FaceSwapPhotoResponse
@@ -34,6 +35,7 @@ __all__ = [
     "PostV1AiHeadshotGeneratorResponse",
     "PostV1AiImageGeneratorResponse",
     "PostV1AiImageUpscalerResponse",
+    "PostV1AiPhotoEditorResponse",
     "PostV1AiQrCodeGeneratorResponse",
     "PostV1FaceSwapPhotoResponse",
     "PostV1FaceSwapResponse",
