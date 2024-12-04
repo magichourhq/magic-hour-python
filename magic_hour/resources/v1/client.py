@@ -31,6 +31,7 @@ from magic_hour.resources.v1.ai_qr_code_generator import (
     AiQrCodeGeneratorClient,
     AsyncAiQrCodeGeneratorClient,
 )
+from magic_hour.resources.v1.animation import AnimationClient, AsyncAnimationClient
 from magic_hour.resources.v1.face_swap import AsyncFaceSwapClient, FaceSwapClient
 from magic_hour.resources.v1.face_swap_photo import (
     AsyncFaceSwapPhotoClient,
@@ -67,6 +68,7 @@ class V1Client:
         self.ai_qr_code_generator = AiQrCodeGeneratorClient(
             base_client=self._base_client
         )
+        self.animation = AnimationClient(base_client=self._base_client)
         self.face_swap = FaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = FaceSwapPhotoClient(base_client=self._base_client)
         self.files = FilesClient(base_client=self._base_client)
@@ -97,6 +99,7 @@ class AsyncV1Client:
         self.ai_qr_code_generator = AsyncAiQrCodeGeneratorClient(
             base_client=self._base_client
         )
+        self.animation = AsyncAnimationClient(base_client=self._base_client)
         self.face_swap = AsyncFaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = AsyncFaceSwapPhotoClient(base_client=self._base_client)
         self.files = AsyncFilesClient(base_client=self._base_client)
