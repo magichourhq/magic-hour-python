@@ -30,6 +30,14 @@ from .post_v1_ai_qr_code_generator_body_style import (
     PostV1AiQrCodeGeneratorBodyStyle,
     _SerializerPostV1AiQrCodeGeneratorBodyStyle,
 )
+from .post_v1_animation_body_assets import (
+    PostV1AnimationBodyAssets,
+    _SerializerPostV1AnimationBodyAssets,
+)
+from .post_v1_animation_body_style import (
+    PostV1AnimationBodyStyle,
+    _SerializerPostV1AnimationBodyStyle,
+)
 from .post_v1_face_swap_body_assets import (
     PostV1FaceSwapBodyAssets,
     _SerializerPostV1FaceSwapBodyAssets,
@@ -86,6 +94,7 @@ from .post_v1_ai_qr_code_generator_body import (
     PostV1AiQrCodeGeneratorBody,
     _SerializerPostV1AiQrCodeGeneratorBody,
 )
+from .post_v1_animation_body import PostV1AnimationBody, _SerializerPostV1AnimationBody
 from .post_v1_face_swap_body import PostV1FaceSwapBody, _SerializerPostV1FaceSwapBody
 from .post_v1_face_swap_photo_body import (
     PostV1FaceSwapPhotoBody,
@@ -123,6 +132,9 @@ __all__ = [
     "PostV1AiPhotoEditorBodyStyle",
     "PostV1AiQrCodeGeneratorBody",
     "PostV1AiQrCodeGeneratorBodyStyle",
+    "PostV1AnimationBody",
+    "PostV1AnimationBodyAssets",
+    "PostV1AnimationBodyStyle",
     "PostV1FaceSwapBody",
     "PostV1FaceSwapBodyAssets",
     "PostV1FaceSwapPhotoBody",
@@ -151,6 +163,9 @@ __all__ = [
     "_SerializerPostV1AiPhotoEditorBodyStyle",
     "_SerializerPostV1AiQrCodeGeneratorBody",
     "_SerializerPostV1AiQrCodeGeneratorBodyStyle",
+    "_SerializerPostV1AnimationBody",
+    "_SerializerPostV1AnimationBodyAssets",
+    "_SerializerPostV1AnimationBodyStyle",
     "_SerializerPostV1FaceSwapBody",
     "_SerializerPostV1FaceSwapBodyAssets",
     "_SerializerPostV1FaceSwapPhotoBody",

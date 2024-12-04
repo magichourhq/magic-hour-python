@@ -66,6 +66,10 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 
 * [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - Create AI QR Code
 
+### [v1.animation](magic_hour/resources/v1/animation/README.md)
+
+* [create](magic_hour/resources/v1/animation/README.md#create) - Create Animation
+
 ### [v1.face_swap](magic_hour/resources/v1/face_swap/README.md)
 
 * [create](magic_hour/resources/v1/face_swap/README.md#create) - Create Face Swap video

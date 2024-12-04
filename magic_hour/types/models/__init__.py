@@ -15,6 +15,7 @@ from .post_v1_ai_image_generator_response import PostV1AiImageGeneratorResponse
 from .post_v1_ai_image_upscaler_response import PostV1AiImageUpscalerResponse
 from .post_v1_ai_photo_editor_response import PostV1AiPhotoEditorResponse
 from .post_v1_ai_qr_code_generator_response import PostV1AiQrCodeGeneratorResponse
+from .post_v1_animation_response import PostV1AnimationResponse
 from .post_v1_face_swap_response import PostV1FaceSwapResponse
 from .post_v1_face_swap_photo_response import PostV1FaceSwapPhotoResponse
 from .post_v1_files_upload_urls_response_items_item import (
@@ -41,6 +42,7 @@ __all__ = [
     "PostV1AiImageUpscalerResponse",
     "PostV1AiPhotoEditorResponse",
     "PostV1AiQrCodeGeneratorResponse",
+    "PostV1AnimationResponse",
     "PostV1FaceSwapPhotoResponse",
     "PostV1FaceSwapResponse",
     "PostV1FilesUploadUrlsResponse",
