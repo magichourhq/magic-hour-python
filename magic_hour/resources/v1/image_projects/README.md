@@ -1,4 +1,31 @@
 
+### delete <a name="delete"></a>
+Delete image
+
+Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+
+**API Endpoint**: `DELETE /v1/image-projects/{id}`
+
+#### Synchronous Client
+
+```python
+from magic_hour import Client
+from os import getenv
+
+client = Client(token=getenv("API_TOKEN"))
+res = client.v1.image_projects.delete(id="string")
+```
+
+#### Asynchronous Client
+
+```python
+from magic_hour import AsyncClient
+from os import getenv
+
+client = AsyncClient(token=getenv("API_TOKEN"))
+res = await client.v1.image_projects.delete(id="string")
+```
+
 ### get <a name="get"></a>
 Get image project details
 

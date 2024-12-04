@@ -9,6 +9,7 @@ import pydantic
 from .get_v1_video_projects_id_response_download import (
     GetV1VideoProjectsIdResponseDownload,
 )
+from .get_v1_video_projects_id_response_error import GetV1VideoProjectsIdResponseError
 
 
 class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
@@ -30,9 +31,21 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
     The download url and expiration date of the video project
     """
 
+    enabled: bool = pydantic.Field(alias="enabled")
+    """
+    Indicates whether the resource is deleted
+    """
+
     end_seconds: float = pydantic.Field(alias="end_seconds")
     """
     The end time of the input video in seconds
+    """
+
+    error: typing.Optional[GetV1VideoProjectsIdResponseError] = pydantic.Field(
+        alias="error", default=None
+    )
+    """
+    In the case of an error, this object will contain the error encountered during video render
     """
 
     fps: float = pydantic.Field(alias="fps")
