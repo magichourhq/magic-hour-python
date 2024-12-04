@@ -51,6 +51,29 @@ class ImageProjectsClient:
         )
         # end -- send sync request
 
+    def delete(
+        self, *, id: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+
+        DELETE /v1/image-projects/{id}
+        """
+
+        # start -- build request data
+
+        # end -- build request data
+
+        # start -- send sync request
+        return self._base_client.request(
+            method="DELETE",
+            path=f"/v1/image-projects/{id}",
+            auth_names=["bearerAuth"],
+            cast_to=type(None),
+            request_options=request_options or default_request_options(),
+        )
+        # end -- send sync request
+
 
 class AsyncImageProjectsClient:
     def __init__(self, *, base_client: AsyncBaseClient):
@@ -86,6 +109,29 @@ class AsyncImageProjectsClient:
             path=f"/v1/image-projects/{id}",
             auth_names=["bearerAuth"],
             cast_to=models.GetV1ImageProjectsIdResponse,
+            request_options=request_options or default_request_options(),
+        )
+        # end -- send async request
+
+    async def delete(
+        self, *, id: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+
+        DELETE /v1/image-projects/{id}
+        """
+
+        # start -- build request data
+
+        # end -- build request data
+
+        # start -- send async request
+        return await self._base_client.request(
+            method="DELETE",
+            path=f"/v1/image-projects/{id}",
+            auth_names=["bearerAuth"],
+            cast_to=type(None),
             request_options=request_options or default_request_options(),
         )
         # end -- send async request

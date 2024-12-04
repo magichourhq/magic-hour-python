@@ -9,6 +9,7 @@ import pydantic
 from .get_v1_image_projects_id_response_downloads_item import (
     GetV1ImageProjectsIdResponseDownloadsItem,
 )
+from .get_v1_image_projects_id_response_error import GetV1ImageProjectsIdResponseError
 
 
 class GetV1ImageProjectsIdResponse(pydantic.BaseModel):
@@ -26,6 +27,18 @@ class GetV1ImageProjectsIdResponse(pydantic.BaseModel):
     downloads: typing.List[GetV1ImageProjectsIdResponseDownloadsItem] = pydantic.Field(
         alias="downloads"
     )
+
+    enabled: bool = pydantic.Field(alias="enabled")
+    """
+    Indicates whether the resource is deleted
+    """
+
+    error: typing.Optional[GetV1ImageProjectsIdResponseError] = pydantic.Field(
+        alias="error", default=None
+    )
+    """
+    In the case of an error, this object will contain the error encountered during video render
+    """
 
     id: str = pydantic.Field(alias="id")
     """

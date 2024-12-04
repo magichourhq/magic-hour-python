@@ -80,6 +80,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 
 ### [v1.image_projects](magic_hour/resources/v1/image_projects/README.md)
 
+* [delete](magic_hour/resources/v1/image_projects/README.md#delete) - Delete image
 * [get](magic_hour/resources/v1/image_projects/README.md#get) - Get image project details
 
 ### [v1.image_to_video](magic_hour/resources/v1/image_to_video/README.md)
@@ -96,7 +97,8 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 
 ### [v1.video_projects](magic_hour/resources/v1/video_projects/README.md)
 
-* [get](magic_hour/resources/v1/video_projects/README.md#get) - Get video project details
+* [delete](magic_hour/resources/v1/video_projects/README.md#delete) - Delete video
+* [get](magic_hour/resources/v1/video_projects/README.md#get) - Get video details
 
 ### [v1.video_to_video](magic_hour/resources/v1/video_to_video/README.md)
 
