@@ -37,6 +37,11 @@ class PostV1AiPhotoEditorBodyStyle(typing_extensions.TypedDict):
     Determines the prompt's influence. Higher values align the output more with the prompt.
     """
 
+    steps: typing_extensions.NotRequired[float]
+    """
+    Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
+    """
+
 
 class _SerializerPostV1AiPhotoEditorBodyStyle(pydantic.BaseModel):
     """
@@ -55,3 +60,4 @@ class _SerializerPostV1AiPhotoEditorBodyStyle(pydantic.BaseModel):
     )
     prompt: str = pydantic.Field(alias="prompt")
     prompt_strength: float = pydantic.Field(alias="prompt_strength")
+    steps: typing.Optional[float] = pydantic.Field(alias="steps", default=None)
