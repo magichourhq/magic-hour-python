@@ -45,7 +45,7 @@ class GetV1ImageProjectsIdResponse(pydantic.BaseModel):
     Unique ID of the image. This value can be used in the [get image project API](/api/tag/image-projects/get/v1/image-projects/{id}) to fetch additional details such as status
     """
 
-    image_count: float = pydantic.Field(alias="image_count")
+    image_count: int = pydantic.Field(alias="image_count")
     """
     Number of images generated
     """
@@ -62,7 +62,7 @@ class GetV1ImageProjectsIdResponse(pydantic.BaseModel):
     The status of the image.
     """
 
-    total_frame_cost: float = pydantic.Field(alias="total_frame_cost")
+    total_frame_cost: int = pydantic.Field(alias="total_frame_cost")
     """
     The amount of frames used to generate the image.
     """

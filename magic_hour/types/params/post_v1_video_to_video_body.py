@@ -40,9 +40,9 @@ class PostV1VideoToVideoBody(typing_extensions.TypedDict):
     * `HALF` - the result video will have half the FPS as the input video
     """
 
-    height: typing_extensions.Required[float]
+    height: typing_extensions.Required[int]
     """
-    The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
 
     name: typing_extensions.NotRequired[str]
@@ -57,9 +57,9 @@ class PostV1VideoToVideoBody(typing_extensions.TypedDict):
 
     style: typing_extensions.Required[PostV1VideoToVideoBodyStyle]
 
-    width: typing_extensions.Required[float]
+    width: typing_extensions.Required[int]
     """
-    The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
 
 
@@ -78,8 +78,8 @@ class _SerializerPostV1VideoToVideoBody(pydantic.BaseModel):
     fps_resolution: typing.Optional[typing_extensions.Literal["FULL", "HALF"]] = (
         pydantic.Field(alias="fps_resolution", default=None)
     )
-    height: float = pydantic.Field(alias="height")
+    height: int = pydantic.Field(alias="height")
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(alias="start_seconds")
     style: _SerializerPostV1VideoToVideoBodyStyle = pydantic.Field(alias="style")
-    width: float = pydantic.Field(alias="width")
+    width: int = pydantic.Field(alias="width")

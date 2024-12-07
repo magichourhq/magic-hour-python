@@ -15,7 +15,7 @@ class PostV1AiHeadshotGeneratorResponse(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    frame_cost: float = pydantic.Field(alias="frame_cost")
+    frame_cost: int = pydantic.Field(alias="frame_cost")
 
     id: str = pydantic.Field(alias="id")
     """

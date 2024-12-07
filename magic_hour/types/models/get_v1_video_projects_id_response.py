@@ -53,7 +53,7 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
     Frame rate of the video. If the status is not 'complete', the frame rate is an estimate and will be adjusted when the video completes.
     """
 
-    height: float = pydantic.Field(alias="height")
+    height: int = pydantic.Field(alias="height")
     """
     The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
@@ -80,7 +80,7 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
     The status of the video.
     """
 
-    total_frame_cost: float = pydantic.Field(alias="total_frame_cost")
+    total_frame_cost: int = pydantic.Field(alias="total_frame_cost")
     """
     The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
     """
@@ -94,7 +94,7 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
         "VIDEO_TO_VIDEO",
     ] = pydantic.Field(alias="type")
 
-    width: float = pydantic.Field(alias="width")
+    width: int = pydantic.Field(alias="width")
     """
     The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
