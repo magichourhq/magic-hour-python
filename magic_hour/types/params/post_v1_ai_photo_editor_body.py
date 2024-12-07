@@ -31,12 +31,12 @@ class PostV1AiPhotoEditorBody(typing_extensions.TypedDict):
     The name of image
     """
 
-    resolution: typing_extensions.Required[float]
+    resolution: typing_extensions.Required[int]
     """
     The resolution of the final output image. The allowed value is based on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
 
-    steps: typing_extensions.NotRequired[float]
+    steps: typing_extensions.NotRequired[int]
     """
     Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
     """
@@ -56,6 +56,6 @@ class _SerializerPostV1AiPhotoEditorBody(pydantic.BaseModel):
 
     assets: _SerializerPostV1AiPhotoEditorBodyAssets = pydantic.Field(alias="assets")
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    resolution: float = pydantic.Field(alias="resolution")
-    steps: typing.Optional[float] = pydantic.Field(alias="steps", default=None)
+    resolution: int = pydantic.Field(alias="resolution")
+    steps: typing.Optional[int] = pydantic.Field(alias="steps", default=None)
     style: _SerializerPostV1AiPhotoEditorBodyStyle = pydantic.Field(alias="style")

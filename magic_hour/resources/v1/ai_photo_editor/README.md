@@ -20,7 +20,7 @@ res = client.v1.ai_photo_editor.create(
         "assets": {"image_file_path": "image/id/1234.png"},
         "name": "Photo Editor image",
         "resolution": 768,
-        "steps": 123.45,
+        "steps": 123,
         "style": {
             "image_description": "A photo of a person",
             "likeness_strength": 5.2,
@@ -45,7 +45,7 @@ res = await client.v1.ai_photo_editor.create(
         "assets": {"image_file_path": "image/id/1234.png"},
         "name": "Photo Editor image",
         "resolution": 768,
-        "steps": 123.45,
+        "steps": 123,
         "style": {
             "image_description": "A photo of a person",
             "likeness_strength": 5.2,
