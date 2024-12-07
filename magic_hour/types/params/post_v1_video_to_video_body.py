@@ -42,7 +42,7 @@ class PostV1VideoToVideoBody(typing_extensions.TypedDict):
 
     height: typing_extensions.Required[int]
     """
-    The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
 
     name: typing_extensions.NotRequired[str]
@@ -59,7 +59,7 @@ class PostV1VideoToVideoBody(typing_extensions.TypedDict):
 
     width: typing_extensions.Required[int]
     """
-    The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
 
 
