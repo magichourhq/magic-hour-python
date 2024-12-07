@@ -17,7 +17,7 @@ class PostV1AiImageGeneratorBody(typing_extensions.TypedDict):
     PostV1AiImageGeneratorBody
     """
 
-    image_count: typing_extensions.Required[float]
+    image_count: typing_extensions.Required[int]
     """
     number to images to generate
     """
@@ -44,7 +44,7 @@ class _SerializerPostV1AiImageGeneratorBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    image_count: float = pydantic.Field(alias="image_count")
+    image_count: int = pydantic.Field(alias="image_count")
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     orientation: typing_extensions.Literal["landscape", "portrait", "square"] = (
         pydantic.Field(alias="orientation")

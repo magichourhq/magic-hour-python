@@ -36,7 +36,7 @@ class PostV1AnimationBody(typing_extensions.TypedDict):
     The desire output video frame rate
     """
 
-    height: typing_extensions.Required[float]
+    height: typing_extensions.Required[int]
     """
     The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
@@ -51,7 +51,7 @@ class PostV1AnimationBody(typing_extensions.TypedDict):
     Defines the style of the output video
     """
 
-    width: typing_extensions.Required[float]
+    width: typing_extensions.Required[int]
     """
     The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
@@ -70,7 +70,7 @@ class _SerializerPostV1AnimationBody(pydantic.BaseModel):
     assets: _SerializerPostV1AnimationBodyAssets = pydantic.Field(alias="assets")
     end_seconds: float = pydantic.Field(alias="end_seconds")
     fps: float = pydantic.Field(alias="fps")
-    height: float = pydantic.Field(alias="height")
+    height: int = pydantic.Field(alias="height")
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     style: _SerializerPostV1AnimationBodyStyle = pydantic.Field(alias="style")
-    width: float = pydantic.Field(alias="width")
+    width: int = pydantic.Field(alias="width")

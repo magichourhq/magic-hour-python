@@ -27,7 +27,7 @@ class PostV1LipSyncBody(typing_extensions.TypedDict):
     The end time of the input video in seconds
     """
 
-    height: typing_extensions.Required[float]
+    height: typing_extensions.Required[int]
     """
     The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
@@ -47,7 +47,7 @@ class PostV1LipSyncBody(typing_extensions.TypedDict):
     The start time of the input video in seconds
     """
 
-    width: typing_extensions.Required[float]
+    width: typing_extensions.Required[int]
     """
     The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
     """
@@ -65,10 +65,10 @@ class _SerializerPostV1LipSyncBody(pydantic.BaseModel):
 
     assets: _SerializerPostV1LipSyncBodyAssets = pydantic.Field(alias="assets")
     end_seconds: float = pydantic.Field(alias="end_seconds")
-    height: float = pydantic.Field(alias="height")
+    height: int = pydantic.Field(alias="height")
     max_fps_limit: typing.Optional[float] = pydantic.Field(
         alias="max_fps_limit", default=None
     )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(alias="start_seconds")
-    width: float = pydantic.Field(alias="width")
+    width: int = pydantic.Field(alias="width")
