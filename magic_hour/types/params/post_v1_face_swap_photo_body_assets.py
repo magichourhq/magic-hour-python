@@ -32,5 +32,9 @@ class _SerializerPostV1FaceSwapPhotoBodyAssets(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    source_file_path: str = pydantic.Field(alias="source_file_path")
-    target_file_path: str = pydantic.Field(alias="target_file_path")
+    source_file_path: str = pydantic.Field(
+        alias="source_file_path",
+    )
+    target_file_path: str = pydantic.Field(
+        alias="target_file_path",
+    )

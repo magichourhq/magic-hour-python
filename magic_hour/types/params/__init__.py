@@ -50,6 +50,10 @@ from .post_v1_files_upload_urls_body_items_item import (
     PostV1FilesUploadUrlsBodyItemsItem,
     _SerializerPostV1FilesUploadUrlsBodyItemsItem,
 )
+from .post_v1_image_background_remover_body_assets import (
+    PostV1ImageBackgroundRemoverBodyAssets,
+    _SerializerPostV1ImageBackgroundRemoverBodyAssets,
+)
 from .post_v1_image_to_video_body_assets import (
     PostV1ImageToVideoBodyAssets,
     _SerializerPostV1ImageToVideoBodyAssets,
@@ -104,6 +108,10 @@ from .post_v1_files_upload_urls_body import (
     PostV1FilesUploadUrlsBody,
     _SerializerPostV1FilesUploadUrlsBody,
 )
+from .post_v1_image_background_remover_body import (
+    PostV1ImageBackgroundRemoverBody,
+    _SerializerPostV1ImageBackgroundRemoverBody,
+)
 from .post_v1_image_to_video_body import (
     PostV1ImageToVideoBody,
     _SerializerPostV1ImageToVideoBody,
@@ -141,6 +149,8 @@ __all__ = [
     "PostV1FaceSwapPhotoBodyAssets",
     "PostV1FilesUploadUrlsBody",
     "PostV1FilesUploadUrlsBodyItemsItem",
+    "PostV1ImageBackgroundRemoverBody",
+    "PostV1ImageBackgroundRemoverBodyAssets",
     "PostV1ImageToVideoBody",
     "PostV1ImageToVideoBodyAssets",
     "PostV1ImageToVideoBodyStyle",
@@ -172,6 +182,8 @@ __all__ = [
     "_SerializerPostV1FaceSwapPhotoBodyAssets",
     "_SerializerPostV1FilesUploadUrlsBody",
     "_SerializerPostV1FilesUploadUrlsBodyItemsItem",
+    "_SerializerPostV1ImageBackgroundRemoverBody",
+    "_SerializerPostV1ImageBackgroundRemoverBodyAssets",
     "_SerializerPostV1ImageToVideoBody",
     "_SerializerPostV1ImageToVideoBodyAssets",
     "_SerializerPostV1ImageToVideoBodyStyle",

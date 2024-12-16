@@ -12,7 +12,7 @@ class PostV1ImageToVideoBodyStyle(typing_extensions.TypedDict):
     PostV1ImageToVideoBodyStyle
     """
 
-    prompt: typing.Optional[str]
+    prompt: typing_extensions.Required[typing.Optional[str]]
     """
     The prompt used for the video.
     """
@@ -28,4 +28,6 @@ class _SerializerPostV1ImageToVideoBodyStyle(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    prompt: typing.Optional[str] = pydantic.Field(alias="prompt")
+    prompt: typing.Optional[str] = pydantic.Field(
+        alias="prompt",
+    )

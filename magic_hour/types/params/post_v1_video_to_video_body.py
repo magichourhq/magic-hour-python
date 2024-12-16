@@ -73,13 +73,25 @@ class _SerializerPostV1VideoToVideoBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1VideoToVideoBodyAssets = pydantic.Field(alias="assets")
-    end_seconds: float = pydantic.Field(alias="end_seconds")
+    assets: _SerializerPostV1VideoToVideoBodyAssets = pydantic.Field(
+        alias="assets",
+    )
+    end_seconds: float = pydantic.Field(
+        alias="end_seconds",
+    )
     fps_resolution: typing.Optional[typing_extensions.Literal["FULL", "HALF"]] = (
         pydantic.Field(alias="fps_resolution", default=None)
     )
-    height: int = pydantic.Field(alias="height")
+    height: int = pydantic.Field(
+        alias="height",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    start_seconds: float = pydantic.Field(alias="start_seconds")
-    style: _SerializerPostV1VideoToVideoBodyStyle = pydantic.Field(alias="style")
-    width: int = pydantic.Field(alias="width")
+    start_seconds: float = pydantic.Field(
+        alias="start_seconds",
+    )
+    style: _SerializerPostV1VideoToVideoBodyStyle = pydantic.Field(
+        alias="style",
+    )
+    width: int = pydantic.Field(
+        alias="width",
+    )

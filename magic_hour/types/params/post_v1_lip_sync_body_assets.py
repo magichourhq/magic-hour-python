@@ -42,12 +42,14 @@ class _SerializerPostV1LipSyncBodyAssets(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    audio_file_path: str = pydantic.Field(alias="audio_file_path")
+    audio_file_path: str = pydantic.Field(
+        alias="audio_file_path",
+    )
     video_file_path: typing.Optional[str] = pydantic.Field(
         alias="video_file_path", default=None
     )
     video_source: typing_extensions.Literal["file", "youtube"] = pydantic.Field(
-        alias="video_source"
+        alias="video_source",
     )
     youtube_url: typing.Optional[str] = pydantic.Field(
         alias="youtube_url", default=None

@@ -17,14 +17,12 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.image_to_video.create(
-    data={
-        "assets": {"image_file_path": "image/id/1234.png"},
-        "end_seconds": 5,
-        "height": 960,
-        "name": "Image To Video video",
-        "style": {"prompt": "string"},
-        "width": 512,
-    }
+    assets={"image_file_path": "image/id/1234.png"},
+    end_seconds=5,
+    height=960,
+    style={"prompt": None},
+    width=512,
+    name="Image To Video video",
 )
 ```
 
@@ -36,14 +34,12 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.image_to_video.create(
-    data={
-        "assets": {"image_file_path": "image/id/1234.png"},
-        "end_seconds": 5,
-        "height": 960,
-        "name": "Image To Video video",
-        "style": {"prompt": "string"},
-        "width": 512,
-    }
+    assets={"image_file_path": "image/id/1234.png"},
+    end_seconds=5,
+    height=960,
+    style={"prompt": None},
+    width=512,
+    name="Image To Video video",
 )
 ```
 

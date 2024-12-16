@@ -10,6 +10,7 @@ from magic_hour.core import (
     SyncBaseClient,
     default_request_options,
     to_encodable,
+    type_utils,
 )
 from magic_hour.types import models, params
 
@@ -17,13 +18,16 @@ from magic_hour.types import models, params
 class AiImageUpscalerClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AiImageUpscalerBody] = None,
+        assets: params.PostV1AiImageUpscalerBodyAssets,
+        scale_factor: float,
+        style: params.PostV1AiImageUpscalerBodyStyle,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiImageUpscalerResponse:
         """
@@ -31,14 +35,15 @@ class AiImageUpscalerClient:
 
         POST /v1/ai-image-upscaler
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1AiImageUpscalerBody
+            item={
+                "name": name,
+                "assets": assets,
+                "scale_factor": scale_factor,
+                "style": style,
+            },
+            dump_with=params._SerializerPostV1AiImageUpscalerBody,
         )
-        # end -- build request data
-
-        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/ai-image-upscaler",
@@ -47,19 +52,21 @@ class AiImageUpscalerClient:
             cast_to=models.PostV1AiImageUpscalerResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
 
 class AsyncAiImageUpscalerClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources
 
-    # register async api methods
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AiImageUpscalerBody] = None,
+        assets: params.PostV1AiImageUpscalerBodyAssets,
+        scale_factor: float,
+        style: params.PostV1AiImageUpscalerBodyStyle,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiImageUpscalerResponse:
         """
@@ -67,14 +74,15 @@ class AsyncAiImageUpscalerClient:
 
         POST /v1/ai-image-upscaler
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1AiImageUpscalerBody
+            item={
+                "name": name,
+                "assets": assets,
+                "scale_factor": scale_factor,
+                "style": style,
+            },
+            dump_with=params._SerializerPostV1AiImageUpscalerBody,
         )
-        # end -- build request data
-
-        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-image-upscaler",
@@ -83,4 +91,3 @@ class AsyncAiImageUpscalerClient:
             cast_to=models.PostV1AiImageUpscalerResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request

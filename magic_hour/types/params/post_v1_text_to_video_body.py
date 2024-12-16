@@ -47,9 +47,15 @@ class _SerializerPostV1TextToVideoBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    end_seconds: float = pydantic.Field(alias="end_seconds")
+    end_seconds: float = pydantic.Field(
+        alias="end_seconds",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     orientation: typing_extensions.Literal["landscape", "portrait", "square"] = (
-        pydantic.Field(alias="orientation")
+        pydantic.Field(
+            alias="orientation",
+        )
     )
-    style: _SerializerPostV1TextToVideoBodyStyle = pydantic.Field(alias="style")
+    style: _SerializerPostV1TextToVideoBodyStyle = pydantic.Field(
+        alias="style",
+    )

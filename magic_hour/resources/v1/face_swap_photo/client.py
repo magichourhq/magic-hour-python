@@ -10,6 +10,7 @@ from magic_hour.core import (
     SyncBaseClient,
     default_request_options,
     to_encodable,
+    type_utils,
 )
 from magic_hour.types import models, params
 
@@ -17,13 +18,14 @@ from magic_hour.types import models, params
 class FaceSwapPhotoClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1FaceSwapPhotoBody] = None,
+        assets: params.PostV1FaceSwapPhotoBodyAssets,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1FaceSwapPhotoResponse:
         """
@@ -31,14 +33,10 @@ class FaceSwapPhotoClient:
 
         POST /v1/face-swap-photo
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1FaceSwapPhotoBody
+            item={"name": name, "assets": assets},
+            dump_with=params._SerializerPostV1FaceSwapPhotoBody,
         )
-        # end -- build request data
-
-        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/face-swap-photo",
@@ -47,19 +45,19 @@ class FaceSwapPhotoClient:
             cast_to=models.PostV1FaceSwapPhotoResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
 
 class AsyncFaceSwapPhotoClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources
 
-    # register async api methods
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1FaceSwapPhotoBody] = None,
+        assets: params.PostV1FaceSwapPhotoBodyAssets,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1FaceSwapPhotoResponse:
         """
@@ -67,14 +65,10 @@ class AsyncFaceSwapPhotoClient:
 
         POST /v1/face-swap-photo
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1FaceSwapPhotoBody
+            item={"name": name, "assets": assets},
+            dump_with=params._SerializerPostV1FaceSwapPhotoBody,
         )
-        # end -- build request data
-
-        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/face-swap-photo",
@@ -83,4 +77,3 @@ class AsyncFaceSwapPhotoClient:
             cast_to=models.PostV1FaceSwapPhotoResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request

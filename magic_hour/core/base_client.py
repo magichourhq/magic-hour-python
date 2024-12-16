@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from .api_error import ApiError
 from .auth import AuthProvider
 from .request import RequestConfig, RequestOptions, default_request_options, QueryParams
-from .response import from_encodable
+from .response import from_encodable, AsyncStreamResponse, StreamResponse
 from .utils import is_binary_content_type, get_content_type
 from .binary_response import BinaryResponse
 
@@ -23,27 +23,66 @@ T = TypeVar(
 
 
 class BaseClient:
+    """Base client class providing core HTTP client functionality.
+
+    Handles authentication, request building, and response processing for HTTP API clients.
+    Serves as the foundation for both synchronous and asynchronous client implementations.
+
+    Attributes:
+        _base_url: Base URL for the API endpoint
+        _auths: Dictionary mapping auth provider IDs to AuthProvider instances
+    """
+
     def __init__(
         self,
         *,
         base_url: str,
     ):
+        """Initialize the base client.
+
+        Args:
+            base_url: Base URL for the API endpoint
+        """
         self._base_url = base_url
         self._auths: Dict[str, AuthProvider] = {}
 
     def register_auth(self, auth_id: str, provider: AuthProvider):
+        """Register an authentication provider.
+
+        Args:
+            auth_id: Unique identifier for the auth provider
+            provider: AuthProvider instance to handle authentication
+        """
         self._auths[auth_id] = provider
 
     def default_headers(self) -> Dict[str, str]:
+        """Get default headers for requests.
+
+        Returns:
+            Dictionary of default headers
+        """
         headers: Dict[str, str] = {
             "x-sideko-sdk-language": "Python",
         }
         return headers
 
     def get_base_url(self) -> str:
+        """Get the base URL for the API endpoint.
+
+        Returns:
+            Base URL string
+        """
         return self._base_url
 
     def build_url(self, path: str) -> str:
+        """Build a complete URL by combining base URL and path.
+
+        Args:
+            path: API endpoint path
+
+        Returns:
+            Complete URL string
+        """
         base = self._base_url
         if base.endswith("/"):
             base = base[:-1]
@@ -55,6 +94,15 @@ class BaseClient:
     def _apply_auth(
         self, *, cfg: RequestConfig, auth_names: List[str]
     ) -> RequestConfig:
+        """Apply authentication to the request configuration.
+
+        Args:
+            cfg: Request configuration to modify
+            auth_names: List of auth provider IDs to apply
+
+        Returns:
+            Modified request configuration
+        """
         for auth_name in auth_names:
             auth_provider = self._auths.get(auth_name)
             if auth_provider is not None:
@@ -70,6 +118,17 @@ class BaseClient:
         content_type: Optional[str] = None,
         explicit_headers: Optional[Dict[str, str]] = None,
     ) -> RequestConfig:
+        """Apply headers to the request configuration.
+
+        Args:
+            cfg: Request configuration to modify
+            opts: Request options containing additional headers
+            content_type: Optional content type header
+            explicit_headers: Optional explicitly specified headers
+
+        Returns:
+            Modified request configuration
+        """
         headers = cfg.get("headers", {})
         headers.update(self.default_headers())
 
@@ -95,6 +154,16 @@ class BaseClient:
         opts: RequestOptions,
         query_params: Optional[QueryParams] = None,
     ) -> RequestConfig:
+        """Apply query parameters to the request configuration.
+
+        Args:
+            cfg: Request configuration to modify
+            opts: Request options containing additional parameters
+            query_params: Optional query parameters to add
+
+        Returns:
+            Modified request configuration
+        """
         params = cfg.get("params", {})
 
         if query_params is not None:
@@ -115,9 +184,17 @@ class BaseClient:
         cfg: RequestConfig,
         opts: RequestOptions,
     ) -> RequestConfig:
+        """Apply timeout settings to the request configuration.
+
+        Args:
+            cfg: Request configuration to modify
+            opts: Request options containing timeout settings
+
+        Returns:
+            Modified request configuration
+        """
         timeout = opts.get("timeout", None)
 
-        # TODO: timeout from base class
         if timeout is not None:
             cfg["timeout"] = timeout
 
@@ -132,6 +209,18 @@ class BaseClient:
         json: Optional[Any] = None,
         content: Optional[httpx._types.RequestContent] = None,
     ) -> RequestConfig:
+        """Apply request body content to the request configuration.
+
+        Args:
+            cfg: Request configuration to modify
+            data: Optional form data
+            files: Optional files to upload
+            json: Optional JSON data
+            content: Optional raw content
+
+        Returns:
+            Modified request configuration
+        """
         if data is not None:
             cfg["data"] = data
 
@@ -161,6 +250,24 @@ class BaseClient:
         content: Optional[httpx._types.RequestContent] = None,
         request_options: Optional[RequestOptions] = None,
     ) -> RequestConfig:
+        """Build a complete request configuration.
+
+        Args:
+            method: HTTP method
+            path: API endpoint path
+            auth_names: List of auth provider IDs
+            query_params: Query parameters
+            headers: Request headers
+            data: Form data
+            files: Files to upload
+            json: JSON data
+            content_type: Content type header
+            content: Raw content
+            request_options: Additional request options
+
+        Returns:
+            Complete request configuration
+        """
         opts = request_options or default_request_options()
         req_cfg: RequestConfig = {"method": method, "url": self.build_url(path)}
         req_cfg = self._apply_auth(cfg=req_cfg, auth_names=auth_names or [])
@@ -178,6 +285,18 @@ class BaseClient:
         return req_cfg
 
     def process_response(self, *, response=httpx.Response, cast_to: Type[T]) -> T:
+        """Process an HTTP response and convert it to the desired type.
+
+        Args:
+            response: HTTP response to process
+            cast_to: Type to cast the response data to
+
+        Returns:
+            Processed response data of the specified type
+
+        Raises:
+            ApiError: If the response indicates an error
+        """
         if 200 <= response.status_code < 300:
             content_type = get_content_type(response.headers)
             if response.status_code == 204 or cast_to == NoneType:
@@ -208,12 +327,23 @@ class BaseClient:
 
 
 class SyncBaseClient(BaseClient):
+    """Synchronous HTTP client implementation.
+
+    Provides synchronous HTTP request capabilities building on the base client functionality.
+    """
+
     def __init__(
         self,
         *,
         base_url: str,
         httpx_client: httpx.Client,
     ):
+        """Initialize the synchronous client.
+
+        Args:
+            base_url: Base URL for the API endpoint
+            httpx_client: Synchronous HTTPX client instance
+        """
         super().__init__(base_url=base_url)
         self.httpx_client = httpx_client
 
@@ -232,7 +362,31 @@ class SyncBaseClient(BaseClient):
         content_type: Optional[str] = None,
         content: Optional[httpx._types.RequestContent] = None,
         request_options: Optional[RequestOptions] = None,
-    ) -> T:
+        stream: Optional[bool] = False,
+    ) -> T | StreamResponse[T]:
+        """Make a synchronous HTTP request.
+
+        Args:
+            method: HTTP method
+            path: API endpoint path
+            cast_to: Type to cast the response to
+            auth_names: List of auth provider IDs
+            query_params: Query parameters
+            headers: Request headers
+            data: Form data
+            files: Files to upload
+            json: JSON data
+            content_type: Content type header
+            content: Raw content
+            request_options: Additional request options
+            stream: Whether to stream the response
+
+        Returns:
+            Response data of the specified type, or a StreamResponse for streaming responses
+
+        Raises:
+            ApiError: If the request fails
+        """
         req_cfg = self.build_request(
             method=method,
             path=path,
@@ -246,19 +400,33 @@ class SyncBaseClient(BaseClient):
             content=content,
             request_options=request_options,
         )
-
-        response = self.httpx_client.request(**req_cfg)
-
-        return self.process_response(response=response, cast_to=cast_to)
+        if stream:
+            context = self.httpx_client.stream(**req_cfg)
+            response = context.__enter__()
+            return StreamResponse(response, context, cast_to)
+        else:
+            response = self.httpx_client.request(**req_cfg)
+            return self.process_response(response=response, cast_to=cast_to)
 
 
 class AsyncBaseClient(BaseClient):
+    """Asynchronous HTTP client implementation.
+
+    Provides asynchronous HTTP request capabilities building on the base client functionality.
+    """
+
     def __init__(
         self,
         *,
         base_url: str,
         httpx_client: httpx.AsyncClient,
     ):
+        """Initialize the asynchronous client.
+
+        Args:
+            base_url: Base URL for the API endpoint
+            httpx_client: Asynchronous HTTPX client instance
+        """
         super().__init__(base_url=base_url)
         self.httpx_client = httpx_client
 
@@ -276,7 +444,31 @@ class AsyncBaseClient(BaseClient):
         content_type: Optional[str] = None,
         content: Optional[httpx._types.RequestContent] = None,
         request_options: Optional[RequestOptions] = None,
-    ) -> T:
+        stream: Optional[bool] = False,
+    ) -> T | AsyncStreamResponse[T]:
+        """Make an asynchronous HTTP request.
+
+        Args:
+            method: HTTP method
+            path: API endpoint path
+            cast_to: Type to cast the response to
+            auth_names: List of auth provider IDs
+            query_params: Query parameters
+            headers: Request headers
+            data: Form data
+            files: Files to upload
+            json: JSON data
+            content_type: Content type header
+            content: Raw content
+            request_options: Additional request options
+            stream: Whether to stream the response
+
+        Returns:
+            Response data of the specified type, or an AsyncStreamResponse for streaming responses
+
+        Raises:
+            ApiError: If the request fails
+        """
         req_cfg = self.build_request(
             method=method,
             path=path,
@@ -290,7 +482,10 @@ class AsyncBaseClient(BaseClient):
             content=content,
             request_options=request_options,
         )
-
-        response = await self.httpx_client.request(**req_cfg)
-
-        return self.process_response(response=response, cast_to=cast_to)
+        if stream:
+            context = self.httpx_client.stream(**req_cfg)
+            response = await context.__aenter__()
+            return AsyncStreamResponse(response, context, cast_to)
+        else:
+            response = await self.httpx_client.request(**req_cfg)
+            return self.process_response(response=response, cast_to=cast_to)

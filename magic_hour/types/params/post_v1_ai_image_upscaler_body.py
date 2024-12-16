@@ -46,7 +46,13 @@ class _SerializerPostV1AiImageUpscalerBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1AiImageUpscalerBodyAssets = pydantic.Field(alias="assets")
+    assets: _SerializerPostV1AiImageUpscalerBodyAssets = pydantic.Field(
+        alias="assets",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    scale_factor: float = pydantic.Field(alias="scale_factor")
-    style: _SerializerPostV1AiImageUpscalerBodyStyle = pydantic.Field(alias="style")
+    scale_factor: float = pydantic.Field(
+        alias="scale_factor",
+    )
+    style: _SerializerPostV1AiImageUpscalerBodyStyle = pydantic.Field(
+        alias="style",
+    )

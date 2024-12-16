@@ -31,5 +31,5 @@ class _SerializerPostV1FilesUploadUrlsBody(pydantic.BaseModel):
     )
 
     items: typing.List[_SerializerPostV1FilesUploadUrlsBodyItemsItem] = pydantic.Field(
-        alias="items"
+        alias="items",
     )

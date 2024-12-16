@@ -33,6 +33,8 @@ class _SerializerPostV1AiImageUpscalerBodyStyle(pydantic.BaseModel):
     )
 
     enhancement: typing_extensions.Literal["Balanced", "Creative", "Resemblance"] = (
-        pydantic.Field(alias="enhancement")
+        pydantic.Field(
+            alias="enhancement",
+        )
     )
     prompt: typing.Optional[str] = pydantic.Field(alias="prompt", default=None)

@@ -63,12 +63,22 @@ class _SerializerPostV1LipSyncBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1LipSyncBodyAssets = pydantic.Field(alias="assets")
-    end_seconds: float = pydantic.Field(alias="end_seconds")
-    height: int = pydantic.Field(alias="height")
+    assets: _SerializerPostV1LipSyncBodyAssets = pydantic.Field(
+        alias="assets",
+    )
+    end_seconds: float = pydantic.Field(
+        alias="end_seconds",
+    )
+    height: int = pydantic.Field(
+        alias="height",
+    )
     max_fps_limit: typing.Optional[float] = pydantic.Field(
         alias="max_fps_limit", default=None
     )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    start_seconds: float = pydantic.Field(alias="start_seconds")
-    width: int = pydantic.Field(alias="width")
+    start_seconds: float = pydantic.Field(
+        alias="start_seconds",
+    )
+    width: int = pydantic.Field(
+        alias="width",
+    )

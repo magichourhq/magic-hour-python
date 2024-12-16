@@ -40,6 +40,10 @@ class _SerializerPostV1AiQrCodeGeneratorBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    content: str = pydantic.Field(alias="content")
+    content: str = pydantic.Field(
+        alias="content",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    style: _SerializerPostV1AiQrCodeGeneratorBodyStyle = pydantic.Field(alias="style")
+    style: _SerializerPostV1AiQrCodeGeneratorBodyStyle = pydantic.Field(
+        alias="style",
+    )

@@ -54,8 +54,14 @@ class _SerializerPostV1AiPhotoEditorBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1AiPhotoEditorBodyAssets = pydantic.Field(alias="assets")
+    assets: _SerializerPostV1AiPhotoEditorBodyAssets = pydantic.Field(
+        alias="assets",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    resolution: int = pydantic.Field(alias="resolution")
+    resolution: int = pydantic.Field(
+        alias="resolution",
+    )
     steps: typing.Optional[int] = pydantic.Field(alias="steps", default=None)
-    style: _SerializerPostV1AiPhotoEditorBodyStyle = pydantic.Field(alias="style")
+    style: _SerializerPostV1AiPhotoEditorBodyStyle = pydantic.Field(
+        alias="style",
+    )

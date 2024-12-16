@@ -15,6 +15,9 @@ class GetV1VideoProjectsIdResponseDownload(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    expires_at: str = pydantic.Field(alias="expires_at")
-
-    url: str = pydantic.Field(alias="url")
+    expires_at: str = pydantic.Field(
+        alias="expires_at",
+    )
+    url: str = pydantic.Field(
+        alias="url",
+    )

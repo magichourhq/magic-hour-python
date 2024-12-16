@@ -10,6 +10,7 @@ from magic_hour.core import (
     SyncBaseClient,
     default_request_options,
     to_encodable,
+    type_utils,
 )
 from magic_hour.types import models, params
 
@@ -17,13 +18,19 @@ from magic_hour.types import models, params
 class AiPhotoEditorClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AiPhotoEditorBody] = None,
+        assets: params.PostV1AiPhotoEditorBodyAssets,
+        resolution: int,
+        style: params.PostV1AiPhotoEditorBodyStyle,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
+        steps: typing.Union[
+            typing.Optional[int], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiPhotoEditorResponse:
         """
@@ -33,14 +40,16 @@ class AiPhotoEditorClient:
 
         POST /v1/ai-photo-editor
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1AiPhotoEditorBody
+            item={
+                "name": name,
+                "steps": steps,
+                "assets": assets,
+                "resolution": resolution,
+                "style": style,
+            },
+            dump_with=params._SerializerPostV1AiPhotoEditorBody,
         )
-        # end -- build request data
-
-        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/ai-photo-editor",
@@ -49,19 +58,24 @@ class AiPhotoEditorClient:
             cast_to=models.PostV1AiPhotoEditorResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
 
 class AsyncAiPhotoEditorClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources
 
-    # register async api methods
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AiPhotoEditorBody] = None,
+        assets: params.PostV1AiPhotoEditorBodyAssets,
+        resolution: int,
+        style: params.PostV1AiPhotoEditorBodyStyle,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
+        steps: typing.Union[
+            typing.Optional[int], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiPhotoEditorResponse:
         """
@@ -71,14 +85,16 @@ class AsyncAiPhotoEditorClient:
 
         POST /v1/ai-photo-editor
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1AiPhotoEditorBody
+            item={
+                "name": name,
+                "steps": steps,
+                "assets": assets,
+                "resolution": resolution,
+                "style": style,
+            },
+            dump_with=params._SerializerPostV1AiPhotoEditorBody,
         )
-        # end -- build request data
-
-        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-photo-editor",
@@ -87,4 +103,3 @@ class AsyncAiPhotoEditorClient:
             cast_to=models.PostV1AiPhotoEditorResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request

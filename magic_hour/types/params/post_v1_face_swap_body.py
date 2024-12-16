@@ -58,9 +58,19 @@ class _SerializerPostV1FaceSwapBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1FaceSwapBodyAssets = pydantic.Field(alias="assets")
-    end_seconds: float = pydantic.Field(alias="end_seconds")
-    height: int = pydantic.Field(alias="height")
+    assets: _SerializerPostV1FaceSwapBodyAssets = pydantic.Field(
+        alias="assets",
+    )
+    end_seconds: float = pydantic.Field(
+        alias="end_seconds",
+    )
+    height: int = pydantic.Field(
+        alias="height",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    start_seconds: float = pydantic.Field(alias="start_seconds")
-    width: int = pydantic.Field(alias="width")
+    start_seconds: float = pydantic.Field(
+        alias="start_seconds",
+    )
+    width: int = pydantic.Field(
+        alias="width",
+    )

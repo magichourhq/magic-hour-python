@@ -38,5 +38,7 @@ class _SerializerPostV1FaceSwapPhotoBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1FaceSwapPhotoBodyAssets = pydantic.Field(alias="assets")
+    assets: _SerializerPostV1FaceSwapPhotoBodyAssets = pydantic.Field(
+        alias="assets",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)

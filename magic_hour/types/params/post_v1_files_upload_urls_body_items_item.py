@@ -34,7 +34,9 @@ class _SerializerPostV1FilesUploadUrlsBodyItemsItem(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    extension: str = pydantic.Field(alias="extension")
+    extension: str = pydantic.Field(
+        alias="extension",
+    )
     type_field: typing_extensions.Literal["audio", "image", "video"] = pydantic.Field(
-        alias="type"
+        alias="type",
     )

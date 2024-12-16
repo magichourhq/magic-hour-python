@@ -17,26 +17,20 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.video_to_video.create(
-    data={
-        "assets": {
-            "video_file_path": "video/id/1234.mp4",
-            "video_source": "file",
-            "youtube_url": "http://www.example.com",
-        },
-        "end_seconds": 15,
-        "fps_resolution": "HALF",
-        "height": 960,
-        "name": "Video To Video video",
-        "start_seconds": 0,
-        "style": {
-            "art_style": "3D Render",
-            "model": "Absolute Reality",
-            "prompt": "string",
-            "prompt_type": "append_default",
-            "version": "default",
-        },
-        "width": 512,
-    }
+    assets={"video_source": "file"},
+    end_seconds=15,
+    height=960,
+    start_seconds=0,
+    style={
+        "art_style": "3D Render",
+        "model": "Absolute Reality",
+        "prompt": None,
+        "prompt_type": "append_default",
+        "version": "default",
+    },
+    width=512,
+    fps_resolution="HALF",
+    name="Video To Video video",
 )
 ```
 
@@ -48,26 +42,20 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_to_video.create(
-    data={
-        "assets": {
-            "video_file_path": "video/id/1234.mp4",
-            "video_source": "file",
-            "youtube_url": "http://www.example.com",
-        },
-        "end_seconds": 15,
-        "fps_resolution": "HALF",
-        "height": 960,
-        "name": "Video To Video video",
-        "start_seconds": 0,
-        "style": {
-            "art_style": "3D Render",
-            "model": "Absolute Reality",
-            "prompt": "string",
-            "prompt_type": "append_default",
-            "version": "default",
-        },
-        "width": 512,
-    }
+    assets={"video_source": "file"},
+    end_seconds=15,
+    height=960,
+    start_seconds=0,
+    style={
+        "art_style": "3D Render",
+        "model": "Absolute Reality",
+        "prompt": None,
+        "prompt_type": "append_default",
+        "version": "default",
+    },
+    width=512,
+    fps_resolution="HALF",
+    name="Video To Video video",
 )
 ```
 

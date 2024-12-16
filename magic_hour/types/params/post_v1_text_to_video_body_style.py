@@ -27,4 +27,6 @@ class _SerializerPostV1TextToVideoBodyStyle(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    prompt: str = pydantic.Field(alias="prompt")
+    prompt: str = pydantic.Field(
+        alias="prompt",
+    )

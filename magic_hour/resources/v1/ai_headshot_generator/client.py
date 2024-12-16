@@ -10,6 +10,7 @@ from magic_hour.core import (
     SyncBaseClient,
     default_request_options,
     to_encodable,
+    type_utils,
 )
 from magic_hour.types import models, params
 
@@ -17,13 +18,14 @@ from magic_hour.types import models, params
 class AiHeadshotGeneratorClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AiHeadshotGeneratorBody] = None,
+        assets: params.PostV1AiHeadshotGeneratorBodyAssets,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiHeadshotGeneratorResponse:
         """
@@ -31,14 +33,10 @@ class AiHeadshotGeneratorClient:
 
         POST /v1/ai-headshot-generator
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1AiHeadshotGeneratorBody
+            item={"name": name, "assets": assets},
+            dump_with=params._SerializerPostV1AiHeadshotGeneratorBody,
         )
-        # end -- build request data
-
-        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/ai-headshot-generator",
@@ -47,19 +45,19 @@ class AiHeadshotGeneratorClient:
             cast_to=models.PostV1AiHeadshotGeneratorResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
 
 class AsyncAiHeadshotGeneratorClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources
 
-    # register async api methods
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AiHeadshotGeneratorBody] = None,
+        assets: params.PostV1AiHeadshotGeneratorBodyAssets,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiHeadshotGeneratorResponse:
         """
@@ -67,14 +65,10 @@ class AsyncAiHeadshotGeneratorClient:
 
         POST /v1/ai-headshot-generator
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1AiHeadshotGeneratorBody
+            item={"name": name, "assets": assets},
+            dump_with=params._SerializerPostV1AiHeadshotGeneratorBody,
         )
-        # end -- build request data
-
-        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-headshot-generator",
@@ -83,4 +77,3 @@ class AsyncAiHeadshotGeneratorClient:
             cast_to=models.PostV1AiHeadshotGeneratorResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request

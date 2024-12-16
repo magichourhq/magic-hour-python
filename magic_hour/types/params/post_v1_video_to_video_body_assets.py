@@ -41,7 +41,7 @@ class _SerializerPostV1VideoToVideoBodyAssets(pydantic.BaseModel):
         alias="video_file_path", default=None
     )
     video_source: typing_extensions.Literal["file", "youtube"] = pydantic.Field(
-        alias="video_source"
+        alias="video_source",
     )
     youtube_url: typing.Optional[str] = pydantic.Field(
         alias="youtube_url", default=None
