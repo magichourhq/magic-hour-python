@@ -9,6 +9,9 @@ import pydantic
 from .get_v1_video_projects_id_response_download import (
     GetV1VideoProjectsIdResponseDownload,
 )
+from .get_v1_video_projects_id_response_downloads_item import (
+    GetV1VideoProjectsIdResponseDownloadsItem,
+)
 from .get_v1_video_projects_id_response_error import GetV1VideoProjectsIdResponseError
 
 
@@ -29,8 +32,11 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
         alias="download",
     )
     """
-    The download url and expiration date of the video project
+    Deprecated: Please use `.downloads` instead. The download url and expiration date of the video project
     """
+    downloads: typing.List[GetV1VideoProjectsIdResponseDownloadsItem] = pydantic.Field(
+        alias="downloads",
+    )
     enabled: bool = pydantic.Field(
         alias="enabled",
     )

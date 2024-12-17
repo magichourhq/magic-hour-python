@@ -27,7 +27,7 @@ res = await client.v1.image_projects.delete(id="string")
 ```
 
 ### get <a name="get"></a>
-Get image project details
+Get image details
 
 Get the details of a image project. The `download` field will be `null` unless the image was successfully rendered.
 
