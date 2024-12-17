@@ -18,6 +18,9 @@ class PostV1AiHeadshotGeneratorResponse(pydantic.BaseModel):
     frame_cost: int = pydantic.Field(
         alias="frame_cost",
     )
+    """
+    The frame cost of the image generation
+    """
     id: str = pydantic.Field(
         alias="id",
     )

@@ -9,6 +9,9 @@ from .get_v1_image_projects_id_response_error import GetV1ImageProjectsIdRespons
 from .get_v1_video_projects_id_response_download import (
     GetV1VideoProjectsIdResponseDownload,
 )
+from .get_v1_video_projects_id_response_downloads_item import (
+    GetV1VideoProjectsIdResponseDownloadsItem,
+)
 from .get_v1_video_projects_id_response_error import GetV1VideoProjectsIdResponseError
 from .post_v1_ai_headshot_generator_response import PostV1AiHeadshotGeneratorResponse
 from .post_v1_ai_image_generator_response import PostV1AiImageGeneratorResponse
@@ -39,6 +42,7 @@ __all__ = [
     "GetV1ImageProjectsIdResponseError",
     "GetV1VideoProjectsIdResponse",
     "GetV1VideoProjectsIdResponseDownload",
+    "GetV1VideoProjectsIdResponseDownloadsItem",
     "GetV1VideoProjectsIdResponseError",
     "PostV1AiHeadshotGeneratorResponse",
     "PostV1AiImageGeneratorResponse",
