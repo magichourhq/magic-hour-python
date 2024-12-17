@@ -82,6 +82,10 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 
 * [create](magic_hour/resources/v1/files/upload_urls/README.md#create) - Generate asset upload urls
 
+### [v1.image_background_remover](magic_hour/resources/v1/image_background_remover/README.md)
+
+* [create](magic_hour/resources/v1/image_background_remover/README.md#create) - Image Background Remover
+
 ### [v1.image_projects](magic_hour/resources/v1/image_projects/README.md)
 
 * [delete](magic_hour/resources/v1/image_projects/README.md#delete) - Delete image

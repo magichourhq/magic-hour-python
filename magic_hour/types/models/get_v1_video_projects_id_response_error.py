@@ -15,12 +15,15 @@ class GetV1VideoProjectsIdResponseError(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    code_field: str = pydantic.Field(alias="code")
+    code_field: str = pydantic.Field(
+        alias="code",
+    )
     """
     An error code to indicate why a failure happened.
     """
-
-    message: str = pydantic.Field(alias="message")
+    message: str = pydantic.Field(
+        alias="message",
+    )
     """
     Details on the reason why a failure happened.
     """

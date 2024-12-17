@@ -67,10 +67,22 @@ class _SerializerPostV1AnimationBody(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    assets: _SerializerPostV1AnimationBodyAssets = pydantic.Field(alias="assets")
-    end_seconds: float = pydantic.Field(alias="end_seconds")
-    fps: float = pydantic.Field(alias="fps")
-    height: int = pydantic.Field(alias="height")
+    assets: _SerializerPostV1AnimationBodyAssets = pydantic.Field(
+        alias="assets",
+    )
+    end_seconds: float = pydantic.Field(
+        alias="end_seconds",
+    )
+    fps: float = pydantic.Field(
+        alias="fps",
+    )
+    height: int = pydantic.Field(
+        alias="height",
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    style: _SerializerPostV1AnimationBodyStyle = pydantic.Field(alias="style")
-    width: int = pydantic.Field(alias="width")
+    style: _SerializerPostV1AnimationBodyStyle = pydantic.Field(
+        alias="style",
+    )
+    width: int = pydantic.Field(
+        alias="width",
+    )

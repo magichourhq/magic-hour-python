@@ -39,6 +39,6 @@ class _SerializerPostV1AiHeadshotGeneratorBody(pydantic.BaseModel):
     )
 
     assets: _SerializerPostV1AiHeadshotGeneratorBodyAssets = pydantic.Field(
-        alias="assets"
+        alias="assets",
     )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)

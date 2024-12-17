@@ -27,4 +27,6 @@ class _SerializerPostV1AiImageUpscalerBodyAssets(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    image_file_path: str = pydantic.Field(alias="image_file_path")
+    image_file_path: str = pydantic.Field(
+        alias="image_file_path",
+    )

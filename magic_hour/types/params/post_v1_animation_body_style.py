@@ -129,7 +129,7 @@ class PostV1AnimationBodyStyle(typing_extensions.TypedDict):
         ]
     ]
 
-    prompt: typing.Optional[str]
+    prompt: typing_extensions.Required[typing.Optional[str]]
     """
     The prompt used for the video. Prompt is required if `prompt_type` is `custom`. Otherwise this value is ignored
     """
@@ -208,7 +208,9 @@ class _SerializerPostV1AnimationBodyStyle(pydantic.BaseModel):
         "Vibrant Matte Illustration",
         "Vintage Japanese Anime",
         "Woodcut",
-    ] = pydantic.Field(alias="art_style")
+    ] = pydantic.Field(
+        alias="art_style",
+    )
     art_style_custom: typing.Optional[str] = pydantic.Field(
         alias="art_style_custom", default=None
     )
@@ -265,9 +267,17 @@ class _SerializerPostV1AnimationBodyStyle(pydantic.BaseModel):
         "Zoom In - Audio Sync",
         "Zoom In and Spin - Audio Sync",
         "Zoom Out - Audio Sync",
-    ] = pydantic.Field(alias="camera_effect")
-    prompt: typing.Optional[str] = pydantic.Field(alias="prompt")
-    prompt_type: typing_extensions.Literal["ai_choose", "custom", "use_lyrics"] = (
-        pydantic.Field(alias="prompt_type")
+    ] = pydantic.Field(
+        alias="camera_effect",
     )
-    transition_speed: int = pydantic.Field(alias="transition_speed")
+    prompt: typing.Optional[str] = pydantic.Field(
+        alias="prompt",
+    )
+    prompt_type: typing_extensions.Literal["ai_choose", "custom", "use_lyrics"] = (
+        pydantic.Field(
+            alias="prompt_type",
+        )
+    )
+    transition_speed: int = pydantic.Field(
+        alias="transition_speed",
+    )

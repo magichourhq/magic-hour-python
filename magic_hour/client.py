@@ -27,13 +27,8 @@ class Client:
             ),
         )
 
-        # register auth methods
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
-
-        # register sync resources
         self.v1 = V1Client(base_client=self._base_client)
-
-    # register sync api methods
+        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
 
 
 class AsyncClient:
@@ -55,13 +50,8 @@ class AsyncClient:
             ),
         )
 
-        # register auth methods
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
-
-        # register async resources
         self.v1 = AsyncV1Client(base_client=self._base_client)
-
-    # register async api methods
+        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
 
 
 def _get_base_url(

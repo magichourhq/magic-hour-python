@@ -14,12 +14,10 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_generator.create(
-    data={
-        "image_count": 1,
-        "name": "Ai Image image",
-        "orientation": "landscape",
-        "style": {"prompt": "Cool image"},
-    }
+    image_count=1,
+    orientation="landscape",
+    style={"prompt": "Cool image"},
+    name="Ai Image image",
 )
 ```
 
@@ -31,12 +29,10 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_generator.create(
-    data={
-        "image_count": 1,
-        "name": "Ai Image image",
-        "orientation": "landscape",
-        "style": {"prompt": "Cool image"},
-    }
+    image_count=1,
+    orientation="landscape",
+    style={"prompt": "Cool image"},
+    name="Ai Image image",
 )
 ```
 

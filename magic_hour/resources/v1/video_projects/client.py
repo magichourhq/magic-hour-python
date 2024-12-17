@@ -16,9 +16,23 @@ from magic_hour.types import models
 class VideoProjectsClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
+    def delete(
+        self, *, id: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
+
+        DELETE /v1/video-projects/{id}
+        """
+        return self._base_client.request(
+            method="DELETE",
+            path=f"/v1/video-projects/{id}",
+            auth_names=["bearerAuth"],
+            cast_to=type(None),
+            request_options=request_options or default_request_options(),
+        )
+
     def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
     ) -> models.GetV1VideoProjectsIdResponse:
@@ -36,12 +50,6 @@ class VideoProjectsClient:
 
         GET /v1/video-projects/{id}
         """
-
-        # start -- build request data
-
-        # end -- build request data
-
-        # start -- send sync request
         return self._base_client.request(
             method="GET",
             path=f"/v1/video-projects/{id}",
@@ -49,9 +57,13 @@ class VideoProjectsClient:
             cast_to=models.GetV1VideoProjectsIdResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
-    def delete(
+
+class AsyncVideoProjectsClient:
+    def __init__(self, *, base_client: AsyncBaseClient):
+        self._base_client = base_client
+
+    async def delete(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
     ) -> None:
         """
@@ -59,28 +71,14 @@ class VideoProjectsClient:
 
         DELETE /v1/video-projects/{id}
         """
-
-        # start -- build request data
-
-        # end -- build request data
-
-        # start -- send sync request
-        return self._base_client.request(
+        return await self._base_client.request(
             method="DELETE",
             path=f"/v1/video-projects/{id}",
             auth_names=["bearerAuth"],
             cast_to=type(None),
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
-
-class AsyncVideoProjectsClient:
-    def __init__(self, *, base_client: AsyncBaseClient):
-        self._base_client = base_client
-        # register async resources
-
-    # register async api methods
     async def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
     ) -> models.GetV1VideoProjectsIdResponse:
@@ -98,12 +96,6 @@ class AsyncVideoProjectsClient:
 
         GET /v1/video-projects/{id}
         """
-
-        # start -- build request data
-
-        # end -- build request data
-
-        # start -- send async request
         return await self._base_client.request(
             method="GET",
             path=f"/v1/video-projects/{id}",
@@ -111,27 +103,3 @@ class AsyncVideoProjectsClient:
             cast_to=models.GetV1VideoProjectsIdResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request
-
-    async def delete(
-        self, *, id: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> None:
-        """
-        Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
-
-        DELETE /v1/video-projects/{id}
-        """
-
-        # start -- build request data
-
-        # end -- build request data
-
-        # start -- send async request
-        return await self._base_client.request(
-            method="DELETE",
-            path=f"/v1/video-projects/{id}",
-            auth_names=["bearerAuth"],
-            cast_to=type(None),
-            request_options=request_options or default_request_options(),
-        )
-        # end -- send async request

@@ -17,13 +17,11 @@ from magic_hour.types import models, params
 class UploadUrlsClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1FilesUploadUrlsBody] = None,
+        items: typing.List[params.PostV1FilesUploadUrlsBodyItemsItem],
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1FilesUploadUrlsResponse:
         """
@@ -50,14 +48,9 @@ class UploadUrlsClient:
         
         POST /v1/files/upload-urls
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1FilesUploadUrlsBody
+            item={"items": items}, dump_with=params._SerializerPostV1FilesUploadUrlsBody
         )
-        # end -- build request data
-
-        # start -- send sync request
         return self._base_client.request(
             method="POST",
             path="/v1/files/upload-urls",
@@ -66,19 +59,16 @@ class UploadUrlsClient:
             cast_to=models.PostV1FilesUploadUrlsResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
 
 class AsyncUploadUrlsClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources
 
-    # register async api methods
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1FilesUploadUrlsBody] = None,
+        items: typing.List[params.PostV1FilesUploadUrlsBodyItemsItem],
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1FilesUploadUrlsResponse:
         """
@@ -105,14 +95,9 @@ class AsyncUploadUrlsClient:
         
         POST /v1/files/upload-urls
         """
-
-        # start -- build request data
         _json = to_encodable(
-            item=data, dump_with=params._SerializerPostV1FilesUploadUrlsBody
+            item={"items": items}, dump_with=params._SerializerPostV1FilesUploadUrlsBody
         )
-        # end -- build request data
-
-        # start -- send async request
         return await self._base_client.request(
             method="POST",
             path="/v1/files/upload-urls",
@@ -121,4 +106,3 @@ class AsyncUploadUrlsClient:
             cast_to=models.PostV1FilesUploadUrlsResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request

@@ -10,6 +10,7 @@ from magic_hour.core import (
     SyncBaseClient,
     default_request_options,
     to_encodable,
+    type_utils,
 )
 from magic_hour.types import models, params
 
@@ -17,13 +18,19 @@ from magic_hour.types import models, params
 class AnimationClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
-        # register sync resources
 
-    # register sync api methods
     def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AnimationBody] = None,
+        assets: params.PostV1AnimationBodyAssets,
+        end_seconds: float,
+        fps: float,
+        height: int,
+        style: params.PostV1AnimationBodyStyle,
+        width: int,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AnimationResponse:
         """
@@ -31,12 +38,18 @@ class AnimationClient:
 
         POST /v1/animation
         """
-
-        # start -- build request data
-        _json = to_encodable(item=data, dump_with=params._SerializerPostV1AnimationBody)
-        # end -- build request data
-
-        # start -- send sync request
+        _json = to_encodable(
+            item={
+                "name": name,
+                "assets": assets,
+                "end_seconds": end_seconds,
+                "fps": fps,
+                "height": height,
+                "style": style,
+                "width": width,
+            },
+            dump_with=params._SerializerPostV1AnimationBody,
+        )
         return self._base_client.request(
             method="POST",
             path="/v1/animation",
@@ -45,19 +58,24 @@ class AnimationClient:
             cast_to=models.PostV1AnimationResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send sync request
 
 
 class AsyncAnimationClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
-        # register async resources
 
-    # register async api methods
     async def create(
         self,
         *,
-        data: typing.Optional[params.PostV1AnimationBody] = None,
+        assets: params.PostV1AnimationBodyAssets,
+        end_seconds: float,
+        fps: float,
+        height: int,
+        style: params.PostV1AnimationBodyStyle,
+        width: int,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NOT_GIVEN
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AnimationResponse:
         """
@@ -65,12 +83,18 @@ class AsyncAnimationClient:
 
         POST /v1/animation
         """
-
-        # start -- build request data
-        _json = to_encodable(item=data, dump_with=params._SerializerPostV1AnimationBody)
-        # end -- build request data
-
-        # start -- send async request
+        _json = to_encodable(
+            item={
+                "name": name,
+                "assets": assets,
+                "end_seconds": end_seconds,
+                "fps": fps,
+                "height": height,
+                "style": style,
+                "width": width,
+            },
+            dump_with=params._SerializerPostV1AnimationBody,
+        )
         return await self._base_client.request(
             method="POST",
             path="/v1/animation",
@@ -79,4 +103,3 @@ class AsyncAnimationClient:
             cast_to=models.PostV1AnimationResponse,
             request_options=request_options or default_request_options(),
         )
-        # end -- send async request

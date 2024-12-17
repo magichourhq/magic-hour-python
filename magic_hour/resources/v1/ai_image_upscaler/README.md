@@ -14,12 +14,10 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_upscaler.create(
-    data={
-        "assets": {"image_file_path": "image/id/1234.png"},
-        "name": "Image Upscaler image",
-        "scale_factor": 123.45,
-        "style": {"enhancement": "Balanced", "prompt": "string"},
-    }
+    assets={"image_file_path": "image/id/1234.png"},
+    scale_factor=123.45,
+    style={"enhancement": "Balanced"},
+    name="Image Upscaler image",
 )
 ```
 
@@ -31,12 +29,10 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_upscaler.create(
-    data={
-        "assets": {"image_file_path": "image/id/1234.png"},
-        "name": "Image Upscaler image",
-        "scale_factor": 123.45,
-        "style": {"enhancement": "Balanced", "prompt": "string"},
-    }
+    assets={"image_file_path": "image/id/1234.png"},
+    scale_factor=123.45,
+    style={"enhancement": "Balanced"},
+    name="Image Upscaler image",
 )
 ```
 

@@ -88,7 +88,7 @@ class PostV1VideoToVideoBodyStyle(typing_extensions.TypedDict):
     * `default` - use the default recommended model for the selected art style.
     """
 
-    prompt: typing.Optional[str]
+    prompt: typing_extensions.Required[typing.Optional[str]]
     """
     The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored.
     """
@@ -182,14 +182,22 @@ class _SerializerPostV1VideoToVideoBodyStyle(pydantic.BaseModel):
         "Watercolor",
         "Wu Kong",
         "Zelda",
-    ] = pydantic.Field(alias="art_style")
+    ] = pydantic.Field(
+        alias="art_style",
+    )
     model: typing_extensions.Literal[
         "Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"
-    ] = pydantic.Field(alias="model")
-    prompt: typing.Optional[str] = pydantic.Field(alias="prompt")
+    ] = pydantic.Field(
+        alias="model",
+    )
+    prompt: typing.Optional[str] = pydantic.Field(
+        alias="prompt",
+    )
     prompt_type: typing_extensions.Literal["append_default", "custom", "default"] = (
-        pydantic.Field(alias="prompt_type")
+        pydantic.Field(
+            alias="prompt_type",
+        )
     )
     version: typing_extensions.Literal["default", "v1", "v2"] = pydantic.Field(
-        alias="version"
+        alias="version",
     )

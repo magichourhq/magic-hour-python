@@ -42,12 +42,14 @@ class _SerializerPostV1FaceSwapBodyAssets(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    image_file_path: str = pydantic.Field(alias="image_file_path")
+    image_file_path: str = pydantic.Field(
+        alias="image_file_path",
+    )
     video_file_path: typing.Optional[str] = pydantic.Field(
         alias="video_file_path", default=None
     )
     video_source: typing_extensions.Literal["file", "youtube"] = pydantic.Field(
-        alias="video_source"
+        alias="video_source",
     )
     youtube_url: typing.Optional[str] = pydantic.Field(
         alias="youtube_url", default=None

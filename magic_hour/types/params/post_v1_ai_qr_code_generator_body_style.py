@@ -27,4 +27,6 @@ class _SerializerPostV1AiQrCodeGeneratorBodyStyle(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    art_style: str = pydantic.Field(alias="art_style")
+    art_style: str = pydantic.Field(
+        alias="art_style",
+    )

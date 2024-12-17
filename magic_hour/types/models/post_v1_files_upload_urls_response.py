@@ -21,5 +21,5 @@ class PostV1FilesUploadUrlsResponse(pydantic.BaseModel):
     )
 
     items: typing.List[PostV1FilesUploadUrlsResponseItemsItem] = pydantic.Field(
-        alias="items"
+        alias="items",
     )

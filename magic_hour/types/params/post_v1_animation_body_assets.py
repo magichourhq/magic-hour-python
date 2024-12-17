@@ -50,7 +50,7 @@ class _SerializerPostV1AnimationBodyAssets(pydantic.BaseModel):
         alias="audio_file_path", default=None
     )
     audio_source: typing_extensions.Literal["file", "none", "youtube"] = pydantic.Field(
-        alias="audio_source"
+        alias="audio_source",
     )
     image_file_path: typing.Optional[str] = pydantic.Field(
         alias="image_file_path", default=None

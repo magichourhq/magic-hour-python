@@ -20,7 +20,7 @@ from .request import (
     default_request_options,
     QueryParams,
 )
-from .response import from_encodable
+from .response import from_encodable, AsyncStreamResponse, StreamResponse
 
 __all__ = [
     "ApiError",
@@ -39,5 +39,7 @@ __all__ = [
     "to_encodable",
     "encode_param",
     "from_encodable",
+    "AsyncStreamResponse",
+    "StreamResponse",
     "QueryParams",
 ]

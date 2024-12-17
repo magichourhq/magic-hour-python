@@ -21,6 +21,9 @@ from .post_v1_face_swap_photo_response import PostV1FaceSwapPhotoResponse
 from .post_v1_files_upload_urls_response_items_item import (
     PostV1FilesUploadUrlsResponseItemsItem,
 )
+from .post_v1_image_background_remover_response import (
+    PostV1ImageBackgroundRemoverResponse,
+)
 from .post_v1_image_to_video_response import PostV1ImageToVideoResponse
 from .post_v1_lip_sync_response import PostV1LipSyncResponse
 from .post_v1_text_to_video_response import PostV1TextToVideoResponse
@@ -47,6 +50,7 @@ __all__ = [
     "PostV1FaceSwapResponse",
     "PostV1FilesUploadUrlsResponse",
     "PostV1FilesUploadUrlsResponseItemsItem",
+    "PostV1ImageBackgroundRemoverResponse",
     "PostV1ImageToVideoResponse",
     "PostV1LipSyncResponse",
     "PostV1TextToVideoResponse",

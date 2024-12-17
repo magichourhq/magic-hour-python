@@ -17,12 +17,10 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.text_to_video.create(
-    data={
-        "end_seconds": 5,
-        "name": "Text To Video video",
-        "orientation": "landscape",
-        "style": {"prompt": "string"},
-    }
+    end_seconds=5,
+    orientation="landscape",
+    style={"prompt": "string"},
+    name="Text To Video video",
 )
 ```
 
@@ -34,12 +32,10 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.text_to_video.create(
-    data={
-        "end_seconds": 5,
-        "name": "Text To Video video",
-        "orientation": "landscape",
-        "style": {"prompt": "string"},
-    }
+    end_seconds=5,
+    orientation="landscape",
+    style={"prompt": "string"},
+    name="Text To Video video",
 )
 ```
 

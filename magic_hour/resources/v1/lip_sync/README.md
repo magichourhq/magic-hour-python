@@ -17,20 +17,13 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.lip_sync.create(
-    data={
-        "assets": {
-            "audio_file_path": "audio/id/1234.mp3",
-            "video_file_path": "video/id/1234.mp4",
-            "video_source": "file",
-            "youtube_url": "http://www.example.com",
-        },
-        "end_seconds": 15,
-        "height": 960,
-        "max_fps_limit": 12,
-        "name": "Lip Sync video",
-        "start_seconds": 0,
-        "width": 512,
-    }
+    assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
+    end_seconds=15,
+    height=960,
+    start_seconds=0,
+    width=512,
+    max_fps_limit=12,
+    name="Lip Sync video",
 )
 ```
 
@@ -42,20 +35,13 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.lip_sync.create(
-    data={
-        "assets": {
-            "audio_file_path": "audio/id/1234.mp3",
-            "video_file_path": "video/id/1234.mp4",
-            "video_source": "file",
-            "youtube_url": "http://www.example.com",
-        },
-        "end_seconds": 15,
-        "height": 960,
-        "max_fps_limit": 12,
-        "name": "Lip Sync video",
-        "start_seconds": 0,
-        "width": 512,
-    }
+    assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
+    end_seconds=15,
+    height=960,
+    start_seconds=0,
+    width=512,
+    max_fps_limit=12,
+    name="Lip Sync video",
 )
 ```
 

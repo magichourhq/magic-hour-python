@@ -53,11 +53,19 @@ class _SerializerPostV1AiPhotoEditorBodyStyle(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    image_description: str = pydantic.Field(alias="image_description")
-    likeness_strength: float = pydantic.Field(alias="likeness_strength")
+    image_description: str = pydantic.Field(
+        alias="image_description",
+    )
+    likeness_strength: float = pydantic.Field(
+        alias="likeness_strength",
+    )
     negative_prompt: typing.Optional[str] = pydantic.Field(
         alias="negative_prompt", default=None
     )
-    prompt: str = pydantic.Field(alias="prompt")
-    prompt_strength: float = pydantic.Field(alias="prompt_strength")
+    prompt: str = pydantic.Field(
+        alias="prompt",
+    )
+    prompt_strength: float = pydantic.Field(
+        alias="prompt_strength",
+    )
     steps: typing.Optional[int] = pydantic.Field(alias="steps", default=None)
