@@ -15,8 +15,8 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.face_swap_photo.create(
     assets={
-        "source_file_path": "image/id/1234.png",
-        "target_file_path": "image/id/1234.png",
+        "source_file_path": "api-assets/id/1234.png",
+        "target_file_path": "api-assets/id/1234.png",
     },
     name="Face Swap image",
 )
@@ -31,8 +31,8 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.face_swap_photo.create(
     assets={
-        "source_file_path": "image/id/1234.png",
-        "target_file_path": "image/id/1234.png",
+        "source_file_path": "api-assets/id/1234.png",
+        "target_file_path": "api-assets/id/1234.png",
     },
     name="Face Swap image",
 )
