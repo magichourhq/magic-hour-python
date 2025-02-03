@@ -61,5 +61,3 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_projects.get(id="string")
 ```
-
-**Upgrade to see all examples**

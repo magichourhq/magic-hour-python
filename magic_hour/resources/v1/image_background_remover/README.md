@@ -29,5 +29,3 @@ res = await client.v1.image_background_remover.create(
     assets={"image_file_path": "image/id/1234.png"}, name="Background Remover image"
 )
 ```
-
-**Upgrade to see all examples**

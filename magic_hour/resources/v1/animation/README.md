@@ -14,7 +14,11 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.animation.create(
-    assets={"audio_source": "file"},
+    assets={
+        "audio_file_path": "api-assets/id/1234.mp3",
+        "audio_source": "file",
+        "image_file_path": "api-assets/id/1234.png",
+    },
     end_seconds=15,
     fps=12,
     height=960,
@@ -38,7 +42,11 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.animation.create(
-    assets={"audio_source": "file"},
+    assets={
+        "audio_file_path": "api-assets/id/1234.mp3",
+        "audio_source": "file",
+        "image_file_path": "api-assets/id/1234.png",
+    },
     end_seconds=15,
     fps=12,
     height=960,
@@ -53,5 +61,3 @@ res = await client.v1.animation.create(
     name="Animation video",
 )
 ```
-
-**Upgrade to see all examples**

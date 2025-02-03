@@ -10,7 +10,8 @@ packages = [{ include = "magic_hour" }]
 python = "^3.8"
 httpx = "^0.26.0"
 pydantic = "^2.5.0"
-typing_extensions = ">= 4.0.0"
+typing_extensions = "^4.0.0"
+jsonpointer = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.8.0"

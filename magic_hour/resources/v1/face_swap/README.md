@@ -17,7 +17,11 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.face_swap.create(
-    assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
+    assets={
+        "image_file_path": "image/id/1234.png",
+        "video_file_path": "video/id/1234.mp4",
+        "video_source": "file",
+    },
     end_seconds=15,
     height=960,
     start_seconds=0,
@@ -34,7 +38,11 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.face_swap.create(
-    assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
+    assets={
+        "image_file_path": "image/id/1234.png",
+        "video_file_path": "video/id/1234.mp4",
+        "video_source": "file",
+    },
     end_seconds=15,
     height=960,
     start_seconds=0,
@@ -42,5 +50,3 @@ res = await client.v1.face_swap.create(
     name="Face Swap video",
 )
 ```
-
-**Upgrade to see all examples**

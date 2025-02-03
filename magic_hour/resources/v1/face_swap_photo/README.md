@@ -37,5 +37,3 @@ res = await client.v1.face_swap_photo.create(
     name="Face Swap image",
 )
 ```
-
-**Upgrade to see all examples**
