@@ -28,6 +28,9 @@ class PostV1AiImageUpscalerBody(typing_extensions.TypedDict):
     """
 
     scale_factor: typing_extensions.Required[float]
+    """
+    How much to scale the image. Must be either 2 or 4
+    """
 
     style: typing_extensions.Required[PostV1AiImageUpscalerBodyStyle]
 
