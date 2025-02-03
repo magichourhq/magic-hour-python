@@ -1,0 +1,59 @@
+# This workflow will publish the python package to PyPi on release
+# This requires you to have a secret PYPI_TOKEN saved in your github environment
+
+name: Publish to PyPi
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      #----------------------------------------------
+      #  -----  checkout & setup python  -----
+      #----------------------------------------------
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        id: setup-python
+        with:
+          python-version: "3.8"
+      #----------------------------------------------
+      #  -----  install & configure poetry  -----
+      #----------------------------------------------
+      - name: install poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          virtualenvs-path: .venv
+          installer-parallel: true
+      #---------------------------------------------------
+      #  -----  load cached venv if cache exists -----
+      #---------------------------------------------------
+      - name: load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+      #---------------------------------------------------------------
+      #  -----  install dependencies if cache does not exist -----
+      #---------------------------------------------------------------
+      - name: install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+      #-----------------------------------------------------------
+      #  -----  install your root project, if required -----
+      #-----------------------------------------------------------
+      - name: install project
+        run: poetry install --no-interaction
+      #------------------------------
+      #  -----  publish to pypi -----
+      #------------------------------
+      - name: build & publish
+        run: |
+          poetry publish --build --username __token__ --password=${{ secrets.PYPI_TOKEN }}

@@ -33,5 +33,3 @@ res = await client.v1.ai_qr_code_generator.create(
     name="Qr Code image",
 )
 ```
-
-**Upgrade to see all examples**

@@ -38,5 +38,3 @@ res = await client.v1.text_to_video.create(
     name="Text To Video video",
 )
 ```
-
-**Upgrade to see all examples**

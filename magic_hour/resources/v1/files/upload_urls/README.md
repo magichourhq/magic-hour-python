@@ -54,5 +54,3 @@ res = await client.v1.files.upload_urls.create(
     ]
 )
 ```
-
-**Upgrade to see all examples**

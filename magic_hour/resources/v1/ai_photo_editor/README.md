@@ -21,8 +21,10 @@ res = client.v1.ai_photo_editor.create(
     style={
         "image_description": "A photo of a person",
         "likeness_strength": 5.2,
+        "negative_prompt": "painting, cartoon, sketch",
         "prompt": "A photo portrait of a person wearing a hat",
         "prompt_strength": 3.75,
+        "steps": 4,
     },
     name="Photo Editor image",
 )
@@ -41,11 +43,11 @@ res = await client.v1.ai_photo_editor.create(
     style={
         "image_description": "A photo of a person",
         "likeness_strength": 5.2,
+        "negative_prompt": "painting, cartoon, sketch",
         "prompt": "A photo portrait of a person wearing a hat",
         "prompt_strength": 3.75,
+        "steps": 4,
     },
     name="Photo Editor image",
 )
 ```
-
-**Upgrade to see all examples**

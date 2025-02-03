@@ -35,5 +35,3 @@ res = await client.v1.ai_image_generator.create(
     name="Ai Image image",
 )
 ```
-
-**Upgrade to see all examples**

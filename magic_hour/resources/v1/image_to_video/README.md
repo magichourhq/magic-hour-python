@@ -42,5 +42,3 @@ res = await client.v1.image_to_video.create(
     name="Image To Video video",
 )
 ```
-
-**Upgrade to see all examples**
