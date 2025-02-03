@@ -26,7 +26,7 @@ class AiQrCodeGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiQrCodeGeneratorResponse:
         """
-        Create AI QR Code
+        AI QR Code
 
         Create an AI QR code. Each QR code costs 20 frames.
 
@@ -84,7 +84,7 @@ class AsyncAiQrCodeGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiQrCodeGeneratorResponse:
         """
-        Create AI QR Code
+        AI QR Code
 
         Create an AI QR code. Each QR code costs 20 frames.
 

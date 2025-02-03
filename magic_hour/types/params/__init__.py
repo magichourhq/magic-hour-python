@@ -1,3 +1,7 @@
+from .post_v1_ai_clothes_changer_body_assets import (
+    PostV1AiClothesChangerBodyAssets,
+    _SerializerPostV1AiClothesChangerBodyAssets,
+)
 from .post_v1_ai_headshot_generator_body_assets import (
     PostV1AiHeadshotGeneratorBodyAssets,
     _SerializerPostV1AiHeadshotGeneratorBodyAssets,
@@ -74,6 +78,10 @@ from .post_v1_video_to_video_body_style import (
     PostV1VideoToVideoBodyStyle,
     _SerializerPostV1VideoToVideoBodyStyle,
 )
+from .post_v1_ai_clothes_changer_body import (
+    PostV1AiClothesChangerBody,
+    _SerializerPostV1AiClothesChangerBody,
+)
 from .post_v1_ai_headshot_generator_body import (
     PostV1AiHeadshotGeneratorBody,
     _SerializerPostV1AiHeadshotGeneratorBody,
@@ -124,6 +132,8 @@ from .post_v1_video_to_video_body import (
 
 
 __all__ = [
+    "PostV1AiClothesChangerBody",
+    "PostV1AiClothesChangerBodyAssets",
     "PostV1AiHeadshotGeneratorBody",
     "PostV1AiHeadshotGeneratorBodyAssets",
     "PostV1AiImageGeneratorBody",
@@ -157,6 +167,8 @@ __all__ = [
     "PostV1VideoToVideoBody",
     "PostV1VideoToVideoBodyAssets",
     "PostV1VideoToVideoBodyStyle",
+    "_SerializerPostV1AiClothesChangerBody",
+    "_SerializerPostV1AiClothesChangerBodyAssets",
     "_SerializerPostV1AiHeadshotGeneratorBody",
     "_SerializerPostV1AiHeadshotGeneratorBodyAssets",
     "_SerializerPostV1AiImageGeneratorBody",

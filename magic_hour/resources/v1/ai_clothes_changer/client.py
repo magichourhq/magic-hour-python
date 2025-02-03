@@ -11,33 +11,29 @@ from magic_hour.core import (
 from magic_hour.types import models, params
 
 
-class AiImageUpscalerClient:
+class AiClothesChangerClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
 
     def create(
         self,
         *,
-        assets: params.PostV1AiImageUpscalerBodyAssets,
-        scale_factor: float,
-        style: params.PostV1AiImageUpscalerBodyStyle,
+        assets: params.PostV1AiClothesChangerBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageUpscalerResponse:
+    ) -> models.PostV1AiClothesChangerResponse:
         """
-        AI Image Upscaler
+        AI Clothes Changer
 
-        Upscale your image using AI. Each 2x upscale costs 50 frames, and 4x upscale costs 200 frames.
+        Change outfits in photos in seconds with just a photo reference. Each photo costs 25 frames.
 
-        POST /v1/ai-image-upscaler
+        POST /v1/ai-clothes-changer
 
         Args:
             name: The name of image
-            assets: Provide the assets for upscaling
-            scale_factor: float
-            style: PostV1AiImageUpscalerBodyStyle
+            assets: Provide the assets for clothes changer
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -49,61 +45,54 @@ class AiImageUpscalerClient:
 
         Examples:
         ```py
-        client.v1.ai_image_upscaler.create(
-            assets={"image_file_path": "image/id/1234.png"},
-            scale_factor=123.0,
-            style={"enhancement": "Balanced"},
-            name="Image Upscaler image",
+        client.v1.ai_clothes_changer.create(
+            assets={
+                "garment_file_path": "api-assets/id/outfit.png",
+                "garment_type": "dresses",
+                "person_file_path": "api-assets/id/model.png",
+            },
+            name="Clothes Changer image",
         )
         ```
 
         """
         _json = to_encodable(
-            item={
-                "name": name,
-                "assets": assets,
-                "scale_factor": scale_factor,
-                "style": style,
-            },
-            dump_with=params._SerializerPostV1AiImageUpscalerBody,
+            item={"name": name, "assets": assets},
+            dump_with=params._SerializerPostV1AiClothesChangerBody,
         )
         return self._base_client.request(
             method="POST",
-            path="/v1/ai-image-upscaler",
+            path="/v1/ai-clothes-changer",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageUpscalerResponse,
+            cast_to=models.PostV1AiClothesChangerResponse,
             request_options=request_options or default_request_options(),
         )
 
 
-class AsyncAiImageUpscalerClient:
+class AsyncAiClothesChangerClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
 
     async def create(
         self,
         *,
-        assets: params.PostV1AiImageUpscalerBodyAssets,
-        scale_factor: float,
-        style: params.PostV1AiImageUpscalerBodyStyle,
+        assets: params.PostV1AiClothesChangerBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageUpscalerResponse:
+    ) -> models.PostV1AiClothesChangerResponse:
         """
-        AI Image Upscaler
+        AI Clothes Changer
 
-        Upscale your image using AI. Each 2x upscale costs 50 frames, and 4x upscale costs 200 frames.
+        Change outfits in photos in seconds with just a photo reference. Each photo costs 25 frames.
 
-        POST /v1/ai-image-upscaler
+        POST /v1/ai-clothes-changer
 
         Args:
             name: The name of image
-            assets: Provide the assets for upscaling
-            scale_factor: float
-            style: PostV1AiImageUpscalerBodyStyle
+            assets: Provide the assets for clothes changer
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -115,29 +104,26 @@ class AsyncAiImageUpscalerClient:
 
         Examples:
         ```py
-        await client.v1.ai_image_upscaler.create(
-            assets={"image_file_path": "image/id/1234.png"},
-            scale_factor=123.0,
-            style={"enhancement": "Balanced"},
-            name="Image Upscaler image",
+        await client.v1.ai_clothes_changer.create(
+            assets={
+                "garment_file_path": "api-assets/id/outfit.png",
+                "garment_type": "dresses",
+                "person_file_path": "api-assets/id/model.png",
+            },
+            name="Clothes Changer image",
         )
         ```
 
         """
         _json = to_encodable(
-            item={
-                "name": name,
-                "assets": assets,
-                "scale_factor": scale_factor,
-                "style": style,
-            },
-            dump_with=params._SerializerPostV1AiImageUpscalerBody,
+            item={"name": name, "assets": assets},
+            dump_with=params._SerializerPostV1AiClothesChangerBody,
         )
         return await self._base_client.request(
             method="POST",
-            path="/v1/ai-image-upscaler",
+            path="/v1/ai-clothes-changer",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageUpscalerResponse,
+            cast_to=models.PostV1AiClothesChangerResponse,
             request_options=request_options or default_request_options(),
         )

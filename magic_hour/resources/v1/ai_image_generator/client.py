@@ -28,7 +28,7 @@ class AiImageGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiImageGeneratorResponse:
         """
-        Create AI Images
+        AI Images
 
         Create an AI image. Each image costs 5 frames.
 
@@ -94,7 +94,7 @@ class AsyncAiImageGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiImageGeneratorResponse:
         """
-        Create AI Images
+        AI Images
 
         Create an AI image. Each image costs 5 frames.
 

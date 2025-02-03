@@ -1,6 +1,6 @@
 
 ### create <a name="create"></a>
-Create Face Swap Photo
+Face Swap Photo
 
 Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
 

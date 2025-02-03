@@ -7,6 +7,10 @@ from magic_hour.resources.v1.video_projects import (
     AsyncVideoProjectsClient,
     VideoProjectsClient,
 )
+from magic_hour.resources.v1.ai_clothes_changer import (
+    AiClothesChangerClient,
+    AsyncAiClothesChangerClient,
+)
 from magic_hour.resources.v1.ai_headshot_generator import (
     AiHeadshotGeneratorClient,
     AsyncAiHeadshotGeneratorClient,
@@ -61,6 +65,8 @@ class V1Client:
 
         self.video_projects = VideoProjectsClient(base_client=self._base_client)
 
+        self.ai_clothes_changer = AiClothesChangerClient(base_client=self._base_client)
+
         self.ai_headshot_generator = AiHeadshotGeneratorClient(
             base_client=self._base_client
         )
@@ -103,6 +109,10 @@ class AsyncV1Client:
         self.image_projects = AsyncImageProjectsClient(base_client=self._base_client)
 
         self.video_projects = AsyncVideoProjectsClient(base_client=self._base_client)
+
+        self.ai_clothes_changer = AsyncAiClothesChangerClient(
+            base_client=self._base_client
+        )
 
         self.ai_headshot_generator = AsyncAiHeadshotGeneratorClient(
             base_client=self._base_client

@@ -97,6 +97,7 @@ class GetV1VideoProjectsIdResponse(pydantic.BaseModel):
     """
     type_field: typing_extensions.Literal[
         "ANIMATION",
+        "AUTO_SUBTITLE",
         "FACE_SWAP",
         "IMAGE_TO_VIDEO",
         "LIP_SYNC",

@@ -1,6 +1,6 @@
 
 ### create <a name="create"></a>
-Create Video-to-Video
+Video-to-Video
 
 Create a Video To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
   
