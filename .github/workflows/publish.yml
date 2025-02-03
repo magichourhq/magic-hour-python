@@ -1,4 +1,3 @@
-# This workflow will publish the python package to PyPi on release
 # This requires you to have a secret PYPI_TOKEN saved in your github environment
 
 name: Publish to PyPi
@@ -56,4 +55,4 @@ jobs:
       #------------------------------
       - name: build & publish
         run: |
-          poetry publish --build --username __token__ --password=${{ secrets.PYPI_TOKEN }}
+          poetry publish --build --username __token__ --password=${{ secrets.PYPI_API_TOKEN }}
