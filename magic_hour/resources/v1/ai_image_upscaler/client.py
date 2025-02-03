@@ -36,7 +36,7 @@ class AiImageUpscalerClient:
         Args:
             name: The name of image
             assets: Provide the assets for upscaling
-            scale_factor: float
+            scale_factor: How much to scale the image. Must be either 2 or 4
             style: PostV1AiImageUpscalerBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -102,7 +102,7 @@ class AsyncAiImageUpscalerClient:
         Args:
             name: The name of image
             assets: Provide the assets for upscaling
-            scale_factor: float
+            scale_factor: How much to scale the image. Must be either 2 or 4
             style: PostV1AiImageUpscalerBodyStyle
             request_options: Additional options to customize the HTTP request
 
