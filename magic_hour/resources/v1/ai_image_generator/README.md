@@ -1,6 +1,6 @@
 
 ### create <a name="create"></a>
-Create AI Images
+AI Images
 
 Create an AI image. Each image costs 5 frames.
 

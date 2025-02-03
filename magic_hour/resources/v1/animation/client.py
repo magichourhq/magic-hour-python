@@ -30,7 +30,7 @@ class AnimationClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AnimationResponse:
         """
-        Create Animation
+        Animation
 
         Create a Animation video. The estimated frame cost is calculated based on the `fps` and `end_seconds` input.
 
@@ -114,7 +114,7 @@ class AsyncAnimationClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AnimationResponse:
         """
-        Create Animation
+        Animation
 
         Create a Animation video. The estimated frame cost is calculated based on the `fps` and `end_seconds` input.
 

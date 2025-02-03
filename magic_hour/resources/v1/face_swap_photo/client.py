@@ -25,7 +25,7 @@ class FaceSwapPhotoClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1FaceSwapPhotoResponse:
         """
-        Create Face Swap Photo
+        Face Swap Photo
 
         Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
 
@@ -83,7 +83,7 @@ class AsyncFaceSwapPhotoClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1FaceSwapPhotoResponse:
         """
-        Create Face Swap Photo
+        Face Swap Photo
 
         Create a face swap photo. Each photo costs 5 frames. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
 

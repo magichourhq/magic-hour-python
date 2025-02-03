@@ -25,7 +25,7 @@ class AiHeadshotGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiHeadshotGeneratorResponse:
         """
-        Create AI Headshots
+        AI Headshots
 
         Create an AI headshot. Each headshot costs 50 frames.
 
@@ -79,7 +79,7 @@ class AsyncAiHeadshotGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiHeadshotGeneratorResponse:
         """
-        Create AI Headshots
+        AI Headshots
 
         Create an AI headshot. Each headshot costs 50 frames.
 

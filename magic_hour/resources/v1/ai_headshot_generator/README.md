@@ -1,6 +1,6 @@
 
 ### create <a name="create"></a>
-Create AI Headshots
+AI Headshots
 
 Create an AI headshot. Each headshot costs 50 frames.
 
