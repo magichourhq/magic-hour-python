@@ -28,7 +28,7 @@ class AnimationClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AnimationResponse:
+    ) -> models.V1AnimationcreateResponse:
         """
         Animation
 
@@ -57,8 +57,8 @@ class AnimationClient:
         ```py
         client.v1.animation.create(
             assets={"audio_source": "file"},
-            end_seconds=15,
-            fps=12,
+            end_seconds=15.0,
+            fps=12.0,
             height=960,
             style={
                 "art_style": "Painterly Illustration",
@@ -90,7 +90,7 @@ class AnimationClient:
             path="/v1/animation",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AnimationResponse,
+            cast_to=models.V1AnimationcreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -112,7 +112,7 @@ class AsyncAnimationClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AnimationResponse:
+    ) -> models.V1AnimationcreateResponse:
         """
         Animation
 
@@ -141,8 +141,8 @@ class AsyncAnimationClient:
         ```py
         await client.v1.animation.create(
             assets={"audio_source": "file"},
-            end_seconds=15,
-            fps=12,
+            end_seconds=15.0,
+            fps=12.0,
             height=960,
             style={
                 "art_style": "Painterly Illustration",
@@ -174,6 +174,6 @@ class AsyncAnimationClient:
             path="/v1/animation",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AnimationResponse,
+            cast_to=models.V1AnimationcreateResponse,
             request_options=request_options or default_request_options(),
         )

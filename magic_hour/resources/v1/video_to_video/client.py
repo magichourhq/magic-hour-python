@@ -33,7 +33,7 @@ class VideoToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1VideoToVideoResponse:
+    ) -> models.V1VideoToVideocreateResponse:
         """
         Video-to-Video
 
@@ -68,9 +68,9 @@ class VideoToVideoClient:
         ```py
         client.v1.video_to_video.create(
             assets={"video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             style={
                 "art_style": "3D Render",
                 "model": "Absolute Reality",
@@ -103,7 +103,7 @@ class VideoToVideoClient:
             path="/v1/video-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1VideoToVideoResponse,
+            cast_to=models.V1VideoToVideocreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -129,7 +129,7 @@ class AsyncVideoToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1VideoToVideoResponse:
+    ) -> models.V1VideoToVideocreateResponse:
         """
         Video-to-Video
 
@@ -164,9 +164,9 @@ class AsyncVideoToVideoClient:
         ```py
         await client.v1.video_to_video.create(
             assets={"video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             style={
                 "art_style": "3D Render",
                 "model": "Absolute Reality",
@@ -199,6 +199,6 @@ class AsyncVideoToVideoClient:
             path="/v1/video-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1VideoToVideoResponse,
+            cast_to=models.V1VideoToVideocreateResponse,
             request_options=request_options or default_request_options(),
         )

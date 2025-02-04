@@ -14,7 +14,7 @@ def test_get_200_generated_success():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : GetV1VideoProjectsIdResponse
+    Response : models.V1VideoProjectsgetResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -27,8 +27,14 @@ def test_get_200_generated_success():
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.video_projects.get(id="string")
-    adapter = pydantic.TypeAdapter(models.GetV1VideoProjectsIdResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1VideoProjectsgetResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -40,7 +46,7 @@ async def test_await_get_200_generated_success():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : GetV1VideoProjectsIdResponse
+    Response : models.V1VideoProjectsgetResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -53,8 +59,14 @@ async def test_await_get_200_generated_success():
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.video_projects.get(id="string")
-    adapter = pydantic.TypeAdapter(models.GetV1VideoProjectsIdResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1VideoProjectsgetResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 def test_delete_204_generated_success():
@@ -78,8 +90,7 @@ def test_delete_204_generated_success():
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.video_projects.delete(id="string")
-    adapter = pydantic.TypeAdapter(None)
-    adapter.validate_python(response)
+    assert response is None
 
 
 @pytest.mark.asyncio
@@ -104,5 +115,4 @@ async def test_await_delete_204_generated_success():
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.video_projects.delete(id="string")
-    adapter = pydantic.TypeAdapter(None)
-    adapter.validate_python(response)
+    assert response is None

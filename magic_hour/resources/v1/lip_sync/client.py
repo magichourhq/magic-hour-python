@@ -30,7 +30,7 @@ class LipSyncClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1LipSyncResponse:
+    ) -> models.V1LipSynccreateResponse:
         """
         Lip Sync
 
@@ -62,11 +62,11 @@ class LipSyncClient:
         ```py
         client.v1.lip_sync.create(
             assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
-            max_fps_limit=12,
+            max_fps_limit=12.0,
             name="Lip Sync video",
         )
         ```
@@ -89,7 +89,7 @@ class LipSyncClient:
             path="/v1/lip-sync",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1LipSyncResponse,
+            cast_to=models.V1LipSynccreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -113,7 +113,7 @@ class AsyncLipSyncClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1LipSyncResponse:
+    ) -> models.V1LipSynccreateResponse:
         """
         Lip Sync
 
@@ -145,11 +145,11 @@ class AsyncLipSyncClient:
         ```py
         await client.v1.lip_sync.create(
             assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
-            max_fps_limit=12,
+            max_fps_limit=12.0,
             name="Lip Sync video",
         )
         ```
@@ -172,6 +172,6 @@ class AsyncLipSyncClient:
             path="/v1/lip-sync",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1LipSyncResponse,
+            cast_to=models.V1LipSynccreateResponse,
             request_options=request_options or default_request_options(),
         )

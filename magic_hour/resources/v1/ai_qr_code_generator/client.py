@@ -24,7 +24,7 @@ class AiQrCodeGeneratorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiQrCodeGeneratorResponse:
+    ) -> models.V1AiQrCodeGeneratorcreateResponse:
         """
         AI QR Code
 
@@ -64,7 +64,7 @@ class AiQrCodeGeneratorClient:
             path="/v1/ai-qr-code-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiQrCodeGeneratorResponse,
+            cast_to=models.V1AiQrCodeGeneratorcreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -82,7 +82,7 @@ class AsyncAiQrCodeGeneratorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiQrCodeGeneratorResponse:
+    ) -> models.V1AiQrCodeGeneratorcreateResponse:
         """
         AI QR Code
 
@@ -122,6 +122,6 @@ class AsyncAiQrCodeGeneratorClient:
             path="/v1/ai-qr-code-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiQrCodeGeneratorResponse,
+            cast_to=models.V1AiQrCodeGeneratorcreateResponse,
             request_options=request_options or default_request_options(),
         )

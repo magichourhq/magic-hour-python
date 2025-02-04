@@ -50,7 +50,7 @@ class ImageProjectsClient:
 
     def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> models.GetV1ImageProjectsIdResponse:
+    ) -> models.V1ImageProjectsgetResponse:
         """
         Get image details
 
@@ -88,7 +88,7 @@ class ImageProjectsClient:
             method="GET",
             path=f"/v1/image-projects/{id}",
             auth_names=["bearerAuth"],
-            cast_to=models.GetV1ImageProjectsIdResponse,
+            cast_to=models.V1ImageProjectsgetResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -134,7 +134,7 @@ class AsyncImageProjectsClient:
 
     async def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> models.GetV1ImageProjectsIdResponse:
+    ) -> models.V1ImageProjectsgetResponse:
         """
         Get image details
 
@@ -172,6 +172,6 @@ class AsyncImageProjectsClient:
             method="GET",
             path=f"/v1/image-projects/{id}",
             auth_names=["bearerAuth"],
-            cast_to=models.GetV1ImageProjectsIdResponse,
+            cast_to=models.V1ImageProjectsgetResponse,
             request_options=request_options or default_request_options(),
         )

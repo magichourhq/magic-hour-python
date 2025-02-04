@@ -1,9 +1,9 @@
 import httpx
 import typing
 
-from magic_hour.core import AsyncBaseClient, AuthBearer, SyncBaseClient
 from magic_hour.environment import Environment
 from magic_hour.resources.v1 import AsyncV1Client, V1Client
+from magic_hour.core import AsyncBaseClient, AuthBearer, SyncBaseClient
 
 
 class Client:
@@ -22,9 +22,9 @@ class Client:
                 httpx.Client(timeout=timeout) if httpx_client is None else httpx_client
             ),
         )
+        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
 
         self.v1 = V1Client(base_client=self._base_client)
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
 
 
 class AsyncClient:
@@ -45,9 +45,9 @@ class AsyncClient:
                 else httpx_client
             ),
         )
+        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
 
         self.v1 = AsyncV1Client(base_client=self._base_client)
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
 
 
 def _get_base_url(

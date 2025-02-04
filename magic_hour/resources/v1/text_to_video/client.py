@@ -26,7 +26,7 @@ class TextToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1TextToVideoResponse:
+    ) -> models.V1TextToVideocreateResponse:
         """
         Text-to-Video
 
@@ -54,7 +54,7 @@ class TextToVideoClient:
         Examples:
         ```py
         client.v1.text_to_video.create(
-            end_seconds=5,
+            end_seconds=5.0,
             orientation="landscape",
             style={"prompt": "string"},
             name="Text To Video video",
@@ -76,7 +76,7 @@ class TextToVideoClient:
             path="/v1/text-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1TextToVideoResponse,
+            cast_to=models.V1TextToVideocreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -95,7 +95,7 @@ class AsyncTextToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1TextToVideoResponse:
+    ) -> models.V1TextToVideocreateResponse:
         """
         Text-to-Video
 
@@ -123,7 +123,7 @@ class AsyncTextToVideoClient:
         Examples:
         ```py
         await client.v1.text_to_video.create(
-            end_seconds=5,
+            end_seconds=5.0,
             orientation="landscape",
             style={"prompt": "string"},
             name="Text To Video video",
@@ -145,6 +145,6 @@ class AsyncTextToVideoClient:
             path="/v1/text-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1TextToVideoResponse,
+            cast_to=models.V1TextToVideocreateResponse,
             request_options=request_options or default_request_options(),
         )

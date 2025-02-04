@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1AiImageUpscalerResponse
+    Response : models.V1AiImageUpscalercreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -32,8 +32,14 @@ def test_create_200_success_default():
         style={"enhancement": "Balanced"},
         name="Image Upscaler image",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1AiImageUpscalerResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1AiImageUpscalercreateResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -45,7 +51,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1AiImageUpscalerResponse
+    Response : models.V1AiImageUpscalercreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -63,5 +69,11 @@ async def test_await_create_200_success_default():
         style={"enhancement": "Balanced"},
         name="Image Upscaler image",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1AiImageUpscalerResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1AiImageUpscalercreateResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

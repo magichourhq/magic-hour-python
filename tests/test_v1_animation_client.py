@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1AnimationResponse
+    Response : models.V1AnimationcreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -32,8 +32,8 @@ def test_create_200_success_default():
             "audio_source": "file",
             "image_file_path": "api-assets/id/1234.png",
         },
-        end_seconds=15,
-        fps=12,
+        end_seconds=15.0,
+        fps=12.0,
         height=960,
         style={
             "art_style": "Painterly Illustration",
@@ -45,8 +45,12 @@ def test_create_200_success_default():
         width=512,
         name="Animation video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1AnimationResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1AnimationcreateResponse).validate_python(response)
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -58,7 +62,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1AnimationResponse
+    Response : models.V1AnimationcreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -76,8 +80,8 @@ async def test_await_create_200_success_default():
             "audio_source": "file",
             "image_file_path": "api-assets/id/1234.png",
         },
-        end_seconds=15,
-        fps=12,
+        end_seconds=15.0,
+        fps=12.0,
         height=960,
         style={
             "art_style": "Painterly Illustration",
@@ -89,5 +93,9 @@ async def test_await_create_200_success_default():
         width=512,
         name="Animation video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1AnimationResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1AnimationcreateResponse).validate_python(response)
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

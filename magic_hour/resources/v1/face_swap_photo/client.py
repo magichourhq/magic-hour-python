@@ -23,7 +23,7 @@ class FaceSwapPhotoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapPhotoResponse:
+    ) -> models.V1FaceSwapPhotocreateResponse:
         """
         Face Swap Photo
 
@@ -64,7 +64,7 @@ class FaceSwapPhotoClient:
             path="/v1/face-swap-photo",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapPhotoResponse,
+            cast_to=models.V1FaceSwapPhotocreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -81,7 +81,7 @@ class AsyncFaceSwapPhotoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapPhotoResponse:
+    ) -> models.V1FaceSwapPhotocreateResponse:
         """
         Face Swap Photo
 
@@ -122,6 +122,6 @@ class AsyncFaceSwapPhotoClient:
             path="/v1/face-swap-photo",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapPhotoResponse,
+            cast_to=models.V1FaceSwapPhotocreateResponse,
             request_options=request_options or default_request_options(),
         )

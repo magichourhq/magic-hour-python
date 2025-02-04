@@ -23,7 +23,7 @@ class AiHeadshotGeneratorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiHeadshotGeneratorResponse:
+    ) -> models.V1AiHeadshotGeneratorcreateResponse:
         """
         AI Headshots
 
@@ -60,7 +60,7 @@ class AiHeadshotGeneratorClient:
             path="/v1/ai-headshot-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiHeadshotGeneratorResponse,
+            cast_to=models.V1AiHeadshotGeneratorcreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -77,7 +77,7 @@ class AsyncAiHeadshotGeneratorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiHeadshotGeneratorResponse:
+    ) -> models.V1AiHeadshotGeneratorcreateResponse:
         """
         AI Headshots
 
@@ -114,6 +114,6 @@ class AsyncAiHeadshotGeneratorClient:
             path="/v1/ai-headshot-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiHeadshotGeneratorResponse,
+            cast_to=models.V1AiHeadshotGeneratorcreateResponse,
             request_options=request_options or default_request_options(),
         )

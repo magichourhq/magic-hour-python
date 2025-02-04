@@ -26,7 +26,7 @@ class AiImageGeneratorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageGeneratorResponse:
+    ) -> models.V1AiImageGeneratorcreateResponse:
         """
         AI Images
 
@@ -73,7 +73,7 @@ class AiImageGeneratorClient:
             path="/v1/ai-image-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageGeneratorResponse,
+            cast_to=models.V1AiImageGeneratorcreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -92,7 +92,7 @@ class AsyncAiImageGeneratorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageGeneratorResponse:
+    ) -> models.V1AiImageGeneratorcreateResponse:
         """
         AI Images
 
@@ -139,6 +139,6 @@ class AsyncAiImageGeneratorClient:
             path="/v1/ai-image-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageGeneratorResponse,
+            cast_to=models.V1AiImageGeneratorcreateResponse,
             request_options=request_options or default_request_options(),
         )

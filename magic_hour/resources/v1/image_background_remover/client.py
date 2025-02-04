@@ -23,7 +23,7 @@ class ImageBackgroundRemoverClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1ImageBackgroundRemoverResponse:
+    ) -> models.V1ImageBackgroundRemovercreateResponse:
         """
         Image Background Remover
 
@@ -61,7 +61,7 @@ class ImageBackgroundRemoverClient:
             path="/v1/image-background-remover",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1ImageBackgroundRemoverResponse,
+            cast_to=models.V1ImageBackgroundRemovercreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -78,7 +78,7 @@ class AsyncImageBackgroundRemoverClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1ImageBackgroundRemoverResponse:
+    ) -> models.V1ImageBackgroundRemovercreateResponse:
         """
         Image Background Remover
 
@@ -116,6 +116,6 @@ class AsyncImageBackgroundRemoverClient:
             path="/v1/image-background-remover",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1ImageBackgroundRemoverResponse,
+            cast_to=models.V1ImageBackgroundRemovercreateResponse,
             request_options=request_options or default_request_options(),
         )

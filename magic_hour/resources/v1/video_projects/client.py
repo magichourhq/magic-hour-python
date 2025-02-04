@@ -50,7 +50,7 @@ class VideoProjectsClient:
 
     def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> models.GetV1VideoProjectsIdResponse:
+    ) -> models.V1VideoProjectsgetResponse:
         """
         Get video details
 
@@ -88,7 +88,7 @@ class VideoProjectsClient:
             method="GET",
             path=f"/v1/video-projects/{id}",
             auth_names=["bearerAuth"],
-            cast_to=models.GetV1VideoProjectsIdResponse,
+            cast_to=models.V1VideoProjectsgetResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -134,7 +134,7 @@ class AsyncVideoProjectsClient:
 
     async def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> models.GetV1VideoProjectsIdResponse:
+    ) -> models.V1VideoProjectsgetResponse:
         """
         Get video details
 
@@ -172,6 +172,6 @@ class AsyncVideoProjectsClient:
             method="GET",
             path=f"/v1/video-projects/{id}",
             auth_names=["bearerAuth"],
-            cast_to=models.GetV1VideoProjectsIdResponse,
+            cast_to=models.V1VideoProjectsgetResponse,
             request_options=request_options or default_request_options(),
         )

@@ -28,7 +28,7 @@ class AiPhotoEditorClient:
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiPhotoEditorResponse:
+    ) -> models.V1AiPhotoEditorcreateResponse:
         """
         AI Photo Editor
 
@@ -84,7 +84,7 @@ class AiPhotoEditorClient:
             path="/v1/ai-photo-editor",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiPhotoEditorResponse,
+            cast_to=models.V1AiPhotoEditorcreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -106,7 +106,7 @@ class AsyncAiPhotoEditorClient:
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiPhotoEditorResponse:
+    ) -> models.V1AiPhotoEditorcreateResponse:
         """
         AI Photo Editor
 
@@ -162,6 +162,6 @@ class AsyncAiPhotoEditorClient:
             path="/v1/ai-photo-editor",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiPhotoEditorResponse,
+            cast_to=models.V1AiPhotoEditorcreateResponse,
             request_options=request_options or default_request_options(),
         )

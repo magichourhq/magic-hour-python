@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1ImageToVideoResponse
+    Response : models.V1ImageToVideocreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -28,14 +28,20 @@ def test_create_200_success_default():
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.image_to_video.create(
         assets={"image_file_path": "image/id/1234.png"},
-        end_seconds=5,
+        end_seconds=5.0,
         height=960,
         style={"prompt": None},
         width=512,
         name="Image To Video video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1ImageToVideoResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1ImageToVideocreateResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -47,7 +53,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1ImageToVideoResponse
+    Response : models.V1ImageToVideocreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -61,11 +67,17 @@ async def test_await_create_200_success_default():
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.image_to_video.create(
         assets={"image_file_path": "image/id/1234.png"},
-        end_seconds=5,
+        end_seconds=5.0,
         height=960,
         style={"prompt": None},
         width=512,
         name="Image To Video video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1ImageToVideoResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.V1ImageToVideocreateResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

@@ -25,7 +25,7 @@ class AiImageUpscalerClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageUpscalerResponse:
+    ) -> models.V1AiImageUpscalercreateResponse:
         """
         AI Image Upscaler
 
@@ -72,7 +72,7 @@ class AiImageUpscalerClient:
             path="/v1/ai-image-upscaler",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageUpscalerResponse,
+            cast_to=models.V1AiImageUpscalercreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -91,7 +91,7 @@ class AsyncAiImageUpscalerClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageUpscalerResponse:
+    ) -> models.V1AiImageUpscalercreateResponse:
         """
         AI Image Upscaler
 
@@ -138,6 +138,6 @@ class AsyncAiImageUpscalerClient:
             path="/v1/ai-image-upscaler",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageUpscalerResponse,
+            cast_to=models.V1AiImageUpscalercreateResponse,
             request_options=request_options or default_request_options(),
         )

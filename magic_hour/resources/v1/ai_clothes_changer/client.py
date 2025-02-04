@@ -23,7 +23,7 @@ class AiClothesChangerClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiClothesChangerResponse:
+    ) -> models.V1AiClothesChangercreateResponse:
         """
         AI Clothes Changer
 
@@ -65,7 +65,7 @@ class AiClothesChangerClient:
             path="/v1/ai-clothes-changer",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiClothesChangerResponse,
+            cast_to=models.V1AiClothesChangercreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -82,7 +82,7 @@ class AsyncAiClothesChangerClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiClothesChangerResponse:
+    ) -> models.V1AiClothesChangercreateResponse:
         """
         AI Clothes Changer
 
@@ -124,6 +124,6 @@ class AsyncAiClothesChangerClient:
             path="/v1/ai-clothes-changer",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiClothesChangerResponse,
+            cast_to=models.V1AiClothesChangercreateResponse,
             request_options=request_options or default_request_options(),
         )

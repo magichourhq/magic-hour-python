@@ -27,7 +27,7 @@ class FaceSwapClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapResponse:
+    ) -> models.V1FaceSwapcreateResponse:
         """
         Face Swap video
 
@@ -58,9 +58,9 @@ class FaceSwapClient:
         ```py
         client.v1.face_swap.create(
             assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
             name="Face Swap video",
         )
@@ -83,7 +83,7 @@ class FaceSwapClient:
             path="/v1/face-swap",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapResponse,
+            cast_to=models.V1FaceSwapcreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -104,7 +104,7 @@ class AsyncFaceSwapClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapResponse:
+    ) -> models.V1FaceSwapcreateResponse:
         """
         Face Swap video
 
@@ -135,9 +135,9 @@ class AsyncFaceSwapClient:
         ```py
         await client.v1.face_swap.create(
             assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
             name="Face Swap video",
         )
@@ -160,6 +160,6 @@ class AsyncFaceSwapClient:
             path="/v1/face-swap",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapResponse,
+            cast_to=models.V1FaceSwapcreateResponse,
             request_options=request_options or default_request_options(),
         )

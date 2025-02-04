@@ -19,7 +19,7 @@ class UploadUrlsClient:
         *,
         items: typing.List[params.PostV1FilesUploadUrlsBodyItemsItem],
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FilesUploadUrlsResponse:
+    ) -> models.V1FilesUploadUrlscreateResponse:
         """
         Generate asset upload urls
         
@@ -71,7 +71,7 @@ class UploadUrlsClient:
             path="/v1/files/upload-urls",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FilesUploadUrlsResponse,
+            cast_to=models.V1FilesUploadUrlscreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -85,7 +85,7 @@ class AsyncUploadUrlsClient:
         *,
         items: typing.List[params.PostV1FilesUploadUrlsBodyItemsItem],
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FilesUploadUrlsResponse:
+    ) -> models.V1FilesUploadUrlscreateResponse:
         """
         Generate asset upload urls
         
@@ -137,6 +137,6 @@ class AsyncUploadUrlsClient:
             path="/v1/files/upload-urls",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FilesUploadUrlsResponse,
+            cast_to=models.V1FilesUploadUrlscreateResponse,
             request_options=request_options or default_request_options(),
         )
