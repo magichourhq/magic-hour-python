@@ -1,6 +1,6 @@
 # Magic Hour Python SDK
 
-![PyPI - Version](https://img.shields.io/pypi/v/magic_hour)
+[![PyPI - Version](https://img.shields.io/pypi/v/magic_hour)](https://pypi.org/project/magic_hour/)
 
 Magic Hour provides an API (beta) that can be integrated into your own application to generate videos and images using AI.
 
