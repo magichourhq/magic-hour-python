@@ -36,7 +36,8 @@ from magic_hour import AsyncClient
 client = AsyncClient(token="my api key")
 ```
 
-> **Warning**: any API call that renders a video will utilize frames in your account.
+> [!WARNING]
+> Any API call that renders a video will utilize frames in your account.
 
 ## Module Documentation and Snippets
 
