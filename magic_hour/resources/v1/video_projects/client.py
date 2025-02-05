@@ -36,7 +36,7 @@ class VideoProjectsClient:
 
         Examples:
         ```py
-        client.v1.video_projects.delete(id="string")
+        client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
         ```
 
         """
@@ -80,7 +80,7 @@ class VideoProjectsClient:
 
         Examples:
         ```py
-        client.v1.video_projects.get(id="string")
+        client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
         ```
 
         """
@@ -120,7 +120,7 @@ class AsyncVideoProjectsClient:
 
         Examples:
         ```py
-        await client.v1.video_projects.delete(id="string")
+        await client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
         ```
 
         """
@@ -164,7 +164,7 @@ class AsyncVideoProjectsClient:
 
         Examples:
         ```py
-        await client.v1.video_projects.get(id="string")
+        await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
         ```
 
         """

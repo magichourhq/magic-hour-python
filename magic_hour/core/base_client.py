@@ -1,4 +1,3 @@
-from json import JSONDecodeError
 from typing import (
     Any,
     List,
@@ -9,6 +8,7 @@ from typing import (
     Union,
     cast,
 )
+from typing_extensions import TypeGuard
 
 import httpx
 from pydantic import BaseModel
@@ -17,7 +17,7 @@ from .api_error import ApiError
 from .auth import AuthProvider
 from .request import RequestConfig, RequestOptions, default_request_options, QueryParams
 from .response import from_encodable, AsyncStreamResponse, StreamResponse
-from .utils import is_binary_content_type, get_content_type
+from .utils import get_response_type, filter_binary_response
 from .binary_response import BinaryResponse
 
 NoneType = type(None)
@@ -95,6 +95,15 @@ class BaseClient:
             path = path[1:]
 
         return f"{base}/{path}"
+
+    def _cast_to_raw_response(
+        self, res: httpx.Response, cast_to: Union[Type[T], Any]
+    ) -> TypeGuard[T]:
+        """Determines if the provided cast_to is an httpx.Response"""
+        try:
+            return issubclass(cast_to, httpx.Response)
+        except TypeError:
+            return False
 
     def _apply_auth(
         self, *, cfg: RequestConfig, auth_names: List[str]
@@ -307,35 +316,30 @@ class BaseClient:
         Raises:
             ApiError: If the response indicates an error
         """
-        if 200 <= response.status_code < 300:
-            content_type = get_content_type(response.headers)
-            if response.status_code == 204 or cast_to == NoneType:
-                return cast(T, None)
-            elif cast_to == BinaryResponse:
-                return cast(
-                    T,
-                    BinaryResponse(content=response.content, headers=response.headers),
-                )
-            else:
-                if "json" in content_type or "form" in content_type:
-                    if cast_to is type(Any):
-                        return response.json()
-                    return from_encodable(data=response.json(), load_with=cast_to)
-                elif is_binary_content_type(content_type):
-                    return cast(
-                        T,
-                        BinaryResponse(
-                            content=response.content, headers=response.headers
-                        ),
-                    )
-                else:
-                    return from_encodable(data=response.content, load_with=cast_to)
+
+        if response.status_code == 204 or cast_to == NoneType:
+            return cast(T, None)
+        elif cast_to == BinaryResponse:
+            return cast(
+                T,
+                BinaryResponse(content=response.content, headers=response.headers),
+            )
+
+        response_type = get_response_type(response.headers)
+
+        if response_type == "json":
+            if cast_to is type(Any):
+                return response.json()
+            return from_encodable(
+                data=response.json(), load_with=filter_binary_response(cast_to=cast_to)
+            )
+        elif response_type == "text":
+            return cast(T, response.text)
         else:
-            try:
-                response_json = response.json()
-            except JSONDecodeError:
-                raise ApiError(status_code=response.status_code, body=response.text)
-            raise ApiError(status_code=response.status_code, body=response_json)
+            return cast(
+                T,
+                BinaryResponse(content=response.content, headers=response.headers),
+            )
 
 
 class SyncBaseClient(BaseClient):
@@ -411,6 +415,13 @@ class SyncBaseClient(BaseClient):
             request_options=request_options,
         )
         response = self.httpx_client.request(**req_cfg)
+
+        if not response.is_success:
+            raise ApiError(response=response)
+
+        if self._cast_to_raw_response(res=response, cast_to=cast_to):
+            return response
+
         return self.process_response(response=response, cast_to=cast_to)
 
     def stream_request(
@@ -542,6 +553,13 @@ class AsyncBaseClient(BaseClient):
             request_options=request_options,
         )
         response = await self.httpx_client.request(**req_cfg)
+
+        if not response.is_success:
+            raise ApiError(response=response)
+
+        if self._cast_to_raw_response(res=response, cast_to=cast_to):
+            return response
+
         return self.process_response(response=response, cast_to=cast_to)
 
     async def stream_request(

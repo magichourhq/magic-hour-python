@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1FaceSwapPhotoResponse
+    Response : models.PostV1FaceSwapPhotoResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -33,8 +33,14 @@ def test_create_200_success_default():
         },
         name="Face Swap image",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1FaceSwapPhotoResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1FaceSwapPhotoResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -46,7 +52,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1FaceSwapPhotoResponse
+    Response : models.PostV1FaceSwapPhotoResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -65,5 +71,11 @@ async def test_await_create_200_success_default():
         },
         name="Face Swap image",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1FaceSwapPhotoResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1FaceSwapPhotoResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

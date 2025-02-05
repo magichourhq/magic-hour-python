@@ -54,7 +54,7 @@ class TextToVideoClient:
         Examples:
         ```py
         client.v1.text_to_video.create(
-            end_seconds=5,
+            end_seconds=5.0,
             orientation="landscape",
             style={"prompt": "string"},
             name="Text To Video video",
@@ -123,7 +123,7 @@ class AsyncTextToVideoClient:
         Examples:
         ```py
         await client.v1.text_to_video.create(
-            end_seconds=5,
+            end_seconds=5.0,
             orientation="landscape",
             style={"prompt": "string"},
             name="Text To Video video",

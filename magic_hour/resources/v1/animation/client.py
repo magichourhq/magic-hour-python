@@ -57,8 +57,8 @@ class AnimationClient:
         ```py
         client.v1.animation.create(
             assets={"audio_source": "file"},
-            end_seconds=15,
-            fps=12,
+            end_seconds=15.0,
+            fps=12.0,
             height=960,
             style={
                 "art_style": "Painterly Illustration",
@@ -141,8 +141,8 @@ class AsyncAnimationClient:
         ```py
         await client.v1.animation.create(
             assets={"audio_source": "file"},
-            end_seconds=15,
-            fps=12,
+            end_seconds=15.0,
+            fps=12.0,
             height=960,
             style={
                 "art_style": "Painterly Illustration",

@@ -13,7 +13,7 @@ from magic_hour import Client
 from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
-res = client.v1.video_projects.delete(id="string")
+res = client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
 ```
 
 #### Asynchronous Client
@@ -23,7 +23,7 @@ from magic_hour import AsyncClient
 from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
-res = await client.v1.video_projects.delete(id="string")
+res = await client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
 ```
 
 ### get <a name="get"></a>
@@ -49,7 +49,7 @@ from magic_hour import Client
 from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
-res = client.v1.video_projects.get(id="string")
+res = client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
 ```
 
 #### Asynchronous Client
@@ -59,5 +59,5 @@ from magic_hour import AsyncClient
 from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
-res = await client.v1.video_projects.get(id="string")
+res = await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
 ```

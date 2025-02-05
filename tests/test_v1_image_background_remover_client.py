@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1ImageBackgroundRemoverResponse
+    Response : models.PostV1ImageBackgroundRemoverResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -29,8 +29,14 @@ def test_create_200_success_default():
     response = client.v1.image_background_remover.create(
         assets={"image_file_path": "image/id/1234.png"}, name="Background Remover image"
     )
-    adapter = pydantic.TypeAdapter(models.PostV1ImageBackgroundRemoverResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(
+            models.PostV1ImageBackgroundRemoverResponse
+        ).validate_python(response)
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -42,7 +48,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1ImageBackgroundRemoverResponse
+    Response : models.PostV1ImageBackgroundRemoverResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -57,5 +63,11 @@ async def test_await_create_200_success_default():
     response = await client.v1.image_background_remover.create(
         assets={"image_file_path": "image/id/1234.png"}, name="Background Remover image"
     )
-    adapter = pydantic.TypeAdapter(models.PostV1ImageBackgroundRemoverResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(
+            models.PostV1ImageBackgroundRemoverResponse
+        ).validate_python(response)
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

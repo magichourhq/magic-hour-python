@@ -68,9 +68,9 @@ class VideoToVideoClient:
         ```py
         client.v1.video_to_video.create(
             assets={"video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             style={
                 "art_style": "3D Render",
                 "model": "Absolute Reality",
@@ -164,9 +164,9 @@ class AsyncVideoToVideoClient:
         ```py
         await client.v1.video_to_video.create(
             assets={"video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             style={
                 "art_style": "3D Render",
                 "model": "Absolute Reality",
