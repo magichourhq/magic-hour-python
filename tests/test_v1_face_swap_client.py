@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1FaceSwapResponse
+    Response : models.PostV1FaceSwapResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -32,14 +32,18 @@ def test_create_200_success_default():
             "video_file_path": "video/id/1234.mp4",
             "video_source": "file",
         },
-        end_seconds=15,
+        end_seconds=15.0,
         height=960,
-        start_seconds=0,
+        start_seconds=0.0,
         width=512,
         name="Face Swap video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1FaceSwapResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1FaceSwapResponse).validate_python(response)
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -51,7 +55,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1FaceSwapResponse
+    Response : models.PostV1FaceSwapResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -69,11 +73,15 @@ async def test_await_create_200_success_default():
             "video_file_path": "video/id/1234.mp4",
             "video_source": "file",
         },
-        end_seconds=15,
+        end_seconds=15.0,
         height=960,
-        start_seconds=0,
+        start_seconds=0.0,
         width=512,
         name="Face Swap video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1FaceSwapResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1FaceSwapResponse).validate_python(response)
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

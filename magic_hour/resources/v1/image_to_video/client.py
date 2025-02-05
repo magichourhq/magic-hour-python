@@ -58,7 +58,7 @@ class ImageToVideoClient:
         ```py
         client.v1.image_to_video.create(
             assets={"image_file_path": "image/id/1234.png"},
-            end_seconds=5,
+            end_seconds=5.0,
             height=960,
             style={"prompt": "string"},
             width=512,
@@ -135,7 +135,7 @@ class AsyncImageToVideoClient:
         ```py
         await client.v1.image_to_video.create(
             assets={"image_file_path": "image/id/1234.png"},
-            end_seconds=5,
+            end_seconds=5.0,
             height=960,
             style={"prompt": "string"},
             width=512,

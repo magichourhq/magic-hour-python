@@ -19,8 +19,8 @@ res = client.v1.animation.create(
         "audio_source": "file",
         "image_file_path": "api-assets/id/1234.png",
     },
-    end_seconds=15,
-    fps=12,
+    end_seconds=15.0,
+    fps=12.0,
     height=960,
     style={
         "art_style": "Painterly Illustration",
@@ -47,8 +47,8 @@ res = await client.v1.animation.create(
         "audio_source": "file",
         "image_file_path": "api-assets/id/1234.png",
     },
-    end_seconds=15,
-    fps=12,
+    end_seconds=15.0,
+    fps=12.0,
     height=960,
     style={
         "art_style": "Painterly Illustration",

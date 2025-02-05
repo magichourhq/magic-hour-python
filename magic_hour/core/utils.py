@@ -1,5 +1,10 @@
 import typing
+import re
+from typing_extensions import Literal
+
 import httpx
+
+from .binary_response import BinaryResponse
 
 
 def remove_none_from_dict(
@@ -12,27 +17,39 @@ def remove_none_from_dict(
     return new
 
 
-def is_binary_content_type(content_type: str) -> bool:
-    """Check if the content type indicates binary data."""
-    binary_types = [
-        "application/octet-stream",
-        "application/pdf",
-        "application/zip",
-        "image/",
-        "audio/",
-        "video/",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument",
-        "application/x-binary",
-        "application/vnd.ms-excel",
-        "application/vnd.ms-powerpoint",
-    ]
-    return any(binary_type in content_type for binary_type in binary_types)
+def get_response_type(headers: httpx.Headers) -> Literal["json", "text", "binary"]:
+    """Check response type based on content type"""
+    content_type = headers.get("content-type")
+
+    if re.search("^application/(.+\+)?json", content_type):
+        return "json"
+    elif re.search("^text/(.+)", content_type):
+        return "text"
+    else:
+        return "binary"
 
 
-def get_content_type(headers: httpx.Headers) -> str:
-    """Get content type in a case-insensitive manner."""
-    for key, value in headers.items():
-        if key.lower() == "content-type":
-            return value.lower()
-    return ""
+def is_union_type(type_hint: typing.Any) -> bool:
+    """Check if a type hint is a Union type."""
+    return hasattr(type_hint, "__origin__") and type_hint.__origin__ is typing.Union
+
+
+def filter_binary_response(cast_to: typing.Type) -> typing.Type:
+    """
+    Filters out BinaryResponse from a Union type.
+    If cast_to is not a Union, returns it unchanged.
+    """
+    if not is_union_type(cast_to):
+        return cast_to
+
+    types = typing.get_args(cast_to)
+    filtered = tuple(t for t in types if t != BinaryResponse)
+
+    # If everything was filtered out, return original type
+    if not filtered:
+        return cast_to
+    # If only one type remains, return it directly
+    if len(filtered) == 1:
+        return typing.cast(typing.Type, filtered[0])
+    # Otherwise return new Union with filtered types
+    return typing.cast(typing.Type, typing.Union[filtered])  # type: ignore

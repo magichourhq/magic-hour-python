@@ -58,9 +58,9 @@ class FaceSwapClient:
         ```py
         client.v1.face_swap.create(
             assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
             name="Face Swap video",
         )
@@ -135,9 +135,9 @@ class AsyncFaceSwapClient:
         ```py
         await client.v1.face_swap.create(
             assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
             name="Face Swap video",
         )

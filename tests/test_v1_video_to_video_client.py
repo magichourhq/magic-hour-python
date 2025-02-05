@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1VideoToVideoResponse
+    Response : models.PostV1VideoToVideoResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -28,9 +28,9 @@ def test_create_200_success_default():
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.video_to_video.create(
         assets={"video_file_path": "video/id/1234.mp4", "video_source": "file"},
-        end_seconds=15,
+        end_seconds=15.0,
         height=960,
-        start_seconds=0,
+        start_seconds=0.0,
         style={
             "art_style": "3D Render",
             "model": "Absolute Reality",
@@ -42,8 +42,14 @@ def test_create_200_success_default():
         fps_resolution="HALF",
         name="Video To Video video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1VideoToVideoResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1VideoToVideoResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -55,7 +61,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1VideoToVideoResponse
+    Response : models.PostV1VideoToVideoResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -69,9 +75,9 @@ async def test_await_create_200_success_default():
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.video_to_video.create(
         assets={"video_file_path": "video/id/1234.mp4", "video_source": "file"},
-        end_seconds=15,
+        end_seconds=15.0,
         height=960,
-        start_seconds=0,
+        start_seconds=0.0,
         style={
             "art_style": "3D Render",
             "model": "Absolute Reality",
@@ -83,5 +89,11 @@ async def test_await_create_200_success_default():
         fps_resolution="HALF",
         name="Video To Video video",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1VideoToVideoResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1VideoToVideoResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"

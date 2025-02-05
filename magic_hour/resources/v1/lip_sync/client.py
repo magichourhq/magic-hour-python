@@ -62,11 +62,11 @@ class LipSyncClient:
         ```py
         client.v1.lip_sync.create(
             assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
-            max_fps_limit=12,
+            max_fps_limit=12.0,
             name="Lip Sync video",
         )
         ```
@@ -145,11 +145,11 @@ class AsyncLipSyncClient:
         ```py
         await client.v1.lip_sync.create(
             assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
-            end_seconds=15,
+            end_seconds=15.0,
             height=960,
-            start_seconds=0,
+            start_seconds=0.0,
             width=512,
-            max_fps_limit=12,
+            max_fps_limit=12.0,
             name="Lip Sync video",
         )
         ```

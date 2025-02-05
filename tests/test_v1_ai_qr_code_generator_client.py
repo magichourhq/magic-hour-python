@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : PostV1AiQrCodeGeneratorResponse
+    Response : models.PostV1AiQrCodeGeneratorResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -31,8 +31,14 @@ def test_create_200_success_default():
         style={"art_style": "Watercolor"},
         name="Qr Code image",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1AiQrCodeGeneratorResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1AiQrCodeGeneratorResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -44,7 +50,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : PostV1AiQrCodeGeneratorResponse
+    Response : models.PostV1AiQrCodeGeneratorResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -61,5 +67,11 @@ async def test_await_create_200_success_default():
         style={"art_style": "Watercolor"},
         name="Qr Code image",
     )
-    adapter = pydantic.TypeAdapter(models.PostV1AiQrCodeGeneratorResponse)
-    adapter.validate_python(response)
+    try:
+        pydantic.TypeAdapter(models.PostV1AiQrCodeGeneratorResponse).validate_python(
+            response
+        )
+        is_json = True
+    except pydantic.ValidationError:
+        is_json = False
+    assert is_json, "failed response type check"
