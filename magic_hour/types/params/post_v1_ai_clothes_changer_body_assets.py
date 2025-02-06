@@ -9,7 +9,7 @@ class PostV1AiClothesChangerBodyAssets(typing_extensions.TypedDict):
 
     garment_file_path: typing_extensions.Required[str]
     """
-    The image of the outfit. This value can be the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
+    The image of the outfit. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file..
     """
 
     garment_type: typing_extensions.Required[
@@ -18,7 +18,7 @@ class PostV1AiClothesChangerBodyAssets(typing_extensions.TypedDict):
 
     person_file_path: typing_extensions.Required[str]
     """
-    The image with the person. This value can be the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
+    The image with the person. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file..
     """
 
 

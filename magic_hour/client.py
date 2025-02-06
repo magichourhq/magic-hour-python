@@ -1,8 +1,8 @@
 import httpx
 import typing
 
-from magic_hour.resources.v1 import AsyncV1Client, V1Client
 from magic_hour.environment import Environment
+from magic_hour.resources.v1 import AsyncV1Client, V1Client
 from magic_hour.core import AsyncBaseClient, AuthBearer, SyncBaseClient
 
 

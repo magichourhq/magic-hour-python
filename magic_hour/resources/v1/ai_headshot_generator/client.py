@@ -46,7 +46,8 @@ class AiHeadshotGeneratorClient:
         Examples:
         ```py
         client.v1.ai_headshot_generator.create(
-            assets={"image_file_path": "image/id/1234.png"}, name="Ai Headshot image"
+            assets={"image_file_path": "api-assets/id/1234.png"},
+            name="Ai Headshot image",
         )
         ```
 
@@ -100,7 +101,8 @@ class AsyncAiHeadshotGeneratorClient:
         Examples:
         ```py
         await client.v1.ai_headshot_generator.create(
-            assets={"image_file_path": "image/id/1234.png"}, name="Ai Headshot image"
+            assets={"image_file_path": "api-assets/id/1234.png"},
+            name="Ai Headshot image",
         )
         ```
 
