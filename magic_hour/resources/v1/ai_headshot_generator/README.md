@@ -14,7 +14,7 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_headshot_generator.create(
-    assets={"image_file_path": "image/id/1234.png"}, name="Ai Headshot image"
+    assets={"image_file_path": "api-assets/id/1234.png"}, name="Ai Headshot image"
 )
 ```
 
@@ -26,6 +26,6 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_headshot_generator.create(
-    assets={"image_file_path": "image/id/1234.png"}, name="Ai Headshot image"
+    assets={"image_file_path": "api-assets/id/1234.png"}, name="Ai Headshot image"
 )
 ```

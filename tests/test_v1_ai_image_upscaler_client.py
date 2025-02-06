@@ -27,7 +27,7 @@ def test_create_200_success_default():
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_image_upscaler.create(
-        assets={"image_file_path": "image/id/1234.png"},
+        assets={"image_file_path": "api-assets/id/1234.png"},
         scale_factor=123.45,
         style={"enhancement": "Balanced"},
         name="Image Upscaler image",
@@ -64,7 +64,7 @@ async def test_await_create_200_success_default():
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_image_upscaler.create(
-        assets={"image_file_path": "image/id/1234.png"},
+        assets={"image_file_path": "api-assets/id/1234.png"},
         scale_factor=123.45,
         style={"enhancement": "Balanced"},
         name="Image Upscaler image",
