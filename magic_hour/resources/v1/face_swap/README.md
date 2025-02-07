@@ -19,7 +19,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.face_swap.create(
     assets={
         "image_file_path": "image/id/1234.png",
-        "video_file_path": "video/id/1234.mp4",
+        "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
     },
     end_seconds=15.0,
@@ -40,7 +40,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.face_swap.create(
     assets={
         "image_file_path": "image/id/1234.png",
-        "video_file_path": "video/id/1234.mp4",
+        "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
     },
     end_seconds=15.0,

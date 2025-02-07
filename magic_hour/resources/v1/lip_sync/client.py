@@ -61,7 +61,10 @@ class LipSyncClient:
         Examples:
         ```py
         client.v1.lip_sync.create(
-            assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
+            assets={
+                "audio_file_path": "api-assets/id/1234.mp3",
+                "video_source": "file",
+            },
             end_seconds=15.0,
             height=960,
             start_seconds=0.0,
@@ -144,7 +147,10 @@ class AsyncLipSyncClient:
         Examples:
         ```py
         await client.v1.lip_sync.create(
-            assets={"audio_file_path": "audio/id/1234.mp3", "video_source": "file"},
+            assets={
+                "audio_file_path": "api-assets/id/1234.mp3",
+                "video_source": "file",
+            },
             end_seconds=15.0,
             height=960,
             start_seconds=0.0,

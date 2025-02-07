@@ -29,7 +29,7 @@ def test_create_200_success_default():
     response = client.v1.face_swap.create(
         assets={
             "image_file_path": "image/id/1234.png",
-            "video_file_path": "video/id/1234.mp4",
+            "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
         },
         end_seconds=15.0,
@@ -70,7 +70,7 @@ async def test_await_create_200_success_default():
     response = await client.v1.face_swap.create(
         assets={
             "image_file_path": "image/id/1234.png",
-            "video_file_path": "video/id/1234.mp4",
+            "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
         },
         end_seconds=15.0,
