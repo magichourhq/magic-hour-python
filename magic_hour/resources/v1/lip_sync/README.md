@@ -18,8 +18,8 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.lip_sync.create(
     assets={
-        "audio_file_path": "audio/id/1234.mp3",
-        "video_file_path": "video/id/1234.mp4",
+        "audio_file_path": "api-assets/id/1234.mp3",
+        "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
     },
     end_seconds=15.0,
@@ -40,8 +40,8 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.lip_sync.create(
     assets={
-        "audio_file_path": "audio/id/1234.mp3",
-        "video_file_path": "video/id/1234.mp4",
+        "audio_file_path": "api-assets/id/1234.mp3",
+        "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
     },
     end_seconds=15.0,
