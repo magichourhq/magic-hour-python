@@ -10,7 +10,7 @@ class PostV1VideoToVideoBodyAssets(typing_extensions.TypedDict):
 
     video_file_path: typing_extensions.NotRequired[str]
     """
-    The path of the input video. This field is required if `video_source` is `file`. This value is the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls).
+    The path of the input video. This field is required if `video_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
     """
 
     video_source: typing_extensions.Required[
