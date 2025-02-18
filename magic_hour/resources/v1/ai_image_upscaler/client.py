@@ -51,7 +51,7 @@ class AiImageUpscalerClient:
         ```py
         client.v1.ai_image_upscaler.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
-            scale_factor=123.0,
+            scale_factor=2.0,
             style={"enhancement": "Balanced"},
             name="Image Upscaler image",
         )
@@ -117,7 +117,7 @@ class AsyncAiImageUpscalerClient:
         ```py
         await client.v1.ai_image_upscaler.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
-            scale_factor=123.0,
+            scale_factor=2.0,
             style={"enhancement": "Balanced"},
             name="Image Upscaler image",
         )
