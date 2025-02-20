@@ -6,7 +6,7 @@ Create a list of urls used to upload the assets needed to generate a video. Each
 
 Below is the list of valid extensions for each asset type:
 
-- video: mp4, mov, webm
+- video: mp4, m4v, mov, webm
 - audio: mp3, mpeg, wav, aac, aiff, flac
 - image: png, jpg, jpeg, webp, avif, jp2, tiff, bmp
 
