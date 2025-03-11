@@ -10,7 +10,7 @@ class PostV1AnimationBodyAssets(typing_extensions.TypedDict):
 
     audio_file_path: typing_extensions.NotRequired[str]
     """
-    The path of the input audio. This field is required if `audio_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
+    The path of the input audio. This field is required if `audio_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
     """
 
     audio_source: typing_extensions.Required[
@@ -22,7 +22,7 @@ class PostV1AnimationBodyAssets(typing_extensions.TypedDict):
 
     image_file_path: typing_extensions.NotRequired[str]
     """
-    An initial image to use a the first frame of the video. This value can be either the `file_path` field from the response of the [upload urls API](/docs/api/tag/files/post/v1/files/upload-urls), or the url of the file.
+    An initial image to use a the first frame of the video. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
     """
 
     youtube_url: typing_extensions.NotRequired[str]

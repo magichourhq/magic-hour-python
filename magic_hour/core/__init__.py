@@ -13,14 +13,13 @@ from .auth import (
 )
 from .base_client import AsyncBaseClient, BaseClient, SyncBaseClient
 from .binary_response import BinaryResponse
+from .query import encode_query_param, QueryParams
 from .request import (
-    encode_param,
     filter_not_given,
     to_content,
     to_encodable,
     RequestOptions,
     default_request_options,
-    QueryParams,
 )
 from .response import from_encodable, AsyncStreamResponse, StreamResponse
 
@@ -45,7 +44,7 @@ __all__ = [
     "to_encodable",
     "filter_not_given",
     "to_content",
-    "encode_param",
+    "encode_query_param",
     "from_encodable",
     "AsyncStreamResponse",
     "StreamResponse",
