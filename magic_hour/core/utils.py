@@ -21,7 +21,7 @@ def get_response_type(headers: httpx.Headers) -> Literal["json", "text", "binary
     """Check response type based on content type"""
     content_type = headers.get("content-type")
 
-    if re.search("^application/(.+\+)?json", content_type):
+    if re.search("^application/(.+[+])?json", content_type):
         return "json"
     elif re.search("^text/(.+)", content_type):
         return "text"

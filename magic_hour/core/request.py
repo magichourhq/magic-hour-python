@@ -1,20 +1,18 @@
 from typing import Any, Dict, Type, Union, Sequence, List
 from urllib.parse import quote_plus
+
 import httpx
 from typing_extensions import TypedDict, Required, NotRequired
 from pydantic import TypeAdapter, BaseModel
+
 from .type_utils import NotGiven
+from .query import QueryParams
 
 """
 Request configuration and utility functions for handling HTTP requests.
 This module provides type definitions and helper functions for building
 and processing HTTP requests in a type-safe manner.
 """
-
-# Type alias for query parameters that can handle both primitive data and sequences
-QueryParams = Dict[
-    str, Union[httpx._types.PrimitiveData, Sequence[httpx._types.PrimitiveData]]
-]
 
 
 class RequestConfig(TypedDict):
