@@ -1,8 +1,8 @@
 import httpx
 import typing
 
-from magic_hour.environment import Environment
 from magic_hour.core import AsyncBaseClient, AuthBearer, SyncBaseClient
+from magic_hour.environment import Environment
 from magic_hour.resources.v1 import AsyncV1Client, V1Client
 
 
@@ -16,14 +16,14 @@ class Client:
         environment: Environment = Environment.ENVIRONMENT,
         token: typing.Optional[str] = None,
     ):
+        """Initialize root client"""
         self._base_client = SyncBaseClient(
             base_url=_get_base_url(base_url=base_url, environment=environment),
-            httpx_client=(
-                httpx.Client(timeout=timeout) if httpx_client is None else httpx_client
-            ),
+            httpx_client=httpx.Client(timeout=timeout)
+            if httpx_client is None
+            else httpx_client,
         )
         self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
-
         self.v1 = V1Client(base_client=self._base_client)
 
 
@@ -37,16 +37,14 @@ class AsyncClient:
         environment: Environment = Environment.ENVIRONMENT,
         token: typing.Optional[str] = None,
     ):
+        """Initialize root client"""
         self._base_client = AsyncBaseClient(
             base_url=_get_base_url(base_url=base_url, environment=environment),
-            httpx_client=(
-                httpx.AsyncClient(timeout=timeout)
-                if httpx_client is None
-                else httpx_client
-            ),
+            httpx_client=httpx.AsyncClient(timeout=timeout)
+            if httpx_client is None
+            else httpx_client,
         )
         self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
-
         self.v1 = AsyncV1Client(base_client=self._base_client)
 
 

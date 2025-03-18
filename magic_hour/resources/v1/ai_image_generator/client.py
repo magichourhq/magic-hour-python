@@ -1,5 +1,5 @@
-import typing_extensions
 import typing
+import typing_extensions
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -57,7 +57,6 @@ class AiImageGeneratorClient:
             name="Ai Image image",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -123,7 +122,6 @@ class AsyncAiImageGeneratorClient:
             name="Ai Image image",
         )
         ```
-
         """
         _json = to_encodable(
             item={

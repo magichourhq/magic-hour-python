@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 from .post_v1_image_background_remover_body_assets import (
     PostV1ImageBackgroundRemoverBodyAssets,

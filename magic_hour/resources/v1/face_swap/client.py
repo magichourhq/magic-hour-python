@@ -65,7 +65,6 @@ class FaceSwapClient:
             name="Face Swap video",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -142,7 +141,6 @@ class AsyncFaceSwapClient:
             name="Face Swap video",
         )
         ```
-
         """
         _json = to_encodable(
             item={

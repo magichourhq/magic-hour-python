@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 from .post_v1_ai_image_upscaler_body_assets import (
     PostV1AiImageUpscalerBodyAssets,

@@ -61,7 +61,6 @@ class UploadUrlsClient:
         ```py
         client.v1.files.upload_urls.create(items=[{"extension": "mp4", "type_field": "video"}, {"extension": "mp3", "type_field": "audio"}])
         ```
-        
         """
         _json = to_encodable(
             item={"items": items}, dump_with=params._SerializerPostV1FilesUploadUrlsBody
@@ -127,7 +126,6 @@ class AsyncUploadUrlsClient:
         ```py
         await client.v1.files.upload_urls.create(items=[{"extension": "mp4", "type_field": "video"}, {"extension": "mp3", "type_field": "audio"}])
         ```
-        
         """
         _json = to_encodable(
             item={"items": items}, dump_with=params._SerializerPostV1FilesUploadUrlsBody

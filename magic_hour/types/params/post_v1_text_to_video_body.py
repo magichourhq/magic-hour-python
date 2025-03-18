@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 from .post_v1_text_to_video_body_style import (
     PostV1TextToVideoBodyStyle,

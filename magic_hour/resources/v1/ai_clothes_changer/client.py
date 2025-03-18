@@ -54,7 +54,6 @@ class AiClothesChangerClient:
             name="Clothes Changer image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
@@ -113,7 +112,6 @@ class AsyncAiClothesChangerClient:
             name="Clothes Changer image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},

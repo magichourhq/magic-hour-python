@@ -50,7 +50,6 @@ class AiHeadshotGeneratorClient:
             name="Ai Headshot image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
@@ -105,7 +104,6 @@ class AsyncAiHeadshotGeneratorClient:
             name="Ai Headshot image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},

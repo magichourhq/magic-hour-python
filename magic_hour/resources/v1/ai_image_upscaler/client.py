@@ -56,7 +56,6 @@ class AiImageUpscalerClient:
             name="Image Upscaler image",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -122,7 +121,6 @@ class AsyncAiImageUpscalerClient:
             name="Image Upscaler image",
         )
         ```
-
         """
         _json = to_encodable(
             item={

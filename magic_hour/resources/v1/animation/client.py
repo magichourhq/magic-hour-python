@@ -71,7 +71,6 @@ class AnimationClient:
             name="Animation video",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -155,7 +154,6 @@ class AsyncAnimationClient:
             name="Animation video",
         )
         ```
-
         """
         _json = to_encodable(
             item={

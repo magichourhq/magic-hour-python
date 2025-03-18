@@ -67,7 +67,6 @@ class AiPhotoEditorClient:
             name="Photo Editor image",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -145,7 +144,6 @@ class AsyncAiPhotoEditorClient:
             name="Photo Editor image",
         )
         ```
-
         """
         _json = to_encodable(
             item={

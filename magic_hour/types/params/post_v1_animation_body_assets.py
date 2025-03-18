@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 
 class PostV1AnimationBodyAssets(typing_extensions.TypedDict):

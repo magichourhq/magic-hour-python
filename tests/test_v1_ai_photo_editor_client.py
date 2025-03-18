@@ -1,5 +1,5 @@
-import pytest
 import pydantic
+import pytest
 
 from magic_hour import AsyncClient, Client
 from magic_hour.environment import Environment

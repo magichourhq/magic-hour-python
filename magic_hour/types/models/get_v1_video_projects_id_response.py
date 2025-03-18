@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 from .get_v1_video_projects_id_response_download import (
     GetV1VideoProjectsIdResponseDownload,
