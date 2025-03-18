@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 
 class PostV1VideoToVideoBodyAssets(typing_extensions.TypedDict):

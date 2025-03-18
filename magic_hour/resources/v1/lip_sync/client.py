@@ -73,7 +73,6 @@ class LipSyncClient:
             name="Lip Sync video",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -159,7 +158,6 @@ class AsyncLipSyncClient:
             name="Lip Sync video",
         )
         ```
-
         """
         _json = to_encodable(
             item={

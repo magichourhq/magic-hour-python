@@ -53,7 +53,6 @@ class FaceSwapPhotoClient:
             name="Face Swap image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
@@ -111,7 +110,6 @@ class AsyncFaceSwapPhotoClient:
             name="Face Swap image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},

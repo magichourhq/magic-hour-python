@@ -83,7 +83,6 @@ class VideoToVideoClient:
             name="Video To Video video",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -179,7 +178,6 @@ class AsyncVideoToVideoClient:
             name="Video To Video video",
         )
         ```
-
         """
         _json = to_encodable(
             item={

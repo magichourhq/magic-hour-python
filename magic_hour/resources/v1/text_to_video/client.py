@@ -1,5 +1,5 @@
-import typing_extensions
 import typing
+import typing_extensions
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -60,7 +60,6 @@ class TextToVideoClient:
             name="Text To Video video",
         )
         ```
-
         """
         _json = to_encodable(
             item={
@@ -129,7 +128,6 @@ class AsyncTextToVideoClient:
             name="Text To Video video",
         )
         ```
-
         """
         _json = to_encodable(
             item={

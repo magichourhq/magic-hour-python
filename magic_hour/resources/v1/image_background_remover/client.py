@@ -50,7 +50,6 @@ class ImageBackgroundRemoverClient:
             name="Background Remover image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
@@ -105,7 +104,6 @@ class AsyncImageBackgroundRemoverClient:
             name="Background Remover image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},

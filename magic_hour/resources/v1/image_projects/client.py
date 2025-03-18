@@ -38,7 +38,6 @@ class ImageProjectsClient:
         ```py
         client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
         ```
-
         """
         self._base_client.request(
             method="DELETE",
@@ -54,7 +53,7 @@ class ImageProjectsClient:
         """
         Get image details
 
-        Get the details of a image project. The `download` field will be `null` unless the image was successfully rendered.
+        Get the details of a image project. The `downloads` field will be empty unless the image was successfully rendered.
 
         The image can be one of the following status
         - `draft` - not currently used
@@ -82,7 +81,6 @@ class ImageProjectsClient:
         ```py
         client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
         ```
-
         """
         return self._base_client.request(
             method="GET",
@@ -122,7 +120,6 @@ class AsyncImageProjectsClient:
         ```py
         await client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
         ```
-
         """
         await self._base_client.request(
             method="DELETE",
@@ -138,7 +135,7 @@ class AsyncImageProjectsClient:
         """
         Get image details
 
-        Get the details of a image project. The `download` field will be `null` unless the image was successfully rendered.
+        Get the details of a image project. The `downloads` field will be empty unless the image was successfully rendered.
 
         The image can be one of the following status
         - `draft` - not currently used
@@ -166,7 +163,6 @@ class AsyncImageProjectsClient:
         ```py
         await client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
         ```
-
         """
         return await self._base_client.request(
             method="GET",

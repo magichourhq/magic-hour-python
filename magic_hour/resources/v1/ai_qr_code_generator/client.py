@@ -53,7 +53,6 @@ class AiQrCodeGeneratorClient:
             name="Qr Code image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "content": content, "style": style},
@@ -111,7 +110,6 @@ class AsyncAiQrCodeGeneratorClient:
             name="Qr Code image",
         )
         ```
-
         """
         _json = to_encodable(
             item={"name": name, "content": content, "style": style},

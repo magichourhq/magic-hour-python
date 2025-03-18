@@ -1,5 +1,5 @@
-import typing_extensions
 import pydantic
+import typing_extensions
 
 
 class PostV1AiImageUpscalerBodyAssets(typing_extensions.TypedDict):

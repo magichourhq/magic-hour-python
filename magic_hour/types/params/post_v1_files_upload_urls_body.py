@@ -1,6 +1,6 @@
+import pydantic
 import typing
 import typing_extensions
-import pydantic
 
 from .post_v1_files_upload_urls_body_items_item import (
     PostV1FilesUploadUrlsBodyItemsItem,
