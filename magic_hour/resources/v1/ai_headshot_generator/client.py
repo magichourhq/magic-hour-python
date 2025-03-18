@@ -22,6 +22,10 @@ class AiHeadshotGeneratorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.PostV1AiHeadshotGeneratorBodyStyle],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiHeadshotGeneratorResponse:
         """
@@ -33,6 +37,7 @@ class AiHeadshotGeneratorClient:
 
         Args:
             name: The name of image
+            style: PostV1AiHeadshotGeneratorBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
 
@@ -52,7 +57,7 @@ class AiHeadshotGeneratorClient:
         ```
         """
         _json = to_encodable(
-            item={"name": name, "assets": assets},
+            item={"name": name, "style": style, "assets": assets},
             dump_with=params._SerializerPostV1AiHeadshotGeneratorBody,
         )
         return self._base_client.request(
@@ -76,6 +81,10 @@ class AsyncAiHeadshotGeneratorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.PostV1AiHeadshotGeneratorBodyStyle],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.PostV1AiHeadshotGeneratorResponse:
         """
@@ -87,6 +96,7 @@ class AsyncAiHeadshotGeneratorClient:
 
         Args:
             name: The name of image
+            style: PostV1AiHeadshotGeneratorBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
 
@@ -106,7 +116,7 @@ class AsyncAiHeadshotGeneratorClient:
         ```
         """
         _json = to_encodable(
-            item={"name": name, "assets": assets},
+            item={"name": name, "style": style, "assets": assets},
             dump_with=params._SerializerPostV1AiHeadshotGeneratorBody,
         )
         return await self._base_client.request(
