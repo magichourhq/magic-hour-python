@@ -19,11 +19,11 @@ class VideoToVideoClient:
     def create(
         self,
         *,
-        assets: params.PostV1VideoToVideoBodyAssets,
+        assets: params.V1VideoToVideoCreateBodyAssets,
         end_seconds: float,
         height: int,
         start_seconds: float,
-        style: params.PostV1VideoToVideoBodyStyle,
+        style: params.V1VideoToVideoCreateBodyStyle,
         width: int,
         fps_resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["FULL", "HALF"]],
@@ -33,7 +33,7 @@ class VideoToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1VideoToVideoResponse:
+    ) -> models.V1VideoToVideoCreateResponse:
         """
         Video-to-Video
 
@@ -53,7 +53,7 @@ class VideoToVideoClient:
             end_seconds: The end time of the input video in seconds
             height: The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             start_seconds: The start time of the input video in seconds
-            style: PostV1VideoToVideoBodyStyle
+            style: V1VideoToVideoCreateBodyStyle
             width: The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             request_options: Additional options to customize the HTTP request
 
@@ -95,14 +95,14 @@ class VideoToVideoClient:
                 "style": style,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1VideoToVideoBody,
+            dump_with=params._SerializerV1VideoToVideoCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/video-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1VideoToVideoResponse,
+            cast_to=models.V1VideoToVideoCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -114,11 +114,11 @@ class AsyncVideoToVideoClient:
     async def create(
         self,
         *,
-        assets: params.PostV1VideoToVideoBodyAssets,
+        assets: params.V1VideoToVideoCreateBodyAssets,
         end_seconds: float,
         height: int,
         start_seconds: float,
-        style: params.PostV1VideoToVideoBodyStyle,
+        style: params.V1VideoToVideoCreateBodyStyle,
         width: int,
         fps_resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["FULL", "HALF"]],
@@ -128,7 +128,7 @@ class AsyncVideoToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1VideoToVideoResponse:
+    ) -> models.V1VideoToVideoCreateResponse:
         """
         Video-to-Video
 
@@ -148,7 +148,7 @@ class AsyncVideoToVideoClient:
             end_seconds: The end time of the input video in seconds
             height: The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             start_seconds: The start time of the input video in seconds
-            style: PostV1VideoToVideoBodyStyle
+            style: V1VideoToVideoCreateBodyStyle
             width: The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             request_options: Additional options to customize the HTTP request
 
@@ -190,13 +190,13 @@ class AsyncVideoToVideoClient:
                 "style": style,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1VideoToVideoBody,
+            dump_with=params._SerializerV1VideoToVideoCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/video-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1VideoToVideoResponse,
+            cast_to=models.V1VideoToVideoCreateResponse,
             request_options=request_options or default_request_options(),
         )

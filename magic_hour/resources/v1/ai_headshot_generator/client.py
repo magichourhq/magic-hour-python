@@ -18,16 +18,16 @@ class AiHeadshotGeneratorClient:
     def create(
         self,
         *,
-        assets: params.PostV1AiHeadshotGeneratorBodyAssets,
+        assets: params.V1AiHeadshotGeneratorCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
-            typing.Optional[params.PostV1AiHeadshotGeneratorBodyStyle],
+            typing.Optional[params.V1AiHeadshotGeneratorCreateBodyStyle],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiHeadshotGeneratorResponse:
+    ) -> models.V1AiHeadshotGeneratorCreateResponse:
         """
         AI Headshots
 
@@ -37,7 +37,7 @@ class AiHeadshotGeneratorClient:
 
         Args:
             name: The name of image
-            style: PostV1AiHeadshotGeneratorBodyStyle
+            style: V1AiHeadshotGeneratorCreateBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
 
@@ -58,14 +58,14 @@ class AiHeadshotGeneratorClient:
         """
         _json = to_encodable(
             item={"name": name, "style": style, "assets": assets},
-            dump_with=params._SerializerPostV1AiHeadshotGeneratorBody,
+            dump_with=params._SerializerV1AiHeadshotGeneratorCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/ai-headshot-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiHeadshotGeneratorResponse,
+            cast_to=models.V1AiHeadshotGeneratorCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -77,16 +77,16 @@ class AsyncAiHeadshotGeneratorClient:
     async def create(
         self,
         *,
-        assets: params.PostV1AiHeadshotGeneratorBodyAssets,
+        assets: params.V1AiHeadshotGeneratorCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
-            typing.Optional[params.PostV1AiHeadshotGeneratorBodyStyle],
+            typing.Optional[params.V1AiHeadshotGeneratorCreateBodyStyle],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiHeadshotGeneratorResponse:
+    ) -> models.V1AiHeadshotGeneratorCreateResponse:
         """
         AI Headshots
 
@@ -96,7 +96,7 @@ class AsyncAiHeadshotGeneratorClient:
 
         Args:
             name: The name of image
-            style: PostV1AiHeadshotGeneratorBodyStyle
+            style: V1AiHeadshotGeneratorCreateBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
 
@@ -117,13 +117,13 @@ class AsyncAiHeadshotGeneratorClient:
         """
         _json = to_encodable(
             item={"name": name, "style": style, "assets": assets},
-            dump_with=params._SerializerPostV1AiHeadshotGeneratorBody,
+            dump_with=params._SerializerV1AiHeadshotGeneratorCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-headshot-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiHeadshotGeneratorResponse,
+            cast_to=models.V1AiHeadshotGeneratorCreateResponse,
             request_options=request_options or default_request_options(),
         )

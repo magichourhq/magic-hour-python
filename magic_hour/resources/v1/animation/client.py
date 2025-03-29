@@ -18,17 +18,17 @@ class AnimationClient:
     def create(
         self,
         *,
-        assets: params.PostV1AnimationBodyAssets,
+        assets: params.V1AnimationCreateBodyAssets,
         end_seconds: float,
         fps: float,
         height: int,
-        style: params.PostV1AnimationBodyStyle,
+        style: params.V1AnimationCreateBodyStyle,
         width: int,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AnimationResponse:
+    ) -> models.V1AnimationCreateResponse:
         """
         Animation
 
@@ -82,14 +82,14 @@ class AnimationClient:
                 "style": style,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1AnimationBody,
+            dump_with=params._SerializerV1AnimationCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/animation",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AnimationResponse,
+            cast_to=models.V1AnimationCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -101,17 +101,17 @@ class AsyncAnimationClient:
     async def create(
         self,
         *,
-        assets: params.PostV1AnimationBodyAssets,
+        assets: params.V1AnimationCreateBodyAssets,
         end_seconds: float,
         fps: float,
         height: int,
-        style: params.PostV1AnimationBodyStyle,
+        style: params.V1AnimationCreateBodyStyle,
         width: int,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AnimationResponse:
+    ) -> models.V1AnimationCreateResponse:
         """
         Animation
 
@@ -165,13 +165,13 @@ class AsyncAnimationClient:
                 "style": style,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1AnimationBody,
+            dump_with=params._SerializerV1AnimationCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/animation",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AnimationResponse,
+            cast_to=models.V1AnimationCreateResponse,
             request_options=request_options or default_request_options(),
         )

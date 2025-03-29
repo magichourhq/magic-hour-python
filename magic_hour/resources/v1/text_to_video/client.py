@@ -21,12 +21,12 @@ class TextToVideoClient:
         *,
         end_seconds: float,
         orientation: typing_extensions.Literal["landscape", "portrait", "square"],
-        style: params.PostV1TextToVideoBodyStyle,
+        style: params.V1TextToVideoCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1TextToVideoResponse:
+    ) -> models.V1TextToVideoCreateResponse:
         """
         Text-to-Video
 
@@ -41,7 +41,7 @@ class TextToVideoClient:
             name: The name of video
             end_seconds: The total duration of the output video in seconds.
             orientation: Determines the orientation of the output video
-            style: PostV1TextToVideoBodyStyle
+            style: V1TextToVideoCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -68,14 +68,14 @@ class TextToVideoClient:
                 "orientation": orientation,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1TextToVideoBody,
+            dump_with=params._SerializerV1TextToVideoCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/text-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1TextToVideoResponse,
+            cast_to=models.V1TextToVideoCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -89,12 +89,12 @@ class AsyncTextToVideoClient:
         *,
         end_seconds: float,
         orientation: typing_extensions.Literal["landscape", "portrait", "square"],
-        style: params.PostV1TextToVideoBodyStyle,
+        style: params.V1TextToVideoCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1TextToVideoResponse:
+    ) -> models.V1TextToVideoCreateResponse:
         """
         Text-to-Video
 
@@ -109,7 +109,7 @@ class AsyncTextToVideoClient:
             name: The name of video
             end_seconds: The total duration of the output video in seconds.
             orientation: Determines the orientation of the output video
-            style: PostV1TextToVideoBodyStyle
+            style: V1TextToVideoCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -136,13 +136,13 @@ class AsyncTextToVideoClient:
                 "orientation": orientation,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1TextToVideoBody,
+            dump_with=params._SerializerV1TextToVideoCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/text-to-video",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1TextToVideoResponse,
+            cast_to=models.V1TextToVideoCreateResponse,
             request_options=request_options or default_request_options(),
         )

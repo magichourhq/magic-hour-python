@@ -18,14 +18,14 @@ class AiImageUpscalerClient:
     def create(
         self,
         *,
-        assets: params.PostV1AiImageUpscalerBodyAssets,
+        assets: params.V1AiImageUpscalerCreateBodyAssets,
         scale_factor: float,
-        style: params.PostV1AiImageUpscalerBodyStyle,
+        style: params.V1AiImageUpscalerCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageUpscalerResponse:
+    ) -> models.V1AiImageUpscalerCreateResponse:
         """
         AI Image Upscaler
 
@@ -37,7 +37,7 @@ class AiImageUpscalerClient:
             name: The name of image
             assets: Provide the assets for upscaling
             scale_factor: How much to scale the image. Must be either 2 or 4
-            style: PostV1AiImageUpscalerBodyStyle
+            style: V1AiImageUpscalerCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -64,14 +64,14 @@ class AiImageUpscalerClient:
                 "scale_factor": scale_factor,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1AiImageUpscalerBody,
+            dump_with=params._SerializerV1AiImageUpscalerCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/ai-image-upscaler",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageUpscalerResponse,
+            cast_to=models.V1AiImageUpscalerCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -83,14 +83,14 @@ class AsyncAiImageUpscalerClient:
     async def create(
         self,
         *,
-        assets: params.PostV1AiImageUpscalerBodyAssets,
+        assets: params.V1AiImageUpscalerCreateBodyAssets,
         scale_factor: float,
-        style: params.PostV1AiImageUpscalerBodyStyle,
+        style: params.V1AiImageUpscalerCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageUpscalerResponse:
+    ) -> models.V1AiImageUpscalerCreateResponse:
         """
         AI Image Upscaler
 
@@ -102,7 +102,7 @@ class AsyncAiImageUpscalerClient:
             name: The name of image
             assets: Provide the assets for upscaling
             scale_factor: How much to scale the image. Must be either 2 or 4
-            style: PostV1AiImageUpscalerBodyStyle
+            style: V1AiImageUpscalerCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -129,13 +129,13 @@ class AsyncAiImageUpscalerClient:
                 "scale_factor": scale_factor,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1AiImageUpscalerBody,
+            dump_with=params._SerializerV1AiImageUpscalerCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-image-upscaler",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageUpscalerResponse,
+            cast_to=models.V1AiImageUpscalerCreateResponse,
             request_options=request_options or default_request_options(),
         )

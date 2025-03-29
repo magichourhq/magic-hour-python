@@ -21,12 +21,12 @@ class AiImageGeneratorClient:
         *,
         image_count: int,
         orientation: typing_extensions.Literal["landscape", "portrait", "square"],
-        style: params.PostV1AiImageGeneratorBodyStyle,
+        style: params.V1AiImageGeneratorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageGeneratorResponse:
+    ) -> models.V1AiImageGeneratorCreateResponse:
         """
         AI Images
 
@@ -38,7 +38,7 @@ class AiImageGeneratorClient:
             name: The name of image
             image_count: number to images to generate
             orientation: typing_extensions.Literal["landscape", "portrait", "square"]
-            style: PostV1AiImageGeneratorBodyStyle
+            style: V1AiImageGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -65,14 +65,14 @@ class AiImageGeneratorClient:
                 "orientation": orientation,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1AiImageGeneratorBody,
+            dump_with=params._SerializerV1AiImageGeneratorCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/ai-image-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageGeneratorResponse,
+            cast_to=models.V1AiImageGeneratorCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -86,12 +86,12 @@ class AsyncAiImageGeneratorClient:
         *,
         image_count: int,
         orientation: typing_extensions.Literal["landscape", "portrait", "square"],
-        style: params.PostV1AiImageGeneratorBodyStyle,
+        style: params.V1AiImageGeneratorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiImageGeneratorResponse:
+    ) -> models.V1AiImageGeneratorCreateResponse:
         """
         AI Images
 
@@ -103,7 +103,7 @@ class AsyncAiImageGeneratorClient:
             name: The name of image
             image_count: number to images to generate
             orientation: typing_extensions.Literal["landscape", "portrait", "square"]
-            style: PostV1AiImageGeneratorBodyStyle
+            style: V1AiImageGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -130,13 +130,13 @@ class AsyncAiImageGeneratorClient:
                 "orientation": orientation,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1AiImageGeneratorBody,
+            dump_with=params._SerializerV1AiImageGeneratorCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-image-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiImageGeneratorResponse,
+            cast_to=models.V1AiImageGeneratorCreateResponse,
             request_options=request_options or default_request_options(),
         )

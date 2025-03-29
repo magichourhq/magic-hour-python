@@ -18,12 +18,12 @@ class FaceSwapPhotoClient:
     def create(
         self,
         *,
-        assets: params.PostV1FaceSwapPhotoBodyAssets,
+        assets: params.V1FaceSwapPhotoCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapPhotoResponse:
+    ) -> models.V1FaceSwapPhotoCreateResponse:
         """
         Face Swap Photo
 
@@ -56,14 +56,14 @@ class FaceSwapPhotoClient:
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
-            dump_with=params._SerializerPostV1FaceSwapPhotoBody,
+            dump_with=params._SerializerV1FaceSwapPhotoCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/face-swap-photo",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapPhotoResponse,
+            cast_to=models.V1FaceSwapPhotoCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -75,12 +75,12 @@ class AsyncFaceSwapPhotoClient:
     async def create(
         self,
         *,
-        assets: params.PostV1FaceSwapPhotoBodyAssets,
+        assets: params.V1FaceSwapPhotoCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapPhotoResponse:
+    ) -> models.V1FaceSwapPhotoCreateResponse:
         """
         Face Swap Photo
 
@@ -113,13 +113,13 @@ class AsyncFaceSwapPhotoClient:
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
-            dump_with=params._SerializerPostV1FaceSwapPhotoBody,
+            dump_with=params._SerializerV1FaceSwapPhotoCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/face-swap-photo",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapPhotoResponse,
+            cast_to=models.V1FaceSwapPhotoCreateResponse,
             request_options=request_options or default_request_options(),
         )

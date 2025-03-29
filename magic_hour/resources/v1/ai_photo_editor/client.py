@@ -18,9 +18,9 @@ class AiPhotoEditorClient:
     def create(
         self,
         *,
-        assets: params.PostV1AiPhotoEditorBodyAssets,
+        assets: params.V1AiPhotoEditorCreateBodyAssets,
         resolution: int,
-        style: params.PostV1AiPhotoEditorBodyStyle,
+        style: params.V1AiPhotoEditorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -28,7 +28,7 @@ class AiPhotoEditorClient:
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiPhotoEditorResponse:
+    ) -> models.V1AiPhotoEditorCreateResponse:
         """
         AI Photo Editor
 
@@ -43,7 +43,7 @@ class AiPhotoEditorClient:
             steps: Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
             assets: Provide the assets for photo editor
             resolution: The resolution of the final output image. The allowed value is based on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
-            style: PostV1AiPhotoEditorBodyStyle
+            style: V1AiPhotoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -76,14 +76,14 @@ class AiPhotoEditorClient:
                 "resolution": resolution,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1AiPhotoEditorBody,
+            dump_with=params._SerializerV1AiPhotoEditorCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/ai-photo-editor",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiPhotoEditorResponse,
+            cast_to=models.V1AiPhotoEditorCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -95,9 +95,9 @@ class AsyncAiPhotoEditorClient:
     async def create(
         self,
         *,
-        assets: params.PostV1AiPhotoEditorBodyAssets,
+        assets: params.V1AiPhotoEditorCreateBodyAssets,
         resolution: int,
-        style: params.PostV1AiPhotoEditorBodyStyle,
+        style: params.V1AiPhotoEditorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -105,7 +105,7 @@ class AsyncAiPhotoEditorClient:
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiPhotoEditorResponse:
+    ) -> models.V1AiPhotoEditorCreateResponse:
         """
         AI Photo Editor
 
@@ -120,7 +120,7 @@ class AsyncAiPhotoEditorClient:
             steps: Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
             assets: Provide the assets for photo editor
             resolution: The resolution of the final output image. The allowed value is based on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
-            style: PostV1AiPhotoEditorBodyStyle
+            style: V1AiPhotoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -153,13 +153,13 @@ class AsyncAiPhotoEditorClient:
                 "resolution": resolution,
                 "style": style,
             },
-            dump_with=params._SerializerPostV1AiPhotoEditorBody,
+            dump_with=params._SerializerV1AiPhotoEditorCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-photo-editor",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiPhotoEditorResponse,
+            cast_to=models.V1AiPhotoEditorCreateResponse,
             request_options=request_options or default_request_options(),
         )

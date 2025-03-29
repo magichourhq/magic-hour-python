@@ -14,7 +14,7 @@ def test_get_200_generated_success():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.GetV1ImageProjectsIdResponse
+    Response : models.V1ImageProjectsGetResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -28,7 +28,7 @@ def test_get_200_generated_success():
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
     try:
-        pydantic.TypeAdapter(models.GetV1ImageProjectsIdResponse).validate_python(
+        pydantic.TypeAdapter(models.V1ImageProjectsGetResponse).validate_python(
             response
         )
         is_json = True
@@ -46,7 +46,7 @@ async def test_await_get_200_generated_success():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.GetV1ImageProjectsIdResponse
+    Response : models.V1ImageProjectsGetResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -60,7 +60,7 @@ async def test_await_get_200_generated_success():
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
     try:
-        pydantic.TypeAdapter(models.GetV1ImageProjectsIdResponse).validate_python(
+        pydantic.TypeAdapter(models.V1ImageProjectsGetResponse).validate_python(
             response
         )
         is_json = True

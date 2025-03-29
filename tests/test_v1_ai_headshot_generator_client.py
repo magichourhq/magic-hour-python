@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1AiHeadshotGeneratorResponse
+    Response : models.V1AiHeadshotGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -30,9 +30,9 @@ def test_create_200_success_default():
         assets={"image_file_path": "api-assets/id/1234.png"}, name="Ai Headshot image"
     )
     try:
-        pydantic.TypeAdapter(models.PostV1AiHeadshotGeneratorResponse).validate_python(
-            response
-        )
+        pydantic.TypeAdapter(
+            models.V1AiHeadshotGeneratorCreateResponse
+        ).validate_python(response)
         is_json = True
     except pydantic.ValidationError:
         is_json = False
@@ -48,7 +48,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1AiHeadshotGeneratorResponse
+    Response : models.V1AiHeadshotGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -64,9 +64,9 @@ async def test_await_create_200_success_default():
         assets={"image_file_path": "api-assets/id/1234.png"}, name="Ai Headshot image"
     )
     try:
-        pydantic.TypeAdapter(models.PostV1AiHeadshotGeneratorResponse).validate_python(
-            response
-        )
+        pydantic.TypeAdapter(
+            models.V1AiHeadshotGeneratorCreateResponse
+        ).validate_python(response)
         is_json = True
     except pydantic.ValidationError:
         is_json = False

@@ -19,12 +19,12 @@ class AiQrCodeGeneratorClient:
         self,
         *,
         content: str,
-        style: params.PostV1AiQrCodeGeneratorBodyStyle,
+        style: params.V1AiQrCodeGeneratorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiQrCodeGeneratorResponse:
+    ) -> models.V1AiQrCodeGeneratorCreateResponse:
         """
         AI QR Code
 
@@ -35,7 +35,7 @@ class AiQrCodeGeneratorClient:
         Args:
             name: The name of image
             content: The content of the QR code.
-            style: PostV1AiQrCodeGeneratorBodyStyle
+            style: V1AiQrCodeGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -56,14 +56,14 @@ class AiQrCodeGeneratorClient:
         """
         _json = to_encodable(
             item={"name": name, "content": content, "style": style},
-            dump_with=params._SerializerPostV1AiQrCodeGeneratorBody,
+            dump_with=params._SerializerV1AiQrCodeGeneratorCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/ai-qr-code-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiQrCodeGeneratorResponse,
+            cast_to=models.V1AiQrCodeGeneratorCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -76,12 +76,12 @@ class AsyncAiQrCodeGeneratorClient:
         self,
         *,
         content: str,
-        style: params.PostV1AiQrCodeGeneratorBodyStyle,
+        style: params.V1AiQrCodeGeneratorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiQrCodeGeneratorResponse:
+    ) -> models.V1AiQrCodeGeneratorCreateResponse:
         """
         AI QR Code
 
@@ -92,7 +92,7 @@ class AsyncAiQrCodeGeneratorClient:
         Args:
             name: The name of image
             content: The content of the QR code.
-            style: PostV1AiQrCodeGeneratorBodyStyle
+            style: V1AiQrCodeGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -113,13 +113,13 @@ class AsyncAiQrCodeGeneratorClient:
         """
         _json = to_encodable(
             item={"name": name, "content": content, "style": style},
-            dump_with=params._SerializerPostV1AiQrCodeGeneratorBody,
+            dump_with=params._SerializerV1AiQrCodeGeneratorCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-qr-code-generator",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiQrCodeGeneratorResponse,
+            cast_to=models.V1AiQrCodeGeneratorCreateResponse,
             request_options=request_options or default_request_options(),
         )

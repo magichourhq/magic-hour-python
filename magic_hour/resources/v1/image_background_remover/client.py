@@ -18,12 +18,12 @@ class ImageBackgroundRemoverClient:
     def create(
         self,
         *,
-        assets: params.PostV1ImageBackgroundRemoverBodyAssets,
+        assets: params.V1ImageBackgroundRemoverCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1ImageBackgroundRemoverResponse:
+    ) -> models.V1ImageBackgroundRemoverCreateResponse:
         """
         Image Background Remover
 
@@ -53,14 +53,14 @@ class ImageBackgroundRemoverClient:
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
-            dump_with=params._SerializerPostV1ImageBackgroundRemoverBody,
+            dump_with=params._SerializerV1ImageBackgroundRemoverCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/image-background-remover",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1ImageBackgroundRemoverResponse,
+            cast_to=models.V1ImageBackgroundRemoverCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -72,12 +72,12 @@ class AsyncImageBackgroundRemoverClient:
     async def create(
         self,
         *,
-        assets: params.PostV1ImageBackgroundRemoverBodyAssets,
+        assets: params.V1ImageBackgroundRemoverCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1ImageBackgroundRemoverResponse:
+    ) -> models.V1ImageBackgroundRemoverCreateResponse:
         """
         Image Background Remover
 
@@ -107,13 +107,13 @@ class AsyncImageBackgroundRemoverClient:
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
-            dump_with=params._SerializerPostV1ImageBackgroundRemoverBody,
+            dump_with=params._SerializerV1ImageBackgroundRemoverCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/image-background-remover",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1ImageBackgroundRemoverResponse,
+            cast_to=models.V1ImageBackgroundRemoverCreateResponse,
             request_options=request_options or default_request_options(),
         )

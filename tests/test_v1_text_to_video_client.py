@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1TextToVideoResponse
+    Response : models.V1TextToVideoCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -33,7 +33,9 @@ def test_create_200_success_default():
         name="Text To Video video",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1TextToVideoResponse).validate_python(response)
+        pydantic.TypeAdapter(models.V1TextToVideoCreateResponse).validate_python(
+            response
+        )
         is_json = True
     except pydantic.ValidationError:
         is_json = False
@@ -49,7 +51,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1TextToVideoResponse
+    Response : models.V1TextToVideoCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -68,7 +70,9 @@ async def test_await_create_200_success_default():
         name="Text To Video video",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1TextToVideoResponse).validate_python(response)
+        pydantic.TypeAdapter(models.V1TextToVideoCreateResponse).validate_python(
+            response
+        )
         is_json = True
     except pydantic.ValidationError:
         is_json = False

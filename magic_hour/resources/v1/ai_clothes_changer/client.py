@@ -18,12 +18,12 @@ class AiClothesChangerClient:
     def create(
         self,
         *,
-        assets: params.PostV1AiClothesChangerBodyAssets,
+        assets: params.V1AiClothesChangerCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiClothesChangerResponse:
+    ) -> models.V1AiClothesChangerCreateResponse:
         """
         AI Clothes Changer
 
@@ -57,14 +57,14 @@ class AiClothesChangerClient:
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
-            dump_with=params._SerializerPostV1AiClothesChangerBody,
+            dump_with=params._SerializerV1AiClothesChangerCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/ai-clothes-changer",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiClothesChangerResponse,
+            cast_to=models.V1AiClothesChangerCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -76,12 +76,12 @@ class AsyncAiClothesChangerClient:
     async def create(
         self,
         *,
-        assets: params.PostV1AiClothesChangerBodyAssets,
+        assets: params.V1AiClothesChangerCreateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1AiClothesChangerResponse:
+    ) -> models.V1AiClothesChangerCreateResponse:
         """
         AI Clothes Changer
 
@@ -115,13 +115,13 @@ class AsyncAiClothesChangerClient:
         """
         _json = to_encodable(
             item={"name": name, "assets": assets},
-            dump_with=params._SerializerPostV1AiClothesChangerBody,
+            dump_with=params._SerializerV1AiClothesChangerCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/ai-clothes-changer",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1AiClothesChangerResponse,
+            cast_to=models.V1AiClothesChangerCreateResponse,
             request_options=request_options or default_request_options(),
         )

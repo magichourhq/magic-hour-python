@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1ImageBackgroundRemoverResponse
+    Response : models.V1ImageBackgroundRemoverCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -32,7 +32,7 @@ def test_create_200_success_default():
     )
     try:
         pydantic.TypeAdapter(
-            models.PostV1ImageBackgroundRemoverResponse
+            models.V1ImageBackgroundRemoverCreateResponse
         ).validate_python(response)
         is_json = True
     except pydantic.ValidationError:
@@ -49,7 +49,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1ImageBackgroundRemoverResponse
+    Response : models.V1ImageBackgroundRemoverCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -67,7 +67,7 @@ async def test_await_create_200_success_default():
     )
     try:
         pydantic.TypeAdapter(
-            models.PostV1ImageBackgroundRemoverResponse
+            models.V1ImageBackgroundRemoverCreateResponse
         ).validate_python(response)
         is_json = True
     except pydantic.ValidationError:

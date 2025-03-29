@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1AiImageGeneratorResponse
+    Response : models.V1AiImageGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -33,7 +33,7 @@ def test_create_200_success_default():
         name="Ai Image image",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1AiImageGeneratorResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
             response
         )
         is_json = True
@@ -51,7 +51,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1AiImageGeneratorResponse
+    Response : models.V1AiImageGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -70,7 +70,7 @@ async def test_await_create_200_success_default():
         name="Ai Image image",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1AiImageGeneratorResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
             response
         )
         is_json = True

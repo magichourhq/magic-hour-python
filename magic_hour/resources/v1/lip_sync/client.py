@@ -18,7 +18,7 @@ class LipSyncClient:
     def create(
         self,
         *,
-        assets: params.PostV1LipSyncBodyAssets,
+        assets: params.V1LipSyncCreateBodyAssets,
         end_seconds: float,
         height: int,
         start_seconds: float,
@@ -30,7 +30,7 @@ class LipSyncClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1LipSyncResponse:
+    ) -> models.V1LipSyncCreateResponse:
         """
         Lip Sync
 
@@ -84,14 +84,14 @@ class LipSyncClient:
                 "start_seconds": start_seconds,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1LipSyncBody,
+            dump_with=params._SerializerV1LipSyncCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/lip-sync",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1LipSyncResponse,
+            cast_to=models.V1LipSyncCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -103,7 +103,7 @@ class AsyncLipSyncClient:
     async def create(
         self,
         *,
-        assets: params.PostV1LipSyncBodyAssets,
+        assets: params.V1LipSyncCreateBodyAssets,
         end_seconds: float,
         height: int,
         start_seconds: float,
@@ -115,7 +115,7 @@ class AsyncLipSyncClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1LipSyncResponse:
+    ) -> models.V1LipSyncCreateResponse:
         """
         Lip Sync
 
@@ -169,13 +169,13 @@ class AsyncLipSyncClient:
                 "start_seconds": start_seconds,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1LipSyncBody,
+            dump_with=params._SerializerV1LipSyncCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/lip-sync",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1LipSyncResponse,
+            cast_to=models.V1LipSyncCreateResponse,
             request_options=request_options or default_request_options(),
         )

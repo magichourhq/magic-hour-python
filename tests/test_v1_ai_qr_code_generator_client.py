@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1AiQrCodeGeneratorResponse
+    Response : models.V1AiQrCodeGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -32,7 +32,7 @@ def test_create_200_success_default():
         name="Qr Code image",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1AiQrCodeGeneratorResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiQrCodeGeneratorCreateResponse).validate_python(
             response
         )
         is_json = True
@@ -50,7 +50,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1AiQrCodeGeneratorResponse
+    Response : models.V1AiQrCodeGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -68,7 +68,7 @@ async def test_await_create_200_success_default():
         name="Qr Code image",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1AiQrCodeGeneratorResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiQrCodeGeneratorCreateResponse).validate_python(
             response
         )
         is_json = True

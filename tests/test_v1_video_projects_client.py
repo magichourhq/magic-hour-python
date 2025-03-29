@@ -14,7 +14,7 @@ def test_get_200_generated_success():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.GetV1VideoProjectsIdResponse
+    Response : models.V1VideoProjectsGetResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -28,7 +28,7 @@ def test_get_200_generated_success():
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
     try:
-        pydantic.TypeAdapter(models.GetV1VideoProjectsIdResponse).validate_python(
+        pydantic.TypeAdapter(models.V1VideoProjectsGetResponse).validate_python(
             response
         )
         is_json = True
@@ -46,7 +46,7 @@ async def test_await_get_200_generated_success():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.GetV1VideoProjectsIdResponse
+    Response : models.V1VideoProjectsGetResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -60,7 +60,7 @@ async def test_await_get_200_generated_success():
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
     try:
-        pydantic.TypeAdapter(models.GetV1VideoProjectsIdResponse).validate_python(
+        pydantic.TypeAdapter(models.V1VideoProjectsGetResponse).validate_python(
             response
         )
         is_json = True
