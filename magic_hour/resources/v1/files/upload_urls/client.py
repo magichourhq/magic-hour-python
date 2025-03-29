@@ -17,9 +17,9 @@ class UploadUrlsClient:
     def create(
         self,
         *,
-        items: typing.List[params.PostV1FilesUploadUrlsBodyItemsItem],
+        items: typing.List[params.V1FilesUploadUrlsCreateBodyItemsItem],
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FilesUploadUrlsResponse:
+    ) -> models.V1FilesUploadUrlsCreateResponse:
         """
         Generate asset upload urls
         
@@ -47,7 +47,7 @@ class UploadUrlsClient:
         POST /v1/files/upload-urls
         
         Args:
-            items: typing.List[PostV1FilesUploadUrlsBodyItemsItem]
+            items: typing.List[V1FilesUploadUrlsCreateBodyItemsItem]
             request_options: Additional options to customize the HTTP request
         
         Returns:
@@ -59,18 +59,19 @@ class UploadUrlsClient:
         
         Examples:
         ```py
-        client.v1.files.upload_urls.create(items=[{"extension": "mp4", "type_field": "video"}, {"extension": "mp3", "type_field": "audio"}])
+        client.v1.files.upload_urls.create(items=[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}])
         ```
         """
         _json = to_encodable(
-            item={"items": items}, dump_with=params._SerializerPostV1FilesUploadUrlsBody
+            item={"items": items},
+            dump_with=params._SerializerV1FilesUploadUrlsCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/files/upload-urls",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FilesUploadUrlsResponse,
+            cast_to=models.V1FilesUploadUrlsCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -82,9 +83,9 @@ class AsyncUploadUrlsClient:
     async def create(
         self,
         *,
-        items: typing.List[params.PostV1FilesUploadUrlsBodyItemsItem],
+        items: typing.List[params.V1FilesUploadUrlsCreateBodyItemsItem],
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FilesUploadUrlsResponse:
+    ) -> models.V1FilesUploadUrlsCreateResponse:
         """
         Generate asset upload urls
         
@@ -112,7 +113,7 @@ class AsyncUploadUrlsClient:
         POST /v1/files/upload-urls
         
         Args:
-            items: typing.List[PostV1FilesUploadUrlsBodyItemsItem]
+            items: typing.List[V1FilesUploadUrlsCreateBodyItemsItem]
             request_options: Additional options to customize the HTTP request
         
         Returns:
@@ -124,17 +125,18 @@ class AsyncUploadUrlsClient:
         
         Examples:
         ```py
-        await client.v1.files.upload_urls.create(items=[{"extension": "mp4", "type_field": "video"}, {"extension": "mp3", "type_field": "audio"}])
+        await client.v1.files.upload_urls.create(items=[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}])
         ```
         """
         _json = to_encodable(
-            item={"items": items}, dump_with=params._SerializerPostV1FilesUploadUrlsBody
+            item={"items": items},
+            dump_with=params._SerializerV1FilesUploadUrlsCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/files/upload-urls",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FilesUploadUrlsResponse,
+            cast_to=models.V1FilesUploadUrlsCreateResponse,
             request_options=request_options or default_request_options(),
         )

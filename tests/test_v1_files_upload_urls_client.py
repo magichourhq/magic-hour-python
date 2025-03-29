@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1FilesUploadUrlsResponse
+    Response : models.V1FilesUploadUrlsCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -28,12 +28,12 @@ def test_create_200_success_default():
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.files.upload_urls.create(
         items=[
-            {"extension": "mp4", "type_field": "video"},
-            {"extension": "mp3", "type_field": "audio"},
+            {"extension": "mp4", "type_": "video"},
+            {"extension": "mp3", "type_": "audio"},
         ]
     )
     try:
-        pydantic.TypeAdapter(models.PostV1FilesUploadUrlsResponse).validate_python(
+        pydantic.TypeAdapter(models.V1FilesUploadUrlsCreateResponse).validate_python(
             response
         )
         is_json = True
@@ -51,7 +51,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1FilesUploadUrlsResponse
+    Response : models.V1FilesUploadUrlsCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -65,12 +65,12 @@ async def test_await_create_200_success_default():
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.files.upload_urls.create(
         items=[
-            {"extension": "mp4", "type_field": "video"},
-            {"extension": "mp3", "type_field": "audio"},
+            {"extension": "mp4", "type_": "video"},
+            {"extension": "mp3", "type_": "audio"},
         ]
     )
     try:
-        pydantic.TypeAdapter(models.PostV1FilesUploadUrlsResponse).validate_python(
+        pydantic.TypeAdapter(models.V1FilesUploadUrlsCreateResponse).validate_python(
             response
         )
         is_json = True

@@ -1,211 +1,217 @@
-from .post_v1_ai_clothes_changer_body import (
-    PostV1AiClothesChangerBody,
-    _SerializerPostV1AiClothesChangerBody,
+from .v1_ai_clothes_changer_create_body import (
+    V1AiClothesChangerCreateBody,
+    _SerializerV1AiClothesChangerCreateBody,
 )
-from .post_v1_ai_clothes_changer_body_assets import (
-    PostV1AiClothesChangerBodyAssets,
-    _SerializerPostV1AiClothesChangerBodyAssets,
+from .v1_ai_clothes_changer_create_body_assets import (
+    V1AiClothesChangerCreateBodyAssets,
+    _SerializerV1AiClothesChangerCreateBodyAssets,
 )
-from .post_v1_ai_headshot_generator_body import (
-    PostV1AiHeadshotGeneratorBody,
-    _SerializerPostV1AiHeadshotGeneratorBody,
+from .v1_ai_headshot_generator_create_body import (
+    V1AiHeadshotGeneratorCreateBody,
+    _SerializerV1AiHeadshotGeneratorCreateBody,
 )
-from .post_v1_ai_headshot_generator_body_assets import (
-    PostV1AiHeadshotGeneratorBodyAssets,
-    _SerializerPostV1AiHeadshotGeneratorBodyAssets,
+from .v1_ai_headshot_generator_create_body_assets import (
+    V1AiHeadshotGeneratorCreateBodyAssets,
+    _SerializerV1AiHeadshotGeneratorCreateBodyAssets,
 )
-from .post_v1_ai_headshot_generator_body_style import (
-    PostV1AiHeadshotGeneratorBodyStyle,
-    _SerializerPostV1AiHeadshotGeneratorBodyStyle,
+from .v1_ai_headshot_generator_create_body_style import (
+    V1AiHeadshotGeneratorCreateBodyStyle,
+    _SerializerV1AiHeadshotGeneratorCreateBodyStyle,
 )
-from .post_v1_ai_image_generator_body import (
-    PostV1AiImageGeneratorBody,
-    _SerializerPostV1AiImageGeneratorBody,
+from .v1_ai_image_generator_create_body import (
+    V1AiImageGeneratorCreateBody,
+    _SerializerV1AiImageGeneratorCreateBody,
 )
-from .post_v1_ai_image_generator_body_style import (
-    PostV1AiImageGeneratorBodyStyle,
-    _SerializerPostV1AiImageGeneratorBodyStyle,
+from .v1_ai_image_generator_create_body_style import (
+    V1AiImageGeneratorCreateBodyStyle,
+    _SerializerV1AiImageGeneratorCreateBodyStyle,
 )
-from .post_v1_ai_image_upscaler_body import (
-    PostV1AiImageUpscalerBody,
-    _SerializerPostV1AiImageUpscalerBody,
+from .v1_ai_image_upscaler_create_body import (
+    V1AiImageUpscalerCreateBody,
+    _SerializerV1AiImageUpscalerCreateBody,
 )
-from .post_v1_ai_image_upscaler_body_assets import (
-    PostV1AiImageUpscalerBodyAssets,
-    _SerializerPostV1AiImageUpscalerBodyAssets,
+from .v1_ai_image_upscaler_create_body_assets import (
+    V1AiImageUpscalerCreateBodyAssets,
+    _SerializerV1AiImageUpscalerCreateBodyAssets,
 )
-from .post_v1_ai_image_upscaler_body_style import (
-    PostV1AiImageUpscalerBodyStyle,
-    _SerializerPostV1AiImageUpscalerBodyStyle,
+from .v1_ai_image_upscaler_create_body_style import (
+    V1AiImageUpscalerCreateBodyStyle,
+    _SerializerV1AiImageUpscalerCreateBodyStyle,
 )
-from .post_v1_ai_photo_editor_body import (
-    PostV1AiPhotoEditorBody,
-    _SerializerPostV1AiPhotoEditorBody,
+from .v1_ai_photo_editor_create_body import (
+    V1AiPhotoEditorCreateBody,
+    _SerializerV1AiPhotoEditorCreateBody,
 )
-from .post_v1_ai_photo_editor_body_assets import (
-    PostV1AiPhotoEditorBodyAssets,
-    _SerializerPostV1AiPhotoEditorBodyAssets,
+from .v1_ai_photo_editor_create_body_assets import (
+    V1AiPhotoEditorCreateBodyAssets,
+    _SerializerV1AiPhotoEditorCreateBodyAssets,
 )
-from .post_v1_ai_photo_editor_body_style import (
-    PostV1AiPhotoEditorBodyStyle,
-    _SerializerPostV1AiPhotoEditorBodyStyle,
+from .v1_ai_photo_editor_create_body_style import (
+    V1AiPhotoEditorCreateBodyStyle,
+    _SerializerV1AiPhotoEditorCreateBodyStyle,
 )
-from .post_v1_ai_qr_code_generator_body import (
-    PostV1AiQrCodeGeneratorBody,
-    _SerializerPostV1AiQrCodeGeneratorBody,
+from .v1_ai_qr_code_generator_create_body import (
+    V1AiQrCodeGeneratorCreateBody,
+    _SerializerV1AiQrCodeGeneratorCreateBody,
 )
-from .post_v1_ai_qr_code_generator_body_style import (
-    PostV1AiQrCodeGeneratorBodyStyle,
-    _SerializerPostV1AiQrCodeGeneratorBodyStyle,
+from .v1_ai_qr_code_generator_create_body_style import (
+    V1AiQrCodeGeneratorCreateBodyStyle,
+    _SerializerV1AiQrCodeGeneratorCreateBodyStyle,
 )
-from .post_v1_animation_body import PostV1AnimationBody, _SerializerPostV1AnimationBody
-from .post_v1_animation_body_assets import (
-    PostV1AnimationBodyAssets,
-    _SerializerPostV1AnimationBodyAssets,
+from .v1_animation_create_body import (
+    V1AnimationCreateBody,
+    _SerializerV1AnimationCreateBody,
 )
-from .post_v1_animation_body_style import (
-    PostV1AnimationBodyStyle,
-    _SerializerPostV1AnimationBodyStyle,
+from .v1_animation_create_body_assets import (
+    V1AnimationCreateBodyAssets,
+    _SerializerV1AnimationCreateBodyAssets,
 )
-from .post_v1_face_swap_body import PostV1FaceSwapBody, _SerializerPostV1FaceSwapBody
-from .post_v1_face_swap_body_assets import (
-    PostV1FaceSwapBodyAssets,
-    _SerializerPostV1FaceSwapBodyAssets,
+from .v1_animation_create_body_style import (
+    V1AnimationCreateBodyStyle,
+    _SerializerV1AnimationCreateBodyStyle,
 )
-from .post_v1_face_swap_photo_body import (
-    PostV1FaceSwapPhotoBody,
-    _SerializerPostV1FaceSwapPhotoBody,
+from .v1_face_swap_create_body import (
+    V1FaceSwapCreateBody,
+    _SerializerV1FaceSwapCreateBody,
 )
-from .post_v1_face_swap_photo_body_assets import (
-    PostV1FaceSwapPhotoBodyAssets,
-    _SerializerPostV1FaceSwapPhotoBodyAssets,
+from .v1_face_swap_create_body_assets import (
+    V1FaceSwapCreateBodyAssets,
+    _SerializerV1FaceSwapCreateBodyAssets,
 )
-from .post_v1_files_upload_urls_body import (
-    PostV1FilesUploadUrlsBody,
-    _SerializerPostV1FilesUploadUrlsBody,
+from .v1_face_swap_photo_create_body import (
+    V1FaceSwapPhotoCreateBody,
+    _SerializerV1FaceSwapPhotoCreateBody,
 )
-from .post_v1_files_upload_urls_body_items_item import (
-    PostV1FilesUploadUrlsBodyItemsItem,
-    _SerializerPostV1FilesUploadUrlsBodyItemsItem,
+from .v1_face_swap_photo_create_body_assets import (
+    V1FaceSwapPhotoCreateBodyAssets,
+    _SerializerV1FaceSwapPhotoCreateBodyAssets,
 )
-from .post_v1_image_background_remover_body import (
-    PostV1ImageBackgroundRemoverBody,
-    _SerializerPostV1ImageBackgroundRemoverBody,
+from .v1_files_upload_urls_create_body import (
+    V1FilesUploadUrlsCreateBody,
+    _SerializerV1FilesUploadUrlsCreateBody,
 )
-from .post_v1_image_background_remover_body_assets import (
-    PostV1ImageBackgroundRemoverBodyAssets,
-    _SerializerPostV1ImageBackgroundRemoverBodyAssets,
+from .v1_files_upload_urls_create_body_items_item import (
+    V1FilesUploadUrlsCreateBodyItemsItem,
+    _SerializerV1FilesUploadUrlsCreateBodyItemsItem,
 )
-from .post_v1_image_to_video_body import (
-    PostV1ImageToVideoBody,
-    _SerializerPostV1ImageToVideoBody,
+from .v1_image_background_remover_create_body import (
+    V1ImageBackgroundRemoverCreateBody,
+    _SerializerV1ImageBackgroundRemoverCreateBody,
 )
-from .post_v1_image_to_video_body_assets import (
-    PostV1ImageToVideoBodyAssets,
-    _SerializerPostV1ImageToVideoBodyAssets,
+from .v1_image_background_remover_create_body_assets import (
+    V1ImageBackgroundRemoverCreateBodyAssets,
+    _SerializerV1ImageBackgroundRemoverCreateBodyAssets,
 )
-from .post_v1_image_to_video_body_style import (
-    PostV1ImageToVideoBodyStyle,
-    _SerializerPostV1ImageToVideoBodyStyle,
+from .v1_image_to_video_create_body import (
+    V1ImageToVideoCreateBody,
+    _SerializerV1ImageToVideoCreateBody,
 )
-from .post_v1_lip_sync_body import PostV1LipSyncBody, _SerializerPostV1LipSyncBody
-from .post_v1_lip_sync_body_assets import (
-    PostV1LipSyncBodyAssets,
-    _SerializerPostV1LipSyncBodyAssets,
+from .v1_image_to_video_create_body_assets import (
+    V1ImageToVideoCreateBodyAssets,
+    _SerializerV1ImageToVideoCreateBodyAssets,
 )
-from .post_v1_text_to_video_body import (
-    PostV1TextToVideoBody,
-    _SerializerPostV1TextToVideoBody,
+from .v1_image_to_video_create_body_style import (
+    V1ImageToVideoCreateBodyStyle,
+    _SerializerV1ImageToVideoCreateBodyStyle,
 )
-from .post_v1_text_to_video_body_style import (
-    PostV1TextToVideoBodyStyle,
-    _SerializerPostV1TextToVideoBodyStyle,
+from .v1_lip_sync_create_body import V1LipSyncCreateBody, _SerializerV1LipSyncCreateBody
+from .v1_lip_sync_create_body_assets import (
+    V1LipSyncCreateBodyAssets,
+    _SerializerV1LipSyncCreateBodyAssets,
 )
-from .post_v1_video_to_video_body import (
-    PostV1VideoToVideoBody,
-    _SerializerPostV1VideoToVideoBody,
+from .v1_text_to_video_create_body import (
+    V1TextToVideoCreateBody,
+    _SerializerV1TextToVideoCreateBody,
 )
-from .post_v1_video_to_video_body_assets import (
-    PostV1VideoToVideoBodyAssets,
-    _SerializerPostV1VideoToVideoBodyAssets,
+from .v1_text_to_video_create_body_style import (
+    V1TextToVideoCreateBodyStyle,
+    _SerializerV1TextToVideoCreateBodyStyle,
 )
-from .post_v1_video_to_video_body_style import (
-    PostV1VideoToVideoBodyStyle,
-    _SerializerPostV1VideoToVideoBodyStyle,
+from .v1_video_to_video_create_body import (
+    V1VideoToVideoCreateBody,
+    _SerializerV1VideoToVideoCreateBody,
+)
+from .v1_video_to_video_create_body_assets import (
+    V1VideoToVideoCreateBodyAssets,
+    _SerializerV1VideoToVideoCreateBodyAssets,
+)
+from .v1_video_to_video_create_body_style import (
+    V1VideoToVideoCreateBodyStyle,
+    _SerializerV1VideoToVideoCreateBodyStyle,
 )
 
 
 __all__ = [
-    "PostV1AiClothesChangerBody",
-    "PostV1AiClothesChangerBodyAssets",
-    "PostV1AiHeadshotGeneratorBody",
-    "PostV1AiHeadshotGeneratorBodyAssets",
-    "PostV1AiHeadshotGeneratorBodyStyle",
-    "PostV1AiImageGeneratorBody",
-    "PostV1AiImageGeneratorBodyStyle",
-    "PostV1AiImageUpscalerBody",
-    "PostV1AiImageUpscalerBodyAssets",
-    "PostV1AiImageUpscalerBodyStyle",
-    "PostV1AiPhotoEditorBody",
-    "PostV1AiPhotoEditorBodyAssets",
-    "PostV1AiPhotoEditorBodyStyle",
-    "PostV1AiQrCodeGeneratorBody",
-    "PostV1AiQrCodeGeneratorBodyStyle",
-    "PostV1AnimationBody",
-    "PostV1AnimationBodyAssets",
-    "PostV1AnimationBodyStyle",
-    "PostV1FaceSwapBody",
-    "PostV1FaceSwapBodyAssets",
-    "PostV1FaceSwapPhotoBody",
-    "PostV1FaceSwapPhotoBodyAssets",
-    "PostV1FilesUploadUrlsBody",
-    "PostV1FilesUploadUrlsBodyItemsItem",
-    "PostV1ImageBackgroundRemoverBody",
-    "PostV1ImageBackgroundRemoverBodyAssets",
-    "PostV1ImageToVideoBody",
-    "PostV1ImageToVideoBodyAssets",
-    "PostV1ImageToVideoBodyStyle",
-    "PostV1LipSyncBody",
-    "PostV1LipSyncBodyAssets",
-    "PostV1TextToVideoBody",
-    "PostV1TextToVideoBodyStyle",
-    "PostV1VideoToVideoBody",
-    "PostV1VideoToVideoBodyAssets",
-    "PostV1VideoToVideoBodyStyle",
-    "_SerializerPostV1AiClothesChangerBody",
-    "_SerializerPostV1AiClothesChangerBodyAssets",
-    "_SerializerPostV1AiHeadshotGeneratorBody",
-    "_SerializerPostV1AiHeadshotGeneratorBodyAssets",
-    "_SerializerPostV1AiHeadshotGeneratorBodyStyle",
-    "_SerializerPostV1AiImageGeneratorBody",
-    "_SerializerPostV1AiImageGeneratorBodyStyle",
-    "_SerializerPostV1AiImageUpscalerBody",
-    "_SerializerPostV1AiImageUpscalerBodyAssets",
-    "_SerializerPostV1AiImageUpscalerBodyStyle",
-    "_SerializerPostV1AiPhotoEditorBody",
-    "_SerializerPostV1AiPhotoEditorBodyAssets",
-    "_SerializerPostV1AiPhotoEditorBodyStyle",
-    "_SerializerPostV1AiQrCodeGeneratorBody",
-    "_SerializerPostV1AiQrCodeGeneratorBodyStyle",
-    "_SerializerPostV1AnimationBody",
-    "_SerializerPostV1AnimationBodyAssets",
-    "_SerializerPostV1AnimationBodyStyle",
-    "_SerializerPostV1FaceSwapBody",
-    "_SerializerPostV1FaceSwapBodyAssets",
-    "_SerializerPostV1FaceSwapPhotoBody",
-    "_SerializerPostV1FaceSwapPhotoBodyAssets",
-    "_SerializerPostV1FilesUploadUrlsBody",
-    "_SerializerPostV1FilesUploadUrlsBodyItemsItem",
-    "_SerializerPostV1ImageBackgroundRemoverBody",
-    "_SerializerPostV1ImageBackgroundRemoverBodyAssets",
-    "_SerializerPostV1ImageToVideoBody",
-    "_SerializerPostV1ImageToVideoBodyAssets",
-    "_SerializerPostV1ImageToVideoBodyStyle",
-    "_SerializerPostV1LipSyncBody",
-    "_SerializerPostV1LipSyncBodyAssets",
-    "_SerializerPostV1TextToVideoBody",
-    "_SerializerPostV1TextToVideoBodyStyle",
-    "_SerializerPostV1VideoToVideoBody",
-    "_SerializerPostV1VideoToVideoBodyAssets",
-    "_SerializerPostV1VideoToVideoBodyStyle",
+    "V1AiClothesChangerCreateBody",
+    "V1AiClothesChangerCreateBodyAssets",
+    "V1AiHeadshotGeneratorCreateBody",
+    "V1AiHeadshotGeneratorCreateBodyAssets",
+    "V1AiHeadshotGeneratorCreateBodyStyle",
+    "V1AiImageGeneratorCreateBody",
+    "V1AiImageGeneratorCreateBodyStyle",
+    "V1AiImageUpscalerCreateBody",
+    "V1AiImageUpscalerCreateBodyAssets",
+    "V1AiImageUpscalerCreateBodyStyle",
+    "V1AiPhotoEditorCreateBody",
+    "V1AiPhotoEditorCreateBodyAssets",
+    "V1AiPhotoEditorCreateBodyStyle",
+    "V1AiQrCodeGeneratorCreateBody",
+    "V1AiQrCodeGeneratorCreateBodyStyle",
+    "V1AnimationCreateBody",
+    "V1AnimationCreateBodyAssets",
+    "V1AnimationCreateBodyStyle",
+    "V1FaceSwapCreateBody",
+    "V1FaceSwapCreateBodyAssets",
+    "V1FaceSwapPhotoCreateBody",
+    "V1FaceSwapPhotoCreateBodyAssets",
+    "V1FilesUploadUrlsCreateBody",
+    "V1FilesUploadUrlsCreateBodyItemsItem",
+    "V1ImageBackgroundRemoverCreateBody",
+    "V1ImageBackgroundRemoverCreateBodyAssets",
+    "V1ImageToVideoCreateBody",
+    "V1ImageToVideoCreateBodyAssets",
+    "V1ImageToVideoCreateBodyStyle",
+    "V1LipSyncCreateBody",
+    "V1LipSyncCreateBodyAssets",
+    "V1TextToVideoCreateBody",
+    "V1TextToVideoCreateBodyStyle",
+    "V1VideoToVideoCreateBody",
+    "V1VideoToVideoCreateBodyAssets",
+    "V1VideoToVideoCreateBodyStyle",
+    "_SerializerV1AiClothesChangerCreateBody",
+    "_SerializerV1AiClothesChangerCreateBodyAssets",
+    "_SerializerV1AiHeadshotGeneratorCreateBody",
+    "_SerializerV1AiHeadshotGeneratorCreateBodyAssets",
+    "_SerializerV1AiHeadshotGeneratorCreateBodyStyle",
+    "_SerializerV1AiImageGeneratorCreateBody",
+    "_SerializerV1AiImageGeneratorCreateBodyStyle",
+    "_SerializerV1AiImageUpscalerCreateBody",
+    "_SerializerV1AiImageUpscalerCreateBodyAssets",
+    "_SerializerV1AiImageUpscalerCreateBodyStyle",
+    "_SerializerV1AiPhotoEditorCreateBody",
+    "_SerializerV1AiPhotoEditorCreateBodyAssets",
+    "_SerializerV1AiPhotoEditorCreateBodyStyle",
+    "_SerializerV1AiQrCodeGeneratorCreateBody",
+    "_SerializerV1AiQrCodeGeneratorCreateBodyStyle",
+    "_SerializerV1AnimationCreateBody",
+    "_SerializerV1AnimationCreateBodyAssets",
+    "_SerializerV1AnimationCreateBodyStyle",
+    "_SerializerV1FaceSwapCreateBody",
+    "_SerializerV1FaceSwapCreateBodyAssets",
+    "_SerializerV1FaceSwapPhotoCreateBody",
+    "_SerializerV1FaceSwapPhotoCreateBodyAssets",
+    "_SerializerV1FilesUploadUrlsCreateBody",
+    "_SerializerV1FilesUploadUrlsCreateBodyItemsItem",
+    "_SerializerV1ImageBackgroundRemoverCreateBody",
+    "_SerializerV1ImageBackgroundRemoverCreateBodyAssets",
+    "_SerializerV1ImageToVideoCreateBody",
+    "_SerializerV1ImageToVideoCreateBodyAssets",
+    "_SerializerV1ImageToVideoCreateBodyStyle",
+    "_SerializerV1LipSyncCreateBody",
+    "_SerializerV1LipSyncCreateBodyAssets",
+    "_SerializerV1TextToVideoCreateBody",
+    "_SerializerV1TextToVideoCreateBodyStyle",
+    "_SerializerV1VideoToVideoCreateBody",
+    "_SerializerV1VideoToVideoCreateBodyAssets",
+    "_SerializerV1VideoToVideoCreateBodyStyle",
 ]

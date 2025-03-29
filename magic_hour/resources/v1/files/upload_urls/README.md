@@ -34,8 +34,8 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.files.upload_urls.create(
     items=[
-        {"extension": "mp4", "type_field": "video"},
-        {"extension": "mp3", "type_field": "audio"},
+        {"extension": "mp4", "type_": "video"},
+        {"extension": "mp3", "type_": "audio"},
     ]
 )
 ```
@@ -49,8 +49,8 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.files.upload_urls.create(
     items=[
-        {"extension": "mp4", "type_field": "video"},
-        {"extension": "mp3", "type_field": "audio"},
+        {"extension": "mp4", "type_": "video"},
+        {"extension": "mp3", "type_": "audio"},
     ]
 )
 ```

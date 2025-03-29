@@ -14,7 +14,7 @@ def test_create_200_success_default():
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.PostV1LipSyncResponse
+    Response : models.V1LipSyncCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -40,7 +40,7 @@ def test_create_200_success_default():
         name="Lip Sync video",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1LipSyncResponse).validate_python(response)
+        pydantic.TypeAdapter(models.V1LipSyncCreateResponse).validate_python(response)
         is_json = True
     except pydantic.ValidationError:
         is_json = False
@@ -56,7 +56,7 @@ async def test_await_create_200_success_default():
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.PostV1LipSyncResponse
+    Response : models.V1LipSyncCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -82,7 +82,7 @@ async def test_await_create_200_success_default():
         name="Lip Sync video",
     )
     try:
-        pydantic.TypeAdapter(models.PostV1LipSyncResponse).validate_python(response)
+        pydantic.TypeAdapter(models.V1LipSyncCreateResponse).validate_python(response)
         is_json = True
     except pydantic.ValidationError:
         is_json = False

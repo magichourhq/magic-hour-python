@@ -18,7 +18,7 @@ class FaceSwapClient:
     def create(
         self,
         *,
-        assets: params.PostV1FaceSwapBodyAssets,
+        assets: params.V1FaceSwapCreateBodyAssets,
         end_seconds: float,
         height: int,
         start_seconds: float,
@@ -27,7 +27,7 @@ class FaceSwapClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapResponse:
+    ) -> models.V1FaceSwapCreateResponse:
         """
         Face Swap video
 
@@ -75,14 +75,14 @@ class FaceSwapClient:
                 "start_seconds": start_seconds,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1FaceSwapBody,
+            dump_with=params._SerializerV1FaceSwapCreateBody,
         )
         return self._base_client.request(
             method="POST",
             path="/v1/face-swap",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapResponse,
+            cast_to=models.V1FaceSwapCreateResponse,
             request_options=request_options or default_request_options(),
         )
 
@@ -94,7 +94,7 @@ class AsyncFaceSwapClient:
     async def create(
         self,
         *,
-        assets: params.PostV1FaceSwapBodyAssets,
+        assets: params.V1FaceSwapCreateBodyAssets,
         end_seconds: float,
         height: int,
         start_seconds: float,
@@ -103,7 +103,7 @@ class AsyncFaceSwapClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.PostV1FaceSwapResponse:
+    ) -> models.V1FaceSwapCreateResponse:
         """
         Face Swap video
 
@@ -151,13 +151,13 @@ class AsyncFaceSwapClient:
                 "start_seconds": start_seconds,
                 "width": width,
             },
-            dump_with=params._SerializerPostV1FaceSwapBody,
+            dump_with=params._SerializerV1FaceSwapCreateBody,
         )
         return await self._base_client.request(
             method="POST",
             path="/v1/face-swap",
             auth_names=["bearerAuth"],
             json=_json,
-            cast_to=models.PostV1FaceSwapResponse,
+            cast_to=models.V1FaceSwapCreateResponse,
             request_options=request_options or default_request_options(),
         )
