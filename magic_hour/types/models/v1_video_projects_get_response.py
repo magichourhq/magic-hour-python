@@ -59,7 +59,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="height",
     )
     """
-    The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    The height of the final output video. A value of -1 indicates the height can be ignored.
     """
     id: str = pydantic.Field(
         alias="id",
@@ -109,5 +109,5 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="width",
     )
     """
-    The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    The width of the final output video. A value of -1 indicates the width can be ignored.
     """
