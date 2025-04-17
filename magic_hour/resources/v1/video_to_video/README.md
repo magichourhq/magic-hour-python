@@ -24,7 +24,7 @@ res = client.v1.video_to_video.create(
     style={
         "art_style": "3D Render",
         "model": "Absolute Reality",
-        "prompt": None,
+        "prompt": "string",
         "prompt_type": "append_default",
         "version": "default",
     },
@@ -49,7 +49,7 @@ res = await client.v1.video_to_video.create(
     style={
         "art_style": "3D Render",
         "model": "Absolute Reality",
-        "prompt": None,
+        "prompt": "string",
         "prompt_type": "append_default",
         "version": "default",
     },

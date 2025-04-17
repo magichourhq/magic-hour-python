@@ -57,7 +57,11 @@ class FaceSwapClient:
         Examples:
         ```py
         client.v1.face_swap.create(
-            assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
+            assets={
+                "image_file_path": "image/id/1234.png",
+                "video_file_path": "api-assets/id/1234.mp4",
+                "video_source": "file",
+            },
             end_seconds=15.0,
             height=960,
             start_seconds=0.0,
@@ -133,7 +137,11 @@ class AsyncFaceSwapClient:
         Examples:
         ```py
         await client.v1.face_swap.create(
-            assets={"image_file_path": "image/id/1234.png", "video_source": "file"},
+            assets={
+                "image_file_path": "image/id/1234.png",
+                "video_file_path": "api-assets/id/1234.mp4",
+                "video_source": "file",
+            },
             end_seconds=15.0,
             height=960,
             start_seconds=0.0,

@@ -93,18 +93,12 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
     """
     The amount of frames used to generate the video. If the status is not 'complete', the cost is an estimate and will be adjusted when the video completes.
     """
-    type_: typing_extensions.Literal[
-        "ANIMATION",
-        "AUTO_SUBTITLE",
-        "FACE_SWAP",
-        "IMAGE_TO_VIDEO",
-        "LIP_SYNC",
-        "TALKING_PHOTO",
-        "TEXT_TO_VIDEO",
-        "VIDEO_TO_VIDEO",
-    ] = pydantic.Field(
+    type_: str = pydantic.Field(
         alias="type",
     )
+    """
+    The type of the video project. Possible values are ANIMATION, IMAGE_TO_VIDEO, VIDEO_TO_VIDEO, TEXT_TO_VIDEO, FACE_SWAP, LIP_SYNC, AUTO_SUBTITLE, TALKING_PHOTO
+    """
     width: int = pydantic.Field(
         alias="width",
     )

@@ -34,7 +34,7 @@ def test_create_200_success_default():
         style={
             "art_style": "3D Render",
             "model": "Absolute Reality",
-            "prompt": None,
+            "prompt": "string",
             "prompt_type": "append_default",
             "version": "default",
         },
@@ -81,7 +81,7 @@ async def test_await_create_200_success_default():
         style={
             "art_style": "3D Render",
             "model": "Absolute Reality",
-            "prompt": None,
+            "prompt": "string",
             "prompt_type": "append_default",
             "version": "default",
         },
