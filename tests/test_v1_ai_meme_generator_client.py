@@ -7,14 +7,14 @@ from magic_hour.types import models
 
 
 def test_create_200_success_default():
-    """Tests a POST request to the /v1/image-to-video endpoint.
+    """Tests a POST request to the /v1/ai-meme-generator endpoint.
 
     Operation: create
     Test Case ID: success_default
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.V1ImageToVideoCreateResponse
+    Response : models.V1AiMemeGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -26,16 +26,16 @@ def test_create_200_success_default():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.image_to_video.create(
-        assets={"image_file_path": "api-assets/id/1234.png"},
-        end_seconds=5.0,
-        height=960,
-        style={"prompt": "string"},
-        width=512,
-        name="Image To Video video",
+    response = client.v1.ai_meme_generator.create(
+        style={
+            "search_web": False,
+            "template": "Drake Hotline Bling",
+            "topic": "When the code finally works",
+        },
+        name="My Funny Meme",
     )
     try:
-        pydantic.TypeAdapter(models.V1ImageToVideoCreateResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiMemeGeneratorCreateResponse).validate_python(
             response
         )
         is_json = True
@@ -46,14 +46,14 @@ def test_create_200_success_default():
 
 @pytest.mark.asyncio
 async def test_await_create_200_success_default():
-    """Tests a POST request to the /v1/image-to-video endpoint.
+    """Tests a POST request to the /v1/ai-meme-generator endpoint.
 
     Operation: create
     Test Case ID: success_default
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.V1ImageToVideoCreateResponse
+    Response : models.V1AiMemeGeneratorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -65,16 +65,16 @@ async def test_await_create_200_success_default():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.image_to_video.create(
-        assets={"image_file_path": "api-assets/id/1234.png"},
-        end_seconds=5.0,
-        height=960,
-        style={"prompt": "string"},
-        width=512,
-        name="Image To Video video",
+    response = await client.v1.ai_meme_generator.create(
+        style={
+            "search_web": False,
+            "template": "Drake Hotline Bling",
+            "topic": "When the code finally works",
+        },
+        name="My Funny Meme",
     )
     try:
-        pydantic.TypeAdapter(models.V1ImageToVideoCreateResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiMemeGeneratorCreateResponse).validate_python(
             response
         )
         is_json = True

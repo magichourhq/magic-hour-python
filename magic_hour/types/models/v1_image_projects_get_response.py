@@ -68,15 +68,9 @@ class V1ImageProjectsGetResponse(pydantic.BaseModel):
     """
     The amount of frames used to generate the image.
     """
-    type_: typing_extensions.Literal[
-        "AI_HEADSHOT",
-        "AI_IMAGE",
-        "BACKGROUND_REMOVER",
-        "CLOTHES_CHANGER",
-        "FACE_SWAP",
-        "IMAGE_UPSCALER",
-        "PHOTO_EDITOR",
-        "QR_CODE",
-    ] = pydantic.Field(
+    type_: str = pydantic.Field(
         alias="type",
     )
+    """
+    The type of the image project. Possible values are AI_HEADSHOT, AI_IMAGE, IMAGE_UPSCALER, FACE_SWAP, PHOTO_EDITOR, QR_CODE, BACKGROUND_REMOVER, CLOTHES_CHANGER, AI_MEME, FACE_EDITOR
+    """

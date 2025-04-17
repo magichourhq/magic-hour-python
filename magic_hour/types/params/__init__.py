@@ -38,6 +38,14 @@ from .v1_ai_image_upscaler_create_body_style import (
     V1AiImageUpscalerCreateBodyStyle,
     _SerializerV1AiImageUpscalerCreateBodyStyle,
 )
+from .v1_ai_meme_generator_create_body import (
+    V1AiMemeGeneratorCreateBody,
+    _SerializerV1AiMemeGeneratorCreateBody,
+)
+from .v1_ai_meme_generator_create_body_style import (
+    V1AiMemeGeneratorCreateBodyStyle,
+    _SerializerV1AiMemeGeneratorCreateBodyStyle,
+)
 from .v1_ai_photo_editor_create_body import (
     V1AiPhotoEditorCreateBody,
     _SerializerV1AiPhotoEditorCreateBody,
@@ -160,6 +168,8 @@ __all__ = [
     "V1AiImageUpscalerCreateBody",
     "V1AiImageUpscalerCreateBodyAssets",
     "V1AiImageUpscalerCreateBodyStyle",
+    "V1AiMemeGeneratorCreateBody",
+    "V1AiMemeGeneratorCreateBodyStyle",
     "V1AiPhotoEditorCreateBody",
     "V1AiPhotoEditorCreateBodyAssets",
     "V1AiPhotoEditorCreateBodyStyle",
@@ -198,6 +208,8 @@ __all__ = [
     "_SerializerV1AiImageUpscalerCreateBody",
     "_SerializerV1AiImageUpscalerCreateBodyAssets",
     "_SerializerV1AiImageUpscalerCreateBodyStyle",
+    "_SerializerV1AiMemeGeneratorCreateBody",
+    "_SerializerV1AiMemeGeneratorCreateBodyStyle",
     "_SerializerV1AiPhotoEditorCreateBody",
     "_SerializerV1AiPhotoEditorCreateBodyAssets",
     "_SerializerV1AiPhotoEditorCreateBodyStyle",

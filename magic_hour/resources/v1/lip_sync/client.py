@@ -63,6 +63,7 @@ class LipSyncClient:
         client.v1.lip_sync.create(
             assets={
                 "audio_file_path": "api-assets/id/1234.mp3",
+                "video_file_path": "api-assets/id/1234.mp4",
                 "video_source": "file",
             },
             end_seconds=15.0,
@@ -148,6 +149,7 @@ class AsyncLipSyncClient:
         await client.v1.lip_sync.create(
             assets={
                 "audio_file_path": "api-assets/id/1234.mp3",
+                "video_file_path": "api-assets/id/1234.mp4",
                 "video_source": "file",
             },
             end_seconds=15.0,

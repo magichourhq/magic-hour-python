@@ -4,6 +4,7 @@ from .v1_ai_headshot_generator_create_response import (
 )
 from .v1_ai_image_generator_create_response import V1AiImageGeneratorCreateResponse
 from .v1_ai_image_upscaler_create_response import V1AiImageUpscalerCreateResponse
+from .v1_ai_meme_generator_create_response import V1AiMemeGeneratorCreateResponse
 from .v1_ai_photo_editor_create_response import V1AiPhotoEditorCreateResponse
 from .v1_ai_qr_code_generator_create_response import V1AiQrCodeGeneratorCreateResponse
 from .v1_ai_talking_photo_create_response import V1AiTalkingPhotoCreateResponse
@@ -39,6 +40,7 @@ __all__ = [
     "V1AiHeadshotGeneratorCreateResponse",
     "V1AiImageGeneratorCreateResponse",
     "V1AiImageUpscalerCreateResponse",
+    "V1AiMemeGeneratorCreateResponse",
     "V1AiPhotoEditorCreateResponse",
     "V1AiQrCodeGeneratorCreateResponse",
     "V1AiTalkingPhotoCreateResponse",

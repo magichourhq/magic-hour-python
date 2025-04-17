@@ -56,7 +56,11 @@ class AnimationClient:
         Examples:
         ```py
         client.v1.animation.create(
-            assets={"audio_source": "file"},
+            assets={
+                "audio_file_path": "api-assets/id/1234.mp3",
+                "audio_source": "file",
+                "image_file_path": "api-assets/id/1234.png",
+            },
             end_seconds=15.0,
             fps=12.0,
             height=960,
@@ -139,7 +143,11 @@ class AsyncAnimationClient:
         Examples:
         ```py
         await client.v1.animation.create(
-            assets={"audio_source": "file"},
+            assets={
+                "audio_file_path": "api-assets/id/1234.mp3",
+                "audio_source": "file",
+                "image_file_path": "api-assets/id/1234.png",
+            },
             end_seconds=15.0,
             fps=12.0,
             height=960,

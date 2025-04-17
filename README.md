@@ -57,6 +57,10 @@ client = AsyncClient(token="my api key")
 
 * [create](magic_hour/resources/v1/ai_image_upscaler/README.md#create) - AI Image Upscaler
 
+### [v1.ai_meme_generator](magic_hour/resources/v1/ai_meme_generator/README.md)
+
+* [create](magic_hour/resources/v1/ai_meme_generator/README.md#create) - AI Meme Generator
+
 ### [v1.ai_photo_editor](magic_hour/resources/v1/ai_photo_editor/README.md)
 
 * [create](magic_hour/resources/v1/ai_photo_editor/README.md#create) - AI Photo Editor
