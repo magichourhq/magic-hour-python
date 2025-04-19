@@ -20,11 +20,15 @@ class FaceSwapClient:
         *,
         assets: params.V1FaceSwapCreateBodyAssets,
         end_seconds: float,
-        height: int,
         start_seconds: float,
-        width: int,
+        height: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        width: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1FaceSwapCreateResponse:
@@ -39,12 +43,26 @@ class FaceSwapClient:
         POST /v1/face-swap
 
         Args:
+            height: Used to determine the dimensions of the output video.
+
+        * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+
+        Note: if the video's original resolution is less than the maximum, the video will not be resized.
+
+        See our [pricing page](https://magichour.ai/pricing) for more details.
             name: The name of video
+            width: Used to determine the dimensions of the output video.
+
+        * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+
+        Note: if the video's original resolution is less than the maximum, the video will not be resized.
+
+        See our [pricing page](https://magichour.ai/pricing) for more details.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: The end time of the input video in seconds
-            height: The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             start_seconds: The start time of the input video in seconds
-            width: The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -63,21 +81,21 @@ class FaceSwapClient:
                 "video_source": "file",
             },
             end_seconds=15.0,
-            height=960,
             start_seconds=0.0,
-            width=512,
+            height=960,
             name="Face Swap video",
+            width=512,
         )
         ```
         """
         _json = to_encodable(
             item={
+                "height": height,
                 "name": name,
+                "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
-                "height": height,
                 "start_seconds": start_seconds,
-                "width": width,
             },
             dump_with=params._SerializerV1FaceSwapCreateBody,
         )
@@ -100,11 +118,15 @@ class AsyncFaceSwapClient:
         *,
         assets: params.V1FaceSwapCreateBodyAssets,
         end_seconds: float,
-        height: int,
         start_seconds: float,
-        width: int,
+        height: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        width: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1FaceSwapCreateResponse:
@@ -119,12 +141,26 @@ class AsyncFaceSwapClient:
         POST /v1/face-swap
 
         Args:
+            height: Used to determine the dimensions of the output video.
+
+        * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+
+        Note: if the video's original resolution is less than the maximum, the video will not be resized.
+
+        See our [pricing page](https://magichour.ai/pricing) for more details.
             name: The name of video
+            width: Used to determine the dimensions of the output video.
+
+        * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+
+        Note: if the video's original resolution is less than the maximum, the video will not be resized.
+
+        See our [pricing page](https://magichour.ai/pricing) for more details.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: The end time of the input video in seconds
-            height: The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             start_seconds: The start time of the input video in seconds
-            width: The width of the final output video. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -143,21 +179,21 @@ class AsyncFaceSwapClient:
                 "video_source": "file",
             },
             end_seconds=15.0,
-            height=960,
             start_seconds=0.0,
-            width=512,
+            height=960,
             name="Face Swap video",
+            width=512,
         )
         ```
         """
         _json = to_encodable(
             item={
+                "height": height,
                 "name": name,
+                "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
-                "height": height,
                 "start_seconds": start_seconds,
-                "width": width,
             },
             dump_with=params._SerializerV1FaceSwapCreateBody,
         )

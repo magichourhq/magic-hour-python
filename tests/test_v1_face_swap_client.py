@@ -33,10 +33,10 @@ def test_create_200_success_default():
             "video_source": "file",
         },
         end_seconds=15.0,
-        height=960,
         start_seconds=0.0,
-        width=512,
+        height=960,
         name="Face Swap video",
+        width=512,
     )
     try:
         pydantic.TypeAdapter(models.V1FaceSwapCreateResponse).validate_python(response)
@@ -74,10 +74,10 @@ async def test_await_create_200_success_default():
             "video_source": "file",
         },
         end_seconds=15.0,
-        height=960,
         start_seconds=0.0,
-        width=512,
+        height=960,
         name="Face Swap video",
+        width=512,
     )
     try:
         pydantic.TypeAdapter(models.V1FaceSwapCreateResponse).validate_python(response)

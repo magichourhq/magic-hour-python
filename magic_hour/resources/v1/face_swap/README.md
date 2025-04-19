@@ -23,10 +23,10 @@ res = client.v1.face_swap.create(
         "video_source": "file",
     },
     end_seconds=15.0,
-    height=960,
     start_seconds=0.0,
-    width=512,
+    height=960,
     name="Face Swap video",
+    width=512,
 )
 ```
 
@@ -44,9 +44,9 @@ res = await client.v1.face_swap.create(
         "video_source": "file",
     },
     end_seconds=15.0,
-    height=960,
     start_seconds=0.0,
-    width=512,
+    height=960,
     name="Face Swap video",
+    width=512,
 )
 ```
