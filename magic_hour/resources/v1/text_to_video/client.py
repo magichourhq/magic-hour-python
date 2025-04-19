@@ -56,7 +56,7 @@ class TextToVideoClient:
         client.v1.text_to_video.create(
             end_seconds=5.0,
             orientation="landscape",
-            style={"prompt": "string"},
+            style={"prompt": "a dog running"},
             name="Text To Video video",
         )
         ```
@@ -124,7 +124,7 @@ class AsyncTextToVideoClient:
         await client.v1.text_to_video.create(
             end_seconds=5.0,
             orientation="landscape",
-            style={"prompt": "string"},
+            style={"prompt": "a dog running"},
             name="Text To Video video",
         )
         ```

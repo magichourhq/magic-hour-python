@@ -29,7 +29,7 @@ def test_create_200_success_default():
     response = client.v1.text_to_video.create(
         end_seconds=5.0,
         orientation="landscape",
-        style={"prompt": "string"},
+        style={"prompt": "a dog running"},
         name="Text To Video video",
     )
     try:
@@ -66,7 +66,7 @@ async def test_await_create_200_success_default():
     response = await client.v1.text_to_video.create(
         end_seconds=5.0,
         orientation="landscape",
-        style={"prompt": "string"},
+        style={"prompt": "a dog running"},
         name="Text To Video video",
     )
     try:

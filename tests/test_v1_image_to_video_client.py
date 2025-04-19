@@ -30,7 +30,7 @@ def test_create_200_success_default():
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
         height=960,
-        style={"prompt": "string"},
+        style={"prompt": "a dog running"},
         width=512,
         name="Image To Video video",
     )
@@ -69,7 +69,7 @@ async def test_await_create_200_success_default():
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
         height=960,
-        style={"prompt": "string"},
+        style={"prompt": "a dog running"},
         width=512,
         name="Image To Video video",
     )

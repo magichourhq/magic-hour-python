@@ -20,7 +20,7 @@ res = client.v1.image_to_video.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     end_seconds=5.0,
     height=960,
-    style={"prompt": "string"},
+    style={"prompt": "a dog running"},
     width=512,
     name="Image To Video video",
 )
@@ -37,7 +37,7 @@ res = await client.v1.image_to_video.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     end_seconds=5.0,
     height=960,
-    style={"prompt": "string"},
+    style={"prompt": "a dog running"},
     width=512,
     name="Image To Video video",
 )

@@ -38,6 +38,9 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     """
 
     style: typing_extensions.Required[V1ImageToVideoCreateBodyStyle]
+    """
+    Attributed used to dictate the style of the output
+    """
 
     width: typing_extensions.Required[int]
     """
