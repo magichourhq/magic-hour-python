@@ -43,7 +43,7 @@ class ImageToVideoClient:
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
             height: The height of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
-            style: V1ImageToVideoCreateBodyStyle
+            style: Attributed used to dictate the style of the output
             width: The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
             request_options: Additional options to customize the HTTP request
 
@@ -60,7 +60,7 @@ class ImageToVideoClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
             height=960,
-            style={"prompt": "string"},
+            style={"prompt": "a dog running"},
             width=512,
             name="Image To Video video",
         )
@@ -119,7 +119,7 @@ class AsyncImageToVideoClient:
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
             height: The height of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
-            style: V1ImageToVideoCreateBodyStyle
+            style: Attributed used to dictate the style of the output
             width: The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
             request_options: Additional options to customize the HTTP request
 
@@ -136,7 +136,7 @@ class AsyncImageToVideoClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
             height=960,
-            style={"prompt": "string"},
+            style={"prompt": "a dog running"},
             width=512,
             name="Image To Video video",
         )
