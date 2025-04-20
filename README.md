@@ -45,6 +45,10 @@ client = AsyncClient(token="my api key")
 
 * [create](magic_hour/resources/v1/ai_clothes_changer/README.md#create) - AI Clothes Changer
 
+### [v1.ai_face_editor](magic_hour/resources/v1/ai_face_editor/README.md)
+
+* [create](magic_hour/resources/v1/ai_face_editor/README.md#create) - AI Face Editor
+
 ### [v1.ai_headshot_generator](magic_hour/resources/v1/ai_headshot_generator/README.md)
 
 * [create](magic_hour/resources/v1/ai_headshot_generator/README.md#create) - AI Headshots

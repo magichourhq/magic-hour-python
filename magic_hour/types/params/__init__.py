@@ -6,6 +6,18 @@ from .v1_ai_clothes_changer_create_body_assets import (
     V1AiClothesChangerCreateBodyAssets,
     _SerializerV1AiClothesChangerCreateBodyAssets,
 )
+from .v1_ai_face_editor_create_body import (
+    V1AiFaceEditorCreateBody,
+    _SerializerV1AiFaceEditorCreateBody,
+)
+from .v1_ai_face_editor_create_body_assets import (
+    V1AiFaceEditorCreateBodyAssets,
+    _SerializerV1AiFaceEditorCreateBodyAssets,
+)
+from .v1_ai_face_editor_create_body_style import (
+    V1AiFaceEditorCreateBodyStyle,
+    _SerializerV1AiFaceEditorCreateBodyStyle,
+)
 from .v1_ai_headshot_generator_create_body import (
     V1AiHeadshotGeneratorCreateBody,
     _SerializerV1AiHeadshotGeneratorCreateBody,
@@ -160,6 +172,9 @@ from .v1_video_to_video_create_body_style import (
 __all__ = [
     "V1AiClothesChangerCreateBody",
     "V1AiClothesChangerCreateBodyAssets",
+    "V1AiFaceEditorCreateBody",
+    "V1AiFaceEditorCreateBodyAssets",
+    "V1AiFaceEditorCreateBodyStyle",
     "V1AiHeadshotGeneratorCreateBody",
     "V1AiHeadshotGeneratorCreateBodyAssets",
     "V1AiHeadshotGeneratorCreateBodyStyle",
@@ -200,6 +215,9 @@ __all__ = [
     "V1VideoToVideoCreateBodyStyle",
     "_SerializerV1AiClothesChangerCreateBody",
     "_SerializerV1AiClothesChangerCreateBodyAssets",
+    "_SerializerV1AiFaceEditorCreateBody",
+    "_SerializerV1AiFaceEditorCreateBodyAssets",
+    "_SerializerV1AiFaceEditorCreateBodyStyle",
     "_SerializerV1AiHeadshotGeneratorCreateBody",
     "_SerializerV1AiHeadshotGeneratorCreateBodyAssets",
     "_SerializerV1AiHeadshotGeneratorCreateBodyStyle",

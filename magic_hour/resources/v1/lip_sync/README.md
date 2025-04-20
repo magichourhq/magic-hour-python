@@ -23,11 +23,11 @@ res = client.v1.lip_sync.create(
         "video_source": "file",
     },
     end_seconds=15.0,
-    height=960,
     start_seconds=0.0,
-    width=512,
+    height=960,
     max_fps_limit=12.0,
     name="Lip Sync video",
+    width=512,
 )
 ```
 
@@ -45,10 +45,10 @@ res = await client.v1.lip_sync.create(
         "video_source": "file",
     },
     end_seconds=15.0,
-    height=960,
     start_seconds=0.0,
-    width=512,
+    height=960,
     max_fps_limit=12.0,
     name="Lip Sync video",
+    width=512,
 )
 ```
