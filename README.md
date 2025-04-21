@@ -110,6 +110,10 @@ client = AsyncClient(token="my api key")
 
 * [create](magic_hour/resources/v1/lip_sync/README.md#create) - Lip Sync
 
+### [v1.photo_colorizer](magic_hour/resources/v1/photo_colorizer/README.md)
+
+* [create](magic_hour/resources/v1/photo_colorizer/README.md#create) - Photo Colorizer
+
 ### [v1.text_to_video](magic_hour/resources/v1/text_to_video/README.md)
 
 * [create](magic_hour/resources/v1/text_to_video/README.md#create) - Text-to-Video
