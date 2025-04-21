@@ -55,6 +55,10 @@ from magic_hour.resources.v1.image_to_video import (
     ImageToVideoClient,
 )
 from magic_hour.resources.v1.lip_sync import AsyncLipSyncClient, LipSyncClient
+from magic_hour.resources.v1.photo_colorizer import (
+    AsyncPhotoColorizerClient,
+    PhotoColorizerClient,
+)
 from magic_hour.resources.v1.text_to_video import (
     AsyncTextToVideoClient,
     TextToVideoClient,
@@ -96,6 +100,7 @@ class V1Client:
         )
         self.image_to_video = ImageToVideoClient(base_client=self._base_client)
         self.lip_sync = LipSyncClient(base_client=self._base_client)
+        self.photo_colorizer = PhotoColorizerClient(base_client=self._base_client)
         self.text_to_video = TextToVideoClient(base_client=self._base_client)
         self.video_to_video = VideoToVideoClient(base_client=self._base_client)
 
@@ -135,5 +140,6 @@ class AsyncV1Client:
         )
         self.image_to_video = AsyncImageToVideoClient(base_client=self._base_client)
         self.lip_sync = AsyncLipSyncClient(base_client=self._base_client)
+        self.photo_colorizer = AsyncPhotoColorizerClient(base_client=self._base_client)
         self.text_to_video = AsyncTextToVideoClient(base_client=self._base_client)
         self.video_to_video = AsyncVideoToVideoClient(base_client=self._base_client)

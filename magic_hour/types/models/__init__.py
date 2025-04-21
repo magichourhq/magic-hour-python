@@ -26,6 +26,7 @@ from .v1_image_projects_get_response_downloads_item import (
 from .v1_image_projects_get_response_error import V1ImageProjectsGetResponseError
 from .v1_image_to_video_create_response import V1ImageToVideoCreateResponse
 from .v1_lip_sync_create_response import V1LipSyncCreateResponse
+from .v1_photo_colorizer_create_response import V1PhotoColorizerCreateResponse
 from .v1_text_to_video_create_response import V1TextToVideoCreateResponse
 from .v1_video_projects_get_response import V1VideoProjectsGetResponse
 from .v1_video_projects_get_response_download import V1VideoProjectsGetResponseDownload
@@ -57,6 +58,7 @@ __all__ = [
     "V1ImageProjectsGetResponseError",
     "V1ImageToVideoCreateResponse",
     "V1LipSyncCreateResponse",
+    "V1PhotoColorizerCreateResponse",
     "V1TextToVideoCreateResponse",
     "V1VideoProjectsGetResponse",
     "V1VideoProjectsGetResponseDownload",

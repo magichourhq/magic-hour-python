@@ -147,6 +147,14 @@ from .v1_lip_sync_create_body_assets import (
     V1LipSyncCreateBodyAssets,
     _SerializerV1LipSyncCreateBodyAssets,
 )
+from .v1_photo_colorizer_create_body import (
+    V1PhotoColorizerCreateBody,
+    _SerializerV1PhotoColorizerCreateBody,
+)
+from .v1_photo_colorizer_create_body_assets import (
+    V1PhotoColorizerCreateBodyAssets,
+    _SerializerV1PhotoColorizerCreateBodyAssets,
+)
 from .v1_text_to_video_create_body import (
     V1TextToVideoCreateBody,
     _SerializerV1TextToVideoCreateBody,
@@ -208,6 +216,8 @@ __all__ = [
     "V1ImageToVideoCreateBodyStyle",
     "V1LipSyncCreateBody",
     "V1LipSyncCreateBodyAssets",
+    "V1PhotoColorizerCreateBody",
+    "V1PhotoColorizerCreateBodyAssets",
     "V1TextToVideoCreateBody",
     "V1TextToVideoCreateBodyStyle",
     "V1VideoToVideoCreateBody",
@@ -251,6 +261,8 @@ __all__ = [
     "_SerializerV1ImageToVideoCreateBodyStyle",
     "_SerializerV1LipSyncCreateBody",
     "_SerializerV1LipSyncCreateBodyAssets",
+    "_SerializerV1PhotoColorizerCreateBody",
+    "_SerializerV1PhotoColorizerCreateBodyAssets",
     "_SerializerV1TextToVideoCreateBody",
     "_SerializerV1TextToVideoCreateBodyStyle",
     "_SerializerV1VideoToVideoCreateBody",
