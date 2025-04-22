@@ -29,10 +29,10 @@ def test_create_200_success_default():
     response = client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
-        height=960,
         style={"prompt": "a dog running"},
-        width=512,
+        height=960,
         name="Image To Video video",
+        width=512,
     )
     try:
         pydantic.TypeAdapter(models.V1ImageToVideoCreateResponse).validate_python(
@@ -68,10 +68,10 @@ async def test_await_create_200_success_default():
     response = await client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
-        height=960,
         style={"prompt": "a dog running"},
-        width=512,
+        height=960,
         name="Image To Video video",
+        width=512,
     )
     try:
         pydantic.TypeAdapter(models.V1ImageToVideoCreateResponse).validate_python(
