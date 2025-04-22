@@ -27,9 +27,11 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     The total duration of the output video in seconds.
     """
 
-    height: typing_extensions.Required[int]
+    height: typing_extensions.NotRequired[int]
     """
-    The height of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
+    This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+    
+    It is retained solely for backward compatibility and will be deprecated in the future.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -42,9 +44,11 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     Attributed used to dictate the style of the output
     """
 
-    width: typing_extensions.Required[int]
+    width: typing_extensions.NotRequired[int]
     """
-    The width of the input video. This value will help determine the final orientation of the output video. The output video resolution may not match the input.
+    This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+    
+    It is retained solely for backward compatibility and will be deprecated in the future.
     """
 
 
@@ -64,13 +68,9 @@ class _SerializerV1ImageToVideoCreateBody(pydantic.BaseModel):
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
     )
-    height: int = pydantic.Field(
-        alias="height",
-    )
+    height: typing.Optional[int] = pydantic.Field(alias="height", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     style: _SerializerV1ImageToVideoCreateBodyStyle = pydantic.Field(
         alias="style",
     )
-    width: int = pydantic.Field(
-        alias="width",
-    )
+    width: typing.Optional[int] = pydantic.Field(alias="width", default=None)
