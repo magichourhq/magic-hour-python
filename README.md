@@ -49,6 +49,10 @@ client = AsyncClient(token="my api key")
 
 * [create](magic_hour/resources/v1/ai_face_editor/README.md#create) - AI Face Editor
 
+### [v1.ai_gif_generator](magic_hour/resources/v1/ai_gif_generator/README.md)
+
+* [create](magic_hour/resources/v1/ai_gif_generator/README.md#create) - AI GIFs
+
 ### [v1.ai_headshot_generator](magic_hour/resources/v1/ai_headshot_generator/README.md)
 
 * [create](magic_hour/resources/v1/ai_headshot_generator/README.md#create) - AI Headshots

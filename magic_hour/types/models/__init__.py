@@ -1,5 +1,6 @@
 from .v1_ai_clothes_changer_create_response import V1AiClothesChangerCreateResponse
 from .v1_ai_face_editor_create_response import V1AiFaceEditorCreateResponse
+from .v1_ai_gif_generator_create_response import V1AiGifGeneratorCreateResponse
 from .v1_ai_headshot_generator_create_response import (
     V1AiHeadshotGeneratorCreateResponse,
 )
@@ -40,6 +41,7 @@ from .v1_video_to_video_create_response import V1VideoToVideoCreateResponse
 __all__ = [
     "V1AiClothesChangerCreateResponse",
     "V1AiFaceEditorCreateResponse",
+    "V1AiGifGeneratorCreateResponse",
     "V1AiHeadshotGeneratorCreateResponse",
     "V1AiImageGeneratorCreateResponse",
     "V1AiImageUpscalerCreateResponse",

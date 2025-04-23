@@ -18,6 +18,7 @@ from .request import (
     filter_not_given,
     to_content,
     to_encodable,
+    to_form_urlencoded,
     RequestOptions,
     default_request_options,
 )
@@ -42,6 +43,7 @@ __all__ = [
     "OAuth2ClientCredentialsForm",
     "OAuth2PasswordForm",
     "to_encodable",
+    "to_form_urlencoded",
     "filter_not_given",
     "to_content",
     "encode_query_param",
