@@ -7,6 +7,10 @@ from magic_hour.resources.v1.ai_face_editor import (
     AiFaceEditorClient,
     AsyncAiFaceEditorClient,
 )
+from magic_hour.resources.v1.ai_gif_generator import (
+    AiGifGeneratorClient,
+    AsyncAiGifGeneratorClient,
+)
 from magic_hour.resources.v1.ai_headshot_generator import (
     AiHeadshotGeneratorClient,
     AsyncAiHeadshotGeneratorClient,
@@ -80,6 +84,7 @@ class V1Client:
         self.video_projects = VideoProjectsClient(base_client=self._base_client)
         self.ai_clothes_changer = AiClothesChangerClient(base_client=self._base_client)
         self.ai_face_editor = AiFaceEditorClient(base_client=self._base_client)
+        self.ai_gif_generator = AiGifGeneratorClient(base_client=self._base_client)
         self.ai_headshot_generator = AiHeadshotGeneratorClient(
             base_client=self._base_client
         )
@@ -114,6 +119,7 @@ class AsyncV1Client:
             base_client=self._base_client
         )
         self.ai_face_editor = AsyncAiFaceEditorClient(base_client=self._base_client)
+        self.ai_gif_generator = AsyncAiGifGeneratorClient(base_client=self._base_client)
         self.ai_headshot_generator = AsyncAiHeadshotGeneratorClient(
             base_client=self._base_client
         )

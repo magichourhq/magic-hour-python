@@ -1,12 +1,11 @@
-from typing import Any, Dict, Type, Union, Sequence, List
-from urllib.parse import quote_plus
+from typing import Any, Dict, Type, Union, List, Mapping
 
 import httpx
 from typing_extensions import TypedDict, Required, NotRequired
 from pydantic import TypeAdapter, BaseModel
 
 from .type_utils import NotGiven
-from .query import QueryParams
+from .query import QueryParams, QueryParamStyle, encode_query_param
 
 """
 Request configuration and utility functions for handling HTTP requests.
@@ -96,6 +95,31 @@ def to_encodable(
     return model_dump(validated_item)
 
 
+def to_form_urlencoded(
+    *,
+    item: Any,
+    dump_with: Union[Type, Union[Type, Any]],
+    style: Mapping[str, QueryParamStyle],
+    explode: Mapping[str, bool],
+) -> Mapping[str, Any]:
+    """
+    Encodes object as x-www-form-urlencoded according to style and explode options
+    """
+    encoded = to_encodable(item=item, dump_with=dump_with)
+
+    if not isinstance(encoded, dict):
+        raise TypeError("x-www-form-urlencoded data must be an object at the top level")
+
+    form_data: QueryParams = {}
+
+    for key, val in encoded.items():
+        key_style = style.get(key, "form")
+        key_explode = explode.get(key, key_style == "form")
+        encode_query_param(form_data, key, val, style=key_style, explode=key_explode)
+
+    return form_data
+
+
 def to_content(*, file: httpx._types.FileTypes) -> httpx._types.RequestContent:
     """
     Converts the various ways files can be provided to something that is accepted by
@@ -110,24 +134,6 @@ def to_content(*, file: httpx._types.FileTypes) -> httpx._types.RequestContent:
         return file_content.read()
     else:
         return file_content
-
-
-def encode_param(
-    value: Any, explode: bool
-) -> Union[httpx._types.PrimitiveData, Sequence[httpx._types.PrimitiveData]]:
-    """
-    Encodes parameter values for use in URLs.
-
-    Handles both simple values and collections, with special handling for
-    unexploded collections (combining them with commas) versus exploded ones.
-
-    Args:
-        explode: Whether to explode collections into separate parameters
-    """
-    if isinstance(value, (list, dict)) and not explode:
-        return quote_plus(",".join(map(str, value)))
-    else:
-        return value
 
 
 def filter_not_given(value: Any) -> Any:
