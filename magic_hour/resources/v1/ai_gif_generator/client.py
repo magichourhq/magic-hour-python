@@ -27,7 +27,7 @@ class AiGifGeneratorClient:
         """
         AI GIFs
 
-        Create an AI GIF. Each GIF costs 5 frames.
+        Create an AI GIF. Each GIF costs 25 frames.
 
         POST /v1/ai-gif-generator
 
@@ -80,7 +80,7 @@ class AsyncAiGifGeneratorClient:
         """
         AI GIFs
 
-        Create an AI GIF. Each GIF costs 5 frames.
+        Create an AI GIF. Each GIF costs 25 frames.
 
         POST /v1/ai-gif-generator
 
