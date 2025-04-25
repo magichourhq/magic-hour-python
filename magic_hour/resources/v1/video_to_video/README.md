@@ -19,7 +19,6 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.video_to_video.create(
     assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"},
     end_seconds=15.0,
-    height=960,
     start_seconds=0.0,
     style={
         "art_style": "3D Render",
@@ -28,9 +27,10 @@ res = client.v1.video_to_video.create(
         "prompt_type": "append_default",
         "version": "default",
     },
-    width=512,
     fps_resolution="HALF",
+    height=960,
     name="Video To Video video",
+    width=512,
 )
 ```
 
@@ -44,7 +44,6 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_to_video.create(
     assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"},
     end_seconds=15.0,
-    height=960,
     start_seconds=0.0,
     style={
         "art_style": "3D Render",
@@ -53,8 +52,9 @@ res = await client.v1.video_to_video.create(
         "prompt_type": "append_default",
         "version": "default",
     },
-    width=512,
     fps_resolution="HALF",
+    height=960,
     name="Video To Video video",
+    width=512,
 )
 ```

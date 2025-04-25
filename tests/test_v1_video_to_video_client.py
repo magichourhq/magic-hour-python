@@ -29,7 +29,6 @@ def test_create_200_success_default():
     response = client.v1.video_to_video.create(
         assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"},
         end_seconds=15.0,
-        height=960,
         start_seconds=0.0,
         style={
             "art_style": "3D Render",
@@ -38,9 +37,10 @@ def test_create_200_success_default():
             "prompt_type": "append_default",
             "version": "default",
         },
-        width=512,
         fps_resolution="HALF",
+        height=960,
         name="Video To Video video",
+        width=512,
     )
     try:
         pydantic.TypeAdapter(models.V1VideoToVideoCreateResponse).validate_python(
@@ -76,7 +76,6 @@ async def test_await_create_200_success_default():
     response = await client.v1.video_to_video.create(
         assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"},
         end_seconds=15.0,
-        height=960,
         start_seconds=0.0,
         style={
             "art_style": "3D Render",
@@ -85,9 +84,10 @@ async def test_await_create_200_success_default():
             "prompt_type": "append_default",
             "version": "default",
         },
-        width=512,
         fps_resolution="HALF",
+        height=960,
         name="Video To Video video",
+        width=512,
     )
     try:
         pydantic.TypeAdapter(models.V1VideoToVideoCreateResponse).validate_python(

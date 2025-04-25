@@ -36,9 +36,16 @@ class V1VideoToVideoCreateBody(typing_extensions.TypedDict):
     * `HALF` - the result video will have half the FPS as the input video
     """
 
-    height: typing_extensions.Required[int]
+    height: typing_extensions.NotRequired[int]
     """
-    The height of the final output video. Must be divisible by 64. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    Used to determine the dimensions of the output video. 
+      
+    * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+    * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+    
+    Note: if the video's original resolution is less than the maximum, the video will not be resized.
+    
+    See our [pricing page](https://magichour.ai/pricing) for more details.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -53,9 +60,16 @@ class V1VideoToVideoCreateBody(typing_extensions.TypedDict):
 
     style: typing_extensions.Required[V1VideoToVideoCreateBodyStyle]
 
-    width: typing_extensions.Required[int]
+    width: typing_extensions.NotRequired[int]
     """
-    The width of the final output video. Must be divisible by 64. The maximum width depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
+    Used to determine the dimensions of the output video. 
+      
+    * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
+    * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+    
+    Note: if the video's original resolution is less than the maximum, the video will not be resized.
+    
+    See our [pricing page](https://magichour.ai/pricing) for more details.
     """
 
 
@@ -78,9 +92,7 @@ class _SerializerV1VideoToVideoCreateBody(pydantic.BaseModel):
     fps_resolution: typing.Optional[typing_extensions.Literal["FULL", "HALF"]] = (
         pydantic.Field(alias="fps_resolution", default=None)
     )
-    height: int = pydantic.Field(
-        alias="height",
-    )
+    height: typing.Optional[int] = pydantic.Field(alias="height", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(
         alias="start_seconds",
@@ -88,6 +100,4 @@ class _SerializerV1VideoToVideoCreateBody(pydantic.BaseModel):
     style: _SerializerV1VideoToVideoCreateBodyStyle = pydantic.Field(
         alias="style",
     )
-    width: int = pydantic.Field(
-        alias="width",
-    )
+    width: typing.Optional[int] = pydantic.Field(alias="width", default=None)
