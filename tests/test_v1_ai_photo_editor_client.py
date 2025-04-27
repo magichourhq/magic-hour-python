@@ -36,6 +36,8 @@ def test_create_200_success_default():
             "prompt": "A photo portrait of a person wearing a hat",
             "prompt_strength": 3.75,
             "steps": 4,
+            "upscale_factor": 2,
+            "upscale_fidelity": 0.5,
         },
         name="Photo Editor image",
     )
@@ -80,6 +82,8 @@ async def test_await_create_200_success_default():
             "prompt": "A photo portrait of a person wearing a hat",
             "prompt_strength": 3.75,
             "steps": 4,
+            "upscale_factor": 2,
+            "upscale_fidelity": 0.5,
         },
         name="Photo Editor image",
     )
