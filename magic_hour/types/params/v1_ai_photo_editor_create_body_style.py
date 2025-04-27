@@ -38,6 +38,16 @@ class V1AiPhotoEditorCreateBodyStyle(typing_extensions.TypedDict):
     Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
     """
 
+    upscale_factor: typing_extensions.NotRequired[int]
+    """
+    The multiplier applied to an image's original dimensions during the upscaling process. For example, a scale of 2 doubles the width and height (e.g., from 512x512 to 1024x1024).
+    """
+
+    upscale_fidelity: typing_extensions.NotRequired[float]
+    """
+    Upscale fidelity refers to the level of quality desired in the generated image. Fidelity value of 1 means more details.
+    """
+
 
 class _SerializerV1AiPhotoEditorCreateBodyStyle(pydantic.BaseModel):
     """
@@ -65,3 +75,9 @@ class _SerializerV1AiPhotoEditorCreateBodyStyle(pydantic.BaseModel):
         alias="prompt_strength",
     )
     steps: typing.Optional[int] = pydantic.Field(alias="steps", default=None)
+    upscale_factor: typing.Optional[int] = pydantic.Field(
+        alias="upscale_factor", default=None
+    )
+    upscale_fidelity: typing.Optional[float] = pydantic.Field(
+        alias="upscale_fidelity", default=None
+    )

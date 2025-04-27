@@ -65,6 +65,8 @@ class AiPhotoEditorClient:
                 "prompt": "A photo portrait of a person wearing a hat",
                 "prompt_strength": 3.75,
                 "steps": 4,
+                "upscale_factor": 2,
+                "upscale_fidelity": 0.5,
             },
             name="Photo Editor image",
         )
@@ -144,6 +146,8 @@ class AsyncAiPhotoEditorClient:
                 "prompt": "A photo portrait of a person wearing a hat",
                 "prompt_strength": 3.75,
                 "steps": 4,
+                "upscale_factor": 2,
+                "upscale_fidelity": 0.5,
             },
             name="Photo Editor image",
         )
