@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-AI QR Code
+### AI QR Code <a name="create"></a>
 
-Create an AI QR code. Each QR code costs 20 frames.
+Create an AI QR code. Each QR code costs 20 credits.
 
 **API Endpoint**: `POST /v1/ai-qr-code-generator`
 

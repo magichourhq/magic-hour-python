@@ -27,7 +27,7 @@ class PhotoColorizerClient:
         """
         Photo Colorizer
 
-        Colorize image. Each image costs 5 frames.
+        Colorize image. Each image costs 5 credits.
 
         POST /v1/photo-colorizer
 
@@ -81,7 +81,7 @@ class AsyncPhotoColorizerClient:
         """
         Photo Colorizer
 
-        Colorize image. Each image costs 5 frames.
+        Colorize image. Each image costs 5 credits.
 
         POST /v1/photo-colorizer
 

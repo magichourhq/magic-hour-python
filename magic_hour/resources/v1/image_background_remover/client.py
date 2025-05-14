@@ -27,7 +27,7 @@ class ImageBackgroundRemoverClient:
         """
         Image Background Remover
 
-        Remove background from image. Each image costs 5 frames.
+        Remove background from image. Each image costs 5 credits.
 
         POST /v1/image-background-remover
 
@@ -81,7 +81,7 @@ class AsyncImageBackgroundRemoverClient:
         """
         Image Background Remover
 
-        Remove background from image. Each image costs 5 frames.
+        Remove background from image. Each image costs 5 credits.
 
         POST /v1/image-background-remover
 

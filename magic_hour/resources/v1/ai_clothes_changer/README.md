@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-AI Clothes Changer
+### AI Clothes Changer <a name="create"></a>
 
-Change outfits in photos in seconds with just a photo reference. Each photo costs 25 frames.
+Change outfits in photos in seconds with just a photo reference. Each photo costs 25 credits.
 
 **API Endpoint**: `POST /v1/ai-clothes-changer`
 

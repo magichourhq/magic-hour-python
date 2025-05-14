@@ -27,7 +27,7 @@ class AiClothesChangerClient:
         """
         AI Clothes Changer
 
-        Change outfits in photos in seconds with just a photo reference. Each photo costs 25 frames.
+        Change outfits in photos in seconds with just a photo reference. Each photo costs 25 credits.
 
         POST /v1/ai-clothes-changer
 
@@ -85,7 +85,7 @@ class AsyncAiClothesChangerClient:
         """
         AI Clothes Changer
 
-        Change outfits in photos in seconds with just a photo reference. Each photo costs 25 frames.
+        Change outfits in photos in seconds with just a photo reference. Each photo costs 25 credits.
 
         POST /v1/ai-clothes-changer
 

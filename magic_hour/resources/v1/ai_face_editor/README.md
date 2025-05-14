@@ -1,6 +1,5 @@
 
-### create <a name="create"></a>
-AI Face Editor
+### AI Face Editor <a name="create"></a>
 
 Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
 

@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-Image Background Remover
+### Image Background Remover <a name="create"></a>
 
-Remove background from image. Each image costs 5 frames.
+Remove background from image. Each image costs 5 credits.
 
 **API Endpoint**: `POST /v1/image-background-remover`
 

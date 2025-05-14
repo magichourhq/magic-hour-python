@@ -1,6 +1,5 @@
 
-### create <a name="create"></a>
-AI Talking Photo
+### AI Talking Photo <a name="create"></a>
 
 Create a talking photo from an image and audio or text input.
 

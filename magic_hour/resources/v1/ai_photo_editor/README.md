@@ -1,10 +1,9 @@
 
-### create <a name="create"></a>
-AI Photo Editor
+### AI Photo Editor <a name="create"></a>
 
 > **NOTE**: this API is still in early development stages, and should be avoided. Please reach out to us if you're interested in this API. 
 
-Edit photo using AI. Each photo costs 10 frames.
+Edit photo using AI. Each photo costs 10 credits.
 
 **API Endpoint**: `POST /v1/ai-photo-editor`
 

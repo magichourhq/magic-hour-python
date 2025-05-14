@@ -27,7 +27,7 @@ class AiMemeGeneratorClient:
         """
         AI Meme Generator
 
-        Create an AI generated meme. Each meme costs 10 frames.
+        Create an AI generated meme. Each meme costs 10 credits.
 
         POST /v1/ai-meme-generator
 
@@ -85,7 +85,7 @@ class AsyncAiMemeGeneratorClient:
         """
         AI Meme Generator
 
-        Create an AI generated meme. Each meme costs 10 frames.
+        Create an AI generated meme. Each meme costs 10 credits.
 
         POST /v1/ai-meme-generator
 

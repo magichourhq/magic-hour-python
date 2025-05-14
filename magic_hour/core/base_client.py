@@ -25,6 +25,7 @@ T = TypeVar(
     "T",
     bound=Union[object, None, str, "BaseModel", List[Any], Dict[str, Any], Any],
 )
+_DEFAULT_SERVICE_NAME = "__default_service__"
 
 
 class BaseClient:
@@ -34,21 +35,16 @@ class BaseClient:
     Serves as the foundation for both synchronous and asynchronous client implementations.
 
     Attributes:
-        _base_url: Base URL for the API endpoint
         _auths: Dictionary mapping auth provider IDs to AuthProvider instances
     """
 
-    def __init__(
-        self,
-        *,
-        base_url: str,
-    ):
-        """Initialize the base client.
-
-        Args:
-            base_url: Base URL for the API endpoint
-        """
-        self._base_url = base_url
+    def __init__(self, base_url: Union[str, Dict[str, str]]):
+        """Initialize the base client"""
+        self._base_url = (
+            base_url
+            if isinstance(base_url, dict)
+            else {_DEFAULT_SERVICE_NAME: base_url}
+        )
         self._auths: Dict[str, AuthProvider] = {}
 
     def register_auth(self, auth_id: str, provider: AuthProvider):
@@ -71,15 +67,7 @@ class BaseClient:
         }
         return headers
 
-    def get_base_url(self) -> str:
-        """Get the base URL for the API endpoint.
-
-        Returns:
-            Base URL string
-        """
-        return self._base_url
-
-    def build_url(self, path: str) -> str:
+    def build_url(self, path: str, service_name: Optional[str] = None) -> str:
         """Build a complete URL by combining base URL and path.
 
         Args:
@@ -88,13 +76,13 @@ class BaseClient:
         Returns:
             Complete URL string
         """
-        base = self._base_url
-        if base.endswith("/"):
-            base = base[:-1]
+        base_url = self._base_url.get(service_name or _DEFAULT_SERVICE_NAME, "")
+        if base_url.endswith("/"):
+            base_url = base_url[:-1]
         if path.startswith("/"):
             path = path[1:]
 
-        return f"{base}/{path}"
+        return f"{base_url}/{path}"
 
     def _cast_to_raw_response(
         self, res: httpx.Response, cast_to: Union[Type[T], Any]
@@ -254,6 +242,7 @@ class BaseClient:
         *,
         method: str,
         path: str,
+        service_name: Optional[str] = None,
         auth_names: Optional[List[str]] = None,
         query_params: Optional[QueryParams] = None,
         headers: Optional[Dict[str, str]] = None,
@@ -283,7 +272,10 @@ class BaseClient:
             Complete request configuration
         """
         opts = request_options or default_request_options()
-        req_cfg: RequestConfig = {"method": method, "url": self.build_url(path)}
+        req_cfg: RequestConfig = {
+            "method": method,
+            "url": self.build_url(path, service_name=service_name),
+        }
         req_cfg = self._apply_auth(cfg=req_cfg, auth_names=auth_names or [])
         req_cfg = self._apply_headers(
             cfg=req_cfg, opts=opts, content_type=content_type, explicit_headers=headers
@@ -351,13 +343,12 @@ class SyncBaseClient(BaseClient):
     def __init__(
         self,
         *,
-        base_url: str,
+        base_url: Union[str, Dict[str, str]],
         httpx_client: httpx.Client,
     ):
         """Initialize the synchronous client.
 
         Args:
-            base_url: Base URL for the API endpoint
             httpx_client: Synchronous HTTPX client instance
         """
         super().__init__(base_url=base_url)
@@ -369,6 +360,7 @@ class SyncBaseClient(BaseClient):
         method: str,
         path: str,
         cast_to: Union[Type[T], Any],
+        service_name: Optional[str] = None,
         auth_names: Optional[List[str]] = None,
         query_params: Optional[QueryParams] = None,
         headers: Optional[Dict[str, str]] = None,
@@ -386,6 +378,7 @@ class SyncBaseClient(BaseClient):
             path: API endpoint path
             cast_to: Type to cast the response to
             auth_names: List of auth provider IDs
+            service_name: The name of the API service to make the request to
             query_params: Query parameters
             headers: Request headers
             data: Form data
@@ -404,6 +397,7 @@ class SyncBaseClient(BaseClient):
         req_cfg = self.build_request(
             method=method,
             path=path,
+            service_name=service_name,
             auth_names=auth_names,
             query_params=query_params,
             headers=headers,
@@ -430,6 +424,7 @@ class SyncBaseClient(BaseClient):
         method: str,
         path: str,
         cast_to: Union[Type[T], Any],
+        service_name: Optional[str] = None,
         auth_names: Optional[List[str]] = None,
         query_params: Optional[QueryParams] = None,
         headers: Optional[Dict[str, str]] = None,
@@ -447,6 +442,7 @@ class SyncBaseClient(BaseClient):
             path: API endpoint path
             cast_to: Type to cast the response to
             auth_names: List of auth provider IDs
+            service_name: The name of the API service to make the request to
             query_params: Query parameters
             headers: Request headers
             data: Form data
@@ -465,6 +461,7 @@ class SyncBaseClient(BaseClient):
         req_cfg = self.build_request(
             method=method,
             path=path,
+            service_name=service_name,
             auth_names=auth_names,
             query_params=query_params,
             headers=headers,
@@ -489,13 +486,12 @@ class AsyncBaseClient(BaseClient):
     def __init__(
         self,
         *,
-        base_url: str,
+        base_url: Union[str, Dict[str, str]],
         httpx_client: httpx.AsyncClient,
     ):
         """Initialize the asynchronous client.
 
         Args:
-            base_url: Base URL for the API endpoint
             httpx_client: Asynchronous HTTPX client instance
         """
         super().__init__(base_url=base_url)
@@ -507,6 +503,7 @@ class AsyncBaseClient(BaseClient):
         method: str,
         path: str,
         cast_to: Union[Type[T], Any],
+        service_name: Optional[str] = None,
         auth_names: Optional[List[str]] = None,
         query_params: Optional[QueryParams] = None,
         headers: Optional[Dict[str, str]] = None,
@@ -524,6 +521,7 @@ class AsyncBaseClient(BaseClient):
             path: API endpoint path
             cast_to: Type to cast the response to
             auth_names: List of auth provider IDs
+            service_name: The name of the API service to make the request to
             query_params: Query parameters
             headers: Request headers
             data: Form data
@@ -542,6 +540,7 @@ class AsyncBaseClient(BaseClient):
         req_cfg = self.build_request(
             method=method,
             path=path,
+            service_name=service_name,
             auth_names=auth_names,
             query_params=query_params,
             headers=headers,
@@ -568,6 +567,7 @@ class AsyncBaseClient(BaseClient):
         method: str,
         path: str,
         cast_to: Union[Type[T], Any],
+        service_name: Optional[str] = None,
         auth_names: Optional[List[str]] = None,
         query_params: Optional[QueryParams] = None,
         headers: Optional[Dict[str, str]] = None,
@@ -585,6 +585,7 @@ class AsyncBaseClient(BaseClient):
             path: API endpoint path
             cast_to: Type to cast the response to
             auth_names: List of auth provider IDs
+            service_name: The name of the API service to make the request to
             query_params: Query parameters
             headers: Request headers
             data: Form data
@@ -603,6 +604,7 @@ class AsyncBaseClient(BaseClient):
         req_cfg = self.build_request(
             method=method,
             path=path,
+            service_name=service_name,
             auth_names=auth_names,
             query_params=query_params,
             headers=headers,

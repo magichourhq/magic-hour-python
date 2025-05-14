@@ -1,6 +1,5 @@
 
-### delete <a name="delete"></a>
-Delete video
+### Delete video <a name="delete"></a>
 
 Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
 
@@ -26,8 +25,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
 ```
 
-### get <a name="get"></a>
-Get video details
+### Get video details <a name="get"></a>
 
 Get the details of a video project. The `downloads` field will be empty unless the video was successfully rendered.
 

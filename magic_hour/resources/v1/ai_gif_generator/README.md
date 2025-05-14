@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-AI GIFs
+### AI GIFs <a name="create"></a>
 
-Create an AI GIF. Each GIF costs 25 frames.
+Create an AI GIF. Each GIF costs 25 credits.
 
 **API Endpoint**: `POST /v1/ai-gif-generator`
 
