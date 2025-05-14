@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-AI Meme Generator
+### AI Meme Generator <a name="create"></a>
 
-Create an AI generated meme. Each meme costs 10 frames.
+Create an AI generated meme. Each meme costs 10 credits.
 
 **API Endpoint**: `POST /v1/ai-meme-generator`
 

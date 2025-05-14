@@ -31,7 +31,7 @@ class AiHeadshotGeneratorClient:
         """
         AI Headshots
 
-        Create an AI headshot. Each headshot costs 50 frames.
+        Create an AI headshot. Each headshot costs 50 credits.
 
         POST /v1/ai-headshot-generator
 
@@ -90,7 +90,7 @@ class AsyncAiHeadshotGeneratorClient:
         """
         AI Headshots
 
-        Create an AI headshot. Each headshot costs 50 frames.
+        Create an AI headshot. Each headshot costs 50 credits.
 
         POST /v1/ai-headshot-generator
 

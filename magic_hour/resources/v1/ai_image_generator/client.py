@@ -30,7 +30,7 @@ class AiImageGeneratorClient:
         """
         AI Images
 
-        Create an AI image. Each image costs 5 frames.
+        Create an AI image. Each image costs 5 credits.
 
         POST /v1/ai-image-generator
 
@@ -95,7 +95,7 @@ class AsyncAiImageGeneratorClient:
         """
         AI Images
 
-        Create an AI image. Each image costs 5 frames.
+        Create an AI image. Each image costs 5 credits.
 
         POST /v1/ai-image-generator
 

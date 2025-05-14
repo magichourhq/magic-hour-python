@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-Photo Colorizer
+### Photo Colorizer <a name="create"></a>
 
-Colorize image. Each image costs 5 frames.
+Colorize image. Each image costs 5 credits.
 
 **API Endpoint**: `POST /v1/photo-colorizer`
 

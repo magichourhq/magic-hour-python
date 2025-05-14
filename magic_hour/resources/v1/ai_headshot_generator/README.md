@@ -1,8 +1,7 @@
 
-### create <a name="create"></a>
-AI Headshots
+### AI Headshots <a name="create"></a>
 
-Create an AI headshot. Each headshot costs 50 frames.
+Create an AI headshot. Each headshot costs 50 credits.
 
 **API Endpoint**: `POST /v1/ai-headshot-generator`
 

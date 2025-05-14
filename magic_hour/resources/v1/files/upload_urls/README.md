@@ -1,6 +1,5 @@
 
-### create <a name="create"></a>
-Generate asset upload urls
+### Generate asset upload urls <a name="create"></a>
 
 Create a list of urls used to upload the assets needed to generate a video. Each video type has their own requirements on what assets are required. Please refer to the specific mode API for more details. The response array will be in the same order as the request body.
 
