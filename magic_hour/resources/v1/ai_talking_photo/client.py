@@ -24,6 +24,9 @@ class AiTalkingPhotoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1AiTalkingPhotoCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiTalkingPhotoCreateResponse:
         """
@@ -35,9 +38,10 @@ class AiTalkingPhotoClient:
 
         Args:
             name: The name of image
+            style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
-            end_seconds: The end time of the input video in seconds
-            start_seconds: The start time of the input video in seconds
+            end_seconds: The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+            start_seconds: The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -63,6 +67,7 @@ class AiTalkingPhotoClient:
         _json = to_encodable(
             item={
                 "name": name,
+                "style": style,
                 "assets": assets,
                 "end_seconds": end_seconds,
                 "start_seconds": start_seconds,
@@ -92,6 +97,9 @@ class AsyncAiTalkingPhotoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1AiTalkingPhotoCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiTalkingPhotoCreateResponse:
         """
@@ -103,9 +111,10 @@ class AsyncAiTalkingPhotoClient:
 
         Args:
             name: The name of image
+            style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
-            end_seconds: The end time of the input video in seconds
-            start_seconds: The start time of the input video in seconds
+            end_seconds: The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+            start_seconds: The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -131,6 +140,7 @@ class AsyncAiTalkingPhotoClient:
         _json = to_encodable(
             item={
                 "name": name,
+                "style": style,
                 "assets": assets,
                 "end_seconds": end_seconds,
                 "start_seconds": start_seconds,

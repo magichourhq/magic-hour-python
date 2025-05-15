@@ -6,6 +6,10 @@ from .v1_ai_talking_photo_create_body_assets import (
     V1AiTalkingPhotoCreateBodyAssets,
     _SerializerV1AiTalkingPhotoCreateBodyAssets,
 )
+from .v1_ai_talking_photo_create_body_style import (
+    V1AiTalkingPhotoCreateBodyStyle,
+    _SerializerV1AiTalkingPhotoCreateBodyStyle,
+)
 
 
 class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
@@ -20,7 +24,7 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    The end time of the input video in seconds
+    The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -30,7 +34,12 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     start_seconds: typing_extensions.Required[float]
     """
-    The start time of the input video in seconds
+    The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+    """
+
+    style: typing_extensions.NotRequired[V1AiTalkingPhotoCreateBodyStyle]
+    """
+    Attributes used to dictate the style of the output
     """
 
 
@@ -53,4 +62,7 @@ class _SerializerV1AiTalkingPhotoCreateBody(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(
         alias="start_seconds",
+    )
+    style: typing.Optional[_SerializerV1AiTalkingPhotoCreateBodyStyle] = pydantic.Field(
+        alias="style", default=None
     )
