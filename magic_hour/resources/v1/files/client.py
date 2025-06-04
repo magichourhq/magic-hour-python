@@ -1,9 +1,9 @@
-import typing_extensions
 from magic_hour.core import AsyncBaseClient, SyncBaseClient
 from magic_hour.resources.v1.files.upload_urls import (
     AsyncUploadUrlsClient,
     UploadUrlsClient,
 )
+import typing_extensions
 import os
 import mimetypes
 import httpx
