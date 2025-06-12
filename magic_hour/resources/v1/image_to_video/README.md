@@ -23,6 +23,7 @@ res = client.v1.image_to_video.create(
     name="Image To Video video",
     width=512,
 )
+
 ```
 
 #### Asynchronous Client
@@ -40,4 +41,16 @@ res = await client.v1.image_to_video.create(
     name="Image To Video video",
     width=512,
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for image-to-video. | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
+| `style` | ✓ | Attributed used to dictate the style of the output | `{"prompt": "a dog running"}` |
+| `height` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `960` |
+| `name` | ✗ | The name of video | `"Image To Video video"` |
+| `width` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `512` |

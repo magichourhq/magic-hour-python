@@ -31,10 +31,10 @@ def test_get_200_generated_success():
         pydantic.TypeAdapter(models.V1VideoProjectsGetResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -63,10 +63,10 @@ async def test_await_get_200_generated_success():
         pydantic.TypeAdapter(models.V1VideoProjectsGetResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 def test_delete_204_generated_success():

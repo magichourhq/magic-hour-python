@@ -20,6 +20,7 @@ res = client.v1.ai_meme_generator.create(
     },
     name="My Funny Meme",
 )
+
 ```
 
 #### Asynchronous Client
@@ -37,4 +38,12 @@ res = await client.v1.ai_meme_generator.create(
     },
     name="My Funny Meme",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"search_web": False, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
+| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |

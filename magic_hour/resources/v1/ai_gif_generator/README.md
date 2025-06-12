@@ -15,6 +15,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_gif_generator.create(
     style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
 )
+
 ```
 
 #### Asynchronous Client
@@ -27,4 +28,12 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_gif_generator.create(
     style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
+| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
