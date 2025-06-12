@@ -53,7 +53,7 @@ class AiImageGeneratorClient:
         client.v1.ai_image_generator.create(
             image_count=1,
             orientation="landscape",
-            style={"prompt": "Cool image"},
+            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             name="Ai Image image",
         )
         ```
@@ -118,7 +118,7 @@ class AsyncAiImageGeneratorClient:
         await client.v1.ai_image_generator.create(
             image_count=1,
             orientation="landscape",
-            style={"prompt": "Cool image"},
+            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             name="Ai Image image",
         )
         ```

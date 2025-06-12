@@ -16,6 +16,7 @@ res = client.v1.image_background_remover.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     name="Background Remover image",
 )
+
 ```
 
 #### Asynchronous Client
@@ -29,4 +30,12 @@ res = await client.v1.image_background_remover.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     name="Background Remover image",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for background removal | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Background Remover image"` |

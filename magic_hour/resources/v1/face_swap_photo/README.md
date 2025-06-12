@@ -19,6 +19,7 @@ res = client.v1.face_swap_photo.create(
     },
     name="Face Swap image",
 )
+
 ```
 
 #### Asynchronous Client
@@ -35,4 +36,12 @@ res = await client.v1.face_swap_photo.create(
     },
     name="Face Swap image",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for face swap photo | `{"source_file_path": "api-assets/id/1234.png", "target_file_path": "api-assets/id/1234.png"}` |
+| `name` | ✗ | The name of image | `"Face Swap image"` |

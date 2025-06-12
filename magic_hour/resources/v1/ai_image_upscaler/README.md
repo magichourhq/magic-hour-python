@@ -18,6 +18,7 @@ res = client.v1.ai_image_upscaler.create(
     style={"enhancement": "Balanced"},
     name="Image Upscaler image",
 )
+
 ```
 
 #### Asynchronous Client
@@ -33,4 +34,14 @@ res = await client.v1.ai_image_upscaler.create(
     style={"enhancement": "Balanced"},
     name="Image Upscaler image",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for upscaling | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `scale_factor` | ✓ | How much to scale the image. Must be either 2 or 4 | `2.0` |
+| `style` | ✓ |  | `{"enhancement": "Balanced"}` |
+| `name` | ✗ | The name of image | `"Image Upscaler image"` |

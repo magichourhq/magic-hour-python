@@ -15,9 +15,10 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_generator.create(
     image_count=1,
     orientation="landscape",
-    style={"prompt": "Cool image"},
+    style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     name="Ai Image image",
 )
+
 ```
 
 #### Asynchronous Client
@@ -30,7 +31,17 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_generator.create(
     image_count=1,
     orientation="landscape",
-    style={"prompt": "Cool image"},
+    style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     name="Ai Image image",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `image_count` | ✓ | number to images to generate | `1` |
+| `orientation` | ✓ |  | `"landscape"` |
+| `style` | ✓ |  | `{"prompt": "Cool image", "tool": "ai-anime-generator"}` |
+| `name` | ✗ | The name of image | `"Ai Image image"` |

@@ -13,6 +13,7 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+
 ```
 
 #### Asynchronous Client
@@ -23,7 +24,14 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the video project | `"cm6pvghix03bvyz0zwash6noj"` |
 
 ### Get video details <a name="get"></a>
 
@@ -48,6 +56,7 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+
 ```
 
 #### Asynchronous Client
@@ -58,4 +67,11 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `id` | ✓ | The id of the video | `"cm6pvghix03bvyz0zwash6noj"` |

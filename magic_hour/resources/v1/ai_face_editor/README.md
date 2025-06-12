@@ -33,6 +33,7 @@ res = client.v1.ai_face_editor.create(
     },
     name="Face Editor image",
 )
+
 ```
 
 #### Asynchronous Client
@@ -63,4 +64,13 @@ res = await client.v1.ai_face_editor.create(
     },
     name="Face Editor image",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for face editor | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `style` | ✓ | Face editing parameters | `{"enhance_face": False, "eye_gaze_horizontal": 0.0, "eye_gaze_vertical": 0.0, "eye_open_ratio": 0.0, "eyebrow_direction": 0.0, "head_pitch": 0.0, "head_roll": 0.0, "head_yaw": 0.0, "lip_open_ratio": 0.0, "mouth_grim": 0.0, "mouth_position_horizontal": 0.0, "mouth_position_vertical": 0.0, "mouth_pout": 0.0, "mouth_purse": 0.0, "mouth_smile": 0.0}` |
+| `name` | ✗ | The name of image | `"Face Editor image"` |

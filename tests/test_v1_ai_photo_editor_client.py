@@ -45,10 +45,10 @@ def test_create_200_success_default():
         pydantic.TypeAdapter(models.V1AiPhotoEditorCreateResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
@@ -91,7 +91,7 @@ async def test_await_create_200_success_default():
         pydantic.TypeAdapter(models.V1AiPhotoEditorCreateResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"

@@ -17,6 +17,7 @@ res = client.v1.ai_qr_code_generator.create(
     style={"art_style": "Watercolor"},
     name="Qr Code image",
 )
+
 ```
 
 #### Asynchronous Client
@@ -31,4 +32,13 @@ res = await client.v1.ai_qr_code_generator.create(
     style={"art_style": "Watercolor"},
     name="Qr Code image",
 )
+
 ```
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `content` | ✓ | The content of the QR code. | `"https://magichour.ai"` |
+| `style` | ✓ |  | `{"art_style": "Watercolor"}` |
+| `name` | ✗ | The name of image | `"Qr Code image"` |
