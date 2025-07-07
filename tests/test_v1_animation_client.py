@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/animation endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -31,12 +31,14 @@ def test_create_200_success_default():
             "audio_file_path": "api-assets/id/1234.mp3",
             "audio_source": "file",
             "image_file_path": "api-assets/id/1234.png",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         fps=12.0,
         height=960,
         style={
             "art_style": "Painterly Illustration",
+            "art_style_custom": "string",
             "camera_effect": "Accelerate",
             "prompt": "Cyberpunk city",
             "prompt_type": "ai_choose",
@@ -54,11 +56,11 @@ def test_create_200_success_default():
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/animation endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -79,12 +81,14 @@ async def test_await_create_200_success_default():
             "audio_file_path": "api-assets/id/1234.mp3",
             "audio_source": "file",
             "image_file_path": "api-assets/id/1234.png",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         fps=12.0,
         height=960,
         style={
             "art_style": "Painterly Illustration",
+            "art_style_custom": "string",
             "camera_effect": "Accelerate",
             "prompt": "Cyberpunk city",
             "prompt_type": "ai_choose",

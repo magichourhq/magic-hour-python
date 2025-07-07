@@ -5,6 +5,13 @@ Create an AI GIF. Each GIF costs 25 credits.
 
 **API Endpoint**: `POST /v1/ai-gif-generator`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
+| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
+
 #### Synchronous Client
 
 ```python
@@ -31,9 +38,10 @@ res = await client.v1.ai_gif_generator.create(
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
-| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
+##### Type
+[V1AiGifGeneratorCreateResponse](/magic_hour/types/models/v1_ai_gif_generator_create_response.py)
+
+##### Example
+`{"credits_charged": 25, "frame_cost": 25, "id": "clx7uu86w0a5qp55yxz315r6r"}`

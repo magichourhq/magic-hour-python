@@ -1,15 +1,13 @@
 from .api_error import ApiError
 from .auth import (
-    AuthKeyQuery,
+    AuthKey,
     AuthBasic,
     AuthBearer,
     AuthProvider,
-    AuthKeyCookie,
-    AuthKeyHeader,
     GrantType,
     OAuth2,
-    OAuth2ClientCredentialsForm,
-    OAuth2PasswordForm,
+    OAuth2ClientCredentials,
+    OAuth2Password,
 )
 from .base_client import AsyncBaseClient, BaseClient, SyncBaseClient
 from .binary_response import BinaryResponse
@@ -32,16 +30,14 @@ __all__ = [
     "RequestOptions",
     "default_request_options",
     "SyncBaseClient",
-    "AuthKeyQuery",
+    "AuthKey",
     "AuthBasic",
     "AuthBearer",
     "AuthProvider",
-    "AuthKeyCookie",
-    "AuthKeyHeader",
     "GrantType",
     "OAuth2",
-    "OAuth2ClientCredentialsForm",
-    "OAuth2PasswordForm",
+    "OAuth2ClientCredentials",
+    "OAuth2Password",
     "to_encodable",
     "to_form_urlencoded",
     "filter_not_given",

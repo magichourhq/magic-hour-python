@@ -23,7 +23,7 @@ class Client:
             if httpx_client is None
             else httpx_client,
         )
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
+        self._base_client.register_auth("bearerAuth", AuthBearer(token=token))
         self.v1 = V1Client(base_client=self._base_client)
 
 
@@ -44,5 +44,5 @@ class AsyncClient:
             if httpx_client is None
             else httpx_client,
         )
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
+        self._base_client.register_auth("bearerAuth", AuthBearer(token=token))
         self.v1 = AsyncV1Client(base_client=self._base_client)

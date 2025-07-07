@@ -5,6 +5,13 @@ Change outfits in photos in seconds with just a photo reference. Each photo cost
 
 **API Endpoint**: `POST /v1/ai-clothes-changer`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `assets` | ✓ | Provide the assets for clothes changer | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "dresses", "person_file_path": "api-assets/id/model.png"}` |
+| `name` | ✗ | The name of image | `"Clothes Changer image"` |
+
 #### Synchronous Client
 
 ```python
@@ -41,9 +48,10 @@ res = await client.v1.ai_clothes_changer.create(
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for clothes changer | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "dresses", "person_file_path": "api-assets/id/model.png"}` |
-| `name` | ✗ | The name of image | `"Clothes Changer image"` |
+##### Type
+[V1AiClothesChangerCreateResponse](/magic_hour/types/models/v1_ai_clothes_changer_create_response.py)
+
+##### Example
+`{"credits_charged": 25, "frame_cost": 25, "id": "clx7uu86w0a5qp55yxz315r6r"}`

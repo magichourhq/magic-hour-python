@@ -38,6 +38,18 @@ from .v1_ai_headshot_generator_create_body_style import (
     V1AiHeadshotGeneratorCreateBodyStyle,
     _SerializerV1AiHeadshotGeneratorCreateBodyStyle,
 )
+from .v1_ai_image_editor_create_body import (
+    V1AiImageEditorCreateBody,
+    _SerializerV1AiImageEditorCreateBody,
+)
+from .v1_ai_image_editor_create_body_assets import (
+    V1AiImageEditorCreateBodyAssets,
+    _SerializerV1AiImageEditorCreateBodyAssets,
+)
+from .v1_ai_image_editor_create_body_style import (
+    V1AiImageEditorCreateBodyStyle,
+    _SerializerV1AiImageEditorCreateBodyStyle,
+)
 from .v1_ai_image_generator_create_body import (
     V1AiImageGeneratorCreateBody,
     _SerializerV1AiImageGeneratorCreateBody,
@@ -200,6 +212,9 @@ __all__ = [
     "V1AiHeadshotGeneratorCreateBody",
     "V1AiHeadshotGeneratorCreateBodyAssets",
     "V1AiHeadshotGeneratorCreateBodyStyle",
+    "V1AiImageEditorCreateBody",
+    "V1AiImageEditorCreateBodyAssets",
+    "V1AiImageEditorCreateBodyStyle",
     "V1AiImageGeneratorCreateBody",
     "V1AiImageGeneratorCreateBodyStyle",
     "V1AiImageUpscalerCreateBody",
@@ -248,6 +263,9 @@ __all__ = [
     "_SerializerV1AiHeadshotGeneratorCreateBody",
     "_SerializerV1AiHeadshotGeneratorCreateBodyAssets",
     "_SerializerV1AiHeadshotGeneratorCreateBodyStyle",
+    "_SerializerV1AiImageEditorCreateBody",
+    "_SerializerV1AiImageEditorCreateBodyAssets",
+    "_SerializerV1AiImageEditorCreateBodyStyle",
     "_SerializerV1AiImageGeneratorCreateBody",
     "_SerializerV1AiImageGeneratorCreateBodyStyle",
     "_SerializerV1AiImageUpscalerCreateBody",

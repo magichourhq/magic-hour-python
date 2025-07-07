@@ -7,14 +7,14 @@ from magic_hour.types import models
 
 
 def test_create_200_success_all_params():
-    """Tests a POST request to the /v1/photo-colorizer endpoint.
+    """Tests a POST request to the /v1/ai-image-editor endpoint.
 
     Operation: create
     Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.V1PhotoColorizerCreateResponse
+    Response : models.V1AiImageEditorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -26,12 +26,13 @@ def test_create_200_success_all_params():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.photo_colorizer.create(
+    response = client.v1.ai_image_editor.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
-        name="Photo Colorizer image",
+        style={"prompt": "Give me sunglasses"},
+        name="Ai Image Editor image",
     )
     try:
-        pydantic.TypeAdapter(models.V1PhotoColorizerCreateResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
             response
         )
         is_valid_response_schema = True
@@ -42,14 +43,14 @@ def test_create_200_success_all_params():
 
 @pytest.mark.asyncio
 async def test_await_create_200_success_all_params():
-    """Tests a POST request to the /v1/photo-colorizer endpoint.
+    """Tests a POST request to the /v1/ai-image-editor endpoint.
 
     Operation: create
     Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.V1PhotoColorizerCreateResponse
+    Response : models.V1AiImageEditorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -61,12 +62,13 @@ async def test_await_create_200_success_all_params():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.photo_colorizer.create(
+    response = await client.v1.ai_image_editor.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
-        name="Photo Colorizer image",
+        style={"prompt": "Give me sunglasses"},
+        name="Ai Image Editor image",
     )
     try:
-        pydantic.TypeAdapter(models.V1PhotoColorizerCreateResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
             response
         )
         is_valid_response_schema = True
