@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/text-to-video endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -29,7 +29,7 @@ def test_create_200_success_default():
     response = client.v1.text_to_video.create(
         end_seconds=5.0,
         orientation="landscape",
-        style={"prompt": "a dog running"},
+        style={"prompt": "a dog running", "quality_mode": "quick"},
         name="Text To Video video",
     )
     try:
@@ -43,11 +43,11 @@ def test_create_200_success_default():
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/text-to-video endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -66,7 +66,7 @@ async def test_await_create_200_success_default():
     response = await client.v1.text_to_video.create(
         end_seconds=5.0,
         orientation="landscape",
-        style={"prompt": "a dog running"},
+        style={"prompt": "a dog running", "quality_mode": "quick"},
         name="Text To Video video",
     )
     try:

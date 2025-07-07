@@ -11,18 +11,23 @@ Below is the list of valid extensions for each asset type:
 
 Note: `.gif` is supported for face swap API `video_file_path` field.
 
-After receiving the upload url, you can upload the file by sending a PUT request with the header `'Content-Type: application/octet-stream'`.
+After receiving the upload url, you can upload the file by sending a PUT request.
 
 For example using curl
 
 ```
-curl -X PUT -H 'Content-Type: application/octet-stream' \
-  --data '@/path/to/file/video.mp4' \
-  https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
+curl -X PUT --data '@/path/to/file/video.mp4' \
+  https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
 ```
 
 
 **API Endpoint**: `POST /v1/files/upload-urls`
+
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `items` | ✓ |  | `[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}]` |
 
 #### Synchronous Client
 
@@ -56,8 +61,10 @@ res = await client.v1.files.upload_urls.create(
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `items` | ✓ |  | `[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}]` |
+##### Type
+[V1FilesUploadUrlsCreateResponse](/magic_hour/types/models/v1_files_upload_urls_create_response.py)
+
+##### Example
+`{"items": [{"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/video.mp4", "upload_url": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/audio.mp3", "upload_url": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}`

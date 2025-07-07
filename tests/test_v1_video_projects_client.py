@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_get_200_generated_success():
+def test_get_200_success_all_params():
     """Tests a GET request to the /v1/video-projects/{id} endpoint.
 
     Operation: get
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -38,11 +38,11 @@ def test_get_200_generated_success():
 
 
 @pytest.mark.asyncio
-async def test_await_get_200_generated_success():
+async def test_await_get_200_success_all_params():
     """Tests a GET request to the /v1/video-projects/{id} endpoint.
 
     Operation: get
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -69,11 +69,11 @@ async def test_await_get_200_generated_success():
     assert is_valid_response_schema, "failed response type check"
 
 
-def test_delete_204_generated_success():
+def test_delete_204_success_all_params():
     """Tests a DELETE request to the /v1/video-projects/{id} endpoint.
 
     Operation: delete
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 204
     Mode: Synchronous execution
 
@@ -94,11 +94,11 @@ def test_delete_204_generated_success():
 
 
 @pytest.mark.asyncio
-async def test_await_delete_204_generated_success():
+async def test_await_delete_204_success_all_params():
     """Tests a DELETE request to the /v1/video-projects/{id} endpoint.
 
     Operation: delete
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 204
     Mode: Asynchronous execution
 

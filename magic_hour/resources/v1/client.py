@@ -15,6 +15,10 @@ from magic_hour.resources.v1.ai_headshot_generator import (
     AiHeadshotGeneratorClient,
     AsyncAiHeadshotGeneratorClient,
 )
+from magic_hour.resources.v1.ai_image_editor import (
+    AiImageEditorClient,
+    AsyncAiImageEditorClient,
+)
 from magic_hour.resources.v1.ai_image_generator import (
     AiImageGeneratorClient,
     AsyncAiImageGeneratorClient,
@@ -88,6 +92,7 @@ class V1Client:
         self.ai_headshot_generator = AiHeadshotGeneratorClient(
             base_client=self._base_client
         )
+        self.ai_image_editor = AiImageEditorClient(base_client=self._base_client)
         self.ai_image_generator = AiImageGeneratorClient(base_client=self._base_client)
         self.ai_image_upscaler = AiImageUpscalerClient(base_client=self._base_client)
         self.ai_meme_generator = AiMemeGeneratorClient(base_client=self._base_client)
@@ -123,6 +128,7 @@ class AsyncV1Client:
         self.ai_headshot_generator = AsyncAiHeadshotGeneratorClient(
             base_client=self._base_client
         )
+        self.ai_image_editor = AsyncAiImageEditorClient(base_client=self._base_client)
         self.ai_image_generator = AsyncAiImageGeneratorClient(
             base_client=self._base_client
         )

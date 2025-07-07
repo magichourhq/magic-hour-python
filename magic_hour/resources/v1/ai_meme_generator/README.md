@@ -5,6 +5,13 @@ Create an AI generated meme. Each meme costs 10 credits.
 
 **API Endpoint**: `POST /v1/ai-meme-generator`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `style` | ✓ |  | `{"search_web": False, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
+| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |
+
 #### Synchronous Client
 
 ```python
@@ -41,9 +48,10 @@ res = await client.v1.ai_meme_generator.create(
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `style` | ✓ |  | `{"search_web": False, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
-| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |
+##### Type
+[V1AiMemeGeneratorCreateResponse](/magic_hour/types/models/v1_ai_meme_generator_create_response.py)
+
+##### Example
+`{"credits_charged": 10, "frame_cost": 10, "id": "clx7uu86w0a5qp55yxz315r6r"}`

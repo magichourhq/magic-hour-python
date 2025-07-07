@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/face-swap endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -31,6 +31,7 @@ def test_create_200_success_default():
             "image_file_path": "image/id/1234.png",
             "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         start_seconds=0.0,
@@ -47,11 +48,11 @@ def test_create_200_success_default():
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/face-swap endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -72,6 +73,7 @@ async def test_await_create_200_success_default():
             "image_file_path": "image/id/1234.png",
             "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         start_seconds=0.0,

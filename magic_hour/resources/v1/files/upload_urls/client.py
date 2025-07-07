@@ -33,14 +33,13 @@ class UploadUrlsClient:
         
         Note: `.gif` is supported for face swap API `video_file_path` field.
         
-        After receiving the upload url, you can upload the file by sending a PUT request with the header `'Content-Type: application/octet-stream'`.
+        After receiving the upload url, you can upload the file by sending a PUT request.
         
         For example using curl
         
         ```
-        curl -X PUT -H 'Content-Type: application/octet-stream' \
-          --data '@/path/to/file/video.mp4' \
-          https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
+        curl -X PUT --data '@/path/to/file/video.mp4' \
+          https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
         ```
         
         
@@ -99,14 +98,13 @@ class AsyncUploadUrlsClient:
         
         Note: `.gif` is supported for face swap API `video_file_path` field.
         
-        After receiving the upload url, you can upload the file by sending a PUT request with the header `'Content-Type: application/octet-stream'`.
+        After receiving the upload url, you can upload the file by sending a PUT request.
         
         For example using curl
         
         ```
-        curl -X PUT -H 'Content-Type: application/octet-stream' \
-          --data '@/path/to/file/video.mp4' \
-          https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890
+        curl -X PUT --data '@/path/to/file/video.mp4' \
+          https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
         ```
         
         

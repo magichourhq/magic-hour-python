@@ -8,6 +8,15 @@ Get more information about this mode at our [product page](/products/text-to-vid
 
 **API Endpoint**: `POST /v1/text-to-video`
 
+#### Parameters
+
+| Parameter | Required | Description | Example |
+|-----------|:--------:|-------------|--------|
+| `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
+| `orientation` | ✓ | Determines the orientation of the output video | `"landscape"` |
+| `style` | ✓ |  | `{"prompt": "a dog running"}` |
+| `name` | ✗ | The name of video | `"Text To Video video"` |
+
 #### Synchronous Client
 
 ```python
@@ -40,11 +49,10 @@ res = await client.v1.text_to_video.create(
 
 ```
 
-#### Parameters
+#### Response
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
-| `orientation` | ✓ | Determines the orientation of the output video | `"landscape"` |
-| `style` | ✓ |  | `{"prompt": "a dog running"}` |
-| `name` | ✗ | The name of video | `"Text To Video video"` |
+##### Type
+[V1TextToVideoCreateResponse](/magic_hour/types/models/v1_text_to_video_create_response.py)
+
+##### Example
+`{"credits_charged": 450, "estimated_frame_cost": 450, "id": "clx7uu86w0a5qp55yxz315r6r"}`
