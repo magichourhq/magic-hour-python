@@ -36,6 +36,7 @@ def test_create_200_success_all_params():
         },
         height=960,
         name="Image To Video video",
+        resolution="1080p",
         width=512,
     )
     try:
@@ -79,6 +80,7 @@ async def test_await_create_200_success_all_params():
         },
         height=960,
         name="Image To Video video",
+        resolution="1080p",
         width=512,
     )
     try:
