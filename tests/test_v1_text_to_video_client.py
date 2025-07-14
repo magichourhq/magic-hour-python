@@ -31,6 +31,7 @@ def test_create_200_success_all_params():
         orientation="landscape",
         style={"prompt": "a dog running", "quality_mode": "quick"},
         name="Text To Video video",
+        resolution="1080p",
     )
     try:
         pydantic.TypeAdapter(models.V1TextToVideoCreateResponse).validate_python(
@@ -68,6 +69,7 @@ async def test_await_create_200_success_all_params():
         orientation="landscape",
         style={"prompt": "a dog running", "quality_mode": "quick"},
         name="Text To Video video",
+        resolution="1080p",
     )
     try:
         pydantic.TypeAdapter(models.V1TextToVideoCreateResponse).validate_python(
