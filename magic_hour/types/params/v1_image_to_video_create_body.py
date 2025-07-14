@@ -39,6 +39,18 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     The name of video
     """
 
+    resolution: typing_extensions.NotRequired[
+        typing_extensions.Literal["1080p", "480p", "720p"]
+    ]
+    """
+    Controls the output video resolution. Defaults to `720p` if not specified.
+    
+    **Options:**
+    - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+    - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+    - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+    """
+
     style: typing_extensions.Required[V1ImageToVideoCreateBodyStyle]
     """
     Attributed used to dictate the style of the output
@@ -70,6 +82,9 @@ class _SerializerV1ImageToVideoCreateBody(pydantic.BaseModel):
     )
     height: typing.Optional[int] = pydantic.Field(alias="height", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
+    resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
+        pydantic.Field(alias="resolution", default=None)
+    )
     style: _SerializerV1ImageToVideoCreateBodyStyle = pydantic.Field(
         alias="style",
     )

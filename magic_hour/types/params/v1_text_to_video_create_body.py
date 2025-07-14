@@ -30,6 +30,18 @@ class V1TextToVideoCreateBody(typing_extensions.TypedDict):
     Determines the orientation of the output video
     """
 
+    resolution: typing_extensions.NotRequired[
+        typing_extensions.Literal["1080p", "480p", "720p"]
+    ]
+    """
+    Controls the output video resolution. Defaults to `720p` if not specified.
+    
+    **Options:**
+    - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+    - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+    - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+    """
+
     style: typing_extensions.Required[V1TextToVideoCreateBodyStyle]
 
 
@@ -51,6 +63,9 @@ class _SerializerV1TextToVideoCreateBody(pydantic.BaseModel):
         pydantic.Field(
             alias="orientation",
         )
+    )
+    resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
+        pydantic.Field(alias="resolution", default=None)
     )
     style: _SerializerV1TextToVideoCreateBodyStyle = pydantic.Field(
         alias="style",

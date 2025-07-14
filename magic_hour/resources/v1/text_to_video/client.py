@@ -25,6 +25,10 @@ class TextToVideoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1TextToVideoCreateResponse:
         """
@@ -39,6 +43,12 @@ class TextToVideoClient:
 
         Args:
             name: The name of video
+            resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        **Options:**
+        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
             end_seconds: The total duration of the output video in seconds.
             orientation: Determines the orientation of the output video
             style: V1TextToVideoCreateBodyStyle
@@ -64,6 +74,7 @@ class TextToVideoClient:
         _json = to_encodable(
             item={
                 "name": name,
+                "resolution": resolution,
                 "end_seconds": end_seconds,
                 "orientation": orientation,
                 "style": style,
@@ -93,6 +104,10 @@ class AsyncTextToVideoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1TextToVideoCreateResponse:
         """
@@ -107,6 +122,12 @@ class AsyncTextToVideoClient:
 
         Args:
             name: The name of video
+            resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        **Options:**
+        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
             end_seconds: The total duration of the output video in seconds.
             orientation: Determines the orientation of the output video
             style: V1TextToVideoCreateBodyStyle
@@ -132,6 +153,7 @@ class AsyncTextToVideoClient:
         _json = to_encodable(
             item={
                 "name": name,
+                "resolution": resolution,
                 "end_seconds": end_seconds,
                 "orientation": orientation,
                 "style": style,

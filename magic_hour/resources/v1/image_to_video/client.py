@@ -1,4 +1,5 @@
 import typing
+import typing_extensions
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -27,6 +28,10 @@ class ImageToVideoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -47,6 +52,12 @@ class ImageToVideoClient:
 
         It is retained solely for backward compatibility and will be deprecated in the future.
             name: The name of video
+            resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        **Options:**
+        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
             width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
         It is retained solely for backward compatibility and will be deprecated in the future.
@@ -78,6 +89,7 @@ class ImageToVideoClient:
             item={
                 "height": height,
                 "name": name,
+                "resolution": resolution,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
@@ -111,6 +123,10 @@ class AsyncImageToVideoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -131,6 +147,12 @@ class AsyncImageToVideoClient:
 
         It is retained solely for backward compatibility and will be deprecated in the future.
             name: The name of video
+            resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        **Options:**
+        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
             width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
         It is retained solely for backward compatibility and will be deprecated in the future.
@@ -162,6 +184,7 @@ class AsyncImageToVideoClient:
             item={
                 "height": height,
                 "name": name,
+                "resolution": resolution,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
