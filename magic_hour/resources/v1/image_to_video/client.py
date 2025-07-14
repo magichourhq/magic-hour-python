@@ -21,7 +21,6 @@ class ImageToVideoClient:
         *,
         assets: params.V1ImageToVideoCreateBodyAssets,
         end_seconds: float,
-        style: params.V1ImageToVideoCreateBodyStyle,
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -31,6 +30,9 @@ class ImageToVideoClient:
         resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1ImageToVideoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
@@ -58,12 +60,12 @@ class ImageToVideoClient:
         - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
         - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
         - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+            style: Attributed used to dictate the style of the output
             width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
         It is retained solely for backward compatibility and will be deprecated in the future.
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
-            style: Attributed used to dictate the style of the output
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -78,7 +80,6 @@ class ImageToVideoClient:
         client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            style={"prompt": "a dog running"},
             height=960,
             name="Image To Video video",
             width=512,
@@ -90,10 +91,10 @@ class ImageToVideoClient:
                 "height": height,
                 "name": name,
                 "resolution": resolution,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
-                "style": style,
             },
             dump_with=params._SerializerV1ImageToVideoCreateBody,
         )
@@ -116,7 +117,6 @@ class AsyncImageToVideoClient:
         *,
         assets: params.V1ImageToVideoCreateBodyAssets,
         end_seconds: float,
-        style: params.V1ImageToVideoCreateBodyStyle,
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -126,6 +126,9 @@ class AsyncImageToVideoClient:
         resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1ImageToVideoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
@@ -153,12 +156,12 @@ class AsyncImageToVideoClient:
         - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
         - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
         - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+            style: Attributed used to dictate the style of the output
             width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
         It is retained solely for backward compatibility and will be deprecated in the future.
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
-            style: Attributed used to dictate the style of the output
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -173,7 +176,6 @@ class AsyncImageToVideoClient:
         await client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            style={"prompt": "a dog running"},
             height=960,
             name="Image To Video video",
             width=512,
@@ -185,10 +187,10 @@ class AsyncImageToVideoClient:
                 "height": height,
                 "name": name,
                 "resolution": resolution,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
-                "style": style,
             },
             dump_with=params._SerializerV1ImageToVideoCreateBody,
         )

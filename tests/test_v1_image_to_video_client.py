@@ -29,14 +29,14 @@ def test_create_200_success_all_params():
     response = client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
+        height=960,
+        name="Image To Video video",
+        resolution="1080p",
         style={
             "high_quality": True,
             "prompt": "a dog running",
             "quality_mode": "quick",
         },
-        height=960,
-        name="Image To Video video",
-        resolution="1080p",
         width=512,
     )
     try:
@@ -73,14 +73,14 @@ async def test_await_create_200_success_all_params():
     response = await client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
+        height=960,
+        name="Image To Video video",
+        resolution="1080p",
         style={
             "high_quality": True,
             "prompt": "a dog running",
             "quality_mode": "quick",
         },
-        height=960,
-        name="Image To Video video",
-        resolution="1080p",
         width=512,
     )
     try:
