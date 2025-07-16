@@ -12,6 +12,9 @@ from .v1_ai_photo_editor_create_response import V1AiPhotoEditorCreateResponse
 from .v1_ai_qr_code_generator_create_response import V1AiQrCodeGeneratorCreateResponse
 from .v1_ai_talking_photo_create_response import V1AiTalkingPhotoCreateResponse
 from .v1_animation_create_response import V1AnimationCreateResponse
+from .v1_auto_subtitle_generator_create_response import (
+    V1AutoSubtitleGeneratorCreateResponse,
+)
 from .v1_face_swap_create_response import V1FaceSwapCreateResponse
 from .v1_face_swap_photo_create_response import V1FaceSwapPhotoCreateResponse
 from .v1_files_upload_urls_create_response import V1FilesUploadUrlsCreateResponse
@@ -52,6 +55,7 @@ __all__ = [
     "V1AiQrCodeGeneratorCreateResponse",
     "V1AiTalkingPhotoCreateResponse",
     "V1AnimationCreateResponse",
+    "V1AutoSubtitleGeneratorCreateResponse",
     "V1FaceSwapCreateResponse",
     "V1FaceSwapPhotoCreateResponse",
     "V1FilesUploadUrlsCreateResponse",

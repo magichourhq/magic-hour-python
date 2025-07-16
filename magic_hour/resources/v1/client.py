@@ -44,6 +44,10 @@ from magic_hour.resources.v1.ai_talking_photo import (
     AsyncAiTalkingPhotoClient,
 )
 from magic_hour.resources.v1.animation import AnimationClient, AsyncAnimationClient
+from magic_hour.resources.v1.auto_subtitle_generator import (
+    AsyncAutoSubtitleGeneratorClient,
+    AutoSubtitleGeneratorClient,
+)
 from magic_hour.resources.v1.face_swap import AsyncFaceSwapClient, FaceSwapClient
 from magic_hour.resources.v1.face_swap_photo import (
     AsyncFaceSwapPhotoClient,
@@ -102,6 +106,9 @@ class V1Client:
         )
         self.ai_talking_photo = AiTalkingPhotoClient(base_client=self._base_client)
         self.animation = AnimationClient(base_client=self._base_client)
+        self.auto_subtitle_generator = AutoSubtitleGeneratorClient(
+            base_client=self._base_client
+        )
         self.face_swap = FaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = FaceSwapPhotoClient(base_client=self._base_client)
         self.files = FilesClient(base_client=self._base_client)
@@ -144,6 +151,9 @@ class AsyncV1Client:
         )
         self.ai_talking_photo = AsyncAiTalkingPhotoClient(base_client=self._base_client)
         self.animation = AsyncAnimationClient(base_client=self._base_client)
+        self.auto_subtitle_generator = AsyncAutoSubtitleGeneratorClient(
+            base_client=self._base_client
+        )
         self.face_swap = AsyncFaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = AsyncFaceSwapPhotoClient(base_client=self._base_client)
         self.files = AsyncFilesClient(base_client=self._base_client)
