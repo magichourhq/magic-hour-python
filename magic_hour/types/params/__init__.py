@@ -122,6 +122,22 @@ from .v1_animation_create_body_style import (
     V1AnimationCreateBodyStyle,
     _SerializerV1AnimationCreateBodyStyle,
 )
+from .v1_auto_subtitle_generator_create_body import (
+    V1AutoSubtitleGeneratorCreateBody,
+    _SerializerV1AutoSubtitleGeneratorCreateBody,
+)
+from .v1_auto_subtitle_generator_create_body_assets import (
+    V1AutoSubtitleGeneratorCreateBodyAssets,
+    _SerializerV1AutoSubtitleGeneratorCreateBodyAssets,
+)
+from .v1_auto_subtitle_generator_create_body_style import (
+    V1AutoSubtitleGeneratorCreateBodyStyle,
+    _SerializerV1AutoSubtitleGeneratorCreateBodyStyle,
+)
+from .v1_auto_subtitle_generator_create_body_style_custom_config import (
+    V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
+    _SerializerV1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
+)
 from .v1_face_swap_create_body import (
     V1FaceSwapCreateBody,
     _SerializerV1FaceSwapCreateBody,
@@ -233,6 +249,10 @@ __all__ = [
     "V1AnimationCreateBody",
     "V1AnimationCreateBodyAssets",
     "V1AnimationCreateBodyStyle",
+    "V1AutoSubtitleGeneratorCreateBody",
+    "V1AutoSubtitleGeneratorCreateBodyAssets",
+    "V1AutoSubtitleGeneratorCreateBodyStyle",
+    "V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig",
     "V1FaceSwapCreateBody",
     "V1FaceSwapCreateBodyAssets",
     "V1FaceSwapPhotoCreateBody",
@@ -284,6 +304,10 @@ __all__ = [
     "_SerializerV1AnimationCreateBody",
     "_SerializerV1AnimationCreateBodyAssets",
     "_SerializerV1AnimationCreateBodyStyle",
+    "_SerializerV1AutoSubtitleGeneratorCreateBody",
+    "_SerializerV1AutoSubtitleGeneratorCreateBodyAssets",
+    "_SerializerV1AutoSubtitleGeneratorCreateBodyStyle",
+    "_SerializerV1AutoSubtitleGeneratorCreateBodyStyleCustomConfig",
     "_SerializerV1FaceSwapCreateBody",
     "_SerializerV1FaceSwapCreateBodyAssets",
     "_SerializerV1FaceSwapPhotoCreateBody",
