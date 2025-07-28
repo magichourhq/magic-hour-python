@@ -47,6 +47,13 @@ class FaceSwapPhotoClient:
         ```py
         client.v1.face_swap_photo.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
+                "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
             },
@@ -104,6 +111,13 @@ class AsyncFaceSwapPhotoClient:
         ```py
         await client.v1.face_swap_photo.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
+                "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
             },
