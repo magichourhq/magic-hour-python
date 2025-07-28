@@ -28,6 +28,13 @@ def test_create_200_success_all_params():
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.face_swap_photo.create(
         assets={
+            "face_mappings": [
+                {
+                    "new_face": "api-assets/id/1234.png",
+                    "original_face": "api-assets/id/0-0.png",
+                }
+            ],
+            "face_swap_mode": "all-faces",
             "source_file_path": "api-assets/id/1234.png",
             "target_file_path": "api-assets/id/1234.png",
         },
@@ -66,6 +73,13 @@ async def test_await_create_200_success_all_params():
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.face_swap_photo.create(
         assets={
+            "face_mappings": [
+                {
+                    "new_face": "api-assets/id/1234.png",
+                    "original_face": "api-assets/id/0-0.png",
+                }
+            ],
+            "face_swap_mode": "all-faces",
             "source_file_path": "api-assets/id/1234.png",
             "target_file_path": "api-assets/id/1234.png",
         },
