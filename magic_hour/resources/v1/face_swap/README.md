@@ -3,7 +3,7 @@
 
 Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
   
-Get more information about this mode at our [product page](/products/face-swap).
+Get more information about this mode at our [product page](https://magichour.ai/products/face-swap).
   
 
 **API Endpoint**: `POST /v1/face-swap`
@@ -12,7 +12,7 @@ Get more information about this mode at our [product page](/products/face-swap).
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used | `{"image_file_path": "image/id/1234.png", "video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}` |
+| `assets` | ✓ | Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used | `{"face_mappings": [{"new_face": "api-assets/id/1234.png", "original_face": "api-assets/id/0-0.png"}], "face_swap_mode": "all-faces", "image_file_path": "image/id/1234.png", "video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}` |
 | `end_seconds` | ✓ | The end time of the input video in seconds | `15.0` |
 | `start_seconds` | ✓ | The start time of the input video in seconds | `0.0` |
 | `height` | ✗ | Used to determine the dimensions of the output video.     * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio. * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.  Note: if the video's original resolution is less than the maximum, the video will not be resized.  See our [pricing page](https://magichour.ai/pricing) for more details. | `960` |
@@ -28,6 +28,13 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.face_swap.create(
     assets={
+        "face_mappings": [
+            {
+                "new_face": "api-assets/id/1234.png",
+                "original_face": "api-assets/id/0-0.png",
+            }
+        ],
+        "face_swap_mode": "all-faces",
         "image_file_path": "image/id/1234.png",
         "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
@@ -50,6 +57,13 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.face_swap.create(
     assets={
+        "face_mappings": [
+            {
+                "new_face": "api-assets/id/1234.png",
+                "original_face": "api-assets/id/0-0.png",
+            }
+        ],
+        "face_swap_mode": "all-faces",
         "image_file_path": "image/id/1234.png",
         "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",

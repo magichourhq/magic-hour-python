@@ -25,8 +25,8 @@ class V1FaceSwapPhotoCreateBodyAssets(typing_extensions.TypedDict):
     ]
     """
     The mode of face swap.
-    * `all-faces` - Swap all faces in the target image. `source_file_path` is required.
-    * `individual-faces` - Swap individual faces in the target image. `source_faces` is required.
+    * `all-faces` - Swap all faces in the target image or video. `source_file_path` is required.
+    * `individual-faces` - Swap individual faces in the target image or video. `source_faces` is required.
     """
 
     source_file_path: typing_extensions.NotRequired[str]
