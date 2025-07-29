@@ -154,6 +154,10 @@ from .v1_face_swap_create_body_assets import (
     V1FaceSwapCreateBodyAssets,
     _SerializerV1FaceSwapCreateBodyAssets,
 )
+from .v1_face_swap_create_body_assets_face_mappings_item import (
+    V1FaceSwapCreateBodyAssetsFaceMappingsItem,
+    _SerializerV1FaceSwapCreateBodyAssetsFaceMappingsItem,
+)
 from .v1_face_swap_photo_create_body import (
     V1FaceSwapPhotoCreateBody,
     _SerializerV1FaceSwapPhotoCreateBody,
@@ -269,6 +273,7 @@ __all__ = [
     "V1FaceDetectionCreateBodyAssets",
     "V1FaceSwapCreateBody",
     "V1FaceSwapCreateBodyAssets",
+    "V1FaceSwapCreateBodyAssetsFaceMappingsItem",
     "V1FaceSwapPhotoCreateBody",
     "V1FaceSwapPhotoCreateBodyAssets",
     "V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem",
@@ -327,6 +332,7 @@ __all__ = [
     "_SerializerV1FaceDetectionCreateBodyAssets",
     "_SerializerV1FaceSwapCreateBody",
     "_SerializerV1FaceSwapCreateBodyAssets",
+    "_SerializerV1FaceSwapCreateBodyAssetsFaceMappingsItem",
     "_SerializerV1FaceSwapPhotoCreateBody",
     "_SerializerV1FaceSwapPhotoCreateBodyAssets",
     "_SerializerV1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem",

@@ -2,9 +2,9 @@ import pydantic
 import typing_extensions
 
 
-class V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem(typing_extensions.TypedDict):
+class V1FaceSwapCreateBodyAssetsFaceMappingsItem(typing_extensions.TypedDict):
     """
-    V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem
+    V1FaceSwapCreateBodyAssetsFaceMappingsItem
     """
 
     new_face: typing_extensions.Required[str]
@@ -21,9 +21,9 @@ class V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem(typing_extensions.TypedDic
     """
 
 
-class _SerializerV1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem(pydantic.BaseModel):
+class _SerializerV1FaceSwapCreateBodyAssetsFaceMappingsItem(pydantic.BaseModel):
     """
-    Serializer for V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem handling case conversions
+    Serializer for V1FaceSwapCreateBodyAssetsFaceMappingsItem handling case conversions
     and file omissions as dictated by the API
     """
 

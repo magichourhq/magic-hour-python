@@ -37,7 +37,7 @@ class FaceSwapClient:
 
         Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
 
-        Get more information about this mode at our [product page](/products/face-swap).
+        Get more information about this mode at our [product page](https://magichour.ai/products/face-swap).
 
 
         POST /v1/face-swap
@@ -76,6 +76,13 @@ class FaceSwapClient:
         ```py
         client.v1.face_swap.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
+                "face_swap_mode": "all-faces",
                 "image_file_path": "image/id/1234.png",
                 "video_file_path": "api-assets/id/1234.mp4",
                 "video_source": "file",
@@ -135,7 +142,7 @@ class AsyncFaceSwapClient:
 
         Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
 
-        Get more information about this mode at our [product page](/products/face-swap).
+        Get more information about this mode at our [product page](https://magichour.ai/products/face-swap).
 
 
         POST /v1/face-swap
@@ -174,6 +181,13 @@ class AsyncFaceSwapClient:
         ```py
         await client.v1.face_swap.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
+                "face_swap_mode": "all-faces",
                 "image_file_path": "image/id/1234.png",
                 "video_file_path": "api-assets/id/1234.mp4",
                 "video_source": "file",
