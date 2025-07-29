@@ -48,6 +48,10 @@ from magic_hour.resources.v1.auto_subtitle_generator import (
     AsyncAutoSubtitleGeneratorClient,
     AutoSubtitleGeneratorClient,
 )
+from magic_hour.resources.v1.face_detection import (
+    AsyncFaceDetectionClient,
+    FaceDetectionClient,
+)
 from magic_hour.resources.v1.face_swap import AsyncFaceSwapClient, FaceSwapClient
 from magic_hour.resources.v1.face_swap_photo import (
     AsyncFaceSwapPhotoClient,
@@ -90,6 +94,7 @@ class V1Client:
         self._base_client = base_client
         self.image_projects = ImageProjectsClient(base_client=self._base_client)
         self.video_projects = VideoProjectsClient(base_client=self._base_client)
+        self.face_detection = FaceDetectionClient(base_client=self._base_client)
         self.ai_clothes_changer = AiClothesChangerClient(base_client=self._base_client)
         self.ai_face_editor = AiFaceEditorClient(base_client=self._base_client)
         self.ai_gif_generator = AiGifGeneratorClient(base_client=self._base_client)
@@ -127,6 +132,7 @@ class AsyncV1Client:
         self._base_client = base_client
         self.image_projects = AsyncImageProjectsClient(base_client=self._base_client)
         self.video_projects = AsyncVideoProjectsClient(base_client=self._base_client)
+        self.face_detection = AsyncFaceDetectionClient(base_client=self._base_client)
         self.ai_clothes_changer = AsyncAiClothesChangerClient(
             base_client=self._base_client
         )
