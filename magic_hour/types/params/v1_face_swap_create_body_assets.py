@@ -29,7 +29,7 @@ class V1FaceSwapCreateBodyAssets(typing_extensions.TypedDict):
     * `individual-faces` - Swap individual faces in the target image or video. `source_faces` is required.
     """
 
-    image_file_path: typing_extensions.Required[str]
+    image_file_path: typing_extensions.NotRequired[str]
     """
     The path of the input image with the face to be swapped.  The value is required if `face_swap_mode` is `all-faces`.
     
@@ -67,8 +67,8 @@ class _SerializerV1FaceSwapCreateBodyAssets(pydantic.BaseModel):
     face_swap_mode: typing.Optional[
         typing_extensions.Literal["all-faces", "individual-faces"]
     ] = pydantic.Field(alias="face_swap_mode", default=None)
-    image_file_path: str = pydantic.Field(
-        alias="image_file_path",
+    image_file_path: typing.Optional[str] = pydantic.Field(
+        alias="image_file_path", default=None
     )
     video_file_path: typing.Optional[str] = pydantic.Field(
         alias="video_file_path", default=None
