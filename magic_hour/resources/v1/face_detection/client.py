@@ -44,6 +44,7 @@ class FaceDetectionClient:
         return self._base_client.request(
             method="GET",
             path=f"/v1/face-detection/{id}",
+            auth_names=["bearerAuth"],
             cast_to=models.V1FaceDetectionGetResponse,
             request_options=request_options or default_request_options(),
         )
@@ -134,6 +135,7 @@ class AsyncFaceDetectionClient:
         return await self._base_client.request(
             method="GET",
             path=f"/v1/face-detection/{id}",
+            auth_names=["bearerAuth"],
             cast_to=models.V1FaceDetectionGetResponse,
             request_options=request_options or default_request_options(),
         )
