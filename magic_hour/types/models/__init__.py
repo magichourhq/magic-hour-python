@@ -15,6 +15,11 @@ from .v1_animation_create_response import V1AnimationCreateResponse
 from .v1_auto_subtitle_generator_create_response import (
     V1AutoSubtitleGeneratorCreateResponse,
 )
+from .v1_face_detection_create_response import V1FaceDetectionCreateResponse
+from .v1_face_detection_get_response import V1FaceDetectionGetResponse
+from .v1_face_detection_get_response_faces_item import (
+    V1FaceDetectionGetResponseFacesItem,
+)
 from .v1_face_swap_create_response import V1FaceSwapCreateResponse
 from .v1_face_swap_photo_create_response import V1FaceSwapPhotoCreateResponse
 from .v1_files_upload_urls_create_response import V1FilesUploadUrlsCreateResponse
@@ -56,6 +61,9 @@ __all__ = [
     "V1AiTalkingPhotoCreateResponse",
     "V1AnimationCreateResponse",
     "V1AutoSubtitleGeneratorCreateResponse",
+    "V1FaceDetectionCreateResponse",
+    "V1FaceDetectionGetResponse",
+    "V1FaceDetectionGetResponseFacesItem",
     "V1FaceSwapCreateResponse",
     "V1FaceSwapPhotoCreateResponse",
     "V1FilesUploadUrlsCreateResponse",

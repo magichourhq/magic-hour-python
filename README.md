@@ -93,6 +93,11 @@ client = AsyncClient(token="my api key")
 
 * [create](magic_hour/resources/v1/auto_subtitle_generator/README.md#create) - Auto Subtitle Generator
 
+### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
+
+* [create](magic_hour/resources/v1/face_detection/README.md#create) - Face Detection
+* [get](magic_hour/resources/v1/face_detection/README.md#get) - Get face detection details
+
 ### [v1.face_swap](magic_hour/resources/v1/face_swap/README.md)
 
 * [create](magic_hour/resources/v1/face_swap/README.md#create) - Face Swap video
