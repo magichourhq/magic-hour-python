@@ -46,7 +46,10 @@ class ImageBackgroundRemoverClient:
         Examples:
         ```py
         client.v1.image_background_remover.create(
-            assets={"image_file_path": "api-assets/id/1234.png"},
+            assets={
+                "background_image_file_path": "api-assets/id/1234.png",
+                "image_file_path": "api-assets/id/1234.png",
+            },
             name="Background Remover image",
         )
         ```
@@ -100,7 +103,10 @@ class AsyncImageBackgroundRemoverClient:
         Examples:
         ```py
         await client.v1.image_background_remover.create(
-            assets={"image_file_path": "api-assets/id/1234.png"},
+            assets={
+                "background_image_file_path": "api-assets/id/1234.png",
+                "image_file_path": "api-assets/id/1234.png",
+            },
             name="Background Remover image",
         )
         ```
