@@ -38,14 +38,18 @@ class BaseClient:
         _auths: Dictionary mapping auth provider IDs to AuthProvider instances
     """
 
-    def __init__(self, base_url: Union[str, Dict[str, str]]):
+    def __init__(
+        self,
+        base_url: Union[str, Dict[str, str]],
+        auths: Optional[Dict[str, AuthProvider]] = None,
+    ):
         """Initialize the base client"""
         self._base_url = (
             base_url
             if isinstance(base_url, dict)
             else {_DEFAULT_SERVICE_NAME: base_url}
         )
-        self._auths: Dict[str, AuthProvider] = {}
+        self._auths: Dict[str, AuthProvider] = auths or {}
 
     def register_auth(self, auth_id: str, provider: AuthProvider):
         """Register an authentication provider.
@@ -345,13 +349,14 @@ class SyncBaseClient(BaseClient):
         *,
         base_url: Union[str, Dict[str, str]],
         httpx_client: httpx.Client,
+        auths: Optional[Dict[str, AuthProvider]] = None,
     ):
         """Initialize the synchronous client.
 
         Args:
             httpx_client: Synchronous HTTPX client instance
         """
-        super().__init__(base_url=base_url)
+        super().__init__(base_url=base_url, auths=auths)
         self.httpx_client = httpx_client
 
     def request(
@@ -488,13 +493,14 @@ class AsyncBaseClient(BaseClient):
         *,
         base_url: Union[str, Dict[str, str]],
         httpx_client: httpx.AsyncClient,
+        auths: Optional[Dict[str, AuthProvider]] = None,
     ):
         """Initialize the asynchronous client.
 
         Args:
             httpx_client: Asynchronous HTTPX client instance
         """
-        super().__init__(base_url=base_url)
+        super().__init__(base_url=base_url, auths=auths)
         self.httpx_client = httpx_client
 
     async def request(
