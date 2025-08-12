@@ -80,9 +80,7 @@ class ImageToVideoClient:
         client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            height=960,
             name="Image To Video video",
-            width=512,
         )
         ```
         """
@@ -176,9 +174,7 @@ class AsyncImageToVideoClient:
         await client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            height=960,
             name="Image To Video video",
-            width=512,
         )
         ```
         """

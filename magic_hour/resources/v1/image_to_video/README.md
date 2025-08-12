@@ -14,11 +14,11 @@ Get more information about this mode at our [product page](https://magichour.ai/
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for image-to-video. | `{"image_file_path": "api-assets/id/1234.png"}` |
 | `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
-| `height` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `960` |
+| `height` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `123` |
 | `name` | ✗ | The name of video | `"Image To Video video"` |
 | `resolution` | ✗ | Controls the output video resolution. Defaults to `720p` if not specified.  **Options:** - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds. - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds. - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier. | `"1080p"` |
 | `style` | ✗ | Attributed used to dictate the style of the output | `{"prompt": "a dog running"}` |
-| `width` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `512` |
+| `width` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `123` |
 
 #### Synchronous Client
 
@@ -30,9 +30,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.image_to_video.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     end_seconds=5.0,
-    height=960,
     name="Image To Video video",
-    width=512,
 )
 
 ```
@@ -47,9 +45,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.image_to_video.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     end_seconds=5.0,
-    height=960,
     name="Image To Video video",
-    width=512,
 )
 
 ```
