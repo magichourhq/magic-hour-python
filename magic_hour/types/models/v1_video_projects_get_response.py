@@ -49,7 +49,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="end_seconds",
     )
     """
-    The end time of the input video in seconds
+    The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
     """
     error: typing.Optional[V1VideoProjectsGetResponseError] = pydantic.Field(
         alias="error",
@@ -85,7 +85,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="start_seconds",
     )
     """
-    The start time of the input video in seconds
+    The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
     """
     status: typing_extensions.Literal[
         "canceled", "complete", "draft", "error", "queued", "rendering"

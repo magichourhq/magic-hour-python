@@ -1,19 +1,20 @@
 
 ### Generate asset upload urls <a name="create"></a>
 
-Create a list of urls used to upload the assets needed to generate a video. Each video type has their own requirements on what assets are required. Please refer to the specific mode API for more details. The response array will be in the same order as the request body.
+Generates a list of pre-signed upload URLs for the assets required. This API is only necessary if you want to upload to Magic Hour's storage. Refer to the [Input Files Guide](/integration/input-files) for more details.
 
-Below is the list of valid extensions for each asset type:
+The response array will match the order of items in the request body.
 
+**Valid file extensions per asset type**:
 - video: mp4, m4v, mov, webm
 - audio: mp3, mpeg, wav, aac, aiff, flac
 - image: png, jpg, jpeg, webp, avif, jp2, tiff, bmp
 
-Note: `.gif` is supported for face swap API `video_file_path` field.
+> Note: `gif` is only supported for face swap API `video_file_path` field.
 
-After receiving the upload url, you can upload the file by sending a PUT request.
+Once you receive an upload URL, send a `PUT` request to upload the file directly.
 
-For example using curl
+Example:
 
 ```
 curl -X PUT --data '@/path/to/file/video.mp4' \
@@ -27,7 +28,7 @@ curl -X PUT --data '@/path/to/file/video.mp4' \
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `items` | ✓ |  | `[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}]` |
+| `items` | ✓ | The list of assets to upload. The response array will match the order of items in the request body. | `[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}]` |
 
 #### Synchronous Client
 

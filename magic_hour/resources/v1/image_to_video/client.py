@@ -53,13 +53,15 @@ class ImageToVideoClient:
             height: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
         It is retained solely for backward compatibility and will be deprecated in the future.
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
 
         **Options:**
         - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
         - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
-        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
             style: Attributed used to dictate the style of the output
             width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
@@ -81,6 +83,7 @@ class ImageToVideoClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
             name="Image To Video video",
+            resolution="720p",
         )
         ```
         """
@@ -147,13 +150,15 @@ class AsyncImageToVideoClient:
             height: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
         It is retained solely for backward compatibility and will be deprecated in the future.
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
 
         **Options:**
         - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
         - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
-        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
             style: Attributed used to dictate the style of the output
             width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
 
@@ -175,6 +180,7 @@ class AsyncImageToVideoClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
             name="Image To Video video",
+            resolution="720p",
         )
         ```
         """

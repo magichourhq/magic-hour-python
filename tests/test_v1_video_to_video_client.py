@@ -36,9 +36,9 @@ def test_create_200_success_all_params():
         start_seconds=0.0,
         style={
             "art_style": "3D Render",
-            "model": "Absolute Reality",
+            "model": "default",
             "prompt": "string",
-            "prompt_type": "append_default",
+            "prompt_type": "default",
             "version": "default",
         },
         fps_resolution="HALF",
@@ -87,9 +87,9 @@ async def test_await_create_200_success_all_params():
         start_seconds=0.0,
         style={
             "art_style": "3D Render",
-            "model": "Absolute Reality",
+            "model": "default",
             "prompt": "string",
-            "prompt_type": "append_default",
+            "prompt_type": "default",
             "version": "default",
         },
         fps_resolution="HALF",

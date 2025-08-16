@@ -19,12 +19,12 @@ class ImageProjectsClient:
         """
         Delete image
 
-        Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+        Permanently delete the rendered image(s). This action is not reversible, please be sure before deleting.
 
         DELETE /v1/image-projects/{id}
 
         Args:
-            id: The id of the image project
+            id: Unique ID of the image project. This value is returned by all of the POST APIs that create an image.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -36,7 +36,7 @@ class ImageProjectsClient:
 
         Examples:
         ```py
-        client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+        client.v1.image_projects.delete(id="cuid-example")
         ```
         """
         self._base_client.request(
@@ -67,7 +67,7 @@ class ImageProjectsClient:
         GET /v1/image-projects/{id}
 
         Args:
-            id: The id of the image project
+            id: Unique ID of the image project. This value is returned by all of the POST APIs that create an image.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -79,7 +79,7 @@ class ImageProjectsClient:
 
         Examples:
         ```py
-        client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+        client.v1.image_projects.get(id="cuid-example")
         ```
         """
         return self._base_client.request(
@@ -101,12 +101,12 @@ class AsyncImageProjectsClient:
         """
         Delete image
 
-        Permanently delete the rendered image. This action is not reversible, please be sure before deleting.
+        Permanently delete the rendered image(s). This action is not reversible, please be sure before deleting.
 
         DELETE /v1/image-projects/{id}
 
         Args:
-            id: The id of the image project
+            id: Unique ID of the image project. This value is returned by all of the POST APIs that create an image.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -118,7 +118,7 @@ class AsyncImageProjectsClient:
 
         Examples:
         ```py
-        await client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+        await client.v1.image_projects.delete(id="cuid-example")
         ```
         """
         await self._base_client.request(
@@ -149,7 +149,7 @@ class AsyncImageProjectsClient:
         GET /v1/image-projects/{id}
 
         Args:
-            id: The id of the image project
+            id: Unique ID of the image project. This value is returned by all of the POST APIs that create an image.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -161,7 +161,7 @@ class AsyncImageProjectsClient:
 
         Examples:
         ```py
-        await client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+        await client.v1.image_projects.get(id="cuid-example")
         ```
         """
         return await self._base_client.request(

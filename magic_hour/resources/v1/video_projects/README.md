@@ -9,7 +9,7 @@ Permanently delete the rendered video. This action is not reversible, please be 
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the video project | `"cm6pvghix03bvyz0zwash6noj"` |
+| `id` | ✓ | Unique ID of the video project. This value is returned by all of the POST APIs that create a video. | `"cuid-example"` |
 
 #### Synchronous Client
 
@@ -18,7 +18,7 @@ from magic_hour import Client
 from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
-res = client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+res = client.v1.video_projects.delete(id="cuid-example")
 
 ```
 
@@ -29,7 +29,7 @@ from magic_hour import AsyncClient
 from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
-res = await client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+res = await client.v1.video_projects.delete(id="cuid-example")
 
 ```
 
@@ -52,7 +52,7 @@ The video can be one of the following status
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `id` | ✓ | The id of the video | `"cm6pvghix03bvyz0zwash6noj"` |
+| `id` | ✓ | Unique ID of the video project. This value is returned by all of the POST APIs that create a video. | `"cuid-example"` |
 
 #### Synchronous Client
 
@@ -61,7 +61,7 @@ from magic_hour import Client
 from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
-res = client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+res = client.v1.video_projects.get(id="cuid-example")
 
 ```
 
@@ -72,7 +72,7 @@ from magic_hour import AsyncClient
 from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
-res = await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+res = await client.v1.video_projects.get(id="cuid-example")
 
 ```
 
@@ -82,4 +82,4 @@ res = await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
 [V1VideoProjectsGetResponse](/magic_hour/types/models/v1_video_projects_get_response.py)
 
 ##### Example
-`{"created_at": "1970-01-01T00:00:00", "credits_charged": 450, "download": {"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}, "downloads": [{"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}], "enabled": True, "end_seconds": 15.0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "fps": 30.0, "height": 960, "id": "clx7uu86w0a5qp55yxz315r6r", "name": "Example Name", "start_seconds": 0.0, "status": "complete", "total_frame_cost": 450, "type_": "FACE_SWAP", "width": 512}`
+`{"created_at": "1970-01-01T00:00:00", "credits_charged": 450, "download": {"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}, "downloads": [{"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}], "enabled": True, "end_seconds": 15.0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "fps": 30.0, "height": 960, "id": "cuid-example", "name": "Example Name", "start_seconds": 0.0, "status": "complete", "total_frame_cost": 450, "type_": "FACE_SWAP", "width": 512}`

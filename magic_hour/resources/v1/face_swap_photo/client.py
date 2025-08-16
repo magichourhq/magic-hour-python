@@ -32,7 +32,7 @@ class FaceSwapPhotoClient:
         POST /v1/face-swap-photo
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for face swap photo
             request_options: Additional options to customize the HTTP request
 
@@ -96,7 +96,7 @@ class AsyncFaceSwapPhotoClient:
         POST /v1/face-swap-photo
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for face swap photo
             request_options: Additional options to customize the HTTP request
 

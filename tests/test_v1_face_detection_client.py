@@ -93,7 +93,7 @@ def test_get_200_success_all_params():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.face_detection.get(id="string")
+    response = client.v1.face_detection.get(id="uuid-example")
     try:
         pydantic.TypeAdapter(models.V1FaceDetectionGetResponse).validate_python(
             response
@@ -125,7 +125,7 @@ async def test_await_get_200_success_all_params():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.face_detection.get(id="string")
+    response = await client.v1.face_detection.get(id="uuid-example")
     try:
         pydantic.TypeAdapter(models.V1FaceDetectionGetResponse).validate_python(
             response

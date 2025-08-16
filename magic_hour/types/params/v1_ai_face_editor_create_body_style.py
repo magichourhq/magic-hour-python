@@ -1,4 +1,5 @@
 import pydantic
+import typing
 import typing_extensions
 
 
@@ -7,77 +8,77 @@ class V1AiFaceEditorCreateBodyStyle(typing_extensions.TypedDict):
     Face editing parameters
     """
 
-    enhance_face: typing_extensions.Required[bool]
+    enhance_face: typing_extensions.NotRequired[bool]
     """
     Enhance face features
     """
 
-    eye_gaze_horizontal: typing_extensions.Required[float]
+    eye_gaze_horizontal: typing_extensions.NotRequired[float]
     """
     Horizontal eye gaze (-100 to 100), in increments of 5
     """
 
-    eye_gaze_vertical: typing_extensions.Required[float]
+    eye_gaze_vertical: typing_extensions.NotRequired[float]
     """
     Vertical eye gaze (-100 to 100), in increments of 5
     """
 
-    eye_open_ratio: typing_extensions.Required[float]
+    eye_open_ratio: typing_extensions.NotRequired[float]
     """
     Eye open ratio (-100 to 100), in increments of 5
     """
 
-    eyebrow_direction: typing_extensions.Required[float]
+    eyebrow_direction: typing_extensions.NotRequired[float]
     """
     Eyebrow direction (-100 to 100), in increments of 5
     """
 
-    head_pitch: typing_extensions.Required[float]
+    head_pitch: typing_extensions.NotRequired[float]
     """
     Head pitch (-100 to 100), in increments of 5
     """
 
-    head_roll: typing_extensions.Required[float]
+    head_roll: typing_extensions.NotRequired[float]
     """
     Head roll (-100 to 100), in increments of 5
     """
 
-    head_yaw: typing_extensions.Required[float]
+    head_yaw: typing_extensions.NotRequired[float]
     """
     Head yaw (-100 to 100), in increments of 5
     """
 
-    lip_open_ratio: typing_extensions.Required[float]
+    lip_open_ratio: typing_extensions.NotRequired[float]
     """
     Lip open ratio (-100 to 100), in increments of 5
     """
 
-    mouth_grim: typing_extensions.Required[float]
+    mouth_grim: typing_extensions.NotRequired[float]
     """
     Mouth grim (-100 to 100), in increments of 5
     """
 
-    mouth_position_horizontal: typing_extensions.Required[float]
+    mouth_position_horizontal: typing_extensions.NotRequired[float]
     """
     Horizontal mouth position (-100 to 100), in increments of 5
     """
 
-    mouth_position_vertical: typing_extensions.Required[float]
+    mouth_position_vertical: typing_extensions.NotRequired[float]
     """
     Vertical mouth position (-100 to 100), in increments of 5
     """
 
-    mouth_pout: typing_extensions.Required[float]
+    mouth_pout: typing_extensions.NotRequired[float]
     """
     Mouth pout (-100 to 100), in increments of 5
     """
 
-    mouth_purse: typing_extensions.Required[float]
+    mouth_purse: typing_extensions.NotRequired[float]
     """
     Mouth purse (-100 to 100), in increments of 5
     """
 
-    mouth_smile: typing_extensions.Required[float]
+    mouth_smile: typing_extensions.NotRequired[float]
     """
     Mouth smile (-100 to 100), in increments of 5
     """
@@ -93,48 +94,44 @@ class _SerializerV1AiFaceEditorCreateBodyStyle(pydantic.BaseModel):
         populate_by_name=True,
     )
 
-    enhance_face: bool = pydantic.Field(
-        alias="enhance_face",
+    enhance_face: typing.Optional[bool] = pydantic.Field(
+        alias="enhance_face", default=None
     )
-    eye_gaze_horizontal: float = pydantic.Field(
-        alias="eye_gaze_horizontal",
+    eye_gaze_horizontal: typing.Optional[float] = pydantic.Field(
+        alias="eye_gaze_horizontal", default=None
     )
-    eye_gaze_vertical: float = pydantic.Field(
-        alias="eye_gaze_vertical",
+    eye_gaze_vertical: typing.Optional[float] = pydantic.Field(
+        alias="eye_gaze_vertical", default=None
     )
-    eye_open_ratio: float = pydantic.Field(
-        alias="eye_open_ratio",
+    eye_open_ratio: typing.Optional[float] = pydantic.Field(
+        alias="eye_open_ratio", default=None
     )
-    eyebrow_direction: float = pydantic.Field(
-        alias="eyebrow_direction",
+    eyebrow_direction: typing.Optional[float] = pydantic.Field(
+        alias="eyebrow_direction", default=None
     )
-    head_pitch: float = pydantic.Field(
-        alias="head_pitch",
+    head_pitch: typing.Optional[float] = pydantic.Field(
+        alias="head_pitch", default=None
     )
-    head_roll: float = pydantic.Field(
-        alias="head_roll",
+    head_roll: typing.Optional[float] = pydantic.Field(alias="head_roll", default=None)
+    head_yaw: typing.Optional[float] = pydantic.Field(alias="head_yaw", default=None)
+    lip_open_ratio: typing.Optional[float] = pydantic.Field(
+        alias="lip_open_ratio", default=None
     )
-    head_yaw: float = pydantic.Field(
-        alias="head_yaw",
+    mouth_grim: typing.Optional[float] = pydantic.Field(
+        alias="mouth_grim", default=None
     )
-    lip_open_ratio: float = pydantic.Field(
-        alias="lip_open_ratio",
+    mouth_position_horizontal: typing.Optional[float] = pydantic.Field(
+        alias="mouth_position_horizontal", default=None
     )
-    mouth_grim: float = pydantic.Field(
-        alias="mouth_grim",
+    mouth_position_vertical: typing.Optional[float] = pydantic.Field(
+        alias="mouth_position_vertical", default=None
     )
-    mouth_position_horizontal: float = pydantic.Field(
-        alias="mouth_position_horizontal",
+    mouth_pout: typing.Optional[float] = pydantic.Field(
+        alias="mouth_pout", default=None
     )
-    mouth_position_vertical: float = pydantic.Field(
-        alias="mouth_position_vertical",
+    mouth_purse: typing.Optional[float] = pydantic.Field(
+        alias="mouth_purse", default=None
     )
-    mouth_pout: float = pydantic.Field(
-        alias="mouth_pout",
-    )
-    mouth_purse: float = pydantic.Field(
-        alias="mouth_purse",
-    )
-    mouth_smile: float = pydantic.Field(
-        alias="mouth_smile",
+    mouth_smile: typing.Optional[float] = pydantic.Field(
+        alias="mouth_smile", default=None
     )

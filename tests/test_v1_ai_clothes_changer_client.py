@@ -29,7 +29,7 @@ def test_create_200_success_all_params():
     response = client.v1.ai_clothes_changer.create(
         assets={
             "garment_file_path": "api-assets/id/outfit.png",
-            "garment_type": "dresses",
+            "garment_type": "upper_body",
             "person_file_path": "api-assets/id/model.png",
         },
         name="Clothes Changer image",
@@ -68,7 +68,7 @@ async def test_await_create_200_success_all_params():
     response = await client.v1.ai_clothes_changer.create(
         assets={
             "garment_file_path": "api-assets/id/outfit.png",
-            "garment_type": "dresses",
+            "garment_type": "upper_body",
             "person_file_path": "api-assets/id/model.png",
         },
         name="Clothes Changer image",

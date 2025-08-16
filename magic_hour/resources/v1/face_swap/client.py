@@ -51,7 +51,7 @@ class FaceSwapClient:
         Note: if the video's original resolution is less than the maximum, the video will not be resized.
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             width: Used to determine the dimensions of the output video.
 
         * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
@@ -61,8 +61,8 @@ class FaceSwapClient:
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
-            end_seconds: The end time of the input video in seconds
-            start_seconds: The start time of the input video in seconds
+            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
+            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -156,7 +156,7 @@ class AsyncFaceSwapClient:
         Note: if the video's original resolution is less than the maximum, the video will not be resized.
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             width: Used to determine the dimensions of the output video.
 
         * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
@@ -166,8 +166,8 @@ class AsyncFaceSwapClient:
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
-            end_seconds: The end time of the input video in seconds
-            start_seconds: The start time of the input video in seconds
+            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
+            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
             request_options: Additional options to customize the HTTP request
 
         Returns:

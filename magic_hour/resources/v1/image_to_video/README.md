@@ -15,8 +15,8 @@ Get more information about this mode at our [product page](https://magichour.ai/
 | `assets` | ✓ | Provide the assets for image-to-video. | `{"image_file_path": "api-assets/id/1234.png"}` |
 | `end_seconds` | ✓ | The total duration of the output video in seconds. | `5.0` |
 | `height` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `123` |
-| `name` | ✗ | The name of video | `"Image To Video video"` |
-| `resolution` | ✗ | Controls the output video resolution. Defaults to `720p` if not specified.  **Options:** - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds. - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds. - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. **Requires** `pro` or `business` tier. | `"1080p"` |
+| `name` | ✗ | The name of video. This value is mainly used for your own identification of the video. | `"Image To Video video"` |
+| `resolution` | ✗ | Controls the output video resolution. Defaults to `720p` if not specified.  480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.  **Options:** - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds. - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds. - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds. | `"720p"` |
 | `style` | ✗ | Attributed used to dictate the style of the output | `{"prompt": "a dog running"}` |
 | `width` | ✗ | This field does not affect the output video's resolution. The video's orientation will match that of the input image.  It is retained solely for backward compatibility and will be deprecated in the future. | `123` |
 
@@ -31,6 +31,7 @@ res = client.v1.image_to_video.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     end_seconds=5.0,
     name="Image To Video video",
+    resolution="720p",
 )
 
 ```
@@ -46,6 +47,7 @@ res = await client.v1.image_to_video.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     end_seconds=5.0,
     name="Image To Video video",
+    resolution="720p",
 )
 
 ```
@@ -56,4 +58,4 @@ res = await client.v1.image_to_video.create(
 [V1ImageToVideoCreateResponse](/magic_hour/types/models/v1_image_to_video_create_response.py)
 
 ##### Example
-`{"credits_charged": 450, "estimated_frame_cost": 450, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`

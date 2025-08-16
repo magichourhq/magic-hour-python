@@ -10,7 +10,7 @@ Create a face swap photo. Each photo costs 5 credits. The height/width of the ou
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for face swap photo | `{"face_mappings": [{"new_face": "api-assets/id/1234.png", "original_face": "api-assets/id/0-0.png"}], "face_swap_mode": "all-faces", "source_file_path": "api-assets/id/1234.png", "target_file_path": "api-assets/id/1234.png"}` |
-| `name` | ✗ | The name of image | `"Face Swap image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Face Swap image"` |
 
 #### Synchronous Client
 
@@ -66,4 +66,4 @@ res = await client.v1.face_swap_photo.create(
 [V1FaceSwapPhotoCreateResponse](/magic_hour/types/models/v1_face_swap_photo_create_response.py)
 
 ##### Example
-`{"credits_charged": 5, "frame_cost": 5, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`

@@ -33,7 +33,7 @@ class V1FaceDetectionGetResponse(pydantic.BaseModel):
         alias="id",
     )
     """
-    The id of the task
+    The id of the task. This value is returned by the [face detection API](/api-reference/files/face-detection#response-id).
     """
     status: typing_extensions.Literal["complete", "error", "queued", "rendering"] = (
         pydantic.Field(

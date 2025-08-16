@@ -9,8 +9,8 @@ Change outfits in photos in seconds with just a photo reference. Each photo cost
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for clothes changer | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "dresses", "person_file_path": "api-assets/id/model.png"}` |
-| `name` | ✗ | The name of image | `"Clothes Changer image"` |
+| `assets` | ✓ | Provide the assets for clothes changer | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "upper_body", "person_file_path": "api-assets/id/model.png"}` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Clothes Changer image"` |
 
 #### Synchronous Client
 
@@ -22,7 +22,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_clothes_changer.create(
     assets={
         "garment_file_path": "api-assets/id/outfit.png",
-        "garment_type": "dresses",
+        "garment_type": "upper_body",
         "person_file_path": "api-assets/id/model.png",
     },
     name="Clothes Changer image",
@@ -40,7 +40,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_clothes_changer.create(
     assets={
         "garment_file_path": "api-assets/id/outfit.png",
-        "garment_type": "dresses",
+        "garment_type": "upper_body",
         "person_file_path": "api-assets/id/model.png",
     },
     name="Clothes Changer image",
@@ -54,4 +54,4 @@ res = await client.v1.ai_clothes_changer.create(
 [V1AiClothesChangerCreateResponse](/magic_hour/types/models/v1_ai_clothes_changer_create_response.py)
 
 ##### Example
-`{"credits_charged": 25, "frame_cost": 25, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 25, "frame_cost": 25, "id": "cuid-example"}`

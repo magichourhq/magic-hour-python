@@ -10,7 +10,7 @@ Create an AI GIF. Each GIF costs 50 credits.
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
-| `name` | ✗ | The name of gif | `"Ai Gif gif"` |
+| `name` | ✗ | The name of gif. This value is mainly used for your own identification of the gif. | `"Ai Gif gif"` |
 
 #### Synchronous Client
 
@@ -44,4 +44,4 @@ res = await client.v1.ai_gif_generator.create(
 [V1AiGifGeneratorCreateResponse](/magic_hour/types/models/v1_ai_gif_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 50, "frame_cost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`

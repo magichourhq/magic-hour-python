@@ -9,14 +9,14 @@ class V1FilesUploadUrlsCreateBodyItemsItem(typing_extensions.TypedDict):
 
     extension: typing_extensions.Required[str]
     """
-    the extension of the file to upload. Do not include the dot (.) before the extension.
+    The extension of the file to upload. Do not include the dot (.) before the extension. Possible extensions are mp4,m4v,mov,webm,mp3,mpeg,wav,aac,aiff,flac,png,jpg,jpeg,webp,avif,jp2,tiff,bmp
     """
 
     type_: typing_extensions.Required[
         typing_extensions.Literal["audio", "image", "video"]
     ]
     """
-    The type of asset to upload
+    The type of asset to upload. Possible types are video, audio, image
     """
 
 
