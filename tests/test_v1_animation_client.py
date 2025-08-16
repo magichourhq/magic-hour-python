@@ -39,9 +39,9 @@ def test_create_200_success_all_params():
         style={
             "art_style": "Painterly Illustration",
             "art_style_custom": "string",
-            "camera_effect": "Accelerate",
+            "camera_effect": "Simple Zoom In",
             "prompt": "Cyberpunk city",
-            "prompt_type": "ai_choose",
+            "prompt_type": "custom",
             "transition_speed": 5,
         },
         width=512,
@@ -89,9 +89,9 @@ async def test_await_create_200_success_all_params():
         style={
             "art_style": "Painterly Illustration",
             "art_style_custom": "string",
-            "camera_effect": "Accelerate",
+            "camera_effect": "Simple Zoom In",
             "prompt": "Cyberpunk city",
-            "prompt_type": "ai_choose",
+            "prompt_type": "custom",
             "transition_speed": 5,
         },
         width=512,

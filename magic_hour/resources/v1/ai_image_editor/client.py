@@ -33,7 +33,7 @@ class AiImageEditorClient:
         POST /v1/ai-image-editor
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -90,7 +90,7 @@ class AsyncAiImageEditorClient:
         POST /v1/ai-image-editor
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request

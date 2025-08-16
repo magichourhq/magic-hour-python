@@ -10,12 +10,22 @@ class V1LipSyncCreateBodyAssets(typing_extensions.TypedDict):
 
     audio_file_path: typing_extensions.Required[str]
     """
-    The path of the audio file. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+    The path of the audio file. This value is either
+    - a direct URL to the video file
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    
     """
 
     video_file_path: typing_extensions.NotRequired[str]
     """
-    The path of the input video. This field is required if `video_source` is `file`. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file.
+    Required if `video_source` is `file`. This value is either
+    - a direct URL to the video file
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    
     """
 
     video_source: typing_extensions.Required[

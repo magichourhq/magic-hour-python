@@ -26,7 +26,7 @@ def test_get_200_success_all_params():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+    response = client.v1.image_projects.get(id="cuid-example")
     try:
         pydantic.TypeAdapter(models.V1ImageProjectsGetResponse).validate_python(
             response
@@ -58,7 +58,7 @@ async def test_await_get_200_success_all_params():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+    response = await client.v1.image_projects.get(id="cuid-example")
     try:
         pydantic.TypeAdapter(models.V1ImageProjectsGetResponse).validate_python(
             response
@@ -89,7 +89,7 @@ def test_delete_204_success_all_params():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+    response = client.v1.image_projects.delete(id="cuid-example")
     assert response is None
 
 
@@ -114,5 +114,5 @@ async def test_await_delete_204_success_all_params():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+    response = await client.v1.image_projects.delete(id="cuid-example")
     assert response is None

@@ -60,7 +60,7 @@ class VideoToVideoClient:
         Note: if the video's original resolution is less than the maximum, the video will not be resized.
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             width: Used to determine the dimensions of the output video.
 
         * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
@@ -70,8 +70,8 @@ class VideoToVideoClient:
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
-            end_seconds: The end time of the input video in seconds
-            start_seconds: The start time of the input video in seconds
+            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
+            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
             style: V1VideoToVideoCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -93,9 +93,9 @@ class VideoToVideoClient:
             start_seconds=0.0,
             style={
                 "art_style": "3D Render",
-                "model": "Absolute Reality",
+                "model": "default",
                 "prompt": "string",
-                "prompt_type": "append_default",
+                "prompt_type": "default",
                 "version": "default",
             },
             fps_resolution="HALF",
@@ -176,7 +176,7 @@ class AsyncVideoToVideoClient:
         Note: if the video's original resolution is less than the maximum, the video will not be resized.
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             width: Used to determine the dimensions of the output video.
 
         * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
@@ -186,8 +186,8 @@ class AsyncVideoToVideoClient:
 
         See our [pricing page](https://magichour.ai/pricing) for more details.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
-            end_seconds: The end time of the input video in seconds
-            start_seconds: The start time of the input video in seconds
+            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
+            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
             style: V1VideoToVideoCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -209,9 +209,9 @@ class AsyncVideoToVideoClient:
             start_seconds=0.0,
             style={
                 "art_style": "3D Render",
-                "model": "Absolute Reality",
+                "model": "default",
                 "prompt": "string",
-                "prompt_type": "append_default",
+                "prompt_type": "default",
                 "version": "default",
             },
             fps_resolution="HALF",

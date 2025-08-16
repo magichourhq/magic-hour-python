@@ -15,19 +15,25 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
 
     image_count: typing_extensions.Required[int]
     """
-    number to images to generate
+    Number of images to generate.
     """
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of image
+    The name of image. This value is mainly used for your own identification of the image.
     """
 
     orientation: typing_extensions.Required[
         typing_extensions.Literal["landscape", "portrait", "square"]
     ]
+    """
+    The orientation of the output image(s).
+    """
 
     style: typing_extensions.Required[V1AiImageGeneratorCreateBodyStyle]
+    """
+    The art style to use for image generation.
+    """
 
 
 class _SerializerV1AiImageGeneratorCreateBody(pydantic.BaseModel):

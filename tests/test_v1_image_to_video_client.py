@@ -31,7 +31,7 @@ def test_create_200_success_all_params():
         end_seconds=5.0,
         height=123,
         name="Image To Video video",
-        resolution="1080p",
+        resolution="720p",
         style={
             "high_quality": True,
             "prompt": "a dog running",
@@ -75,7 +75,7 @@ async def test_await_create_200_success_all_params():
         end_seconds=5.0,
         height=123,
         name="Image To Video video",
-        resolution="1080p",
+        resolution="720p",
         style={
             "high_quality": True,
             "prompt": "a dog running",

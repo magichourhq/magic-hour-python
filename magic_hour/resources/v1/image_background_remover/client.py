@@ -32,7 +32,7 @@ class ImageBackgroundRemoverClient:
         POST /v1/image-background-remover
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for background removal
             request_options: Additional options to customize the HTTP request
 
@@ -89,7 +89,7 @@ class AsyncImageBackgroundRemoverClient:
         POST /v1/image-background-remover
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for background removal
             request_options: Additional options to customize the HTTP request
 

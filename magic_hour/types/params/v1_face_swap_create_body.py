@@ -20,7 +20,7 @@ class V1FaceSwapCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    The end time of the input video in seconds
+    The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
     """
 
     height: typing_extensions.NotRequired[int]
@@ -37,12 +37,12 @@ class V1FaceSwapCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of video
+    The name of video. This value is mainly used for your own identification of the video.
     """
 
     start_seconds: typing_extensions.Required[float]
     """
-    The start time of the input video in seconds
+    The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
     """
 
     width: typing_extensions.NotRequired[int]

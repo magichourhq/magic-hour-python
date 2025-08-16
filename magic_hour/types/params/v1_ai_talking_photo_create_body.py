@@ -29,7 +29,7 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of image
+    The name of image. This value is mainly used for your own identification of the image.
     """
 
     start_seconds: typing_extensions.Required[float]

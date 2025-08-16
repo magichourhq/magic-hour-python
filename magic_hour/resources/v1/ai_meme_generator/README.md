@@ -54,4 +54,4 @@ res = await client.v1.ai_meme_generator.create(
 [V1AiMemeGeneratorCreateResponse](/magic_hour/types/models/v1_ai_meme_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 10, "frame_cost": 10, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}`

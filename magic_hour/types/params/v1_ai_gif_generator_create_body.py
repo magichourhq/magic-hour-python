@@ -15,7 +15,7 @@ class V1AiGifGeneratorCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of gif
+    The name of gif. This value is mainly used for your own identification of the gif.
     """
 
     style: typing_extensions.Required[V1AiGifGeneratorCreateBodyStyle]

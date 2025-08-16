@@ -33,7 +33,7 @@ class AiFaceEditorClient:
         POST /v1/ai-face-editor
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for face editor
             style: Face editing parameters
             request_options: Additional options to customize the HTTP request
@@ -106,7 +106,7 @@ class AsyncAiFaceEditorClient:
         POST /v1/ai-face-editor
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for face editor
             style: Face editing parameters
             request_options: Additional options to customize the HTTP request

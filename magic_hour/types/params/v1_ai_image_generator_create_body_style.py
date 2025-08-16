@@ -5,12 +5,12 @@ import typing_extensions
 
 class V1AiImageGeneratorCreateBodyStyle(typing_extensions.TypedDict):
     """
-    V1AiImageGeneratorCreateBodyStyle
+    The art style to use for image generation.
     """
 
     prompt: typing_extensions.Required[str]
     """
-    The prompt used for the image.
+    The prompt used for the image(s).
     """
 
     tool: typing_extensions.NotRequired[

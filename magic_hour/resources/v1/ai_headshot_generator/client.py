@@ -36,7 +36,7 @@ class AiHeadshotGeneratorClient:
         POST /v1/ai-headshot-generator
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             style: V1AiHeadshotGeneratorCreateBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
@@ -95,7 +95,7 @@ class AsyncAiHeadshotGeneratorClient:
         POST /v1/ai-headshot-generator
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             style: V1AiHeadshotGeneratorCreateBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request

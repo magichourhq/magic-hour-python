@@ -24,7 +24,7 @@ class V1AnimationCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    The end time of the input video in seconds
+    This value determines the duration of the output video.
     """
 
     fps: typing_extensions.Required[float]
@@ -39,7 +39,7 @@ class V1AnimationCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of video
+    The name of video. This value is mainly used for your own identification of the video.
     """
 
     style: typing_extensions.Required[V1AnimationCreateBodyStyle]

@@ -9,10 +9,10 @@ Create an AI image. Each image costs 5 credits.
 
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
-| `image_count` | ✓ | number to images to generate | `1` |
-| `orientation` | ✓ |  | `"landscape"` |
-| `style` | ✓ |  | `{"prompt": "Cool image", "tool": "ai-anime-generator"}` |
-| `name` | ✗ | The name of image | `"Ai Image image"` |
+| `image_count` | ✓ | Number of images to generate. | `1` |
+| `orientation` | ✓ | The orientation of the output image(s). | `"landscape"` |
+| `style` | ✓ | The art style to use for image generation. | `{"prompt": "Cool image", "tool": "ai-anime-generator"}` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Image image"` |
 
 #### Synchronous Client
 
@@ -52,4 +52,4 @@ res = await client.v1.ai_image_generator.create(
 [V1AiImageGeneratorCreateResponse](/magic_hour/types/models/v1_ai_image_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 5, "frame_cost": 5, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`

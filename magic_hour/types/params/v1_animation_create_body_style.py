@@ -60,7 +60,7 @@ class V1AnimationCreateBodyStyle(typing_extensions.TypedDict):
         ]
     ]
     """
-    The art style of the final output video
+    The art style used to create the output video
     """
 
     art_style_custom: typing_extensions.NotRequired[str]
@@ -124,8 +124,11 @@ class V1AnimationCreateBodyStyle(typing_extensions.TypedDict):
             "Zoom Out - Audio Sync",
         ]
     ]
+    """
+    The camera effect used to create the output video
+    """
 
-    prompt: typing_extensions.Required[typing.Optional[str]]
+    prompt: typing_extensions.NotRequired[str]
     """
     The prompt used for the video. Prompt is required if `prompt_type` is `custom`. Otherwise this value is ignored
     """
@@ -135,14 +138,16 @@ class V1AnimationCreateBodyStyle(typing_extensions.TypedDict):
     ]
     """
     
-    * `custom` - use your own prompt for the video.
+    * `custom` - Use your own prompt for the video.
     * `use_lyrics` - Use the lyrics of the audio to create the prompt. If this option is selected, then `assets.audio_source` must be `file` or `youtube`.
     * `ai_choose` - Let AI write the prompt. If this option is selected, then `assets.audio_source` must be `file` or `youtube`.
     """
 
     transition_speed: typing_extensions.Required[int]
     """
-    Change determines how quickly the video's content changes across frames. Higher = more rapid transitions. Lower = more stable visual experience.
+    Change determines how quickly the video's content changes across frames. 
+    * Higher = more rapid transitions.
+    * Lower = more stable visual experience.
     """
 
 
@@ -266,9 +271,7 @@ class _SerializerV1AnimationCreateBodyStyle(pydantic.BaseModel):
     ] = pydantic.Field(
         alias="camera_effect",
     )
-    prompt: typing.Optional[str] = pydantic.Field(
-        alias="prompt",
-    )
+    prompt: typing.Optional[str] = pydantic.Field(alias="prompt", default=None)
     prompt_type: typing_extensions.Literal["ai_choose", "custom", "use_lyrics"] = (
         pydantic.Field(
             alias="prompt_type",

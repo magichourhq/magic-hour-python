@@ -11,7 +11,7 @@ Edit images with AI. Each edit costs 50 credits.
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for image edit | `{"image_file_path": "api-assets/id/1234.png"}` |
 | `style` | ✓ |  | `{"prompt": "Give me sunglasses"}` |
-| `name` | ✗ | The name of image | `"Ai Image Editor image"` |
+| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Image Editor image"` |
 
 #### Synchronous Client
 
@@ -49,4 +49,4 @@ res = await client.v1.ai_image_editor.create(
 [V1AiImageEditorCreateResponse](/magic_hour/types/models/v1_ai_image_editor_create_response.py)
 
 ##### Example
-`{"credits_charged": 50, "frame_cost": 50, "id": "clx7uu86w0a5qp55yxz315r6r"}`
+`{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`

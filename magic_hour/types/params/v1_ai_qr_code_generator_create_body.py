@@ -20,7 +20,7 @@ class V1AiQrCodeGeneratorCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of image
+    The name of image. This value is mainly used for your own identification of the image.
     """
 
     style: typing_extensions.Required[V1AiQrCodeGeneratorCreateBodyStyle]

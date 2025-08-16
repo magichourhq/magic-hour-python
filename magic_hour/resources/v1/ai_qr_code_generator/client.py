@@ -33,7 +33,7 @@ class AiQrCodeGeneratorClient:
         POST /v1/ai-qr-code-generator
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             content: The content of the QR code.
             style: V1AiQrCodeGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -90,7 +90,7 @@ class AsyncAiQrCodeGeneratorClient:
         POST /v1/ai-qr-code-generator
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             content: The content of the QR code.
             style: V1AiQrCodeGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
