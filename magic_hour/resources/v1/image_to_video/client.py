@@ -50,9 +50,13 @@ class ImageToVideoClient:
         POST /v1/image-to-video
 
         Args:
-            height: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+
+        This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
             resolution: Controls the output video resolution. Defaults to `720p` if not specified.
 
@@ -63,9 +67,13 @@ class ImageToVideoClient:
         - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
         - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
             style: Attributed used to dictate the style of the output
-            width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+            width: `width` is deprecated and no longer influences the output video's resolution.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
             request_options: Additional options to customize the HTTP request
@@ -147,9 +155,13 @@ class AsyncImageToVideoClient:
         POST /v1/image-to-video
 
         Args:
-            height: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+
+        This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
             resolution: Controls the output video resolution. Defaults to `720p` if not specified.
 
@@ -160,9 +172,13 @@ class AsyncImageToVideoClient:
         - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
         - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
             style: Attributed used to dictate the style of the output
-            width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+            width: `width` is deprecated and no longer influences the output video's resolution.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
             request_options: Additional options to customize the HTTP request

@@ -52,23 +52,21 @@ class VideoToVideoClient:
             fps_resolution: Determines whether the resulting video will have the same frame per second as the original video, or half.
         * `FULL` - the result video will have the same FPS as the input video
         * `HALF` - the result video will have half the FPS as the input video
-            height: Used to determine the dimensions of the output video.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
-            width: Used to determine the dimensions of the output video.
+            width: `width` is deprecated and no longer influences the output video's resolution.
 
-        * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
             start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
@@ -99,9 +97,7 @@ class VideoToVideoClient:
                 "version": "default",
             },
             fps_resolution="HALF",
-            height=960,
             name="Video To Video video",
-            width=512,
         )
         ```
         """
@@ -168,23 +164,21 @@ class AsyncVideoToVideoClient:
             fps_resolution: Determines whether the resulting video will have the same frame per second as the original video, or half.
         * `FULL` - the result video will have the same FPS as the input video
         * `HALF` - the result video will have half the FPS as the input video
-            height: Used to determine the dimensions of the output video.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
-            width: Used to determine the dimensions of the output video.
+            width: `width` is deprecated and no longer influences the output video's resolution.
 
-        * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
             start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
@@ -215,9 +209,7 @@ class AsyncVideoToVideoClient:
                 "version": "default",
             },
             fps_resolution="HALF",
-            height=960,
             name="Video To Video video",
-            width=512,
         )
         ```
         """

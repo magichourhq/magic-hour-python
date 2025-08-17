@@ -27,11 +27,15 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     The total duration of the output video in seconds.
     """
 
-    height: typing_extensions.NotRequired[int]
+    height: typing_extensions.NotRequired[typing.Optional[int]]
     """
-    This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+    `height` is deprecated and no longer influences the output video's resolution.
     
-    It is retained solely for backward compatibility and will be deprecated in the future.
+    Output resolution is determined by the **minimum** of:
+    - The resolution of the input video
+    - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+    
+    This field is retained only for backward compatibility and will be removed in a future release.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -58,11 +62,15 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     Attributed used to dictate the style of the output
     """
 
-    width: typing_extensions.NotRequired[int]
+    width: typing_extensions.NotRequired[typing.Optional[int]]
     """
-    This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+    `width` is deprecated and no longer influences the output video's resolution.
     
-    It is retained solely for backward compatibility and will be deprecated in the future.
+    Output resolution is determined by the **minimum** of:
+    - The resolution of the input video
+    - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+    
+    This field is retained only for backward compatibility and will be removed in a future release.
     """
 
 
