@@ -23,16 +23,15 @@ class V1LipSyncCreateBody(typing_extensions.TypedDict):
     The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
     """
 
-    height: typing_extensions.NotRequired[int]
+    height: typing_extensions.NotRequired[typing.Optional[int]]
     """
-    Used to determine the dimensions of the output video. 
-      
-    * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-    * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+    `height` is deprecated and no longer influences the output video's resolution.
     
-    Note: if the video's original resolution is less than the maximum, the video will not be resized.
+    Output resolution is determined by the **minimum** of:
+    - The resolution of the input video
+    - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
     
-    See our [pricing page](https://magichour.ai/pricing) for more details.
+    This field is retained only for backward compatibility and will be removed in a future release.
     """
 
     max_fps_limit: typing_extensions.NotRequired[float]
@@ -50,16 +49,15 @@ class V1LipSyncCreateBody(typing_extensions.TypedDict):
     The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
     """
 
-    width: typing_extensions.NotRequired[int]
+    width: typing_extensions.NotRequired[typing.Optional[int]]
     """
-    Used to determine the dimensions of the output video. 
-      
-    * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-    * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+    `width` is deprecated and no longer influences the output video's resolution.
     
-    Note: if the video's original resolution is less than the maximum, the video will not be resized.
+    Output resolution is determined by the **minimum** of:
+    - The resolution of the input video
+    - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
     
-    See our [pricing page](https://magichour.ai/pricing) for more details.
+    This field is retained only for backward compatibility and will be removed in a future release.
     """
 
 

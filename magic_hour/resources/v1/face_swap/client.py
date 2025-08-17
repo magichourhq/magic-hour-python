@@ -43,23 +43,21 @@ class FaceSwapClient:
         POST /v1/face-swap
 
         Args:
-            height: Used to determine the dimensions of the output video.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
-            width: Used to determine the dimensions of the output video.
+            width: `width` is deprecated and no longer influences the output video's resolution.
 
-        * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
             start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
@@ -89,9 +87,7 @@ class FaceSwapClient:
             },
             end_seconds=15.0,
             start_seconds=0.0,
-            height=960,
             name="Face Swap video",
-            width=512,
         )
         ```
         """
@@ -148,23 +144,21 @@ class AsyncFaceSwapClient:
         POST /v1/face-swap
 
         Args:
-            height: Used to determine the dimensions of the output video.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        * If height is provided, width will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
-            width: Used to determine the dimensions of the output video.
+            width: `width` is deprecated and no longer influences the output video's resolution.
 
-        * If width is provided, height will also be required. The larger value between width and height will be used to determine the maximum output resolution while maintaining the original aspect ratio.
-        * If both height and width are omitted, the video will be resized according to your subscription's maximum resolution, while preserving aspect ratio.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        Note: if the video's original resolution is less than the maximum, the video will not be resized.
-
-        See our [pricing page](https://magichour.ai/pricing) for more details.
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
             start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
@@ -194,9 +188,7 @@ class AsyncFaceSwapClient:
             },
             end_seconds=15.0,
             start_seconds=0.0,
-            height=960,
             name="Face Swap video",
-            width=512,
         )
         ```
         """

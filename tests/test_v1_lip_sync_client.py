@@ -35,10 +35,10 @@ def test_create_200_success_all_params():
         },
         end_seconds=15.0,
         start_seconds=0.0,
-        height=960,
+        height=123,
         max_fps_limit=12.0,
         name="Lip Sync video",
-        width=512,
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1LipSyncCreateResponse).validate_python(response)
@@ -78,10 +78,10 @@ async def test_await_create_200_success_all_params():
         },
         end_seconds=15.0,
         start_seconds=0.0,
-        height=960,
+        height=123,
         max_fps_limit=12.0,
         name="Lip Sync video",
-        width=512,
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1LipSyncCreateResponse).validate_python(response)

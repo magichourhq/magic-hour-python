@@ -42,9 +42,9 @@ def test_create_200_success_all_params():
             "version": "default",
         },
         fps_resolution="HALF",
-        height=960,
+        height=123,
         name="Video To Video video",
-        width=512,
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1VideoToVideoCreateResponse).validate_python(
@@ -93,9 +93,9 @@ async def test_await_create_200_success_all_params():
             "version": "default",
         },
         fps_resolution="HALF",
-        height=960,
+        height=123,
         name="Video To Video video",
-        width=512,
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1VideoToVideoCreateResponse).validate_python(
