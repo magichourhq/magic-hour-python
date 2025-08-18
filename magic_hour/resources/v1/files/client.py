@@ -16,9 +16,7 @@ import io
 import pathlib
 
 
-def _get_file_type_and_extension(
-    file_path: str,
-) -> tuple[typing.Literal["video", "audio", "image"], str]:
+def _get_file_type_and_extension(file_path: str):
     """
     Determine file type and extension from file path.
 
@@ -56,12 +54,7 @@ def _get_file_type_and_extension(
 
 def _process_file_input(
     file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
-) -> tuple[
-    str | None,
-    typing.BinaryIO | io.IOBase | None,
-    typing_extensions.Literal["audio", "image", "video"],
-    str,
-]:
+):
     """
     Process different file input types and return standardized information.
 
@@ -105,7 +98,7 @@ def _process_file_input(
 
 def _prepare_file_for_upload(
     file_path: str | None, file_to_upload: typing.BinaryIO | io.IOBase | None
-) -> bytes:
+):
     """
     Read file content for upload, handling both file paths and file-like objects.
 
