@@ -180,40 +180,6 @@ def _create_progress_generator(content: bytes, filename: str = "file"):
     return content_generator(), finish_progress, error_progress
 
 
-def _upload_with_progress(
-    client: httpx.Client, url: str, content: bytes, filename: str = "file"
-):
-    """Upload with progress tracking for large files."""
-    generator, finish_progress, error_progress = _create_progress_generator(
-        content, filename
-    )
-
-    try:
-        response = client.put(url, content=generator)
-        finish_progress()
-        return response
-    except Exception as e:
-        error_progress()
-        raise e
-
-
-async def _upload_with_progress_async(
-    client: httpx.AsyncClient, url: str, content: bytes, filename: str = "file"
-):
-    """Upload with progress tracking for large files (async version)."""
-    generator, finish_progress, error_progress = _create_progress_generator(
-        content, filename
-    )
-
-    try:
-        response = await client.put(url, content=generator)
-        finish_progress()
-        return response
-    except Exception as e:
-        error_progress()
-        raise e
-
-
 class FilesClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
@@ -224,7 +190,8 @@ class FilesClient:
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
         """
-        Upload a local file to Magic Hour's storage.
+        Upload a local file to Magic Hour's storage. If the upload takes longer than 5 seconds, a progress bar will be displayed.
+        You can set the environment variable `TQDM_DISABLE` to `1` to disable the progress bar.
 
         Args:
             file: Path to the local file to upload, or a file-like object
@@ -269,10 +236,18 @@ class FilesClient:
                 except (AttributeError, TypeError):
                     pass
 
-            response = _upload_with_progress(
-                client, upload_info.upload_url, content, filename
+            # Upload with progress tracking for large files
+            generator, finish_progress, error_progress = _create_progress_generator(
+                content, filename
             )
-            response.raise_for_status()
+
+            try:
+                response = client.put(url=upload_info.upload_url, content=generator)
+                finish_progress()
+                response.raise_for_status()
+            except Exception as e:
+                error_progress()
+                raise e
 
         return upload_info.file_path
 
@@ -332,9 +307,19 @@ class AsyncFilesClient:
                 except (AttributeError, TypeError):
                     pass
 
-            response = await _upload_with_progress_async(
-                client, upload_info.upload_url, content, filename
+            # Upload with progress tracking for large files (async version)
+            generator, finish_progress, error_progress = _create_progress_generator(
+                content, filename
             )
-            response.raise_for_status()
+
+            try:
+                response = await client.put(
+                    url=upload_info.upload_url, content=generator
+                )
+                finish_progress()
+                response.raise_for_status()
+            except Exception as e:
+                error_progress()
+                raise e
 
         return upload_info.file_path
