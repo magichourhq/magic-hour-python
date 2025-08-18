@@ -14,8 +14,6 @@ from pathlib import Path
 import typing
 import io
 import pathlib
-import time
-from tqdm import tqdm
 
 
 def _get_file_type_and_extension(
@@ -136,50 +134,6 @@ def _prepare_file_for_upload(
         return content
 
 
-def _create_progress_generator(content: bytes, filename: str = "file"):
-    """Create a progress tracking generator for upload content."""
-    content_length = len(content)
-    start_time = time.time()
-    uploaded = 0
-    progress_bar = None
-
-    def content_generator():
-        nonlocal uploaded, progress_bar
-        chunk_size = 8192  # 8KB chunks
-        for i in range(0, len(content), chunk_size):
-            chunk = content[i : i + chunk_size]
-            uploaded += len(chunk)
-
-            if progress_bar is None and (time.time() - start_time) >= 5:
-                progress_bar = tqdm(
-                    total=content_length,
-                    initial=uploaded,
-                    unit="B",
-                    unit_scale=True,
-                    unit_divisor=1024,
-                    desc=f"Uploading {filename}",
-                    leave=True,
-                )
-
-            if progress_bar:
-                progress_bar.update(len(chunk))
-
-            yield chunk
-
-    def finish_progress():
-        if progress_bar:
-            progress_bar.close()
-            elapsed = time.time() - start_time
-            print(f"Upload completed in {elapsed:.1f}s")
-
-    def error_progress():
-        if progress_bar:
-            progress_bar.close()
-            print("\nUpload failed!")
-
-    return content_generator(), finish_progress, error_progress
-
-
 class FilesClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
@@ -190,8 +144,7 @@ class FilesClient:
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
         """
-        Upload a local file to Magic Hour's storage. If the upload takes longer than 5 seconds, a progress bar will be displayed.
-        You can set the environment variable `TQDM_DISABLE` to `1` to disable the progress bar.
+        Upload a local file to Magic Hour's storage.
 
         Args:
             file: Path to the local file to upload, or a file-like object
@@ -224,30 +177,8 @@ class FilesClient:
                 file_path=file_path, file_to_upload=file_to_upload
             )
 
-            # Extract filename for progress display
-            filename = "file"
-            if file_path:
-                filename = os.path.basename(file_path)
-            elif file_to_upload:
-                try:
-                    file_name = getattr(file_to_upload, "name", None)
-                    if file_name and isinstance(file_name, str):
-                        filename = os.path.basename(file_name)
-                except (AttributeError, TypeError):
-                    pass
-
-            # Upload with progress tracking for large files
-            generator, finish_progress, error_progress = _create_progress_generator(
-                content, filename
-            )
-
-            try:
-                response = client.put(url=upload_info.upload_url, content=generator)
-                finish_progress()
-                response.raise_for_status()
-            except Exception as e:
-                error_progress()
-                raise e
+            response = client.put(url=upload_info.upload_url, content=content)
+            response.raise_for_status()
 
         return upload_info.file_path
 
@@ -261,7 +192,8 @@ class AsyncFilesClient:
         self,
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
-        """Upload a local file to Magic Hour's storage asynchronously.
+        """
+        Upload a local file to Magic Hour's storage asynchronously.
 
         Args:
             file: Path to the local file to upload, or a file-like object
@@ -295,31 +227,7 @@ class AsyncFilesClient:
                 file_path=file_path, file_to_upload=file_to_upload
             )
 
-            # Extract filename for progress display
-            filename = "file"
-            if file_path:
-                filename = os.path.basename(file_path)
-            elif file_to_upload:
-                try:
-                    file_name = getattr(file_to_upload, "name", None)
-                    if file_name and isinstance(file_name, str):
-                        filename = os.path.basename(file_name)
-                except (AttributeError, TypeError):
-                    pass
-
-            # Upload with progress tracking for large files (async version)
-            generator, finish_progress, error_progress = _create_progress_generator(
-                content, filename
-            )
-
-            try:
-                response = await client.put(
-                    url=upload_info.upload_url, content=generator
-                )
-                finish_progress()
-                response.raise_for_status()
-            except Exception as e:
-                error_progress()
-                raise e
+            response = await client.put(url=upload_info.upload_url, content=content)
+            response.raise_for_status()
 
         return upload_info.file_path
