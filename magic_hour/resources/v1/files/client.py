@@ -135,6 +135,19 @@ def _prepare_file_for_upload(
 
 
 class FilesClient:
+    """
+    Client for uploading files to Magic Hour's storage.
+
+    The Files client provides functionality to upload media files (images, videos, audio)
+    to Magic Hour's secure storage. Once uploaded, files can be referenced in other API
+    calls using the returned file path.
+
+    Supported file types:
+    - **Images**: PNG, JPG, JPEG, WebP, AVIF, JP2, TIFF, BMP
+    - **Videos**: MP4, M4V, MOV, WebM
+    - **Audio**: MP3, MPEG, WAV, AAC, AIFF, FLAC
+    """
+
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
         self.upload_urls = UploadUrlsClient(base_client=self._base_client)
@@ -144,18 +157,62 @@ class FilesClient:
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
         """
-        Upload a local file to Magic Hour's storage.
+        Upload a file to Magic Hour's storage.
+
+        This method uploads a file to Magic Hour's secure cloud storage and returns
+        a file path that can be used as input for other Magic Hour API endpoints.
+        The file type is automatically detected from the file extension or MIME type.
 
         Args:
-            file: Path to the local file to upload, or a file-like object
+            file: The file to upload. Can be:
+                - **str**: Path to a local file (e.g., "/path/to/image.jpg")
+                - **pathlib.Path**: Path object to a local file
+                - **typing.BinaryIO | io.IOBase**: File-like object (must have a 'name' attribute)
 
         Returns:
-            The file path that can be used in other API calls.
+            str: The uploaded file's path in Magic Hour's storage system.
+                This path can be used as input for other API endpoints.
 
         Raises:
-            FileNotFoundError: If the local file is not found
-            ValueError: If the file type is not supported
-            httpx.HTTPStatusError: If the upload fails
+            FileNotFoundError: If the specified local file doesn't exist.
+            ValueError: If the file type is not supported or file-like object is invalid.
+            httpx.HTTPStatusError: If the upload request fails (network/server errors).
+
+        Examples:
+            Upload a local image file:
+
+            ```python
+            from magic_hour import Client
+            from os import getenv
+
+            client = Client(token=getenv("MAGIC_HOUR_API_TOKEN"))
+
+            # Upload from file path
+            file_path = client.v1.files.upload_file("/path/to/your/image.jpg")
+            print(f"Uploaded file: {file_path}")
+
+            # Use the uploaded file in other API calls
+            result = client.v1.ai_image_upscaler.create(
+                assets={"image_file_path": file_path},
+                style={"upscale_factor": 2}
+            )
+            ```
+
+            Upload using pathlib.Path:
+
+            ```python
+            from pathlib import Path
+
+            image_path = Path("./assets/photo.png")
+            file_path = client.v1.files.upload_file(image_path)
+            ```
+
+            Upload from a file-like object:
+
+            ```python
+            with open("video.mp4", "rb") as video_file:
+                file_path = client.v1.files.upload_file(video_file)
+            ```
         """
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
 
@@ -184,6 +241,20 @@ class FilesClient:
 
 
 class AsyncFilesClient:
+    """
+    Async client for uploading files to Magic Hour's storage.
+
+    The AsyncFilesClient provides asynchronous functionality to upload media files
+    (images, videos, audio) to Magic Hour's secure storage. This is ideal for
+    applications that need to handle multiple file uploads concurrently or integrate
+    with async frameworks like FastAPI or aiohttp.
+
+    Supported file types:
+    - **Images**: PNG, JPG, JPEG, WebP, AVIF, JP2, TIFF, BMP
+    - **Videos**: MP4, M4V, MOV, WebM
+    - **Audio**: MP3, MPEG, WAV, AAC, AIFF, FLAC
+    """
+
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
         self.upload_urls = AsyncUploadUrlsClient(base_client=self._base_client)
@@ -193,18 +264,50 @@ class AsyncFilesClient:
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
         """
-        Upload a local file to Magic Hour's storage asynchronously.
+        Upload a file to Magic Hour's storage asynchronously.
+
+        This method asynchronously uploads a file to Magic Hour's secure cloud storage
+        and returns a file path that can be used as input for other Magic Hour API endpoints.
+        The file type is automatically detected from the file extension or MIME type.
 
         Args:
-            file: Path to the local file to upload, or a file-like object
+            file: The file to upload. Can be:
+                - **str**: Path to a local file (e.g., "/path/to/image.jpg")
+                - **pathlib.Path**: Path object to a local file
+                - **typing.BinaryIO | io.IOBase**: File-like object (must have a 'name' attribute)
 
         Returns:
-            The file path that can be used in other API calls.
+            str: The uploaded file's path in Magic Hour's storage system.
+                This path can be used as input for other API endpoints.
 
         Raises:
-            FileNotFoundError: If the local file is not found
-            ValueError: If the file type is not supported
-            httpx.HTTPStatusError: If the upload fails
+            FileNotFoundError: If the specified local file doesn't exist.
+            ValueError: If the file type is not supported or file-like object is invalid.
+            httpx.HTTPStatusError: If the upload request fails (network/server errors).
+
+        Examples:
+            Basic async upload:
+
+            ```python
+            import asyncio
+            from magic_hour import AsyncClient
+            from os import getenv
+
+            async def upload_example():
+                client = AsyncClient(token=getenv("MAGIC_HOUR_API_TOKEN"))
+
+                # Upload from file path
+                file_path = await client.v1.files.upload_file("/path/to/your/image.jpg")
+                print(f"Uploaded file: {file_path}")
+
+                # Use the uploaded file in other API calls
+                result = await client.v1.ai_image_upscaler.create(
+                    assets={"image_file_path": file_path},
+                    style={"upscale_factor": 2}
+                )
+
+            asyncio.run(upload_example())
+            ```
         """
 
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
