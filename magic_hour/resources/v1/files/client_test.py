@@ -23,10 +23,7 @@ def test_upload_file_local():
         )
         result = client.v1.files.upload_file(tmp_path)
         assert result == "api-assets/id/video.mp4"
-        mock_put.assert_called_once_with(
-            mock.ANY,
-            content=data,
-        )
+        mock_put.assert_called_once_with(url=mock.ANY, content=data)
 
     os.remove(tmp_path)
 
@@ -58,10 +55,7 @@ async def test_async_upload_file_local():
         )
         result = await client.v1.files.upload_file(tmp_path)
         assert result == "api-assets/id/video.mp4"
-        mock_put.assert_awaited_once_with(
-            mock.ANY,
-            content=data,
-        )
+        mock_put.assert_called_once_with(url=mock.ANY, content=data)
 
     os.remove(tmp_path)
 
@@ -95,7 +89,7 @@ def test_upload_file_with_binary_io():
         result = client.v1.files.upload_file(file_obj)
         assert result == "api-assets/id/video.mp4"
         mock_put.assert_called_once_with(
-            mock.ANY,
+            url=mock.ANY,
             content=data,
         )
 
@@ -114,10 +108,7 @@ async def test_async_upload_file_with_binary_io():
         )
         result = await client.v1.files.upload_file(file_obj)
         assert result == "api-assets/id/video.mp4"
-        mock_put.assert_awaited_once_with(
-            mock.ANY,
-            content=data,
-        )
+        mock_put.assert_called_once_with(url=mock.ANY, content=data)
 
 
 # Test pathlib.Path input
@@ -135,10 +126,7 @@ def test_upload_file_with_pathlib_path():
         )
         result = client.v1.files.upload_file(tmp_path)
         assert result == "api-assets/id/video.mp4"
-        mock_put.assert_called_once_with(
-            mock.ANY,
-            content=data,
-        )
+        mock_put.assert_called_once_with(url=mock.ANY, content=data)
 
     os.remove(tmp_path)
 
@@ -307,6 +295,6 @@ def test_upload_file_preserves_file_position():
 
         # Verify the full content was uploaded (not just from position 5)
         mock_put.assert_called_once_with(
-            mock.ANY,
+            url=mock.ANY,
             content=data,  # Full data, not data[5:]
         )
