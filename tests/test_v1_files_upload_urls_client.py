@@ -1,8 +1,5 @@
 import pydantic
 import pytest
-import tempfile
-import os
-from unittest import mock
 
 from magic_hour import AsyncClient, Client
 from magic_hour.environment import Environment
