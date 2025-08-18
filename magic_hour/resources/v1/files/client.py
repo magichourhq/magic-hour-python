@@ -180,11 +180,10 @@ class FilesClient:
         upload_info = response.items[0]
 
         with httpx.Client() as client:
-            content = _prepare_file_for_upload(file_path, file_to_upload)
-            headers = {"Content-Type": "application/octet-stream"}
-            response = client.put(
-                upload_info.upload_url, content=content, headers=headers
+            content = _prepare_file_for_upload(
+                file_path=file_path, file_to_upload=file_to_upload
             )
+            response = client.put(url=upload_info.upload_url, content=content)
             response.raise_for_status()
 
         return upload_info.file_path
@@ -233,11 +232,10 @@ class AsyncFilesClient:
         upload_info = response.items[0]
 
         async with httpx.AsyncClient() as client:
-            content = _prepare_file_for_upload(file_path, file_to_upload)
-            headers = {"Content-Type": "application/octet-stream"}
-            response = await client.put(
-                upload_info.upload_url, content=content, headers=headers
+            content = _prepare_file_for_upload(
+                file_path=file_path, file_to_upload=file_to_upload
             )
+            response = await client.put(url=upload_info.upload_url, content=content)
             response.raise_for_status()
 
         return upload_info.file_path
