@@ -97,7 +97,7 @@ def _process_file_input(
 
 
 def _prepare_file_for_upload(
-    file_path: str | None, file_to_upload: typing.BinaryIO | io.IOBase | None
+    file_path: str | None, file_to_upload: typing.BinaryIO | None
 ) -> bytes:
     """
     Read file content for upload, handling both file paths and file-like objects.
