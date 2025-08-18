@@ -228,24 +228,19 @@ class FilesClient:
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
         """
-        Upload a file to Magic Hour's storage and return the path if it's already a URL.
+        Upload a file to Magic Hour's storage.
 
         Args:
-            file: Path to the local file to upload, a URL, or a file-like object
+            file: Path to the local file to upload, or a file-like object
 
         Returns:
             The file path that can be used in other API calls.
-            If the input is a URL, it will be returned as-is.
 
         Raises:
             FileNotFoundError: If the local file is not found
             ValueError: If the file type is not supported
             httpx.HTTPStatusError: If the upload fails
         """
-        # If the input is already a URL, return it as-is
-        if isinstance(file, str) and file.startswith(("http://", "https://")):
-            return file
-
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
 
         response = self.upload_urls.create(
@@ -295,23 +290,19 @@ class AsyncFilesClient:
         self,
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
-        """Upload a file to Magic Hour's storage asynchronously or return the path if it's already a URL.
+        """Upload a file to Magic Hour's storage asynchronously.
 
         Args:
-            file: Path to the local file to upload, a URL, or a file-like object
+            file: Path to the local file to upload, or a file-like object
 
         Returns:
-            The file path that can be used in other API calls. If the input is a URL,
-            it will be returned as-is.
+            The file path that can be used in other API calls.
 
         Raises:
             FileNotFoundError: If the local file is not found
             ValueError: If the file type is not supported
             httpx.HTTPStatusError: If the upload fails
         """
-        # If the input is already a URL, return it as-is
-        if isinstance(file, str) and file.startswith(("http://", "https://")):
-            return file
 
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
 

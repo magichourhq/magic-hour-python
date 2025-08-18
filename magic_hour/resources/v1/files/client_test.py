@@ -28,18 +28,6 @@ def test_upload_file_local():
     os.remove(tmp_path)
 
 
-def test_upload_file_url():
-    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    url = "https://example.com/file.mp4"
-    with mock.patch("httpx.Client.put") as mock_put:
-        mock_put.return_value = mock.Mock(
-            status_code=200, raise_for_status=lambda: None
-        )
-        result = client.v1.files.upload_file(url)
-        assert result == url
-        mock_put.assert_not_called()
-
-
 @pytest.mark.asyncio
 async def test_async_upload_file_local():
     data = b"test data"
@@ -60,21 +48,6 @@ async def test_async_upload_file_local():
     os.remove(tmp_path)
 
 
-@pytest.mark.asyncio
-async def test_async_upload_file_url():
-    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-
-    url = "https://example.com/file.mp3"
-    with mock.patch("httpx.Client.put") as mock_put:
-        mock_put.return_value = mock.Mock(
-            status_code=200, raise_for_status=lambda: None
-        )
-        result = await client.v1.files.upload_file(url)
-        assert result == url
-        mock_put.assert_not_called()
-
-
-# Test file-like object uploads
 def test_upload_file_with_binary_io():
     data = b"test image data"
     file_obj = io.BytesIO(data)
