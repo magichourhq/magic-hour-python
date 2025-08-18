@@ -8,7 +8,7 @@ on:
 
 jobs:
   check-and-release:
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && (contains(github.event.pull_request.labels.*.name, 'patch') || contains(github.event.pull_request.labels.*.name, 'minor') || contains(github.event.pull_request.labels.*.name, 'major'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
