@@ -1,7 +1,7 @@
 # This workflow will test the python package against Sideko's Mock Servers
 # Tests will run automatically on a push to `main` or a pull request event
 
-name: Run Pytest
+name: pytest
 
 on:
   push:
