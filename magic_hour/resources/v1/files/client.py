@@ -167,7 +167,7 @@ class FilesClient:
 
         Returns:
             str: The uploaded file's path in Magic Hour's storage system.
-                This path can be used as input for other API endpoints.
+                This path can be used as input for other API endpoints, such for `.assets.image_file_path`.
 
         Raises:
             FileNotFoundError: If the specified local file doesn't exist.
@@ -274,7 +274,7 @@ class AsyncFilesClient:
 
         Returns:
             str: The uploaded file's path in Magic Hour's storage system.
-                This path can be used as input for other API endpoints.
+                This path can be used as input for other API endpoints, such for `.assets.image_file_path`.
 
         Raises:
             FileNotFoundError: If the specified local file doesn't exist.
