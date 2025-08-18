@@ -68,7 +68,7 @@ def _process_file_input(
     Process different file input types and return standardized information.
 
     Args:
-        file: Path to the local file to upload, a URL, or a file-like object
+        file: Path to the local file to upload, or a file-like object
 
     Returns:
         Tuple of (file_path, file_to_upload, file_type, extension)
@@ -77,11 +77,7 @@ def _process_file_input(
         FileNotFoundError: If the local file is not found
         ValueError: If the file type is not supported or file-like object is invalid
     """
-    # If the input is already a URL, return it as-is
-    if isinstance(file, str) and file.startswith(("http://", "https://")):
-        raise ValueError("URL input should be handled separately")
 
-    # Accept pathlib.Path and file-like objects
     if isinstance(file, pathlib.Path):
         file_path = str(file)
         file_to_upload = None
