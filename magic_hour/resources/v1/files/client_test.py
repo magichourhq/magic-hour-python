@@ -55,7 +55,7 @@ async def test_async_upload_file_local():
         )
         result = await client.v1.files.upload_file(tmp_path)
         assert result == "api-assets/id/video.mp4"
-        mock_put.assert_called_once_with(url=mock.ANY, content=data)
+        mock_put.assert_awaited_once_with(url=mock.ANY, content=data)
 
     os.remove(tmp_path)
 
@@ -108,7 +108,7 @@ async def test_async_upload_file_with_binary_io():
         )
         result = await client.v1.files.upload_file(file_obj)
         assert result == "api-assets/id/video.mp4"
-        mock_put.assert_called_once_with(url=mock.ANY, content=data)
+        mock_put.assert_awaited_once_with(url=mock.ANY, content=data)
 
 
 # Test pathlib.Path input
