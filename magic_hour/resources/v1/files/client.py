@@ -31,7 +31,9 @@ def _get_file_type_and_extension(file_path: str):
     if ext.startswith("."):
         ext = ext[1:]  # Remove the leading dot
 
-    file_type: typing_extensions.Literal["audio", "image", "video"] | None = None
+    file_type: typing.Union[
+        typing_extensions.Literal["audio", "image", "video"], None
+    ] = None
     mime, _ = mimetypes.guess_type(file_path)
     if mime:
         if mime.startswith("video/"):
@@ -97,7 +99,8 @@ def _process_file_input(
 
 
 def _prepare_file_for_upload(
-    file_path: str | None, file_to_upload: typing.BinaryIO | io.IOBase | None
+    file_path: typing.Union[str, None],
+    file_to_upload: typing.Union[typing.BinaryIO, io.IOBase, None],
 ) -> bytes:
     """
     Read file content for upload, handling both file paths and file-like objects.
@@ -160,7 +163,7 @@ class FilesClient:
             file: The file to upload. Can be:
                 - **str**: Path to a local file (e.g., "/path/to/image.jpg")
                 - **pathlib.Path**: Path object to a local file
-                - **typing.BinaryIO | io.IOBase**: File-like object (must have a 'name' attribute)
+                - **typing.BinaryIO or io.IOBase**: File-like object (must have a 'name' attribute)
 
         Returns:
             str: The uploaded file's path in Magic Hour's storage system.
@@ -267,7 +270,7 @@ class AsyncFilesClient:
             file: The file to upload. Can be:
                 - **str**: Path to a local file (e.g., "/path/to/image.jpg")
                 - **pathlib.Path**: Path object to a local file
-                - **typing.BinaryIO | io.IOBase**: File-like object (must have a 'name' attribute)
+                - **typing.BinaryIO or io.IOBase**: File-like object (must have a 'name' attribute)
 
         Returns:
             str: The uploaded file's path in Magic Hour's storage system.
