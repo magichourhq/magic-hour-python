@@ -18,7 +18,9 @@ import time
 from tqdm import tqdm
 
 
-def _get_file_type_and_extension(file_path: str):
+def _get_file_type_and_extension(
+    file_path: str,
+) -> tuple[typing.Literal["video", "audio", "image"], str]:
     """
     Determine file type and extension from file path.
 
@@ -143,18 +145,17 @@ def _create_progress_generator(content: bytes, filename: str = "file"):
     content_length = len(content)
     start_time = time.time()
     uploaded = 0
-    pbar = None
+    progress_bar = None
 
     def content_generator():
-        nonlocal uploaded, pbar
+        nonlocal uploaded, progress_bar
         chunk_size = 8192  # 8KB chunks
         for i in range(0, len(content), chunk_size):
             chunk = content[i : i + chunk_size]
             uploaded += len(chunk)
 
-            # Start showing progress after 5 seconds
-            if pbar is None and (time.time() - start_time) >= 5:
-                pbar = tqdm(
+            if progress_bar is None and (time.time() - start_time) >= 5:
+                progress_bar = tqdm(
                     total=content_length,
                     initial=uploaded,
                     unit="B",
@@ -164,21 +165,20 @@ def _create_progress_generator(content: bytes, filename: str = "file"):
                     leave=True,
                 )
 
-            # Update progress bar if it's showing
-            if pbar:
-                pbar.update(len(chunk))
+            if progress_bar:
+                progress_bar.update(len(chunk))
 
             yield chunk
 
     def finish_progress():
-        if pbar:
-            pbar.close()
+        if progress_bar:
+            progress_bar.close()
             elapsed = time.time() - start_time
             print(f"Upload completed in {elapsed:.1f}s")
 
     def error_progress():
-        if pbar:
-            pbar.close()
+        if progress_bar:
+            progress_bar.close()
             print("\nUpload failed!")
 
     return content_generator(), finish_progress, error_progress
@@ -228,7 +228,7 @@ class FilesClient:
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
         """
-        Upload a file to Magic Hour's storage.
+        Upload a local file to Magic Hour's storage.
 
         Args:
             file: Path to the local file to upload, or a file-like object
@@ -290,7 +290,7 @@ class AsyncFilesClient:
         self,
         file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
     ) -> str:
-        """Upload a file to Magic Hour's storage asynchronously.
+        """Upload a local file to Magic Hour's storage asynchronously.
 
         Args:
             file: Path to the local file to upload, or a file-like object
