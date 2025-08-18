@@ -230,8 +230,8 @@ class FilesClient:
                 file_path=file_path, file_to_upload=file_to_upload
             )
 
-            response = client.put(url=upload_info.upload_url, content=content)
-            response.raise_for_status()
+            upload_response = client.put(url=upload_info.upload_url, content=content)
+            upload_response.raise_for_status()
 
         return upload_info.file_path
 
@@ -326,7 +326,9 @@ class AsyncFilesClient:
                 file_path=file_path, file_to_upload=file_to_upload
             )
 
-            response = await client.put(url=upload_info.upload_url, content=content)
-            response.raise_for_status()
+            upload_response = await client.put(
+                url=upload_info.upload_url, content=content
+            )
+            upload_response.raise_for_status()
 
         return upload_info.file_path
