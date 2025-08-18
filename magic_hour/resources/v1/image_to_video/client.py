@@ -1,4 +1,5 @@
 import typing
+import typing_extensions
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -20,12 +21,18 @@ class ImageToVideoClient:
         *,
         assets: params.V1ImageToVideoCreateBodyAssets,
         end_seconds: float,
-        style: params.V1ImageToVideoCreateBodyStyle,
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1ImageToVideoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
@@ -37,22 +44,38 @@ class ImageToVideoClient:
 
         Create a Image To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
 
-        Get more information about this mode at our [product page](/products/image-to-video).
+        Get more information about this mode at our [product page](https://magichour.ai/products/image-to-video).
 
 
         POST /v1/image-to-video
 
         Args:
-            height: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
-            name: The name of video
-            width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
+        This field is retained only for backward compatibility and will be removed in a future release.
+            name: The name of video. This value is mainly used for your own identification of the video.
+            resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
+
+        **Options:**
+        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
+            style: Attributed used to dictate the style of the output
+            width: `width` is deprecated and no longer influences the output video's resolution.
+
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
-            style: Attributed used to dictate the style of the output
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -67,10 +90,8 @@ class ImageToVideoClient:
         client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            style={"prompt": "a dog running"},
-            height=960,
             name="Image To Video video",
-            width=512,
+            resolution="720p",
         )
         ```
         """
@@ -78,10 +99,11 @@ class ImageToVideoClient:
             item={
                 "height": height,
                 "name": name,
+                "resolution": resolution,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
-                "style": style,
             },
             dump_with=params._SerializerV1ImageToVideoCreateBody,
         )
@@ -104,12 +126,18 @@ class AsyncImageToVideoClient:
         *,
         assets: params.V1ImageToVideoCreateBodyAssets,
         end_seconds: float,
-        style: params.V1ImageToVideoCreateBodyStyle,
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1ImageToVideoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
@@ -121,22 +149,38 @@ class AsyncImageToVideoClient:
 
         Create a Image To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
 
-        Get more information about this mode at our [product page](/products/image-to-video).
+        Get more information about this mode at our [product page](https://magichour.ai/products/image-to-video).
 
 
         POST /v1/image-to-video
 
         Args:
-            height: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+            height: `height` is deprecated and no longer influences the output video's resolution.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
-            name: The name of video
-            width: This field does not affect the output video's resolution. The video's orientation will match that of the input image.
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
-        It is retained solely for backward compatibility and will be deprecated in the future.
+        This field is retained only for backward compatibility and will be removed in a future release.
+            name: The name of video. This value is mainly used for your own identification of the video.
+            resolution: Controls the output video resolution. Defaults to `720p` if not specified.
+
+        480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
+
+        **Options:**
+        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
+        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
+        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
+            style: Attributed used to dictate the style of the output
+            width: `width` is deprecated and no longer influences the output video's resolution.
+
+        Output resolution is determined by the **minimum** of:
+        - The resolution of the input video
+        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
+
+        This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for image-to-video.
             end_seconds: The total duration of the output video in seconds.
-            style: Attributed used to dictate the style of the output
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -151,10 +195,8 @@ class AsyncImageToVideoClient:
         await client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            style={"prompt": "a dog running"},
-            height=960,
             name="Image To Video video",
-            width=512,
+            resolution="720p",
         )
         ```
         """
@@ -162,10 +204,11 @@ class AsyncImageToVideoClient:
             item={
                 "height": height,
                 "name": name,
+                "resolution": resolution,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
-                "style": style,
             },
             dump_with=params._SerializerV1ImageToVideoCreateBody,
         )

@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/ai-image-generator endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -29,25 +29,25 @@ def test_create_200_success_default():
     response = client.v1.ai_image_generator.create(
         image_count=1,
         orientation="landscape",
-        style={"prompt": "Cool image"},
+        style={"prompt": "Cool image", "tool": "ai-anime-generator"},
         name="Ai Image image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/ai-image-generator endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -66,14 +66,14 @@ async def test_await_create_200_success_default():
     response = await client.v1.ai_image_generator.create(
         image_count=1,
         orientation="landscape",
-        style={"prompt": "Cool image"},
+        style={"prompt": "Cool image", "tool": "ai-anime-generator"},
         name="Ai Image image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"

@@ -27,12 +27,12 @@ class FaceSwapPhotoClient:
         """
         Face Swap Photo
 
-        Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+        Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
 
         POST /v1/face-swap-photo
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for face swap photo
             request_options: Additional options to customize the HTTP request
 
@@ -47,6 +47,13 @@ class FaceSwapPhotoClient:
         ```py
         client.v1.face_swap_photo.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
+                "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
             },
@@ -84,12 +91,12 @@ class AsyncFaceSwapPhotoClient:
         """
         Face Swap Photo
 
-        Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+        Create a face swap photo. Each photo costs 5 credits. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
 
         POST /v1/face-swap-photo
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for face swap photo
             request_options: Additional options to customize the HTTP request
 
@@ -104,6 +111,13 @@ class AsyncFaceSwapPhotoClient:
         ```py
         await client.v1.face_swap_photo.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
+                "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
             },

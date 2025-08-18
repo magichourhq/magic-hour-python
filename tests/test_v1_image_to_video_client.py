@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/image-to-video endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -29,27 +29,32 @@ def test_create_200_success_default():
     response = client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
-        style={"prompt": "a dog running"},
-        height=960,
+        height=123,
         name="Image To Video video",
-        width=512,
+        resolution="720p",
+        style={
+            "high_quality": True,
+            "prompt": "a dog running",
+            "quality_mode": "quick",
+        },
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1ImageToVideoCreateResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/image-to-video endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -68,16 +73,21 @@ async def test_await_create_200_success_default():
     response = await client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
-        style={"prompt": "a dog running"},
-        height=960,
+        height=123,
         name="Image To Video video",
-        width=512,
+        resolution="720p",
+        style={
+            "high_quality": True,
+            "prompt": "a dog running",
+            "quality_mode": "quick",
+        },
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1ImageToVideoCreateResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"

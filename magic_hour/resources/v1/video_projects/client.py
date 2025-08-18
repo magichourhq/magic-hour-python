@@ -24,7 +24,7 @@ class VideoProjectsClient:
         DELETE /v1/video-projects/{id}
 
         Args:
-            id: The id of the video project
+            id: Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -36,7 +36,7 @@ class VideoProjectsClient:
 
         Examples:
         ```py
-        client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+        client.v1.video_projects.delete(id="cuid-example")
         ```
         """
         self._base_client.request(
@@ -67,7 +67,7 @@ class VideoProjectsClient:
         GET /v1/video-projects/{id}
 
         Args:
-            id: The id of the video
+            id: Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -79,7 +79,7 @@ class VideoProjectsClient:
 
         Examples:
         ```py
-        client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+        client.v1.video_projects.get(id="cuid-example")
         ```
         """
         return self._base_client.request(
@@ -106,7 +106,7 @@ class AsyncVideoProjectsClient:
         DELETE /v1/video-projects/{id}
 
         Args:
-            id: The id of the video project
+            id: Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -118,7 +118,7 @@ class AsyncVideoProjectsClient:
 
         Examples:
         ```py
-        await client.v1.video_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+        await client.v1.video_projects.delete(id="cuid-example")
         ```
         """
         await self._base_client.request(
@@ -149,7 +149,7 @@ class AsyncVideoProjectsClient:
         GET /v1/video-projects/{id}
 
         Args:
-            id: The id of the video
+            id: Unique ID of the video project. This value is returned by all of the POST APIs that create a video.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -161,7 +161,7 @@ class AsyncVideoProjectsClient:
 
         Examples:
         ```py
-        await client.v1.video_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+        await client.v1.video_projects.get(id="cuid-example")
         ```
         """
         return await self._base_client.request(

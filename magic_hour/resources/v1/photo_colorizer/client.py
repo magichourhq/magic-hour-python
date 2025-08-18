@@ -32,7 +32,7 @@ class PhotoColorizerClient:
         POST /v1/photo-colorizer
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for photo colorization
             request_options: Additional options to customize the HTTP request
 
@@ -86,7 +86,7 @@ class AsyncPhotoColorizerClient:
         POST /v1/photo-colorizer
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for photo colorization
             request_options: Additional options to customize the HTTP request
 

@@ -24,12 +24,14 @@ class V1AiImageUpscalerCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of image
+    The name of image. This value is mainly used for your own identification of the image.
     """
 
     scale_factor: typing_extensions.Required[float]
     """
-    How much to scale the image. Must be either 2 or 4
+    How much to scale the image. Must be either 2 or 4.
+                
+    Note: 4x upscale is only available on Creator, Pro, or Business tier.
     """
 
     style: typing_extensions.Required[V1AiImageUpscalerCreateBodyStyle]

@@ -9,16 +9,29 @@ class V1AiClothesChangerCreateBodyAssets(typing_extensions.TypedDict):
 
     garment_file_path: typing_extensions.Required[str]
     """
-    The image of the outfit. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file..
+    The image of the outfit. This value is either
+    - a direct URL to the video file
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    
     """
 
     garment_type: typing_extensions.Required[
         typing_extensions.Literal["dresses", "lower_body", "upper_body"]
     ]
+    """
+    The type of the outfit.
+    """
 
     person_file_path: typing_extensions.Required[str]
     """
-    The image with the person. This value can be either the `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls), or the url of the file..
+    The image with the person. This value is either
+    - a direct URL to the video file
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    
     """
 
 

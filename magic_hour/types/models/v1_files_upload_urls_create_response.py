@@ -19,3 +19,6 @@ class V1FilesUploadUrlsCreateResponse(pydantic.BaseModel):
     items: typing.List[V1FilesUploadUrlsCreateResponseItemsItem] = pydantic.Field(
         alias="items",
     )
+    """
+    The list of upload URLs and file paths for the assets. The response array will match the order of items in the request body. Refer to the [Input Files Guide](/integration/input-files) for more details.
+    """

@@ -14,6 +14,9 @@ class V1FilesUploadUrlsCreateBody(typing_extensions.TypedDict):
     """
 
     items: typing_extensions.Required[typing.List[V1FilesUploadUrlsCreateBodyItemsItem]]
+    """
+    The list of assets to upload. The response array will match the order of items in the request body.
+    """
 
 
 class _SerializerV1FilesUploadUrlsCreateBody(pydantic.BaseModel):

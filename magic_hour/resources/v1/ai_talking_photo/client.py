@@ -37,11 +37,11 @@ class AiTalkingPhotoClient:
         POST /v1/ai-talking-photo
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
-            end_seconds: The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
-            start_seconds: The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+            end_seconds: The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.
+            start_seconds: The start time of the input audio in seconds. The maximum duration allowed is 60 seconds.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -110,11 +110,11 @@ class AsyncAiTalkingPhotoClient:
         POST /v1/ai-talking-photo
 
         Args:
-            name: The name of image
+            name: The name of image. This value is mainly used for your own identification of the image.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
-            end_seconds: The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
-            start_seconds: The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+            end_seconds: The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.
+            start_seconds: The start time of the input audio in seconds. The maximum duration allowed is 60 seconds.
             request_options: Additional options to customize the HTTP request
 
         Returns:

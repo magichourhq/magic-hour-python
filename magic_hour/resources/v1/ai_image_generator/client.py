@@ -35,10 +35,10 @@ class AiImageGeneratorClient:
         POST /v1/ai-image-generator
 
         Args:
-            name: The name of image
-            image_count: number to images to generate
-            orientation: typing_extensions.Literal["landscape", "portrait", "square"]
-            style: V1AiImageGeneratorCreateBodyStyle
+            name: The name of image. This value is mainly used for your own identification of the image.
+            image_count: Number of images to generate.
+            orientation: The orientation of the output image(s).
+            style: The art style to use for image generation.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -53,7 +53,7 @@ class AiImageGeneratorClient:
         client.v1.ai_image_generator.create(
             image_count=1,
             orientation="landscape",
-            style={"prompt": "Cool image"},
+            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             name="Ai Image image",
         )
         ```
@@ -100,10 +100,10 @@ class AsyncAiImageGeneratorClient:
         POST /v1/ai-image-generator
 
         Args:
-            name: The name of image
-            image_count: number to images to generate
-            orientation: typing_extensions.Literal["landscape", "portrait", "square"]
-            style: V1AiImageGeneratorCreateBodyStyle
+            name: The name of image. This value is mainly used for your own identification of the image.
+            image_count: Number of images to generate.
+            orientation: The orientation of the output image(s).
+            style: The art style to use for image generation.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -118,7 +118,7 @@ class AsyncAiImageGeneratorClient:
         await client.v1.ai_image_generator.create(
             image_count=1,
             orientation="landscape",
-            style={"prompt": "Cool image"},
+            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             name="Ai Image image",
         )
         ```

@@ -38,6 +38,18 @@ from .v1_ai_headshot_generator_create_body_style import (
     V1AiHeadshotGeneratorCreateBodyStyle,
     _SerializerV1AiHeadshotGeneratorCreateBodyStyle,
 )
+from .v1_ai_image_editor_create_body import (
+    V1AiImageEditorCreateBody,
+    _SerializerV1AiImageEditorCreateBody,
+)
+from .v1_ai_image_editor_create_body_assets import (
+    V1AiImageEditorCreateBodyAssets,
+    _SerializerV1AiImageEditorCreateBodyAssets,
+)
+from .v1_ai_image_editor_create_body_style import (
+    V1AiImageEditorCreateBodyStyle,
+    _SerializerV1AiImageEditorCreateBodyStyle,
+)
 from .v1_ai_image_generator_create_body import (
     V1AiImageGeneratorCreateBody,
     _SerializerV1AiImageGeneratorCreateBody,
@@ -110,6 +122,30 @@ from .v1_animation_create_body_style import (
     V1AnimationCreateBodyStyle,
     _SerializerV1AnimationCreateBodyStyle,
 )
+from .v1_auto_subtitle_generator_create_body import (
+    V1AutoSubtitleGeneratorCreateBody,
+    _SerializerV1AutoSubtitleGeneratorCreateBody,
+)
+from .v1_auto_subtitle_generator_create_body_assets import (
+    V1AutoSubtitleGeneratorCreateBodyAssets,
+    _SerializerV1AutoSubtitleGeneratorCreateBodyAssets,
+)
+from .v1_auto_subtitle_generator_create_body_style import (
+    V1AutoSubtitleGeneratorCreateBodyStyle,
+    _SerializerV1AutoSubtitleGeneratorCreateBodyStyle,
+)
+from .v1_auto_subtitle_generator_create_body_style_custom_config import (
+    V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
+    _SerializerV1AutoSubtitleGeneratorCreateBodyStyleCustomConfig,
+)
+from .v1_face_detection_create_body import (
+    V1FaceDetectionCreateBody,
+    _SerializerV1FaceDetectionCreateBody,
+)
+from .v1_face_detection_create_body_assets import (
+    V1FaceDetectionCreateBodyAssets,
+    _SerializerV1FaceDetectionCreateBodyAssets,
+)
 from .v1_face_swap_create_body import (
     V1FaceSwapCreateBody,
     _SerializerV1FaceSwapCreateBody,
@@ -118,6 +154,10 @@ from .v1_face_swap_create_body_assets import (
     V1FaceSwapCreateBodyAssets,
     _SerializerV1FaceSwapCreateBodyAssets,
 )
+from .v1_face_swap_create_body_assets_face_mappings_item import (
+    V1FaceSwapCreateBodyAssetsFaceMappingsItem,
+    _SerializerV1FaceSwapCreateBodyAssetsFaceMappingsItem,
+)
 from .v1_face_swap_photo_create_body import (
     V1FaceSwapPhotoCreateBody,
     _SerializerV1FaceSwapPhotoCreateBody,
@@ -125,6 +165,10 @@ from .v1_face_swap_photo_create_body import (
 from .v1_face_swap_photo_create_body_assets import (
     V1FaceSwapPhotoCreateBodyAssets,
     _SerializerV1FaceSwapPhotoCreateBodyAssets,
+)
+from .v1_face_swap_photo_create_body_assets_face_mappings_item import (
+    V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
+    _SerializerV1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem,
 )
 from .v1_files_upload_urls_create_body import (
     V1FilesUploadUrlsCreateBody,
@@ -200,6 +244,9 @@ __all__ = [
     "V1AiHeadshotGeneratorCreateBody",
     "V1AiHeadshotGeneratorCreateBodyAssets",
     "V1AiHeadshotGeneratorCreateBodyStyle",
+    "V1AiImageEditorCreateBody",
+    "V1AiImageEditorCreateBodyAssets",
+    "V1AiImageEditorCreateBodyStyle",
     "V1AiImageGeneratorCreateBody",
     "V1AiImageGeneratorCreateBodyStyle",
     "V1AiImageUpscalerCreateBody",
@@ -218,10 +265,18 @@ __all__ = [
     "V1AnimationCreateBody",
     "V1AnimationCreateBodyAssets",
     "V1AnimationCreateBodyStyle",
+    "V1AutoSubtitleGeneratorCreateBody",
+    "V1AutoSubtitleGeneratorCreateBodyAssets",
+    "V1AutoSubtitleGeneratorCreateBodyStyle",
+    "V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig",
+    "V1FaceDetectionCreateBody",
+    "V1FaceDetectionCreateBodyAssets",
     "V1FaceSwapCreateBody",
     "V1FaceSwapCreateBodyAssets",
+    "V1FaceSwapCreateBodyAssetsFaceMappingsItem",
     "V1FaceSwapPhotoCreateBody",
     "V1FaceSwapPhotoCreateBodyAssets",
+    "V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem",
     "V1FilesUploadUrlsCreateBody",
     "V1FilesUploadUrlsCreateBodyItemsItem",
     "V1ImageBackgroundRemoverCreateBody",
@@ -248,6 +303,9 @@ __all__ = [
     "_SerializerV1AiHeadshotGeneratorCreateBody",
     "_SerializerV1AiHeadshotGeneratorCreateBodyAssets",
     "_SerializerV1AiHeadshotGeneratorCreateBodyStyle",
+    "_SerializerV1AiImageEditorCreateBody",
+    "_SerializerV1AiImageEditorCreateBodyAssets",
+    "_SerializerV1AiImageEditorCreateBodyStyle",
     "_SerializerV1AiImageGeneratorCreateBody",
     "_SerializerV1AiImageGeneratorCreateBodyStyle",
     "_SerializerV1AiImageUpscalerCreateBody",
@@ -266,10 +324,18 @@ __all__ = [
     "_SerializerV1AnimationCreateBody",
     "_SerializerV1AnimationCreateBodyAssets",
     "_SerializerV1AnimationCreateBodyStyle",
+    "_SerializerV1AutoSubtitleGeneratorCreateBody",
+    "_SerializerV1AutoSubtitleGeneratorCreateBodyAssets",
+    "_SerializerV1AutoSubtitleGeneratorCreateBodyStyle",
+    "_SerializerV1AutoSubtitleGeneratorCreateBodyStyleCustomConfig",
+    "_SerializerV1FaceDetectionCreateBody",
+    "_SerializerV1FaceDetectionCreateBodyAssets",
     "_SerializerV1FaceSwapCreateBody",
     "_SerializerV1FaceSwapCreateBodyAssets",
+    "_SerializerV1FaceSwapCreateBodyAssetsFaceMappingsItem",
     "_SerializerV1FaceSwapPhotoCreateBody",
     "_SerializerV1FaceSwapPhotoCreateBodyAssets",
+    "_SerializerV1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem",
     "_SerializerV1FilesUploadUrlsCreateBody",
     "_SerializerV1FilesUploadUrlsCreateBodyItemsItem",
     "_SerializerV1ImageBackgroundRemoverCreateBody",

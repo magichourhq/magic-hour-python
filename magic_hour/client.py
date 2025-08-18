@@ -22,8 +22,9 @@ class Client:
             httpx_client=httpx.Client(timeout=timeout)
             if httpx_client is None
             else httpx_client,
+            auths={"bearerAuth": AuthBearer(token=token)},
         )
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
+
         self.v1 = V1Client(base_client=self._base_client)
 
 
@@ -43,6 +44,7 @@ class AsyncClient:
             httpx_client=httpx.AsyncClient(timeout=timeout)
             if httpx_client is None
             else httpx_client,
+            auths={"bearerAuth": AuthBearer(token=token)},
         )
-        self._base_client.register_auth("bearerAuth", AuthBearer(val=token))
+
         self.v1 = AsyncV1Client(base_client=self._base_client)

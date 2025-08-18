@@ -2,7 +2,6 @@ import json
 
 from typing import Any, Dict, Union
 from typing_extensions import Literal, Sequence
-from urllib.parse import quote_plus, quote
 
 import httpx
 
@@ -47,19 +46,19 @@ def _encode_form(params: QueryParams, name: str, value: Any, explode: bool):
     """
     if isinstance(value, list) and not explode:
         # non-explode form lists should be encoded like /users?id=3,4,5
-        params[name] = quote_plus(",".join(map(_query_str, value)))
+        params[name] = ",".join(map(_query_str, value))
     elif isinstance(value, dict):
         if explode:
             # explode form objects should be encoded like /users?key0=val0&key1=val1
             # the input param name will be omitted
             for k, v in value.items():
-                params[k] = quote_plus(_query_str(v))
+                params[k] = _query_str(v)
         else:
             # non-explode form objects should be encoded like /users?id=key0,val0,key1,val1
             encoded_chunks = []
             for k, v in value.items():
                 encoded_chunks.extend([str(k), _query_str(v)])
-            params[name] = quote_plus(",".join(encoded_chunks))
+            params[name] = ",".join(encoded_chunks)
     else:
         params[name] = value
 
@@ -71,7 +70,7 @@ def _encode_spaced_delimited(params: QueryParams, name: str, value: Any, explode
     """
     if isinstance(value, list) and not explode:
         # non-explode spaceDelimited lists should be encoded like /users?id=3%204%205
-        params[name] = quote(" ".join(map(_query_str, value)))
+        params[name] = " ".join(map(_query_str, value))
     else:
         # according to the docs, spaceDelimited + explode=false only effects lists,
         # all other encodings are marked as n/a or are the same as `form` style
@@ -86,7 +85,7 @@ def _encode_pipe_delimited(params: QueryParams, name: str, value: Any, explode: 
     """
     if isinstance(value, list) and not explode:
         # non-explode pipeDelimited lists should be encoded like /users?id=3|4|5
-        params[name] = quote("|".join(map(_query_str, value)))
+        params[name] = "|".join(map(_query_str, value))
     else:
         # according to the docs, pipeDelimited + explode=false only effects lists,
         # all other encodings are marked as n/a or are the same as `form` style

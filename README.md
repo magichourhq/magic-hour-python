@@ -57,6 +57,10 @@ client = AsyncClient(token="my api key")
 
 * [create](magic_hour/resources/v1/ai_headshot_generator/README.md#create) - AI Headshots
 
+### [v1.ai_image_editor](magic_hour/resources/v1/ai_image_editor/README.md)
+
+* [create](magic_hour/resources/v1/ai_image_editor/README.md#create) - AI Image Editor
+
 ### [v1.ai_image_generator](magic_hour/resources/v1/ai_image_generator/README.md)
 
 * [create](magic_hour/resources/v1/ai_image_generator/README.md#create) - AI Images
@@ -84,6 +88,15 @@ client = AsyncClient(token="my api key")
 ### [v1.animation](magic_hour/resources/v1/animation/README.md)
 
 * [create](magic_hour/resources/v1/animation/README.md#create) - Animation
+
+### [v1.auto_subtitle_generator](magic_hour/resources/v1/auto_subtitle_generator/README.md)
+
+* [create](magic_hour/resources/v1/auto_subtitle_generator/README.md#create) - Auto Subtitle Generator
+
+### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
+
+* [create](magic_hour/resources/v1/face_detection/README.md#create) - Face Detection
+* [get](magic_hour/resources/v1/face_detection/README.md#get) - Get face detection details
 
 ### [v1.face_swap](magic_hour/resources/v1/face_swap/README.md)
 

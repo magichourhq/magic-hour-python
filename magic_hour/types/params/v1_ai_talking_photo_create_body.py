@@ -24,17 +24,17 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    The end time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+    The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.
     """
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of image
+    The name of image. This value is mainly used for your own identification of the image.
     """
 
     start_seconds: typing_extensions.Required[float]
     """
-    The start time of the input audio in seconds. The maximum duration allowed is 30 seconds.
+    The start time of the input audio in seconds. The maximum duration allowed is 60 seconds.
     """
 
     style: typing_extensions.NotRequired[V1AiTalkingPhotoCreateBodyStyle]

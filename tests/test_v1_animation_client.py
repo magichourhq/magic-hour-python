@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/animation endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -31,15 +31,17 @@ def test_create_200_success_default():
             "audio_file_path": "api-assets/id/1234.mp3",
             "audio_source": "file",
             "image_file_path": "api-assets/id/1234.png",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         fps=12.0,
         height=960,
         style={
             "art_style": "Painterly Illustration",
-            "camera_effect": "Accelerate",
+            "art_style_custom": "string",
+            "camera_effect": "Simple Zoom In",
             "prompt": "Cyberpunk city",
-            "prompt_type": "ai_choose",
+            "prompt_type": "custom",
             "transition_speed": 5,
         },
         width=512,
@@ -47,18 +49,18 @@ def test_create_200_success_default():
     )
     try:
         pydantic.TypeAdapter(models.V1AnimationCreateResponse).validate_python(response)
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/animation endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -79,15 +81,17 @@ async def test_await_create_200_success_default():
             "audio_file_path": "api-assets/id/1234.mp3",
             "audio_source": "file",
             "image_file_path": "api-assets/id/1234.png",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         fps=12.0,
         height=960,
         style={
             "art_style": "Painterly Illustration",
-            "camera_effect": "Accelerate",
+            "art_style_custom": "string",
+            "camera_effect": "Simple Zoom In",
             "prompt": "Cyberpunk city",
-            "prompt_type": "ai_choose",
+            "prompt_type": "custom",
             "transition_speed": 5,
         },
         width=512,
@@ -95,7 +99,7 @@ async def test_await_create_200_success_default():
     )
     try:
         pydantic.TypeAdapter(models.V1AnimationCreateResponse).validate_python(response)
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"

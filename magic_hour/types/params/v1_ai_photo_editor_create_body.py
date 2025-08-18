@@ -24,7 +24,7 @@ class V1AiPhotoEditorCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of image
+    The name of image. This value is mainly used for your own identification of the image.
     """
 
     resolution: typing_extensions.Required[int]

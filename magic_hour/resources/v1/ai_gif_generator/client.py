@@ -27,12 +27,12 @@ class AiGifGeneratorClient:
         """
         AI GIFs
 
-        Create an AI GIF. Each GIF costs 25 credits.
+        Create an AI GIF. Each GIF costs 50 credits.
 
         POST /v1/ai-gif-generator
 
         Args:
-            name: The name of gif
+            name: The name of gif. This value is mainly used for your own identification of the gif.
             style: V1AiGifGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -80,12 +80,12 @@ class AsyncAiGifGeneratorClient:
         """
         AI GIFs
 
-        Create an AI GIF. Each GIF costs 25 credits.
+        Create an AI GIF. Each GIF costs 50 credits.
 
         POST /v1/ai-gif-generator
 
         Args:
-            name: The name of gif
+            name: The name of gif. This value is mainly used for your own identification of the gif.
             style: V1AiGifGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 

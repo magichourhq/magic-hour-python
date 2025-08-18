@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_get_200_generated_success():
+def test_get_200_success_all_params():
     """Tests a GET request to the /v1/image-projects/{id} endpoint.
 
     Operation: get
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -26,23 +26,23 @@ def test_get_200_generated_success():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+    response = client.v1.image_projects.get(id="cuid-example")
     try:
         pydantic.TypeAdapter(models.V1ImageProjectsGetResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
-async def test_await_get_200_generated_success():
+async def test_await_get_200_success_all_params():
     """Tests a GET request to the /v1/image-projects/{id} endpoint.
 
     Operation: get
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -58,22 +58,22 @@ async def test_await_get_200_generated_success():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.image_projects.get(id="cm6pvghix03bvyz0zwash6noj")
+    response = await client.v1.image_projects.get(id="cuid-example")
     try:
         pydantic.TypeAdapter(models.V1ImageProjectsGetResponse).validate_python(
             response
         )
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
-def test_delete_204_generated_success():
+def test_delete_204_success_all_params():
     """Tests a DELETE request to the /v1/image-projects/{id} endpoint.
 
     Operation: delete
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 204
     Mode: Synchronous execution
 
@@ -89,16 +89,16 @@ def test_delete_204_generated_success():
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+    response = client.v1.image_projects.delete(id="cuid-example")
     assert response is None
 
 
 @pytest.mark.asyncio
-async def test_await_delete_204_generated_success():
+async def test_await_delete_204_success_all_params():
     """Tests a DELETE request to the /v1/image-projects/{id} endpoint.
 
     Operation: delete
-    Test Case ID: generated_success
+    Test Case ID: success_all_params
     Expected Status: 204
     Mode: Asynchronous execution
 
@@ -114,5 +114,5 @@ async def test_await_delete_204_generated_success():
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.image_projects.delete(id="cm6pvghix03bvyz0zwash6noj")
+    response = await client.v1.image_projects.delete(id="cuid-example")
     assert response is None

@@ -6,11 +6,11 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_default():
+def test_create_200_success_all_params():
     """Tests a POST request to the /v1/lip-sync endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
@@ -31,28 +31,29 @@ def test_create_200_success_default():
             "audio_file_path": "api-assets/id/1234.mp3",
             "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         start_seconds=0.0,
-        height=960,
+        height=123,
         max_fps_limit=12.0,
         name="Lip Sync video",
-        width=512,
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1LipSyncCreateResponse).validate_python(response)
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_default():
+async def test_await_create_200_success_all_params():
     """Tests a POST request to the /v1/lip-sync endpoint.
 
     Operation: create
-    Test Case ID: success_default
+    Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
@@ -73,17 +74,18 @@ async def test_await_create_200_success_default():
             "audio_file_path": "api-assets/id/1234.mp3",
             "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
+            "youtube_url": "http://www.example.com",
         },
         end_seconds=15.0,
         start_seconds=0.0,
-        height=960,
+        height=123,
         max_fps_limit=12.0,
         name="Lip Sync video",
-        width=512,
+        width=123,
     )
     try:
         pydantic.TypeAdapter(models.V1LipSyncCreateResponse).validate_python(response)
-        is_json = True
+        is_valid_response_schema = True
     except pydantic.ValidationError:
-        is_json = False
-    assert is_json, "failed response type check"
+        is_valid_response_schema = False
+    assert is_valid_response_schema, "failed response type check"

@@ -37,9 +37,9 @@ class AnimationClient:
         POST /v1/animation
 
         Args:
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             assets: Provide the assets for animation.
-            end_seconds: The end time of the input video in seconds
+            end_seconds: This value determines the duration of the output video.
             fps: The desire output video frame rate
             height: The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             style: Defines the style of the output video
@@ -66,9 +66,9 @@ class AnimationClient:
             height=960,
             style={
                 "art_style": "Painterly Illustration",
-                "camera_effect": "Accelerate",
+                "camera_effect": "Simple Zoom In",
                 "prompt": "Cyberpunk city",
-                "prompt_type": "ai_choose",
+                "prompt_type": "custom",
                 "transition_speed": 5,
             },
             width=512,
@@ -124,9 +124,9 @@ class AsyncAnimationClient:
         POST /v1/animation
 
         Args:
-            name: The name of video
+            name: The name of video. This value is mainly used for your own identification of the video.
             assets: Provide the assets for animation.
-            end_seconds: The end time of the input video in seconds
+            end_seconds: This value determines the duration of the output video.
             fps: The desire output video frame rate
             height: The height of the final output video. The maximum height depends on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
             style: Defines the style of the output video
@@ -153,9 +153,9 @@ class AsyncAnimationClient:
             height=960,
             style={
                 "art_style": "Painterly Illustration",
-                "camera_effect": "Accelerate",
+                "camera_effect": "Simple Zoom In",
                 "prompt": "Cyberpunk city",
-                "prompt_type": "ai_choose",
+                "prompt_type": "custom",
                 "transition_speed": 5,
             },
             width=512,

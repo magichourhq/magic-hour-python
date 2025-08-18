@@ -4,6 +4,7 @@ from .v1_ai_gif_generator_create_response import V1AiGifGeneratorCreateResponse
 from .v1_ai_headshot_generator_create_response import (
     V1AiHeadshotGeneratorCreateResponse,
 )
+from .v1_ai_image_editor_create_response import V1AiImageEditorCreateResponse
 from .v1_ai_image_generator_create_response import V1AiImageGeneratorCreateResponse
 from .v1_ai_image_upscaler_create_response import V1AiImageUpscalerCreateResponse
 from .v1_ai_meme_generator_create_response import V1AiMemeGeneratorCreateResponse
@@ -11,6 +12,14 @@ from .v1_ai_photo_editor_create_response import V1AiPhotoEditorCreateResponse
 from .v1_ai_qr_code_generator_create_response import V1AiQrCodeGeneratorCreateResponse
 from .v1_ai_talking_photo_create_response import V1AiTalkingPhotoCreateResponse
 from .v1_animation_create_response import V1AnimationCreateResponse
+from .v1_auto_subtitle_generator_create_response import (
+    V1AutoSubtitleGeneratorCreateResponse,
+)
+from .v1_face_detection_create_response import V1FaceDetectionCreateResponse
+from .v1_face_detection_get_response import V1FaceDetectionGetResponse
+from .v1_face_detection_get_response_faces_item import (
+    V1FaceDetectionGetResponseFacesItem,
+)
 from .v1_face_swap_create_response import V1FaceSwapCreateResponse
 from .v1_face_swap_photo_create_response import V1FaceSwapPhotoCreateResponse
 from .v1_files_upload_urls_create_response import V1FilesUploadUrlsCreateResponse
@@ -43,6 +52,7 @@ __all__ = [
     "V1AiFaceEditorCreateResponse",
     "V1AiGifGeneratorCreateResponse",
     "V1AiHeadshotGeneratorCreateResponse",
+    "V1AiImageEditorCreateResponse",
     "V1AiImageGeneratorCreateResponse",
     "V1AiImageUpscalerCreateResponse",
     "V1AiMemeGeneratorCreateResponse",
@@ -50,6 +60,10 @@ __all__ = [
     "V1AiQrCodeGeneratorCreateResponse",
     "V1AiTalkingPhotoCreateResponse",
     "V1AnimationCreateResponse",
+    "V1AutoSubtitleGeneratorCreateResponse",
+    "V1FaceDetectionCreateResponse",
+    "V1FaceDetectionGetResponse",
+    "V1FaceDetectionGetResponseFacesItem",
     "V1FaceSwapCreateResponse",
     "V1FaceSwapPhotoCreateResponse",
     "V1FilesUploadUrlsCreateResponse",

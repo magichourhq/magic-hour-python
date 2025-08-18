@@ -15,6 +15,10 @@ from magic_hour.resources.v1.ai_headshot_generator import (
     AiHeadshotGeneratorClient,
     AsyncAiHeadshotGeneratorClient,
 )
+from magic_hour.resources.v1.ai_image_editor import (
+    AiImageEditorClient,
+    AsyncAiImageEditorClient,
+)
 from magic_hour.resources.v1.ai_image_generator import (
     AiImageGeneratorClient,
     AsyncAiImageGeneratorClient,
@@ -40,6 +44,14 @@ from magic_hour.resources.v1.ai_talking_photo import (
     AsyncAiTalkingPhotoClient,
 )
 from magic_hour.resources.v1.animation import AnimationClient, AsyncAnimationClient
+from magic_hour.resources.v1.auto_subtitle_generator import (
+    AsyncAutoSubtitleGeneratorClient,
+    AutoSubtitleGeneratorClient,
+)
+from magic_hour.resources.v1.face_detection import (
+    AsyncFaceDetectionClient,
+    FaceDetectionClient,
+)
 from magic_hour.resources.v1.face_swap import AsyncFaceSwapClient, FaceSwapClient
 from magic_hour.resources.v1.face_swap_photo import (
     AsyncFaceSwapPhotoClient,
@@ -82,12 +94,14 @@ class V1Client:
         self._base_client = base_client
         self.image_projects = ImageProjectsClient(base_client=self._base_client)
         self.video_projects = VideoProjectsClient(base_client=self._base_client)
+        self.face_detection = FaceDetectionClient(base_client=self._base_client)
         self.ai_clothes_changer = AiClothesChangerClient(base_client=self._base_client)
         self.ai_face_editor = AiFaceEditorClient(base_client=self._base_client)
         self.ai_gif_generator = AiGifGeneratorClient(base_client=self._base_client)
         self.ai_headshot_generator = AiHeadshotGeneratorClient(
             base_client=self._base_client
         )
+        self.ai_image_editor = AiImageEditorClient(base_client=self._base_client)
         self.ai_image_generator = AiImageGeneratorClient(base_client=self._base_client)
         self.ai_image_upscaler = AiImageUpscalerClient(base_client=self._base_client)
         self.ai_meme_generator = AiMemeGeneratorClient(base_client=self._base_client)
@@ -97,6 +111,9 @@ class V1Client:
         )
         self.ai_talking_photo = AiTalkingPhotoClient(base_client=self._base_client)
         self.animation = AnimationClient(base_client=self._base_client)
+        self.auto_subtitle_generator = AutoSubtitleGeneratorClient(
+            base_client=self._base_client
+        )
         self.face_swap = FaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = FaceSwapPhotoClient(base_client=self._base_client)
         self.files = FilesClient(base_client=self._base_client)
@@ -115,6 +132,7 @@ class AsyncV1Client:
         self._base_client = base_client
         self.image_projects = AsyncImageProjectsClient(base_client=self._base_client)
         self.video_projects = AsyncVideoProjectsClient(base_client=self._base_client)
+        self.face_detection = AsyncFaceDetectionClient(base_client=self._base_client)
         self.ai_clothes_changer = AsyncAiClothesChangerClient(
             base_client=self._base_client
         )
@@ -123,6 +141,7 @@ class AsyncV1Client:
         self.ai_headshot_generator = AsyncAiHeadshotGeneratorClient(
             base_client=self._base_client
         )
+        self.ai_image_editor = AsyncAiImageEditorClient(base_client=self._base_client)
         self.ai_image_generator = AsyncAiImageGeneratorClient(
             base_client=self._base_client
         )
@@ -138,6 +157,9 @@ class AsyncV1Client:
         )
         self.ai_talking_photo = AsyncAiTalkingPhotoClient(base_client=self._base_client)
         self.animation = AsyncAnimationClient(base_client=self._base_client)
+        self.auto_subtitle_generator = AsyncAutoSubtitleGeneratorClient(
+            base_client=self._base_client
+        )
         self.face_swap = AsyncFaceSwapClient(base_client=self._base_client)
         self.face_swap_photo = AsyncFaceSwapPhotoClient(base_client=self._base_client)
         self.files = AsyncFilesClient(base_client=self._base_client)
