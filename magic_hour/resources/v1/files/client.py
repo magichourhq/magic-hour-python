@@ -8,10 +8,14 @@ import os
 import mimetypes
 import httpx
 from pathlib import Path
+import typing
+import io
+import pathlib
 
 
 def _get_file_type_and_extension(file_path: str):
-    """Determine file type and extension from file path.
+    """
+    Determine file type and extension from file path.
 
     Args:
         file_path: Path to the file
@@ -50,15 +54,19 @@ class FilesClient:
         self._base_client = base_client
         self.upload_urls = UploadUrlsClient(base_client=self._base_client)
 
-    def upload_file(self, local_file_path: str) -> str:
-        """Upload a file to Magic Hour's storage or return the path if it's already a URL.
+    def upload_file(
+        self,
+        file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
+    ) -> str:
+        """
+        Upload a file to Magic Hour's storage and return the path if it's already a URL.
 
         Args:
-            local_file_path: Path to the local file to upload or a URL
+            file: Path to the local file to upload, a URL, or a file-like object
 
         Returns:
-            The file path that can be used in other API calls. If the input is a URL,
-            it will be returned as-is.
+            The file path that can be used in other API calls.
+            If the input is a URL, it will be returned as-is.
 
         Raises:
             FileNotFoundError: If the local file is not found
@@ -66,13 +74,34 @@ class FilesClient:
             httpx.HTTPStatusError: If the upload fails
         """
         # If the input is already a URL, return it as-is
-        if local_file_path.startswith(("http://", "https://")):
-            return local_file_path
+        if isinstance(file, str) and file.startswith(("http://", "https://")):
+            return file
 
-        if not os.path.isfile(local_file_path):
-            raise FileNotFoundError(f"File not found: {local_file_path}")
+        # Accept pathlib.Path and file-like objects
+        if isinstance(file, pathlib.Path):
+            file_path = str(file)
+            file_to_upload = None
+        elif isinstance(file, (io.IOBase, typing.BinaryIO)):
+            file_path = None
+            file_to_upload = file
+        else:
+            file_path = file
+            file_to_upload = None
 
-        file_type, extension = _get_file_type_and_extension(local_file_path)
+        if file_path is not None:
+            if not os.path.isfile(file_path):
+                raise FileNotFoundError(f"File not found: {file_path}")
+            file_type, extension = _get_file_type_and_extension(file_path)
+        else:
+            if file_to_upload is None:
+                raise ValueError("file_to_upload is None for file-like object case.")
+            file_name = getattr(file_to_upload, "name", None)
+            if not isinstance(file_name, str):
+                raise ValueError(
+                    "File-like object must have a 'name' attribute of type str for extension detection."
+                )
+            file_type, extension = _get_file_type_and_extension(file_name)
+
         response = self.upload_urls.create(
             items=[{"extension": extension, "type_": file_type}]
         )
@@ -82,13 +111,25 @@ class FilesClient:
 
         upload_info = response.items[0]
 
-        with open(local_file_path, "rb") as f:
-            headers = {"Content-Type": "application/octet-stream"}
-            with httpx.Client() as client:
+        with httpx.Client() as client:
+            if file_path is not None:
+                with open(file_path, "rb") as f:
+                    response = client.put(upload_info.upload_url, content=f.read())
+            else:
+                if file_to_upload is None:
+                    raise ValueError(
+                        "file_to_upload is None for file-like object case."
+                    )
+                pos = file_to_upload.tell() if hasattr(file_to_upload, "tell") else None
+                if hasattr(file_to_upload, "seek"):
+                    file_to_upload.seek(0)
                 response = client.put(
-                    upload_info.upload_url, content=f.read(), headers=headers
+                    upload_info.upload_url,
+                    content=file_to_upload.read(),
                 )
-                response.raise_for_status()
+                if pos is not None and hasattr(file_to_upload, "seek"):
+                    file_to_upload.seek(pos)
+            response.raise_for_status()
 
         return upload_info.file_path
 
@@ -98,11 +139,14 @@ class AsyncFilesClient:
         self._base_client = base_client
         self.upload_urls = AsyncUploadUrlsClient(base_client=self._base_client)
 
-    async def upload_file(self, local_path_or_url: str) -> str:
+    async def upload_file(
+        self,
+        file: typing.Union[str, pathlib.Path, typing.BinaryIO, io.IOBase],
+    ) -> str:
         """Upload a file to Magic Hour's storage asynchronously or return the path if it's already a URL.
 
         Args:
-            local_path_or_url: Path to the local file to upload or a URL
+            file: Path to the local file to upload, a URL, or a file-like object
 
         Returns:
             The file path that can be used in other API calls. If the input is a URL,
@@ -114,13 +158,34 @@ class AsyncFilesClient:
             httpx.HTTPStatusError: If the upload fails
         """
         # If the input is already a URL, return it as-is
-        if local_path_or_url.startswith(("http://", "https://")):
-            return local_path_or_url
+        if isinstance(file, str) and file.startswith(("http://", "https://")):
+            return file
 
-        if not os.path.isfile(local_path_or_url):
-            raise FileNotFoundError(f"File not found: {local_path_or_url}")
+        # Accept pathlib.Path and file-like objects
+        if isinstance(file, pathlib.Path):
+            file_path = str(file)
+            file_to_upload = None
+        elif isinstance(file, (io.IOBase, typing.BinaryIO)):
+            file_path = None
+            file_to_upload = file
+        else:
+            file_path = file
+            file_to_upload = None
 
-        file_type, extension = _get_file_type_and_extension(local_path_or_url)
+        if file_path is not None:
+            if not os.path.isfile(file_path):
+                raise FileNotFoundError(f"File not found: {file_path}")
+            file_type, extension = _get_file_type_and_extension(file_path)
+        else:
+            if file_to_upload is None:
+                raise ValueError("file_to_upload is None for file-like object case.")
+            file_name = getattr(file_to_upload, "name", None)
+            if not isinstance(file_name, str):
+                raise ValueError(
+                    "File-like object must have a 'name' attribute of type str for extension detection."
+                )
+            file_type, extension = _get_file_type_and_extension(file_name)
+
         response = await self.upload_urls.create(
             items=[{"extension": extension, "type_": file_type}]
         )
@@ -131,11 +196,25 @@ class AsyncFilesClient:
         upload_info = response.items[0]
 
         async with httpx.AsyncClient() as client:
-            with open(local_path_or_url, "rb") as f:
-                headers = {"Content-Type": "application/octet-stream"}
+            if file_path is not None:
+                with open(file_path, "rb") as f:
+                    response = await client.put(
+                        upload_info.upload_url, content=f.read()
+                    )
+            else:
+                if file_to_upload is None:
+                    raise ValueError(
+                        "file_to_upload is None for file-like object case."
+                    )
+                pos = file_to_upload.tell() if hasattr(file_to_upload, "tell") else None
+                if hasattr(file_to_upload, "seek"):
+                    file_to_upload.seek(0)
                 response = await client.put(
-                    upload_info.upload_url, content=f.read(), headers=headers
+                    upload_info.upload_url,
+                    content=file_to_upload.read(),
                 )
-                response.raise_for_status()
+                if pos is not None and hasattr(file_to_upload, "seek"):
+                    file_to_upload.seek(pos)
+            response.raise_for_status()
 
         return upload_info.file_path
