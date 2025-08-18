@@ -9,9 +9,10 @@ from magic_hour.core import (
     type_utils,
 )
 from magic_hour.types import models, params
+from .mixin import GenerateMixin, AsyncGenerateMixin
 
 
-class PhotoColorizerClient:
+class PhotoColorizerClient(GenerateMixin):
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
 
@@ -65,7 +66,7 @@ class PhotoColorizerClient:
         )
 
 
-class AsyncPhotoColorizerClient:
+class AsyncPhotoColorizerClient(AsyncGenerateMixin):
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
 
