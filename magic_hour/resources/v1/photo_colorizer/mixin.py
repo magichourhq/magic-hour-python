@@ -1,6 +1,8 @@
 from typing import Protocol, TypeVar
 from typing_extensions import ParamSpec
 
+from magic_hour.resources.v1.files.client import FilesClient
+
 P = ParamSpec("P")
 R_co = TypeVar("R_co", covariant=True)
 
@@ -18,20 +20,22 @@ class GenerateMixin:
         assets = kwargs.get("assets")
         # 1️⃣ Upload the file and get new path
         original_path = assets["image_file_path"]
-        uploaded_path = self._upload_file(original_path)  # implement this
+
+        uploader = FilesClient(base_client=self._base_client)
+
+        uploaded_path = uploader.upload_file(original_path)
 
         # 2️⃣ Replace the path in assets
         assets = dict(assets)  # make a copy to avoid mutating original
         assets["image_file_path"] = uploaded_path
 
-        # 3️⃣ Optional: set default name
-        if name is None:
-            name = "default_name"
-
-        assets = kwargs.get("assets")
         print(assets)
         if assets is not None and hasattr(assets, "get"):
             print(assets.get("image_file_path"))
+
+        kwargs["assets"] = assets
+
+        print(kwargs)
 
         result = self.create(*args, **kwargs)
         print("result")
