@@ -1,56 +1,96 @@
-from typing import Protocol, TypeVar
+from typing import Protocol, TypeVar, Dict, Any, cast
 from typing_extensions import ParamSpec
 
-from magic_hour.resources.v1.files.client import FilesClient
+from magic_hour.core.base_client import AsyncBaseClient
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
+from magic_hour.core import SyncBaseClient
 
 P = ParamSpec("P")
 R_co = TypeVar("R_co", covariant=True)
 
 
-class HasCreate(Protocol[P, R_co]):
+class HasCreateAndBaseClient(Protocol[P, R_co]):
+    _base_client: SyncBaseClient
+
     def create(self, *args: P.args, **kwargs: P.kwargs) -> R_co: ...
 
 
 class GenerateMixin:
-    def generate(self: HasCreate[P, R_co], *args: P.args, **kwargs: P.kwargs) -> R_co:
+    def generate(
+        self: HasCreateAndBaseClient[P, R_co],
+        *args: P.args,
+        **kwargs: P.kwargs,
+    ) -> R_co:
         print("generate")
         print(args)
         print(kwargs)
 
         assets = kwargs.get("assets")
-        # 1️⃣ Upload the file and get new path
-        original_path = assets["image_file_path"]
+        if assets is None:
+            # If no assets, just call create directly
+            return self.create(*args, **kwargs)
 
+        # 1️⃣ Upload any files with keys ending in '_file_path'
         uploader = FilesClient(base_client=self._base_client)
 
-        uploaded_path = uploader.upload_file(original_path)
+        # Make a copy to avoid mutating the original
+        # Cast to help type checker understand this is a dictionary
+        assets_dict = cast(Dict[str, Any], assets)
+        assets_copy: Dict[str, Any] = dict(assets_dict)
 
-        # 2️⃣ Replace the path in assets
-        assets = dict(assets)  # make a copy to avoid mutating original
-        assets["image_file_path"] = uploaded_path
+        # Find and upload all file path keys
+        for key, value in assets_dict.items():
+            if key.endswith("_file_path") and isinstance(value, str):
+                # Check if this looks like a local file path (not already uploaded)
+                if not value.startswith(("http://", "https://", "api-assets/")):
+                    print(f"Uploading file for key '{key}': {value}")
+                    uploaded_path = uploader.upload_file(value)
+                    assets_copy[key] = uploaded_path
 
-        print(assets)
-        if assets is not None and hasattr(assets, "get"):
-            print(assets.get("image_file_path"))
-
-        kwargs["assets"] = assets
-
+        kwargs["assets"] = assets_copy
         print(kwargs)
-
         result = self.create(*args, **kwargs)
-        print("result")
         return result
 
 
-class HasAsyncCreate(Protocol[P, R_co]):
+class HasAsyncCreateAndBaseClient(Protocol[P, R_co]):
+    _base_client: AsyncBaseClient  # Note: FilesClient doesn't have async upload yet
+
     async def create(self, *args: P.args, **kwargs: P.kwargs) -> R_co: ...
 
 
 class AsyncGenerateMixin:
     async def generate(
-        self: HasAsyncCreate[P, R_co], *args: P.args, **kwargs: P.kwargs
+        self: HasAsyncCreateAndBaseClient[P, R_co],
+        *args: P.args,
+        **kwargs: P.kwargs,
     ) -> R_co:
-        # pre-hook (optional)
+        print("async generate")
+        print(args)
+        print(kwargs)
+
+        assets = kwargs.get("assets")
+        if assets is None:
+            # If no assets, just call create directly
+            return await self.create(*args, **kwargs)
+
+        # 1️⃣ Upload any files with keys ending in '_file_path'
+        uploader = AsyncFilesClient(base_client=self._base_client)
+
+        # Make a copy to avoid mutating the original
+        # Cast to help type checker understand this is a dictionary
+        assets_dict = cast(Dict[str, Any], assets)
+        assets_copy: Dict[str, Any] = dict(assets_dict)
+
+        # Find and upload all file path keys
+        for key, value in assets_dict.items():
+            if key.endswith("_file_path") and isinstance(value, str):
+                # Check if this looks like a local file path (not already uploaded)
+                if not value.startswith(("http://", "https://", "api-assets/")):
+                    uploaded_path = uploader.upload_file(value)
+                    assets_copy[key] = uploaded_path
+
+        kwargs["assets"] = assets_copy
+
         result = await self.create(*args, **kwargs)
-        # post-hook (optional)
         return result

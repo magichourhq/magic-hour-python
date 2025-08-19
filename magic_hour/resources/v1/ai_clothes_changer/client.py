@@ -8,10 +8,11 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
+from magic_hour.resources.v1.photo_colorizer.mixin import GenerateMixin
 from magic_hour.types import models, params
 
 
-class AiClothesChangerClient:
+class AiClothesChangerClient(GenerateMixin):
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
 
