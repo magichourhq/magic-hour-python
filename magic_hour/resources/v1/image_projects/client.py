@@ -1,3 +1,5 @@
+import os
+import time
 import typing
 
 from magic_hour.core import (
@@ -89,6 +91,23 @@ class ImageProjectsClient:
             cast_to=models.V1ImageProjectsGetResponse,
             request_options=request_options or default_request_options(),
         )
+
+    def poll_until_complete(self, id: str) -> models.V1ImageProjectsGetResponse:
+        """
+        Poll until the image project is complete.
+        """
+
+        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
+
+        response = self.get(id=id)
+        status = response.status
+
+        while status not in ["complete", "error", "canceled"]:
+            response = self.get(id=id)
+            status = response.status
+            time.sleep(poll_interval)
+
+        return response
 
 
 class AsyncImageProjectsClient:
