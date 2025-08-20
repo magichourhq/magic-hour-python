@@ -134,35 +134,36 @@ class PhotoColorizerClient:
 
         api_response = image_projects_client.poll_until_complete(id=create_response.id)
 
-        if api_response.status == "error":
-            logger.error(f"Photo Colorizer error: {api_response.error}")
+        if api_response.status != "complete":
+            logger.error(
+                f"Photo Colorizer has status {api_response.status}: {api_response.error}"
+            )
             return ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
 
         if not download_outputs:
             return ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
 
-        if api_response.status == "complete":
-            downloaded_paths: list[str] = []
-            for download in api_response.downloads:
-                logger.info(f"Downloading {download.url} to local storage...")
+        downloaded_paths: list[str] = []
+        for download in api_response.downloads:
+            logger.info(f"Downloading {download.url} to local storage...")
 
-                with httpx.Client() as http_client:
-                    download_response = http_client.get(download.url)
-                    download_response.raise_for_status()
+            with httpx.Client() as http_client:
+                download_response = http_client.get(download.url)
+                download_response.raise_for_status()
 
-                    # Extract filename from URL or use a default
-                    filename = extract_filename_from_url(download.url)
+                # Extract filename from URL or use a default
+                filename = extract_filename_from_url(download.url)
 
-                    with open(filename, "wb") as f:
-                        f.write(download_response.content)
+                with open(filename, "wb") as f:
+                    f.write(download_response.content)
 
-                    downloaded_paths.append(filename)
+                downloaded_paths.append(filename)
 
-                    logger.info(f"Downloaded file saved as: {filename}")
+                logger.info(f"Downloaded file saved as: {filename}")
 
-            return ExtendedV1ImageProjectsGetResponse(
-                **api_response.model_dump(), downloaded_paths=downloaded_paths
-            )
+        return ExtendedV1ImageProjectsGetResponse(
+            **api_response.model_dump(), downloaded_paths=downloaded_paths
+        )
 
     def create(
         self,
