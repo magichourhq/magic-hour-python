@@ -1,6 +1,7 @@
 from pathlib import Path
 import typing
 import logging
+import pydantic
 import typing_extensions
 from urllib.parse import urlparse
 import httpx
@@ -59,6 +60,17 @@ def extract_filename_from_url(url: str) -> str:
         raise ValueError(f"Could not extract filename from {url}")
 
 
+class ExtendedV1ImageProjectsGetResponse(models.V1ImageProjectsGetResponse):
+    downloaded_paths: typing.Optional[typing.List[str]] = pydantic.Field(
+        default=None, alias="downloaded_paths"
+    )
+    """
+    The paths to the downloaded files.
+
+    This field is only populated if `download_outputs` is True.
+    """
+
+
 class PhotoColorizerClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
@@ -73,7 +85,7 @@ class PhotoColorizerClient:
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> models.V1ImageProjectsGetResponse:
+    ) -> ExtendedV1ImageProjectsGetResponse:
         """
         Generate colorized photo (alias for create with additional functionality).
 
@@ -108,26 +120,30 @@ class PhotoColorizerClient:
 
         assets["image_file_path"] = image_blob_path
 
-        response = self.create(
+        create_response = self.create(
             assets=assets, name=name, request_options=request_options
         )
-        logger.info(f"Photo Colorizer response: {response}")
+        logger.info(f"Photo Colorizer response: {create_response}")
 
         image_projects_client = ImageProjectsClient(base_client=self._base_client)
-        response = image_projects_client.poll_until_complete(id=response.id)
+        api_response = image_projects_client.get(id=create_response.id)
 
         if not wait_for_completion:
+            response = ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
             return response
 
-        if response.status == "error":
-            logger.error(f"Photo Colorizer error: {response.error}")
-            return response
+        api_response = image_projects_client.poll_until_complete(id=create_response.id)
+
+        if api_response.status == "error":
+            logger.error(f"Photo Colorizer error: {api_response.error}")
+            return ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
 
         if not download_outputs:
-            return response
+            return ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
 
-        if response.status == "complete":
-            for download in response.downloads:
+        if api_response.status == "complete":
+            downloaded_paths: list[str] = []
+            for download in api_response.downloads:
                 logger.info(f"Downloading {download.url} to local storage...")
 
                 with httpx.Client() as http_client:
@@ -140,9 +156,13 @@ class PhotoColorizerClient:
                     with open(filename, "wb") as f:
                         f.write(download_response.content)
 
+                    downloaded_paths.append(filename)
+
                     logger.info(f"Downloaded file saved as: {filename}")
 
-        return response
+            return ExtendedV1ImageProjectsGetResponse(
+                **api_response.model_dump(), downloaded_paths=downloaded_paths
+            )
 
     def create(
         self,
