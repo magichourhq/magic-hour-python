@@ -95,23 +95,9 @@ class PhotoColorizerClient:
 
         file_client = FilesClient(base_client=self._base_client)
 
-        image_file_path = assets.get("image_file_path")
-
-        if image_file_path.startswith(("http://", "https://")):
-            logger.info(f"{image_file_path} is a url. Skipping upload.")
-            image_blob_path = image_file_path
-        elif image_file_path.startswith("api-assets"):
-            logger.info(
-                f"{image_file_path} is begins with api-assets, assuming it's a blob path.. Skipping upload."
-            )
-            image_blob_path = image_file_path
-        else:
-            image_blob_path = file_client.upload_file(file=image_file_path)
-            logger.info(
-                f"Uploaded {image_file_path} to Magic Hour storage at {image_blob_path}."
-            )
-
-        assets["image_file_path"] = image_blob_path
+        assets["image_file_path"] = file_client.upload_file(
+            file=assets.get("image_file_path")
+        )
 
         create_response = self.create(
             assets=assets, name=name, request_options=request_options
