@@ -3,7 +3,6 @@ from pathlib import Path
 import typing
 import logging
 import pydantic
-import typing_extensions
 from urllib.parse import urlparse
 import httpx
 
@@ -21,17 +20,6 @@ from magic_hour.types import models, params
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-
-class V1PhotoColorizerGenerateBodyAssets(typing_extensions.TypedDict):
-    image_file_path: typing_extensions.Required[str]
-    """
-    The image used to generate the colorized image. This value is either
-    - a direct URL to the image file
-    - a path to a local file
-
-    Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
-    """
 
 
 def extract_filename_from_url(url: str) -> str:
@@ -79,7 +67,7 @@ class PhotoColorizerClient:
     def generate(
         self,
         *,
-        assets: V1PhotoColorizerGenerateBodyAssets,
+        assets: params.V1PhotoColorizerGenerateBodyAssets,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
