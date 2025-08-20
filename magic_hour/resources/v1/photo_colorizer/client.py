@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import typing
 import logging
@@ -83,6 +84,7 @@ class PhotoColorizerClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
+        download_directory: typing.Optional[str] = None,
         download_outputs: bool = True,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> ExtendedV1ImageProjectsGetResponse:
@@ -94,6 +96,9 @@ class PhotoColorizerClient:
         Args:
             name: The name of image. This value is mainly used for your own identification of the image.
             assets: Provide the assets for photo colorization
+            wait_for_completion: Whether to wait for the image project to complete
+            download_outputs: Whether to download the outputs
+            download_directory: The directory to download the outputs to. If not provided, the outputs will be downloaded to the current working directory
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -154,12 +159,17 @@ class PhotoColorizerClient:
                 # Extract filename from URL or use a default
                 filename = extract_filename_from_url(download.url)
 
-                with open(filename, "wb") as f:
+                if download_directory:
+                    download_path = os.path.join(download_directory, filename)
+                else:
+                    download_path = filename
+
+                with open(download_path, "wb") as f:
                     f.write(download_response.content)
 
-                downloaded_paths.append(filename)
+                downloaded_paths.append(download_path)
 
-                logger.info(f"Downloaded file saved as: {filename}")
+                logger.info(f"Downloaded file saved as: {download_path}")
 
         return ExtendedV1ImageProjectsGetResponse(
             **api_response.model_dump(), downloaded_paths=downloaded_paths
