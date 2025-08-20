@@ -349,6 +349,208 @@ def process_regular_file(
         return False
 
 
+def update_init_file(
+    params_dir: str, dry_run: bool = True, verbose: bool = True
+) -> bool:
+    """Update the __init__.py file to include all GenerateBodyAssets classes."""
+    init_file_path = os.path.join(params_dir, "__init__.py")
+
+    if not os.path.exists(init_file_path):
+        if verbose:
+            print(f"  ❌ __init__.py not found at {init_file_path}")
+        return False
+
+    try:
+        with open(init_file_path, "r") as f:
+            init_content = f.read()
+
+        # Find all generate files to add to imports
+        generate_files = glob.glob(
+            os.path.join(params_dir, "*generate_body_assets*.py")
+        )
+
+        if not generate_files:
+            if verbose:
+                print("  ℹ️  No generate files found to add to __init__.py")
+            return True
+
+        # Extract class names from generate files
+        generate_classes = []
+        generate_serializers = []
+
+        for generate_file in generate_files:
+            with open(generate_file, "r") as f:
+                file_content = f.read()
+
+            # Find all class definitions (excluding serializers)
+            # Match both regular GenerateBodyAssets and GenerateBodyAssetsFaceMappingsItem classes
+            class_matches = re.findall(
+                r"class (V1\w+GenerateBodyAssets(?:FaceMappingsItem)?)[^:]*:",
+                file_content,
+            )
+            generate_classes.extend(class_matches)
+
+            # Find serializer classes
+            serializer_matches = re.findall(
+                r"class (_SerializerV1\w+GenerateBodyAssets)[^:]*:", file_content
+            )
+            generate_serializers.extend(serializer_matches)
+
+        # Remove duplicates and sort
+        generate_classes = sorted(list(set(generate_classes)))
+        generate_serializers = sorted(list(set(generate_serializers)))
+
+        if verbose:
+            print(
+                f"  📝 Found {len(generate_classes)} GenerateBodyAssets classes to add"
+            )
+            print(
+                f"  📝 Found {len(generate_serializers)} GenerateBodyAssets serializers to add"
+            )
+
+        # Add imports for generate classes
+        new_imports = []
+        for class_name in generate_classes:
+            # Find the corresponding file name
+            file_name = None
+            for generate_file in generate_files:
+                with open(generate_file, "r") as f:
+                    if f"class {class_name}(" in f.read():
+                        file_name = os.path.basename(generate_file).replace(".py", "")
+                        break
+
+            if file_name:
+                new_imports.append(f"from .{file_name} import {class_name}")
+
+        # Add imports for generate serializers
+        for serializer_name in generate_serializers:
+            # Find the corresponding file name
+            file_name = None
+            for generate_file in generate_files:
+                with open(generate_file, "r") as f:
+                    if f"class {serializer_name}(" in f.read():
+                        file_name = os.path.basename(generate_file).replace(".py", "")
+                        break
+
+            if file_name:
+                new_imports.append(f"from .{file_name} import {serializer_name}")
+
+        # Sort imports alphabetically
+        new_imports.sort()
+
+        # Find the last import statement to insert after
+        # Look for the last "from ." import statement and find where it ends
+        import_lines = init_content.split("\n")
+        last_import_line = -1
+
+        for i, line in enumerate(import_lines):
+            if line.strip().startswith("from ."):
+                last_import_line = i
+
+        if verbose:
+            print(f"    Last import line found at index: {last_import_line}")
+
+        if last_import_line != -1:
+            # Find the end of this import block by looking for the closing parenthesis
+            # Start from the line after the "from ." statement
+            closing_line = -1
+            for i in range(last_import_line + 1, len(import_lines)):
+                if verbose:
+                    print(f"      Checking line {i}: '{import_lines[i].strip()}'")
+                if import_lines[i].strip() == ")":
+                    closing_line = i
+                    if verbose:
+                        print(f"      Found closing parenthesis at line {i}")
+                    break
+
+            if closing_line != -1:
+                if verbose:
+                    print(f"    Found closing parenthesis at line {closing_line}")
+                    print(f"    Will insert after line {closing_line}")
+            else:
+                if verbose:
+                    print(
+                        f"    No closing parenthesis found, inserting after line {last_import_line}"
+                    )
+        else:
+            # Fallback: insert before the __all__ section
+            all_match = re.search(r"__all__ = \[", init_content)
+            if all_match:
+                if verbose:
+                    print(f"    Fallback: inserting before __all__")
+            else:
+                if verbose:
+                    print("  ❌ Could not find insertion point in __init__.py")
+                return False
+
+        # Build new content by inserting at the right line
+        new_lines = []
+        for i, line in enumerate(import_lines):
+            new_lines.append(line)
+            # Insert new imports after the closing parenthesis of the last import block
+            if i == closing_line:
+                if verbose:
+                    print(f"    Inserting imports after line {i}")
+                # Insert new imports after the closing parenthesis
+                new_lines.append("")  # Add blank line
+                new_lines.extend(new_imports)
+                new_lines.append("")  # Add blank line
+
+        new_content = "\n".join(new_lines)
+
+        # Update __all__ list
+        all_match = re.search(r"__all__ = \[([\s\S]*?)\]", new_content)
+        if all_match:
+            all_content = all_match.group(1)
+            # Parse existing items more carefully
+            all_items = []
+            for line in all_content.split("\n"):
+                line = line.strip()
+                if line and line.startswith('"'):
+                    # Extract the class name from the quoted string
+                    # Remove quotes and trailing comma
+                    item = line.strip('"').rstrip('",').rstrip('"')
+                    if item and not item.endswith("(typing_extensions.TypedDict)"):
+                        all_items.append(item)
+
+            # Add new classes and serializers to __all__
+            for class_name in generate_classes:
+                if class_name not in all_items:
+                    all_items.append(class_name)
+
+            for serializer_name in generate_serializers:
+                if serializer_name not in all_items:
+                    all_items.append(serializer_name)
+
+            # Sort __all__ items
+            all_items.sort()
+
+            # Replace __all__ content
+            new_all_content = (
+                '__all__ = [\n    "' + '",\n    "'.join(all_items) + '",\n]'
+            )
+            new_content = re.sub(
+                r"__all__ = \[[\s\S]*?\]", new_all_content, new_content
+            )
+
+        if not dry_run:
+            with open(init_file_path, "w") as f:
+                f.write(new_content)
+            if verbose:
+                print(
+                    f"  ✅ Updated __init__.py with {len(generate_classes)} GenerateBodyAssets classes"
+                )
+        elif verbose:
+            print(f"  📋 Ready to update __init__.py (dry run mode)")
+
+        return True
+
+    except Exception as e:
+        if verbose:
+            print(f"  ❌ Error updating __init__.py: {e}")
+        return False
+
+
 def find_all_create_body_assets_files(params_dir: str) -> List[str]:
     """Find all files that contain CreateBodyAssets classes."""
     # Include both regular create_body_assets files and face_mappings_item files
@@ -391,7 +593,7 @@ def main():
         print("APPLYING CHANGES TO FILES")
 
     # Determine which files to process
-    params_dir = "/Users/dhu/Desktop/coding/sdks/python/magic_hour/types/params"
+    params_dir = "./magic_hour/types/params"
 
     if args.file:
         if not os.path.exists(args.file):
@@ -419,6 +621,12 @@ def main():
         else:
             if process_file(file_path, dry_run, verbose):
                 total_files_changed += 1
+
+    # Update __init__.py file to include all GenerateBodyAssets classes
+    if not args.check:
+        if verbose:
+            print(f"\nUpdating __init__.py file...")
+        update_init_file(params_dir, dry_run, verbose)
 
     if verbose:
         print(f"\n{'=' * 60}")

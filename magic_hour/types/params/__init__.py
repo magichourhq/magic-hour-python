@@ -232,67 +232,107 @@ from .v1_video_to_video_create_body_style import (
     _SerializerV1VideoToVideoCreateBodyStyle,
 )
 
+from .v1_ai_clothes_changer_generate_body_assets import V1AiClothesChangerGenerateBodyAssets
+from .v1_ai_face_editor_generate_body_assets import V1AiFaceEditorGenerateBodyAssets
+from .v1_ai_headshot_generator_generate_body_assets import V1AiHeadshotGeneratorGenerateBodyAssets
+from .v1_ai_image_editor_generate_body_assets import V1AiImageEditorGenerateBodyAssets
+from .v1_ai_image_upscaler_generate_body_assets import V1AiImageUpscalerGenerateBodyAssets
+from .v1_ai_photo_editor_generate_body_assets import V1AiPhotoEditorGenerateBodyAssets
+from .v1_ai_talking_photo_generate_body_assets import V1AiTalkingPhotoGenerateBodyAssets
+from .v1_animation_generate_body_assets import V1AnimationGenerateBodyAssets
+from .v1_auto_subtitle_generator_generate_body_assets import V1AutoSubtitleGeneratorGenerateBodyAssets
+from .v1_face_detection_generate_body_assets import V1FaceDetectionGenerateBodyAssets
+from .v1_face_swap_generate_body_assets import V1FaceSwapGenerateBodyAssets
+from .v1_face_swap_generate_body_assets_face_mappings_item import V1FaceSwapGenerateBodyAssetsFaceMappingsItem
+from .v1_face_swap_photo_generate_body_assets import V1FaceSwapPhotoGenerateBodyAssets
+from .v1_face_swap_photo_generate_body_assets_face_mappings_item import V1FaceSwapPhotoGenerateBodyAssetsFaceMappingsItem
+from .v1_image_background_remover_generate_body_assets import V1ImageBackgroundRemoverGenerateBodyAssets
+from .v1_image_to_video_generate_body_assets import V1ImageToVideoGenerateBodyAssets
+from .v1_lip_sync_generate_body_assets import V1LipSyncGenerateBodyAssets
+from .v1_photo_colorizer_generate_body_assets import V1PhotoColorizerGenerateBodyAssets
+from .v1_video_to_video_generate_body_assets import V1VideoToVideoGenerateBodyAssets
+
+
 
 __all__ = [
     "V1AiClothesChangerCreateBody",
     "V1AiClothesChangerCreateBodyAssets",
+    "V1AiClothesChangerGenerateBodyAssets",
     "V1AiFaceEditorCreateBody",
     "V1AiFaceEditorCreateBodyAssets",
     "V1AiFaceEditorCreateBodyStyle",
+    "V1AiFaceEditorGenerateBodyAssets",
     "V1AiGifGeneratorCreateBody",
     "V1AiGifGeneratorCreateBodyStyle",
     "V1AiHeadshotGeneratorCreateBody",
     "V1AiHeadshotGeneratorCreateBodyAssets",
     "V1AiHeadshotGeneratorCreateBodyStyle",
+    "V1AiHeadshotGeneratorGenerateBodyAssets",
     "V1AiImageEditorCreateBody",
     "V1AiImageEditorCreateBodyAssets",
     "V1AiImageEditorCreateBodyStyle",
+    "V1AiImageEditorGenerateBodyAssets",
     "V1AiImageGeneratorCreateBody",
     "V1AiImageGeneratorCreateBodyStyle",
     "V1AiImageUpscalerCreateBody",
     "V1AiImageUpscalerCreateBodyAssets",
     "V1AiImageUpscalerCreateBodyStyle",
+    "V1AiImageUpscalerGenerateBodyAssets",
     "V1AiMemeGeneratorCreateBody",
     "V1AiMemeGeneratorCreateBodyStyle",
     "V1AiPhotoEditorCreateBody",
     "V1AiPhotoEditorCreateBodyAssets",
     "V1AiPhotoEditorCreateBodyStyle",
+    "V1AiPhotoEditorGenerateBodyAssets",
     "V1AiQrCodeGeneratorCreateBody",
     "V1AiQrCodeGeneratorCreateBodyStyle",
     "V1AiTalkingPhotoCreateBody",
     "V1AiTalkingPhotoCreateBodyAssets",
     "V1AiTalkingPhotoCreateBodyStyle",
+    "V1AiTalkingPhotoGenerateBodyAssets",
     "V1AnimationCreateBody",
     "V1AnimationCreateBodyAssets",
     "V1AnimationCreateBodyStyle",
+    "V1AnimationGenerateBodyAssets",
     "V1AutoSubtitleGeneratorCreateBody",
     "V1AutoSubtitleGeneratorCreateBodyAssets",
     "V1AutoSubtitleGeneratorCreateBodyStyle",
     "V1AutoSubtitleGeneratorCreateBodyStyleCustomConfig",
+    "V1AutoSubtitleGeneratorGenerateBodyAssets",
     "V1FaceDetectionCreateBody",
     "V1FaceDetectionCreateBodyAssets",
+    "V1FaceDetectionGenerateBodyAssets",
     "V1FaceSwapCreateBody",
     "V1FaceSwapCreateBodyAssets",
     "V1FaceSwapCreateBodyAssetsFaceMappingsItem",
+    "V1FaceSwapGenerateBodyAssets",
+    "V1FaceSwapGenerateBodyAssetsFaceMappingsItem",
     "V1FaceSwapPhotoCreateBody",
     "V1FaceSwapPhotoCreateBodyAssets",
     "V1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem",
+    "V1FaceSwapPhotoGenerateBodyAssets",
+    "V1FaceSwapPhotoGenerateBodyAssetsFaceMappingsItem",
     "V1FilesUploadUrlsCreateBody",
     "V1FilesUploadUrlsCreateBodyItemsItem",
     "V1ImageBackgroundRemoverCreateBody",
     "V1ImageBackgroundRemoverCreateBodyAssets",
+    "V1ImageBackgroundRemoverGenerateBodyAssets",
     "V1ImageToVideoCreateBody",
     "V1ImageToVideoCreateBodyAssets",
     "V1ImageToVideoCreateBodyStyle",
+    "V1ImageToVideoGenerateBodyAssets",
     "V1LipSyncCreateBody",
     "V1LipSyncCreateBodyAssets",
+    "V1LipSyncGenerateBodyAssets",
     "V1PhotoColorizerCreateBody",
     "V1PhotoColorizerCreateBodyAssets",
+    "V1PhotoColorizerGenerateBodyAssets",
     "V1TextToVideoCreateBody",
     "V1TextToVideoCreateBodyStyle",
     "V1VideoToVideoCreateBody",
     "V1VideoToVideoCreateBodyAssets",
     "V1VideoToVideoCreateBodyStyle",
+    "V1VideoToVideoGenerateBodyAssets",
     "_SerializerV1AiClothesChangerCreateBody",
     "_SerializerV1AiClothesChangerCreateBodyAssets",
     "_SerializerV1AiFaceEditorCreateBody",
