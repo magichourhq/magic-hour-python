@@ -14,6 +14,9 @@ from pathlib import Path
 import typing
 import io
 import pathlib
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def _get_file_type_and_extension(file_path: str):
@@ -162,6 +165,8 @@ class FilesClient:
         Args:
             file: The file to upload. Can be:
                 - **str**: Path to a local file (e.g., "/path/to/image.jpg")
+                - **str**: URL of the file to upload, this will be skipped and the URL will be returned as is
+                - **str**: if the string begins with "api-assets", the file will be assumed to be a blob path and already uploaded to Magic Hour's storage
                 - **pathlib.Path**: Path object to a local file
                 - **typing.BinaryIO or io.IOBase**: File-like object (must have a 'name' attribute)
 
@@ -210,6 +215,16 @@ class FilesClient:
                 file_path = client.v1.files.upload_file(video_file)
             ```
         """
+
+        if isinstance(file, str) and file.startswith(("http://", "https://")):
+            logger.info(f"{file} is a url. Skipping upload and returning the URL.")
+            return file
+        elif isinstance(file, str) and file.startswith("api-assets"):
+            logger.info(
+                f"{file} is begins with api-assets, assuming it's a blob path.. Skipping upload and returning the path."
+            )
+            return file
+
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
 
         response = self.upload_urls.create(
@@ -269,6 +284,8 @@ class AsyncFilesClient:
         Args:
             file: The file to upload. Can be:
                 - **str**: Path to a local file (e.g., "/path/to/image.jpg")
+                - **str**: URL of the file to upload, this will be skipped and the URL will be returned as is
+                - **str**: if the string begins with "api-assets", the file will be assumed to be a blob path and already uploaded to Magic Hour's storage
                 - **pathlib.Path**: Path object to a local file
                 - **typing.BinaryIO or io.IOBase**: File-like object (must have a 'name' attribute)
 
@@ -305,6 +322,14 @@ class AsyncFilesClient:
             asyncio.run(upload_example())
             ```
         """
+        if isinstance(file, str) and file.startswith(("http://", "https://")):
+            logger.info(f"{file} is a url. Skipping upload and returning the URL.")
+            return file
+        elif isinstance(file, str) and file.startswith("api-assets"):
+            logger.info(
+                f"{file} is begins with api-assets, assuming it's a blob path.. Skipping upload and returning the path."
+            )
+            return file
 
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
 
