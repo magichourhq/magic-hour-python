@@ -248,6 +248,9 @@ class FilesClient:
             upload_response = client.put(url=upload_info.upload_url, content=content)
             upload_response.raise_for_status()
 
+        logger.info(
+            f"Uploaded {file_path} to Magic Hour storage at {upload_info.file_path}."
+        )
         return upload_info.file_path
 
 
@@ -356,4 +359,7 @@ class AsyncFilesClient:
             )
             upload_response.raise_for_status()
 
+        logger.info(
+            f"Uploaded {file_path} to Magic Hour storage at {upload_info.file_path}."
+        )
         return upload_info.file_path
