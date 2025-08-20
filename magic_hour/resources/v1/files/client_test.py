@@ -245,6 +245,147 @@ def test_upload_different_file_types():
         os.remove(tmp_path)
 
 
+# Test URL handling - should skip upload and return URL as is
+def test_upload_file_with_http_url():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    http_url = "http://example.com/image.jpg"
+    result = client.v1.files.upload_file(http_url)
+
+    assert result == http_url
+
+
+def test_upload_file_with_https_url():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    https_url = "https://example.com/video.mp4"
+    result = client.v1.files.upload_file(https_url)
+
+    assert result == https_url
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_http_url():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    http_url = "http://example.com/audio.mp3"
+    result = await client.v1.files.upload_file(http_url)
+
+    assert result == http_url
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_https_url():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    https_url = "https://example.com/document.pdf"
+    result = await client.v1.files.upload_file(https_url)
+
+    assert result == https_url
+
+
+# Test blob path handling - should skip upload and return blob path as is
+def test_upload_file_with_blob_path():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    blob_path = "api-assets/user123/image.jpg"
+    result = client.v1.files.upload_file(blob_path)
+
+    assert result == blob_path
+
+
+def test_upload_file_with_blob_path_different_format():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    blob_path = "api-assets/project456/video.mp4"
+    result = client.v1.files.upload_file(blob_path)
+
+    assert result == blob_path
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_blob_path():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    blob_path = "api-assets/user789/audio.wav"
+    result = await client.v1.files.upload_file(blob_path)
+
+    assert result == blob_path
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_blob_path_different_format():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    blob_path = "api-assets/session101/photo.png"
+    result = await client.v1.files.upload_file(blob_path)
+
+    assert result == blob_path
+
+
+# Test that URL and blob path handling doesn't make HTTP requests
+def test_upload_file_with_url_does_not_make_http_requests():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    with mock.patch("httpx.Client.put") as mock_put:
+        with mock.patch.object(client.v1.files.upload_urls, "create") as mock_create:
+            result = client.v1.files.upload_file("https://example.com/file.jpg")
+
+            # Should not call upload_urls.create or make HTTP PUT request
+            mock_create.assert_not_called()
+            mock_put.assert_not_called()
+
+            assert result == "https://example.com/file.jpg"
+
+
+def test_upload_file_with_blob_path_does_not_make_http_requests():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    with mock.patch("httpx.Client.put") as mock_put:
+        with mock.patch.object(client.v1.files.upload_urls, "create") as mock_create:
+            result = client.v1.files.upload_file("api-assets/user123/file.mp4")
+
+            # Should not call upload_urls.create or make HTTP PUT request
+            mock_create.assert_not_called()
+            mock_put.assert_not_called()
+
+            assert result == "api-assets/user123/file.mp4"
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_url_does_not_make_http_requests():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    with mock.patch("httpx.AsyncClient.put", new_callable=mock.AsyncMock) as mock_put:
+        with mock.patch.object(
+            client.v1.files.upload_urls, "create", new_callable=mock.AsyncMock
+        ) as mock_create:
+            result = await client.v1.files.upload_file("http://example.com/file.mp3")
+
+            # Should not call upload_urls.create or make HTTP PUT request
+            mock_create.assert_not_awaited()
+            mock_put.assert_not_awaited()
+
+            assert result == "http://example.com/file.mp3"
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_blob_path_does_not_make_http_requests():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    with mock.patch("httpx.AsyncClient.put", new_callable=mock.AsyncMock) as mock_put:
+        with mock.patch.object(
+            client.v1.files.upload_urls, "create", new_callable=mock.AsyncMock
+        ) as mock_create:
+            result = await client.v1.files.upload_file("api-assets/user456/file.wav")
+
+            # Should not call upload_urls.create or make HTTP PUT request
+            mock_create.assert_not_awaited()
+            mock_put.assert_not_awaited()
+
+            assert result == "api-assets/user456/file.wav"
+
+
 # Test file position preservation for file-like objects
 def test_upload_file_preserves_file_position():
     data = b"test data for position preservation"
