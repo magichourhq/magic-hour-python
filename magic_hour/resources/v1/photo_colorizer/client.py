@@ -97,7 +97,7 @@ class PhotoColorizerClient:
             request_options: Additional options to customize the HTTP request
 
         Returns:
-            Success
+            ExtendedV1ImageProjectsGetResponse: The response from the Photo Colorizer API with the downloaded paths if `download_outputs` is True.
         """
 
         file_client = FilesClient(base_client=self._base_client)
