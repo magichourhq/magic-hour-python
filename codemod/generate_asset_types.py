@@ -4,16 +4,17 @@ Script to generate GenerateBodyAssets classes for all CreateBodyAssets classes f
 
 WHAT IT DOES:
 - Finds all *_create_body_assets.py files in magic_hour/types/params/
-- For each CreateBodyAssets class, generates a corresponding GenerateBodyAssets class
+- For each CreateBodyAssets class, creates a new separate file with GenerateBodyAssets class
 - The Generate classes are identical to Create classes except:
   1. Class name changes from "Create" to "Generate"
   2. File path docstrings change from API upload URLs to local file paths
+- Creates new files: *_create_body_assets.py -> *_generate_body_assets.py
 
 SPECIAL CASES:
 - FaceMappingsItem classes: Only converts `new_face` field docs, leaves `original_face` unchanged
   (because original_face comes from API response, not user upload)
-- Import handling: For face swap classes that reference FaceMappingsItem, imports are updated to include
-  both Create and Generate versions automatically
+- Import handling: For face swap classes that reference FaceMappingsItem, imports are updated to use
+  generate versions automatically (avoiding mixed Create/Generate imports)
 
 WHEN TO RUN:
 - After adding new CreateBodyAssets classes
@@ -29,9 +30,10 @@ USAGE:
 
 SAFETY:
 - Always runs in dry-run mode by default
-- Use --apply to actually modify files
+- Use --apply to actually create new files
 - Original CreateBodyAssets classes are never modified
-- Existing GenerateBodyAssets classes are replaced if they exist
+- Creates separate files so no existing code is affected
+- Existing GenerateBodyAssets files are overwritten if they exist
 """
 
 import os
@@ -172,38 +174,128 @@ def find_create_body_assets_classes(file_path: str) -> List[str]:
     return matches
 
 
-def file_needs_update(file_path: str) -> bool:
-    """Check if a file needs GenerateBodyAssets classes added or updated."""
-    with open(file_path, "r") as f:
-        content = f.read()
+def get_generate_file_path(create_file_path: str) -> str:
+    """Convert a create_body_assets file path to a generate_body_assets file path."""
+    # Always create separate generate files, including for face mapping items
+    return create_file_path.replace("_create_body_assets", "_generate_body_assets")
 
+
+def file_needs_update(file_path: str) -> bool:
+    """Check if a file needs GenerateBodyAssets files created or updated."""
     create_classes = find_create_body_assets_classes(file_path)
     if not create_classes:
         return False
 
-    # Check if corresponding Generate classes exist and are up to date
-    for class_name in create_classes:
-        generate_class_name = class_name.replace(
-            "CreateBodyAssets", "GenerateBodyAssets"
+    # Check if the corresponding generate file exists or needs updating
+    generate_file_path = get_generate_file_path(file_path)
+
+    # If generate file doesn't exist, we need to create it
+    if not os.path.exists(generate_file_path):
+        return True
+
+    # If generate file exists, check if it's older than the create file
+    create_mtime = os.path.getmtime(file_path)
+    generate_mtime = os.path.getmtime(generate_file_path)
+
+    # Return True if create file is newer (needs update)
+    return create_mtime > generate_mtime
+
+
+def create_generate_file_content(create_file_path: str) -> str:
+    """Create the content for a new generate_body_assets file."""
+    with open(create_file_path, "r") as f:
+        content = f.read()
+
+    # Start with the imports from the original file
+    imports_end = content.find("\nclass ")
+    if imports_end == -1:
+        imports_end = content.find("class ")
+
+    imports_section = content[:imports_end].strip()
+
+    # Check for face mapping imports before any replacements
+    has_face_mappings = "FaceMappingsItem" in content
+    is_not_face_mapping_file = "face_mappings_item" not in create_file_path
+    has_face_mapping_import = (
+        "_create_body_assets_face_mappings_item import" in imports_section
+    )
+
+    # For regular face swap files, update imports to reference generate versions
+    if has_face_mappings and is_not_face_mapping_file and has_face_mapping_import:
+        # Add generate imports alongside create imports
+        face_mapping_import_pattern = r"(from \.v1_\w+_create_body_assets_face_mappings_item import \(\s*)([\s\S]*?)(\s*\))"
+
+        def update_import(match):
+            prefix = match.group(1)
+            import_content = match.group(2)
+            suffix = match.group(3)
+
+            # Change import path to generate version
+            prefix = prefix.replace(
+                "_create_body_assets_face_mappings_item",
+                "_generate_body_assets_face_mappings_item",
+            )
+
+            # Update class names to Generate versions
+            lines = [
+                line.strip() for line in import_content.split("\n") if line.strip()
+            ]
+            new_lines = []
+            for line in lines:
+                # Only update the main class, not the serializer
+                if not line.startswith("_Serializer"):
+                    new_line = line.replace(
+                        "CreateBodyAssetsFaceMappingsItem",
+                        "GenerateBodyAssetsFaceMappingsItem",
+                    )
+                else:
+                    # For serializer, we don't need it in generate files since it's for API calls
+                    continue
+                new_lines.append(new_line)
+
+            new_import_content = "\n    ".join(new_lines)
+            return prefix + new_import_content + suffix
+
+        imports_section = re.sub(
+            face_mapping_import_pattern, update_import, imports_section, flags=re.DOTALL
         )
 
-        if generate_class_name not in content:
-            return True
+    # Find all CreateBodyAssets classes and convert them
+    create_classes = find_create_body_assets_classes(create_file_path)
+    generate_classes = []
 
-        # TODO: Could add more sophisticated checking to see if Generate class is up to date
-        # For now, we assume if it exists, it might need updating
+    for class_name in create_classes:
+        try:
+            # Extract the CreateBodyAssets class
+            create_class = extract_create_body_assets_class(content, class_name)
 
-    return True
+            # Generate the GenerateBodyAssets class
+            generate_class = generate_generate_body_assets_class(
+                create_class, create_file_path
+            )
+            generate_classes.append(generate_class)
+
+        except Exception as e:
+            print(f"    Error processing {class_name}: {e}")
+            continue
+
+    # Construct the new file content
+    new_content = imports_section + "\n\n\n"
+    for i, generate_class in enumerate(generate_classes):
+        if i > 0:
+            new_content += "\n\n\n"
+        new_content += generate_class
+
+    new_content += "\n"
+
+    return new_content
 
 
 def process_file(file_path: str, dry_run: bool = True, verbose: bool = True) -> bool:
-    """Process a single file to add GenerateBodyAssets classes."""
+    """Process a single file to create GenerateBodyAssets files."""
 
     if verbose:
         print(f"\nProcessing file: {file_path}")
-
-    with open(file_path, "r") as f:
-        content = f.read()
 
     # Find all CreateBodyAssets classes in this file
     create_classes = find_create_body_assets_classes(file_path)
@@ -216,107 +308,45 @@ def process_file(file_path: str, dry_run: bool = True, verbose: bool = True) -> 
     if verbose:
         print(f"  Found CreateBodyAssets classes: {create_classes}")
 
-    updated_content = content
-    changes_made = False
+    # Get the generate file path
+    generate_file_path = get_generate_file_path(file_path)
 
-    for class_name in create_classes:
-        generate_class_name = class_name.replace(
-            "CreateBodyAssets", "GenerateBodyAssets"
-        )
+    # All files are processed the same way - create separate generate files
+    return process_regular_file(file_path, generate_file_path, dry_run, verbose)
 
-        # Check if GenerateBodyAssets already exists
-        if generate_class_name in content:
+
+# Removed process_face_mapping_file function since all files are now processed the same way
+
+
+def process_regular_file(
+    file_path: str, generate_file_path: str, dry_run: bool = True, verbose: bool = True
+) -> bool:
+    """Process a regular file by creating a new generate file."""
+
+    if verbose:
+        print(f"  Will create new file: {os.path.basename(generate_file_path)}")
+
+    try:
+        # Create the content for the new generate file
+        new_content = create_generate_file_content(file_path)
+
+        if not dry_run:
+            # Write the new file
+            with open(generate_file_path, "w") as f:
+                f.write(new_content)
             if verbose:
-                print(f"    {generate_class_name} already exists, replacing...")
-            # Remove existing GenerateBodyAssets class
-            pattern = rf"class {re.escape(generate_class_name)}\(typing_extensions\.TypedDict\):.*?(?=\n\nclass|\nclass|$)"
-            updated_content = re.sub(pattern, "", updated_content, flags=re.DOTALL)
-
-        try:
-            # Extract the CreateBodyAssets class
-            create_class = extract_create_body_assets_class(updated_content, class_name)
-
-            # Generate the GenerateBodyAssets class
-            generate_class = generate_generate_body_assets_class(
-                create_class, file_path
+                print(f"  ✅ Created new file: {os.path.basename(generate_file_path)}")
+        elif verbose:
+            print(
+                f"  📋 Ready to create: {os.path.basename(generate_file_path)} (dry run mode)"
             )
 
-            if verbose:
-                print(f"    Generated {generate_class_name}")
+        return True
 
-            # Insert before the CreateBodyAssets class
-            insert_pos = updated_content.find(f"class {class_name}")
-            updated_content = (
-                updated_content[:insert_pos]
-                + generate_class
-                + "\n\n\n"
-                + updated_content[insert_pos:]
-            )
-            changes_made = True
-
-        except Exception as e:
-            if verbose:
-                print(f"    Error processing {class_name}: {e}")
-            continue
-
-    # Fix imports for face mapping items if needed
-    if (
-        changes_made
-        and "FaceMappingsItem]" in updated_content
-        and "face_mappings_item" not in file_path
-    ):
-        # Update imports to include both Create and Generate versions
-        face_mapping_import_pattern = r"(from \.v1_\w+_create_body_assets_face_mappings_item import \(\s*)([\s\S]*?)(\s*\))"
-
-        def update_import(match):
-            prefix = match.group(1)
-            import_content = match.group(2)
-            suffix = match.group(3)
-
-            # Check if Generate version is already imported
-            if "Generate" not in import_content:
-                # Add Generate version to imports
-                lines = [
-                    line.strip() for line in import_content.split("\n") if line.strip()
-                ]
-
-                # Find the Create class import and add Generate version after it
-                # Only add for the main class, not the serializer
-                new_lines = []
-                for line in lines:
-                    new_lines.append(line)
-                    if (
-                        "CreateBodyAssetsFaceMappingsItem," in line
-                        and not line.startswith("_Serializer")
-                    ):
-                        generate_line = line.replace(
-                            "CreateBodyAssetsFaceMappingsItem,",
-                            "GenerateBodyAssetsFaceMappingsItem,",
-                        )
-                        new_lines.append(generate_line)
-
-                new_import_content = "\n    ".join(new_lines)
-                return prefix + new_import_content + suffix
-
-            return match.group(0)  # Return unchanged if already has Generate import
-
-        old_updated_content = updated_content
-        updated_content = re.sub(
-            face_mapping_import_pattern, update_import, updated_content, flags=re.DOTALL
-        )
-
-        if updated_content != old_updated_content and verbose:
-            print("    Fixed imports for face mapping items")
-
-    if changes_made and not dry_run:
-        with open(file_path, "w") as f:
-            f.write(updated_content)
+    except Exception as e:
         if verbose:
-            print(f"    File updated!")
-    elif changes_made and verbose:
-        print(f"    Changes ready (dry run mode)")
-
-    return changes_made
+            print(f"  ❌ Error creating generate file: {e}")
+        return False
 
 
 def find_all_create_body_assets_files(params_dir: str) -> List[str]:
@@ -405,12 +435,12 @@ def main():
             return 0
     else:
         print(
-            f"Summary: {total_files_changed} files {'would be' if dry_run else 'were'} modified"
+            f"Summary: {total_files_changed} files {'would be' if dry_run else 'were'} processed"
         )
 
         if dry_run and total_files_changed > 0 and verbose:
-            print("\nTo apply all changes, run:")
-            print("python generate_all_body_assets_script.py --apply")
+            print("\nTo create all generate files, run:")
+            print("python codemod/generate_asset_types.py --apply")
 
     return 0
 
