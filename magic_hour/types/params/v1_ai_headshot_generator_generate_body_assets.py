@@ -1,0 +1,17 @@
+import pydantic
+import typing_extensions
+
+
+class V1AiHeadshotGeneratorGenerateBodyAssets(typing_extensions.TypedDict):
+    """
+    Provide the assets for headshot photo
+    """
+
+    image_file_path: typing_extensions.Required[str]
+    """
+    The image used to generate the headshot. This image must contain one detectable face. This value is either
+    - a direct URL to the image file
+    - a path to a local file
+
+    Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
+    """
