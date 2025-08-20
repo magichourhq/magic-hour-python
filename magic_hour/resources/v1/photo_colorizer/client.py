@@ -22,14 +22,14 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class V1PhotoColorizerGenerateBodyAssets(params.V1PhotoColorizerCreateBodyAssets):
+class V1PhotoColorizerGenerateBodyAssets(typing_extensions.TypedDict):
     image_file_path: typing_extensions.Required[str]
     """
     The image used to generate the colorized image. This value is either
     - a direct URL to the image file
     - a path to a local file
 
-    Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage.
+    Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
     """
 
 
