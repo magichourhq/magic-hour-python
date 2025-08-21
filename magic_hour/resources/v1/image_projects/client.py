@@ -24,7 +24,7 @@ class V1ImageProjectsGetResponseWithDownloads(models.V1ImageProjectsGetResponse)
     """
     The paths to the downloaded files.
 
-    This field is only populated if `download_outputs` is True.
+    This field is only populated if `download_outputs` is True and the image project is complete.
     """
 
 

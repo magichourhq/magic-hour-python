@@ -23,7 +23,7 @@ class V1VideoProjectsGetResponseWithDownloads(models.V1VideoProjectsGetResponse)
     """
     The paths to the downloaded files.
 
-    This field is only populated if `download_outputs` is True.
+    This field is only populated if `download_outputs` is True and the video project is complete.
     """
 
 
