@@ -50,6 +50,17 @@ class AiGifGeneratorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI GIF Generator API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_gif_generator.generate(
+            style={"prompt": "Cute dancing cat, pixel art"},
+            name="Dancing Cat GIF",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         create_response = self.create(
@@ -147,6 +158,17 @@ class AsyncAiGifGeneratorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI GIF Generator API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_gif_generator.generate(
+            style={"prompt": "Cute dancing cat, pixel art"},
+            name="Dancing Cat GIF",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         create_response = await self.create(

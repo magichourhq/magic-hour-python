@@ -51,6 +51,17 @@ class PhotoColorizerClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the Photo Colorizer API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.photo_colorizer.generate(
+            assets={"image_file_path": "path/to/black_white_photo.jpg"},
+            name="Colorized Photo",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -154,6 +165,17 @@ class AsyncPhotoColorizerClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the Photo Colorizer API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.photo_colorizer.generate(
+            assets={"image_file_path": "path/to/black_white_photo.jpg"},
+            name="Colorized Photo",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)

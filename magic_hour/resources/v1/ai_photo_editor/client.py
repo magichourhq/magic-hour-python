@@ -57,6 +57,28 @@ class AiPhotoEditorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Photo Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_photo_editor.generate(
+            assets={"image_file_path": "path/to/photo.jpg"},
+            resolution=768,
+            style={
+                "image_description": "A photo of a person",
+                "likeness_strength": 5.2,
+                "negative_prompt": "painting, cartoon, sketch",
+                "prompt": "A photo portrait of a person wearing a hat",
+                "prompt_strength": 3.75,
+                "steps": 4,
+                "upscale_factor": 2,
+                "upscale_fidelity": 0.5,
+            },
+            name="Edited Portrait",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -198,6 +220,28 @@ class AsyncAiPhotoEditorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Photo Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_photo_editor.generate(
+            assets={"image_file_path": "path/to/photo.jpg"},
+            resolution=768,
+            style={
+                "image_description": "A photo of a person",
+                "likeness_strength": 5.2,
+                "negative_prompt": "painting, cartoon, sketch",
+                "prompt": "A photo portrait of a person wearing a hat",
+                "prompt_strength": 3.75,
+                "steps": 4,
+                "upscale_factor": 2,
+                "upscale_fidelity": 0.5,
+            },
+            name="Edited Portrait",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)

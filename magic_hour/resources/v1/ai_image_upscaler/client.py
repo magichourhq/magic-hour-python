@@ -55,6 +55,19 @@ class AiImageUpscalerClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Image Upscaler API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_image_upscaler.generate(
+            assets={"image_file_path": "path/to/image.png"},
+            scale_factor=2.0,
+            style={"enhancement": "Balanced"},
+            name="Upscaled Image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -179,6 +192,19 @@ class AsyncAiImageUpscalerClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Image Upscaler API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_image_upscaler.generate(
+            assets={"image_file_path": "path/to/image.png"},
+            scale_factor=2.0,
+            style={"enhancement": "Balanced"},
+            name="Upscaled Image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)

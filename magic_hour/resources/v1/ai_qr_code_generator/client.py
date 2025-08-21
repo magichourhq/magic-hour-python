@@ -51,6 +51,18 @@ class AiQrCodeGeneratorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI QR Code Generator API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_qr_code_generator.generate(
+            content="https://magichour.ai",
+            style={"art_style": "Watercolor"},
+            name="Artistic QR Code",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         create_response = self.create(
@@ -153,6 +165,18 @@ class AsyncAiQrCodeGeneratorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI QR Code Generator API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_qr_code_generator.generate(
+            content="https://magichour.ai",
+            style={"art_style": "Watercolor"},
+            name="Artistic QR Code",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         create_response = await self.create(

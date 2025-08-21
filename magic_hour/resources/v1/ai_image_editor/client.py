@@ -53,6 +53,18 @@ class AiImageEditorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Image Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_image_editor.generate(
+            assets={"image_file_path": "path/to/image.png"},
+            style={"prompt": "Add a sunset background"},
+            name="Edited Image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -161,6 +173,18 @@ class AsyncAiImageEditorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Image Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_image_editor.generate(
+            assets={"image_file_path": "path/to/image.png"},
+            style={"prompt": "Add a sunset background"},
+            name="Edited Image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)
