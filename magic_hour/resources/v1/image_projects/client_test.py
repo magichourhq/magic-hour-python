@@ -2,7 +2,7 @@ import datetime
 import pytest
 import httpx
 from pathlib import Path
-from typing import Any, Generator, Literal
+from typing import Any, Generator, Literal, Union, List
 from unittest.mock import Mock, AsyncMock
 
 from magic_hour.types import models
@@ -21,8 +21,8 @@ class DummyResponse(models.V1ImageProjectsGetResponse):
         status: Literal[
             "complete", "queued", "rendering", "error", "canceled"
         ] = "complete",
-        download_url: str | None = None,
-        error: str | None = None,
+        download_url: Union[str, None] = None,
+        error: Union[str, None] = None,
     ):
         # Create error object if error string is provided
         error_obj = None
@@ -126,11 +126,7 @@ def test_check_result_download_outputs(
     file_url = "https://example.com/file.png"
     mock_base_client.request.return_value = DummyResponse(
         status="complete",
-        downloads=[
-            models.V1ImageProjectsGetResponseDownloadsItem(
-                url=file_url, expires_at="2024-01-01T00:00:00Z"
-            )
-        ],
+        download_url=file_url,
     )
 
     # Create a mock response for httpx
@@ -203,7 +199,7 @@ def test_check_result_poll_interval_default(
     ]
 
     # Mock time.sleep to track calls
-    sleep_calls: list[float] = []
+    sleep_calls: List[float] = []
 
     def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
@@ -235,7 +231,7 @@ def test_check_result_poll_interval_custom(
     ]
 
     # Mock time.sleep to track calls
-    sleep_calls: list[float] = []
+    sleep_calls: List[float] = []
 
     def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
@@ -269,7 +265,7 @@ def test_check_result_poll_interval_multiple_polls(
     ]
 
     # Mock time.sleep to track calls
-    sleep_calls: list[float] = []
+    sleep_calls: List[float] = []
 
     def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
@@ -359,11 +355,7 @@ async def test_async_check_result_download_outputs(
     file_url = "https://example.com/file.png"
     mock_async_base_client.request.return_value = DummyResponse(
         status="complete",
-        downloads=[
-            models.V1ImageProjectsGetResponseDownloadsItem(
-                url=file_url, expires_at="2024-01-01T00:00:00Z"
-            )
-        ],
+        download_url=file_url,
     )
 
     # Create a mock response for httpx
@@ -445,7 +437,7 @@ async def test_async_check_result_poll_interval_default(
     ]
 
     # Mock time.sleep to track calls
-    sleep_calls: list[float] = []
+    sleep_calls: List[float] = []
 
     def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
@@ -478,7 +470,7 @@ async def test_async_check_result_poll_interval_custom(
     ]
 
     # Mock time.sleep to track calls
-    sleep_calls: list[float] = []
+    sleep_calls: List[float] = []
 
     def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
@@ -513,7 +505,7 @@ async def test_async_check_result_poll_interval_multiple_polls(
     ]
 
     # Mock time.sleep to track calls
-    sleep_calls: list[float] = []
+    sleep_calls: List[float] = []
 
     def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
