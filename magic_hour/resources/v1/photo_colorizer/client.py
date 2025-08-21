@@ -1,8 +1,5 @@
-from pathlib import Path
 import typing
 import logging
-import pydantic
-from urllib.parse import urlparse
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -20,44 +17,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def extract_filename_from_url(url: str) -> str:
-    """
-    Extract filename from URL, handling query parameters and URL encoding.
-
-    Args:
-        url: The URL to extract filename from
-        default_filename: Fallback filename if extraction fails
-
-    Returns:
-        The extracted filename or default_filename
-
-    Examples:
-        >>> extract_filename_from_url("https://example.com/path/image.png?param=value")
-        'image.png'
-        >>> extract_filename_from_url("https://videos.magichour.ai/cmei3iv6t0e508f0zqzz9vbom/output.png?X-Goog-Algorithm=...")
-        'output.png'
-    """
-    try:
-        parsed_url = urlparse(url)
-        path = parsed_url.path
-
-        file = Path(path)
-        return file.name
-    except Exception:
-        raise ValueError(f"Could not extract filename from {url}")
-
-
-class ExtendedV1ImageProjectsGetResponse(models.V1ImageProjectsGetResponse):
-    downloaded_paths: typing.Optional[typing.List[str]] = pydantic.Field(
-        default=None, alias="downloaded_paths"
-    )
-    """
-    The paths to the downloaded files.
-
-    This field is only populated if `download_outputs` is True.
-    """
-
-
 class PhotoColorizerClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
@@ -70,8 +29,8 @@ class PhotoColorizerClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
-        download_directory: typing.Optional[str] = None,
         download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ):
         """
@@ -88,7 +47,7 @@ class PhotoColorizerClient:
             request_options: Additional options to customize the HTTP request
 
         Returns:
-            ExtendedV1ImageProjectsGetResponse: The response from the Photo Colorizer API with the downloaded paths if `download_outputs` is True.
+            V1ImageProjectsGetResponseWithDownloads: The response from the Photo Colorizer API with the downloaded paths if `download_outputs` is True.
         """
 
         file_client = FilesClient(base_client=self._base_client)
