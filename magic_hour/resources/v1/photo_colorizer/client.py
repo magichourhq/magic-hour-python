@@ -1,10 +1,8 @@
-import os
 from pathlib import Path
 import typing
 import logging
 import pydantic
 from urllib.parse import urlparse
-import httpx
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -75,7 +73,7 @@ class PhotoColorizerClient:
         download_directory: typing.Optional[str] = None,
         download_outputs: bool = True,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> ExtendedV1ImageProjectsGetResponse:
+    ):
         """
         Generate colorized photo (alias for create with additional functionality).
 
@@ -105,49 +103,14 @@ class PhotoColorizerClient:
         logger.info(f"Photo Colorizer response: {create_response}")
 
         image_projects_client = ImageProjectsClient(base_client=self._base_client)
-        api_response = image_projects_client.get(id=create_response.id)
-
-        if not wait_for_completion:
-            response = ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
-            return response
-
-        api_response = image_projects_client.poll_until_complete(id=create_response.id)
-
-        if api_response.status != "complete":
-            logger.error(
-                f"Photo Colorizer has status {api_response.status}: {api_response.error}"
-            )
-            return ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
-
-        if not download_outputs:
-            return ExtendedV1ImageProjectsGetResponse(**api_response.model_dump())
-
-        downloaded_paths: list[str] = []
-        for download in api_response.downloads:
-            logger.info(f"Downloading {download.url} to local storage...")
-
-            with httpx.Client() as http_client:
-                download_response = http_client.get(download.url)
-                download_response.raise_for_status()
-
-                # Extract filename from URL or use a default
-                filename = extract_filename_from_url(download.url)
-
-                if download_directory:
-                    download_path = os.path.join(download_directory, filename)
-                else:
-                    download_path = filename
-
-                with open(download_path, "wb") as f:
-                    f.write(download_response.content)
-
-                downloaded_paths.append(download_path)
-
-                logger.info(f"Downloaded file saved as: {download_path}")
-
-        return ExtendedV1ImageProjectsGetResponse(
-            **api_response.model_dump(), downloaded_paths=downloaded_paths
+        response = image_projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
         )
+
+        return response
 
     def create(
         self,
