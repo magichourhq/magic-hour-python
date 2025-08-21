@@ -1,3 +1,4 @@
+import asyncio
 import os
 import time
 import typing
@@ -23,7 +24,7 @@ class V1ImageProjectsGetResponseWithDownloads(models.V1ImageProjectsGetResponse)
     """
     The paths to the downloaded files.
 
-    This field is only populated if `download_outputs` is True.
+    This field is only populated if `download_outputs` is True and the image project is complete.
     """
 
 
@@ -210,7 +211,7 @@ class AsyncImageProjectsClient:
         while status not in ["complete", "error", "canceled"]:
             api_response = await self.get(id=id)
             status = api_response.status
-            time.sleep(poll_interval)
+            await asyncio.sleep(poll_interval)
 
         if api_response.status != "complete":
             log = logger.error if api_response.status == "error" else logger.info

@@ -6,13 +6,13 @@ from typing import Any, Generator, Literal, Union, List
 from unittest.mock import Mock, AsyncMock
 
 from magic_hour.types import models
-from magic_hour.resources.v1.image_projects.client import (
-    ImageProjectsClient,
-    AsyncImageProjectsClient,
+from magic_hour.resources.v1.video_projects.client import (
+    VideoProjectsClient,
+    AsyncVideoProjectsClient,
 )
 
 
-class DummyResponse(models.V1ImageProjectsGetResponse):
+class DummyResponse(models.V1VideoProjectsGetResponse):
     """Helper response with defaults"""
 
     def __init__(
@@ -27,7 +27,7 @@ class DummyResponse(models.V1ImageProjectsGetResponse):
         # Create error object if error string is provided
         error_obj = None
         if error:
-            error_obj = models.V1ImageProjectsGetResponseError(
+            error_obj = models.V1VideoProjectsGetResponseError(
                 code="TEST_ERROR", message=error
             )
 
@@ -35,20 +35,25 @@ class DummyResponse(models.V1ImageProjectsGetResponse):
             id="test-id",
             created_at=datetime.datetime.now().isoformat(),
             credits_charged=0,
-            enabled=True,
-            image_count=0,
-            name="test-name",
-            total_frame_cost=0,
-            type="test-type",
-            status=status,
+            download=None,
             downloads=[
-                models.V1ImageProjectsGetResponseDownloadsItem(
+                models.V1VideoProjectsGetResponseDownloadsItem(
                     url=download_url, expires_at="2024-01-01T00:00:00Z"
                 )
             ]
             if download_url
             else [],
+            enabled=True,
+            end_seconds=10.0,
             error=error_obj,
+            fps=30.0,
+            height=1080,
+            name="test-name",
+            start_seconds=0.0,
+            status=status,
+            total_frame_cost=0,
+            type="test-type",
+            width=1920,
         )
 
 
@@ -63,28 +68,28 @@ def mock_async_base_client() -> Generator[AsyncMock, None, None]:
 
 
 def test_delete_calls_base_client(mock_base_client: Mock) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
     client.delete(id="123")
 
     mock_base_client.request.assert_called_once()
     call = mock_base_client.request.call_args[1]
     assert call["method"] == "DELETE"
-    assert "/v1/image-projects/123" in call["path"]
+    assert "/v1/video-projects/123" in call["path"]
 
 
 def test_get_calls_base_client(mock_base_client: Mock) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
     mock_base_client.request.return_value = DummyResponse()
 
     resp = client.get(id="abc")
 
     mock_base_client.request.assert_called_once()
-    assert isinstance(resp, models.V1ImageProjectsGetResponse)
+    assert isinstance(resp, models.V1VideoProjectsGetResponse)
     assert resp.id == "test-id"
 
 
 def test_check_result_no_wait_no_download(mock_base_client: Mock) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
     mock_base_client.request.return_value = DummyResponse(status="queued")
 
     resp = client.check_result(
@@ -99,7 +104,7 @@ def test_check_result_no_wait_no_download(mock_base_client: Mock) -> None:
 def test_check_result_wait_until_complete(
     monkeypatch: Any, mock_base_client: Mock
 ) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
 
     # First calls return queued, then complete
     mock_base_client.request.side_effect = [
@@ -121,17 +126,17 @@ def test_check_result_wait_until_complete(
 def test_check_result_download_outputs(
     tmp_path: Path, mock_base_client: Mock, monkeypatch: Any
 ) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
 
-    file_url = "https://example.com/file.png"
+    file_url = "https://example.com/file.mp4"
     mock_base_client.request.return_value = DummyResponse(
         status="complete",
         download_url=file_url,
     )
 
     # Create a mock response for httpx
-    mock_request = httpx.Request("GET", "https://example.com/file.png")
-    mock_response = httpx.Response(200, content=b"fake png", request=mock_request)
+    mock_request = httpx.Request("GET", "https://example.com/file.mp4")
+    mock_response = httpx.Response(200, content=b"fake mp4", request=mock_request)
 
     # Mock the httpx.Client class
     class MockClient:
@@ -160,11 +165,11 @@ def test_check_result_download_outputs(
     assert resp.downloaded_paths
     saved_file = Path(resp.downloaded_paths[0])
     assert saved_file.exists()
-    assert saved_file.read_bytes() == b"fake png"
+    assert saved_file.read_bytes() == b"fake mp4"
 
 
 def test_check_result_error_status(mock_base_client: Mock) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
     mock_base_client.request.return_value = DummyResponse(status="error", error="Boom!")
 
     resp = client.check_result(
@@ -177,7 +182,7 @@ def test_check_result_error_status(mock_base_client: Mock) -> None:
 
 
 def test_check_result_canceled_status(mock_base_client: Mock) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
     mock_base_client.request.return_value = DummyResponse(status="canceled")
 
     resp = client.check_result(
@@ -190,7 +195,7 @@ def test_check_result_canceled_status(mock_base_client: Mock) -> None:
 def test_check_result_poll_interval_default(
     mock_base_client: Mock, monkeypatch: Any
 ) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
 
     # First calls return queued, then complete
     mock_base_client.request.side_effect = [
@@ -219,7 +224,7 @@ def test_check_result_poll_interval_default(
 def test_check_result_poll_interval_custom(
     mock_base_client: Mock, monkeypatch: Any
 ) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
 
     # Set custom poll interval
     monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "1.0")
@@ -251,7 +256,7 @@ def test_check_result_poll_interval_custom(
 def test_check_result_poll_interval_multiple_polls(
     mock_base_client: Mock, monkeypatch: Any
 ) -> None:
-    client = ImageProjectsClient(base_client=mock_base_client)
+    client = VideoProjectsClient(base_client=mock_base_client)
 
     # Set custom poll interval
     monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "0.1")
@@ -286,24 +291,24 @@ def test_check_result_poll_interval_multiple_polls(
 async def test_async_delete_calls_base_client(
     mock_async_base_client: AsyncMock,
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
     await client.delete(id="456")
 
     mock_async_base_client.request.assert_called_once()
     call = mock_async_base_client.request.call_args[1]
     assert call["method"] == "DELETE"
-    assert "/v1/image-projects/456" in call["path"]
+    assert "/v1/video-projects/456" in call["path"]
 
 
 @pytest.mark.asyncio
 async def test_async_get_calls_base_client(mock_async_base_client: AsyncMock) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
     mock_async_base_client.request.return_value = DummyResponse()
 
     resp = await client.get(id="zzz")
 
     mock_async_base_client.request.assert_called_once()
-    assert isinstance(resp, models.V1ImageProjectsGetResponse)
+    assert isinstance(resp, models.V1VideoProjectsGetResponse)
     assert resp.id == "test-id"
 
 
@@ -311,7 +316,7 @@ async def test_async_get_calls_base_client(mock_async_base_client: AsyncMock) ->
 async def test_async_check_result_no_wait_no_download(
     mock_async_base_client: AsyncMock,
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
     mock_async_base_client.request.return_value = DummyResponse(status="queued")
 
     resp = await client.check_result(
@@ -327,7 +332,7 @@ async def test_async_check_result_no_wait_no_download(
 async def test_async_check_result_wait_until_complete(
     mock_async_base_client: AsyncMock, monkeypatch: Any
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
 
     # First calls return queued, then complete
     mock_async_base_client.request.side_effect = [
@@ -336,12 +341,7 @@ async def test_async_check_result_wait_until_complete(
         DummyResponse(status="complete"),
     ]
 
-    sleep_calls: List[float] = []
-
-    async def async_mock_sleep(seconds: float) -> None:
-        sleep_calls.append(seconds)
-
-    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
+    monkeypatch.setattr("time.sleep", lambda _: None)  # type: ignore
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -355,17 +355,17 @@ async def test_async_check_result_wait_until_complete(
 async def test_async_check_result_download_outputs(
     tmp_path: Path, mock_async_base_client: AsyncMock, monkeypatch: Any
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
 
-    file_url = "https://example.com/file.png"
+    file_url = "https://example.com/file.mp4"
     mock_async_base_client.request.return_value = DummyResponse(
         status="complete",
         download_url=file_url,
     )
 
     # Create a mock response for httpx
-    mock_request = httpx.Request("GET", "https://example.com/file.png")
-    mock_response = httpx.Response(200, content=b"fake png", request=mock_request)
+    mock_request = httpx.Request("GET", "https://example.com/file.mp4")
+    mock_response = httpx.Response(200, content=b"fake mp4", request=mock_request)
 
     # Mock the httpx.AsyncClient class
     class MockAsyncClient:
@@ -394,14 +394,14 @@ async def test_async_check_result_download_outputs(
     assert resp.downloaded_paths
     saved_file = Path(resp.downloaded_paths[0])
     assert saved_file.exists()
-    assert saved_file.read_bytes() == b"fake png"
+    assert saved_file.read_bytes() == b"fake mp4"
 
 
 @pytest.mark.asyncio
 async def test_async_check_result_error_status(
     mock_async_base_client: AsyncMock,
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
     mock_async_base_client.request.return_value = DummyResponse(
         status="error", error="Boom!"
     )
@@ -419,7 +419,7 @@ async def test_async_check_result_error_status(
 async def test_async_check_result_canceled_status(
     mock_async_base_client: AsyncMock,
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
     mock_async_base_client.request.return_value = DummyResponse(status="canceled")
 
     resp = await client.check_result(
@@ -433,7 +433,7 @@ async def test_async_check_result_canceled_status(
 async def test_async_check_result_poll_interval_default(
     mock_async_base_client: AsyncMock, monkeypatch: Any
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
 
     # First calls return queued, then complete
     mock_async_base_client.request.side_effect = [
@@ -444,10 +444,10 @@ async def test_async_check_result_poll_interval_default(
     # Mock time.sleep to track calls
     sleep_calls: List[float] = []
 
-    async def async_mock_sleep(seconds: float) -> None:
+    def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
+    monkeypatch.setattr("time.sleep", mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -463,7 +463,7 @@ async def test_async_check_result_poll_interval_default(
 async def test_async_check_result_poll_interval_custom(
     mock_async_base_client: AsyncMock, monkeypatch: Any
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
 
     # Set custom poll interval
     monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "2.0")
@@ -477,10 +477,10 @@ async def test_async_check_result_poll_interval_custom(
     # Mock time.sleep to track calls
     sleep_calls: List[float] = []
 
-    async def async_mock_sleep(seconds: float) -> None:
+    def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
+    monkeypatch.setattr("time.sleep", mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -496,7 +496,7 @@ async def test_async_check_result_poll_interval_custom(
 async def test_async_check_result_poll_interval_multiple_polls(
     mock_async_base_client: AsyncMock, monkeypatch: Any
 ) -> None:
-    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
 
     # Set custom poll interval
     monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "0.3")
@@ -512,10 +512,10 @@ async def test_async_check_result_poll_interval_multiple_polls(
     # Mock time.sleep to track calls
     sleep_calls: List[float] = []
 
-    async def async_mock_sleep(seconds: float) -> None:
+    def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
+    monkeypatch.setattr("time.sleep", mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
