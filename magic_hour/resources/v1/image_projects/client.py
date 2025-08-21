@@ -1,9 +1,6 @@
 import os
-from pathlib import Path
 import time
 import typing
-from urllib.parse import urlparse
-import httpx
 import pydantic
 import logging
 
@@ -13,6 +10,7 @@ from magic_hour.core import (
     SyncBaseClient,
     default_request_options,
 )
+from magic_hour.helpers.download import download_files_async, download_files_sync
 from magic_hour.types import models
 
 logger = logging.getLogger(__name__)
@@ -82,28 +80,11 @@ class ImageProjectsClient:
 
         if not download_outputs:
             return V1ImageProjectsGetResponseWithDownloads(**api_response.model_dump())
-        downloaded_paths: list[str] = []
 
-        for download in api_response.downloads:
-            with httpx.Client() as http_client:
-                download_response = http_client.get(download.url)
-                download_response.raise_for_status()
-
-                # Extract filename from URL
-                url_path = urlparse(download.url).path
-                filename = Path(url_path).name
-
-                if download_directory:
-                    download_path = os.path.join(download_directory, filename)
-                else:
-                    download_path = filename
-
-                with open(download_path, "wb") as f:
-                    f.write(download_response.content)
-
-                downloaded_paths.append(download_path)
-
-                logger.info(f"Downloaded file saved as: {download_path}")
+        downloaded_paths = download_files_sync(
+            downloads=api_response.downloads,
+            download_directory=download_directory,
+        )
 
         return V1ImageProjectsGetResponseWithDownloads(
             **api_response.model_dump(), downloaded_paths=downloaded_paths
@@ -240,28 +221,11 @@ class AsyncImageProjectsClient:
 
         if not download_outputs:
             return V1ImageProjectsGetResponseWithDownloads(**api_response.model_dump())
-        downloaded_paths: list[str] = []
 
-        for download in api_response.downloads:
-            async with httpx.AsyncClient() as http_client:
-                download_response = await http_client.get(download.url)
-                download_response.raise_for_status()
-
-                # Extract filename from URL
-                url_path = urlparse(download.url).path
-                filename = Path(url_path).name
-
-                if download_directory:
-                    download_path = os.path.join(download_directory, filename)
-                else:
-                    download_path = filename
-
-                with open(download_path, "wb") as f:
-                    f.write(download_response.content)
-
-                downloaded_paths.append(download_path)
-
-                logger.info(f"Downloaded file saved as: {download_path}")
+        downloaded_paths = await download_files_async(
+            downloads=api_response.downloads,
+            download_directory=download_directory,
+        )
 
         return V1ImageProjectsGetResponseWithDownloads(
             **api_response.model_dump(), downloaded_paths=downloaded_paths
