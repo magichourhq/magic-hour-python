@@ -13,7 +13,6 @@ from magic_hour.resources.v1.files.client import FilesClient, AsyncFilesClient
 from magic_hour.resources.v1.image_projects.client import (
     ImageProjectsClient,
     AsyncImageProjectsClient,
-    V1ImageProjectsGetResponseWithDownloads,
 )
 from magic_hour.types import models, params
 
@@ -139,7 +138,7 @@ class AsyncPhotoColorizerClient:
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
-    ) -> V1ImageProjectsGetResponseWithDownloads:
+    ):
         """
         Generate colorized photo (alias for create with additional functionality).
 
