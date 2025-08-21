@@ -185,6 +185,101 @@ def test_check_result_canceled_status(mock_base_client: Mock) -> None:
     assert resp.downloaded_paths is None
 
 
+def test_check_result_poll_interval_default(
+    mock_base_client: Mock, monkeypatch: Any
+) -> None:
+    client = ImageProjectsClient(base_client=mock_base_client)
+
+    # First calls return queued, then complete
+    mock_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    # Mock time.sleep to track calls
+    sleep_calls: list[float] = []
+
+    def mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("time.sleep", mock_sleep)
+
+    resp = client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    # Should have slept once with default interval (0.5)
+    assert len(sleep_calls) == 1
+    assert sleep_calls[0] == 0.5
+
+
+def test_check_result_poll_interval_custom(
+    mock_base_client: Mock, monkeypatch: Any
+) -> None:
+    client = ImageProjectsClient(base_client=mock_base_client)
+
+    # Set custom poll interval
+    monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "1.0")
+
+    # First calls return queued, then complete
+    mock_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    # Mock time.sleep to track calls
+    sleep_calls: list[float] = []
+
+    def mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("time.sleep", mock_sleep)
+
+    resp = client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    # Should have slept once with custom interval (1.0)
+    assert len(sleep_calls) == 1
+    assert sleep_calls[0] == 1.0
+
+
+def test_check_result_poll_interval_multiple_polls(
+    mock_base_client: Mock, monkeypatch: Any
+) -> None:
+    client = ImageProjectsClient(base_client=mock_base_client)
+
+    # Set custom poll interval
+    monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "0.1")
+
+    # Multiple calls return queued before complete
+    mock_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="queued"),
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    # Mock time.sleep to track calls
+    sleep_calls: list[float] = []
+
+    def mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("time.sleep", mock_sleep)
+
+    resp = client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    # Should have slept 3 times with custom interval (0.1)
+    assert len(sleep_calls) == 3
+    assert all(sleep_time == 0.1 for sleep_time in sleep_calls)
+
+
 @pytest.mark.asyncio
 async def test_async_delete_calls_base_client(
     mock_async_base_client: AsyncMock,
@@ -329,3 +424,101 @@ async def test_async_check_result_canceled_status(
     )
     assert resp.status == "canceled"
     assert resp.downloaded_paths is None
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_poll_interval_default(
+    mock_async_base_client: AsyncMock, monkeypatch: Any
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+
+    # First calls return queued, then complete
+    mock_async_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    # Mock time.sleep to track calls
+    sleep_calls: list[float] = []
+
+    def mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("time.sleep", mock_sleep)
+
+    resp = await client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    # Should have slept once with default interval (0.5)
+    assert len(sleep_calls) == 1
+    assert sleep_calls[0] == 0.5
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_poll_interval_custom(
+    mock_async_base_client: AsyncMock, monkeypatch: Any
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+
+    # Set custom poll interval
+    monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "2.0")
+
+    # First calls return queued, then complete
+    mock_async_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    # Mock time.sleep to track calls
+    sleep_calls: list[float] = []
+
+    def mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("time.sleep", mock_sleep)
+
+    resp = await client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    # Should have slept once with custom interval (2.0)
+    assert len(sleep_calls) == 1
+    assert sleep_calls[0] == 2.0
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_poll_interval_multiple_polls(
+    mock_async_base_client: AsyncMock, monkeypatch: Any
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+
+    # Set custom poll interval
+    monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "0.3")
+
+    # Multiple calls return queued before complete
+    mock_async_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="queued"),
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    # Mock time.sleep to track calls
+    sleep_calls: list[float] = []
+
+    def mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("time.sleep", mock_sleep)
+
+    resp = await client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    # Should have slept 3 times with custom interval (0.3)
+    assert len(sleep_calls) == 3
+    assert all(sleep_time == 0.3 for sleep_time in sleep_calls)
