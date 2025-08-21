@@ -52,9 +52,8 @@ class PhotoColorizerClient:
 
         file_client = FilesClient(base_client=self._base_client)
 
-        assets["image_file_path"] = file_client.upload_file(
-            file=assets.get("image_file_path")
-        )
+        image_file_path = assets["image_file_path"]
+        assets["image_file_path"] = file_client.upload_file(file=image_file_path)
 
         create_response = self.create(
             assets=assets, name=name, request_options=request_options
