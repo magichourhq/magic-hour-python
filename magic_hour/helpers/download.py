@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Union
+from typing import Union, List
 from urllib.parse import urlparse
 import httpx
 from magic_hour.types import models
@@ -9,7 +9,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def _compute_download_path(url: str, download_directory: str | None = None) -> str:
+def _compute_download_path(
+    url: str, download_directory: Union[str, None] = None
+) -> str:
     url_path = urlparse(url).path
     filename = Path(url_path).name
     if download_directory:
@@ -19,12 +21,12 @@ def _compute_download_path(url: str, download_directory: str | None = None) -> s
 
 def download_files_sync(
     downloads: Union[
-        list[models.V1ImageProjectsGetResponseDownloadsItem],
-        list[models.V1VideoProjectsGetResponseDownloadsItem],
+        List[models.V1ImageProjectsGetResponseDownloadsItem],
+        List[models.V1VideoProjectsGetResponseDownloadsItem],
     ],
-    download_directory: str | None = None,
-) -> list[str]:
-    downloaded_paths: list[str] = []
+    download_directory: Union[str, None] = None,
+) -> List[str]:
+    downloaded_paths: List[str] = []
 
     for download in downloads:
         with httpx.Client() as http_client:
@@ -47,12 +49,12 @@ def download_files_sync(
 
 async def download_files_async(
     downloads: Union[
-        list[models.V1ImageProjectsGetResponseDownloadsItem],
-        list[models.V1VideoProjectsGetResponseDownloadsItem],
+        List[models.V1ImageProjectsGetResponseDownloadsItem],
+        List[models.V1VideoProjectsGetResponseDownloadsItem],
     ],
-    download_directory: str | None = None,
-) -> list[str]:
-    downloaded_paths: list[str] = []
+    download_directory: Union[str, None] = None,
+) -> List[str]:
+    downloaded_paths: List[str] = []
 
     for download in downloads:
         async with httpx.AsyncClient() as http_client:
