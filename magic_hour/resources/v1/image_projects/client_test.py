@@ -336,7 +336,12 @@ async def test_async_check_result_wait_until_complete(
         DummyResponse(status="complete"),
     ]
 
-    monkeypatch.setattr("time.sleep", lambda _: None)  # type: ignore
+    sleep_calls: List[float] = []
+
+    async def async_mock_sleep(seconds: float) -> None:
+        sleep_calls.append(seconds)
+
+    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -439,10 +444,10 @@ async def test_async_check_result_poll_interval_default(
     # Mock time.sleep to track calls
     sleep_calls: List[float] = []
 
-    def mock_sleep(seconds: float) -> None:
+    async def async_mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("time.sleep", mock_sleep)
+    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -472,10 +477,10 @@ async def test_async_check_result_poll_interval_custom(
     # Mock time.sleep to track calls
     sleep_calls: List[float] = []
 
-    def mock_sleep(seconds: float) -> None:
+    async def async_mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("time.sleep", mock_sleep)
+    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -507,10 +512,10 @@ async def test_async_check_result_poll_interval_multiple_polls(
     # Mock time.sleep to track calls
     sleep_calls: List[float] = []
 
-    def mock_sleep(seconds: float) -> None:
+    async def async_mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("time.sleep", mock_sleep)
+    monkeypatch.setattr("asyncio.sleep", async_mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
