@@ -21,7 +21,7 @@ class DummyResponse(models.V1ImageProjectsGetResponse):
         status: Literal[
             "complete", "queued", "rendering", "error", "canceled"
         ] = "complete",
-        downloads: list[Any] | None = None,
+        download_url: str | None = None,
         error: str | None = None,
     ):
         # Create error object if error string is provided
@@ -41,7 +41,13 @@ class DummyResponse(models.V1ImageProjectsGetResponse):
             total_frame_cost=0,
             type="test-type",
             status=status,
-            downloads=downloads or [],
+            downloads=[
+                models.V1ImageProjectsGetResponseDownloadsItem(
+                    url=download_url, expires_at="2024-01-01T00:00:00Z"
+                )
+            ]
+            if download_url
+            else [],
             error=error_obj,
         )
 
