@@ -1,3 +1,4 @@
+import asyncio
 import os
 import time
 import typing
@@ -210,7 +211,7 @@ class AsyncImageProjectsClient:
         while status not in ["complete", "error", "canceled"]:
             api_response = await self.get(id=id)
             status = api_response.status
-            time.sleep(poll_interval)
+            await asyncio.sleep(poll_interval)
 
         if api_response.status != "complete":
             log = logger.error if api_response.status == "error" else logger.info
