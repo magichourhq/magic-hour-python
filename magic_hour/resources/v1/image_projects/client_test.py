@@ -208,3 +208,124 @@ async def test_async_get_calls_base_client(mock_async_base_client: AsyncMock) ->
     mock_async_base_client.request.assert_called_once()
     assert isinstance(resp, models.V1ImageProjectsGetResponse)
     assert resp.id == "test-id"
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_no_wait_no_download(
+    mock_async_base_client: AsyncMock,
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    mock_async_base_client.request.return_value = DummyResponse(status="queued")
+
+    resp = await client.check_result(
+        id="xyz",
+        wait_for_completion=False,
+        download_outputs=False,
+    )
+
+    assert resp.downloaded_paths is None
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_wait_until_complete(
+    mock_async_base_client: AsyncMock, monkeypatch: Any
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+
+    # First calls return queued, then complete
+    mock_async_base_client.request.side_effect = [
+        DummyResponse(status="queued"),
+        DummyResponse(status="queued"),
+        DummyResponse(status="complete"),
+    ]
+
+    monkeypatch.setattr("time.sleep", lambda _: None)  # type: ignore
+
+    resp = await client.check_result(
+        id="xyz", wait_for_completion=True, download_outputs=False
+    )
+
+    assert resp.status == "complete"
+    assert resp.downloaded_paths is None
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_download_outputs(
+    tmp_path: Path, mock_async_base_client: AsyncMock, monkeypatch: Any
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+
+    file_url = "https://example.com/file.png"
+    mock_async_base_client.request.return_value = DummyResponse(
+        status="complete",
+        downloads=[
+            models.V1ImageProjectsGetResponseDownloadsItem(
+                url=file_url, expires_at="2024-01-01T00:00:00Z"
+            )
+        ],
+    )
+
+    # Create a mock response for httpx
+    mock_request = httpx.Request("GET", "https://example.com/file.png")
+    mock_response = httpx.Response(200, content=b"fake png", request=mock_request)
+
+    # Mock the httpx.AsyncClient class
+    class MockAsyncClient:
+        def __init__(self):
+            pass
+
+        async def __aenter__(self) -> "MockAsyncClient":
+            return self
+
+        async def __aexit__(self, exc_type: Any, exc_val: Any, exc_tb: Any) -> None:
+            pass
+
+        async def get(self, url: str) -> httpx.Response:
+            return mock_response
+
+    monkeypatch.setattr(httpx, "AsyncClient", MockAsyncClient)
+
+    resp = await client.check_result(
+        id="xyz",
+        wait_for_completion=True,
+        download_outputs=True,
+        download_directory=str(tmp_path),
+    )
+
+    assert resp.status == "complete"
+    assert resp.downloaded_paths
+    saved_file = Path(resp.downloaded_paths[0])
+    assert saved_file.exists()
+    assert saved_file.read_bytes() == b"fake png"
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_error_status(
+    mock_async_base_client: AsyncMock,
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    mock_async_base_client.request.return_value = DummyResponse(
+        status="error", error="Boom!"
+    )
+
+    resp = await client.check_result(
+        id="err", wait_for_completion=True, download_outputs=False
+    )
+    assert resp.status == "error"
+    assert resp.error is not None
+    assert resp.error.message == "Boom!"
+    assert resp.downloaded_paths is None
+
+
+@pytest.mark.asyncio
+async def test_async_check_result_canceled_status(
+    mock_async_base_client: AsyncMock,
+) -> None:
+    client = AsyncImageProjectsClient(base_client=mock_async_base_client)
+    mock_async_base_client.request.return_value = DummyResponse(status="canceled")
+
+    resp = await client.check_result(
+        id="cancel", wait_for_completion=True, download_outputs=False
+    )
+    assert resp.status == "canceled"
+    assert resp.downloaded_paths is None
