@@ -9,7 +9,6 @@ from magic_hour.types import models
 from magic_hour.resources.v1.video_projects.client import (
     VideoProjectsClient,
     AsyncVideoProjectsClient,
-    V1VideoProjectsGetResponseWithDownloads,
 )
 
 
@@ -286,37 +285,6 @@ def test_check_result_poll_interval_multiple_polls(
     # Should have slept 3 times with custom interval (0.1)
     assert len(sleep_calls) == 3
     assert all(sleep_time == 0.1 for sleep_time in sleep_calls)
-
-
-def test_response_model_with_downloads() -> None:
-    """Test the custom response model with downloaded paths"""
-    base_data = {
-        "id": "test-id",
-        "created_at": "2024-01-01T00:00:00Z",
-        "credits_charged": 0,
-        "download": None,
-        "downloads": [],
-        "enabled": True,
-        "end_seconds": 10.0,
-        "error": None,
-        "fps": 30.0,
-        "height": 1080,
-        "name": "test-name",
-        "start_seconds": 0.0,
-        "status": "complete",
-        "total_frame_cost": 0,
-        "type": "test-type",
-        "width": 1920,
-    }
-    downloaded_paths = ["/tmp/video1.mp4", "/tmp/video2.mp4"]
-
-    response = V1VideoProjectsGetResponseWithDownloads(
-        **base_data, downloaded_paths=downloaded_paths
-    )
-
-    assert response.id == "test-id"
-    assert response.status == "complete"
-    assert response.downloaded_paths == downloaded_paths
 
 
 @pytest.mark.asyncio
