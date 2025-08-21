@@ -33,6 +33,82 @@ class ImageProjectsClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
 
+    def check_result(
+        self,
+        id: str,
+        wait_for_completion: bool,
+        download_outputs: bool,
+        download_directory: typing.Optional[str] = None,
+    ) -> V1ImageProjectsGetResponseWithDownloads:
+        """
+        Check the result of an image project with optional waiting and downloading.
+
+        This method retrieves the status of an image project and optionally waits for completion
+        and downloads the output files.
+
+        Args:
+            id: Unique ID of the image project
+            wait_for_completion: Whether to wait for the image project to complete
+            download_outputs: Whether to download the outputs
+            download_directory: The directory to download the outputs to. If not provided,
+                the outputs will be downloaded to the current working directory
+
+        Returns:
+            V1ImageProjectsGetResponseWithDownloads: The image project response with optional
+                downloaded file paths included
+        """
+        api_response = self.get(id=id)
+        if not wait_for_completion:
+            response = V1ImageProjectsGetResponseWithDownloads(
+                **api_response.model_dump()
+            )
+            return response
+
+        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
+
+        status = api_response.status
+
+        while status not in ["complete", "error", "canceled"]:
+            api_response = self.get(id=id)
+            status = api_response.status
+            time.sleep(poll_interval)
+
+        if api_response.status != "complete":
+            log = logger.error if api_response.status == "error" else logger.info
+            log(
+                f"Image project {id} has status {api_response.status}: {api_response.error}"
+            )
+            return V1ImageProjectsGetResponseWithDownloads(**api_response.model_dump())
+
+        if not download_outputs:
+            return V1ImageProjectsGetResponseWithDownloads(**api_response.model_dump())
+        downloaded_paths: list[str] = []
+
+        for download in api_response.downloads:
+            with httpx.Client() as http_client:
+                download_response = http_client.get(download.url)
+                download_response.raise_for_status()
+
+                # Extract filename from URL
+                url_path = urlparse(download.url).path
+                filename = Path(url_path).name
+
+                if download_directory:
+                    download_path = os.path.join(download_directory, filename)
+                else:
+                    download_path = filename
+
+                with open(download_path, "wb") as f:
+                    f.write(download_response.content)
+
+                downloaded_paths.append(download_path)
+
+                logger.info(f"Downloaded file saved as: {download_path}")
+
+        return V1ImageProjectsGetResponseWithDownloads(
+            **api_response.model_dump(), downloaded_paths=downloaded_paths
+        )
+
     def delete(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
     ) -> None:
@@ -108,82 +184,6 @@ class ImageProjectsClient:
             auth_names=["bearerAuth"],
             cast_to=models.V1ImageProjectsGetResponse,
             request_options=request_options or default_request_options(),
-        )
-
-    def check_result(
-        self,
-        id: str,
-        wait_for_completion: bool,
-        download_outputs: bool,
-        download_directory: typing.Optional[str] = None,
-    ) -> V1ImageProjectsGetResponseWithDownloads:
-        """
-        Check the result of an image project with optional waiting and downloading.
-
-        This method retrieves the status of an image project and optionally waits for completion
-        and downloads the output files.
-
-        Args:
-            id: Unique ID of the image project
-            wait_for_completion: Whether to wait for the image project to complete
-            download_outputs: Whether to download the outputs
-            download_directory: The directory to download the outputs to. If not provided,
-                the outputs will be downloaded to the current working directory
-
-        Returns:
-            V1ImageProjectsGetResponseWithDownloads: The image project response with optional
-                downloaded file paths included
-        """
-        api_response = self.get(id=id)
-        if not wait_for_completion:
-            response = V1ImageProjectsGetResponseWithDownloads(
-                **api_response.model_dump()
-            )
-            return response
-
-        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
-
-        status = api_response.status
-
-        while status not in ["complete", "error", "canceled"]:
-            api_response = self.get(id=id)
-            status = api_response.status
-            time.sleep(poll_interval)
-
-        if api_response.status != "complete":
-            log = logger.error if api_response.status == "error" else logger.info
-            log(
-                f"Image project {id} has status {api_response.status}: {api_response.error}"
-            )
-            return V1ImageProjectsGetResponseWithDownloads(**api_response.model_dump())
-
-        if not download_outputs:
-            return V1ImageProjectsGetResponseWithDownloads(**api_response.model_dump())
-        downloaded_paths: list[str] = []
-
-        for download in api_response.downloads:
-            with httpx.Client() as http_client:
-                download_response = http_client.get(download.url)
-                download_response.raise_for_status()
-
-                # Extract filename from URL
-                url_path = urlparse(download.url).path
-                filename = Path(url_path).name
-
-                if download_directory:
-                    download_path = os.path.join(download_directory, filename)
-                else:
-                    download_path = filename
-
-                with open(download_path, "wb") as f:
-                    f.write(download_response.content)
-
-                downloaded_paths.append(download_path)
-
-                logger.info(f"Downloaded file saved as: {download_path}")
-
-        return V1ImageProjectsGetResponseWithDownloads(
-            **api_response.model_dump(), downloaded_paths=downloaded_paths
         )
 
 
