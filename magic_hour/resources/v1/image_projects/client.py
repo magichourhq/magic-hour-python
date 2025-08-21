@@ -118,7 +118,21 @@ class ImageProjectsClient:
         download_directory: typing.Optional[str] = None,
     ) -> V1ImageProjectsGetResponseWithDownloads:
         """
-        Check the result of the image project.
+        Check the result of an image project with optional waiting and downloading.
+
+        This method retrieves the status of an image project and optionally waits for completion
+        and downloads the output files.
+
+        Args:
+            id: Unique ID of the image project
+            wait_for_completion: Whether to wait for the image project to complete
+            download_outputs: Whether to download the outputs
+            download_directory: The directory to download the outputs to. If not provided,
+                the outputs will be downloaded to the current working directory
+
+        Returns:
+            V1ImageProjectsGetResponseWithDownloads: The image project response with optional
+                downloaded file paths included
         """
         api_response = self.get(id=id)
         if not wait_for_completion:
