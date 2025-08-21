@@ -51,6 +51,21 @@ class AiClothesChangerClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Clothes Changer API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_clothes_changer.generate(
+            assets={
+                "garment_file_path": "path/to/outfit.png",
+                "garment_type": "upper_body",
+                "person_file_path": "path/to/model.png",
+            },
+            name="Clothes Changer image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -160,6 +175,21 @@ class AsyncAiClothesChangerClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Clothes Changer API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_clothes_changer.generate(
+            assets={
+                "garment_file_path": "path/to/outfit.png",
+                "garment_type": "upper_body",
+                "person_file_path": "path/to/model.png",
+            },
+            name="Clothes Changer image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)

@@ -50,6 +50,21 @@ class AiMemeGeneratorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Meme Generator API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_meme_generator.generate(
+            style={
+                "search_web": False,
+                "template": "Drake Hotline Bling",
+                "topic": "When the code finally works",
+            },
+            name="Funny Programming Meme",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         create_response = self.create(
@@ -152,6 +167,21 @@ class AsyncAiMemeGeneratorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Meme Generator API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_meme_generator.generate(
+            style={
+                "search_web": False,
+                "template": "Drake Hotline Bling",
+                "topic": "When the code finally works",
+            },
+            name="Funny Programming Meme",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         create_response = await self.create(

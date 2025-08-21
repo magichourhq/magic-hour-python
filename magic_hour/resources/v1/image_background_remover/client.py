@@ -51,6 +51,17 @@ class ImageBackgroundRemoverClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the Image Background Remover API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.image_background_remover.generate(
+            assets={"image_file_path": "path/to/image.png"},
+            name="Background Removed Image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -157,6 +168,17 @@ class AsyncImageBackgroundRemoverClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the Image Background Remover API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.image_background_remover.generate(
+            assets={"image_file_path": "path/to/image.png"},
+            name="Background Removed Image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)

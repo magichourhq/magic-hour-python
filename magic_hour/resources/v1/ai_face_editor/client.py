@@ -53,6 +53,34 @@ class AiFaceEditorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Face Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_face_editor.generate(
+            assets={"image_file_path": "path/to/face.png"},
+            style={
+                "enhance_face": True,
+                "eye_gaze_horizontal": 0.2,
+                "eye_gaze_vertical": -0.1,
+                "eye_open_ratio": 0.8,
+                "eyebrow_direction": 0.3,
+                "head_pitch": 0.1,
+                "head_roll": 0.0,
+                "head_yaw": -0.2,
+                "lip_open_ratio": 0.0,
+                "mouth_grim": 0.0,
+                "mouth_position_horizontal": 0.0,
+                "mouth_position_vertical": 0.0,
+                "mouth_pout": 0.0,
+                "mouth_purse": 0.0,
+                "mouth_smile": 0.5,
+            },
+            name="Face Editor image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -177,6 +205,34 @@ class AsyncAiFaceEditorClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the AI Face Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_face_editor.generate(
+            assets={"image_file_path": "path/to/face.png"},
+            style={
+                "enhance_face": True,
+                "eye_gaze_horizontal": 0.2,
+                "eye_gaze_vertical": -0.1,
+                "eye_open_ratio": 0.8,
+                "eyebrow_direction": 0.3,
+                "head_pitch": 0.1,
+                "head_roll": 0.0,
+                "head_yaw": -0.2,
+                "lip_open_ratio": 0.0,
+                "mouth_grim": 0.0,
+                "mouth_position_horizontal": 0.0,
+                "mouth_position_vertical": 0.0,
+                "mouth_pout": 0.0,
+                "mouth_purse": 0.0,
+                "mouth_smile": 0.5,
+            },
+            name="Face Editor image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)
