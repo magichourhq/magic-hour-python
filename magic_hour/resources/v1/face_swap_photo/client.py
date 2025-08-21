@@ -52,6 +52,21 @@ class FaceSwapPhotoClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the Face Swap Photo API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        client.v1.face_swap_photo.generate(
+            assets={
+                "face_swap_mode": "all-faces",
+                "source_file_path": "api-assets/id/1234.png",
+                "target_file_path": "api-assets/id/1234.png",
+            },
+            name="Face Swap image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="./outputs/",
+        )
+        ```
         """
 
         file_client = FilesClient(base_client=self._base_client)
@@ -121,12 +136,6 @@ class FaceSwapPhotoClient:
         ```py
         client.v1.face_swap_photo.create(
             assets={
-                "face_mappings": [
-                    {
-                        "new_face": "api-assets/id/1234.png",
-                        "original_face": "api-assets/id/0-0.png",
-                    }
-                ],
                 "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
@@ -180,6 +189,21 @@ class AsyncFaceSwapPhotoClient:
 
         Returns:
             V1ImageProjectsGetResponseWithDownloads: The response from the Face Swap Photo API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        await client.v1.face_swap_photo.generate(
+            assets={
+                "face_swap_mode": "all-faces",
+                "source_file_path": "api-assets/id/1234.png",
+                "target_file_path": "api-assets/id/1234.png",
+            },
+            name="Face Swap image",
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory="./outputs/",
+        )
+        ```
         """
 
         file_client = AsyncFilesClient(base_client=self._base_client)
@@ -253,12 +277,6 @@ class AsyncFaceSwapPhotoClient:
         ```py
         await client.v1.face_swap_photo.create(
             assets={
-                "face_mappings": [
-                    {
-                        "new_face": "api-assets/id/1234.png",
-                        "original_face": "api-assets/id/0-0.png",
-                    }
-                ],
                 "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
