@@ -1,3 +1,6 @@
+import asyncio
+import os
+import time
 import typing
 
 from magic_hour.core import (
@@ -14,6 +17,37 @@ from magic_hour.types import models, params
 class FaceDetectionClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def check_result(
+        self,
+        id: str,
+        wait_for_completion: bool,
+    ) -> models.V1FaceDetectionGetResponse:
+        """
+        Check the result of a face detection task with optional waiting.
+
+        This method retrieves the status of a face detection task and optionally waits for completion.
+
+        Args:
+            id: Unique ID of the face detection task
+            wait_for_completion: Whether to wait for the face detection task to complete
+
+        Returns:
+            V1FaceDetectionGetResponse: The face detection response
+        """
+        api_response = self.get(id=id)
+        if not wait_for_completion:
+            return api_response
+
+        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
+
+        # For face detection, we check the status in the response
+        # Face detection tasks complete quickly, so we poll until we get results or an error
+        while api_response.status not in ["complete", "error"]:
+            api_response = self.get(id=id)
+            time.sleep(poll_interval)
+
+        return api_response
 
     def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
@@ -109,6 +143,37 @@ class FaceDetectionClient:
 class AsyncFaceDetectionClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def check_result(
+        self,
+        id: str,
+        wait_for_completion: bool,
+    ) -> models.V1FaceDetectionGetResponse:
+        """
+        Check the result of a face detection task with optional waiting.
+
+        This method retrieves the status of a face detection task and optionally waits for completion.
+
+        Args:
+            id: Unique ID of the face detection task
+            wait_for_completion: Whether to wait for the face detection task to complete
+
+        Returns:
+            V1FaceDetectionGetResponse: The face detection response
+        """
+        api_response = await self.get(id=id)
+        if not wait_for_completion:
+            return api_response
+
+        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
+
+        # For face detection, we check the status in the response
+        # Face detection tasks complete quickly, so we poll until we get results or an error
+        while api_response.status not in ["complete", "error"]:
+            api_response = await self.get(id=id)
+            await asyncio.sleep(poll_interval)
+
+        return api_response
 
     async def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
