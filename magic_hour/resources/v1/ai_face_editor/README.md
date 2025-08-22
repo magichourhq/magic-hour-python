@@ -32,7 +32,7 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_face_editor.generate(
-    assets={"image_file_path": "api-assets/id/1234.png"},
+    assets={"image_file_path": "/path/to/1234.png"},
     style={
         "enhance_face": False,
         "eye_gaze_horizontal": 0.0,
@@ -65,7 +65,7 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_face_editor.generate(
-    assets={"image_file_path": "api-assets/id/1234.png"},
+    assets={"image_file_path": "/path/to/1234.png"},
     style={
         "enhance_face": False,
         "eye_gaze_horizontal": 0.0,

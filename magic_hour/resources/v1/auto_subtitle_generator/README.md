@@ -32,7 +32,7 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.auto_subtitle_generator.generate(
-    assets={"video_file_path": "api-assets/id/1234.mp4"},
+    assets={"video_file_path": "/path/to/1234.mp4"},
     end_seconds=15.0,
     start_seconds=0.0,
     style={},
@@ -51,7 +51,7 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.auto_subtitle_generator.generate(
-    assets={"video_file_path": "api-assets/id/1234.mp4"},
+    assets={"video_file_path": "/path/to/1234.mp4"},
     end_seconds=15.0,
     start_seconds=0.0,
     style={},

@@ -35,13 +35,13 @@ res = client.v1.face_swap_photo.generate(
     assets={
         "face_mappings": [
             {
-                "new_face": "api-assets/id/1234.png",
+                "new_face": "/path/to/1234.png",
                 "original_face": "api-assets/id/0-0.png",
             }
         ],
         "face_swap_mode": "all-faces",
-        "source_file_path": "api-assets/id/1234.png",
-        "target_file_path": "api-assets/id/1234.png",
+        "source_file_path": "/path/to/1234.png",
+        "target_file_path": "/path/to/1234.png",
     },
     name="Face Swap image",
     wait_for_completion=True,
@@ -61,13 +61,13 @@ res = await client.v1.face_swap_photo.generate(
     assets={
         "face_mappings": [
             {
-                "new_face": "api-assets/id/1234.png",
+                "new_face": "/path/to/1234.png",
                 "original_face": "api-assets/id/0-0.png",
             }
         ],
         "face_swap_mode": "all-faces",
-        "source_file_path": "api-assets/id/1234.png",
-        "target_file_path": "api-assets/id/1234.png",
+        "source_file_path": "/path/to/1234.png",
+        "target_file_path": "/path/to/1234.png",
     },
     name="Face Swap image",
     wait_for_completion=True,

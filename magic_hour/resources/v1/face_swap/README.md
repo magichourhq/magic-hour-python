@@ -35,13 +35,13 @@ res = client.v1.face_swap.generate(
     assets={
         "face_mappings": [
             {
-                "new_face": "api-assets/id/1234.png",
+                "new_face": "/path/to/1234.png",
                 "original_face": "api-assets/id/0-0.png",
             }
         ],
         "face_swap_mode": "all-faces",
         "image_file_path": "image/id/1234.png",
-        "video_file_path": "api-assets/id/1234.mp4",
+        "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
     end_seconds=15.0,
@@ -64,13 +64,13 @@ res = await client.v1.face_swap.generate(
     assets={
         "face_mappings": [
             {
-                "new_face": "api-assets/id/1234.png",
+                "new_face": "/path/to/1234.png",
                 "original_face": "api-assets/id/0-0.png",
             }
         ],
         "face_swap_mode": "all-faces",
         "image_file_path": "image/id/1234.png",
-        "video_file_path": "api-assets/id/1234.mp4",
+        "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
     end_seconds=15.0,

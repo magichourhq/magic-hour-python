@@ -32,7 +32,7 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.photo_colorizer.generate(
-    assets={"image_file_path": "api-assets/id/1234.png"}, name="Photo Colorizer image"
+    assets={"image_file_path": "/path/to/1234.png"}, name="Photo Colorizer image"
     wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
@@ -47,7 +47,7 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.photo_colorizer.generate(
-    assets={"image_file_path": "api-assets/id/1234.png"}, name="Photo Colorizer image"
+    assets={"image_file_path": "/path/to/1234.png"}, name="Photo Colorizer image"
     wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"

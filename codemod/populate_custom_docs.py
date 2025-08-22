@@ -111,6 +111,22 @@ class CustomDocsPopulator:
         )
         async_generate_call = async_generate_call + f"\n    {generate_params}\n)"
 
+        # Replace api-assets/id and image/id paths with /path/to paths in the code samples
+        # Preserve the file ID and extension: api-assets/id/1234.mp4 -> /path/to/1234.mp4
+        pattern = r'("(?!(?:original_face))[^"]*":\s*)"api-assets/id/[^"]+"'
+
+        def replacement(m: re.Match[str]) -> str:
+            # m.group(1) is the key with colon and spacing
+            full_line = m.group(0)
+            return re.sub(
+                r'api-assets/id/[^"]+',
+                lambda x: f"/path/to/{x.group(0).split('/')[-1]}",
+                full_line,
+            )
+
+        sync_generate_call = re.sub(pattern, replacement, sync_generate_call)
+        async_generate_call = re.sub(pattern, replacement, async_generate_call)
+
         # Create the full custom docs content manually with proper formatting
         resource_title = resource_name.replace("_", " ").title()
         custom_docs_content = f"""### {resource_title} Generate Workflow <a name="generate"></a>
