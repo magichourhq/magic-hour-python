@@ -4,6 +4,67 @@
 
 <!-- CUSTOM DOCS START -->
 
+### AI Clothes Changer Generate Workflow <a name="generate"></a>
+
+The workflow performs the following action
+
+1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
+2. trigger a generation
+3. poll for a completion status. This is configurable 
+4. if success, download the output to local directory
+
+> [!TIP]
+> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
+
+#### Parameters
+
+In Additional to the parameters listed in the `.create` section below, `.generate` introduces 3 new parameters:
+
+- `wait_for_completion` (bool, default True): Whether to wait for the project to complete.
+- `download_outputs` (bool, default True): Whether to download the generated files
+- `download_directory` (str, optional): Directory to save downloaded files (defaults to current directory)
+
+#### Synchronous Client
+
+```python
+from magic_hour import Client
+from os import getenv
+
+client = Client(token=getenv("API_TOKEN"))
+res = client.v1.ai_clothes_changer.generate(
+    assets={
+        "garment_file_path": "/path/to/outfit.png",
+        "garment_type": "upper_body",
+        "person_file_path": "/path/to/model.png",
+    },
+    name="Clothes Changer image",
+    wait_for_completion=True,
+    download_outputs=True,
+    download_directory="outputs",
+)
+```
+
+#### Asynchronous Client
+
+```python
+from magic_hour import AsyncClient
+from os import getenv
+
+client = AsyncClient(token=getenv("API_TOKEN"))
+res = await client.v1.ai_clothes_changer.generate(
+    assets={
+        "garment_file_path": "/path/to/outfit.png",
+        "garment_type": "upper_body",
+        "person_file_path": "/path/to/model.png",
+    },
+    name="Clothes Changer image",
+    download_directory="outputs",
+    wait_for_completion=True,
+    download_outputs=True,
+    download_directory="outputs",
+)
+```
+
 <!-- CUSTOM DOCS END -->
 
 
