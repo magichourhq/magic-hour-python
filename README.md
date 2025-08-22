@@ -83,7 +83,7 @@ The `generate()` function provides a complete end-to-end solution:
 
 **Additional Parameters:**
 
-- `wait_for_completion` (bool, default True): Whether to wait for the project to complete
+- `wait_for_completion` (bool, default True): Whether to wait for the project to complete.
 - `download_outputs` (bool, default True): Whether to download the generated files
 - `download_directory` (str, optional): Directory to save downloaded files (defaults to current directory)
 
@@ -92,8 +92,8 @@ The `generate()` function provides a complete end-to-end solution:
 response = client.v1.ai_image_generator.generate(
     style={"prompt": "A beautiful sunset over mountains"},
     name="Sunset Image",
-    wait_for_completion=True,      # Wait for completion
-    download_outputs=True,         # Download files automatically
+    wait_for_completion=True,       # Wait for status to be complete/error/canceled
+    download_outputs=True,          # Download files automatically
     download_directory="./outputs/" # Where to save files
 )
 
@@ -108,7 +108,7 @@ print(f"Downloaded files: {response.downloaded_paths}")
 The `create()` function provides granular control:
 
 - Only calls the API to start the generation process
-- Returns immediately with a project ID
+- Returns immediately with a project ID and amount of credits used
 - Requires manual status checking and file downloading
 
 ```python
@@ -122,9 +122,15 @@ create_response = client.v1.ai_image_generator.create(
 project_id = create_response.id
 print(f"Started project: {project_id}")
 
-# You must manually handle the rest:
-# 1. Poll for completion using image_projects.get() or setup webhook
+# You must handle the rest:
+# 1. Poll for completion. We provide a helper function to handle polling for you
+result = client.v1.image_projects.check_status(
+    wait_for_completion=True,
+    download_outputs=False,
+)
 # 2. Download files using the download URLs
+download_urls = result.downloads
+# download the files using your preferred way
 ```
 
 ### Choosing Between Which Function to use
