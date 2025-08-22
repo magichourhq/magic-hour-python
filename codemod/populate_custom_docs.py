@@ -96,7 +96,7 @@ class CustomDocsPopulator:
         print(repr(create_async_params))
 
         # Add generate-specific parameters
-        generate_params = ''' wait_for_completion=True,
+        generate_params = '''wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"'''
 
