@@ -38,7 +38,7 @@ res = client.v1.ai_meme_generator.generate(
         "topic": "When the code finally works",
     },
     name="My Funny Meme",
-        wait_for_completion=True,
+    wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
 )
@@ -58,7 +58,7 @@ res = await client.v1.ai_meme_generator.generate(
         "topic": "When the code finally works",
     },
     name="My Funny Meme",
-        wait_for_completion=True,
+    wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
 )

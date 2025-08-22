@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Script to automatically populate custom docs sections in README files.
+Script to automatically rewrite custom docs sections in README files.
 
 This script extracts the generate workflow documentation from ai_clothes_changer/README.md
-and populates it into other README files that have generate methods but empty custom docs sections.
+and rewrites it into all README files that have generate methods and custom docs sections.
 """
 
 import re
@@ -254,7 +254,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
         return len(section_content) == 0
 
     def populate_custom_docs(self, dry_run: bool = True) -> List[str]:
-        """Populate custom docs sections for all eligible README files."""
+        """Rewrite custom docs sections in all eligible README files."""
         updated_files: List[str] = []
 
         # Find all README files in v1 resources
@@ -269,10 +269,8 @@ client = AsyncClient(token=getenv("API_TOKEN"))
             if not self._has_generate_method(resource_name):
                 continue
 
-            # Skip if it doesn't have custom docs section or if it's not empty
-            if not self._has_custom_docs_section(
-                readme_path
-            ) or not self._is_custom_docs_empty(readme_path):
+            # Skip if it doesn't have custom docs section
+            if not self._has_custom_docs_section(readme_path):
                 continue
 
             print(f"📝 Processing {resource_name}...")
@@ -287,16 +285,16 @@ client = AsyncClient(token=getenv("API_TOKEN"))
             )
 
             if not dry_run:
-                # Replace the empty custom docs section
+                # Replace the custom docs section (overwriting any existing content)
                 with open(readme_path, "r") as f:
                     original_content = f.read()
 
-                # Only replace empty custom docs sections (sections with only whitespace between markers)
-                pattern = r"<!-- CUSTOM DOCS START -->\s*<!-- CUSTOM DOCS END -->"
+                # Replace any custom docs section (empty or with existing content)
+                pattern = r"<!-- CUSTOM DOCS START -->.*?<!-- CUSTOM DOCS END -->"
                 replacement = f"<!-- CUSTOM DOCS START -->\n\n{customized_content}\n\n<!-- CUSTOM DOCS END -->"
 
                 updated_content = re.sub(
-                    pattern, replacement, original_content, count=1
+                    pattern, replacement, original_content, count=1, flags=re.DOTALL
                 )
 
                 with open(readme_path, "w") as f:
@@ -315,7 +313,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Populate custom docs sections in README files"
+        description="Rewrite custom docs sections in README files"
     )
     parser.add_argument(
         "--dry-run",

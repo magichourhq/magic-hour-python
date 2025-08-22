@@ -45,7 +45,7 @@ res = client.v1.ai_photo_editor.generate(
         "upscale_fidelity": 0.5,
     },
     name="Photo Editor image",
-        wait_for_completion=True,
+    wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
 )
@@ -72,7 +72,7 @@ res = await client.v1.ai_photo_editor.generate(
         "upscale_fidelity": 0.5,
     },
     name="Photo Editor image",
-        wait_for_completion=True,
+    wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
 )

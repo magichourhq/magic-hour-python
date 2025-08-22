@@ -36,7 +36,7 @@ res = client.v1.ai_image_generator.generate(
     orientation="landscape",
     style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     name="Ai Image image",
-        wait_for_completion=True,
+    wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
 )
@@ -54,7 +54,7 @@ res = await client.v1.ai_image_generator.generate(
     orientation="landscape",
     style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     name="Ai Image image",
-        wait_for_completion=True,
+    wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
 )
