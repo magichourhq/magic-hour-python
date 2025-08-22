@@ -27,8 +27,8 @@ client = Client(token="my api key")
 response = client.v1.face_swap_photo.generate(
     assets={
         "face_swap_mode": "all-faces",
-        "source_file_path": "api-assets/id/1234.png",
-        "target_file_path": "api-assets/id/1234.png",
+        "source_file_path": "/path/to/source/image.png",
+        "source/image": "/path/to/target/image.png",
     },
     name="Face Swap image",
     wait_for_completion=True,
@@ -51,8 +51,8 @@ client = AsyncClient(token="my api key")
 response = await client.v1.face_swap_photo.generate(
     assets={
         "face_swap_mode": "all-faces",
-        "source_file_path": "api-assets/id/1234.png",
-        "target_file_path": "api-assets/id/1234.png",
+        "source_file_path": "/path/to/source/image.png",
+        "target_file_path": "/path/to/target/image.png",
     },
     name="Face Swap image",
     wait_for_completion=True,
