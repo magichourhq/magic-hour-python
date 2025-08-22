@@ -1,9 +1,9 @@
 import asyncio
+import logging
 import os
+import pydantic
 import time
 import typing
-import pydantic
-import logging
 
 from magic_hour.core import (
     AsyncBaseClient,

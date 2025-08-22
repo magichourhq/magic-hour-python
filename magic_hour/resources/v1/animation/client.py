@@ -1,5 +1,5 @@
-import typing
 import logging
+import typing
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -9,12 +9,13 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
-from magic_hour.resources.v1.files.client import FilesClient, AsyncFilesClient
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
 from magic_hour.resources.v1.video_projects.client import (
-    VideoProjectsClient,
     AsyncVideoProjectsClient,
+    VideoProjectsClient,
 )
 from magic_hour.types import models, params
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -96,7 +97,11 @@ class AnimationClient:
             assets["image_file_path"] = file_client.upload_file(file=image_file_path)
 
         # Upload audio file if audio_source is "file" and audio_file_path is provided
-        if assets.get("audio_source") == "file" and "audio_file_path" in assets and assets["audio_file_path"]:
+        if (
+            assets.get("audio_source") == "file"
+            and "audio_file_path" in assets
+            and assets["audio_file_path"]
+        ):
             audio_file_path = assets["audio_file_path"]
             assets["audio_file_path"] = file_client.upload_file(file=audio_file_path)
 
@@ -108,7 +113,7 @@ class AnimationClient:
             style=style,
             width=width,
             name=name,
-            request_options=request_options
+            request_options=request_options,
         )
         logger.info(f"Animation response: {create_response}")
 
@@ -278,12 +283,20 @@ class AsyncAnimationClient:
         # Upload image file if provided
         if "image_file_path" in assets and assets["image_file_path"]:
             image_file_path = assets["image_file_path"]
-            assets["image_file_path"] = await file_client.upload_file(file=image_file_path)
+            assets["image_file_path"] = await file_client.upload_file(
+                file=image_file_path
+            )
 
         # Upload audio file if audio_source is "file" and audio_file_path is provided
-        if assets.get("audio_source") == "file" and "audio_file_path" in assets and assets["audio_file_path"]:
+        if (
+            assets.get("audio_source") == "file"
+            and "audio_file_path" in assets
+            and assets["audio_file_path"]
+        ):
             audio_file_path = assets["audio_file_path"]
-            assets["audio_file_path"] = await file_client.upload_file(file=audio_file_path)
+            assets["audio_file_path"] = await file_client.upload_file(
+                file=audio_file_path
+            )
 
         create_response = await self.create(
             assets=assets,
@@ -293,7 +306,7 @@ class AsyncAnimationClient:
             style=style,
             width=width,
             name=name,
-            request_options=request_options
+            request_options=request_options,
         )
         logger.info(f"Animation response: {create_response}")
 

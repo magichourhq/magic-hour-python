@@ -6,7 +6,7 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_get_200_success_all_params():
+def test_get_200_success_all_params() -> None:
     """Tests a GET request to the /v1/image-projects/{id} endpoint.
 
     Operation: get
@@ -38,7 +38,7 @@ def test_get_200_success_all_params():
 
 
 @pytest.mark.asyncio
-async def test_await_get_200_success_all_params():
+async def test_await_get_200_success_all_params() -> None:
     """Tests a GET request to the /v1/image-projects/{id} endpoint.
 
     Operation: get
@@ -69,7 +69,7 @@ async def test_await_get_200_success_all_params():
     assert is_valid_response_schema, "failed response type check"
 
 
-def test_delete_204_success_all_params():
+def test_delete_204_success_all_params() -> None:
     """Tests a DELETE request to the /v1/image-projects/{id} endpoint.
 
     Operation: delete
@@ -94,7 +94,7 @@ def test_delete_204_success_all_params():
 
 
 @pytest.mark.asyncio
-async def test_await_delete_204_success_all_params():
+async def test_await_delete_204_success_all_params() -> None:
     """Tests a DELETE request to the /v1/image-projects/{id} endpoint.
 
     Operation: delete

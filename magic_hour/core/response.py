@@ -49,7 +49,9 @@ class StreamResponse(Generic[T]):
     into the specified type.
     """
 
-    def __init__(self, response: httpx.Response, stream_context, cast_to: Type[T]):
+    def __init__(
+        self, response: httpx.Response, stream_context: Any, cast_to: Type[T]
+    ) -> None:
         """
         Initialize the stream processor with response and conversion settings.
 
@@ -65,7 +67,7 @@ class StreamResponse(Generic[T]):
         self.buffer = bytearray()
         self.position = 0
 
-    def __iter__(self):
+    def __iter__(self) -> "StreamResponse[T]":
         """Enables iteration over the stream events."""
         return self
 
@@ -95,7 +97,7 @@ class StreamResponse(Generic[T]):
             self._context.__exit__(None, None, None)
             raise
 
-    def _process_buffer(self, final=False) -> Optional[T]:
+    def _process_buffer(self, final: bool = False) -> Optional[T]:
         """
         Processes the current buffer to extract complete SSE events.
 
@@ -125,11 +127,11 @@ class StreamResponse(Generic[T]):
                                     or "data" not in parsed_data
                                 ):
                                     parsed_data = {"data": parsed_data}
-                                return from_encodable(
+                                return from_encodable(  # type: ignore[no-any-return]
                                     data=parsed_data, load_with=self.cast_to
                                 )
                             except json.JSONDecodeError:
-                                return from_encodable(
+                                return from_encodable(  # type: ignore[no-any-return]
                                     data={"data": data}, load_with=self.cast_to
                                 )
                         return None
@@ -144,9 +146,9 @@ class StreamResponse(Generic[T]):
                     parsed_data = json.loads(data)
                     if not isinstance(parsed_data, dict) or "data" not in parsed_data:
                         parsed_data = {"data": parsed_data}
-                    return from_encodable(data=parsed_data, load_with=self.cast_to)
+                    return from_encodable(data=parsed_data, load_with=self.cast_to)  # type: ignore[no-any-return]
                 except json.JSONDecodeError:
-                    return from_encodable(data={"data": data}, load_with=self.cast_to)
+                    return from_encodable(data={"data": data}, load_with=self.cast_to)  # type: ignore[no-any-return]
 
         return None
 
@@ -177,7 +179,9 @@ class AsyncStreamResponse(Generic[T]):
     but compatible with async/await syntax.
     """
 
-    def __init__(self, response: httpx.Response, stream_context, cast_to: Type[T]):
+    def __init__(
+        self, response: httpx.Response, stream_context: Any, cast_to: Type[T]
+    ) -> None:
         """
         Initialize the async stream processor.
 
@@ -193,7 +197,7 @@ class AsyncStreamResponse(Generic[T]):
         self.buffer = bytearray()
         self.position = 0
 
-    def __aiter__(self):
+    def __aiter__(self) -> "AsyncStreamResponse[T]":
         """Enables async iteration over the stream events."""
         return self
 
@@ -223,7 +227,7 @@ class AsyncStreamResponse(Generic[T]):
             await self._context.__aexit__(None, None, None)
             raise
 
-    def _process_buffer(self, final=False) -> Optional[T]:
+    def _process_buffer(self, final: bool = False) -> Optional[T]:
         """
         Processes the current buffer to extract complete SSE events.
 
@@ -249,11 +253,11 @@ class AsyncStreamResponse(Generic[T]):
                                     or "data" not in parsed_data
                                 ):
                                     parsed_data = {"data": parsed_data}
-                                return from_encodable(
+                                return from_encodable(  # type: ignore[no-any-return]
                                     data=parsed_data, load_with=self.cast_to
                                 )
                             except json.JSONDecodeError:
-                                return from_encodable(
+                                return from_encodable(  # type: ignore[no-any-return]
                                     data={"data": data}, load_with=self.cast_to
                                 )
                         return None
@@ -268,9 +272,9 @@ class AsyncStreamResponse(Generic[T]):
                     parsed_data = json.loads(data)
                     if not isinstance(parsed_data, dict) or "data" not in parsed_data:
                         parsed_data = {"data": parsed_data}
-                    return from_encodable(data=parsed_data, load_with=self.cast_to)
+                    return from_encodable(data=parsed_data, load_with=self.cast_to)  # type: ignore[no-any-return]
                 except json.JSONDecodeError:
-                    return from_encodable(data={"data": data}, load_with=self.cast_to)
+                    return from_encodable(data={"data": data}, load_with=self.cast_to)  # type: ignore[no-any-return]
 
         return None
 

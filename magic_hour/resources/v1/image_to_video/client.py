@@ -1,6 +1,6 @@
+import logging
 import typing
 import typing_extensions
-import logging
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -10,12 +10,13 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
-from magic_hour.resources.v1.files.client import FilesClient, AsyncFilesClient
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
 from magic_hour.resources.v1.video_projects.client import (
-    VideoProjectsClient,
     AsyncVideoProjectsClient,
+    VideoProjectsClient,
 )
 from magic_hour.types import models, params
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

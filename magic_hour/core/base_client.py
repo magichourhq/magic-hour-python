@@ -15,7 +15,8 @@ from pydantic import BaseModel
 
 from .api_error import ApiError
 from .auth import AuthProvider
-from .request import RequestConfig, RequestOptions, default_request_options, QueryParams
+from .request import RequestConfig, RequestOptions, default_request_options
+from .query import QueryParams
 from .response import from_encodable, AsyncStreamResponse, StreamResponse
 from .utils import get_response_type, filter_binary_response
 from .binary_response import BinaryResponse
@@ -51,7 +52,7 @@ class BaseClient:
         )
         self._auths: Dict[str, AuthProvider] = auths or {}
 
-    def register_auth(self, auth_id: str, provider: AuthProvider):
+    def register_auth(self, auth_id: str, provider: AuthProvider) -> None:
         """Register an authentication provider.
 
         Args:
@@ -297,7 +298,7 @@ class BaseClient:
     def process_response(
         self,
         *,
-        response=httpx.Response,
+        response: httpx.Response,
         cast_to: Union[Type[T], Any],
     ) -> T:
         """Process an HTTP response and convert it to the desired type.
@@ -325,8 +326,8 @@ class BaseClient:
 
         if response_type == "json":
             if cast_to is type(Any):
-                return response.json()
-            return from_encodable(
+                return response.json()  # type: ignore[no-any-return]
+            return from_encodable(  # type: ignore[no-any-return]
                 data=response.json(), load_with=filter_binary_response(cast_to=cast_to)
             )
         elif response_type == "text":

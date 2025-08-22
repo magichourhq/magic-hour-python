@@ -34,7 +34,7 @@ def is_union_type(type_hint: typing.Any) -> bool:
     return hasattr(type_hint, "__origin__") and type_hint.__origin__ is typing.Union
 
 
-def filter_binary_response(cast_to: typing.Type) -> typing.Type:
+def filter_binary_response(cast_to: typing.Type[typing.Any]) -> typing.Type[typing.Any]:
     """
     Filters out BinaryResponse from a Union type.
     If cast_to is not a Union, returns it unchanged.
@@ -50,6 +50,6 @@ def filter_binary_response(cast_to: typing.Type) -> typing.Type:
         return cast_to
     # If only one type remains, return it directly
     if len(filtered) == 1:
-        return typing.cast(typing.Type, filtered[0])
+        return typing.cast(typing.Type[typing.Any], filtered[0])
     # Otherwise return new Union with filtered types
-    return typing.cast(typing.Type, typing.Union[filtered])  # type: ignore
+    return typing.cast(typing.Type[typing.Any], typing.Union[filtered])

@@ -82,7 +82,7 @@ def model_dump(item: Any) -> Any:
 
 
 def to_encodable(
-    *, item: Any, dump_with: Union[Type, Union[Type, Any], List[Type]]
+    *, item: Any, dump_with: Union[Type[Any], Union[Type[Any], Any], List[Type[Any]]]
 ) -> Any:
     """
     Validates and converts an item to an encodable format using a specified type.
@@ -90,7 +90,7 @@ def to_encodable(
     to a format suitable for encoding in requests.
     """
     filtered_item = filter_not_given(item)
-    adapter: TypeAdapter = TypeAdapter(dump_with)
+    adapter: TypeAdapter[Any] = TypeAdapter(dump_with)
     validated_item = adapter.validate_python(filtered_item)
     return model_dump(validated_item)
 
@@ -98,7 +98,7 @@ def to_encodable(
 def to_form_urlencoded(
     *,
     item: Any,
-    dump_with: Union[Type, Union[Type, Any]],
+    dump_with: Union[Type[Any], Union[Type[Any], Any]],
     style: Mapping[str, QueryParamStyle],
     explode: Mapping[str, bool],
 ) -> Mapping[str, Any]:

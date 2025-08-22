@@ -1,4 +1,12 @@
-from .client import AsyncImageProjectsClient, ImageProjectsClient
+from .client import (
+    AsyncImageProjectsClient,
+    ImageProjectsClient,
+    V1ImageProjectsGetResponseWithDownloads,
+)
 
 
-__all__ = ["AsyncImageProjectsClient", "ImageProjectsClient"]
+__all__ = [
+    "AsyncImageProjectsClient",
+    "ImageProjectsClient",
+    "V1ImageProjectsGetResponseWithDownloads",
+]
