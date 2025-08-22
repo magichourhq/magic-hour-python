@@ -1,3 +1,4 @@
+import logging
 import typing
 
 from magic_hour.core import (
@@ -8,14 +9,13 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
-from magic_hour.types import models, params
-import logging
-
-from magic_hour.resources.v1.files.client import FilesClient, AsyncFilesClient
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
 from magic_hour.resources.v1.image_projects.client import (
-    ImageProjectsClient,
     AsyncImageProjectsClient,
+    ImageProjectsClient,
 )
+from magic_hour.types import models, params
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -136,6 +136,12 @@ class FaceSwapPhotoClient:
         ```py
         client.v1.face_swap_photo.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
                 "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
@@ -277,6 +283,12 @@ class AsyncFaceSwapPhotoClient:
         ```py
         await client.v1.face_swap_photo.create(
             assets={
+                "face_mappings": [
+                    {
+                        "new_face": "api-assets/id/1234.png",
+                        "original_face": "api-assets/id/0-0.png",
+                    }
+                ],
                 "face_swap_mode": "all-faces",
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
