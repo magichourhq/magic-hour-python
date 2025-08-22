@@ -28,7 +28,6 @@ res = client.v1.ai_clothes_changer.create(
     assets={
         "garment_file_path": "api-assets/id/outfit.png",
         "garment_type": "upper_body",
-        "person_file_path": "api-assets/id/model.png",
     },
     name="Clothes Changer image",
 )
