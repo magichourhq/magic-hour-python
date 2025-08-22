@@ -1,6 +1,11 @@
 # v1_ai_qr_code_generator
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI QR Code <a name="create"></a>
 
 Create an AI QR code. Each QR code costs 20 credits.
@@ -53,7 +58,4 @@ res = await client.v1.ai_qr_code_generator.create(
 
 ##### Example
 `{"credits_charged": 20, "frame_cost": 20, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

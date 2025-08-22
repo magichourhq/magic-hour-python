@@ -1,6 +1,11 @@
 # v1_ai_talking_photo
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Talking Photo <a name="create"></a>
 
 Create a talking photo from an image and audio or text input.
@@ -66,7 +71,4 @@ res = await client.v1.ai_talking_photo.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

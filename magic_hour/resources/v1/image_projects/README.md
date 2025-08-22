@@ -1,6 +1,11 @@
 # v1_image_projects
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Delete image <a name="delete"></a>
 
 Permanently delete the rendered image(s). This action is not reversible, please be sure before deleting.
@@ -85,7 +90,4 @@ res = await client.v1.image_projects.get(id="cuid-example")
 
 ##### Example
 `{"created_at": "1970-01-01T00:00:00", "credits_charged": 5, "downloads": [{"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.png"}], "enabled": True, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "id": "cuid-example", "image_count": 1, "name": "Example Name", "status": "complete", "total_frame_cost": 5, "type_": "AI_IMAGE"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 
