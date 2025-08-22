@@ -14,6 +14,7 @@ from magic_hour.core import (
     type_utils,
 )
 from magic_hour.helpers.download import download_files_async, download_files_sync
+from magic_hour.resources.v1.files import AsyncFilesClient, FilesClient
 from magic_hour.types import models, params
 
 
@@ -43,7 +44,7 @@ class FaceDetectionClient:
             typing.Optional[float], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
-        download_outputs: bool = False,
+        download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> V1FaceDetectionGetResponseWithDownloads:
@@ -66,6 +67,11 @@ class FaceDetectionClient:
             V1FaceDetectionGetResponseWithDownloads: The face detection response with optional
                 downloaded face image paths included
         """
+        # Handle file upload if needed
+        file_client = FilesClient(base_client=self._base_client)
+        target_file_path = assets["target_file_path"]
+        assets["target_file_path"] = file_client.upload_file(file=target_file_path)
+
         create_response = self.create(
             assets=assets,
             confidence_score=confidence_score,
@@ -211,7 +217,7 @@ class AsyncFaceDetectionClient:
             typing.Optional[float], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
-        download_outputs: bool = False,
+        download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> V1FaceDetectionGetResponseWithDownloads:
@@ -234,6 +240,13 @@ class AsyncFaceDetectionClient:
             V1FaceDetectionGetResponseWithDownloads: The face detection response with optional
                 downloaded face image paths included
         """
+        # Handle file upload if needed
+        file_client = AsyncFilesClient(base_client=self._base_client)
+        target_file_path = assets["target_file_path"]
+        assets["target_file_path"] = await file_client.upload_file(
+            file=target_file_path
+        )
+
         create_response = await self.create(
             assets=assets,
             confidence_score=confidence_score,
