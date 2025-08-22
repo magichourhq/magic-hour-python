@@ -1,4 +1,9 @@
+import asyncio
+import os
+import time
 import typing
+import pydantic
+import logging
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -8,12 +13,106 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
+from magic_hour.helpers.download import download_files_async, download_files_sync
+from magic_hour.resources.v1.files import AsyncFilesClient, FilesClient
 from magic_hour.types import models, params
+
+
+logger = logging.getLogger(__name__)
+
+
+class V1FaceDetectionGetResponseWithDownloads(models.V1FaceDetectionGetResponse):
+    downloaded_paths: typing.Optional[typing.List[str]] = pydantic.Field(
+        default=None, alias="downloaded_paths"
+    )
+    """
+    The paths to the downloaded face images.
+
+    This field is only populated if `download_outputs` is True and the face detection is complete.
+    """
 
 
 class FaceDetectionClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def generate(
+        self,
+        *,
+        assets: params.V1FaceDetectionCreateBodyAssets,
+        confidence_score: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1FaceDetectionGetResponseWithDownloads:
+        """
+        Generate face detection results with optional waiting and downloading.
+
+        This method creates a face detection task and optionally waits for completion
+        and downloads the detected face images.
+
+        Args:
+            assets: Provide the assets for face detection
+            confidence_score: Confidence threshold for filtering detected faces
+            wait_for_completion: Whether to wait for the face detection task to complete
+            download_outputs: Whether to download the detected face images
+            download_directory: The directory to download the face images to. If not provided,
+                the images will be downloaded to the current working directory
+            request_options: Additional options to customize the HTTP request
+
+        Returns:
+            V1FaceDetectionGetResponseWithDownloads: The face detection response with optional
+                downloaded face image paths included
+        """
+        # Handle file upload if needed
+        file_client = FilesClient(base_client=self._base_client)
+        target_file_path = assets["target_file_path"]
+        assets["target_file_path"] = file_client.upload_file(file=target_file_path)
+
+        create_response = self.create(
+            assets=assets,
+            confidence_score=confidence_score,
+            request_options=request_options,
+        )
+
+        task_id = create_response.id
+
+        api_response = self.get(id=task_id)
+        if not wait_for_completion:
+            return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
+
+        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
+
+        while api_response.status not in ["complete", "error"]:
+            api_response = self.get(id=task_id)
+            time.sleep(poll_interval)
+
+        if api_response.status != "complete":
+            log = logger.error if api_response.status == "error" else logger.info
+            log(f"Face detection {task_id} has status {api_response.status}")
+            return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
+
+        if not download_outputs or not api_response.faces:
+            return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
+
+        face_downloads = [
+            models.V1ImageProjectsGetResponseDownloadsItem(
+                url=face.url,
+                expires_at="ignore",
+            )
+            for face in api_response.faces
+        ]
+        downloaded_paths = download_files_sync(
+            downloads=face_downloads,
+            download_directory=download_directory,
+        )
+
+        return V1FaceDetectionGetResponseWithDownloads(
+            **api_response.model_dump(), downloaded_paths=downloaded_paths
+        )
 
     def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
@@ -109,6 +208,86 @@ class FaceDetectionClient:
 class AsyncFaceDetectionClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def generate(
+        self,
+        *,
+        assets: params.V1FaceDetectionCreateBodyAssets,
+        confidence_score: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1FaceDetectionGetResponseWithDownloads:
+        """
+        Generate face detection results with optional waiting and downloading.
+
+        This method creates a face detection task and optionally waits for completion
+        and downloads the detected face images.
+
+        Args:
+            assets: Provide the assets for face detection
+            confidence_score: Confidence threshold for filtering detected faces
+            wait_for_completion: Whether to wait for the face detection task to complete
+            download_outputs: Whether to download the detected face images
+            download_directory: The directory to download the face images to. If not provided,
+                the images will be downloaded to the current working directory
+            request_options: Additional options to customize the HTTP request
+
+        Returns:
+            V1FaceDetectionGetResponseWithDownloads: The face detection response with optional
+                downloaded face image paths included
+        """
+        # Handle file upload if needed
+        file_client = AsyncFilesClient(base_client=self._base_client)
+        target_file_path = assets["target_file_path"]
+        assets["target_file_path"] = await file_client.upload_file(
+            file=target_file_path
+        )
+
+        create_response = await self.create(
+            assets=assets,
+            confidence_score=confidence_score,
+            request_options=request_options,
+        )
+
+        task_id = create_response.id
+
+        api_response = await self.get(id=task_id)
+        if not wait_for_completion:
+            return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
+
+        poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
+
+        while api_response.status not in ["complete", "error"]:
+            api_response = await self.get(id=task_id)
+            await asyncio.sleep(poll_interval)
+
+        if api_response.status != "complete":
+            log = logger.error if api_response.status == "error" else logger.info
+            log(f"Face detection {task_id} has status {api_response.status}")
+            return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
+
+        if not download_outputs or not api_response.faces:
+            return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
+
+        face_downloads = [
+            models.V1ImageProjectsGetResponseDownloadsItem(
+                url=face.url,
+                expires_at="ignore",
+            )
+            for face in api_response.faces
+        ]
+        downloaded_paths = await download_files_async(
+            downloads=face_downloads,
+            download_directory=download_directory,
+        )
+
+        return V1FaceDetectionGetResponseWithDownloads(
+            **api_response.model_dump(), downloaded_paths=downloaded_paths
+        )
 
     async def get(
         self, *, id: str, request_options: typing.Optional[RequestOptions] = None
