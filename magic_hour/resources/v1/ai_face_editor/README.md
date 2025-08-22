@@ -1,6 +1,11 @@
 # v1_ai_face_editor
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Face Editor <a name="create"></a>
 
 Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
@@ -100,7 +105,4 @@ res = await client.v1.ai_face_editor.create(
 
 ##### Example
 `{"credits_charged": 1, "frame_cost": 1, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

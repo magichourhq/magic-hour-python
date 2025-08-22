@@ -1,6 +1,11 @@
 # v1_photo_colorizer
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### Photo Colorizer <a name="create"></a>
 
 Colorize image. Each image costs 5 credits.
@@ -48,7 +53,4 @@ res = await client.v1.photo_colorizer.create(
 
 ##### Example
 `{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

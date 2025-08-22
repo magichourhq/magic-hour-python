@@ -1,6 +1,11 @@
 # v1_ai_meme_generator
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Meme Generator <a name="create"></a>
 
 Create an AI generated meme. Each meme costs 10 credits.
@@ -60,7 +65,4 @@ res = await client.v1.ai_meme_generator.create(
 
 ##### Example
 `{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 

@@ -1,6 +1,11 @@
 # v1_ai_image_editor
 
 ## Module Functions
+
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Image Editor <a name="create"></a>
 
 Edit images with AI. Each edit costs 50 credits.
@@ -54,7 +59,4 @@ res = await client.v1.ai_image_editor.create(
 
 ##### Example
 `{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 
