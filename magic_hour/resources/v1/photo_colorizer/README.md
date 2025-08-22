@@ -1,4 +1,6 @@
+# v1_photo_colorizer
 
+## Module Functions
 ### Photo Colorizer <a name="create"></a>
 
 Colorize image. Each image costs 5 credits.
@@ -10,6 +12,7 @@ Colorize image. Each image costs 5 credits.
 | Parameter | Required | Description | Example |
 |-----------|:--------:|-------------|--------|
 | `assets` | ✓ | Provide the assets for photo colorization | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `└─ image_file_path` | ✓ | The image used to generate the colorized image. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/1234.png"` |
 | `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Photo Colorizer image"` |
 
 #### Synchronous Client
@@ -45,3 +48,7 @@ res = await client.v1.photo_colorizer.create(
 
 ##### Example
 `{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+

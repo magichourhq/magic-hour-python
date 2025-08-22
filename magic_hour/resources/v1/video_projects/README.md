@@ -1,4 +1,6 @@
+# v1_video_projects
 
+## Module Functions
 ### Delete video <a name="delete"></a>
 
 Permanently delete the rendered video. This action is not reversible, please be sure before deleting.
@@ -83,3 +85,7 @@ res = await client.v1.video_projects.get(id="cuid-example")
 
 ##### Example
 `{"created_at": "1970-01-01T00:00:00", "credits_charged": 450, "download": {"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}, "downloads": [{"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.mp4"}], "enabled": True, "end_seconds": 15.0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "fps": 30.0, "height": 960, "id": "cuid-example", "name": "Example Name", "start_seconds": 0.0, "status": "complete", "total_frame_cost": 450, "type_": "FACE_SWAP", "width": 512}`
+<!-- CUSTOM DOCS START -->
+
+<!-- CUSTOM DOCS END -->
+
