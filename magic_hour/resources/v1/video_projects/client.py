@@ -1,8 +1,8 @@
+import logging
 import os
+import pydantic
 import time
 import typing
-import pydantic
-import logging
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -12,6 +12,7 @@ from magic_hour.core import (
 )
 from magic_hour.helpers.download import download_files_async, download_files_sync
 from magic_hour.types import models
+
 
 logger = logging.getLogger(__name__)
 

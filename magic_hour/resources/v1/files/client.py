@@ -1,3 +1,12 @@
+import httpx
+import io
+import logging
+import mimetypes
+import os
+import pathlib
+import typing
+import typing_extensions
+
 from magic_hour.core import AsyncBaseClient, SyncBaseClient
 from magic_hour.resources.v1.files.upload_urls import (
     AsyncUploadUrlsClient,
@@ -6,15 +15,8 @@ from magic_hour.resources.v1.files.upload_urls import (
 from magic_hour.types.params.v1_files_upload_urls_create_body_items_item import (
     V1FilesUploadUrlsCreateBodyItemsItem,
 )
-import typing_extensions
-import os
-import mimetypes
-import httpx
 from pathlib import Path
-import typing
-import io
-import pathlib
-import logging
+
 
 logger = logging.getLogger(__name__)
 
@@ -194,8 +196,7 @@ class FilesClient:
 
             # Use the uploaded file in other API calls
             result = client.v1.ai_image_upscaler.create(
-                assets={"image_file_path": file_path},
-                style={"upscale_factor": 2}
+                assets={"image_file_path": file_path}, style={"upscale_factor": 2}
             )
             ```
 
@@ -309,6 +310,7 @@ class AsyncFilesClient:
             from magic_hour import AsyncClient
             from os import getenv
 
+
             async def upload_example():
                 client = AsyncClient(token=getenv("MAGIC_HOUR_API_TOKEN"))
 
@@ -318,9 +320,9 @@ class AsyncFilesClient:
 
                 # Use the uploaded file in other API calls
                 result = await client.v1.ai_image_upscaler.create(
-                    assets={"image_file_path": file_path},
-                    style={"upscale_factor": 2}
+                    assets={"image_file_path": file_path}, style={"upscale_factor": 2}
                 )
+
 
             asyncio.run(upload_example())
             ```

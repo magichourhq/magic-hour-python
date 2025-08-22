@@ -144,107 +144,113 @@ print(f"Started project: {project_id}")
 
 ## Module Documentation and Snippets
 
+### [v1](magic_hour/resources/v1/README.md)
+
+
 ### [v1.ai_clothes_changer](magic_hour/resources/v1/ai_clothes_changer/README.md)
 
-- [create](magic_hour/resources/v1/ai_clothes_changer/README.md#create) - AI Clothes Changer
+* [create](magic_hour/resources/v1/ai_clothes_changer/README.md#create) - AI Clothes Changer
 
 ### [v1.ai_face_editor](magic_hour/resources/v1/ai_face_editor/README.md)
 
-- [create](magic_hour/resources/v1/ai_face_editor/README.md#create) - AI Face Editor
+* [create](magic_hour/resources/v1/ai_face_editor/README.md#create) - AI Face Editor
 
 ### [v1.ai_gif_generator](magic_hour/resources/v1/ai_gif_generator/README.md)
 
-- [create](magic_hour/resources/v1/ai_gif_generator/README.md#create) - AI GIFs
+* [create](magic_hour/resources/v1/ai_gif_generator/README.md#create) - AI GIFs
 
 ### [v1.ai_headshot_generator](magic_hour/resources/v1/ai_headshot_generator/README.md)
 
-- [create](magic_hour/resources/v1/ai_headshot_generator/README.md#create) - AI Headshots
+* [create](magic_hour/resources/v1/ai_headshot_generator/README.md#create) - AI Headshots
 
 ### [v1.ai_image_editor](magic_hour/resources/v1/ai_image_editor/README.md)
 
-- [create](magic_hour/resources/v1/ai_image_editor/README.md#create) - AI Image Editor
+* [create](magic_hour/resources/v1/ai_image_editor/README.md#create) - AI Image Editor
 
 ### [v1.ai_image_generator](magic_hour/resources/v1/ai_image_generator/README.md)
 
-- [create](magic_hour/resources/v1/ai_image_generator/README.md#create) - AI Images
+* [create](magic_hour/resources/v1/ai_image_generator/README.md#create) - AI Images
 
 ### [v1.ai_image_upscaler](magic_hour/resources/v1/ai_image_upscaler/README.md)
 
-- [create](magic_hour/resources/v1/ai_image_upscaler/README.md#create) - AI Image Upscaler
+* [create](magic_hour/resources/v1/ai_image_upscaler/README.md#create) - AI Image Upscaler
 
 ### [v1.ai_meme_generator](magic_hour/resources/v1/ai_meme_generator/README.md)
 
-- [create](magic_hour/resources/v1/ai_meme_generator/README.md#create) - AI Meme Generator
+* [create](magic_hour/resources/v1/ai_meme_generator/README.md#create) - AI Meme Generator
 
 ### [v1.ai_photo_editor](magic_hour/resources/v1/ai_photo_editor/README.md)
 
-- [create](magic_hour/resources/v1/ai_photo_editor/README.md#create) - AI Photo Editor
+* [create](magic_hour/resources/v1/ai_photo_editor/README.md#create) - AI Photo Editor
 
 ### [v1.ai_qr_code_generator](magic_hour/resources/v1/ai_qr_code_generator/README.md)
 
-- [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - AI QR Code
+* [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - AI QR Code
 
 ### [v1.ai_talking_photo](magic_hour/resources/v1/ai_talking_photo/README.md)
 
-- [create](magic_hour/resources/v1/ai_talking_photo/README.md#create) - AI Talking Photo
+* [create](magic_hour/resources/v1/ai_talking_photo/README.md#create) - AI Talking Photo
 
 ### [v1.animation](magic_hour/resources/v1/animation/README.md)
 
-- [create](magic_hour/resources/v1/animation/README.md#create) - Animation
+* [create](magic_hour/resources/v1/animation/README.md#create) - Animation
 
 ### [v1.auto_subtitle_generator](magic_hour/resources/v1/auto_subtitle_generator/README.md)
 
-- [create](magic_hour/resources/v1/auto_subtitle_generator/README.md#create) - Auto Subtitle Generator
+* [create](magic_hour/resources/v1/auto_subtitle_generator/README.md#create) - Auto Subtitle Generator
 
 ### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
 
-- [create](magic_hour/resources/v1/face_detection/README.md#create) - Face Detection
-- [get](magic_hour/resources/v1/face_detection/README.md#get) - Get face detection details
+* [create](magic_hour/resources/v1/face_detection/README.md#create) - Face Detection
+* [get](magic_hour/resources/v1/face_detection/README.md#get) - Get face detection details
 
 ### [v1.face_swap](magic_hour/resources/v1/face_swap/README.md)
 
-- [create](magic_hour/resources/v1/face_swap/README.md#create) - Face Swap video
+* [create](magic_hour/resources/v1/face_swap/README.md#create) - Face Swap video
 
 ### [v1.face_swap_photo](magic_hour/resources/v1/face_swap_photo/README.md)
 
-- [create](magic_hour/resources/v1/face_swap_photo/README.md#create) - Face Swap Photo
+* [create](magic_hour/resources/v1/face_swap_photo/README.md#create) - Face Swap Photo
+
+### [v1.files](magic_hour/resources/v1/files/README.md)
+
 
 ### [v1.files.upload_urls](magic_hour/resources/v1/files/upload_urls/README.md)
 
-- [create](magic_hour/resources/v1/files/upload_urls/README.md#create) - Generate asset upload urls
+* [create](magic_hour/resources/v1/files/upload_urls/README.md#create) - Generate asset upload urls
 
 ### [v1.image_background_remover](magic_hour/resources/v1/image_background_remover/README.md)
 
-- [create](magic_hour/resources/v1/image_background_remover/README.md#create) - Image Background Remover
+* [create](magic_hour/resources/v1/image_background_remover/README.md#create) - Image Background Remover
 
 ### [v1.image_projects](magic_hour/resources/v1/image_projects/README.md)
 
-- [delete](magic_hour/resources/v1/image_projects/README.md#delete) - Delete image
-- [get](magic_hour/resources/v1/image_projects/README.md#get) - Get image details
+* [delete](magic_hour/resources/v1/image_projects/README.md#delete) - Delete image
+* [get](magic_hour/resources/v1/image_projects/README.md#get) - Get image details
 
 ### [v1.image_to_video](magic_hour/resources/v1/image_to_video/README.md)
 
-- [create](magic_hour/resources/v1/image_to_video/README.md#create) - Image-to-Video
+* [create](magic_hour/resources/v1/image_to_video/README.md#create) - Image-to-Video
 
 ### [v1.lip_sync](magic_hour/resources/v1/lip_sync/README.md)
 
-- [create](magic_hour/resources/v1/lip_sync/README.md#create) - Lip Sync
+* [create](magic_hour/resources/v1/lip_sync/README.md#create) - Lip Sync
 
 ### [v1.photo_colorizer](magic_hour/resources/v1/photo_colorizer/README.md)
 
-- [create](magic_hour/resources/v1/photo_colorizer/README.md#create) - Photo Colorizer
+* [create](magic_hour/resources/v1/photo_colorizer/README.md#create) - Photo Colorizer
 
 ### [v1.text_to_video](magic_hour/resources/v1/text_to_video/README.md)
 
-- [create](magic_hour/resources/v1/text_to_video/README.md#create) - Text-to-Video
+* [create](magic_hour/resources/v1/text_to_video/README.md#create) - Text-to-Video
 
 ### [v1.video_projects](magic_hour/resources/v1/video_projects/README.md)
 
-- [delete](magic_hour/resources/v1/video_projects/README.md#delete) - Delete video
-- [get](magic_hour/resources/v1/video_projects/README.md#get) - Get video details
+* [delete](magic_hour/resources/v1/video_projects/README.md#delete) - Delete video
+* [get](magic_hour/resources/v1/video_projects/README.md#get) - Get video details
 
 ### [v1.video_to_video](magic_hour/resources/v1/video_to_video/README.md)
 
-- [create](magic_hour/resources/v1/video_to_video/README.md#create) - Video-to-Video
+* [create](magic_hour/resources/v1/video_to_video/README.md#create) - Video-to-Video
 
 <!-- MODULE DOCS END -->

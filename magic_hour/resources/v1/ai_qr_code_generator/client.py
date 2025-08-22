@@ -1,5 +1,5 @@
-import typing
 import logging
+import typing
 
 from magic_hour.core import (
     AsyncBaseClient,
@@ -10,10 +10,11 @@ from magic_hour.core import (
     type_utils,
 )
 from magic_hour.resources.v1.image_projects.client import (
-    ImageProjectsClient,
     AsyncImageProjectsClient,
+    ImageProjectsClient,
 )
 from magic_hour.types import models, params
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

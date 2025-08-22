@@ -19,7 +19,7 @@ def encode_query_param(
     value: Any,
     style: QueryParamStyle = "form",
     explode: bool = True,
-):
+) -> None:
     if style == "form":
         _encode_form(params, name, value, explode)
     elif style == "spaceDelimited":
@@ -39,7 +39,7 @@ def _query_str(val: Any) -> str:
     return json.dumps(val)
 
 
-def _encode_form(params: QueryParams, name: str, value: Any, explode: bool):
+def _encode_form(params: QueryParams, name: str, value: Any, explode: bool) -> None:
     """
     Encodes query params in the `form` style as defined by OpenAPI with both explode and non-explode
     variants.
@@ -63,7 +63,9 @@ def _encode_form(params: QueryParams, name: str, value: Any, explode: bool):
         params[name] = value
 
 
-def _encode_spaced_delimited(params: QueryParams, name: str, value: Any, explode: bool):
+def _encode_spaced_delimited(
+    params: QueryParams, name: str, value: Any, explode: bool
+) -> None:
     """
     Encodes query params in the `spaceDelimited` style as defined by OpenAPI with both explode and non-explode
     variants.
@@ -78,7 +80,9 @@ def _encode_spaced_delimited(params: QueryParams, name: str, value: Any, explode
         _encode_form(params, name, value, explode)
 
 
-def _encode_pipe_delimited(params: QueryParams, name: str, value: Any, explode: bool):
+def _encode_pipe_delimited(
+    params: QueryParams, name: str, value: Any, explode: bool
+) -> None:
     """
     Encodes query params in the `pipeDelimited` style as defined by OpenAPI with both explode and non-explode
     variants.
@@ -93,7 +97,9 @@ def _encode_pipe_delimited(params: QueryParams, name: str, value: Any, explode: 
         _encode_form(params, name, value, explode)
 
 
-def _encode_deep_object(params: QueryParams, name: str, value: Any, explode: bool):
+def _encode_deep_object(
+    params: QueryParams, name: str, value: Any, explode: bool
+) -> None:
     """
     Encodes query params in the `deepObject` style as defined by with both explode and non-explode
     variants.
@@ -107,7 +113,7 @@ def _encode_deep_object(params: QueryParams, name: str, value: Any, explode: boo
         _encode_form(params, name, value, explode)
 
 
-def _encode_deep_object_key(params: QueryParams, key: str, value: Any):
+def _encode_deep_object_key(params: QueryParams, key: str, value: Any) -> None:
     if isinstance(value, dict):
         for k, v in value.items():
             _encode_deep_object_key(params, f"{key}[{k}]", v)

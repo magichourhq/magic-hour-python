@@ -6,7 +6,7 @@ from magic_hour.environment import Environment
 from magic_hour.types import models
 
 
-def test_create_200_success_all_params():
+def test_create_200_success_all_params() -> None:
     """Tests a POST request to the /v1/photo-colorizer endpoint.
 
     Operation: create
@@ -41,7 +41,7 @@ def test_create_200_success_all_params():
 
 
 @pytest.mark.asyncio
-async def test_await_create_200_success_all_params():
+async def test_await_create_200_success_all_params() -> None:
     """Tests a POST request to the /v1/photo-colorizer endpoint.
 
     Operation: create
