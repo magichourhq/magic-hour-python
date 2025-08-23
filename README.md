@@ -236,6 +236,7 @@ download_urls = result.downloads
 
 ### [v1.files](magic_hour/resources/v1/files/README.md)
 
+* [upload-file](magic_hour/resources/v1/files/README.md#upload-file) - Upload File
 
 ### [v1.files.upload_urls](magic_hour/resources/v1/files/upload_urls/README.md)
 
@@ -248,6 +249,7 @@ download_urls = result.downloads
 
 ### [v1.image_projects](magic_hour/resources/v1/image_projects/README.md)
 
+* [check-result](magic_hour/resources/v1/image_projects/README.md#check-result) - Check results
 * [delete](magic_hour/resources/v1/image_projects/README.md#delete) - Delete image
 * [get](magic_hour/resources/v1/image_projects/README.md#get) - Get image details
 
@@ -273,6 +275,7 @@ download_urls = result.downloads
 
 ### [v1.video_projects](magic_hour/resources/v1/video_projects/README.md)
 
+* [check-result](magic_hour/resources/v1/video_projects/README.md#check-result) - Check results
 * [delete](magic_hour/resources/v1/video_projects/README.md#delete) - Delete video
 * [get](magic_hour/resources/v1/video_projects/README.md#get) - Get video details
 
