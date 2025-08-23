@@ -1,6 +1,5 @@
 import httpx
 import io
-
 import mimetypes
 import os
 import pathlib
