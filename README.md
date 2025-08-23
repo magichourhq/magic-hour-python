@@ -227,7 +227,6 @@ download_urls = result.downloads
 ### [v1.face_swap](magic_hour/resources/v1/face_swap/README.md)
 
 * [create](magic_hour/resources/v1/face_swap/README.md#create) - Face Swap video
-* [generate](magic_hour/resources/v1/face_swap/README.md#generate) - Face Swap Generate Workflow
 
 ### [v1.face_swap_photo](magic_hour/resources/v1/face_swap_photo/README.md)
 
