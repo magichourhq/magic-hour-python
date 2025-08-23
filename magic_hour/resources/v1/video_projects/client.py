@@ -1,4 +1,3 @@
-import logging
 import os
 import pydantic
 import time
@@ -11,10 +10,11 @@ from magic_hour.core import (
     default_request_options,
 )
 from magic_hour.helpers.download import download_files_async, download_files_sync
+from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.types import models
 
 
-logger = logging.getLogger(__name__)
+logger = get_sdk_logger(__name__)
 
 
 class V1VideoProjectsGetResponseWithDownloads(models.V1VideoProjectsGetResponse):
