@@ -1,4 +1,3 @@
-import logging
 import typing
 import typing_extensions
 
@@ -10,6 +9,7 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
+from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
 from magic_hour.resources.v1.video_projects.client import (
     AsyncVideoProjectsClient,
@@ -18,8 +18,7 @@ from magic_hour.resources.v1.video_projects.client import (
 from magic_hour.types import models, params
 
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+logger = get_sdk_logger(__name__)
 
 
 class ImageToVideoClient:

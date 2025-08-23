@@ -1,6 +1,5 @@
 import httpx
 import io
-import logging
 import mimetypes
 import os
 import pathlib
@@ -8,6 +7,7 @@ import typing
 import typing_extensions
 
 from magic_hour.core import AsyncBaseClient, SyncBaseClient
+from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.upload_urls import (
     AsyncUploadUrlsClient,
     UploadUrlsClient,
@@ -18,7 +18,7 @@ from magic_hour.types.params.v1_files_upload_urls_create_body_items_item import 
 from pathlib import Path
 
 
-logger = logging.getLogger(__name__)
+logger = get_sdk_logger(__name__)
 
 
 def _get_file_type_and_extension(file_path: str):

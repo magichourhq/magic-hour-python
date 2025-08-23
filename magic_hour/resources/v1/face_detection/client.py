@@ -1,5 +1,4 @@
 import asyncio
-import logging
 import os
 import pydantic
 import time
@@ -14,11 +13,12 @@ from magic_hour.core import (
     type_utils,
 )
 from magic_hour.helpers.download import download_files_async, download_files_sync
+from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files import AsyncFilesClient, FilesClient
 from magic_hour.types import models, params
 
 
-logger = logging.getLogger(__name__)
+logger = get_sdk_logger(__name__)
 
 
 class V1FaceDetectionGetResponseWithDownloads(models.V1FaceDetectionGetResponse):
