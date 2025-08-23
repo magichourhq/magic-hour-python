@@ -37,6 +37,9 @@ class FaceSwapClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1FaceSwapCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -114,6 +117,7 @@ class FaceSwapClient:
             start_seconds=start_seconds,
             height=height,
             name=name,
+            style=style,
             width=width,
             request_options=request_options,
         )
@@ -248,6 +252,9 @@ class AsyncFaceSwapClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1FaceSwapCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -329,6 +336,7 @@ class AsyncFaceSwapClient:
             start_seconds=start_seconds,
             height=height,
             name=name,
+            style=style,
             width=width,
             request_options=request_options,
         )
