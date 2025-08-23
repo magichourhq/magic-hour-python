@@ -44,6 +44,7 @@ def test_create_200_success_all_params() -> None:
         start_seconds=0.0,
         height=123,
         name="Face Swap video",
+        style={"version": "default"},
         width=123,
     )
     try:
@@ -93,6 +94,7 @@ async def test_await_create_200_success_all_params() -> None:
         start_seconds=0.0,
         height=123,
         name="Face Swap video",
+        style={"version": "default"},
         width=123,
     )
     try:

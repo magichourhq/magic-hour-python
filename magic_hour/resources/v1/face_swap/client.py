@@ -37,6 +37,9 @@ class FaceSwapClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1FaceSwapCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -114,6 +117,7 @@ class FaceSwapClient:
             start_seconds=start_seconds,
             height=height,
             name=name,
+            style=style,
             width=width,
             request_options=request_options,
         )
@@ -141,6 +145,9 @@ class FaceSwapClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1FaceSwapCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -165,6 +172,7 @@ class FaceSwapClient:
 
         This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
+            style: Style of the face swap video.
             width: `width` is deprecated and no longer influences the output video's resolution.
 
         Output resolution is determined by the **minimum** of:
@@ -202,6 +210,7 @@ class FaceSwapClient:
             end_seconds=15.0,
             start_seconds=0.0,
             name="Face Swap video",
+            style={"version": "default"},
         )
         ```
         """
@@ -209,6 +218,7 @@ class FaceSwapClient:
             item={
                 "height": height,
                 "name": name,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
@@ -241,6 +251,9 @@ class AsyncFaceSwapClient:
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1FaceSwapCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
@@ -323,6 +336,7 @@ class AsyncFaceSwapClient:
             start_seconds=start_seconds,
             height=height,
             name=name,
+            style=style,
             width=width,
             request_options=request_options,
         )
@@ -350,6 +364,9 @@ class AsyncFaceSwapClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1FaceSwapCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -374,6 +391,7 @@ class AsyncFaceSwapClient:
 
         This field is retained only for backward compatibility and will be removed in a future release.
             name: The name of video. This value is mainly used for your own identification of the video.
+            style: Style of the face swap video.
             width: `width` is deprecated and no longer influences the output video's resolution.
 
         Output resolution is determined by the **minimum** of:
@@ -411,6 +429,7 @@ class AsyncFaceSwapClient:
             end_seconds=15.0,
             start_seconds=0.0,
             name="Face Swap video",
+            style={"version": "default"},
         )
         ```
         """
@@ -418,6 +437,7 @@ class AsyncFaceSwapClient:
             item={
                 "height": height,
                 "name": name,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
