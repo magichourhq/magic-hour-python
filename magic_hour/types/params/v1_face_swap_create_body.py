@@ -6,6 +6,10 @@ from .v1_face_swap_create_body_assets import (
     V1FaceSwapCreateBodyAssets,
     _SerializerV1FaceSwapCreateBodyAssets,
 )
+from .v1_face_swap_create_body_style import (
+    V1FaceSwapCreateBodyStyle,
+    _SerializerV1FaceSwapCreateBodyStyle,
+)
 
 
 class V1FaceSwapCreateBody(typing_extensions.TypedDict):
@@ -44,6 +48,11 @@ class V1FaceSwapCreateBody(typing_extensions.TypedDict):
     The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
     """
 
+    style: typing_extensions.NotRequired[V1FaceSwapCreateBodyStyle]
+    """
+    Style of the face swap video.
+    """
+
     width: typing_extensions.NotRequired[typing.Optional[int]]
     """
     `width` is deprecated and no longer influences the output video's resolution.
@@ -76,5 +85,8 @@ class _SerializerV1FaceSwapCreateBody(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(
         alias="start_seconds",
+    )
+    style: typing.Optional[_SerializerV1FaceSwapCreateBodyStyle] = pydantic.Field(
+        alias="style", default=None
     )
     width: typing.Optional[int] = pydantic.Field(alias="width", default=None)
