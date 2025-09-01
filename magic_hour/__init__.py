@@ -1,6 +1,6 @@
 from .client import AsyncClient, Client
-from .core import ApiError, BinaryResponse
 from .environment import Environment
+from make_api_request import ApiError, BinaryResponse
 
 
 __all__ = ["ApiError", "AsyncClient", "BinaryResponse", "Client", "Environment"]

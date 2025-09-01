@@ -1,7 +1,13 @@
 import typing
 import typing_extensions
 
-from magic_hour.core import (
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.image_projects.client import (
+    AsyncImageProjectsClient,
+    ImageProjectsClient,
+)
+from magic_hour.types import models, params
+from make_api_request import (
     AsyncBaseClient,
     RequestOptions,
     SyncBaseClient,
@@ -9,12 +15,6 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
-from magic_hour.helpers.logger import get_sdk_logger
-from magic_hour.resources.v1.image_projects.client import (
-    AsyncImageProjectsClient,
-    ImageProjectsClient,
-)
-from magic_hour.types import models, params
 
 
 logger = get_sdk_logger(__name__)

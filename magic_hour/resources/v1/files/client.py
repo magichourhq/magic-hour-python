@@ -6,7 +6,6 @@ import pathlib
 import typing
 import typing_extensions
 
-from magic_hour.core import AsyncBaseClient, SyncBaseClient
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.upload_urls import (
     AsyncUploadUrlsClient,
@@ -15,6 +14,7 @@ from magic_hour.resources.v1.files.upload_urls import (
 from magic_hour.types.params.v1_files_upload_urls_create_body_items_item import (
     V1FilesUploadUrlsCreateBodyItemsItem,
 )
+from make_api_request import AsyncBaseClient, SyncBaseClient
 from pathlib import Path
 
 
