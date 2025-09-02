@@ -32,7 +32,9 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_gif_generator.generate(
-    style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+    style={"prompt": "Cute dancing cat, pixel art"},
+    name="Ai Gif gif",
+    output_format="gif",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
@@ -47,7 +49,9 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_gif_generator.generate(
-    style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+    style={"prompt": "Cute dancing cat, pixel art"},
+    name="Ai Gif gif",
+    output_format="gif",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
@@ -69,6 +73,7 @@ Create an AI GIF. Each GIF costs 50 credits.
 | `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
 | `└─ prompt` | ✓ | The prompt used for the GIF. | `"Cute dancing cat, pixel art"` |
 | `name` | ✗ | The name of gif. This value is mainly used for your own identification of the gif. | `"Ai Gif gif"` |
+| `output_format` | ✗ | The output file format for the generated animation. | `"gif"` |
 
 #### Synchronous Client
 
@@ -78,7 +83,9 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_gif_generator.create(
-    style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+    style={"prompt": "Cute dancing cat, pixel art"},
+    name="Ai Gif gif",
+    output_format="gif",
 )
 
 ```
@@ -91,7 +98,9 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_gif_generator.create(
-    style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+    style={"prompt": "Cute dancing cat, pixel art"},
+    name="Ai Gif gif",
+    output_format="gif",
 )
 
 ```
@@ -103,4 +112,3 @@ res = await client.v1.ai_gif_generator.create(
 
 ##### Example
 `{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`
-

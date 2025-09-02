@@ -31,6 +31,10 @@ class AiGifGeneratorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        output_format: typing.Union[
+            typing.Optional[typing_extensions.Literal["gif", "mp4", "webm"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -65,7 +69,10 @@ class AiGifGeneratorClient:
         """
 
         create_response = self.create(
-            style=style, name=name, request_options=request_options
+            style=style,
+            name=name,
+            output_format=output_format,
+            request_options=request_options,
         )
         logger.info(f"AI GIF Generator response: {create_response}")
 
