@@ -27,7 +27,9 @@ def test_create_200_success_all_params() -> None:
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_gif_generator.create(
-        style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+        style={"prompt": "Cute dancing cat, pixel art"},
+        name="Ai Gif gif",
+        output_format="gif",
     )
     try:
         pydantic.TypeAdapter(models.V1AiGifGeneratorCreateResponse).validate_python(
@@ -61,7 +63,9 @@ async def test_await_create_200_success_all_params() -> None:
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_gif_generator.create(
-        style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+        style={"prompt": "Cute dancing cat, pixel art"},
+        name="Ai Gif gif",
+        output_format="gif",
     )
     try:
         pydantic.TypeAdapter(models.V1AiGifGeneratorCreateResponse).validate_python(

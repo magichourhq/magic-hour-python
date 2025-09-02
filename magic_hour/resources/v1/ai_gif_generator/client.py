@@ -1,4 +1,5 @@
 import typing
+import typing_extensions
 
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.image_projects.client import (
@@ -85,6 +86,10 @@ class AiGifGeneratorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        output_format: typing.Union[
+            typing.Optional[typing_extensions.Literal["gif", "mp4", "webm"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiGifGeneratorCreateResponse:
         """
@@ -96,6 +101,7 @@ class AiGifGeneratorClient:
 
         Args:
             name: The name of gif. This value is mainly used for your own identification of the gif.
+            output_format: The output file format for the generated animation.
             style: V1AiGifGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -109,12 +115,14 @@ class AiGifGeneratorClient:
         Examples:
         ```py
         client.v1.ai_gif_generator.create(
-            style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+            style={"prompt": "Cute dancing cat, pixel art"},
+            name="Ai Gif gif",
+            output_format="gif",
         )
         ```
         """
         _json = to_encodable(
-            item={"name": name, "style": style},
+            item={"name": name, "output_format": output_format, "style": style},
             dump_with=params._SerializerV1AiGifGeneratorCreateBody,
         )
         return self._base_client.request(
@@ -193,6 +201,10 @@ class AsyncAiGifGeneratorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        output_format: typing.Union[
+            typing.Optional[typing_extensions.Literal["gif", "mp4", "webm"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiGifGeneratorCreateResponse:
         """
@@ -204,6 +216,7 @@ class AsyncAiGifGeneratorClient:
 
         Args:
             name: The name of gif. This value is mainly used for your own identification of the gif.
+            output_format: The output file format for the generated animation.
             style: V1AiGifGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -217,12 +230,14 @@ class AsyncAiGifGeneratorClient:
         Examples:
         ```py
         await client.v1.ai_gif_generator.create(
-            style={"prompt": "Cute dancing cat, pixel art"}, name="Ai Gif gif"
+            style={"prompt": "Cute dancing cat, pixel art"},
+            name="Ai Gif gif",
+            output_format="gif",
         )
         ```
         """
         _json = to_encodable(
-            item={"name": name, "style": style},
+            item={"name": name, "output_format": output_format, "style": style},
             dump_with=params._SerializerV1AiGifGeneratorCreateBody,
         )
         return await self._base_client.request(
