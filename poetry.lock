@@ -38,13 +38,13 @@ trio = ["trio (>=0.26.1)"]
 
 [[package]]
 name = "certifi"
-version = "2025.4.26"
+version = "2025.8.3"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "certifi-2025.4.26-py3-none-any.whl", hash = "sha256:30350364dfe371162649852c63336a15c70c6510c2ad5015b21c2345311805f3"},
-    {file = "certifi-2025.4.26.tar.gz", hash = "sha256:0a816057ea3cdefcef70270d2c515e4506bbc954f417fa5ade2021213bb8f0c6"},
+    {file = "certifi-2025.8.3-py3-none-any.whl", hash = "sha256:f6c12493cfb1b06ba2ff328595af9350c65d6644968e5d3a2ffd78699af217a5"},
+    {file = "certifi-2025.8.3.tar.gz", hash = "sha256:e564105f78ded564e3ae7c923924435e1daa7463faeab5bb932bc53ffae63407"},
 ]
 
 [[package]]
@@ -166,6 +166,23 @@ files = [
     {file = "jsonpointer-3.0.0-py2.py3-none-any.whl", hash = "sha256:13e088adc14fca8b6aa8177c044e12701e6ad4b28ff10e65f2267a90109c9942"},
     {file = "jsonpointer-3.0.0.tar.gz", hash = "sha256:2b2d729f2091522d61c3b31f82e11870f60b68f43fbc705cb76bf4b832af59ef"},
 ]
+
+[[package]]
+name = "make-api-request"
+version = "0.1.3"
+description = "A modern Python HTTP client library with built-in authentication and response handling"
+optional = false
+python-versions = "<4.0,>=3.8"
+files = [
+    {file = "make_api_request-0.1.3-py3-none-any.whl", hash = "sha256:f4aaee8e3d68e54656d91d88a29c387c2f15f857244904c4e91640de56e2a67f"},
+    {file = "make_api_request-0.1.3.tar.gz", hash = "sha256:68044cd0d16b17db71b69c7ee8cce578752a3d0412f3bc4ab181e1d3abb91d15"},
+]
+
+[package.dependencies]
+httpx = ">=0.26.0,<1"
+jsonpointer = ">=3.0.0,<4.0.0"
+pydantic = ">=2.5.0,<3.0.0"
+typing_extensions = ">=4.0.0,<5.0.0"
 
 [[package]]
 name = "mypy"
@@ -501,4 +518,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "b779a2c76afdd8849c3fb1bbdaafb8402b6fddc060d4dbb0bfaee8041fc18fab"
+content-hash = "04678ab1c06bc4a7dd18359577af21d027715887d4deac76f09c7fdd681ff262"

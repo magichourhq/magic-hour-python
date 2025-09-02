@@ -1,3 +1,833 @@
 {
-  "id": "01bb016e-4892-40d9-9f7c-2ebd20359c9f"
+  "id": "9e629686-a64b-4d70-8b98-418009ac3a05",
+  "tracked_paths": [
+    {
+      "editable": true,
+      "path": ".gitignore"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/client.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/environment.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_clothes_changer/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_clothes_changer/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_clothes_changer/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_face_editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_face_editor/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_face_editor/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_gif_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_gif_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_gif_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_headshot_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_headshot_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_headshot_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_editor/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_editor/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_upscaler/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_upscaler/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_image_upscaler/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_meme_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_meme_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_meme_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_photo_editor/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_photo_editor/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_photo_editor/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_qr_code_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_qr_code_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_qr_code_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_talking_photo/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_talking_photo/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_talking_photo/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/animation/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/animation/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/animation/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/auto_subtitle_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/auto_subtitle_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/auto_subtitle_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_detection/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_detection/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_detection/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_swap/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_swap/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_swap/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_swap_photo/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_swap_photo/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/face_swap_photo/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/files/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/files/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/files/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/files/upload_urls/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/files/upload_urls/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/files/upload_urls/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_background_remover/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_background_remover/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_background_remover/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_projects/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_projects/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_projects/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_to_video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_to_video/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/image_to_video/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/lip_sync/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/lip_sync/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/lip_sync/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/photo_colorizer/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/photo_colorizer/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/photo_colorizer/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/text_to_video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/text_to_video/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/text_to_video/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/video_projects/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/video_projects/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/video_projects/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/video_to_video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/video_to_video/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/video_to_video/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/types/models/__init__.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_clothes_changer_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_face_editor_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_gif_generator_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_headshot_generator_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_image_editor_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_image_generator_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_image_upscaler_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_meme_generator_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_photo_editor_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_qr_code_generator_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_ai_talking_photo_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_animation_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_auto_subtitle_generator_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_face_detection_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_face_detection_get_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_face_detection_get_response_faces_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_face_swap_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_face_swap_photo_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_files_upload_urls_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_files_upload_urls_create_response_items_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_image_background_remover_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_image_projects_get_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_image_projects_get_response_downloads_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_image_projects_get_response_error.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_image_to_video_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_lip_sync_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_photo_colorizer_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_text_to_video_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_video_projects_get_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_video_projects_get_response_download.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_video_projects_get_response_downloads_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_video_projects_get_response_error.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_video_to_video_create_response.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/types/params/__init__.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_clothes_changer_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_clothes_changer_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_face_editor_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_face_editor_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_face_editor_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_gif_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_gif_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_headshot_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_headshot_generator_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_headshot_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_editor_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_editor_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_editor_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_upscaler_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_upscaler_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_image_upscaler_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_meme_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_meme_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_photo_editor_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_photo_editor_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_photo_editor_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_qr_code_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_qr_code_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_talking_photo_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_talking_photo_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_talking_photo_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_animation_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_animation_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_animation_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_auto_subtitle_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_auto_subtitle_generator_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_auto_subtitle_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_auto_subtitle_generator_create_body_style_custom_config.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_detection_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_detection_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_create_body_assets_face_mappings_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_photo_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_photo_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_face_swap_photo_create_body_assets_face_mappings_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_files_upload_urls_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_files_upload_urls_create_body_items_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_image_background_remover_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_image_background_remover_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_image_to_video_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_image_to_video_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_image_to_video_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_lip_sync_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_lip_sync_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_photo_colorizer_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_photo_colorizer_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_text_to_video_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_text_to_video_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_video_to_video_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_video_to_video_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_video_to_video_create_body_style.py"
+    },
+    {
+      "editable": true,
+      "path": "pyproject.toml"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_clothes_changer_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_face_editor_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_gif_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_headshot_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_image_editor_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_image_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_image_upscaler_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_meme_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_photo_editor_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_qr_code_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_talking_photo_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_animation_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_auto_subtitle_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_face_detection_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_face_swap_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_face_swap_photo_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_files_upload_urls_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_image_background_remover_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_image_projects_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_image_to_video_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_lip_sync_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_photo_colorizer_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_text_to_video_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_video_projects_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_video_to_video_client.py"
+    }
+  ]
 }

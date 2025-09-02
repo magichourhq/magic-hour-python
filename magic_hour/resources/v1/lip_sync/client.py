@@ -1,13 +1,5 @@
 import typing
 
-from magic_hour.core import (
-    AsyncBaseClient,
-    RequestOptions,
-    SyncBaseClient,
-    default_request_options,
-    to_encodable,
-    type_utils,
-)
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
 from magic_hour.resources.v1.video_projects.client import (
@@ -15,6 +7,14 @@ from magic_hour.resources.v1.video_projects.client import (
     VideoProjectsClient,
 )
 from magic_hour.types import models, params
+from make_api_request import (
+    AsyncBaseClient,
+    RequestOptions,
+    SyncBaseClient,
+    default_request_options,
+    to_encodable,
+    type_utils,
+)
 
 
 logger = get_sdk_logger(__name__)

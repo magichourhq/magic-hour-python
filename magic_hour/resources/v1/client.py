@@ -1,4 +1,3 @@
-from magic_hour.core import AsyncBaseClient, SyncBaseClient
 from magic_hour.resources.v1.ai_clothes_changer import (
     AiClothesChangerClient,
     AsyncAiClothesChangerClient,
@@ -87,6 +86,7 @@ from magic_hour.resources.v1.video_to_video import (
     AsyncVideoToVideoClient,
     VideoToVideoClient,
 )
+from make_api_request import AsyncBaseClient, SyncBaseClient
 
 
 class V1Client:

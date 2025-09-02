@@ -1,9 +1,9 @@
 import httpx
 import typing
 
-from magic_hour.core import AsyncBaseClient, AuthBearer, SyncBaseClient
 from magic_hour.environment import Environment, _get_base_url
 from magic_hour.resources.v1 import AsyncV1Client, V1Client
+from make_api_request import AsyncBaseClient, AuthBearer, SyncBaseClient
 
 
 class Client:

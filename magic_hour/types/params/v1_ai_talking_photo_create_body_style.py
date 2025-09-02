@@ -9,12 +9,13 @@ class V1AiTalkingPhotoCreateBodyStyle(typing_extensions.TypedDict):
     """
 
     generation_mode: typing_extensions.NotRequired[
-        typing_extensions.Literal["expressive", "stable"]
+        typing_extensions.Literal["expressive", "pro", "stable"]
     ]
     """
     Controls overall motion style.
+    * `pro` -  Realistic, high fidelity, accurate lip sync, slower.
     * `expressive` - More motion and facial expressiveness; may introduce visual artifacts.
-    * `stable` -  Reduced motion for cleaner output; may result in minimal animation.
+    * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`)
     """
 
     intensity: typing_extensions.NotRequired[float]
@@ -36,6 +37,6 @@ class _SerializerV1AiTalkingPhotoCreateBodyStyle(pydantic.BaseModel):
     )
 
     generation_mode: typing.Optional[
-        typing_extensions.Literal["expressive", "stable"]
+        typing_extensions.Literal["expressive", "pro", "stable"]
     ] = pydantic.Field(alias="generation_mode", default=None)
     intensity: typing.Optional[float] = pydantic.Field(alias="intensity", default=None)

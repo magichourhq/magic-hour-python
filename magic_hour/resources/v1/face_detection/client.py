@@ -4,7 +4,11 @@ import pydantic
 import time
 import typing
 
-from magic_hour.core import (
+from magic_hour.helpers.download import download_files_async, download_files_sync
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.files import AsyncFilesClient, FilesClient
+from magic_hour.types import models, params
+from make_api_request import (
     AsyncBaseClient,
     RequestOptions,
     SyncBaseClient,
@@ -12,10 +16,6 @@ from magic_hour.core import (
     to_encodable,
     type_utils,
 )
-from magic_hour.helpers.download import download_files_async, download_files_sync
-from magic_hour.helpers.logger import get_sdk_logger
-from magic_hour.resources.v1.files import AsyncFilesClient, FilesClient
-from magic_hour.types import models, params
 
 
 logger = get_sdk_logger(__name__)

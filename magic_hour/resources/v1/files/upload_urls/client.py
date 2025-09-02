@@ -1,13 +1,13 @@
 import typing
 
-from magic_hour.core import (
+from magic_hour.types import models, params
+from make_api_request import (
     AsyncBaseClient,
     RequestOptions,
     SyncBaseClient,
     default_request_options,
     to_encodable,
 )
-from magic_hour.types import models, params
 
 
 class UploadUrlsClient:
