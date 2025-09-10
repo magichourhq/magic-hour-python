@@ -1,91 +1,6 @@
-# v1_face_swap
+# v1.face_swap
 
 ## Module Functions
-
-<!-- CUSTOM DOCS START -->
-
-### Face Swap Generate Workflow <a name="generate"></a>
-
-The workflow performs the following action
-
-1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
-2. trigger a generation
-3. poll for a completion status. This is configurable
-4. if success, download the output to local directory
-
-> [!TIP]
-> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
-
-#### Parameters
-
-In Additional to the parameters listed in the `.create` section below, `.generate` introduces 3 new parameters:
-
-- `wait_for_completion` (bool, default True): Whether to wait for the project to complete.
-- `download_outputs` (bool, default True): Whether to download the generated files
-- `download_directory` (str, optional): Directory to save downloaded files (defaults to current directory)
-
-#### Synchronous Client
-
-```python
-from magic_hour import Client
-from os import getenv
-
-client = Client(token=getenv("API_TOKEN"))
-res = client.v1.face_swap.generate(
-    assets={
-        "face_mappings": [
-            {
-                "new_face": "/path/to/1234.png",
-                "original_face": "api-assets/id/0-0.png",
-            }
-        ],
-        "face_swap_mode": "all-faces",
-        "image_file_path": "image/id/1234.png",
-        "video_file_path": "/path/to/1234.mp4",
-        "video_source": "file",
-    },
-    end_seconds=15.0,
-    start_seconds=0.0,
-    name="Face Swap video",
-    style={"version": "default"},
-    wait_for_completion=True,
-    download_outputs=True,
-    download_directory="outputs"
-)
-```
-
-#### Asynchronous Client
-
-```python
-from magic_hour import AsyncClient
-from os import getenv
-
-client = AsyncClient(token=getenv("API_TOKEN"))
-res = await client.v1.face_swap.generate(
-    assets={
-        "face_mappings": [
-            {
-                "new_face": "/path/to/1234.png",
-                "original_face": "api-assets/id/0-0.png",
-            }
-        ],
-        "face_swap_mode": "all-faces",
-        "image_file_path": "image/id/1234.png",
-        "video_file_path": "/path/to/1234.mp4",
-        "video_source": "file",
-    },
-    end_seconds=15.0,
-    start_seconds=0.0,
-    name="Face Swap video",
-    style={"version": "default"},
-    wait_for_completion=True,
-    download_outputs=True,
-    download_directory="outputs"
-)
-```
-
-<!-- CUSTOM DOCS END -->
-
 ### Face Swap video <a name="create"></a>
 
 Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
@@ -177,3 +92,87 @@ res = await client.v1.face_swap.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
+<!-- CUSTOM DOCS START -->
+
+### Face Swap Generate Workflow <a name="generate"></a>
+
+The workflow performs the following action
+
+1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
+2. trigger a generation
+3. poll for a completion status. This is configurable
+4. if success, download the output to local directory
+
+> [!TIP]
+> This is the recommended way to use the SDK unless you have specific needs where it is necessary to split up the actions.
+
+#### Parameters
+
+In Additional to the parameters listed in the `.create` section below, `.generate` introduces 3 new parameters:
+
+- `wait_for_completion` (bool, default True): Whether to wait for the project to complete.
+- `download_outputs` (bool, default True): Whether to download the generated files
+- `download_directory` (str, optional): Directory to save downloaded files (defaults to current directory)
+
+#### Synchronous Client
+
+```python
+from magic_hour import Client
+from os import getenv
+
+client = Client(token=getenv("API_TOKEN"))
+res = client.v1.face_swap.generate(
+    assets={
+        "face_mappings": [
+            {
+                "new_face": "/path/to/1234.png",
+                "original_face": "api-assets/id/0-0.png",
+            }
+        ],
+        "face_swap_mode": "all-faces",
+        "image_file_path": "image/id/1234.png",
+        "video_file_path": "/path/to/1234.mp4",
+        "video_source": "file",
+    },
+    end_seconds=15.0,
+    start_seconds=0.0,
+    name="Face Swap video",
+    style={"version": "default"},
+    wait_for_completion=True,
+    download_outputs=True,
+    download_directory="outputs"
+)
+```
+
+#### Asynchronous Client
+
+```python
+from magic_hour import AsyncClient
+from os import getenv
+
+client = AsyncClient(token=getenv("API_TOKEN"))
+res = await client.v1.face_swap.generate(
+    assets={
+        "face_mappings": [
+            {
+                "new_face": "/path/to/1234.png",
+                "original_face": "api-assets/id/0-0.png",
+            }
+        ],
+        "face_swap_mode": "all-faces",
+        "image_file_path": "image/id/1234.png",
+        "video_file_path": "/path/to/1234.mp4",
+        "video_source": "file",
+    },
+    end_seconds=15.0,
+    start_seconds=0.0,
+    name="Face Swap video",
+    style={"version": "default"},
+    wait_for_completion=True,
+    download_outputs=True,
+    download_directory="outputs"
+)
+```
+
+<!-- CUSTOM DOCS END -->
+
