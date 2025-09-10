@@ -1,4 +1,4 @@
-# Root Client
+# Base Client
 
 <!-- CUSTOM DOCS START -->
 
