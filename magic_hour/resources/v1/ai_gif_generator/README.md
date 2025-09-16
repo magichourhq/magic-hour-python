@@ -1,6 +1,7 @@
-# v1_ai_gif_generator
+# v1.ai_gif_generator
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -59,7 +60,6 @@ res = await client.v1.ai_gif_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI GIFs <a name="create"></a>
 
 Create an AI GIF. Each GIF costs 50 credits.
@@ -112,3 +112,5 @@ res = await client.v1.ai_gif_generator.create(
 
 ##### Example
 `{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`
+
+

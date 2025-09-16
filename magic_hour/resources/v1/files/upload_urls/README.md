@@ -1,10 +1,6 @@
-# v1_files_upload_urls
+# v1.files.upload_urls
 
 ## Module Functions
-
-<!-- CUSTOM DOCS START -->
-
-<!-- CUSTOM DOCS END -->
 
 ### Generate asset upload urls <a name="create"></a>
 
@@ -76,4 +72,5 @@ res = await client.v1.files.upload_urls.create(
 
 ##### Example
 `{"items": [{"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/video.mp4", "upload_url": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/audio.mp3", "upload_url": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}`
+
 

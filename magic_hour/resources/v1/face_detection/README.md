@@ -1,6 +1,7 @@
-# v1_face_detection
+# v1.face_detection
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -55,7 +56,6 @@ res = await client.v1.face_detection.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Get face detection details <a name="get"></a>
 
 Get the details of a face detection task. 
@@ -151,4 +151,5 @@ res = await client.v1.face_detection.create(
 
 ##### Example
 `{"credits_charged": 123, "id": "uuid-example"}`
+
 

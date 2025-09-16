@@ -1,6 +1,7 @@
-# v1_ai_photo_editor
+# v1.ai_photo_editor
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -79,7 +80,6 @@ res = await client.v1.ai_photo_editor.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### AI Photo Editor <a name="create"></a>
 
 > **NOTE**: this API is still in early development stages, and should be avoided. Please reach out to us if you're interested in this API. 
@@ -164,4 +164,5 @@ res = await client.v1.ai_photo_editor.create(
 
 ##### Example
 `{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}`
+
 
