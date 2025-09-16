@@ -1,6 +1,7 @@
-# v1_auto_subtitle_generator
+# v1.auto_subtitle_generator
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -63,7 +64,6 @@ res = await client.v1.auto_subtitle_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Auto Subtitle Generator <a name="create"></a>
 
 Automatically generate subtitles for your video in multiple languages.
@@ -124,4 +124,5 @@ res = await client.v1.auto_subtitle_generator.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
+
 

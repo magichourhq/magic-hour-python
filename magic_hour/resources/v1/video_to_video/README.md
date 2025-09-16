@@ -1,6 +1,7 @@
-# v1_video_to_video
+# v1.video_to_video
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -77,7 +78,6 @@ res = await client.v1.video_to_video.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Video-to-Video <a name="create"></a>
 
 Create a Video To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
@@ -163,4 +163,5 @@ res = await client.v1.video_to_video.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
+
 

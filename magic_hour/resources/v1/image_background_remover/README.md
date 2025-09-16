@@ -1,6 +1,7 @@
-# v1_image_background_remover
+# v1.image_background_remover
 
 ## Module Functions
+
 
 <!-- CUSTOM DOCS START -->
 
@@ -63,7 +64,6 @@ res = await client.v1.image_background_remover.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-
 ### Image Background Remover <a name="create"></a>
 
 Remove background from image. Each image costs 5 credits.
@@ -120,4 +120,5 @@ res = await client.v1.image_background_remover.create(
 
 ##### Example
 `{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`
+
 
