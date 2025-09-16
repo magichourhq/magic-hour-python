@@ -123,6 +123,14 @@ from .v1_ai_talking_photo_create_body_style import (
     _SerializerV1AiTalkingPhotoCreateBodyStyle,
 )
 from .v1_ai_talking_photo_generate_body_assets import V1AiTalkingPhotoGenerateBodyAssets
+from .v1_ai_voice_generator_create_body import (
+    V1AiVoiceGeneratorCreateBody,
+    _SerializerV1AiVoiceGeneratorCreateBody,
+)
+from .v1_ai_voice_generator_create_body_style import (
+    V1AiVoiceGeneratorCreateBodyStyle,
+    _SerializerV1AiVoiceGeneratorCreateBodyStyle,
+)
 from .v1_animation_create_body import (
     V1AnimationCreateBody,
     _SerializerV1AnimationCreateBody,
@@ -306,6 +314,8 @@ __all__ = [
     "V1AiTalkingPhotoCreateBodyAssets",
     "V1AiTalkingPhotoCreateBodyStyle",
     "V1AiTalkingPhotoGenerateBodyAssets",
+    "V1AiVoiceGeneratorCreateBody",
+    "V1AiVoiceGeneratorCreateBodyStyle",
     "V1AnimationCreateBody",
     "V1AnimationCreateBodyAssets",
     "V1AnimationCreateBodyStyle",
@@ -378,6 +388,8 @@ __all__ = [
     "_SerializerV1AiTalkingPhotoCreateBody",
     "_SerializerV1AiTalkingPhotoCreateBodyAssets",
     "_SerializerV1AiTalkingPhotoCreateBodyStyle",
+    "_SerializerV1AiVoiceGeneratorCreateBody",
+    "_SerializerV1AiVoiceGeneratorCreateBodyStyle",
     "_SerializerV1AnimationCreateBody",
     "_SerializerV1AnimationCreateBodyAssets",
     "_SerializerV1AnimationCreateBodyStyle",

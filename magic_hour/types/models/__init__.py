@@ -11,7 +11,13 @@ from .v1_ai_meme_generator_create_response import V1AiMemeGeneratorCreateRespons
 from .v1_ai_photo_editor_create_response import V1AiPhotoEditorCreateResponse
 from .v1_ai_qr_code_generator_create_response import V1AiQrCodeGeneratorCreateResponse
 from .v1_ai_talking_photo_create_response import V1AiTalkingPhotoCreateResponse
+from .v1_ai_voice_generator_create_response import V1AiVoiceGeneratorCreateResponse
 from .v1_animation_create_response import V1AnimationCreateResponse
+from .v1_audio_projects_get_response import V1AudioProjectsGetResponse
+from .v1_audio_projects_get_response_downloads_item import (
+    V1AudioProjectsGetResponseDownloadsItem,
+)
+from .v1_audio_projects_get_response_error import V1AudioProjectsGetResponseError
 from .v1_auto_subtitle_generator_create_response import (
     V1AutoSubtitleGeneratorCreateResponse,
 )
@@ -59,7 +65,11 @@ __all__ = [
     "V1AiPhotoEditorCreateResponse",
     "V1AiQrCodeGeneratorCreateResponse",
     "V1AiTalkingPhotoCreateResponse",
+    "V1AiVoiceGeneratorCreateResponse",
     "V1AnimationCreateResponse",
+    "V1AudioProjectsGetResponse",
+    "V1AudioProjectsGetResponseDownloadsItem",
+    "V1AudioProjectsGetResponseError",
     "V1AutoSubtitleGeneratorCreateResponse",
     "V1FaceDetectionCreateResponse",
     "V1FaceDetectionGetResponse",

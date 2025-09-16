@@ -3,6 +3,7 @@
 ## Module Functions
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Ai Image Upscaler Generate Workflow <a name="generate"></a>

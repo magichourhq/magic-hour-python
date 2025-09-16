@@ -3,6 +3,7 @@
 ## Module Functions
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Video To Video Generate Workflow <a name="generate"></a>
@@ -97,12 +98,12 @@ Get more information about this mode at our [product page](https://magichour.ai/
 | `└─ youtube_url` | ✗ | — | Using a youtube video as the input source. This field is required if `video_source` is `youtube` | `"http://www.example.com"` |
 | `end_seconds` | ✓ | ✗ | The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds. | `15.0` |
 | `start_seconds` | ✓ | ✗ | The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0. | `0.0` |
-| `style` | ✓ | ✗ |  | `{"art_style": "3D Render", "model": "default", "prompt": "string", "prompt_type": "default", "version": "default"}` |
+| `style` | ✓ | ✗ |  | `{"art_style": "3D Render", "model": "default", "prompt_type": "default", "version": "default"}` |
 | `└─ art_style` | ✓ | — |  | `"3D Render"` |
-| `└─ model` | ✓ | — | * `Dreamshaper` - a good all-around model that works for both animations as well as realism.  * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well.  * `Flat 2D Anime` - best for a flat illustration style that's common in most anime. * `default` - use the default recommended model for the selected art style. | `"default"` |
-| `└─ prompt` | ✓ | — | The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored. | `"string"` |
-| `└─ prompt_type` | ✓ | — | * `default` - Use the default recommended prompt for the art style. * `custom` - Only use the prompt passed in the API. Note: for v1, lora prompt will still be auto added to apply the art style properly. * `append_default` - Add the default recommended prompt to the end of the prompt passed in the API. | `"default"` |
-| `└─ version` | ✓ | — | * `v1` - more detail, closer prompt adherence, and frame-by-frame previews. * `v2` - faster, more consistent, and less noisy. * `default` - use the default version for the selected art style. | `"default"` |
+| `└─ model` | ✗ | — | * `Dreamshaper` - a good all-around model that works for both animations as well as realism.  * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well.  * `Flat 2D Anime` - best for a flat illustration style that's common in most anime. * `default` - use the default recommended model for the selected art style. | `"default"` |
+| `└─ prompt` | ✗ | — | The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored. | `"string"` |
+| `└─ prompt_type` | ✗ | — | * `default` - Use the default recommended prompt for the art style. * `custom` - Only use the prompt passed in the API. Note: for v1, lora prompt will still be auto added to apply the art style properly. * `append_default` - Add the default recommended prompt to the end of the prompt passed in the API. | `"default"` |
+| `└─ version` | ✗ | — | * `v1` - more detail, closer prompt adherence, and frame-by-frame previews. * `v2` - faster, more consistent, and less noisy. * `default` - use the default version for the selected art style. | `"default"` |
 | `fps_resolution` | ✗ | ✗ | Determines whether the resulting video will have the same frame per second as the original video, or half.  * `FULL` - the result video will have the same FPS as the input video * `HALF` - the result video will have half the FPS as the input video | `"HALF"` |
 | `height` | ✗ | ✓ | `height` is deprecated and no longer influences the output video's resolution.  Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.  This field is retained only for backward compatibility and will be removed in a future release. | `123` |
 | `name` | ✗ | ✗ | The name of video. This value is mainly used for your own identification of the video. | `"Video To Video video"` |
@@ -122,7 +123,6 @@ res = client.v1.video_to_video.create(
     style={
         "art_style": "3D Render",
         "model": "default",
-        "prompt": "string",
         "prompt_type": "default",
         "version": "default",
     },
@@ -146,7 +146,6 @@ res = await client.v1.video_to_video.create(
     style={
         "art_style": "3D Render",
         "model": "default",
-        "prompt": "string",
         "prompt_type": "default",
         "version": "default",
     },

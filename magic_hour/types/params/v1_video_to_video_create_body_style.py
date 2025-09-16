@@ -19,6 +19,7 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
             "Avatar",
             "Black Spiderman",
             "Boba Fett",
+            "Bold Anime",
             "Celestial Skin",
             "Chinese Swordsmen",
             "Clay",
@@ -58,6 +59,7 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
             "Pixel",
             "Power Armor",
             "Power Ranger",
+            "Realistic Anime",
             "Retro Anime",
             "Retro Sci-Fi",
             "Samurai",
@@ -79,7 +81,7 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
         ]
     ]
 
-    model: typing_extensions.Required[
+    model: typing_extensions.NotRequired[
         typing_extensions.Literal[
             "Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"
         ]
@@ -91,12 +93,12 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
     * `default` - use the default recommended model for the selected art style.
     """
 
-    prompt: typing_extensions.Required[typing.Optional[str]]
+    prompt: typing_extensions.NotRequired[typing.Optional[str]]
     """
     The prompt used for the video. Prompt is required if `prompt_type` is `custom` or `append_default`. If `prompt_type` is `default`, then the `prompt` value passed will be ignored.
     """
 
-    prompt_type: typing_extensions.Required[
+    prompt_type: typing_extensions.NotRequired[
         typing_extensions.Literal["append_default", "custom", "default"]
     ]
     """
@@ -105,7 +107,7 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
     * `append_default` - Add the default recommended prompt to the end of the prompt passed in the API.
     """
 
-    version: typing_extensions.Required[
+    version: typing_extensions.NotRequired[
         typing_extensions.Literal["default", "v1", "v2"]
     ]
     """
@@ -135,6 +137,7 @@ class _SerializerV1VideoToVideoCreateBodyStyle(pydantic.BaseModel):
         "Avatar",
         "Black Spiderman",
         "Boba Fett",
+        "Bold Anime",
         "Celestial Skin",
         "Chinese Swordsmen",
         "Clay",
@@ -174,6 +177,7 @@ class _SerializerV1VideoToVideoCreateBodyStyle(pydantic.BaseModel):
         "Pixel",
         "Power Armor",
         "Power Ranger",
+        "Realistic Anime",
         "Retro Anime",
         "Retro Sci-Fi",
         "Samurai",
@@ -195,19 +199,15 @@ class _SerializerV1VideoToVideoCreateBodyStyle(pydantic.BaseModel):
     ] = pydantic.Field(
         alias="art_style",
     )
-    model: typing_extensions.Literal[
-        "Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"
-    ] = pydantic.Field(
-        alias="model",
-    )
-    prompt: typing.Optional[str] = pydantic.Field(
-        alias="prompt",
-    )
-    prompt_type: typing_extensions.Literal["append_default", "custom", "default"] = (
-        pydantic.Field(
-            alias="prompt_type",
-        )
-    )
-    version: typing_extensions.Literal["default", "v1", "v2"] = pydantic.Field(
-        alias="version",
+    model: typing.Optional[
+        typing_extensions.Literal[
+            "Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"
+        ]
+    ] = pydantic.Field(alias="model", default=None)
+    prompt: typing.Optional[str] = pydantic.Field(alias="prompt", default=None)
+    prompt_type: typing.Optional[
+        typing_extensions.Literal["append_default", "custom", "default"]
+    ] = pydantic.Field(alias="prompt_type", default=None)
+    version: typing.Optional[typing_extensions.Literal["default", "v1", "v2"]] = (
+        pydantic.Field(alias="version", default=None)
     )
