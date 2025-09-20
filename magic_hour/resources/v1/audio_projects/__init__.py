@@ -1,12 +1,12 @@
 from .client import (
     AsyncAudioProjectsClient,
-    V1AudioProjectsGetResponseWithDownloads,
     AudioProjectsClient,
+    V1AudioProjectsGetResponseWithDownloads,
 )
 
 
 __all__ = [
     "AsyncAudioProjectsClient",
-    "V1AudioProjectsGetResponseWithDownloads",
     "AudioProjectsClient",
+    "V1AudioProjectsGetResponseWithDownloads",
 ]
