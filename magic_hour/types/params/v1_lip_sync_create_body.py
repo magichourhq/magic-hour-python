@@ -6,6 +6,10 @@ from .v1_lip_sync_create_body_assets import (
     V1LipSyncCreateBodyAssets,
     _SerializerV1LipSyncCreateBodyAssets,
 )
+from .v1_lip_sync_create_body_style import (
+    V1LipSyncCreateBodyStyle,
+    _SerializerV1LipSyncCreateBodyStyle,
+)
 
 
 class V1LipSyncCreateBody(typing_extensions.TypedDict):
@@ -49,6 +53,11 @@ class V1LipSyncCreateBody(typing_extensions.TypedDict):
     The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
     """
 
+    style: typing_extensions.NotRequired[V1LipSyncCreateBodyStyle]
+    """
+    Attributes used to dictate the style of the output
+    """
+
     width: typing_extensions.NotRequired[typing.Optional[int]]
     """
     `width` is deprecated and no longer influences the output video's resolution.
@@ -84,5 +93,8 @@ class _SerializerV1LipSyncCreateBody(pydantic.BaseModel):
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(
         alias="start_seconds",
+    )
+    style: typing.Optional[_SerializerV1LipSyncCreateBodyStyle] = pydantic.Field(
+        alias="style", default=None
     )
     width: typing.Optional[int] = pydantic.Field(alias="width", default=None)

@@ -1,5 +1,5 @@
 {
-  "id": "7b8b55a1-18db-45f0-b4c3-6334ece8200a",
+  "id": "46c80140-0884-493b-9bb6-6209cc50d3ee",
   "tracked_paths": [
     {
       "editable": true,
@@ -744,6 +744,10 @@
     {
       "editable": false,
       "path": "magic_hour/types/params/v1_lip_sync_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_lip_sync_create_body_style.py"
     },
     {
       "editable": false,
