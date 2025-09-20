@@ -40,6 +40,9 @@ res = client.v1.lip_sync.generate(
         "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
+    style={
+        "generation_mode": "lite",
+    },
     end_seconds=15.0,
     start_seconds=0.0,
     max_fps_limit=12.0,
@@ -62,6 +65,9 @@ res = await client.v1.lip_sync.generate(
         "audio_file_path": "/path/to/1234.mp3",
         "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
+    },
+    style={
+        "generation_mode": "lite",
     },
     end_seconds=15.0,
     start_seconds=0.0,
@@ -114,6 +120,9 @@ res = client.v1.lip_sync.create(
         "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
     },
+    style={
+        "generation_mode": "lite",
+    },
     end_seconds=15.0,
     start_seconds=0.0,
     max_fps_limit=12.0,
@@ -134,6 +143,9 @@ res = await client.v1.lip_sync.create(
         "audio_file_path": "api-assets/id/1234.mp3",
         "video_file_path": "api-assets/id/1234.mp4",
         "video_source": "file",
+    },
+    style={
+        "generation_mode": "lite",
     },
     end_seconds=15.0,
     start_seconds=0.0,
