@@ -31,7 +31,7 @@ from magic_hour import Client
 from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
-res = client.v1.ai_talking_photo.generate(
+res = client.v1.ai_voice_generator.generate(
     style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
     name="Voice Generator audio",
     wait_for_completion=True,
@@ -47,7 +47,7 @@ from magic_hour import AsyncClient
 from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
-res = await client.v1.ai_talking_photo.generate(
+res = await client.v1.ai_voice_generator.generate(
     style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
     name="Voice Generator audio",
     wait_for_completion=True,
