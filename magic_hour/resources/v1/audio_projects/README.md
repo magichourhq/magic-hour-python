@@ -2,6 +2,53 @@
 
 ## Module Functions
 
+<!-- CUSTOM DOCS START -->
+
+### Check results <a name="check-result"></a>
+
+Poll the details API to check on the status of the rendering. Optionally can also download the output
+
+#### Parameters
+
+| Parameter             | Required | Description                                                                                          | Example          |
+| --------------------- | :------: | ---------------------------------------------------------------------------------------------------- | ---------------- |
+| `id`                  |    ✓     | Unique ID of the audio project. This value is returned by all of the POST APIs that create an audio. | `"cuid-example"` |
+| `wait_for_completion` |    ✗     | Whether to wait for the project to complete.                                                         | `True`           |
+| `download_outputs`    |    ✗     | Whether to download the generated files                                                              | `True`           |
+| `download_directory`  |    ✗     | Directory to save downloaded files (defaults to current directory)                                   | `"./outputs"`    |
+
+#### Synchronous Client
+
+```python
+from magic_hour import Client
+from os import getenv
+
+client = Client(token=getenv("API_TOKEN"))
+res = client.v1.audio_projects.check_result(
+  id="cuid-example",
+  wait_for_completion=True,
+  download_outputs=True,
+  download_directory="outputs",
+)
+
+```
+
+#### Asynchronous Client
+
+```python
+from magic_hour import AsyncClient
+from os import getenv
+
+client = AsyncClient(token=getenv("API_TOKEN"))
+res = await client.v1.audio_projects.check_result(
+  id="cuid-example",
+  wait_for_completion=True,
+  download_outputs=True,
+  download_directory="outputs",
+)
+```
+
+<!-- CUSTOM DOCS END -->
 ### Delete audio <a name="delete"></a>
 
 Permanently delete the rendered audio file(s). This action is not reversible, please be sure before deleting.
