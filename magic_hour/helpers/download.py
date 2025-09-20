@@ -23,6 +23,7 @@ def download_files_sync(
     downloads: Union[
         List[models.V1ImageProjectsGetResponseDownloadsItem],
         List[models.V1VideoProjectsGetResponseDownloadsItem],
+        List[models.V1AudioProjectsGetResponseDownloadsItem],
     ],
     download_directory: Union[str, None] = None,
 ) -> List[str]:
@@ -51,6 +52,7 @@ async def download_files_async(
     downloads: Union[
         List[models.V1ImageProjectsGetResponseDownloadsItem],
         List[models.V1VideoProjectsGetResponseDownloadsItem],
+        List[models.V1AudioProjectsGetResponseDownloadsItem],
     ],
     download_directory: Union[str, None] = None,
 ) -> List[str]:
