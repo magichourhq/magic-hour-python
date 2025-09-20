@@ -208,10 +208,20 @@ download_urls = result.downloads
 * [create](magic_hour/resources/v1/ai_talking_photo/README.md#create) - AI Talking Photo
 * [generate](magic_hour/resources/v1/ai_talking_photo/README.md#generate) - Ai Talking Photo Generate Workflow
 
+### [v1.ai_voice_generator](magic_hour/resources/v1/ai_voice_generator/README.md)
+
+* [create](magic_hour/resources/v1/ai_voice_generator/README.md#create) - AI Voice Generator
+
 ### [v1.animation](magic_hour/resources/v1/animation/README.md)
 
 * [create](magic_hour/resources/v1/animation/README.md#create) - Animation
 * [generate](magic_hour/resources/v1/animation/README.md#generate) - Animation Generate Workflow
+
+### [v1.audio_projects](magic_hour/resources/v1/audio_projects/README.md)
+
+* [delete](magic_hour/resources/v1/audio_projects/README.md#delete) - Delete audio
+* [get](magic_hour/resources/v1/audio_projects/README.md#get) - Get audio details
+
 
 ### [v1.auto_subtitle_generator](magic_hour/resources/v1/auto_subtitle_generator/README.md)
 

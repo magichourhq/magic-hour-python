@@ -42,7 +42,15 @@ from magic_hour.resources.v1.ai_talking_photo import (
     AiTalkingPhotoClient,
     AsyncAiTalkingPhotoClient,
 )
+from magic_hour.resources.v1.ai_voice_generator import (
+    AiVoiceGeneratorClient,
+    AsyncAiVoiceGeneratorClient,
+)
 from magic_hour.resources.v1.animation import AnimationClient, AsyncAnimationClient
+from magic_hour.resources.v1.audio_projects import (
+    AsyncAudioProjectsClient,
+    AudioProjectsClient,
+)
 from magic_hour.resources.v1.auto_subtitle_generator import (
     AsyncAutoSubtitleGeneratorClient,
     AutoSubtitleGeneratorClient,
@@ -125,6 +133,8 @@ class V1Client:
         self.photo_colorizer = PhotoColorizerClient(base_client=self._base_client)
         self.text_to_video = TextToVideoClient(base_client=self._base_client)
         self.video_to_video = VideoToVideoClient(base_client=self._base_client)
+        self.audio_projects = AudioProjectsClient(base_client=self._base_client)
+        self.ai_voice_generator = AiVoiceGeneratorClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -171,3 +181,7 @@ class AsyncV1Client:
         self.photo_colorizer = AsyncPhotoColorizerClient(base_client=self._base_client)
         self.text_to_video = AsyncTextToVideoClient(base_client=self._base_client)
         self.video_to_video = AsyncVideoToVideoClient(base_client=self._base_client)
+        self.audio_projects = AsyncAudioProjectsClient(base_client=self._base_client)
+        self.ai_voice_generator = AsyncAiVoiceGeneratorClient(
+            base_client=self._base_client
+        )

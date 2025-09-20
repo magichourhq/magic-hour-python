@@ -1,5 +1,5 @@
 {
-  "id": "04028224-d427-4b12-b611-419d009cbc8f",
+  "id": "7b8b55a1-18db-45f0-b4c3-6334ece8200a",
   "tracked_paths": [
     {
       "editable": true,
@@ -163,6 +163,18 @@
     },
     {
       "editable": true,
+      "path": "magic_hour/resources/v1/ai_voice_generator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_voice_generator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_voice_generator/client.py"
+    },
+    {
+      "editable": true,
       "path": "magic_hour/resources/v1/animation/README.md"
     },
     {
@@ -172,6 +184,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/animation/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/audio_projects/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/audio_projects/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/audio_projects/client.py"
     },
     {
       "editable": true,
@@ -395,7 +419,23 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_ai_voice_generator_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_animation_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_audio_projects_get_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_audio_projects_get_response_downloads_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_audio_projects_get_response_error.py"
     },
     {
       "editable": false,
@@ -599,6 +639,14 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/params/v1_ai_voice_generator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_voice_generator_create_body_style.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/params/v1_animation_create_body.py"
     },
     {
@@ -775,7 +823,15 @@
     },
     {
       "editable": false,
+      "path": "tests/test_v1_ai_voice_generator_client.py"
+    },
+    {
+      "editable": false,
       "path": "tests/test_v1_animation_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_audio_projects_client.py"
     },
     {
       "editable": false,

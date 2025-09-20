@@ -206,7 +206,6 @@ class VideoToVideoClient:
             style={
                 "art_style": "3D Render",
                 "model": "default",
-                "prompt": "string",
                 "prompt_type": "default",
                 "version": "default",
             },
@@ -425,7 +424,6 @@ class AsyncVideoToVideoClient:
             style={
                 "art_style": "3D Render",
                 "model": "default",
-                "prompt": "string",
                 "prompt_type": "default",
                 "version": "default",
             },
