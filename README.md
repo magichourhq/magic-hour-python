@@ -219,6 +219,7 @@ download_urls = result.downloads
 
 ### [v1.audio_projects](magic_hour/resources/v1/audio_projects/README.md)
 
+* [check-result](magic_hour/resources/v1/audio_projects/README.md#check-result) - Check results
 * [delete](magic_hour/resources/v1/audio_projects/README.md#delete) - Delete audio
 * [get](magic_hour/resources/v1/audio_projects/README.md#get) - Get audio details
 
