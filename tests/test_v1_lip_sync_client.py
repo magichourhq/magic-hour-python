@@ -38,6 +38,7 @@ def test_create_200_success_all_params() -> None:
         height=123,
         max_fps_limit=12.0,
         name="Lip Sync video",
+        style={"generation_mode": "lite"},
         width=123,
     )
     try:
@@ -81,6 +82,7 @@ async def test_await_create_200_success_all_params() -> None:
         height=123,
         max_fps_limit=12.0,
         name="Lip Sync video",
+        style={"generation_mode": "lite"},
         width=123,
     )
     try:

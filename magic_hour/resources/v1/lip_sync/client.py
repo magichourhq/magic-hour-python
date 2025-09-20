@@ -138,6 +138,9 @@ class LipSyncClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1LipSyncCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -163,6 +166,7 @@ class LipSyncClient:
         This field is retained only for backward compatibility and will be removed in a future release.
             max_fps_limit: Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required.
             name: The name of video. This value is mainly used for your own identification of the video.
+            style: Attributes used to dictate the style of the output
             width: `width` is deprecated and no longer influences the output video's resolution.
 
         Output resolution is determined by the **minimum** of:
@@ -202,6 +206,7 @@ class LipSyncClient:
                 "height": height,
                 "max_fps_limit": max_fps_limit,
                 "name": name,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,
@@ -339,6 +344,9 @@ class AsyncLipSyncClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1LipSyncCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -364,6 +372,7 @@ class AsyncLipSyncClient:
         This field is retained only for backward compatibility and will be removed in a future release.
             max_fps_limit: Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required.
             name: The name of video. This value is mainly used for your own identification of the video.
+            style: Attributes used to dictate the style of the output
             width: `width` is deprecated and no longer influences the output video's resolution.
 
         Output resolution is determined by the **minimum** of:
@@ -403,6 +412,7 @@ class AsyncLipSyncClient:
                 "height": height,
                 "max_fps_limit": max_fps_limit,
                 "name": name,
+                "style": style,
                 "width": width,
                 "assets": assets,
                 "end_seconds": end_seconds,

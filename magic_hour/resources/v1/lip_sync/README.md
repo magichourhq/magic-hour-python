@@ -4,6 +4,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Lip Sync Generate Workflow <a name="generate"></a>
@@ -96,6 +97,8 @@ Get more information about this mode at our [product page](https://magichour.ai/
 | `height` | ✗ | ✓ | `height` is deprecated and no longer influences the output video's resolution.  Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.  This field is retained only for backward compatibility and will be removed in a future release. | `123` |
 | `max_fps_limit` | ✗ | ✗ | Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required. | `12.0` |
 | `name` | ✗ | ✗ | The name of video. This value is mainly used for your own identification of the video. | `"Lip Sync video"` |
+| `style` | ✗ | ✗ | Attributes used to dictate the style of the output | `{"generation_mode": "lite"}` |
+| `└─ generation_mode` | ✗ | — | A specific version of our lip sync system, optimized for different needs. * `lite` -  Fast and affordable lip sync - best for simple videos. Costs 1 credit per frame of video. * `standard` -  Natural, accurate lip sync - best for most creators. Costs 1 credit per frame of video. * `pro` -  Premium fidelity with enhanced detail - best for professionals. Costs 2 credits per frame of video.  Note: `standard` and `pro` are only available for users on Creator, Pro, and Business tiers.                | `"lite"` |
 | `width` | ✗ | ✓ | `width` is deprecated and no longer influences the output video's resolution.  Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.  This field is retained only for backward compatibility and will be removed in a future release. | `123` |
 
 #### Synchronous Client
