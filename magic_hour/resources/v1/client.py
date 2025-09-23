@@ -94,6 +94,7 @@ from magic_hour.resources.v1.video_to_video import (
     AsyncVideoToVideoClient,
     VideoToVideoClient,
 )
+from magic_hour.resources.v1.webhook import WebhookClient
 from make_api_request import AsyncBaseClient, SyncBaseClient
 
 
@@ -135,6 +136,7 @@ class V1Client:
         self.video_to_video = VideoToVideoClient(base_client=self._base_client)
         self.audio_projects = AudioProjectsClient(base_client=self._base_client)
         self.ai_voice_generator = AiVoiceGeneratorClient(base_client=self._base_client)
+        self.webhook = WebhookClient()
 
 
 class AsyncV1Client:
@@ -185,3 +187,4 @@ class AsyncV1Client:
         self.ai_voice_generator = AsyncAiVoiceGeneratorClient(
             base_client=self._base_client
         )
+        self.webhook = WebhookClient()
