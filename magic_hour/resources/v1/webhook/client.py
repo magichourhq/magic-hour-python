@@ -336,8 +336,6 @@ class WebhookClient:
         # Get the payload
         payload = None
 
-gcam wi
-
         # If content didn't work, try read method
         if payload is None and hasattr(request, "read"):
             try:
