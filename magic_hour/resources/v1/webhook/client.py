@@ -334,18 +334,23 @@ class WebhookClient:
             raise ValueError("Missing 'magic-hour-event-timestamp' header")
 
         # Get the payload
-        if hasattr(request, "content"):
-            content = getattr(request, "content")
-            payload = (
-                content.decode("utf-8") if isinstance(content, bytes) else str(content)
-            )
-        elif hasattr(request, "read"):
-            # For request objects that have a read method
-            content = request.read()
-            payload = (
-                content.decode("utf-8") if isinstance(content, bytes) else str(content)
-            )
-        else:
+        payload = None
+
+gcam wi
+
+        # If content didn't work, try read method
+        if payload is None and hasattr(request, "read"):
+            try:
+                content = request.read()
+                payload = (
+                    content.decode("utf-8")
+                    if isinstance(content, bytes)
+                    else str(content)
+                )
+            except (AttributeError, TypeError):
+                pass
+
+        if payload is None:
             raise ValueError(
                 "Unable to extract payload from request object. Request must have 'content' attribute or 'read()' method."
             )
