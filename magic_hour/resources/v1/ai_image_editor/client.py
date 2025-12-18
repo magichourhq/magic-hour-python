@@ -120,8 +120,14 @@ class AiImageEditorClient:
         Examples:
         ```py
         client.v1.ai_image_editor.create(
-            assets={"image_file_path": "api-assets/id/1234.png"},
-            style={"prompt": "Give me sunglasses"},
+            assets={
+                "image_file_path": "api-assets/id/1234.png",
+                "image_file_paths": [
+                    "api-assets/id/1234.png",
+                    "api-assets/id/1235.png",
+                ],
+            },
+            style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
             name="Ai Image Editor image",
         )
         ```
@@ -240,8 +246,14 @@ class AsyncAiImageEditorClient:
         Examples:
         ```py
         await client.v1.ai_image_editor.create(
-            assets={"image_file_path": "api-assets/id/1234.png"},
-            style={"prompt": "Give me sunglasses"},
+            assets={
+                "image_file_path": "api-assets/id/1234.png",
+                "image_file_paths": [
+                    "api-assets/id/1234.png",
+                    "api-assets/id/1235.png",
+                ],
+            },
+            style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
             name="Ai Image Editor image",
         )
         ```

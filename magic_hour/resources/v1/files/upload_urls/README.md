@@ -10,8 +10,9 @@ The response array will match the order of items in the request body.
 
 **Valid file extensions per asset type**:
 - video: mp4, m4v, mov, webm
-- audio: mp3, mpeg, wav, aac, aiff, flac
-- image: png, jpg, jpeg, webp, avif, jp2, tiff, bmp
+- audio: mp3, wav, aac, flac, webm
+- image: png, jpg, jpeg, heic, webp, avif, jp2, tiff, bmp
+- gif: gif, webp, webm
 
 > Note: `gif` is only supported for face swap API `video_file_path` field.
 
@@ -23,7 +24,6 @@ Example:
 curl -X PUT --data '@/path/to/file/video.mp4' \
   https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
 ```
-
 
 **API Endpoint**: `POST /v1/files/upload-urls`
 
@@ -72,5 +72,4 @@ res = await client.v1.files.upload_urls.create(
 
 ##### Example
 `{"items": [{"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/video.mp4", "upload_url": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/audio.mp3", "upload_url": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}`
-
 

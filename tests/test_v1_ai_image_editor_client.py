@@ -27,8 +27,11 @@ def test_create_200_success_all_params() -> None:
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_image_editor.create(
-        assets={"image_file_path": "api-assets/id/1234.png"},
-        style={"prompt": "Give me sunglasses"},
+        assets={
+            "image_file_path": "api-assets/id/1234.png",
+            "image_file_paths": ["api-assets/id/1234.png", "api-assets/id/1235.png"],
+        },
+        style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
         name="Ai Image Editor image",
     )
     try:
@@ -63,8 +66,11 @@ async def test_await_create_200_success_all_params() -> None:
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_image_editor.create(
-        assets={"image_file_path": "api-assets/id/1234.png"},
-        style={"prompt": "Give me sunglasses"},
+        assets={
+            "image_file_path": "api-assets/id/1234.png",
+            "image_file_paths": ["api-assets/id/1234.png", "api-assets/id/1235.png"],
+        },
+        style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
         name="Ai Image Editor image",
     )
     try:

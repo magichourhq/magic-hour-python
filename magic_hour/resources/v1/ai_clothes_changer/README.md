@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### AI Clothes Changer Generate Workflow <a name="generate"></a>
@@ -128,5 +129,4 @@ res = await client.v1.ai_clothes_changer.create(
 
 ##### Example
 `{"credits_charged": 25, "frame_cost": 25, "id": "cuid-example"}`
-
 

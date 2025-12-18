@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Check results <a name="check-result"></a>
@@ -98,7 +99,6 @@ The image can be one of the following status
 - `error` - an error occurred during rendering
 - `canceled` - image render is canceled by the user
 
-
 **API Endpoint**: `GET /v1/image-projects/{id}`
 
 #### Parameters
@@ -136,5 +136,4 @@ res = await client.v1.image_projects.get(id="cuid-example")
 
 ##### Example
 `{"created_at": "1970-01-01T00:00:00", "credits_charged": 5, "downloads": [{"expires_at": "2024-10-19T05:16:19.027Z", "url": "https://videos.magichour.ai/id/output.png"}], "enabled": True, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "id": "cuid-example", "image_count": 1, "name": "Example Name", "status": "complete", "total_frame_cost": 5, "type_": "AI_IMAGE"}`
-
 

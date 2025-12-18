@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Ai Image Generator Generate Workflow <a name="generate"></a>
@@ -64,9 +65,9 @@ res = await client.v1.ai_image_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-### AI Images <a name="create"></a>
+### AI Image Generator <a name="create"></a>
 
-Create an AI image. Each image costs 5 credits.
+Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
 
 **API Endpoint**: `POST /v1/ai-image-generator`
 
@@ -76,8 +77,9 @@ Create an AI image. Each image costs 5 credits.
 |-----------|:--------:|-------------|--------|
 | `image_count` | ✓ | Number of images to generate. | `1` |
 | `orientation` | ✓ | The orientation of the output image(s). | `"landscape"` |
-| `style` | ✓ | The art style to use for image generation. | `{"prompt": "Cool image", "tool": "ai-anime-generator"}` |
+| `style` | ✓ | The art style to use for image generation. | `{"prompt": "Cool image", "quality_mode": "standard", "tool": "ai-anime-generator"}` |
 | `└─ prompt` | ✓ | The prompt used for the image(s). | `"Cool image"` |
+| `└─ quality_mode` | ✗ | Controls the quality of the generated image. Defaults to 'standard' if not specified.  **Options:** - `standard` - Standard quality generation. Cost: 5 credits per image. - `pro` - Pro quality generation with enhanced details and quality. Cost: 30 credits per image.  Note: Pro mode is available for users on Creator, Pro, or Business tier. | `"standard"` |
 | `└─ tool` | ✗ | The art style to use for image generation. Defaults to 'general' if not provided. | `"ai-anime-generator"` |
 | `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Ai Image image"` |
 
@@ -91,7 +93,11 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_generator.create(
     image_count=1,
     orientation="landscape",
-    style={"prompt": "Cool image", "tool": "ai-anime-generator"},
+    style={
+        "prompt": "Cool image",
+        "quality_mode": "standard",
+        "tool": "ai-anime-generator",
+    },
     name="Ai Image image",
 )
 
@@ -107,7 +113,11 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_generator.create(
     image_count=1,
     orientation="landscape",
-    style={"prompt": "Cool image", "tool": "ai-anime-generator"},
+    style={
+        "prompt": "Cool image",
+        "quality_mode": "standard",
+        "tool": "ai-anime-generator",
+    },
     name="Ai Image image",
 )
 
@@ -120,5 +130,4 @@ res = await client.v1.ai_image_generator.create(
 
 ##### Example
 `{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`
-
 

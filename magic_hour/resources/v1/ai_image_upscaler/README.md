@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Ai Image Upscaler Generate Workflow <a name="generate"></a>
@@ -121,5 +122,4 @@ res = await client.v1.ai_image_upscaler.create(
 
 ##### Example
 `{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`
-
 

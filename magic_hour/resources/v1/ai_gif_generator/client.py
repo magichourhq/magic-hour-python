@@ -100,7 +100,7 @@ class AiGifGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiGifGeneratorCreateResponse:
         """
-        AI GIFs
+        AI GIF Generator
 
         Create an AI GIF. Each GIF costs 50 credits.
 
@@ -215,7 +215,7 @@ class AsyncAiGifGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiGifGeneratorCreateResponse:
         """
-        AI GIFs
+        AI GIF Generator
 
         Create an AI GIF. Each GIF costs 50 credits.
 
