@@ -57,7 +57,7 @@ class AiImageEditorClient:
         Examples:
         ```py
         response = client.v1.ai_image_editor.generate(
-            assets={"image_file_path": "path/to/image.png"},
+            assets={"image_file_paths": ["path/to/image.png", "path/to/image2.png"]},
             style={"prompt": "Add a sunset background"},
             name="Edited Image",
             wait_for_completion=True,
@@ -69,8 +69,16 @@ class AiImageEditorClient:
 
         file_client = FilesClient(base_client=self._base_client)
 
-        image_file_path = assets["image_file_path"]
-        assets["image_file_path"] = file_client.upload_file(file=image_file_path)
+        if "image_file_path" in assets:
+            image_file_path = assets["image_file_path"]
+            assets["image_file_path"] = file_client.upload_file(file=image_file_path)
+
+        if "image_file_paths" in assets:
+            for image_file_path in assets["image_file_paths"]:
+                assets["image_file_paths"] = [
+                    file_client.upload_file(file=image_file_path)
+                    for image_file_path in assets["image_file_paths"]
+                ]
 
         create_response = self.create(
             assets=assets, style=style, name=name, request_options=request_options
@@ -183,7 +191,7 @@ class AsyncAiImageEditorClient:
         Examples:
         ```py
         response = await client.v1.ai_image_editor.generate(
-            assets={"image_file_path": "path/to/image.png"},
+            assets={"image_file_paths": ["path/to/image.png", "path/to/image2.png"]},
             style={"prompt": "Add a sunset background"},
             name="Edited Image",
             wait_for_completion=True,
@@ -195,8 +203,18 @@ class AsyncAiImageEditorClient:
 
         file_client = AsyncFilesClient(base_client=self._base_client)
 
-        image_file_path = assets["image_file_path"]
-        assets["image_file_path"] = await file_client.upload_file(file=image_file_path)
+        if "image_file_path" in assets:
+            image_file_path = assets["image_file_path"]
+            assets["image_file_path"] = await file_client.upload_file(
+                file=image_file_path
+            )
+
+        if "image_file_paths" in assets:
+            for image_file_path in assets["image_file_paths"]:
+                assets["image_file_paths"] = [
+                    await file_client.upload_file(file=image_file_path)
+                    for image_file_path in assets["image_file_paths"]
+                ]
 
         create_response = await self.create(
             assets=assets, style=style, name=name, request_options=request_options
