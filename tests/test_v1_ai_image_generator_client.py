@@ -29,7 +29,11 @@ def test_create_200_success_all_params() -> None:
     response = client.v1.ai_image_generator.create(
         image_count=1,
         orientation="landscape",
-        style={"prompt": "Cool image", "tool": "ai-anime-generator"},
+        style={
+            "prompt": "Cool image",
+            "quality_mode": "standard",
+            "tool": "ai-anime-generator",
+        },
         name="Ai Image image",
     )
     try:
@@ -66,7 +70,11 @@ async def test_await_create_200_success_all_params() -> None:
     response = await client.v1.ai_image_generator.create(
         image_count=1,
         orientation="landscape",
-        style={"prompt": "Cool image", "tool": "ai-anime-generator"},
+        style={
+            "prompt": "Cool image",
+            "quality_mode": "standard",
+            "tool": "ai-anime-generator",
+        },
         name="Ai Image image",
     )
     try:

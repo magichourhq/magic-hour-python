@@ -31,6 +31,7 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
             "Future Bot",
             "Futuristic Fantasy",
             "GTA",
+            "Ghibli Anime",
             "Ghost",
             "Gundam",
             "Hologram",
@@ -59,11 +60,15 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
             "Pixel",
             "Power Armor",
             "Power Ranger",
+            "Radiant Anime",
             "Realistic Anime",
+            "Realistic Pixar",
             "Retro Anime",
             "Retro Sci-Fi",
             "Samurai",
             "Samurai Bot",
+            "Sharp Anime",
+            "Soft Anime",
             "Solid Snake",
             "Spartan",
             "Starfield",
@@ -76,19 +81,28 @@ class V1VideoToVideoCreateBodyStyle(typing_extensions.TypedDict):
             "Van Gogh",
             "Viking",
             "Watercolor",
+            "Western Anime",
             "Wu Kong",
+            "Wuxia Anime",
             "Zelda",
         ]
     ]
 
     model: typing_extensions.NotRequired[
         typing_extensions.Literal[
-            "Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"
+            "3D Anime",
+            "Absolute Reality",
+            "Dreamshaper",
+            "Flat 2D Anime",
+            "Kaywaii",
+            "Soft Anime",
+            "Western Anime",
+            "default",
         ]
     ]
     """
-    * `Dreamshaper` - a good all-around model that works for both animations as well as realism. 
-    * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well. 
+    * `Dreamshaper` - a good all-around model that works for both animations as well as realism.
+    * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well.
     * `Flat 2D Anime` - best for a flat illustration style that's common in most anime.
     * `default` - use the default recommended model for the selected art style.
     """
@@ -149,6 +163,7 @@ class _SerializerV1VideoToVideoCreateBodyStyle(pydantic.BaseModel):
         "Future Bot",
         "Futuristic Fantasy",
         "GTA",
+        "Ghibli Anime",
         "Ghost",
         "Gundam",
         "Hologram",
@@ -177,11 +192,15 @@ class _SerializerV1VideoToVideoCreateBodyStyle(pydantic.BaseModel):
         "Pixel",
         "Power Armor",
         "Power Ranger",
+        "Radiant Anime",
         "Realistic Anime",
+        "Realistic Pixar",
         "Retro Anime",
         "Retro Sci-Fi",
         "Samurai",
         "Samurai Bot",
+        "Sharp Anime",
+        "Soft Anime",
         "Solid Snake",
         "Spartan",
         "Starfield",
@@ -194,14 +213,23 @@ class _SerializerV1VideoToVideoCreateBodyStyle(pydantic.BaseModel):
         "Van Gogh",
         "Viking",
         "Watercolor",
+        "Western Anime",
         "Wu Kong",
+        "Wuxia Anime",
         "Zelda",
     ] = pydantic.Field(
         alias="art_style",
     )
     model: typing.Optional[
         typing_extensions.Literal[
-            "Absolute Reality", "Dreamshaper", "Flat 2D Anime", "default"
+            "3D Anime",
+            "Absolute Reality",
+            "Dreamshaper",
+            "Flat 2D Anime",
+            "Kaywaii",
+            "Soft Anime",
+            "Western Anime",
+            "default",
         ]
     ] = pydantic.Field(alias="model", default=None)
     prompt: typing.Optional[str] = pydantic.Field(alias="prompt", default=None)

@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Image Background Remover Generate Workflow <a name="generate"></a>
@@ -122,5 +123,4 @@ res = await client.v1.image_background_remover.create(
 
 ##### Example
 `{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`
-
 

@@ -103,7 +103,7 @@ class AiHeadshotGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiHeadshotGeneratorCreateResponse:
         """
-        AI Headshots
+        AI Headshot Generator
 
         Create an AI headshot. Each headshot costs 50 credits.
 
@@ -227,7 +227,7 @@ class AsyncAiHeadshotGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiHeadshotGeneratorCreateResponse:
         """
-        AI Headshots
+        AI Headshot Generator
 
         Create an AI headshot. Each headshot costs 50 credits.
 

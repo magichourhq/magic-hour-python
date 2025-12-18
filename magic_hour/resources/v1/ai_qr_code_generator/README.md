@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Ai Qr Code Generator Generate Workflow <a name="generate"></a>
@@ -62,9 +63,9 @@ res = await client.v1.ai_qr_code_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
-### AI QR Code <a name="create"></a>
+### AI QR Code Generator <a name="create"></a>
 
-Create an AI QR code. Each QR code costs 20 credits.
+Create an AI QR code. Each QR code costs 0 credits.
 
 **API Endpoint**: `POST /v1/ai-qr-code-generator`
 
@@ -113,6 +114,5 @@ res = await client.v1.ai_qr_code_generator.create(
 [V1AiQrCodeGeneratorCreateResponse](/magic_hour/types/models/v1_ai_qr_code_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 20, "frame_cost": 20, "id": "cuid-example"}`
-
+`{"credits_charged": 0, "frame_cost": 0, "id": "cuid-example"}`
 

@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Animation Generate Workflow <a name="generate"></a>
@@ -183,5 +184,4 @@ res = await client.v1.animation.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
-
 

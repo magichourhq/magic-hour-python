@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Photo Colorizer Generate Workflow <a name="generate"></a>
@@ -105,5 +106,4 @@ res = await client.v1.photo_colorizer.create(
 
 ##### Example
 `{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}`
-
 

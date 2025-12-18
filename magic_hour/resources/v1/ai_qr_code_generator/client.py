@@ -91,9 +91,9 @@ class AiQrCodeGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiQrCodeGeneratorCreateResponse:
         """
-        AI QR Code
+        AI QR Code Generator
 
-        Create an AI QR code. Each QR code costs 20 credits.
+        Create an AI QR code. Each QR code costs 0 credits.
 
         POST /v1/ai-qr-code-generator
 
@@ -205,9 +205,9 @@ class AsyncAiQrCodeGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiQrCodeGeneratorCreateResponse:
         """
-        AI QR Code
+        AI QR Code Generator
 
-        Create an AI QR code. Each QR code costs 20 credits.
+        Create an AI QR code. Each QR code costs 0 credits.
 
         POST /v1/ai-qr-code-generator
 

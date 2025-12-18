@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Ai Photo Editor Generate Workflow <a name="generate"></a>
@@ -166,5 +167,4 @@ res = await client.v1.ai_photo_editor.create(
 
 ##### Example
 `{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}`
-
 
