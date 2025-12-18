@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Text To Video Generate Workflow <a name="generate"></a>
@@ -128,5 +129,4 @@ res = await client.v1.text_to_video.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
-
 

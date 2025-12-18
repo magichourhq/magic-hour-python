@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Face Detection Generate Workflow <a name="generate"></a>
@@ -153,5 +154,4 @@ res = await client.v1.face_detection.create(
 
 ##### Example
 `{"credits_charged": 123, "id": "uuid-example"}`
-
 

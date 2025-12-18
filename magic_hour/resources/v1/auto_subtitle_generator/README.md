@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Auto Subtitle Generator Generate Workflow <a name="generate"></a>
@@ -126,5 +127,4 @@ res = await client.v1.auto_subtitle_generator.create(
 
 ##### Example
 `{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}`
-
 

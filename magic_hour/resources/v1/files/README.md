@@ -3,6 +3,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Upload File <a name="upload-file"></a>
@@ -37,8 +38,6 @@ file_path = await client.v1.files.upload_file("/path/to/your/image.jpg")
 
 
 <!-- CUSTOM DOCS END -->
-
-
 ## Submodules
 - [upload_urls](upload_urls/README.md) - upload_urls
 

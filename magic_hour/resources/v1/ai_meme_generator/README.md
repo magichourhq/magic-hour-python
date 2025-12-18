@@ -5,6 +5,7 @@
 
 
 
+
 <!-- CUSTOM DOCS START -->
 
 ### Ai Meme Generator Generate Workflow <a name="generate"></a>
@@ -127,5 +128,4 @@ res = await client.v1.ai_meme_generator.create(
 
 ##### Example
 `{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}`
-
 

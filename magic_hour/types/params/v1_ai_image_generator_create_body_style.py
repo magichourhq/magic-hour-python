@@ -13,6 +13,19 @@ class V1AiImageGeneratorCreateBodyStyle(typing_extensions.TypedDict):
     The prompt used for the image(s).
     """
 
+    quality_mode: typing_extensions.NotRequired[
+        typing_extensions.Literal["pro", "standard"]
+    ]
+    """
+    Controls the quality of the generated image. Defaults to 'standard' if not specified.
+    
+    **Options:**
+    - `standard` - Standard quality generation. Cost: 5 credits per image.
+    - `pro` - Pro quality generation with enhanced details and quality. Cost: 30 credits per image.
+    
+    Note: Pro mode is available for users on Creator, Pro, or Business tier.
+    """
+
     tool: typing_extensions.NotRequired[
         typing_extensions.Literal[
             "ai-anime-generator",
@@ -69,6 +82,9 @@ class _SerializerV1AiImageGeneratorCreateBodyStyle(pydantic.BaseModel):
 
     prompt: str = pydantic.Field(
         alias="prompt",
+    )
+    quality_mode: typing.Optional[typing_extensions.Literal["pro", "standard"]] = (
+        pydantic.Field(alias="quality_mode", default=None)
     )
     tool: typing.Optional[
         typing_extensions.Literal[

@@ -101,9 +101,9 @@ class AiImageGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageGeneratorCreateResponse:
         """
-        AI Images
+        AI Image Generator
 
-        Create an AI image. Each image costs 5 credits.
+        Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
 
         POST /v1/ai-image-generator
 
@@ -126,7 +126,11 @@ class AiImageGeneratorClient:
         client.v1.ai_image_generator.create(
             image_count=1,
             orientation="landscape",
-            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
+            style={
+                "prompt": "Cool image",
+                "quality_mode": "standard",
+                "tool": "ai-anime-generator",
+            },
             name="Ai Image image",
         )
         ```
@@ -231,9 +235,9 @@ class AsyncAiImageGeneratorClient:
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageGeneratorCreateResponse:
         """
-        AI Images
+        AI Image Generator
 
-        Create an AI image. Each image costs 5 credits.
+        Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
 
         POST /v1/ai-image-generator
 
@@ -256,7 +260,11 @@ class AsyncAiImageGeneratorClient:
         await client.v1.ai_image_generator.create(
             image_count=1,
             orientation="landscape",
-            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
+            style={
+                "prompt": "Cool image",
+                "quality_mode": "standard",
+                "tool": "ai-anime-generator",
+            },
             name="Ai Image image",
         )
         ```
