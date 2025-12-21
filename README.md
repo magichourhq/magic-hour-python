@@ -40,7 +40,7 @@ response = client.v1.face_swap_photo.generate(
     assets={
         "face_swap_mode": "all-faces",
         "source_file_path": "/path/to/source/image.png",
-        "source/image": "/path/to/target/image.png",
+        "target_file_path": "/path/to/target/image.png",
     },
     name="Face Swap image",
     wait_for_completion=True,
