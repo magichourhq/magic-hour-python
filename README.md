@@ -21,12 +21,10 @@ pip install magic_hour
 For end-to-end examples demonstrating all available Magic Hour APIs, check out our interactive Google Colab cookbook:
 
 - **Interactive Notebook**: [Magic Hour API Cookbook](https://colab.research.google.com/drive/1NTHL_lr_s-qBJ-mSecSXPzRLi9_V5JiU?usp=sharing)
-- **Local Notebook**: [cookbooks/Magic_Hour_API_Cookbook_v3.ipynb](cookbooks/Magic_Hour_API_Cookbook_v3.ipynb)
 
 The cookbook includes:
 - Setup instructions
 - Examples for all available APIs (image generation, face swap, lip sync, video generation, and more)
-- Pipeline examples (chaining multiple APIs together)
 - Display helpers for previewing outputs
 - Production-ready patterns and best practices
 
