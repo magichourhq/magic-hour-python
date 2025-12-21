@@ -16,6 +16,18 @@ If you have any questions, please reach out to us via [discord](https://discord.
 pip install magic_hour
 ```
 
+## Cookbook
+
+For end-to-end examples demonstrating all available Magic Hour APIs, check out our interactive Google Colab cookbook:
+
+- **Interactive Notebook**: [Magic Hour API Cookbook](https://colab.research.google.com/drive/1NTHL_lr_s-qBJ-mSecSXPzRLi9_V5JiU?usp=sharing)
+
+The cookbook includes:
+- Setup instructions
+- Examples for all available APIs (image generation, face swap, lip sync, video generation, and more)
+- Display helpers for previewing outputs
+- Production-ready patterns and best practices
+
 ## Synchronous Client Usage
 
 ```python
