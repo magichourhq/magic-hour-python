@@ -2,11 +2,6 @@
 
 ## Module Functions
 
-
-
-
-
-
 <!-- CUSTOM DOCS START -->
 
 ### Ai Meme Generator Generate Workflow <a name="generate"></a>
@@ -70,6 +65,7 @@ res = await client.v1.ai_meme_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### AI Meme Generator <a name="create"></a>
 
 Create an AI generated meme. Each meme costs 10 credits.
@@ -78,13 +74,13 @@ Create an AI generated meme. Each meme costs 10 credits.
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `style` | ✓ |  | `{"search_web": False, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
-| `└─ search_web` | ✗ | Whether to search the web for meme content. | `False` |
-| `└─ template` | ✓ | To use our templates, pass in one of the enum values. | `"Drake Hotline Bling"` |
-| `└─ topic` | ✓ | The topic of the meme. | `"When the code finally works"` |
-| `name` | ✗ | The name of the meme. | `"My Funny Meme"` |
+| Parameter       | Required | Description                                           | Example                                                                                            |
+| --------------- | :------: | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `style`         |    ✓     |                                                       | `{"search_web": False, "template": "Drake Hotline Bling", "topic": "When the code finally works"}` |
+| `└─ search_web` |    ✗     | Whether to search the web for meme content.           | `False`                                                                                            |
+| `└─ template`   |    ✓     | To use our templates, pass in one of the enum values. | `"Drake Hotline Bling"`                                                                            |
+| `└─ topic`      |    ✓     | The topic of the meme.                                | `"When the code finally works"`                                                                    |
+| `name`          |    ✗     | The name of the meme.                                 | `"My Funny Meme"`                                                                                  |
 
 #### Synchronous Client
 
@@ -101,7 +97,6 @@ res = client.v1.ai_meme_generator.create(
     },
     name="My Funny Meme",
 )
-
 ```
 
 #### Asynchronous Client
@@ -119,14 +114,16 @@ res = await client.v1.ai_meme_generator.create(
     },
     name="My Funny Meme",
 )
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1AiMemeGeneratorCreateResponse](/magic_hour/types/models/v1_ai_meme_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}`
 
+```python
+{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}
+```

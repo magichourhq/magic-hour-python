@@ -2,11 +2,6 @@
 
 ## Module Functions
 
-
-
-
-
-
 <!-- CUSTOM DOCS START -->
 
 ### Ai Gif Generator Generate Workflow <a name="generate"></a>
@@ -64,6 +59,7 @@ res = await client.v1.ai_gif_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### AI GIF Generator <a name="create"></a>
 
 Create an AI GIF. Each GIF costs 50 credits.
@@ -72,12 +68,12 @@ Create an AI GIF. Each GIF costs 50 credits.
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `style` | ✓ |  | `{"prompt": "Cute dancing cat, pixel art"}` |
-| `└─ prompt` | ✓ | The prompt used for the GIF. | `"Cute dancing cat, pixel art"` |
-| `name` | ✗ | The name of gif. This value is mainly used for your own identification of the gif. | `"Ai Gif gif"` |
-| `output_format` | ✗ | The output file format for the generated animation. | `"gif"` |
+| Parameter       | Required | Description                                                                        | Example                                     |
+| --------------- | :------: | ---------------------------------------------------------------------------------- | ------------------------------------------- |
+| `style`         |    ✓     |                                                                                    | `{"prompt": "Cute dancing cat, pixel art"}` |
+| `└─ prompt`     |    ✓     | The prompt used for the GIF.                                                       | `"Cute dancing cat, pixel art"`             |
+| `name`          |    ✗     | The name of gif. This value is mainly used for your own identification of the gif. | `"Ai Gif gif"`                              |
+| `output_format` |    ✗     | The output file format for the generated animation.                                | `"gif"`                                     |
 
 #### Synchronous Client
 
@@ -91,7 +87,6 @@ res = client.v1.ai_gif_generator.create(
     name="Ai Gif gif",
     output_format="gif",
 )
-
 ```
 
 #### Asynchronous Client
@@ -106,14 +101,16 @@ res = await client.v1.ai_gif_generator.create(
     name="Ai Gif gif",
     output_format="gif",
 )
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1AiGifGeneratorCreateResponse](/magic_hour/types/models/v1_ai_gif_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}`
 
+```python
+{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}
+```

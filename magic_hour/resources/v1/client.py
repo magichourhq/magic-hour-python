@@ -42,6 +42,10 @@ from magic_hour.resources.v1.ai_talking_photo import (
     AiTalkingPhotoClient,
     AsyncAiTalkingPhotoClient,
 )
+from magic_hour.resources.v1.ai_voice_cloner import (
+    AiVoiceClonerClient,
+    AsyncAiVoiceClonerClient,
+)
 from magic_hour.resources.v1.ai_voice_generator import (
     AiVoiceGeneratorClient,
     AsyncAiVoiceGeneratorClient,
@@ -135,6 +139,7 @@ class V1Client:
         self.video_to_video = VideoToVideoClient(base_client=self._base_client)
         self.audio_projects = AudioProjectsClient(base_client=self._base_client)
         self.ai_voice_generator = AiVoiceGeneratorClient(base_client=self._base_client)
+        self.ai_voice_cloner = AiVoiceClonerClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -185,3 +190,4 @@ class AsyncV1Client:
         self.ai_voice_generator = AsyncAiVoiceGeneratorClient(
             base_client=self._base_client
         )
+        self.ai_voice_cloner = AsyncAiVoiceClonerClient(base_client=self._base_client)

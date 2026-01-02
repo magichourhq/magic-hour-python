@@ -1,10 +1,5 @@
 # v1.files
 
-
-
-
-
-
 <!-- CUSTOM DOCS START -->
 
 ### Upload File <a name="upload-file"></a>
@@ -37,8 +32,8 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 file_path = await client.v1.files.upload_file("/path/to/your/image.jpg")
 ```
 
-
 <!-- CUSTOM DOCS END -->
-## Submodules
-- [upload_urls](upload_urls/README.md) - upload_urls
 
+## Submodules
+
+- [upload_urls](upload_urls/README.md) - upload_urls

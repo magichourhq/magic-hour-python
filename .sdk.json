@@ -1,5 +1,5 @@
 {
-  "id": "49987b36-40c9-4c8a-a5c0-6e662e59fb44",
+  "id": "17e9ba83-9f82-4700-9be5-731e36ffb0df",
   "tracked_paths": [
     {
       "editable": true,
@@ -160,6 +160,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/ai_talking_photo/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_voice_cloner/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_voice_cloner/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_voice_cloner/client.py"
     },
     {
       "editable": true,
@@ -419,6 +431,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_ai_voice_cloner_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_ai_voice_generator_create_response.py"
     },
     {
@@ -639,6 +655,18 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/params/v1_ai_voice_cloner_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_voice_cloner_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_voice_cloner_create_body_style.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/params/v1_ai_voice_generator_create_body.py"
     },
     {
@@ -824,6 +852,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_ai_talking_photo_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_voice_cloner_client.py"
     },
     {
       "editable": false,

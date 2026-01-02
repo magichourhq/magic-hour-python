@@ -2,11 +2,6 @@
 
 ## Module Functions
 
-
-
-
-
-
 <!-- CUSTOM DOCS START -->
 
 ### Ai Qr Code Generator Generate Workflow <a name="generate"></a>
@@ -64,6 +59,7 @@ res = await client.v1.ai_qr_code_generator.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### AI QR Code Generator <a name="create"></a>
 
 Create an AI QR code. Each QR code costs 0 credits.
@@ -72,12 +68,12 @@ Create an AI QR code. Each QR code costs 0 credits.
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `content` | ✓ | The content of the QR code. | `"https://magichour.ai"` |
-| `style` | ✓ |  | `{"art_style": "Watercolor"}` |
-| `└─ art_style` | ✓ | To use our templates, pass in one of Watercolor, Cyberpunk City, Ink Landscape, Interior Painting, Japanese Street, Mech, Minecraft, Picasso Painting, Game Map, Spaceship, Chinese Painting, Winter Village, or pass any custom art style. | `"Watercolor"` |
-| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Qr Code image"` |
+| Parameter      | Required | Description                                                                                                                                                                                                                                 | Example                       |
+| -------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `content`      |    ✓     | The content of the QR code.                                                                                                                                                                                                                 | `"https://magichour.ai"`      |
+| `style`        |    ✓     |                                                                                                                                                                                                                                             | `{"art_style": "Watercolor"}` |
+| `└─ art_style` |    ✓     | To use our templates, pass in one of Watercolor, Cyberpunk City, Ink Landscape, Interior Painting, Japanese Street, Mech, Minecraft, Picasso Painting, Game Map, Spaceship, Chinese Painting, Winter Village, or pass any custom art style. | `"Watercolor"`                |
+| `name`         |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                      | `"Qr Code image"`             |
 
 #### Synchronous Client
 
@@ -91,7 +87,6 @@ res = client.v1.ai_qr_code_generator.create(
     style={"art_style": "Watercolor"},
     name="Qr Code image",
 )
-
 ```
 
 #### Asynchronous Client
@@ -106,14 +101,16 @@ res = await client.v1.ai_qr_code_generator.create(
     style={"art_style": "Watercolor"},
     name="Qr Code image",
 )
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1AiQrCodeGeneratorCreateResponse](/magic_hour/types/models/v1_ai_qr_code_generator_create_response.py)
 
 ##### Example
-`{"credits_charged": 0, "frame_cost": 0, "id": "cuid-example"}`
 
+```python
+{"credits_charged": 0, "frame_cost": 0, "id": "cuid-example"}
+```
