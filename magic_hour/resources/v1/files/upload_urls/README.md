@@ -9,6 +9,7 @@ Generates a list of pre-signed upload URLs for the assets required. This API is 
 The response array will match the order of items in the request body.
 
 **Valid file extensions per asset type**:
+
 - video: mp4, m4v, mov, webm
 - audio: mp3, wav, aac, flac, webm
 - image: png, jpg, jpeg, heic, webp, avif, jp2, tiff, bmp
@@ -29,9 +30,9 @@ curl -X PUT --data '@/path/to/file/video.mp4' \
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `items` | ✓ | The list of assets to upload. The response array will match the order of items in the request body. | `[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}]` |
+| Parameter | Required | Description                                                                                         | Example                                                                            |
+| --------- | :------: | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `items`   |    ✓     | The list of assets to upload. The response array will match the order of items in the request body. | `[{"extension": "mp4", "type_": "video"}, {"extension": "mp3", "type_": "audio"}]` |
 
 #### Synchronous Client
 
@@ -46,7 +47,6 @@ res = client.v1.files.upload_urls.create(
         {"extension": "mp3", "type_": "audio"},
     ]
 )
-
 ```
 
 #### Asynchronous Client
@@ -62,14 +62,16 @@ res = await client.v1.files.upload_urls.create(
         {"extension": "mp3", "type_": "audio"},
     ]
 )
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1FilesUploadUrlsCreateResponse](/magic_hour/types/models/v1_files_upload_urls_create_response.py)
 
 ##### Example
-`{"items": [{"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/video.mp4", "upload_url": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/audio.mp3", "upload_url": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}`
 
+```python
+{"items": [{"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/video.mp4", "upload_url": "https://videos.magichour.ai/api-assets/id/video.mp4?auth-value=1234567890"}, {"expires_at": "2024-07-25T16:56:21.932Z", "file_path": "api-assets/id/audio.mp3", "upload_url": "https://videos.magichour.ai/api-assets/id/audio.mp3?auth-value=1234567890"}]}
+```

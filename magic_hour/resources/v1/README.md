@@ -1,6 +1,7 @@
 # v1
 
 ## Submodules
+
 - [ai_clothes_changer](ai_clothes_changer/README.md) - ai_clothes_changer
 - [ai_face_editor](ai_face_editor/README.md) - ai_face_editor
 - [ai_gif_generator](ai_gif_generator/README.md) - ai_gif_generator
@@ -12,6 +13,7 @@
 - [ai_photo_editor](ai_photo_editor/README.md) - ai_photo_editor
 - [ai_qr_code_generator](ai_qr_code_generator/README.md) - ai_qr_code_generator
 - [ai_talking_photo](ai_talking_photo/README.md) - ai_talking_photo
+- [ai_voice_cloner](ai_voice_cloner/README.md) - ai_voice_cloner
 - [ai_voice_generator](ai_voice_generator/README.md) - ai_voice_generator
 - [animation](animation/README.md) - animation
 - [audio_projects](audio_projects/README.md) - audio_projects
@@ -28,4 +30,3 @@
 - [text_to_video](text_to_video/README.md) - text_to_video
 - [video_projects](video_projects/README.md) - video_projects
 - [video_to_video](video_to_video/README.md) - video_to_video
-

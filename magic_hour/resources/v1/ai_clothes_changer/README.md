@@ -2,11 +2,6 @@
 
 ## Module Functions
 
-
-
-
-
-
 <!-- CUSTOM DOCS START -->
 
 ### AI Clothes Changer Generate Workflow <a name="generate"></a>
@@ -15,7 +10,7 @@ The workflow performs the following action
 
 1. upload local assets to Magic Hour storage. So you can pass in a local path instead of having to upload files yourself
 2. trigger a generation
-3. poll for a completion status. This is configurable 
+3. poll for a completion status. This is configurable
 4. if success, download the output to local directory
 
 > [!TIP]
@@ -71,6 +66,7 @@ res = await client.v1.ai_clothes_changer.generate(
 ```
 
 <!-- CUSTOM DOCS END -->
+
 ### AI Clothes Changer <a name="create"></a>
 
 Change outfits in photos in seconds with just a photo reference. Each photo costs 25 credits.
@@ -79,13 +75,13 @@ Change outfits in photos in seconds with just a photo reference. Each photo cost
 
 #### Parameters
 
-| Parameter | Required | Description | Example |
-|-----------|:--------:|-------------|--------|
-| `assets` | ✓ | Provide the assets for clothes changer | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "upper_body", "person_file_path": "api-assets/id/model.png"}` |
-| `└─ garment_file_path` | ✓ | The image of the outfit. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/outfit.png"` |
-| `└─ garment_type` | ✓ | The type of the outfit. | `"upper_body"` |
-| `└─ person_file_path` | ✓ | The image with the person. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).  Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.  | `"api-assets/id/model.png"` |
-| `name` | ✗ | The name of image. This value is mainly used for your own identification of the image. | `"Clothes Changer image"` |
+| Parameter              | Required | Description                                                                                                                                                                                                                                                                                                                                                                   | Example                                                                                                                          |
+| ---------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `assets`               |    ✓     | Provide the assets for clothes changer                                                                                                                                                                                                                                                                                                                                        | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "upper_body", "person_file_path": "api-assets/id/model.png"}` |
+| `└─ garment_file_path` |    ✓     | The image of the outfit. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.   | `"api-assets/id/outfit.png"`                                                                                                     |
+| `└─ garment_type`      |    ✓     | The type of the outfit.                                                                                                                                                                                                                                                                                                                                                       | `"upper_body"`                                                                                                                   |
+| `└─ person_file_path`  |    ✓     | The image with the person. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more. | `"api-assets/id/model.png"`                                                                                                      |
+| `name`                 |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                                                        | `"Clothes Changer image"`                                                                                                        |
 
 #### Synchronous Client
 
@@ -102,7 +98,6 @@ res = client.v1.ai_clothes_changer.create(
     },
     name="Clothes Changer image",
 )
-
 ```
 
 #### Asynchronous Client
@@ -120,14 +115,16 @@ res = await client.v1.ai_clothes_changer.create(
     },
     name="Clothes Changer image",
 )
-
 ```
 
 #### Response
 
 ##### Type
+
 [V1AiClothesChangerCreateResponse](/magic_hour/types/models/v1_ai_clothes_changer_create_response.py)
 
 ##### Example
-`{"credits_charged": 25, "frame_cost": 25, "id": "cuid-example"}`
 
+```python
+{"credits_charged": 25, "frame_cost": 25, "id": "cuid-example"}
+```
