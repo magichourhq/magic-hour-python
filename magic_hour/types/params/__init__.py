@@ -135,6 +135,7 @@ from .v1_ai_voice_cloner_create_body_style import (
     V1AiVoiceClonerCreateBodyStyle,
     _SerializerV1AiVoiceClonerCreateBodyStyle,
 )
+from .v1_ai_voice_cloner_generate_body_assets import V1AiVoiceClonerGenerateBodyAssets
 from .v1_ai_voice_generator_create_body import (
     V1AiVoiceGeneratorCreateBody,
     _SerializerV1AiVoiceGeneratorCreateBody,
@@ -333,6 +334,7 @@ __all__ = [
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
+    "V1AiVoiceClonerGenerateBodyAssets",
     "V1AiVoiceGeneratorCreateBody",
     "V1AiVoiceGeneratorCreateBodyStyle",
     "V1AnimationCreateBody",
