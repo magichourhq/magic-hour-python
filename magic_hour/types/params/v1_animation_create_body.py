@@ -39,7 +39,7 @@ class V1AnimationCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of video. This value is mainly used for your own identification of the video.
+    Give your video a custom name for easy identification.
     """
 
     style: typing_extensions.Required[V1AnimationCreateBodyStyle]

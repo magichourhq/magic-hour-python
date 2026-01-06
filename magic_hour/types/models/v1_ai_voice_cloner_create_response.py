@@ -23,5 +23,5 @@ class V1AiVoiceClonerCreateResponse(pydantic.BaseModel):
         alias="id",
     )
     """
-    Unique ID of the audio. This value can be used in the [get audio project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch additional details such as status
+    Unique ID of the audio. Use it with the [Get audio Project API](https://docs.magichour.ai/api-reference/audio-projects/get-audio-details) to fetch status and downloads.
     """

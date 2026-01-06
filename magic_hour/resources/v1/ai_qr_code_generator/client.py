@@ -98,7 +98,7 @@ class AiQrCodeGeneratorClient:
         POST /v1/ai-qr-code-generator
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             content: The content of the QR code.
             style: V1AiQrCodeGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -115,7 +115,7 @@ class AiQrCodeGeneratorClient:
         client.v1.ai_qr_code_generator.create(
             content="https://magichour.ai",
             style={"art_style": "Watercolor"},
-            name="Qr Code image",
+            name="My Qr Code image",
         )
         ```
         """
@@ -212,7 +212,7 @@ class AsyncAiQrCodeGeneratorClient:
         POST /v1/ai-qr-code-generator
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             content: The content of the QR code.
             style: V1AiQrCodeGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -229,7 +229,7 @@ class AsyncAiQrCodeGeneratorClient:
         await client.v1.ai_qr_code_generator.create(
             content="https://magichour.ai",
             style={"art_style": "Watercolor"},
-            name="Qr Code image",
+            name="My Qr Code image",
         )
         ```
         """

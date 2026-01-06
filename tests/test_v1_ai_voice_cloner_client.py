@@ -29,7 +29,7 @@ def test_create_200_success_all_params() -> None:
     response = client.v1.ai_voice_cloner.create(
         assets={"audio_file_path": "api-assets/id/1234.mp3"},
         style={"prompt": "Hello, this is my cloned voice."},
-        name="Voice Cloner audio",
+        name="My Voice Cloner audio",
     )
     try:
         pydantic.TypeAdapter(models.V1AiVoiceClonerCreateResponse).validate_python(
@@ -65,7 +65,7 @@ async def test_await_create_200_success_all_params() -> None:
     response = await client.v1.ai_voice_cloner.create(
         assets={"audio_file_path": "api-assets/id/1234.mp3"},
         style={"prompt": "Hello, this is my cloned voice."},
-        name="Voice Cloner audio",
+        name="My Voice Cloner audio",
     )
     try:
         pydantic.TypeAdapter(models.V1AiVoiceClonerCreateResponse).validate_python(

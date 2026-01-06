@@ -111,7 +111,7 @@ class AiVoiceClonerClient:
         POST /v1/ai-voice-cloner
 
         Args:
-            name: The name of audio. This value is mainly used for your own identification of the audio.
+            name: Give your audio a custom name for easy identification.
             assets: Provide the assets for voice cloning.
             style: V1AiVoiceClonerCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -128,7 +128,7 @@ class AiVoiceClonerClient:
         client.v1.ai_voice_cloner.create(
             assets={"audio_file_path": "api-assets/id/1234.mp3"},
             style={"prompt": "Hello, this is my cloned voice."},
-            name="Voice Cloner audio",
+            name="My Voice Cloner audio",
         )
         ```
         """
@@ -237,7 +237,7 @@ class AsyncAiVoiceClonerClient:
         POST /v1/ai-voice-cloner
 
         Args:
-            name: The name of audio. This value is mainly used for your own identification of the audio.
+            name: Give your audio a custom name for easy identification.
             assets: Provide the assets for voice cloning.
             style: V1AiVoiceClonerCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -254,7 +254,7 @@ class AsyncAiVoiceClonerClient:
         await client.v1.ai_voice_cloner.create(
             assets={"audio_file_path": "api-assets/id/1234.mp3"},
             style={"prompt": "Hello, this is my cloned voice."},
-            name="Voice Cloner audio",
+            name="My Voice Cloner audio",
         )
         ```
         """

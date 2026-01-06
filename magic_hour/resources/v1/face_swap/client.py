@@ -155,10 +155,28 @@ class FaceSwapClient:
         """
         Face Swap Video
 
-        Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+        **What this API does**
 
-        Get more information about this mode at our [product page](https://magichour.ai/products/face-swap).
+        Create the same Face Swap you can make in the browser, but programmatically, so you can automate it, run it at scale, or connect it to your own app or workflow.
 
+        **Good for**
+        - Automation and batch processing
+        - Adding face swap into apps, pipelines, or tools
+
+        **How it works (3 steps)**
+        1) Upload your inputs (video, image, or audio) with [Generate Upload URLs](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls) and copy the `file_path`.
+        2) Send a request to create a face swap job with the basic fields.
+        3) Check the job status until it's `complete`, then download the result from `downloads`.
+
+        **Key options**
+        - Inputs: usually a file, sometimes a YouTube link, depending on project type
+        - Resolution: free users are limited to 512px; higher plans unlock HD and larger sizes
+        - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
+
+        **Cost**
+        Credits are only charged for the frames that actually render. You'll see an estimate when the job is queued, and the final total after it's done.
+
+        For detailed examples, see the [product page](https://magichour.ai/products/face-swap).
 
         POST /v1/face-swap
 
@@ -170,7 +188,7 @@ class FaceSwapClient:
         - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
-            name: The name of video. This value is mainly used for your own identification of the video.
+            name: Give your video a custom name for easy identification.
             style: Style of the face swap video.
             width: `width` is deprecated and no longer influences the output video's resolution.
 
@@ -180,8 +198,8 @@ class FaceSwapClient:
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
-            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
-            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -208,7 +226,7 @@ class FaceSwapClient:
             },
             end_seconds=15.0,
             start_seconds=0.0,
-            name="Face Swap video",
+            name="My Face Swap video",
             style={"version": "default"},
         )
         ```
@@ -374,10 +392,28 @@ class AsyncFaceSwapClient:
         """
         Face Swap Video
 
-        Create a Face Swap video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+        **What this API does**
 
-        Get more information about this mode at our [product page](https://magichour.ai/products/face-swap).
+        Create the same Face Swap you can make in the browser, but programmatically, so you can automate it, run it at scale, or connect it to your own app or workflow.
 
+        **Good for**
+        - Automation and batch processing
+        - Adding face swap into apps, pipelines, or tools
+
+        **How it works (3 steps)**
+        1) Upload your inputs (video, image, or audio) with [Generate Upload URLs](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls) and copy the `file_path`.
+        2) Send a request to create a face swap job with the basic fields.
+        3) Check the job status until it's `complete`, then download the result from `downloads`.
+
+        **Key options**
+        - Inputs: usually a file, sometimes a YouTube link, depending on project type
+        - Resolution: free users are limited to 512px; higher plans unlock HD and larger sizes
+        - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
+
+        **Cost**
+        Credits are only charged for the frames that actually render. You'll see an estimate when the job is queued, and the final total after it's done.
+
+        For detailed examples, see the [product page](https://magichour.ai/products/face-swap).
 
         POST /v1/face-swap
 
@@ -389,7 +425,7 @@ class AsyncFaceSwapClient:
         - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
-            name: The name of video. This value is mainly used for your own identification of the video.
+            name: Give your video a custom name for easy identification.
             style: Style of the face swap video.
             width: `width` is deprecated and no longer influences the output video's resolution.
 
@@ -399,8 +435,8 @@ class AsyncFaceSwapClient:
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
-            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
-            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -427,7 +463,7 @@ class AsyncFaceSwapClient:
             },
             end_seconds=15.0,
             start_seconds=0.0,
-            name="Face Swap video",
+            name="My Face Swap video",
             style={"version": "default"},
         )
         ```

@@ -96,12 +96,12 @@ class PhotoColorizerClient:
         """
         Photo Colorizer
 
-        Colorize image. Each image costs 5 credits.
+        Colorize image. Each image costs 10 credits.
 
         POST /v1/photo-colorizer
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for photo colorization
             request_options: Additional options to customize the HTTP request
 
@@ -116,7 +116,7 @@ class PhotoColorizerClient:
         ```py
         client.v1.photo_colorizer.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
-            name="Photo Colorizer image",
+            name="My Photo Colorizer image",
         )
         ```
         """
@@ -210,12 +210,12 @@ class AsyncPhotoColorizerClient:
         """
         Photo Colorizer
 
-        Colorize image. Each image costs 5 credits.
+        Colorize image. Each image costs 10 credits.
 
         POST /v1/photo-colorizer
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for photo colorization
             request_options: Additional options to customize the HTTP request
 
@@ -230,7 +230,7 @@ class AsyncPhotoColorizerClient:
         ```py
         await client.v1.photo_colorizer.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
-            name="Photo Colorizer image",
+            name="My Photo Colorizer image",
         )
         ```
         """

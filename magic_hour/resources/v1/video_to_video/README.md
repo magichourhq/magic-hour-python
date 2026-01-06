@@ -80,9 +80,31 @@ res = await client.v1.video_to_video.generate(
 
 ### Video-to-Video <a name="create"></a>
 
-Create a Video To Video video. The estimated frame cost is calculated using 30 FPS. This amount is deducted from your account balance when a video is queued. Once the video is complete, the cost will be updated based on the actual number of frames rendered.
+**What this API does**
 
-Get more information about this mode at our [product page](https://magichour.ai/products/video-to-video).
+Create the same Video To Video you can make in the browser, but programmatically, so you can automate it, run it at scale, or connect it to your own app or workflow.
+
+**Good for**
+
+- Automation and batch processing
+- Adding video to video into apps, pipelines, or tools
+
+**How it works (3 steps)**
+
+1. Upload your inputs (video, image, or audio) with [Generate Upload URLs](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls) and copy the `file_path`.
+2. Send a request to create a video to video job with the basic fields.
+3. Check the job status until it's `complete`, then download the result from `downloads`.
+
+**Key options**
+
+- Inputs: usually a file, sometimes a YouTube link, depending on project type
+- Resolution: free users are limited to 512px; higher plans unlock HD and larger sizes
+- Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
+
+**Cost**\
+Credits are only charged for the frames that actually render. You'll see an estimate when the job is queued, and the final total after it's done.
+
+For detailed examples, see the [product page](https://magichour.ai/products/video-to-video).
 
 **API Endpoint**: `POST /v1/video-to-video`
 
@@ -91,11 +113,11 @@ Get more information about this mode at our [product page](https://magichour.ai/
 | Parameter            | Required | Deprecated | Description                                                                                                                                                                                                                                                                                                                                                                                                  | Example                                                                                          |
 | -------------------- | :------: | :--------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `assets`             |    ✓     |     ✗      | Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used                                                                                                                                                                                                                                                               | `{"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}`                          |
-| `└─ video_file_path` |    ✗     |     —      | Required if `video_source` is `file`. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.                     | `"api-assets/id/1234.mp4"`                                                                       |
-| `└─ video_source`    |    ✓     |     —      |                                                                                                                                                                                                                                                                                                                                                                                                              | `"file"`                                                                                         |
-| `└─ youtube_url`     |    ✗     |     —      | Using a youtube video as the input source. This field is required if `video_source` is `youtube`                                                                                                                                                                                                                                                                                                             | `"http://www.example.com"`                                                                       |
-| `end_seconds`        |    ✓     |     ✗      | The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.                                                                                                                                                                                                                                                 | `15.0`                                                                                           |
-| `start_seconds`      |    ✓     |     ✗      | The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.                                                                                                                                                                                                                                                                                  | `0.0`                                                                                            |
+| `└─ video_file_path` |    ✗     |     —      | Your video file. Required if `video_source` is `file`. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.                         | `"api-assets/id/1234.mp4"`                                                                       |
+| `└─ video_source`    |    ✓     |     —      | Choose your video source.                                                                                                                                                                                                                                                                                                                                                                                    | `"file"`                                                                                         |
+| `└─ youtube_url`     |    ✗     |     —      | YouTube URL (required if `video_source` is `youtube`).                                                                                                                                                                                                                                                                                                                                                       | `"http://www.example.com"`                                                                       |
+| `end_seconds`        |    ✓     |     ✗      | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                                                         | `15.0`                                                                                           |
+| `start_seconds`      |    ✓     |     ✗      | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                                                                              | `0.0`                                                                                            |
 | `style`              |    ✓     |     ✗      |                                                                                                                                                                                                                                                                                                                                                                                                              | `{"art_style": "3D Render", "model": "default", "prompt_type": "default", "version": "default"}` |
 | `└─ art_style`       |    ✓     |     —      |                                                                                                                                                                                                                                                                                                                                                                                                              | `"3D Render"`                                                                                    |
 | `└─ model`           |    ✗     |     —      | * `Dreamshaper` - a good all-around model that works for both animations as well as realism. * `Absolute Reality` - better at realism, but you'll often get similar results with Dreamshaper as well. * `Flat 2D Anime` - best for a flat illustration style that's common in most anime. * `default` - use the default recommended model for the selected art style.                                        | `"default"`                                                                                      |
@@ -104,7 +126,7 @@ Get more information about this mode at our [product page](https://magichour.ai/
 | `└─ version`         |    ✗     |     —      | * `v1` - more detail, closer prompt adherence, and frame-by-frame previews. * `v2` - faster, more consistent, and less noisy. * `default` - use the default version for the selected art style.                                                                                                                                                                                                              | `"default"`                                                                                      |
 | `fps_resolution`     |    ✗     |     ✗      | Determines whether the resulting video will have the same frame per second as the original video, or half. * `FULL` - the result video will have the same FPS as the input video * `HALF` - the result video will have half the FPS as the input video                                                                                                                                                       | `"HALF"`                                                                                         |
 | `height`             |    ✗     |     ✓      | `height` is deprecated and no longer influences the output video's resolution. Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details. This field is retained only for backward compatibility and will be removed in a future release. | `123`                                                                                            |
-| `name`               |    ✗     |     ✗      | The name of video. This value is mainly used for your own identification of the video.                                                                                                                                                                                                                                                                                                                       | `"Video To Video video"`                                                                         |
+| `name`               |    ✗     |     ✗      | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                                       | `"My Video To Video video"`                                                                      |
 | `width`              |    ✗     |     ✓      | `width` is deprecated and no longer influences the output video's resolution. Output resolution is determined by the **minimum** of: - The resolution of the input video - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details. This field is retained only for backward compatibility and will be removed in a future release.  | `123`                                                                                            |
 
 #### Synchronous Client
@@ -125,7 +147,7 @@ res = client.v1.video_to_video.create(
         "version": "default",
     },
     fps_resolution="HALF",
-    name="Video To Video video",
+    name="My Video To Video video",
 )
 ```
 
@@ -147,7 +169,7 @@ res = await client.v1.video_to_video.create(
         "version": "default",
     },
     fps_resolution="HALF",
-    name="Video To Video video",
+    name="My Video To Video video",
 )
 ```
 

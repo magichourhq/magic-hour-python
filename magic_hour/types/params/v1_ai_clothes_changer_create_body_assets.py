@@ -1,4 +1,5 @@
 import pydantic
+import typing
 import typing_extensions
 
 
@@ -13,15 +14,15 @@ class V1AiClothesChangerCreateBodyAssets(typing_extensions.TypedDict):
     - a direct URL to the video file
     - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
     
-    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
     
     """
 
-    garment_type: typing_extensions.Required[
+    garment_type: typing_extensions.NotRequired[
         typing_extensions.Literal["dresses", "lower_body", "upper_body"]
     ]
     """
-    The type of the outfit.
+    Deprecated: garment_type is no longer needed.
     """
 
     person_file_path: typing_extensions.Required[str]
@@ -30,7 +31,7 @@ class V1AiClothesChangerCreateBodyAssets(typing_extensions.TypedDict):
     - a direct URL to the video file
     - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
     
-    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
     
     """
 
@@ -48,11 +49,9 @@ class _SerializerV1AiClothesChangerCreateBodyAssets(pydantic.BaseModel):
     garment_file_path: str = pydantic.Field(
         alias="garment_file_path",
     )
-    garment_type: typing_extensions.Literal["dresses", "lower_body", "upper_body"] = (
-        pydantic.Field(
-            alias="garment_type",
-        )
-    )
+    garment_type: typing.Optional[
+        typing_extensions.Literal["dresses", "lower_body", "upper_body"]
+    ] = pydantic.Field(alias="garment_type", default=None)
     person_file_path: str = pydantic.Field(
         alias="person_file_path",
     )

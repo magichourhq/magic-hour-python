@@ -24,7 +24,7 @@ class V1AiVoiceClonerCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of audio. This value is mainly used for your own identification of the audio.
+    Give your audio a custom name for easy identification.
     """
 
     style: typing_extensions.Required[V1AiVoiceClonerCreateBodyStyle]

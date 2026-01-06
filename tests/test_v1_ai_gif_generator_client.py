@@ -28,7 +28,7 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_gif_generator.create(
         style={"prompt": "Cute dancing cat, pixel art"},
-        name="Ai Gif gif",
+        name="My Ai Gif gif",
         output_format="gif",
     )
     try:
@@ -64,7 +64,7 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_gif_generator.create(
         style={"prompt": "Cute dancing cat, pixel art"},
-        name="Ai Gif gif",
+        name="My Ai Gif gif",
         output_format="gif",
     )
     try:

@@ -43,13 +43,13 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="enabled",
     )
     """
-    Indicates whether the resource is deleted
+    Whether this resource is active. If false, it is deleted.
     """
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
     )
     """
-    The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
+    End time of your clip (seconds). Must be greater than start_seconds.
     """
     error: typing.Optional[V1VideoProjectsGetResponseError] = pydantic.Field(
         alias="error",
@@ -73,7 +73,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="id",
     )
     """
-    Unique ID of the video. This value can be used in the [get video project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch additional details such as status
+    Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
     """
     name: typing.Optional[str] = pydantic.Field(
         alias="name",
@@ -85,7 +85,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="start_seconds",
     )
     """
-    The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
+    Start time of your clip (seconds). Must be ≥ 0.
     """
     status: typing_extensions.Literal[
         "canceled", "complete", "draft", "error", "queued", "rendering"

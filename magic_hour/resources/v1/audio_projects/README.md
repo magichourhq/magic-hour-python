@@ -83,16 +83,16 @@ res = await client.v1.audio_projects.delete(id="cuid-example")
 
 ### Get audio details <a name="get"></a>
 
-Get the details of a audio project. The `downloads` field will be empty unless the audio was successfully rendered.
+Check the progress of a audio project. The `downloads` field is populated after a successful render.
 
-The audio can be one of the following status
+**Statuses**
 
-- `draft` - not currently used
-- `queued` - the job is queued and waiting for a GPU
-- `rendering` - the generation is in progress
-- `complete` - the audio is successful created
-- `error` - an error occurred during rendering
-- `canceled` - audio render is canceled by the user
+- `queued` — waiting to start
+- `rendering` — in progress
+- `complete` — ready; see `downloads`
+- `error` — a failure occurred (see `error`)
+- `canceled` — user canceled
+- `draft` — not used
 
 **API Endpoint**: `GET /v1/audio-projects/{id}`
 

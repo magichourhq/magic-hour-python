@@ -29,5 +29,5 @@ class V1AiClothesChangerCreateResponse(pydantic.BaseModel):
         alias="id",
     )
     """
-    Unique ID of the image. This value can be used in the [get image project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch additional details such as status
+    Unique ID of the image. Use it with the [Get image Project API](https://docs.magichour.ai/api-reference/image-projects/get-image-details) to fetch status and downloads.
     """

@@ -29,7 +29,7 @@ def test_create_200_success_all_params() -> None:
     response = client.v1.ai_qr_code_generator.create(
         content="https://magichour.ai",
         style={"art_style": "Watercolor"},
-        name="Qr Code image",
+        name="My Qr Code image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiQrCodeGeneratorCreateResponse).validate_python(
@@ -65,7 +65,7 @@ async def test_await_create_200_success_all_params() -> None:
     response = await client.v1.ai_qr_code_generator.create(
         content="https://magichour.ai",
         style={"art_style": "Watercolor"},
-        name="Qr Code image",
+        name="My Qr Code image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiQrCodeGeneratorCreateResponse).validate_python(

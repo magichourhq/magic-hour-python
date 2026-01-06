@@ -30,7 +30,7 @@ def test_create_200_success_all_params() -> None:
         end_seconds=5.0,
         orientation="landscape",
         style={"prompt": "a dog running", "quality_mode": "quick"},
-        name="Text To Video video",
+        name="My Text To Video video",
         resolution="720p",
     )
     try:
@@ -68,7 +68,7 @@ async def test_await_create_200_success_all_params() -> None:
         end_seconds=5.0,
         orientation="landscape",
         style={"prompt": "a dog running", "quality_mode": "quick"},
-        name="Text To Video video",
+        name="My Text To Video video",
         resolution="720p",
     )
     try:

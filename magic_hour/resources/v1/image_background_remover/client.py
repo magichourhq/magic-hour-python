@@ -101,7 +101,7 @@ class ImageBackgroundRemoverClient:
         POST /v1/image-background-remover
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for background removal
             request_options: Additional options to customize the HTTP request
 
@@ -119,7 +119,7 @@ class ImageBackgroundRemoverClient:
                 "background_image_file_path": "api-assets/id/1234.png",
                 "image_file_path": "api-assets/id/1234.png",
             },
-            name="Background Remover image",
+            name="My Background Remover image",
         )
         ```
         """
@@ -218,7 +218,7 @@ class AsyncImageBackgroundRemoverClient:
         POST /v1/image-background-remover
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for background removal
             request_options: Additional options to customize the HTTP request
 
@@ -236,7 +236,7 @@ class AsyncImageBackgroundRemoverClient:
                 "background_image_file_path": "api-assets/id/1234.png",
                 "image_file_path": "api-assets/id/1234.png",
             },
-            name="Background Remover image",
+            name="My Background Remover image",
         )
         ```
         """

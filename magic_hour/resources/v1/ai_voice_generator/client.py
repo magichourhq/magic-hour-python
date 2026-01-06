@@ -97,7 +97,7 @@ class AiVoiceGeneratorClient:
         POST /v1/ai-voice-generator
 
         Args:
-            name: The name of audio. This value is mainly used for your own identification of the audio.
+            name: Give your audio a custom name for easy identification.
             style: The content used to generate speech.
             request_options: Additional options to customize the HTTP request
 
@@ -112,7 +112,7 @@ class AiVoiceGeneratorClient:
         ```py
         client.v1.ai_voice_generator.create(
             style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
-            name="Voice Generator audio",
+            name="My Voice Generator audio",
         )
         ```
         """
@@ -208,7 +208,7 @@ class AsyncAiVoiceGeneratorClient:
         POST /v1/ai-voice-generator
 
         Args:
-            name: The name of audio. This value is mainly used for your own identification of the audio.
+            name: Give your audio a custom name for easy identification.
             style: The content used to generate speech.
             request_options: Additional options to customize the HTTP request
 
@@ -223,7 +223,7 @@ class AsyncAiVoiceGeneratorClient:
         ```py
         await client.v1.ai_voice_generator.create(
             style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
-            name="Voice Generator audio",
+            name="My Voice Generator audio",
         )
         ```
         """

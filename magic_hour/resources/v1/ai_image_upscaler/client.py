@@ -113,7 +113,7 @@ class AiImageUpscalerClient:
         POST /v1/ai-image-upscaler
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for upscaling
             scale_factor: How much to scale the image. Must be either 2 or 4.
 
@@ -134,7 +134,7 @@ class AiImageUpscalerClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
             style={"enhancement": "Balanced"},
-            name="Image Upscaler image",
+            name="My Image Upscaler image",
         )
         ```
         """
@@ -250,7 +250,7 @@ class AsyncAiImageUpscalerClient:
         POST /v1/ai-image-upscaler
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for upscaling
             scale_factor: How much to scale the image. Must be either 2 or 4.
 
@@ -271,7 +271,7 @@ class AsyncAiImageUpscalerClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
             style={"enhancement": "Balanced"},
-            name="Image Upscaler image",
+            name="My Image Upscaler image",
         )
         ```
         """

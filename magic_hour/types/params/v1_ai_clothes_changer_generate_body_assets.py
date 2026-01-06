@@ -1,4 +1,3 @@
-import pydantic
 import typing_extensions
 
 
@@ -16,7 +15,7 @@ class V1AiClothesChangerGenerateBodyAssets(typing_extensions.TypedDict):
     Note: if the path begins with `api-assets`, it will be assumed to already be uploaded to Magic Hour's storage, and will not be uploaded again.
     """
 
-    garment_type: typing_extensions.Required[
+    garment_type: typing_extensions.NotRequired[
         typing_extensions.Literal["dresses", "lower_body", "upper_body"]
     ]
     """

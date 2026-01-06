@@ -32,7 +32,7 @@ def test_create_200_success_all_params() -> None:
             "image_file_paths": ["api-assets/id/1234.png", "api-assets/id/1235.png"],
         },
         style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
-        name="Ai Image Editor image",
+        name="My Ai Image Editor image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
@@ -71,7 +71,7 @@ async def test_await_create_200_success_all_params() -> None:
             "image_file_paths": ["api-assets/id/1234.png", "api-assets/id/1235.png"],
         },
         style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
-        name="Ai Image Editor image",
+        name="My Ai Image Editor image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
