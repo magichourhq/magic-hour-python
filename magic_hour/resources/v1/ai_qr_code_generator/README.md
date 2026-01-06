@@ -73,7 +73,7 @@ Create an AI QR code. Each QR code costs 0 credits.
 | `content`      |    ✓     | The content of the QR code.                                                                                                                                                                                                                 | `"https://magichour.ai"`      |
 | `style`        |    ✓     |                                                                                                                                                                                                                                             | `{"art_style": "Watercolor"}` |
 | `└─ art_style` |    ✓     | To use our templates, pass in one of Watercolor, Cyberpunk City, Ink Landscape, Interior Painting, Japanese Street, Mech, Minecraft, Picasso Painting, Game Map, Spaceship, Chinese Painting, Winter Village, or pass any custom art style. | `"Watercolor"`                |
-| `name`         |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                      | `"Qr Code image"`             |
+| `name`         |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                      | `"My Qr Code image"`          |
 
 #### Synchronous Client
 
@@ -85,7 +85,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_qr_code_generator.create(
     content="https://magichour.ai",
     style={"art_style": "Watercolor"},
-    name="Qr Code image",
+    name="My Qr Code image",
 )
 ```
 
@@ -99,7 +99,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_qr_code_generator.create(
     content="https://magichour.ai",
     style={"art_style": "Watercolor"},
-    name="Qr Code image",
+    name="My Qr Code image",
 )
 ```
 

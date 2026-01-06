@@ -44,7 +44,7 @@ def test_create_200_success_all_params() -> None:
             },
             "template": "cinematic",
         },
-        name="Auto Subtitle video",
+        name="My Auto Subtitle video",
     )
     try:
         pydantic.TypeAdapter(
@@ -95,7 +95,7 @@ async def test_await_create_200_success_all_params() -> None:
             },
             "template": "cinematic",
         },
-        name="Auto Subtitle video",
+        name="My Auto Subtitle video",
     )
     try:
         pydantic.TypeAdapter(

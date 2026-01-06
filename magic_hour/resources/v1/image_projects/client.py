@@ -132,16 +132,15 @@ class ImageProjectsClient:
         """
         Get image details
 
-        Get the details of a image project. The `downloads` field will be empty unless the image was successfully rendered.
+        Check the progress of a image project. The `downloads` field is populated after a successful render.
 
-        The image can be one of the following status
-        - `draft` - not currently used
-        - `queued` - the job is queued and waiting for a GPU
-        - `rendering` - the generation is in progress
-        - `complete` - the image is successful created
-        - `error` - an error occurred during rendering
-        - `canceled` - image render is canceled by the user
-
+        **Statuses**
+        - `queued` — waiting to start
+        - `rendering` — in progress
+        - `complete` — ready; see `downloads`
+        - `error` — a failure occurred (see `error`)
+        - `canceled` — user canceled
+        - `draft` — not used
 
         GET /v1/image-projects/{id}
 
@@ -273,16 +272,15 @@ class AsyncImageProjectsClient:
         """
         Get image details
 
-        Get the details of a image project. The `downloads` field will be empty unless the image was successfully rendered.
+        Check the progress of a image project. The `downloads` field is populated after a successful render.
 
-        The image can be one of the following status
-        - `draft` - not currently used
-        - `queued` - the job is queued and waiting for a GPU
-        - `rendering` - the generation is in progress
-        - `complete` - the image is successful created
-        - `error` - an error occurred during rendering
-        - `canceled` - image render is canceled by the user
-
+        **Statuses**
+        - `queued` — waiting to start
+        - `rendering` — in progress
+        - `complete` — ready; see `downloads`
+        - `error` — a failure occurred (see `error`)
+        - `canceled` — user canceled
+        - `draft` — not used
 
         GET /v1/image-projects/{id}
 

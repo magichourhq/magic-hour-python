@@ -24,9 +24,9 @@ class V1FaceSwapPhotoCreateBodyAssets(typing_extensions.TypedDict):
         typing_extensions.Literal["all-faces", "individual-faces"]
     ]
     """
-    The mode of face swap.
-    * `all-faces` - Swap all faces in the target image or video. `source_file_path` is required.
-    * `individual-faces` - Swap individual faces in the target image or video. `source_faces` is required.
+    Choose how to swap faces:
+    **all-faces** (recommended) — swap all detected faces using one source image (`source_file_path` required)
+    +- **individual-faces** — specify exact mappings using `face_mappings`
     """
 
     source_file_path: typing_extensions.NotRequired[str]
@@ -37,7 +37,7 @@ class V1FaceSwapPhotoCreateBodyAssets(typing_extensions.TypedDict):
     - a direct URL to the video file
     - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
     
-    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
     
     """
 
@@ -47,7 +47,7 @@ class V1FaceSwapPhotoCreateBodyAssets(typing_extensions.TypedDict):
     - a direct URL to the video file
     - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
     
-    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
     
     """
 

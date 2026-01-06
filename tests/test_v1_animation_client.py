@@ -45,7 +45,7 @@ def test_create_200_success_all_params() -> None:
             "transition_speed": 5,
         },
         width=512,
-        name="Animation video",
+        name="My Animation video",
     )
     try:
         pydantic.TypeAdapter(models.V1AnimationCreateResponse).validate_python(response)
@@ -95,7 +95,7 @@ async def test_await_create_200_success_all_params() -> None:
             "transition_speed": 5,
         },
         width=512,
-        name="Animation video",
+        name="My Animation video",
     )
     try:
         pydantic.TypeAdapter(models.V1AnimationCreateResponse).validate_python(response)

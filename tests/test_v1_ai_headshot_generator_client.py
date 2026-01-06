@@ -28,7 +28,7 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_headshot_generator.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
-        name="Ai Headshot image",
+        name="My Ai Headshot image",
         style={"prompt": "string"},
     )
     try:
@@ -64,7 +64,7 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_headshot_generator.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
-        name="Ai Headshot image",
+        name="My Ai Headshot image",
         style={"prompt": "string"},
     )
     try:

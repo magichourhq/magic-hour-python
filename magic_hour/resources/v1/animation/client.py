@@ -148,7 +148,7 @@ class AnimationClient:
         POST /v1/animation
 
         Args:
-            name: The name of video. This value is mainly used for your own identification of the video.
+            name: Give your video a custom name for easy identification.
             assets: Provide the assets for animation.
             end_seconds: This value determines the duration of the output video.
             fps: The desire output video frame rate
@@ -183,7 +183,7 @@ class AnimationClient:
                 "transition_speed": 5,
             },
             width=512,
-            name="Animation video",
+            name="My Animation video",
         )
         ```
         """
@@ -341,7 +341,7 @@ class AsyncAnimationClient:
         POST /v1/animation
 
         Args:
-            name: The name of video. This value is mainly used for your own identification of the video.
+            name: Give your video a custom name for easy identification.
             assets: Provide the assets for animation.
             end_seconds: This value determines the duration of the output video.
             fps: The desire output video frame rate
@@ -376,7 +376,7 @@ class AsyncAnimationClient:
                 "transition_speed": 5,
             },
             width=512,
-            name="Animation video",
+            name="My Animation video",
         )
         ```
         """

@@ -58,17 +58,17 @@ res = await client.v1.photo_colorizer.generate(
 
 ### Photo Colorizer <a name="create"></a>
 
-Colorize image. Each image costs 5 credits.
+Colorize image. Each image costs 10 credits.
 
 **API Endpoint**: `POST /v1/photo-colorizer`
 
 #### Parameters
 
-| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                        | Example                                         |
-| -------------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `assets`             |    ✓     | Provide the assets for photo colorization                                                                                                                                                                                                                                                                                                                                                          | `{"image_file_path": "api-assets/id/1234.png"}` |
-| `└─ image_file_path` |    ✓     | The image used to generate the colorized image. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more. | `"api-assets/id/1234.png"`                      |
-| `name`               |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                                                                             | `"Photo Colorizer image"`                       |
+| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                                                   | Example                                         |
+| -------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `assets`             |    ✓     | Provide the assets for photo colorization                                                                                                                                                                                                                                                                                                                                     | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `└─ image_file_path` |    ✓     | The image used to generate the colorized image. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                      |
+| `name`               |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                                        | `"My Photo Colorizer image"`                    |
 
 #### Synchronous Client
 
@@ -78,7 +78,8 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.photo_colorizer.create(
-    assets={"image_file_path": "api-assets/id/1234.png"}, name="Photo Colorizer image"
+    assets={"image_file_path": "api-assets/id/1234.png"},
+    name="My Photo Colorizer image",
 )
 ```
 
@@ -90,7 +91,8 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.photo_colorizer.create(
-    assets={"image_file_path": "api-assets/id/1234.png"}, name="Photo Colorizer image"
+    assets={"image_file_path": "api-assets/id/1234.png"},
+    name="My Photo Colorizer image",
 )
 ```
 
@@ -103,5 +105,5 @@ res = await client.v1.photo_colorizer.create(
 ##### Example
 
 ```python
-{"credits_charged": 5, "frame_cost": 5, "id": "cuid-example"}
+{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}
 ```

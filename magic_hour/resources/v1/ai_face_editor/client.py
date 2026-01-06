@@ -121,7 +121,7 @@ class AiFaceEditorClient:
         POST /v1/ai-face-editor
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for face editor
             style: Face editing parameters
             request_options: Additional options to customize the HTTP request
@@ -154,7 +154,7 @@ class AiFaceEditorClient:
                 "mouth_purse": 0.0,
                 "mouth_smile": 0.0,
             },
-            name="Face Editor image",
+            name="My Face Editor image",
         )
         ```
         """
@@ -273,7 +273,7 @@ class AsyncAiFaceEditorClient:
         POST /v1/ai-face-editor
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for face editor
             style: Face editing parameters
             request_options: Additional options to customize the HTTP request
@@ -306,7 +306,7 @@ class AsyncAiFaceEditorClient:
                 "mouth_purse": 0.0,
                 "mouth_smile": 0.0,
             },
-            name="Face Editor image",
+            name="My Face Editor image",
         )
         ```
         """

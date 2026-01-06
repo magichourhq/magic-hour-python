@@ -39,7 +39,7 @@ def test_create_200_success_all_params() -> None:
             "upscale_factor": 2,
             "upscale_fidelity": 0.5,
         },
-        name="Photo Editor image",
+        name="My Photo Editor image",
         steps=123,
     )
     try:
@@ -86,7 +86,7 @@ async def test_await_create_200_success_all_params() -> None:
             "upscale_factor": 2,
             "upscale_fidelity": 0.5,
         },
-        name="Photo Editor image",
+        name="My Photo Editor image",
         steps=123,
     )
     try:

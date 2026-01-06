@@ -45,7 +45,7 @@ def test_create_200_success_all_params() -> None:
             "mouth_purse": 0.0,
             "mouth_smile": 0.0,
         },
-        name="Face Editor image",
+        name="My Face Editor image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiFaceEditorCreateResponse).validate_python(
@@ -97,7 +97,7 @@ async def test_await_create_200_success_all_params() -> None:
             "mouth_purse": 0.0,
             "mouth_smile": 0.0,
         },
-        name="Face Editor image",
+        name="My Face Editor image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiFaceEditorCreateResponse).validate_python(

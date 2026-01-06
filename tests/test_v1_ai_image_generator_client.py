@@ -34,7 +34,7 @@ def test_create_200_success_all_params() -> None:
             "quality_mode": "standard",
             "tool": "ai-anime-generator",
         },
-        name="Ai Image image",
+        name="My Ai Image image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
@@ -75,7 +75,7 @@ async def test_await_create_200_success_all_params() -> None:
             "quality_mode": "standard",
             "tool": "ai-anime-generator",
         },
-        name="Ai Image image",
+        name="My Ai Image image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(

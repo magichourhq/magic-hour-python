@@ -107,7 +107,7 @@ class AiClothesChangerClient:
         POST /v1/ai-clothes-changer
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for clothes changer
             request_options: Additional options to customize the HTTP request
 
@@ -126,7 +126,7 @@ class AiClothesChangerClient:
                 "garment_type": "upper_body",
                 "person_file_path": "api-assets/id/model.png",
             },
-            name="Clothes Changer image",
+            name="My Clothes Changer image",
         )
         ```
         """
@@ -235,7 +235,7 @@ class AsyncAiClothesChangerClient:
         POST /v1/ai-clothes-changer
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for clothes changer
             request_options: Additional options to customize the HTTP request
 
@@ -254,7 +254,7 @@ class AsyncAiClothesChangerClient:
                 "garment_type": "upper_body",
                 "person_file_path": "api-assets/id/model.png",
             },
-            name="Clothes Changer image",
+            name="My Clothes Changer image",
         )
         ```
         """

@@ -38,7 +38,7 @@ def test_create_200_success_all_params() -> None:
             "source_file_path": "api-assets/id/1234.png",
             "target_file_path": "api-assets/id/1234.png",
         },
-        name="Face Swap image",
+        name="My Face Swap image",
     )
     try:
         pydantic.TypeAdapter(models.V1FaceSwapPhotoCreateResponse).validate_python(
@@ -83,7 +83,7 @@ async def test_await_create_200_success_all_params() -> None:
             "source_file_path": "api-assets/id/1234.png",
             "target_file_path": "api-assets/id/1234.png",
         },
-        name="Face Swap image",
+        name="My Face Swap image",
     )
     try:
         pydantic.TypeAdapter(models.V1FaceSwapPhotoCreateResponse).validate_python(

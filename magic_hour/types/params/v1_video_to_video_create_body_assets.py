@@ -10,21 +10,24 @@ class V1VideoToVideoCreateBodyAssets(typing_extensions.TypedDict):
 
     video_file_path: typing_extensions.NotRequired[str]
     """
-    Required if `video_source` is `file`. This value is either
+    Your video file. Required if `video_source` is `file`. This value is either
     - a direct URL to the video file
     - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
     
-    Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more.
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
     
     """
 
     video_source: typing_extensions.Required[
         typing_extensions.Literal["file", "youtube"]
     ]
+    """
+    Choose your video source.
+    """
 
     youtube_url: typing_extensions.NotRequired[str]
     """
-    Using a youtube video as the input source. This field is required if `video_source` is `youtube`
+    YouTube URL (required if `video_source` is `youtube`).
     """
 
 

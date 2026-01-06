@@ -28,7 +28,7 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_voice_generator.create(
         style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
-        name="Voice Generator audio",
+        name="My Voice Generator audio",
     )
     try:
         pydantic.TypeAdapter(models.V1AiVoiceGeneratorCreateResponse).validate_python(
@@ -63,7 +63,7 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_voice_generator.create(
         style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
-        name="Voice Generator audio",
+        name="My Voice Generator audio",
     )
     try:
         pydantic.TypeAdapter(models.V1AiVoiceGeneratorCreateResponse).validate_python(

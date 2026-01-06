@@ -130,7 +130,7 @@ class AiPhotoEditorClient:
         POST /v1/ai-photo-editor
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             steps: Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
             assets: Provide the assets for photo editor
             resolution: The resolution of the final output image. The allowed value is based on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
@@ -159,7 +159,7 @@ class AiPhotoEditorClient:
                 "upscale_factor": 2,
                 "upscale_fidelity": 0.5,
             },
-            name="Photo Editor image",
+            name="My Photo Editor image",
         )
         ```
         """
@@ -293,7 +293,7 @@ class AsyncAiPhotoEditorClient:
         POST /v1/ai-photo-editor
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             steps: Deprecated: Please use `.style.steps` instead. Number of iterations used to generate the output. Higher values improve quality and increase the strength of the prompt but increase processing time.
             assets: Provide the assets for photo editor
             resolution: The resolution of the final output image. The allowed value is based on your subscription. Please refer to our [pricing page](https://magichour.ai/pricing) for more details
@@ -322,7 +322,7 @@ class AsyncAiPhotoEditorClient:
                 "upscale_factor": 2,
                 "upscale_fidelity": 0.5,
             },
-            name="Photo Editor image",
+            name="My Photo Editor image",
         )
         ```
         """

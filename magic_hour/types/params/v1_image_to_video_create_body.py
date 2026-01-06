@@ -40,7 +40,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    The name of video. This value is mainly used for your own identification of the video.
+    Give your video a custom name for easy identification.
     """
 
     resolution: typing_extensions.NotRequired[

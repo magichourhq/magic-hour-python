@@ -110,7 +110,7 @@ class AiHeadshotGeneratorClient:
         POST /v1/ai-headshot-generator
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             style: V1AiHeadshotGeneratorCreateBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
@@ -126,7 +126,7 @@ class AiHeadshotGeneratorClient:
         ```py
         client.v1.ai_headshot_generator.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
-            name="Ai Headshot image",
+            name="My Ai Headshot image",
         )
         ```
         """
@@ -234,7 +234,7 @@ class AsyncAiHeadshotGeneratorClient:
         POST /v1/ai-headshot-generator
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             style: V1AiHeadshotGeneratorCreateBodyStyle
             assets: Provide the assets for headshot photo
             request_options: Additional options to customize the HTTP request
@@ -250,7 +250,7 @@ class AsyncAiHeadshotGeneratorClient:
         ```py
         await client.v1.ai_headshot_generator.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
-            name="Ai Headshot image",
+            name="My Ai Headshot image",
         )
         ```
         """

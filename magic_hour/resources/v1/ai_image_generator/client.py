@@ -108,7 +108,7 @@ class AiImageGeneratorClient:
         POST /v1/ai-image-generator
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             image_count: Number of images to generate.
             orientation: The orientation of the output image(s).
             style: The art style to use for image generation.
@@ -131,7 +131,7 @@ class AiImageGeneratorClient:
                 "quality_mode": "standard",
                 "tool": "ai-anime-generator",
             },
-            name="Ai Image image",
+            name="My Ai Image image",
         )
         ```
         """
@@ -242,7 +242,7 @@ class AsyncAiImageGeneratorClient:
         POST /v1/ai-image-generator
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             image_count: Number of images to generate.
             orientation: The orientation of the output image(s).
             style: The art style to use for image generation.
@@ -265,7 +265,7 @@ class AsyncAiImageGeneratorClient:
                 "quality_mode": "standard",
                 "tool": "ai-anime-generator",
             },
-            name="Ai Image image",
+            name="My Ai Image image",
         )
         ```
         """

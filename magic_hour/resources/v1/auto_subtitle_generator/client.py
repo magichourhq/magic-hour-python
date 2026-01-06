@@ -128,10 +128,10 @@ class AutoSubtitleGeneratorClient:
         POST /v1/auto-subtitle-generator
 
         Args:
-            name: The name of video. This value is mainly used for your own identification of the video.
+            name: Give your video a custom name for easy identification.
             assets: Provide the assets for auto subtitle generator
-            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
-            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             style: Style of the subtitle. At least one of `.style.template` or `.style.custom_config` must be provided.
         * If only `.style.template` is provided, default values for the template will be used.
         * If both are provided, the fields in `.style.custom_config` will be used to overwrite the fields in `.style.template`.
@@ -159,7 +159,7 @@ class AutoSubtitleGeneratorClient:
             end_seconds=15.0,
             start_seconds=0.0,
             style={},
-            name="Auto Subtitle video",
+            name="My Auto Subtitle video",
         )
         ```
         """
@@ -291,10 +291,10 @@ class AsyncAutoSubtitleGeneratorClient:
         POST /v1/auto-subtitle-generator
 
         Args:
-            name: The name of video. This value is mainly used for your own identification of the video.
+            name: Give your video a custom name for easy identification.
             assets: Provide the assets for auto subtitle generator
-            end_seconds: The end time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.1, and more than the start_seconds.
-            start_seconds: The start time of the input video in seconds. This value is used to trim the input video. The value must be greater than 0.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             style: Style of the subtitle. At least one of `.style.template` or `.style.custom_config` must be provided.
         * If only `.style.template` is provided, default values for the template will be used.
         * If both are provided, the fields in `.style.custom_config` will be used to overwrite the fields in `.style.template`.
@@ -322,7 +322,7 @@ class AsyncAutoSubtitleGeneratorClient:
             end_seconds=15.0,
             start_seconds=0.0,
             style={},
-            name="Auto Subtitle video",
+            name="My Auto Subtitle video",
         )
         ```
         """

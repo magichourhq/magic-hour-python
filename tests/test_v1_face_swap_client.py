@@ -43,7 +43,7 @@ def test_create_200_success_all_params() -> None:
         end_seconds=15.0,
         start_seconds=0.0,
         height=123,
-        name="Face Swap video",
+        name="My Face Swap video",
         style={"version": "default"},
         width=123,
     )
@@ -93,7 +93,7 @@ async def test_await_create_200_success_all_params() -> None:
         end_seconds=15.0,
         start_seconds=0.0,
         height=123,
-        name="Face Swap video",
+        name="My Face Swap video",
         style={"version": "default"},
         width=123,
     )

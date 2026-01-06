@@ -28,7 +28,7 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.photo_colorizer.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
-        name="Photo Colorizer image",
+        name="My Photo Colorizer image",
     )
     try:
         pydantic.TypeAdapter(models.V1PhotoColorizerCreateResponse).validate_python(
@@ -63,7 +63,7 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.photo_colorizer.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
-        name="Photo Colorizer image",
+        name="My Photo Colorizer image",
     )
     try:
         pydantic.TypeAdapter(models.V1PhotoColorizerCreateResponse).validate_python(

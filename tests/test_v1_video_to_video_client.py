@@ -43,7 +43,7 @@ def test_create_200_success_all_params() -> None:
         },
         fps_resolution="HALF",
         height=123,
-        name="Video To Video video",
+        name="My Video To Video video",
         width=123,
     )
     try:
@@ -94,7 +94,7 @@ async def test_await_create_200_success_all_params() -> None:
         },
         fps_resolution="HALF",
         height=123,
-        name="Video To Video video",
+        name="My Video To Video video",
         width=123,
     )
     try:

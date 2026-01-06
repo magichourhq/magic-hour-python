@@ -108,12 +108,12 @@ class AiImageEditorClient:
         """
         AI Image Editor
 
-        Edit images with AI. Each edit costs 50 credits.
+        Edit images with AI. Each edit costs 10 credits.
 
         POST /v1/ai-image-editor
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -136,7 +136,7 @@ class AiImageEditorClient:
                 ],
             },
             style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
-            name="Ai Image Editor image",
+            name="My Ai Image Editor image",
         )
         ```
         """
@@ -244,12 +244,12 @@ class AsyncAiImageEditorClient:
         """
         AI Image Editor
 
-        Edit images with AI. Each edit costs 50 credits.
+        Edit images with AI. Each edit costs 10 credits.
 
         POST /v1/ai-image-editor
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -272,7 +272,7 @@ class AsyncAiImageEditorClient:
                 ],
             },
             style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
-            name="Ai Image Editor image",
+            name="My Ai Image Editor image",
         )
         ```
         """

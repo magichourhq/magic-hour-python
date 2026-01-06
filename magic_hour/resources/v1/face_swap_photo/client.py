@@ -120,7 +120,7 @@ class FaceSwapPhotoClient:
         POST /v1/face-swap-photo
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for face swap photo
             request_options: Additional options to customize the HTTP request
 
@@ -145,7 +145,7 @@ class FaceSwapPhotoClient:
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
             },
-            name="Face Swap image",
+            name="My Face Swap image",
         )
         ```
         """
@@ -267,7 +267,7 @@ class AsyncFaceSwapPhotoClient:
         POST /v1/face-swap-photo
 
         Args:
-            name: The name of image. This value is mainly used for your own identification of the image.
+            name: Give your image a custom name for easy identification.
             assets: Provide the assets for face swap photo
             request_options: Additional options to customize the HTTP request
 
@@ -292,7 +292,7 @@ class AsyncFaceSwapPhotoClient:
                 "source_file_path": "api-assets/id/1234.png",
                 "target_file_path": "api-assets/id/1234.png",
             },
-            name="Face Swap image",
+            name="My Face Swap image",
         )
         ```
         """

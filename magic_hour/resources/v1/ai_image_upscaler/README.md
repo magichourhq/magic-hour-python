@@ -70,15 +70,15 @@ Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale co
 
 #### Parameters
 
-| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                                              | Example                                         |
-| -------------------- | :------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
-| `assets`             |    ✓     | Provide the assets for upscaling                                                                                                                                                                                                                                                                                                                                         | `{"image_file_path": "api-assets/id/1234.png"}` |
-| `└─ image_file_path` |    ✓     | The image to upscale. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). Please refer to the [Input File documentation](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) to learn more. | `"api-assets/id/1234.png"`                      |
-| `scale_factor`       |    ✓     | How much to scale the image. Must be either 2 or 4. Note: 4x upscale is only available on Creator, Pro, or Business tier.                                                                                                                                                                                                                                                | `2.0`                                           |
-| `style`              |    ✓     |                                                                                                                                                                                                                                                                                                                                                                          | `{"enhancement": "Balanced"}`                   |
-| `└─ enhancement`     |    ✓     |                                                                                                                                                                                                                                                                                                                                                                          | `"Balanced"`                                    |
-| `└─ prompt`          |    ✗     | A prompt to guide the final image. This value is ignored if `enhancement` is not Creative                                                                                                                                                                                                                                                                                | `"string"`                                      |
-| `name`               |    ✗     | The name of image. This value is mainly used for your own identification of the image.                                                                                                                                                                                                                                                                                   | `"Image Upscaler image"`                        |
+| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                         | Example                                         |
+| -------------------- | :------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| `assets`             |    ✓     | Provide the assets for upscaling                                                                                                                                                                                                                                                                                                                    | `{"image_file_path": "api-assets/id/1234.png"}` |
+| `└─ image_file_path` |    ✓     | The image to upscale. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                      |
+| `scale_factor`       |    ✓     | How much to scale the image. Must be either 2 or 4. Note: 4x upscale is only available on Creator, Pro, or Business tier.                                                                                                                                                                                                                           | `2.0`                                           |
+| `style`              |    ✓     |                                                                                                                                                                                                                                                                                                                                                     | `{"enhancement": "Balanced"}`                   |
+| `└─ enhancement`     |    ✓     |                                                                                                                                                                                                                                                                                                                                                     | `"Balanced"`                                    |
+| `└─ prompt`          |    ✗     | A prompt to guide the final image. This value is ignored if `enhancement` is not Creative                                                                                                                                                                                                                                                           | `"string"`                                      |
+| `name`               |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                              | `"My Image Upscaler image"`                     |
 
 #### Synchronous Client
 
@@ -91,7 +91,7 @@ res = client.v1.ai_image_upscaler.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     scale_factor=2.0,
     style={"enhancement": "Balanced"},
-    name="Image Upscaler image",
+    name="My Image Upscaler image",
 )
 ```
 
@@ -106,7 +106,7 @@ res = await client.v1.ai_image_upscaler.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     scale_factor=2.0,
     style={"enhancement": "Balanced"},
-    name="Image Upscaler image",
+    name="My Image Upscaler image",
 )
 ```
 

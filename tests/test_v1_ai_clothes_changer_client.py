@@ -32,7 +32,7 @@ def test_create_200_success_all_params() -> None:
             "garment_type": "upper_body",
             "person_file_path": "api-assets/id/model.png",
         },
-        name="Clothes Changer image",
+        name="My Clothes Changer image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiClothesChangerCreateResponse).validate_python(
@@ -71,7 +71,7 @@ async def test_await_create_200_success_all_params() -> None:
             "garment_type": "upper_body",
             "person_file_path": "api-assets/id/model.png",
         },
-        name="Clothes Changer image",
+        name="My Clothes Changer image",
     )
     try:
         pydantic.TypeAdapter(models.V1AiClothesChangerCreateResponse).validate_python(

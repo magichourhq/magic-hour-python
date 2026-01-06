@@ -107,7 +107,7 @@ class AiGifGeneratorClient:
         POST /v1/ai-gif-generator
 
         Args:
-            name: The name of gif. This value is mainly used for your own identification of the gif.
+            name: Give your gif a custom name for easy identification.
             output_format: The output file format for the generated animation.
             style: V1AiGifGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -123,7 +123,7 @@ class AiGifGeneratorClient:
         ```py
         client.v1.ai_gif_generator.create(
             style={"prompt": "Cute dancing cat, pixel art"},
-            name="Ai Gif gif",
+            name="My Ai Gif gif",
             output_format="gif",
         )
         ```
@@ -222,7 +222,7 @@ class AsyncAiGifGeneratorClient:
         POST /v1/ai-gif-generator
 
         Args:
-            name: The name of gif. This value is mainly used for your own identification of the gif.
+            name: Give your gif a custom name for easy identification.
             output_format: The output file format for the generated animation.
             style: V1AiGifGeneratorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -238,7 +238,7 @@ class AsyncAiGifGeneratorClient:
         ```py
         await client.v1.ai_gif_generator.create(
             style={"prompt": "Cute dancing cat, pixel art"},
-            name="Ai Gif gif",
+            name="My Ai Gif gif",
             output_format="gif",
         )
         ```

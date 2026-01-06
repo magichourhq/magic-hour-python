@@ -31,5 +31,5 @@ class V1VideoToVideoCreateResponse(pydantic.BaseModel):
         alias="id",
     )
     """
-    Unique ID of the video. This value can be used in the [get video project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch additional details such as status
+    Unique ID of the video. Use it with the [Get video Project API](https://docs.magichour.ai/api-reference/video-projects/get-video-details) to fetch status and downloads.
     """
