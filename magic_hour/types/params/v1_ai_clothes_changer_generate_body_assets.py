@@ -16,10 +16,16 @@ class V1AiClothesChangerGenerateBodyAssets(typing_extensions.TypedDict):
     """
 
     garment_type: typing_extensions.NotRequired[
-        typing_extensions.Literal["dresses", "lower_body", "upper_body"]
+        typing_extensions.Literal[
+            "dresses", "entire_outfit", "lower_body", "upper_body"
+        ]
     ]
     """
-    The type of the outfit.
+    Type of garment to swap. If not provided, swaps the entire outfit. 
+    * `upper_body` - for shirts/jackets 
+    * `lower_body` - for pants/skirts 
+    * `dresses` - for entire outfit (deprecated, use `entire_outfit` instead) 
+    * `entire_outfit` - for entire outfit
     """
 
     person_file_path: typing_extensions.Required[str]

@@ -5,7 +5,6 @@ import os
 import pathlib
 import typing
 import typing_extensions
-from urllib.parse import urlparse
 
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.upload_urls import (
@@ -17,6 +16,7 @@ from magic_hour.types.params.v1_files_upload_urls_create_body_items_item import 
 )
 from make_api_request import AsyncBaseClient, SyncBaseClient
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 logger = get_sdk_logger(__name__)

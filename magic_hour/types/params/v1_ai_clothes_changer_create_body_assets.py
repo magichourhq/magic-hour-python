@@ -19,10 +19,16 @@ class V1AiClothesChangerCreateBodyAssets(typing_extensions.TypedDict):
     """
 
     garment_type: typing_extensions.NotRequired[
-        typing_extensions.Literal["dresses", "lower_body", "upper_body"]
+        typing_extensions.Literal[
+            "dresses", "entire_outfit", "lower_body", "upper_body"
+        ]
     ]
     """
-    Deprecated: garment_type is no longer needed.
+    Type of garment to swap. If not provided, swaps the entire outfit. 
+    * `upper_body` - for shirts/jackets 
+    * `lower_body` - for pants/skirts 
+    * `dresses` - for entire outfit (deprecated, use `entire_outfit` instead) 
+    * `entire_outfit` - for entire outfit
     """
 
     person_file_path: typing_extensions.Required[str]
@@ -50,7 +56,9 @@ class _SerializerV1AiClothesChangerCreateBodyAssets(pydantic.BaseModel):
         alias="garment_file_path",
     )
     garment_type: typing.Optional[
-        typing_extensions.Literal["dresses", "lower_body", "upper_body"]
+        typing_extensions.Literal[
+            "dresses", "entire_outfit", "lower_body", "upper_body"
+        ]
     ] = pydantic.Field(alias="garment_type", default=None)
     person_file_path: str = pydantic.Field(
         alias="person_file_path",
