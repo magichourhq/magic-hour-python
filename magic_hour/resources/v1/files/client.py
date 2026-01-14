@@ -5,6 +5,7 @@ import os
 import pathlib
 import typing
 import typing_extensions
+from urllib.parse import urlparse
 
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.upload_urls import (
@@ -19,6 +20,41 @@ from pathlib import Path
 
 
 logger = get_sdk_logger(__name__)
+
+
+def is_url(value: str) -> bool:
+    """
+    Check if a string is a valid HTTP or HTTPS URL.
+
+    Uses proper URL parsing to validate the structure, similar to
+    JavaScript's URL constructor validation.
+
+    Args:
+        value: The string to check
+
+    Returns:
+        True if the string is a valid http:// or https:// URL, False otherwise
+    """
+    try:
+        parsed = urlparse(value)
+        # netloc is the host/domain portion (e.g., "example.com" or "localhost:8080")
+        # Checking bool(netloc) ensures the URL has an actual host, rejecting invalid URLs like "http://"
+        return parsed.scheme in ("http", "https") and bool(parsed.netloc)
+    except Exception:
+        return False
+
+
+def is_already_uploaded(value: str) -> bool:
+    """
+    Check if a string represents an already-uploaded file path.
+
+    Args:
+        value: The string to check
+
+    Returns:
+        True if the string starts with "api-assets/", False otherwise
+    """
+    return value.startswith("api-assets/")
 
 
 def _get_file_type_and_extension(file_path: str):
@@ -217,17 +253,21 @@ class FilesClient:
             ```
         """
 
-        if isinstance(file, str) and file.startswith(("http://", "https://")):
-            logger.info(f"{file} is a url. Skipping upload and returning the URL.")
+        logger.debug(f"upload_file called with: {type(file).__name__}")
+
+        if isinstance(file, str) and is_url(file):
+            logger.debug(f"Input is a URL, skipping upload: {file}")
             return file
-        elif isinstance(file, str) and file.startswith("api-assets"):
-            logger.info(
-                f"{file} is begins with api-assets, assuming it's a blob path.. Skipping upload and returning the path."
+        elif isinstance(file, str) and is_already_uploaded(file):
+            logger.debug(
+                f"Input is already uploaded (api-assets/), skipping upload: {file}"
             )
             return file
 
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
+        logger.debug(f"Detected file type: {file_type}, extension: {extension}")
 
+        logger.debug("Requesting presigned upload URL...")
         response = self.upload_urls.create(
             items=[
                 V1FilesUploadUrlsCreateBodyItemsItem(
@@ -240,18 +280,18 @@ class FilesClient:
             raise ValueError("No upload URL was returned from the server")
 
         upload_info = response.items[0]
+        logger.debug(f"Received upload URL, target path: {upload_info.file_path}")
 
         with httpx.Client(timeout=None) as client:
             content = _prepare_file_for_upload(
                 file_path=file_path, file_to_upload=file_to_upload
             )
+            logger.debug(f"Uploading {len(content)} bytes to presigned URL...")
 
             upload_response = client.put(url=upload_info.upload_url, content=content)
             upload_response.raise_for_status()
 
-        logger.info(
-            f"Uploaded {file_path} to Magic Hour storage at {upload_info.file_path}."
-        )
+        logger.debug(f"Upload complete: {upload_info.file_path}")
         return upload_info.file_path
 
 
@@ -327,17 +367,21 @@ class AsyncFilesClient:
             asyncio.run(upload_example())
             ```
         """
-        if isinstance(file, str) and file.startswith(("http://", "https://")):
-            logger.info(f"{file} is a url. Skipping upload and returning the URL.")
+        logger.debug(f"upload_file called with: {type(file).__name__}")
+
+        if isinstance(file, str) and is_url(file):
+            logger.debug(f"Input is a URL, skipping upload: {file}")
             return file
-        elif isinstance(file, str) and file.startswith("api-assets"):
-            logger.info(
-                f"{file} is begins with api-assets, assuming it's a blob path.. Skipping upload and returning the path."
+        elif isinstance(file, str) and is_already_uploaded(file):
+            logger.debug(
+                f"Input is already uploaded (api-assets/), skipping upload: {file}"
             )
             return file
 
         file_path, file_to_upload, file_type, extension = _process_file_input(file)
+        logger.debug(f"Detected file type: {file_type}, extension: {extension}")
 
+        logger.debug("Requesting presigned upload URL...")
         response = await self.upload_urls.create(
             items=[
                 V1FilesUploadUrlsCreateBodyItemsItem(
@@ -350,18 +394,18 @@ class AsyncFilesClient:
             raise ValueError("No upload URL was returned from the server")
 
         upload_info = response.items[0]
+        logger.debug(f"Received upload URL, target path: {upload_info.file_path}")
 
         async with httpx.AsyncClient(timeout=None) as client:
             content = _prepare_file_for_upload(
                 file_path=file_path, file_to_upload=file_to_upload
             )
+            logger.debug(f"Uploading {len(content)} bytes to presigned URL...")
 
             upload_response = await client.put(
                 url=upload_info.upload_url, content=content
             )
             upload_response.raise_for_status()
 
-        logger.info(
-            f"Uploaded {file_path} to Magic Hour storage at {upload_info.file_path}."
-        )
+        logger.debug(f"Upload complete: {upload_info.file_path}")
         return upload_info.file_path
