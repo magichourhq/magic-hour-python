@@ -106,7 +106,7 @@ Create the same Face Swap you can make in the browser, but programmatically, so 
 **Key options**
 
 - Inputs: usually a file, sometimes a YouTube link, depending on project type
-- Resolution: free users are limited to 512px; higher plans unlock HD and larger sizes
+- Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
 - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
 **Cost**\
