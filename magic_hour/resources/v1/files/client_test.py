@@ -412,3 +412,47 @@ def test_upload_file_preserves_file_position():
             url=mock.ANY,
             content=data,  # Full data, not data[5:]
         )
+
+
+# Tests for URLs with query parameters
+def test_upload_file_with_url_and_query_params():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    url_with_params = "https://example.com/image.jpg?token=abc123&expires=1234567890"
+    result = client.v1.files.upload_file(url_with_params)
+
+    assert result == url_with_params
+
+
+def test_upload_file_with_url_and_fragment():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    url_with_fragment = "https://example.com/video.mp4#section"
+    result = client.v1.files.upload_file(url_with_fragment)
+
+    assert result == url_with_fragment
+
+
+@pytest.mark.asyncio
+async def test_async_upload_file_with_url_and_query_params():
+    client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    url_with_params = "http://example.com/audio.mp3?key=value&another=param"
+    result = await client.v1.files.upload_file(url_with_params)
+
+    assert result == url_with_params
+
+
+def test_upload_file_with_url_and_query_params_does_not_make_http_requests():
+    client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
+
+    with mock.patch("httpx.Client.put") as mock_put:
+        with mock.patch.object(client.v1.files.upload_urls, "create") as mock_create:
+            url_with_params = "https://cdn.example.com/file.jpg?signed=true&token=xyz"
+            result = client.v1.files.upload_file(url_with_params)
+
+            # Should not call upload_urls.create or make HTTP PUT request
+            mock_create.assert_not_called()
+            mock_put.assert_not_called()
+
+            assert result == url_with_params
