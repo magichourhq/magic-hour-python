@@ -110,6 +110,9 @@ class AiTalkingPhotoClient:
         assets: params.V1AiTalkingPhotoCreateBodyAssets,
         end_seconds: float,
         start_seconds: float,
+        max_resolution: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -126,6 +129,7 @@ class AiTalkingPhotoClient:
         POST /v1/ai-talking-photo
 
         Args:
+            max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
             name: Give your image a custom name for easy identification.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
@@ -149,12 +153,14 @@ class AiTalkingPhotoClient:
             },
             end_seconds=15.0,
             start_seconds=0.0,
+            max_resolution=1024,
             name="My Talking Photo image",
         )
         ```
         """
         _json = to_encodable(
             item={
+                "max_resolution": max_resolution,
                 "name": name,
                 "style": style,
                 "assets": assets,
@@ -263,6 +269,9 @@ class AsyncAiTalkingPhotoClient:
         assets: params.V1AiTalkingPhotoCreateBodyAssets,
         end_seconds: float,
         start_seconds: float,
+        max_resolution: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -279,6 +288,7 @@ class AsyncAiTalkingPhotoClient:
         POST /v1/ai-talking-photo
 
         Args:
+            max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
             name: Give your image a custom name for easy identification.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
@@ -302,12 +312,14 @@ class AsyncAiTalkingPhotoClient:
             },
             end_seconds=15.0,
             start_seconds=0.0,
+            max_resolution=1024,
             name="My Talking Photo image",
         )
         ```
         """
         _json = to_encodable(
             item={
+                "max_resolution": max_resolution,
                 "name": name,
                 "style": style,
                 "assets": assets,

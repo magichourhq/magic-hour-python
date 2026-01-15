@@ -27,6 +27,11 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
     The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.
     """
 
+    max_resolution: typing_extensions.NotRequired[int]
+    """
+    Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
+    """
+
     name: typing_extensions.NotRequired[str]
     """
     Give your image a custom name for easy identification.
@@ -58,6 +63,9 @@ class _SerializerV1AiTalkingPhotoCreateBody(pydantic.BaseModel):
     )
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
+    )
+    max_resolution: typing.Optional[int] = pydantic.Field(
+        alias="max_resolution", default=None
     )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     start_seconds: float = pydantic.Field(
