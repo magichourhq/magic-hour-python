@@ -85,6 +85,9 @@ jobs:
 
   check-generate-create-sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -109,7 +112,8 @@ jobs:
         with:
           script: |
             const { execSync } = require('child_process');
-            const output = execSync('python codemod/check_generate_create_sync.py --fix').toString();
+            // Use || true to prevent execSync from throwing on non-zero exit code
+            const output = execSync('python codemod/check_generate_create_sync.py --fix || true').toString();
             
             const body = `## ⚠️ Parameter Sync Check Failed
             
