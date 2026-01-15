@@ -83,6 +83,7 @@ Create a talking photo from an image and audio or text input.
 | `└─ image_file_path` |    ✓     | The source image to animate. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.                                                                                                                                | `"api-assets/id/1234.png"`                                                                   |
 | `end_seconds`        |    ✓     | The end time of the input audio in seconds. The maximum duration allowed is 60 seconds.                                                                                                                                                                                                                                                                                                                                                                                                   | `15.0`                                                                                       |
 | `start_seconds`      |    ✓     | The start time of the input audio in seconds. The maximum duration allowed is 60 seconds.                                                                                                                                                                                                                                                                                                                                                                                                 | `0.0`                                                                                        |
+| `max_resolution`     |    ✗     | Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.                                                                                                                                                                                                                                                                                       | `1024`                                                                                       |
 | `name`               |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                                                                                                                    | `"My Talking Photo image"`                                                                   |
 | `style`              |    ✗     | Attributes used to dictate the style of the output                                                                                                                                                                                                                                                                                                                                                                                                                                        | `{"generation_mode": "pro", "intensity": 1.5}`                                               |
 | `└─ generation_mode` |    ✗     | Controls overall motion style. * `pro` - Higher fidelity, realistic detail, accurate lip sync, and faster generation. * `standard` - More expressive motion, but lower visual fidelity. * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. (Deprecated: passing this value will be treated as `standard`) * `stable` - Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`) | `"pro"`                                                                                      |
@@ -102,6 +103,7 @@ res = client.v1.ai_talking_photo.create(
     },
     end_seconds=15.0,
     start_seconds=0.0,
+    max_resolution=1024,
     name="My Talking Photo image",
 )
 ```
@@ -120,6 +122,7 @@ res = await client.v1.ai_talking_photo.create(
     },
     end_seconds=15.0,
     start_seconds=0.0,
+    max_resolution=1024,
     name="My Talking Photo image",
 )
 ```

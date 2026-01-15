@@ -33,6 +33,7 @@ def test_create_200_success_all_params() -> None:
         },
         end_seconds=15.0,
         start_seconds=0.0,
+        max_resolution=1024,
         name="My Talking Photo image",
         style={"generation_mode": "pro", "intensity": 1.5},
     )
@@ -74,6 +75,7 @@ async def test_await_create_200_success_all_params() -> None:
         },
         end_seconds=15.0,
         start_seconds=0.0,
+        max_resolution=1024,
         name="My Talking Photo image",
         style={"generation_mode": "pro", "intensity": 1.5},
     )
