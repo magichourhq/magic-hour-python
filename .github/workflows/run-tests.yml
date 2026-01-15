@@ -114,34 +114,30 @@ jobs:
           script: |
             const fs = require('fs');
             const output = fs.readFileSync('sync-check-output.txt', 'utf8');
-            
+
             const body = `## ⚠️ Parameter Sync Check Failed
-            
+
             The \`generate()\` methods are missing parameters that exist in \`create()\` methods.
-            
-            <details>
-            <summary>Details</summary>
-            
+
+
             \`\`\`
             ${output}
             \`\`\`
-            
-            </details>
-            
+
             **How to fix:** Add the missing parameters to the \`generate()\` method signature and forward them to \`self.create()\`.
             `;
-            
+
             // Check if we already commented
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
             });
-            
+
             const existingComment = comments.find(c => 
               c.user.type === 'Bot' && c.body.includes('Parameter Sync Check Failed')
             );
-            
+
             if (existingComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
