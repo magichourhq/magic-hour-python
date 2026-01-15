@@ -82,3 +82,77 @@ jobs:
         run: |
           source .venv/bin/activate
           mypy $(poetry version | cut -d' ' -f1)
+
+  check-generate-create-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: check generate/create parameter sync
+        id: sync-check
+        run: |
+          if python codemod/check_generate_create_sync.py --quiet; then
+            echo "in_sync=true" >> $GITHUB_OUTPUT
+          else
+            echo "in_sync=false" >> $GITHUB_OUTPUT
+            echo "## Parameter Sync Check Failed" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            python codemod/check_generate_create_sync.py --fix >> $GITHUB_STEP_SUMMARY
+          fi
+      - name: comment on PR
+        if: github.event_name == 'pull_request' && steps.sync-check.outputs.in_sync == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { execSync } = require('child_process');
+            const output = execSync('python codemod/check_generate_create_sync.py --fix').toString();
+            
+            const body = `## ⚠️ Parameter Sync Check Failed
+            
+            The \`generate()\` methods are missing parameters that exist in \`create()\` methods.
+            
+            <details>
+            <summary>Details</summary>
+            
+            \`\`\`
+            ${output}
+            \`\`\`
+            
+            </details>
+            
+            **How to fix:** Add the missing parameters to the \`generate()\` method signature and forward them to \`self.create()\`.
+            `;
+            
+            // Check if we already commented
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const existingComment = comments.find(c => 
+              c.user.type === 'Bot' && c.body.includes('Parameter Sync Check Failed')
+            );
+            
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body: body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: body
+              });
+            }
+      - name: fail if not in sync
+        if: steps.sync-check.outputs.in_sync == 'false'
+        run: exit 1
