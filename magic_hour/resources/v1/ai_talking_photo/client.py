@@ -30,6 +30,9 @@ class AiTalkingPhotoClient:
         assets: params.V1AiTalkingPhotoGenerateBodyAssets,
         end_seconds: float,
         start_seconds: float,
+        max_resolution: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -47,6 +50,7 @@ class AiTalkingPhotoClient:
         Create a talking photo from an image and audio or text input. Each generation costs credits.
 
         Args:
+            max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
             name: The name of image. This value is mainly used for your own identification of the image.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
@@ -88,6 +92,7 @@ class AiTalkingPhotoClient:
             assets=assets,
             end_seconds=end_seconds,
             start_seconds=start_seconds,
+            max_resolution=max_resolution,
             name=name,
             style=style,
             request_options=request_options,
@@ -189,6 +194,9 @@ class AsyncAiTalkingPhotoClient:
         assets: params.V1AiTalkingPhotoGenerateBodyAssets,
         end_seconds: float,
         start_seconds: float,
+        max_resolution: typing.Union[
+            typing.Optional[int], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -206,6 +214,7 @@ class AsyncAiTalkingPhotoClient:
         Create a talking photo from an image and audio or text input. Each generation costs credits.
 
         Args:
+            max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
             name: The name of image. This value is mainly used for your own identification of the image.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
@@ -247,6 +256,7 @@ class AsyncAiTalkingPhotoClient:
             assets=assets,
             end_seconds=end_seconds,
             start_seconds=start_seconds,
+            max_resolution=max_resolution,
             name=name,
             style=style,
             request_options=request_options,
