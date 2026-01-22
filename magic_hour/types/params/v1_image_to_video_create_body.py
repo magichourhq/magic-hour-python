@@ -19,12 +19,21 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
 
     assets: typing_extensions.Required[V1ImageToVideoCreateBodyAssets]
     """
-    Provide the assets for image-to-video.
+    Provide the assets for image-to-video. Sora 2 only supports images with an aspect ratio of `9:16` or `16:9`.
     """
 
     end_seconds: typing_extensions.Required[float]
     """
     The total duration of the output video in seconds.
+    
+    Supported durations depend on the chosen model:
+    * **Default**: 5-60 seconds (either 5 or 10 for 480p).
+    * **Seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+    * **Kling 2.5 Audio**: 5, 10
+    * **Sora 2**: 4, 8, 12, 24, 36, 48, 60
+    * **Veo 3.1 Audio**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+    * **Veo 3.1**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+    * **Kling 1.6**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
     """
 
     height: typing_extensions.NotRequired[typing.Optional[int]]
@@ -38,6 +47,28 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     This field is retained only for backward compatibility and will be removed in a future release.
     """
 
+    model: typing_extensions.NotRequired[
+        typing_extensions.Literal[
+            "default",
+            "kling-1.6",
+            "kling-2.5-audio",
+            "seedance",
+            "sora-2",
+            "veo3.1",
+            "veo3.1-audio",
+        ]
+    ]
+    """
+    The AI model to use for video generation.
+    * `default`: Our recommended model for general use (Kling 2.5 Audio). Note: For backward compatibility, if you use default and end_seconds > 10, we'll fall back to Kling 1.6.
+    * `seedance`: Great for fast iteration and start/end frame
+    * `kling-2.5-audio`: Great for motion, action, and camera control
+    * `sora-2`: Great for story-telling, dialogue & creativity
+    * `veo3.1-audio`: Great for dialogue + SFX generated natively
+    * `veo3.1`: Great for realism, polish, & prompt adherence
+    * `kling-1.6`: Great for dependable clips with smooth motion
+    """
+
     name: typing_extensions.NotRequired[str]
     """
     Give your video a custom name for easy identification.
@@ -49,12 +80,13 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     """
     Controls the output video resolution. Defaults to `720p` if not specified.
     
-    480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
-    
-    **Options:**
-    - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
-    - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
-    - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
+    * **Default**: Supports `480p`, `720p`, and `1080p`.
+    * **Seedance**: Supports `480p`, `720p`, `1080p`.
+    * **Kling 2.5 Audio**: Supports `720p`, `1080p`.
+    * **Sora 2**: Supports `720p`.
+    * **Veo 3.1 Audio**: Supports `720p`, `1080p`.
+    * **Veo 3.1**: Supports `720p`, `1080p`.
+    * **Kling 1.6**: Supports `720p`, `1080p`.
     """
 
     style: typing_extensions.NotRequired[V1ImageToVideoCreateBodyStyle]
@@ -91,6 +123,17 @@ class _SerializerV1ImageToVideoCreateBody(pydantic.BaseModel):
         alias="end_seconds",
     )
     height: typing.Optional[int] = pydantic.Field(alias="height", default=None)
+    model: typing.Optional[
+        typing_extensions.Literal[
+            "default",
+            "kling-1.6",
+            "kling-2.5-audio",
+            "seedance",
+            "sora-2",
+            "veo3.1",
+            "veo3.1-audio",
+        ]
+    ] = pydantic.Field(alias="model", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
         pydantic.Field(alias="resolution", default=None)
