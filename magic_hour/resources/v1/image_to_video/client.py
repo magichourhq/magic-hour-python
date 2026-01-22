@@ -33,6 +33,20 @@ class ImageToVideoClient:
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "kling-1.6",
+                    "kling-2.5-audio",
+                    "seedance",
+                    "sora-2",
+                    "veo3.1",
+                    "veo3.1-audio",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -95,6 +109,7 @@ class ImageToVideoClient:
             assets=assets,
             end_seconds=end_seconds,
             height=height,
+            model=model,
             name=name,
             resolution=resolution,
             style=style,

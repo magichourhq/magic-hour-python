@@ -104,6 +104,8 @@ class TextToVideoClient:
             style=style,
             name=name,
             resolution=resolution,
+            model=model,
+            aspect_ratio=aspect_ratio,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")
