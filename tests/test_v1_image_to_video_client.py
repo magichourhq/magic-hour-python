@@ -30,6 +30,7 @@ def test_create_200_success_all_params() -> None:
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
         height=123,
+        model="sora-2",
         name="My Image To Video video",
         resolution="720p",
         style={
@@ -74,6 +75,7 @@ async def test_await_create_200_success_all_params() -> None:
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
         height=123,
+        model="sora-2",
         name="My Image To Video video",
         resolution="720p",
         style={

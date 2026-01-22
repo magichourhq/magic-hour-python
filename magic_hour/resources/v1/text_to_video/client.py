@@ -99,10 +99,33 @@ class TextToVideoClient:
         self,
         *,
         end_seconds: float,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1TextToVideoCreateBodyStyle,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "kling-1.6",
+                    "kling-2.5-audio",
+                    "seedance",
+                    "sora-2",
+                    "veo3.1",
+                    "veo3.1-audio",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
@@ -139,21 +162,42 @@ class TextToVideoClient:
         POST /v1/text-to-video
 
         Args:
+            aspect_ratio: Determines the aspect ratio of the output video.
+        * **Seedance**: Supports `9:16`, `16:9`, `1:1`.
+        * **Kling 2.5 Audio**: Supports `9:16`, `16:9`, `1:1`.
+        * **Sora 2**: Supports `9:16`, `16:9`.
+        * **Veo 3.1 Audio**: Supports `9:16`, `16:9`.
+        * **Veo 3.1**: Supports `9:16`, `16:9`.
+        * **Kling 1.6**: Supports `9:16`, `16:9`, `1:1`.
+            model: The AI model to use for video generation.
+        * `default`: Our recommended model for general use (Kling 2.5 Audio). Note: For backward compatibility, if you use default and end_seconds > 10, we'll fall back to Kling 1.6.
+        * `seedance`: Great for fast iteration and start/end frame
+        * `kling-2.5-audio`: Great for motion, action, and camera control
+        * `sora-2`: Great for story-telling, dialogue & creativity
+        * `veo3.1-audio`: Great for dialogue + SFX generated natively
+        * `veo3.1`: Great for realism, polish, & prompt adherence
+        * `kling-1.6`: Great for dependable clips with smooth motion
             name: Give your video a custom name for easy identification.
+            orientation: Deprecated. Use `aspect_ratio` instead.
             resolution: Controls the output video resolution. Defaults to `720p` if not specified.
 
-        480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
-
-        **Options:**
-        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
-        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
-        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
+        * **Default**: Supports `480p`, `720p`, and `1080p`.
+        * **Seedance**: Supports `480p`, `720p`, `1080p`.
+        * **Kling 2.5 Audio**: Supports `720p`, `1080p`.
+        * **Sora 2**: Supports `720p`.
+        * **Veo 3.1 Audio**: Supports `720p`, `1080p`.
+        * **Veo 3.1**: Supports `720p`, `1080p`.
+        * **Kling 1.6**: Supports `720p`, `1080p`.
             end_seconds: The total duration of the output video in seconds.
 
-        The value must be greater than or equal to 5 seconds and less than or equal to 60 seconds.
-
-        Note: For 480p resolution, the value must be either 5 or 10.
-            orientation: Determines the orientation of the output video
+        Supported durations depend on the chosen model:
+        * **Default**: 5-60 seconds (either 5 or 10 for 480p).
+        * **Seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+        * **Kling 2.5 Audio**: 5, 10
+        * **Sora 2**: 4, 8, 12, 24, 36, 48, 60
+        * **Veo 3.1 Audio**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+        * **Veo 3.1**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+        * **Kling 1.6**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
             style: V1TextToVideoCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -168,19 +212,23 @@ class TextToVideoClient:
         ```py
         client.v1.text_to_video.create(
             end_seconds=5.0,
-            orientation="landscape",
             style={"prompt": "a dog running"},
+            aspect_ratio="16:9",
+            model="sora-2",
             name="My Text To Video video",
+            orientation="landscape",
             resolution="720p",
         )
         ```
         """
         _json = to_encodable(
             item={
+                "aspect_ratio": aspect_ratio,
+                "model": model,
                 "name": name,
+                "orientation": orientation,
                 "resolution": resolution,
                 "end_seconds": end_seconds,
-                "orientation": orientation,
                 "style": style,
             },
             dump_with=params._SerializerV1TextToVideoCreateBody,
@@ -274,10 +322,33 @@ class AsyncTextToVideoClient:
         self,
         *,
         end_seconds: float,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1TextToVideoCreateBodyStyle,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "kling-1.6",
+                    "kling-2.5-audio",
+                    "seedance",
+                    "sora-2",
+                    "veo3.1",
+                    "veo3.1-audio",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
@@ -314,21 +385,42 @@ class AsyncTextToVideoClient:
         POST /v1/text-to-video
 
         Args:
+            aspect_ratio: Determines the aspect ratio of the output video.
+        * **Seedance**: Supports `9:16`, `16:9`, `1:1`.
+        * **Kling 2.5 Audio**: Supports `9:16`, `16:9`, `1:1`.
+        * **Sora 2**: Supports `9:16`, `16:9`.
+        * **Veo 3.1 Audio**: Supports `9:16`, `16:9`.
+        * **Veo 3.1**: Supports `9:16`, `16:9`.
+        * **Kling 1.6**: Supports `9:16`, `16:9`, `1:1`.
+            model: The AI model to use for video generation.
+        * `default`: Our recommended model for general use (Kling 2.5 Audio). Note: For backward compatibility, if you use default and end_seconds > 10, we'll fall back to Kling 1.6.
+        * `seedance`: Great for fast iteration and start/end frame
+        * `kling-2.5-audio`: Great for motion, action, and camera control
+        * `sora-2`: Great for story-telling, dialogue & creativity
+        * `veo3.1-audio`: Great for dialogue + SFX generated natively
+        * `veo3.1`: Great for realism, polish, & prompt adherence
+        * `kling-1.6`: Great for dependable clips with smooth motion
             name: Give your video a custom name for easy identification.
+            orientation: Deprecated. Use `aspect_ratio` instead.
             resolution: Controls the output video resolution. Defaults to `720p` if not specified.
 
-        480p and 720p are available on Creator, Pro, or Business tiers. However, 1080p require Pro or Business tier.
-
-        **Options:**
-        - `480p` - Supports only 5 or 10 second videos. Output: 24fps. Cost: 120 credits per 5 seconds.
-        - `720p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 300 credits per 5 seconds.
-        - `1080p` - Supports videos between 5-60 seconds. Output: 30fps. Cost: 600 credits per 5 seconds.
+        * **Default**: Supports `480p`, `720p`, and `1080p`.
+        * **Seedance**: Supports `480p`, `720p`, `1080p`.
+        * **Kling 2.5 Audio**: Supports `720p`, `1080p`.
+        * **Sora 2**: Supports `720p`.
+        * **Veo 3.1 Audio**: Supports `720p`, `1080p`.
+        * **Veo 3.1**: Supports `720p`, `1080p`.
+        * **Kling 1.6**: Supports `720p`, `1080p`.
             end_seconds: The total duration of the output video in seconds.
 
-        The value must be greater than or equal to 5 seconds and less than or equal to 60 seconds.
-
-        Note: For 480p resolution, the value must be either 5 or 10.
-            orientation: Determines the orientation of the output video
+        Supported durations depend on the chosen model:
+        * **Default**: 5-60 seconds (either 5 or 10 for 480p).
+        * **Seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+        * **Kling 2.5 Audio**: 5, 10
+        * **Sora 2**: 4, 8, 12, 24, 36, 48, 60
+        * **Veo 3.1 Audio**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+        * **Veo 3.1**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+        * **Kling 1.6**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
             style: V1TextToVideoCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -343,19 +435,23 @@ class AsyncTextToVideoClient:
         ```py
         await client.v1.text_to_video.create(
             end_seconds=5.0,
-            orientation="landscape",
             style={"prompt": "a dog running"},
+            aspect_ratio="16:9",
+            model="sora-2",
             name="My Text To Video video",
+            orientation="landscape",
             resolution="720p",
         )
         ```
         """
         _json = to_encodable(
             item={
+                "aspect_ratio": aspect_ratio,
+                "model": model,
                 "name": name,
+                "orientation": orientation,
                 "resolution": resolution,
                 "end_seconds": end_seconds,
-                "orientation": orientation,
                 "style": style,
             },
             dump_with=params._SerializerV1TextToVideoCreateBody,

@@ -62,7 +62,7 @@ res = await client.v1.ai_image_editor.generate(
 
 ### AI Image Editor <a name="create"></a>
 
-Edit images with AI. Each edit costs 10 credits.
+Edit images with AI. Each edit costs 50 credits.
 
 **API Endpoint**: `POST /v1/ai-image-editor`
 
@@ -121,5 +121,5 @@ res = await client.v1.ai_image_editor.create(
 ##### Example
 
 ```python
-{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}
+{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}
 ```

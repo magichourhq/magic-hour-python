@@ -4,7 +4,7 @@ import typing_extensions
 
 class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     """
-    Provide the assets for image-to-video.
+    Provide the assets for image-to-video. Sora 2 only supports images with an aspect ratio of `9:16` or `16:9`.
     """
 
     image_file_path: typing_extensions.Required[str]

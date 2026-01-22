@@ -28,9 +28,11 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.text_to_video.create(
         end_seconds=5.0,
-        orientation="landscape",
         style={"prompt": "a dog running", "quality_mode": "quick"},
+        aspect_ratio="16:9",
+        model="sora-2",
         name="My Text To Video video",
+        orientation="landscape",
         resolution="720p",
     )
     try:
@@ -66,9 +68,11 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.text_to_video.create(
         end_seconds=5.0,
-        orientation="landscape",
         style={"prompt": "a dog running", "quality_mode": "quick"},
+        aspect_ratio="16:9",
+        model="sora-2",
         name="My Text To Video video",
+        orientation="landscape",
         resolution="720p",
     )
     try:
