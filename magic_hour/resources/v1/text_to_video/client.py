@@ -28,7 +28,6 @@ class TextToVideoClient:
         self,
         *,
         end_seconds: float,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1TextToVideoCreateBodyStyle,
         aspect_ratio: typing.Union[
             typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
@@ -50,6 +49,12 @@ class TextToVideoClient:
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
