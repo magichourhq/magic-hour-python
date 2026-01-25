@@ -30,7 +30,7 @@ def test_create_200_success_all_params() -> None:
         image_count=1,
         style={
             "prompt": "Cool image",
-            "quality_mode": "standard",
+            "quality_mode": "pro",
             "tool": "ai-anime-generator",
         },
         aspect_ratio="1:1",
@@ -74,7 +74,7 @@ async def test_await_create_200_success_all_params() -> None:
         image_count=1,
         style={
             "prompt": "Cool image",
-            "quality_mode": "standard",
+            "quality_mode": "pro",
             "tool": "ai-anime-generator",
         },
         aspect_ratio="1:1",
