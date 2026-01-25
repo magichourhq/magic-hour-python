@@ -33,9 +33,14 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_generator.generate(
     image_count=1,
-    orientation="landscape",
-    style={"prompt": "Cool image", "tool": "ai-anime-generator"},
-    name="Ai Image image",
+    style={
+        "prompt": "Cool image",
+        "tool": "ai-anime-generator",
+    },
+    aspect_ratio="1:1",
+    model="default",
+    name="My Ai Image image",
+    resolution="auto",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="outputs"
@@ -94,13 +99,11 @@ res = client.v1.ai_image_generator.create(
     image_count=1,
     style={
         "prompt": "Cool image",
-        "quality_mode": "standard",
         "tool": "ai-anime-generator",
     },
     aspect_ratio="1:1",
     model="default",
     name="My Ai Image image",
-    orientation="landscape",
     resolution="auto",
 )
 ```
