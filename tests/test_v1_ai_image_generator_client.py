@@ -28,13 +28,16 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_image_generator.create(
         image_count=1,
-        orientation="landscape",
         style={
             "prompt": "Cool image",
             "quality_mode": "standard",
             "tool": "ai-anime-generator",
         },
+        aspect_ratio="1:1",
+        model="default",
         name="My Ai Image image",
+        orientation="landscape",
+        resolution="auto",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
@@ -69,13 +72,16 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_image_generator.create(
         image_count=1,
-        orientation="landscape",
         style={
             "prompt": "Cool image",
             "quality_mode": "standard",
             "tool": "ai-anime-generator",
         },
+        aspect_ratio="1:1",
+        model="default",
         name="My Ai Image image",
+        orientation="landscape",
+        resolution="auto",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(

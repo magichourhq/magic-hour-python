@@ -93,24 +93,81 @@ class AiImageGeneratorClient:
         self,
         *,
         image_count: int,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1AiImageGeneratorCreateBodyStyle,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "flux-schnell",
+                    "nano-banana-pro",
+                    "seedream",
+                    "z-image-turbo",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageGeneratorCreateResponse:
         """
         AI Image Generator
 
-        Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
+        Create an AI image with advanced model selection and quality controls.
 
         POST /v1/ai-image-generator
 
         Args:
+            aspect_ratio: The aspect ratio of the output image(s). If not specified, defaults to `1:1` (square).
+            model: The AI model to use for image generation. Each model has different capabilities and costs.
+
+        **Models:**
+        - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
+        - `flux-schnell` - 5 credits/image
+          - Supported resolutions: auto
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `z-image-turbo` - 5 credits/image
+          - Supported resolutions: auto, 2k
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `seedream` - 30 credits/image
+          - Supported resolutions: auto, 2k, 4k
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `nano-banana-pro` - 150 credits/image
+          - Supported resolutions: auto
+          - Available for tiers: creator, pro, business
+          - Image count allowed: 1, 4, 9, 16
+
             name: Give your image a custom name for easy identification.
-            image_count: Number of images to generate.
-            orientation: The orientation of the output image(s).
+            orientation: DEPRECATED: Use `aspect_ratio` instead.
+
+        The orientation of the output image(s). `aspect_ratio` takes precedence when `orientation` if both are provided.
+            resolution: Maximum resolution for the generated image.
+
+        **Options:**
+        - `auto` - Automatic resolution (all tiers, default)
+        - `2k` - Up to 2048px (requires Pro or Business tier)
+        - `4k` - Up to 4096px (requires Business tier)
+
+        Note: Resolution availability depends on the model and your subscription tier. See `model` field for which resolutions each model supports. Defaults to `auto` if not specified.
+            image_count: Number of images to generate. Maximum varies by model.
             style: The art style to use for image generation.
             request_options: Additional options to customize the HTTP request
 
@@ -125,21 +182,27 @@ class AiImageGeneratorClient:
         ```py
         client.v1.ai_image_generator.create(
             image_count=1,
-            orientation="landscape",
             style={
                 "prompt": "Cool image",
                 "quality_mode": "standard",
                 "tool": "ai-anime-generator",
             },
+            aspect_ratio="1:1",
+            model="default",
             name="My Ai Image image",
+            orientation="landscape",
+            resolution="auto",
         )
         ```
         """
         _json = to_encodable(
             item={
+                "aspect_ratio": aspect_ratio,
+                "model": model,
                 "name": name,
-                "image_count": image_count,
                 "orientation": orientation,
+                "resolution": resolution,
+                "image_count": image_count,
                 "style": style,
             },
             dump_with=params._SerializerV1AiImageGeneratorCreateBody,
@@ -227,24 +290,81 @@ class AsyncAiImageGeneratorClient:
         self,
         *,
         image_count: int,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1AiImageGeneratorCreateBodyStyle,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "flux-schnell",
+                    "nano-banana-pro",
+                    "seedream",
+                    "z-image-turbo",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageGeneratorCreateResponse:
         """
         AI Image Generator
 
-        Create an AI image. Each standard image costs 5 credits. Pro quality images cost 30 credits.
+        Create an AI image with advanced model selection and quality controls.
 
         POST /v1/ai-image-generator
 
         Args:
+            aspect_ratio: The aspect ratio of the output image(s). If not specified, defaults to `1:1` (square).
+            model: The AI model to use for image generation. Each model has different capabilities and costs.
+
+        **Models:**
+        - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
+        - `flux-schnell` - 5 credits/image
+          - Supported resolutions: auto
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `z-image-turbo` - 5 credits/image
+          - Supported resolutions: auto, 2k
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `seedream` - 30 credits/image
+          - Supported resolutions: auto, 2k, 4k
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `nano-banana-pro` - 150 credits/image
+          - Supported resolutions: auto
+          - Available for tiers: creator, pro, business
+          - Image count allowed: 1, 4, 9, 16
+
             name: Give your image a custom name for easy identification.
-            image_count: Number of images to generate.
-            orientation: The orientation of the output image(s).
+            orientation: DEPRECATED: Use `aspect_ratio` instead.
+
+        The orientation of the output image(s). `aspect_ratio` takes precedence when `orientation` if both are provided.
+            resolution: Maximum resolution for the generated image.
+
+        **Options:**
+        - `auto` - Automatic resolution (all tiers, default)
+        - `2k` - Up to 2048px (requires Pro or Business tier)
+        - `4k` - Up to 4096px (requires Business tier)
+
+        Note: Resolution availability depends on the model and your subscription tier. See `model` field for which resolutions each model supports. Defaults to `auto` if not specified.
+            image_count: Number of images to generate. Maximum varies by model.
             style: The art style to use for image generation.
             request_options: Additional options to customize the HTTP request
 
@@ -259,21 +379,27 @@ class AsyncAiImageGeneratorClient:
         ```py
         await client.v1.ai_image_generator.create(
             image_count=1,
-            orientation="landscape",
             style={
                 "prompt": "Cool image",
                 "quality_mode": "standard",
                 "tool": "ai-anime-generator",
             },
+            aspect_ratio="1:1",
+            model="default",
             name="My Ai Image image",
+            orientation="landscape",
+            resolution="auto",
         )
         ```
         """
         _json = to_encodable(
             item={
+                "aspect_ratio": aspect_ratio,
+                "model": model,
                 "name": name,
-                "image_count": image_count,
                 "orientation": orientation,
+                "resolution": resolution,
+                "image_count": image_count,
                 "style": style,
             },
             dump_with=params._SerializerV1AiImageGeneratorCreateBody,

@@ -252,7 +252,7 @@ class ImageToVideoClient:
         client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            model="sora-2",
+            model="kling-2.5-audio",
             name="My Image To Video video",
             resolution="720p",
         )
@@ -497,7 +497,7 @@ class AsyncImageToVideoClient:
         await client.v1.image_to_video.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             end_seconds=5.0,
-            model="sora-2",
+            model="kling-2.5-audio",
             name="My Image To Video video",
             resolution="720p",
         )
