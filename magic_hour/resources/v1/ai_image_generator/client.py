@@ -28,10 +28,35 @@ class AiImageGeneratorClient:
         self,
         *,
         image_count: int,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1AiImageGeneratorCreateBodyStyle,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "flux-schnell",
+                    "nano-banana-pro",
+                    "seedream",
+                    "z-image-turbo",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -72,8 +97,11 @@ class AiImageGeneratorClient:
 
         create_response = self.create(
             image_count=image_count,
-            orientation=orientation,
             style=style,
+            aspect_ratio=aspect_ratio,
+            model=model,
+            orientation=orientation,
+            resolution=resolution,
             name=name,
             request_options=request_options,
         )
