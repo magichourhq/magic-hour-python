@@ -211,15 +211,10 @@ class AiImageGeneratorClient:
         ```py
         client.v1.ai_image_generator.create(
             image_count=1,
-            style={
-                "prompt": "Cool image",
-                "quality_mode": "standard",
-                "tool": "ai-anime-generator",
-            },
+            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             aspect_ratio="1:1",
             model="default",
             name="My Ai Image image",
-            orientation="landscape",
             resolution="auto",
         )
         ```
@@ -408,15 +403,10 @@ class AsyncAiImageGeneratorClient:
         ```py
         await client.v1.ai_image_generator.create(
             image_count=1,
-            style={
-                "prompt": "Cool image",
-                "quality_mode": "standard",
-                "tool": "ai-anime-generator",
-            },
+            style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             aspect_ratio="1:1",
             model="default",
             name="My Ai Image image",
-            orientation="landscape",
             resolution="auto",
         )
         ```
