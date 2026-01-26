@@ -35,7 +35,7 @@ def test_create_200_success_all_params() -> None:
         start_seconds=0.0,
         max_resolution=1024,
         name="My Talking Photo image",
-        style={"generation_mode": "pro", "intensity": 1.5},
+        style={"generation_mode": "realistic", "intensity": 123.45, "prompt": "string"},
     )
     try:
         pydantic.TypeAdapter(models.V1AiTalkingPhotoCreateResponse).validate_python(
@@ -77,7 +77,7 @@ async def test_await_create_200_success_all_params() -> None:
         start_seconds=0.0,
         max_resolution=1024,
         name="My Talking Photo image",
-        style={"generation_mode": "pro", "intensity": 1.5},
+        style={"generation_mode": "realistic", "intensity": 123.45, "prompt": "string"},
     )
     try:
         pydantic.TypeAdapter(models.V1AiTalkingPhotoCreateResponse).validate_python(
