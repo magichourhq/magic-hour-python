@@ -75,7 +75,7 @@ def _get_file_type_and_extension(file_path: str):
     file_type: typing.Union[
         typing_extensions.Literal["audio", "image", "video"], None
     ] = None
-    mime, _ = mimetypes.guess_type(file_path)
+    mime, _ = mimetypes.guess_type(file_path, strict=False)
     if mime:
         if mime.startswith("video/"):
             file_type = "video"
