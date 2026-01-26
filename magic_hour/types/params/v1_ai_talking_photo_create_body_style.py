@@ -9,15 +9,20 @@ class V1AiTalkingPhotoCreateBodyStyle(typing_extensions.TypedDict):
     """
 
     generation_mode: typing_extensions.NotRequired[
-        typing_extensions.Literal["expressive", "pro", "stable", "standard"]
+        typing_extensions.Literal[
+            "expressive", "pro", "prompted", "realistic", "stable", "standard"
+        ]
     ]
     """
     Controls overall motion style.
-    * `pro` -  Higher fidelity, realistic detail, accurate lip sync, and faster generation.
-    * `standard` -  More expressive motion, but lower visual fidelity.
+    * `realistic` - Maintains likeness well, high quality, and reliable.
+    * `prompted` - Slightly lower likeness; allows option to prompt scene.
     
-    * `expressive` - More motion and facial expressiveness; may introduce visual artifacts. (Deprecated: passing this value will be treated as `standard`)
-    * `stable` -  Reduced motion for cleaner output; may result in minimal animation. (Deprecated: passing this value will be treated as `pro`)
+    **Deprecated values (maintained for backward compatibility):**
+    * `pro` - Deprecated: use `realistic`
+    * `standard` - Deprecated: use `prompted`
+    * `stable` - Deprecated: use `realistic`
+    * `expressive` - Deprecated: use `prompted`
     """
 
     intensity: typing_extensions.NotRequired[float]
@@ -25,6 +30,12 @@ class V1AiTalkingPhotoCreateBodyStyle(typing_extensions.TypedDict):
     Note: this value is only applicable when generation_mode is `expressive`. The value can include up to 2 decimal places.
     * Lower values yield more stability but can suppress mouth movement.
     * Higher values increase motion and expressiveness, with a higher risk of distortion.
+    """
+
+    prompt: typing_extensions.NotRequired[str]
+    """
+    A text prompt to guide the generation. Only applicable when generation_mode is `prompted`.
+    This field is ignored for other modes.
     """
 
 
@@ -39,6 +50,9 @@ class _SerializerV1AiTalkingPhotoCreateBodyStyle(pydantic.BaseModel):
     )
 
     generation_mode: typing.Optional[
-        typing_extensions.Literal["expressive", "pro", "stable", "standard"]
+        typing_extensions.Literal[
+            "expressive", "pro", "prompted", "realistic", "stable", "standard"
+        ]
     ] = pydantic.Field(alias="generation_mode", default=None)
     intensity: typing.Optional[float] = pydantic.Field(alias="intensity", default=None)
+    prompt: typing.Optional[str] = pydantic.Field(alias="prompt", default=None)
