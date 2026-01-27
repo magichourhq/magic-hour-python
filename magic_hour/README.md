@@ -10,7 +10,6 @@
 - [ai_image_generator](resources/v1/ai_image_generator/README.md) - ai_image_generator
 - [ai_image_upscaler](resources/v1/ai_image_upscaler/README.md) - ai_image_upscaler
 - [ai_meme_generator](resources/v1/ai_meme_generator/README.md) - ai_meme_generator
-- [ai_photo_editor](resources/v1/ai_photo_editor/README.md) - ai_photo_editor
 - [ai_qr_code_generator](resources/v1/ai_qr_code_generator/README.md) - ai_qr_code_generator
 - [ai_talking_photo](resources/v1/ai_talking_photo/README.md) - ai_talking_photo
 - [ai_voice_cloner](resources/v1/ai_voice_cloner/README.md) - ai_voice_cloner

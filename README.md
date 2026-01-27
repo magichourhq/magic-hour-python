@@ -203,11 +203,6 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/ai_meme_generator/README.md#create) - AI Meme Generator
 - [generate](magic_hour/resources/v1/ai_meme_generator/README.md#generate) - Ai Meme Generator Generate Workflow
 
-### [v1.ai_photo_editor](magic_hour/resources/v1/ai_photo_editor/README.md)
-
-- [create](magic_hour/resources/v1/ai_photo_editor/README.md#create) - AI Photo Editor
-- [generate](magic_hour/resources/v1/ai_photo_editor/README.md#generate) - Ai Photo Editor Generate Workflow
-
 ### [v1.ai_qr_code_generator](magic_hour/resources/v1/ai_qr_code_generator/README.md)
 
 - [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - AI QR Code Generator
