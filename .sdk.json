@@ -1,5 +1,5 @@
 {
-  "id": "54ee7c95-18a5-47bf-baf7-a48de591b95c",
+  "id": "945d52f1-a2be-474b-93f0-b7ddb677f031",
   "tracked_paths": [
     {
       "editable": true,
@@ -124,18 +124,6 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/ai_meme_generator/client.py"
-    },
-    {
-      "editable": true,
-      "path": "magic_hour/resources/v1/ai_photo_editor/README.md"
-    },
-    {
-      "editable": true,
-      "path": "magic_hour/resources/v1/ai_photo_editor/__init__.py"
-    },
-    {
-      "editable": true,
-      "path": "magic_hour/resources/v1/ai_photo_editor/client.py"
     },
     {
       "editable": true,
@@ -419,10 +407,6 @@
     },
     {
       "editable": false,
-      "path": "magic_hour/types/models/v1_ai_photo_editor_create_response.py"
-    },
-    {
-      "editable": false,
       "path": "magic_hour/types/models/v1_ai_qr_code_generator_create_response.py"
     },
     {
@@ -620,18 +604,6 @@
     {
       "editable": false,
       "path": "magic_hour/types/params/v1_ai_meme_generator_create_body_style.py"
-    },
-    {
-      "editable": false,
-      "path": "magic_hour/types/params/v1_ai_photo_editor_create_body.py"
-    },
-    {
-      "editable": false,
-      "path": "magic_hour/types/params/v1_ai_photo_editor_create_body_assets.py"
-    },
-    {
-      "editable": false,
-      "path": "magic_hour/types/params/v1_ai_photo_editor_create_body_style.py"
     },
     {
       "editable": false,
@@ -840,10 +812,6 @@
     {
       "editable": false,
       "path": "tests/test_v1_ai_meme_generator_client.py"
-    },
-    {
-      "editable": false,
-      "path": "tests/test_v1_ai_photo_editor_client.py"
     },
     {
       "editable": false,
