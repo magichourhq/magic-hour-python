@@ -30,6 +30,30 @@ class AiImageEditorClient:
         *,
         assets: params.V1AiImageEditorGenerateBodyAssets,
         style: params.V1AiImageEditorCreateBodyStyle,
+        aspect_ratio: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "16:9", "1:1", "2:3", "3:2", "4:3", "4:5", "9:16", "auto"
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        image_count: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "nano-banana",
+                    "nano-banana-pro",
+                    "qwen-edit",
+                    "seedream-v4",
+                    "seedream-v4.5",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -82,7 +106,13 @@ class AiImageEditorClient:
                 ]
 
         create_response = self.create(
-            assets=assets, style=style, name=name, request_options=request_options
+            assets=assets,
+            style=style,
+            aspect_ratio=aspect_ratio,
+            image_count=image_count,
+            model=model,
+            name=name,
+            request_options=request_options,
         )
         logger.info(f"AI Image Editor response: {create_response}")
 
