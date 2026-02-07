@@ -63,7 +63,7 @@ class FaceSwapPhotoClient:
             name="Face Swap image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="./outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -206,7 +206,7 @@ class AsyncFaceSwapPhotoClient:
             name="Face Swap image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="./outputs/",
+            download_directory=".",
         )
         ```
         """

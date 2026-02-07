@@ -28,7 +28,7 @@ res = client.v1.video_projects.check_result(
   id="cuid-example",
   wait_for_completion=True,
   download_outputs=True,
-  download_directory="outputs",
+  download_directory=".",
 )
 ```
 
@@ -43,7 +43,7 @@ res = await client.v1.video_projects.check_result(
   id="cuid-example",
   wait_for_completion=True,
   download_outputs=True,
-  download_directory="outputs",
+  download_directory=".",
 )
 ```
 

@@ -40,7 +40,7 @@ res = client.v1.ai_meme_generator.generate(
     name="My Funny Meme",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -60,7 +60,7 @@ res = await client.v1.ai_meme_generator.generate(
     name="My Funny Meme",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 

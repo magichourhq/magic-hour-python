@@ -37,7 +37,7 @@ res = client.v1.ai_image_editor.generate(
     name="Ai Image Editor image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -54,7 +54,7 @@ res = await client.v1.ai_image_editor.generate(
     name="Ai Image Editor image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -74,7 +74,7 @@ Edit images with AI. Each edit costs 50 credits.
 | `└─ image_file_path`  |    ✗     | Deprecated: Please use `image_file_paths` instead as edits with multiple images are now supported. The image used in the edit. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                                                                                                |
 | `└─ image_file_paths` |    ✗     | The image(s) used in the edit, maximum of 10 images. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.                                                                           | `["api-assets/id/1234.png", "api-assets/id/1235.png"]`                                                                    |
 | `style`               |    ✓     |                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `{"model": "Nano Banana", "prompt": "Give me sunglasses"}`                                                                |
-| `└─ model`            |    ✗     | The AI model to use for image editing. * `Nano Banana` - Precise, realistic edits with consistent results * `Seedream` - Creative, imaginative images with artistic freedom * `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.                                                                                                                       | `"Nano Banana"`                                                                                                           |
+| `└─ model`            |    ✗     | The AI model to use for image editing. _ `Nano Banana` - Precise, realistic edits with consistent results _ `Seedream` - Creative, imaginative images with artistic freedom \* `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.                                                                                                                      | `"Nano Banana"`                                                                                                           |
 | `└─ prompt`           |    ✓     | The prompt used to edit the image.                                                                                                                                                                                                                                                                                                                                                                                                                           | `"Give me sunglasses"`                                                                                                    |
 | `name`                |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                                                                                       | `"My Ai Image Editor image"`                                                                                              |
 

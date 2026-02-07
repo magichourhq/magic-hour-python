@@ -76,7 +76,7 @@ class AiTalkingPhotoClient:
             style={"enhancement": "high"},
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -240,7 +240,7 @@ class AsyncAiTalkingPhotoClient:
             style={"enhancement": "high"},
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

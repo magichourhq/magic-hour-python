@@ -35,7 +35,7 @@ res = client.v1.face_detection.generate(
     assets={"target_file_path": "/path/to/1234.png"}, confidence_score=0.5
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -50,7 +50,7 @@ res = await client.v1.face_detection.generate(
     assets={"target_file_path": "/path/to/1234.png"}, confidence_score=0.5
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -118,7 +118,7 @@ Note: Face detection is free to use for the near future. Pricing may change in t
 | --------------------- | :------: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | `assets`              |    ✓     | Provide the assets for face detection                                                                                                                                                                                                                                                                                                                                                     | `{"target_file_path": "api-assets/id/1234.png"}` |
 | `└─ target_file_path` |    ✓     | This is the image or video where the face will be detected. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                       |
-| `confidence_score`    |    ✗     | Confidence threshold for filtering detected faces. * Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. * Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                             | `0.5`                                            |
+| `confidence_score`    |    ✗     | Confidence threshold for filtering detected faces. _ Higher values (e.g., 0.9) include only faces detected with high certainty, reducing false positives. _ Lower values (e.g., 0.3) include more faces, but may increase the chance of incorrect detections.                                                                                                                             | `0.5`                                            |
 
 #### Synchronous Client
 

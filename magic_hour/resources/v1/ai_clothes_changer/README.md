@@ -40,7 +40,7 @@ res = client.v1.ai_clothes_changer.generate(
     name="Clothes Changer image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs",
+    download_directory=".",
 )
 ```
 
@@ -58,10 +58,9 @@ res = await client.v1.ai_clothes_changer.generate(
         "person_file_path": "/path/to/model.png",
     },
     name="Clothes Changer image",
-    download_directory="outputs",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs",
+    download_directory=".",
 )
 ```
 
@@ -79,7 +78,7 @@ Change outfits in photos in seconds with just a photo reference. Each photo cost
 | ---------------------- | :------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `assets`               |    ✓     | Provide the assets for clothes changer                                                                                                                                                                                                                                                                                                                   | `{"garment_file_path": "api-assets/id/outfit.png", "garment_type": "upper_body", "person_file_path": "api-assets/id/model.png"}` |
 | `└─ garment_file_path` |    ✓     | The image of the outfit. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.   | `"api-assets/id/outfit.png"`                                                                                                     |
-| `└─ garment_type`      |    ✗     | Type of garment to swap. If not provided, swaps the entire outfit. * `upper_body` - for shirts/jackets * `lower_body` - for pants/skirts * `dresses` - for entire outfit (deprecated, use `entire_outfit` instead) * `entire_outfit` - for entire outfit                                                                                                 | `"upper_body"`                                                                                                                   |
+| `└─ garment_type`      |    ✗     | Type of garment to swap. If not provided, swaps the entire outfit. _ `upper_body` - for shirts/jackets _ `lower_body` - for pants/skirts _ `dresses` - for entire outfit (deprecated, use `entire_outfit` instead) _ `entire_outfit` - for entire outfit                                                                                                 | `"upper_body"`                                                                                                                   |
 | `└─ person_file_path`  |    ✓     | The image with the person. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/model.png"`                                                                                                      |
 | `name`                 |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                   | `"My Clothes Changer image"`                                                                                                     |
 

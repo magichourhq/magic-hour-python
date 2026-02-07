@@ -46,7 +46,7 @@ response = client.v1.face_swap_photo.generate(
     name="Face Swap image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="./outputs/",
+    download_directory=".",
 )
 print(f"Project ID: {response.id}")
 print(f"Status: {response.status}")
@@ -70,7 +70,7 @@ response = await client.v1.face_swap_photo.generate(
     name="Face Swap image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="./outputs/",
+    download_directory=".",
 )
 print(f"Project ID: {response.id}")
 print(f"Status: {response.status}")
