@@ -29,7 +29,7 @@ class UploadUrlsClient:
         
         **Valid file extensions per asset type**:
         - video: mp4, m4v, mov, webm
-        - audio: mp3, wav, aac, flac, webm
+        - audio: mp3, wav, aac, flac, webm, m4a
         - image: png, jpg, jpeg, heic, webp, avif, jp2, tiff, bmp
         - gif: gif, webp, webm
         
@@ -96,7 +96,7 @@ class AsyncUploadUrlsClient:
         
         **Valid file extensions per asset type**:
         - video: mp4, m4v, mov, webm
-        - audio: mp3, wav, aac, flac, webm
+        - audio: mp3, wav, aac, flac, webm, m4a
         - image: png, jpg, jpeg, heic, webp, avif, jp2, tiff, bmp
         - gif: gif, webp, webm
         

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "magic_hour"
-version = "0.51.0"
+version = "0.52.0"
 description = "Python SDK for Magic Hour API"
 readme = "README.md"
 authors = []

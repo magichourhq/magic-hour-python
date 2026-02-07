@@ -12,7 +12,7 @@ class V1AiImageEditorCreateBodyStyle(typing_extensions.TypedDict):
         typing_extensions.Literal["Nano Banana", "Seedream", "default"]
     ]
     """
-    The AI model to use for image editing.
+    Deprecated: Please use `model` instead. The AI model to use for image editing.
     * `Nano Banana` - Precise, realistic edits with consistent results
     * `Seedream` - Creative, imaginative images with artistic freedom
     * `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.

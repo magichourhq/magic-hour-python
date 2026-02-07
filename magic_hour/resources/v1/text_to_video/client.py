@@ -216,7 +216,7 @@ class TextToVideoClient:
             end_seconds: The total duration of the output video in seconds.
 
         Supported durations depend on the chosen model:
-        * **Default**: 5-60 seconds (either 5 or 10 for 480p).
+        * **Default**: 5-60 seconds (2-12 seconds for 480p).
         * **Seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
         * **Kling 2.5 Audio**: 5, 10
         * **Sora 2**: 4, 8, 12, 24, 36, 48, 60
@@ -439,7 +439,7 @@ class AsyncTextToVideoClient:
             end_seconds: The total duration of the output video in seconds.
 
         Supported durations depend on the chosen model:
-        * **Default**: 5-60 seconds (either 5 or 10 for 480p).
+        * **Default**: 5-60 seconds (2-12 seconds for 480p).
         * **Seedance**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
         * **Kling 2.5 Audio**: 5, 10
         * **Sora 2**: 4, 8, 12, 24, 36, 48, 60
