@@ -80,7 +80,7 @@ class FaceSwapClient:
             start_seconds=0.0,
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -313,7 +313,7 @@ class AsyncFaceSwapClient:
             start_seconds=0.0,
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

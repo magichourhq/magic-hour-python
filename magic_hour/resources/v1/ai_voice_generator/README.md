@@ -36,7 +36,7 @@ res = client.v1.ai_voice_generator.generate(
     name="Voice Generator audio",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -52,7 +52,7 @@ res = await client.v1.ai_voice_generator.generate(
     name="Voice Generator audio",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 

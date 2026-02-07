@@ -59,7 +59,7 @@ class ImageBackgroundRemoverClient:
             name="Background Removed Image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -176,7 +176,7 @@ class AsyncImageBackgroundRemoverClient:
             name="Background Removed Image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

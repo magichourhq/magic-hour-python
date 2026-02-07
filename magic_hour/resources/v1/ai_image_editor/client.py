@@ -62,7 +62,7 @@ class AiImageEditorClient:
             name="Edited Image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -196,7 +196,7 @@ class AsyncAiImageEditorClient:
             name="Edited Image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

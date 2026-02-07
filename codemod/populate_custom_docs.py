@@ -98,7 +98,7 @@ class CustomDocsPopulator:
         # Add generate-specific parameters
         generate_params = '''wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"'''
+    download_directory="."'''
 
         # Create the new generate function calls
         sync_generate_call = create_sync_params.replace(
@@ -186,7 +186,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
         params.append(f'    name="{config.get("name", "Generated content")}",')
         params.append("    wait_for_completion=True,")
         params.append("    download_outputs=True,")
-        params.append('    download_directory="outputs",')
+        params.append('    download_directory=".",')
 
         params_str = "\n".join(params)
 

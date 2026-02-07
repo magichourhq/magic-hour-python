@@ -63,7 +63,7 @@ class AiClothesChangerClient:
             name="Clothes Changer image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -187,7 +187,7 @@ class AsyncAiClothesChangerClient:
             name="Clothes Changer image",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

@@ -64,7 +64,7 @@ class AiHeadshotGeneratorClient:
             name="Professional Headshot",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -188,7 +188,7 @@ class AsyncAiHeadshotGeneratorClient:
             name="Professional Headshot",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
