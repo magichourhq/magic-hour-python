@@ -35,7 +35,7 @@ res = client.v1.ai_headshot_generator.generate(
     assets={"image_file_path": "/path/to/1234.png"}, name="Ai Headshot image"
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -50,7 +50,7 @@ res = await client.v1.ai_headshot_generator.generate(
     assets={"image_file_path": "/path/to/1234.png"}, name="Ai Headshot image"
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 

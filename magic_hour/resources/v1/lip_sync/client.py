@@ -85,7 +85,7 @@ class LipSyncClient:
             max_fps_limit=12.0,
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -308,7 +308,7 @@ class AsyncLipSyncClient:
             max_fps_limit=12.0,
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

@@ -37,7 +37,7 @@ res = client.v1.ai_image_editor.generate(
     name="Ai Image Editor image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 
@@ -54,7 +54,7 @@ res = await client.v1.ai_image_editor.generate(
     name="Ai Image Editor image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory="outputs"
+    download_directory="."
 )
 ```
 

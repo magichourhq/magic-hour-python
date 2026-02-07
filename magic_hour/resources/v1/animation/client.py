@@ -83,7 +83,7 @@ class AnimationClient:
             width=512,
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -272,7 +272,7 @@ class AsyncAnimationClient:
             width=512,
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """

@@ -59,7 +59,7 @@ class PhotoColorizerClient:
             name="Colorized Photo",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
@@ -173,7 +173,7 @@ class AsyncPhotoColorizerClient:
             name="Colorized Photo",
             wait_for_completion=True,
             download_outputs=True,
-            download_directory="outputs/",
+            download_directory=".",
         )
         ```
         """
