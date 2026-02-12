@@ -30,6 +30,9 @@ class ImageToVideoClient:
         *,
         assets: params.V1ImageToVideoGenerateBodyAssets,
         end_seconds: float,
+        audio: typing.Union[
+            typing.Optional[bool], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -108,6 +111,7 @@ class ImageToVideoClient:
         create_response = self.create(
             assets=assets,
             end_seconds=end_seconds,
+            audio=audio,
             height=height,
             model=model,
             name=name,
