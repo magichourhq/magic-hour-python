@@ -28,9 +28,6 @@ class TextToVideoClient:
         self,
         *,
         end_seconds: float,
-        audio: typing.Union[
-            typing.Optional[bool], type_utils.NotGiven
-        ] = type_utils.NOT_GIVEN,
         style: params.V1TextToVideoCreateBodyStyle,
         aspect_ratio: typing.Union[
             typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
@@ -104,7 +101,6 @@ class TextToVideoClient:
         create_response = self.create(
             end_seconds=end_seconds,
             orientation=orientation,
-            audio=audio,
             style=style,
             name=name,
             resolution=resolution,
