@@ -306,6 +306,20 @@ class AsyncImageToVideoClient:
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "kling-1.6",
+                    "kling-2.5-audio",
+                    "seedance",
+                    "sora-2",
+                    "veo3.1",
+                    "veo3.1-audio",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -359,6 +373,7 @@ class AsyncImageToVideoClient:
             resolution=resolution,
             style=style,
             width=width,
+            model=model,
             request_options=request_options,
         )
         logger.info(f"Image-to-Video response: {create_response}")

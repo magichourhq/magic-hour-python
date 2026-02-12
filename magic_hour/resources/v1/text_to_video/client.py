@@ -285,6 +285,24 @@ class AsyncTextToVideoClient:
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "kling-1.6",
+                    "kling-2.5-audio",
+                    "seedance",
+                    "sora-2",
+                    "veo3.1",
+                    "veo3.1-audio",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -329,6 +347,8 @@ class AsyncTextToVideoClient:
             style=style,
             name=name,
             resolution=resolution,
+            aspect_ratio=aspect_ratio,
+            model=model,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")
