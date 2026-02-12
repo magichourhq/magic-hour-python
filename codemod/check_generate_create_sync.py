@@ -4,8 +4,7 @@ Script to check that generate() and create() methods have matching parameters.
 
 WHAT IT DOES:
 - Finds all client files with both generate() and create() methods
-- Checks both sync and async client classes within each file
-- Compares parameters between the two methods for each client type
+- Compares parameters between the two methods
 - Reports any parameters in create() that are missing from generate()
 - Ignores parameters specific to generate() (wait_for_completion, download_outputs, etc.)
 - Ignores 'assets' parameter (handled differently in generate vs create)
@@ -45,28 +44,13 @@ IGNORED_PARAMS = {
 }
 
 
-def extract_method_params(
-    content: str, method_name: str, class_name: Optional[str] = None
-) -> Optional[Set[str]]:
+def extract_method_params(content: str, method_name: str) -> Optional[Set[str]]:
     """
     Extract parameter names from a method definition.
-
-    Args:
-        content: File content to search
-        method_name: Name of the method to find
-        class_name: Optional class name to search within
 
     Returns:
         Set of parameter names, or None if method not found
     """
-    # If class_name is provided, extract just that class's content
-    if class_name:
-        class_pattern = rf"class\s+{class_name}\s*[:\(].*?(?=\nclass\s|\Z)"
-        class_match = re.search(class_pattern, content, re.DOTALL)
-        if not class_match:
-            return None
-        content = class_match.group(0)
-
     # Pattern to find the method definition and its parameters
     # Handles both sync and async methods
     pattern = rf"(?:async\s+)?def\s+{method_name}\s*\(\s*self\s*,\s*\*\s*,([^)]+)\)"
@@ -78,35 +62,10 @@ def extract_method_params(
     params_block = match.group(1)
 
     # Extract parameter names (before the colon)
-    # Match word followed by colon, but only at the start of a line or after comma/whitespace
-    # This avoids matching literal strings like "16:9"
-    param_pattern = r"(?:^|,)\s*(\w+)\s*:"
-    params = set(re.findall(param_pattern, params_block, re.MULTILINE))
+    param_pattern = r"(\w+)\s*:"
+    params = set(re.findall(param_pattern, params_block))
 
     return params
-
-
-def extract_class_names(content: str) -> Tuple[Optional[str], Optional[str]]:
-    """
-    Extract sync and async client class names from file content.
-
-    Returns:
-        Tuple of (sync_class_name, async_class_name)
-    """
-    # Find class names - typically like "AiClothesChangerClient" and "AsyncAiClothesChangerClient"
-    class_pattern = r"class\s+(\w*Client)\s*[:\(]"
-    class_matches = re.findall(class_pattern, content)
-
-    sync_class = None
-    async_class = None
-
-    for class_name in class_matches:
-        if class_name.startswith("Async"):
-            async_class = class_name
-        else:
-            sync_class = class_name
-
-    return sync_class, async_class
 
 
 def find_client_files_with_generate(base_dir: str) -> List[str]:
@@ -118,64 +77,44 @@ def find_client_files_with_generate(base_dir: str) -> List[str]:
     for file_path in files:
         with open(file_path, "r") as f:
             content = f.read()
-        # Check for both sync and async generate methods
-        if "def generate(" in content or "async def generate(" in content:
+        if "def generate(" in content:
             result.append(file_path)
 
     return sorted(result)
 
 
-def check_file(
-    file_path: str, verbose: bool = True
-) -> Tuple[bool, List[Tuple[str, List[str]]]]:
+def check_file(file_path: str, verbose: bool = True) -> Tuple[bool, List[str]]:
     """
-    Check a single client file for parameter mismatches in both sync and async clients.
+    Check a single client file for parameter mismatches.
 
     Returns:
-        Tuple of (is_in_sync, list_of_issues)
-        where each issue is (client_type, missing_params)
+        Tuple of (is_in_sync, list_of_missing_params)
     """
     with open(file_path, "r") as f:
         content = f.read()
 
-    sync_class, async_class = extract_class_names(content)
-    issues = []
+    # Extract parameters from both methods
+    generate_params = extract_method_params(content, "generate")
+    create_params = extract_method_params(content, "create")
 
-    # Check sync client
-    if sync_class:
-        generate_params = extract_method_params(content, "generate", sync_class)
-        create_params = extract_method_params(content, "create", sync_class)
+    if generate_params is None:
+        if verbose:
+            print(f"  Warning: No generate() method found in {file_path}")
+        return True, []
 
-        if generate_params and create_params:
-            create_params_to_check = (
-                create_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
-            )
-            generate_params_to_check = (
-                generate_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
-            )
-            missing_in_generate = create_params_to_check - generate_params_to_check
+    if create_params is None:
+        if verbose:
+            print(f"  Warning: No create() method found in {file_path}")
+        return True, []
 
-            if missing_in_generate:
-                issues.append(("sync", sorted(missing_in_generate)))
+    # Find params in create that should also be in generate
+    # Exclude generate-only params and ignored params
+    create_params_to_check = create_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
+    generate_params_to_check = generate_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
 
-    # Check async client
-    if async_class:
-        generate_params = extract_method_params(content, "generate", async_class)
-        create_params = extract_method_params(content, "create", async_class)
+    missing_in_generate = create_params_to_check - generate_params_to_check
 
-        if generate_params and create_params:
-            create_params_to_check = (
-                create_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
-            )
-            generate_params_to_check = (
-                generate_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
-            )
-            missing_in_generate = create_params_to_check - generate_params_to_check
-
-            if missing_in_generate:
-                issues.append(("async", sorted(missing_in_generate)))
-
-    return len(issues) == 0, issues
+    return len(missing_in_generate) == 0, sorted(missing_in_generate)
 
 
 def get_resource_name(file_path: str) -> str:
@@ -220,18 +159,15 @@ def main():
 
     for file_path in client_files:
         resource_name = get_resource_name(file_path)
-        is_in_sync, client_issues = check_file(file_path, verbose=False)
+        is_in_sync, missing_params = check_file(file_path, verbose=False)
 
         if not is_in_sync:
             all_in_sync = False
-            issues.append((resource_name, file_path, client_issues))
+            issues.append((resource_name, file_path, missing_params))
             if verbose:
                 print(f"MISMATCH: {resource_name}")
                 print(f"  File: {file_path}")
-                for client_type, missing_params in client_issues:
-                    print(
-                        f"  {client_type} client - Missing in generate(): {', '.join(missing_params)}"
-                    )
+                print(f"  Missing in generate(): {', '.join(missing_params)}")
                 print()
         elif verbose and not args.quiet:
             print(f"OK: {resource_name}")
@@ -246,12 +182,9 @@ def main():
         return 0
     else:
         print(f"\nFound {len(issues)} file(s) with parameter mismatches:\n")
-        for resource_name, file_path, client_issues in issues:
+        for resource_name, file_path, missing_params in issues:
             print(f"  {resource_name}:")
-            for client_type, missing_params in client_issues:
-                print(
-                    f"    {client_type} client - Missing: {', '.join(missing_params)}"
-                )
+            print(f"    Missing: {', '.join(missing_params)}")
             if args.fix:
                 print(f"    File: {file_path}")
                 print(
