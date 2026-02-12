@@ -310,27 +310,8 @@ class AsyncImageToVideoClient:
         *,
         assets: params.V1ImageToVideoGenerateBodyAssets,
         end_seconds: float,
-        audio: typing.Union[
-            typing.Optional[bool], type_utils.NotGiven
-        ] = type_utils.NOT_GIVEN,
         height: typing.Union[
             typing.Optional[int], type_utils.NotGiven
-        ] = type_utils.NOT_GIVEN,
-        model: typing.Union[
-            typing.Optional[
-                typing_extensions.Literal[
-                    "default",
-                    "kling-1.6",
-                    "kling-2.5",
-                    "kling-2.5-audio",
-                    "kling-3.0",
-                    "seedance",
-                    "sora-2",
-                    "veo3.1",
-                    "veo3.1-audio",
-                ]
-            ],
-            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
@@ -393,9 +374,7 @@ class AsyncImageToVideoClient:
         create_response = await self.create(
             assets=assets,
             end_seconds=end_seconds,
-            audio=audio,
             height=height,
-            model=model,
             name=name,
             resolution=resolution,
             style=style,

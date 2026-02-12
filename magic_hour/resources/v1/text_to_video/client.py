@@ -296,38 +296,10 @@ class AsyncTextToVideoClient:
         self,
         *,
         end_seconds: float,
+        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1TextToVideoCreateBodyStyle,
-        aspect_ratio: typing.Union[
-            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
-            type_utils.NotGiven,
-        ] = type_utils.NOT_GIVEN,
-        audio: typing.Union[
-            typing.Optional[bool], type_utils.NotGiven
-        ] = type_utils.NOT_GIVEN,
-        model: typing.Union[
-            typing.Optional[
-                typing_extensions.Literal[
-                    "default",
-                    "kling-1.6",
-                    "kling-2.5",
-                    "kling-2.5-audio",
-                    "kling-3.0",
-                    "seedance",
-                    "sora-2",
-                    "veo3.1",
-                    "veo3.1-audio",
-                ]
-            ],
-            type_utils.NotGiven,
-        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
-        ] = type_utils.NOT_GIVEN,
-        orientation: typing.Union[
-            typing.Optional[
-                typing_extensions.Literal["landscape", "portrait", "square"]
-            ],
-            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
@@ -374,12 +346,9 @@ class AsyncTextToVideoClient:
         create_response = await self.create(
             end_seconds=end_seconds,
             orientation=orientation,
-            audio=audio,
             style=style,
             name=name,
             resolution=resolution,
-            model=model,
-            aspect_ratio=aspect_ratio,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")
