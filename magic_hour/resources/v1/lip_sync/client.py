@@ -269,6 +269,9 @@ class AsyncLipSyncClient:
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1LipSyncCreateBodyStyle], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -338,6 +341,7 @@ class AsyncLipSyncClient:
             max_fps_limit=max_fps_limit,
             name=name,
             width=width,
+            style=style,
             request_options=request_options,
         )
         logger.info(f"Lip Sync response: {create_response}")
