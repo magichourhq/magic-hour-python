@@ -29,6 +29,7 @@ def test_create_200_success_all_params() -> None:
     response = client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
+        audio=True,
         height=123,
         model="kling-2.5-audio",
         name="My Image To Video video",
@@ -74,6 +75,7 @@ async def test_await_create_200_success_all_params() -> None:
     response = await client.v1.image_to_video.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         end_seconds=5.0,
+        audio=True,
         height=123,
         model="kling-2.5-audio",
         name="My Image To Video video",
