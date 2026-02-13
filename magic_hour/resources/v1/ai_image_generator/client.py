@@ -254,6 +254,26 @@ class AsyncAiImageGeneratorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        aspect_ratio: typing.Union[
+            typing.Optional[typing_extensions.Literal["16:9", "1:1", "9:16"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "flux-schnell",
+                    "nano-banana-pro",
+                    "seedream",
+                    "z-image-turbo",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -296,6 +316,9 @@ class AsyncAiImageGeneratorClient:
             orientation=orientation,
             style=style,
             name=name,
+            aspect_ratio=aspect_ratio,
+            model=model,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Image Generator response: {create_response}")

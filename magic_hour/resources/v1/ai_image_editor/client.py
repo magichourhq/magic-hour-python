@@ -254,6 +254,30 @@ class AsyncAiImageEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        aspect_ratio: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "16:9", "1:1", "2:3", "3:2", "4:3", "4:5", "9:16", "auto"
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        image_count: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal[
+                    "default",
+                    "nano-banana",
+                    "nano-banana-pro",
+                    "qwen-edit",
+                    "seedream-v4",
+                    "seedream-v4.5",
+                ]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -305,7 +329,13 @@ class AsyncAiImageEditorClient:
                 ]
 
         create_response = await self.create(
-            assets=assets, style=style, name=name, request_options=request_options
+            assets=assets,
+            style=style,
+            name=name,
+            aspect_ratio=aspect_ratio,
+            image_count=image_count,
+            model=model,
+            request_options=request_options,
         )
         logger.info(f"AI Image Editor response: {create_response}")
 
