@@ -60,6 +60,9 @@ class TextToVideoClient:
             typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        audio: typing.Union[
+            typing.Optional[bool], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -106,6 +109,7 @@ class TextToVideoClient:
             resolution=resolution,
             model=model,
             aspect_ratio=aspect_ratio,
+            audio=audio,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")
@@ -319,6 +323,9 @@ class AsyncTextToVideoClient:
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        audio: typing.Union[
+            typing.Optional[bool], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -365,6 +372,7 @@ class AsyncTextToVideoClient:
             resolution=resolution,
             aspect_ratio=aspect_ratio,
             model=model,
+            audio=audio,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")

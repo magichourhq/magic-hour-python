@@ -60,6 +60,9 @@ class ImageToVideoClient:
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        audio: typing.Union[
+            typing.Optional[bool], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -114,6 +117,7 @@ class ImageToVideoClient:
             resolution=resolution,
             style=style,
             width=width,
+            audio=audio,
             request_options=request_options,
         )
         logger.info(f"Image-to-Video response: {create_response}")
@@ -336,6 +340,9 @@ class AsyncImageToVideoClient:
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        audio: typing.Union[
+            typing.Optional[bool], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -390,6 +397,7 @@ class AsyncImageToVideoClient:
             style=style,
             width=width,
             model=model,
+            audio=audio,
             request_options=request_options,
         )
         logger.info(f"Image-to-Video response: {create_response}")
