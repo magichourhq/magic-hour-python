@@ -123,7 +123,7 @@ class AiClothesChangerClient:
         client.v1.ai_clothes_changer.create(
             assets={
                 "garment_file_path": "api-assets/id/outfit.png",
-                "garment_type": "upper_body",
+                "garment_type": "entire_outfit",
                 "person_file_path": "api-assets/id/model.png",
             },
             name="My Clothes Changer image",
@@ -251,7 +251,7 @@ class AsyncAiClothesChangerClient:
         await client.v1.ai_clothes_changer.create(
             assets={
                 "garment_file_path": "api-assets/id/outfit.png",
-                "garment_type": "upper_body",
+                "garment_type": "entire_outfit",
                 "person_file_path": "api-assets/id/model.png",
             },
             name="My Clothes Changer image",
