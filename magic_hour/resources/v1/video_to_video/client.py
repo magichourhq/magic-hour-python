@@ -186,17 +186,9 @@ class VideoToVideoClient:
         * `HALF` - the result video will have half the FPS as the input video
             height: `height` is deprecated and no longer influences the output video's resolution.
 
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-
         This field is retained only for backward compatibility and will be removed in a future release.
             name: Give your video a custom name for easy identification.
             width: `width` is deprecated and no longer influences the output video's resolution.
-
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
@@ -422,17 +414,9 @@ class AsyncVideoToVideoClient:
         * `HALF` - the result video will have half the FPS as the input video
             height: `height` is deprecated and no longer influences the output video's resolution.
 
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-
         This field is retained only for backward compatibility and will be removed in a future release.
             name: Give your video a custom name for easy identification.
             width: `width` is deprecated and no longer influences the output video's resolution.
-
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
