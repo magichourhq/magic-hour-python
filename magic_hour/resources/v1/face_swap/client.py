@@ -183,18 +183,10 @@ class FaceSwapClient:
         Args:
             height: `height` is deprecated and no longer influences the output video's resolution.
 
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-
         This field is retained only for backward compatibility and will be removed in a future release.
             name: Give your video a custom name for easy identification.
             style: Style of the face swap video.
             width: `width` is deprecated and no longer influences the output video's resolution.
-
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
@@ -420,18 +412,10 @@ class AsyncFaceSwapClient:
         Args:
             height: `height` is deprecated and no longer influences the output video's resolution.
 
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-
         This field is retained only for backward compatibility and will be removed in a future release.
             name: Give your video a custom name for easy identification.
             style: Style of the face swap video.
             width: `width` is deprecated and no longer influences the output video's resolution.
-
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for face swap. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used

@@ -182,19 +182,11 @@ class LipSyncClient:
         Args:
             height: `height` is deprecated and no longer influences the output video's resolution.
 
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-
         This field is retained only for backward compatibility and will be removed in a future release.
             max_fps_limit: Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required.
             name: Give your video a custom name for easy identification.
             style: Attributes used to dictate the style of the output
             width: `width` is deprecated and no longer influences the output video's resolution.
-
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for lip-sync. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
@@ -410,19 +402,11 @@ class AsyncLipSyncClient:
         Args:
             height: `height` is deprecated and no longer influences the output video's resolution.
 
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-
         This field is retained only for backward compatibility and will be removed in a future release.
             max_fps_limit: Defines the maximum FPS (frames per second) for the output video. If the input video's FPS is lower than this limit, the output video will retain the input FPS. This is useful for reducing unnecessary frame usage in scenarios where high FPS is not required.
             name: Give your video a custom name for easy identification.
             style: Attributes used to dictate the style of the output
             width: `width` is deprecated and no longer influences the output video's resolution.
-
-        Output resolution is determined by the **minimum** of:
-        - The resolution of the input video
-        - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
 
         This field is retained only for backward compatibility and will be removed in a future release.
             assets: Provide the assets for lip-sync. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used

@@ -31,10 +31,6 @@ class V1FaceSwapCreateBody(typing_extensions.TypedDict):
     """
     `height` is deprecated and no longer influences the output video's resolution.
     
-    Output resolution is determined by the **minimum** of:
-    - The resolution of the input video
-    - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
-    
     This field is retained only for backward compatibility and will be removed in a future release.
     """
 
@@ -56,10 +52,6 @@ class V1FaceSwapCreateBody(typing_extensions.TypedDict):
     width: typing_extensions.NotRequired[typing.Optional[int]]
     """
     `width` is deprecated and no longer influences the output video's resolution.
-    
-    Output resolution is determined by the **minimum** of:
-    - The resolution of the input video
-    - The maximum resolution allowed by your subscription tier. See our [pricing page](https://magichour.ai/pricing) for more details.
     
     This field is retained only for backward compatibility and will be removed in a future release.
     """
