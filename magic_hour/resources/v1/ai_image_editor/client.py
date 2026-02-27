@@ -147,6 +147,7 @@ class AiImageEditorClient:
                 typing_extensions.Literal[
                     "default",
                     "nano-banana",
+                    "nano-banana-2",
                     "nano-banana-pro",
                     "qwen-edit",
                     "seedream-v4",
@@ -179,6 +180,10 @@ class AiImageEditorClient:
           - Image count allowed: 1
           - Max additional input images: 2
         - `nano-banana` - 50 credits/image
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1
+          - Max additional input images: 9
+        - `nano-banana-2` - 100 credits/image
           - Available for tiers: free, creator, pro, business
           - Image count allowed: 1
           - Max additional input images: 9
@@ -370,6 +375,7 @@ class AsyncAiImageEditorClient:
                 typing_extensions.Literal[
                     "default",
                     "nano-banana",
+                    "nano-banana-2",
                     "nano-banana-pro",
                     "qwen-edit",
                     "seedream-v4",
@@ -402,6 +408,10 @@ class AsyncAiImageEditorClient:
           - Image count allowed: 1
           - Max additional input images: 2
         - `nano-banana` - 50 credits/image
+          - Available for tiers: free, creator, pro, business
+          - Image count allowed: 1
+          - Max additional input images: 9
+        - `nano-banana-2` - 100 credits/image
           - Available for tiers: free, creator, pro, business
           - Image count allowed: 1
           - Max additional input images: 9

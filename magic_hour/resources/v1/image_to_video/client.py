@@ -214,6 +214,7 @@ class ImageToVideoClient:
         * **`sora-2`**: Automatically included with no extra credits
         * **`veo3.1`**: Toggle-able (can enable/disable)
 
+        Legacy models:
         * **`kling-1.6`**: Not supported
             height: `height` is deprecated and no longer influences the output video's resolution.
 
@@ -242,6 +243,7 @@ class ImageToVideoClient:
         * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
 
+        Legacy models:
         * **`kling-1.6`**: Supports 720p, 1080p.
             style: Attributed used to dictate the style of the output
             width: `width` is deprecated and no longer influences the output video's resolution.
@@ -497,6 +499,7 @@ class AsyncImageToVideoClient:
         * **`sora-2`**: Automatically included with no extra credits
         * **`veo3.1`**: Toggle-able (can enable/disable)
 
+        Legacy models:
         * **`kling-1.6`**: Not supported
             height: `height` is deprecated and no longer influences the output video's resolution.
 
@@ -525,6 +528,7 @@ class AsyncImageToVideoClient:
         * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
 
+        Legacy models:
         * **`kling-1.6`**: Supports 720p, 1080p.
             style: Attributed used to dictate the style of the output
             width: `width` is deprecated and no longer influences the output video's resolution.

@@ -218,6 +218,7 @@ class TextToVideoClient:
         * **`sora-2`**: Automatically included with no extra credits
         * **`veo3.1`**: Toggle-able (can enable/disable)
 
+        Legacy models:
         * **`kling-1.6`**: Not supported
             model: The AI model to use for video generation.
 
@@ -244,6 +245,7 @@ class TextToVideoClient:
         * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
 
+        Legacy models:
         * **`kling-1.6`**: Supports 720p, 1080p.
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
@@ -496,6 +498,7 @@ class AsyncTextToVideoClient:
         * **`sora-2`**: Automatically included with no extra credits
         * **`veo3.1`**: Toggle-able (can enable/disable)
 
+        Legacy models:
         * **`kling-1.6`**: Not supported
             model: The AI model to use for video generation.
 
@@ -522,6 +525,7 @@ class AsyncTextToVideoClient:
         * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
 
+        Legacy models:
         * **`kling-1.6`**: Supports 720p, 1080p.
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
