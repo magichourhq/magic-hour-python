@@ -34,6 +34,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`sora-2`**: Automatically included with no extra credits
     * **`veo3.1`**: Toggle-able (can enable/disable)
     
+    Legacy models:
     * **`kling-1.6`**: Not supported
     """
 
@@ -108,6 +109,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`sora-2`**: Supports 720p.
     * **`veo3.1`**: Supports 720p, 1080p.
     
+    Legacy models:
     * **`kling-1.6`**: Supports 720p, 1080p.
     """
 

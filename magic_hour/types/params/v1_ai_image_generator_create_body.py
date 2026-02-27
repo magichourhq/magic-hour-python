@@ -27,7 +27,13 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
 
     model: typing_extensions.NotRequired[
         typing_extensions.Literal[
-            "default", "flux-schnell", "nano-banana-pro", "seedream", "z-image-turbo"
+            "default",
+            "flux-schnell",
+            "nano-banana",
+            "nano-banana-2",
+            "nano-banana-pro",
+            "seedream",
+            "z-image-turbo",
         ]
     ]
     """
@@ -45,6 +51,14 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
       - Image count allowed: 1, 2, 3, 4
     - `seedream` - 30 credits/image
       - Supported resolutions: auto, 2k, 4k
+      - Available for tiers: free, creator, pro, business
+      - Image count allowed: 1, 2, 3, 4
+    - `nano-banana` - 50 credits/image
+      - Supported resolutions: auto
+      - Available for tiers: free, creator, pro, business
+      - Image count allowed: 1, 2, 3, 4
+    - `nano-banana-2` - 100 credits/image
+      - Supported resolutions: auto
       - Available for tiers: free, creator, pro, business
       - Image count allowed: 1, 2, 3, 4
     - `nano-banana-pro` - 150 credits/image
@@ -106,7 +120,13 @@ class _SerializerV1AiImageGeneratorCreateBody(pydantic.BaseModel):
     )
     model: typing.Optional[
         typing_extensions.Literal[
-            "default", "flux-schnell", "nano-banana-pro", "seedream", "z-image-turbo"
+            "default",
+            "flux-schnell",
+            "nano-banana",
+            "nano-banana-2",
+            "nano-banana-pro",
+            "seedream",
+            "z-image-turbo",
         ]
     ] = pydantic.Field(alias="model", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
