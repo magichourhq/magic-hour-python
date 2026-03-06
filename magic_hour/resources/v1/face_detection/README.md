@@ -60,7 +60,7 @@ res = await client.v1.face_detection.generate(
 
 Get the details of a face detection task.
 
-Use this API to get the list of faces detected in the image or video to use in the [face swap photo](/api-reference/face-swap-photo/face-swap-photo) or [face swap video](/api-reference/face-swap/face-swap-video) API calls for multi-face swaps.
+Use this API to get the list of faces detected in the image or video to use in the [face swap photo](/api-reference/image-projects/face-swap-photo) or [face swap video](api-reference/video-projects/face-swap-video) API calls for multi-face swaps.
 
 **API Endpoint**: `GET /v1/face-detection/{id}`
 
