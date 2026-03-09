@@ -9,7 +9,7 @@ class V1AiVoiceGeneratorCreateBodyStyle(typing_extensions.TypedDict):
 
     prompt: typing_extensions.Required[str]
     """
-    Text used to generate speech. Starter tier users can use up to 1000 characters, while Creator, Pro, or Business users can use up to 1000.
+    Text used to generate speech. The character limit is 1000 characters.
     """
 
     voice_name: typing_extensions.Required[
