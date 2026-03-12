@@ -273,7 +273,10 @@ class ImageToVideoClient:
         Examples:
         ```py
         client.v1.image_to_video.create(
-            assets={"image_file_path": "api-assets/id/1234.png"},
+            assets={
+                "end_image_file_path": "api-assets/id/1234.png",
+                "image_file_path": "api-assets/id/1234.png",
+            },
             end_seconds=5.0,
             audio=True,
             model="kling-2.5-audio",
@@ -558,7 +561,10 @@ class AsyncImageToVideoClient:
         Examples:
         ```py
         await client.v1.image_to_video.create(
-            assets={"image_file_path": "api-assets/id/1234.png"},
+            assets={
+                "end_image_file_path": "api-assets/id/1234.png",
+                "image_file_path": "api-assets/id/1234.png",
+            },
             end_seconds=5.0,
             audio=True,
             model="kling-2.5-audio",
