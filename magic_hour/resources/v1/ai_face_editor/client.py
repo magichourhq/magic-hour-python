@@ -116,7 +116,7 @@ class AiFaceEditorClient:
         """
         AI Face Editor
 
-        Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+        Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
 
         POST /v1/ai-face-editor
 
@@ -268,7 +268,7 @@ class AsyncAiFaceEditorClient:
         """
         AI Face Editor
 
-        Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](/pricing) page for more details
+        Edit facial features of an image using AI. Each edit costs 1 frame. The height/width of the output image depends on your subscription. Please refer to our [pricing](https://magichour.ai/pricing) page for more details
 
         POST /v1/ai-face-editor
 
