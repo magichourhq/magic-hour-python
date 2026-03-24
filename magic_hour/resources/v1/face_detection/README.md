@@ -106,7 +106,7 @@ res = await client.v1.face_detection.get(id="uuid-example")
 
 Detect faces in an image or video.
 
-Use this API to get the list of faces detected in the image or video to use in the [face swap photo](https://docs.magichour.ai/api-reference/face-swap-photo/face-swap-photo) or [face swap video](https://docs.magichour.ai/api-reference/face-swap/face-swap-video) API calls for multi-face swaps.
+Use this API to get the list of faces detected in the image or video to use in the [face swap photo](https://docs.magichour.ai/api-reference/image-projects/face-swap-photo) or [face swap video](https://docs.magichour.ai/api-reference/video-projects/face-swap-video) API calls for multi-face swaps.
 
 Note: Face detection is free to use for the near future. Pricing may change in the future.
 
