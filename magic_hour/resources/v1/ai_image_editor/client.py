@@ -57,6 +57,10 @@ class AiImageEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -112,6 +116,7 @@ class AiImageEditorClient:
             image_count=image_count,
             model=model,
             name=name,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Image Editor response: {create_response}")
@@ -297,6 +302,10 @@ class AsyncAiImageEditorClient:
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -354,6 +363,7 @@ class AsyncAiImageEditorClient:
             aspect_ratio=aspect_ratio,
             image_count=image_count,
             model=model,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Image Editor response: {create_response}")
