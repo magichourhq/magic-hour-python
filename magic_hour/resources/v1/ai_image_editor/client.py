@@ -57,6 +57,10 @@ class AiImageEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -112,6 +116,7 @@ class AiImageEditorClient:
             image_count=image_count,
             model=model,
             name=name,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Image Editor response: {create_response}")
@@ -159,6 +164,10 @@ class AiImageEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageEditorCreateResponse:
         """
@@ -201,6 +210,14 @@ class AiImageEditorClient:
           - Max additional input images: 9
 
             name: Give your image a custom name for easy identification.
+            resolution: Maximum resolution for the generated image.
+
+        **Options:**
+        - `auto` - Automatic resolution (all tiers, default)
+        - `2k` - Up to 2048px (requires Pro or Business tier)
+        - `4k` - Up to 4096px (requires Business tier)
+
+        Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -223,6 +240,7 @@ class AiImageEditorClient:
             image_count=1.0,
             model="default",
             name="My Ai Image Editor image",
+            resolution="auto",
         )
         ```
         """
@@ -232,6 +250,7 @@ class AiImageEditorClient:
                 "image_count": image_count,
                 "model": model,
                 "name": name,
+                "resolution": resolution,
                 "assets": assets,
                 "style": style,
             },
@@ -281,6 +300,10 @@ class AsyncAiImageEditorClient:
                     "seedream-v4.5",
                 ]
             ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
@@ -340,6 +363,7 @@ class AsyncAiImageEditorClient:
             aspect_ratio=aspect_ratio,
             image_count=image_count,
             model=model,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Image Editor response: {create_response}")
@@ -387,6 +411,10 @@ class AsyncAiImageEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageEditorCreateResponse:
         """
@@ -429,6 +457,14 @@ class AsyncAiImageEditorClient:
           - Max additional input images: 9
 
             name: Give your image a custom name for easy identification.
+            resolution: Maximum resolution for the generated image.
+
+        **Options:**
+        - `auto` - Automatic resolution (all tiers, default)
+        - `2k` - Up to 2048px (requires Pro or Business tier)
+        - `4k` - Up to 4096px (requires Business tier)
+
+        Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -451,6 +487,7 @@ class AsyncAiImageEditorClient:
             image_count=1.0,
             model="default",
             name="My Ai Image Editor image",
+            resolution="auto",
         )
         ```
         """
@@ -460,6 +497,7 @@ class AsyncAiImageEditorClient:
                 "image_count": image_count,
                 "model": model,
                 "name": name,
+                "resolution": resolution,
                 "assets": assets,
                 "style": style,
             },

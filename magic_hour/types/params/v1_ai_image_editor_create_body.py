@@ -84,6 +84,20 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
     Give your image a custom name for easy identification.
     """
 
+    resolution: typing_extensions.NotRequired[
+        typing_extensions.Literal["2k", "4k", "auto"]
+    ]
+    """
+    Maximum resolution for the generated image.
+    
+    **Options:**
+    - `auto` - Automatic resolution (all tiers, default)
+    - `2k` - Up to 2048px (requires Pro or Business tier)
+    - `4k` - Up to 4096px (requires Business tier)
+    
+    Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
+    """
+
     style: typing_extensions.Required[V1AiImageEditorCreateBodyStyle]
 
 
@@ -120,6 +134,9 @@ class _SerializerV1AiImageEditorCreateBody(pydantic.BaseModel):
         ]
     ] = pydantic.Field(alias="model", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
+    resolution: typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]] = (
+        pydantic.Field(alias="resolution", default=None)
+    )
     style: _SerializerV1AiImageEditorCreateBodyStyle = pydantic.Field(
         alias="style",
     )
