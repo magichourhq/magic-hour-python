@@ -1,5 +1,5 @@
 {
-  "id": "b2d6ef4f-f33d-419f-85e6-a388096b49c1",
+  "id": "6b61dfff-c839-4c96-affc-fe4f3f004aff",
   "tracked_paths": [
     {
       "editable": true,
@@ -275,6 +275,18 @@
     },
     {
       "editable": true,
+      "path": "magic_hour/resources/v1/head_swap/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/head_swap/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/head_swap/client.py"
+    },
+    {
+      "editable": true,
       "path": "magic_hour/resources/v1/image_background_remover/README.md"
     },
     {
@@ -468,6 +480,10 @@
     {
       "editable": false,
       "path": "magic_hour/types/models/v1_files_upload_urls_create_response_items_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_head_swap_create_response.py"
     },
     {
       "editable": false,
@@ -719,6 +735,14 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/params/v1_head_swap_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_head_swap_create_body_assets.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/params/v1_image_background_remover_create_body.py"
     },
     {
@@ -856,6 +880,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_files_upload_urls_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_head_swap_client.py"
     },
     {
       "editable": false,

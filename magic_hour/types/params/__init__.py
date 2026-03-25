@@ -217,6 +217,15 @@ from .v1_files_upload_urls_create_body_items_item import (
     V1FilesUploadUrlsCreateBodyItemsItem,
     _SerializerV1FilesUploadUrlsCreateBodyItemsItem,
 )
+from .v1_head_swap_create_body import (
+    V1HeadSwapCreateBody,
+    _SerializerV1HeadSwapCreateBody,
+)
+from .v1_head_swap_create_body_assets import (
+    V1HeadSwapCreateBodyAssets,
+    _SerializerV1HeadSwapCreateBodyAssets,
+)
+from .v1_head_swap_generate_body_assets import V1HeadSwapGenerateBodyAssets
 from .v1_image_background_remover_create_body import (
     V1ImageBackgroundRemoverCreateBody,
     _SerializerV1ImageBackgroundRemoverCreateBody,
@@ -347,6 +356,9 @@ __all__ = [
     "V1FaceSwapPhotoGenerateBodyAssetsFaceMappingsItem",
     "V1FilesUploadUrlsCreateBody",
     "V1FilesUploadUrlsCreateBodyItemsItem",
+    "V1HeadSwapCreateBody",
+    "V1HeadSwapCreateBodyAssets",
+    "V1HeadSwapGenerateBodyAssets",
     "V1ImageBackgroundRemoverCreateBody",
     "V1ImageBackgroundRemoverCreateBodyAssets",
     "V1ImageBackgroundRemoverGenerateBodyAssets",
@@ -415,6 +427,8 @@ __all__ = [
     "_SerializerV1FaceSwapPhotoCreateBodyAssetsFaceMappingsItem",
     "_SerializerV1FilesUploadUrlsCreateBody",
     "_SerializerV1FilesUploadUrlsCreateBodyItemsItem",
+    "_SerializerV1HeadSwapCreateBody",
+    "_SerializerV1HeadSwapCreateBodyAssets",
     "_SerializerV1ImageBackgroundRemoverCreateBody",
     "_SerializerV1ImageBackgroundRemoverCreateBodyAssets",
     "_SerializerV1ImageToVideoCreateBody",

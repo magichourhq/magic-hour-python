@@ -65,6 +65,7 @@ from magic_hour.resources.v1.face_swap_photo import (
     FaceSwapPhotoClient,
 )
 from magic_hour.resources.v1.files import AsyncFilesClient, FilesClient
+from magic_hour.resources.v1.head_swap import AsyncHeadSwapClient, HeadSwapClient
 from magic_hour.resources.v1.image_background_remover import (
     AsyncImageBackgroundRemoverClient,
     ImageBackgroundRemoverClient,
@@ -136,6 +137,7 @@ class V1Client:
         self.audio_projects = AudioProjectsClient(base_client=self._base_client)
         self.ai_voice_generator = AiVoiceGeneratorClient(base_client=self._base_client)
         self.ai_voice_cloner = AiVoiceClonerClient(base_client=self._base_client)
+        self.head_swap = HeadSwapClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -187,3 +189,4 @@ class AsyncV1Client:
             base_client=self._base_client
         )
         self.ai_voice_cloner = AsyncAiVoiceClonerClient(base_client=self._base_client)
+        self.head_swap = AsyncHeadSwapClient(base_client=self._base_client)

@@ -22,6 +22,7 @@
 - [face_swap_photo](resources/v1/face_swap_photo/README.md) - face_swap_photo
 - [upload_urls](resources/v1/files/upload_urls/README.md) - upload_urls
 - [files](resources/v1/files/README.md) - files
+- [head_swap](resources/v1/head_swap/README.md) - head_swap
 - [image_background_remover](resources/v1/image_background_remover/README.md) - image_background_remover
 - [image_projects](resources/v1/image_projects/README.md) - image_projects
 - [image_to_video](resources/v1/image_to_video/README.md) - image_to_video

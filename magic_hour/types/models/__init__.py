@@ -32,6 +32,7 @@ from .v1_files_upload_urls_create_response import V1FilesUploadUrlsCreateRespons
 from .v1_files_upload_urls_create_response_items_item import (
     V1FilesUploadUrlsCreateResponseItemsItem,
 )
+from .v1_head_swap_create_response import V1HeadSwapCreateResponse
 from .v1_image_background_remover_create_response import (
     V1ImageBackgroundRemoverCreateResponse,
 )
@@ -78,6 +79,7 @@ __all__ = [
     "V1FaceSwapPhotoCreateResponse",
     "V1FilesUploadUrlsCreateResponse",
     "V1FilesUploadUrlsCreateResponseItemsItem",
+    "V1HeadSwapCreateResponse",
     "V1ImageBackgroundRemoverCreateResponse",
     "V1ImageProjectsGetResponse",
     "V1ImageProjectsGetResponseDownloadsItem",
