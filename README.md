@@ -265,6 +265,7 @@ download_urls = result.downloads
 ### [v1.head_swap](magic_hour/resources/v1/head_swap/README.md)
 
 - [create](magic_hour/resources/v1/head_swap/README.md#create) - Head Swap
+- [generate](magic_hour/resources/v1/head_swap/README.md#generate) - Head Swap Generate Workflow
 
 ### [v1.image_background_remover](magic_hour/resources/v1/image_background_remover/README.md)
 
