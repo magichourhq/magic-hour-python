@@ -13,6 +13,7 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     The image to use as the last frame of the video.
     
     * **`ltx-2`**: Not supported
+    * **`wan-2.2`**: Not supported
     * **`seedance`**: Supports 480p, 720p, 1080p.
     * **`kling-2.5`**: Supports 1080p.
     * **`kling-3.0`**: Supports 1080p.
