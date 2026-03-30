@@ -34,7 +34,7 @@ def test_create_200_success_all_params() -> None:
         end_seconds=5.0,
         audio=True,
         height=123,
-        model="kling-2.5-audio",
+        model="kling-3.0",
         name="My Image To Video video",
         resolution="720p",
         style={
@@ -83,7 +83,7 @@ async def test_await_create_200_success_all_params() -> None:
         end_seconds=5.0,
         audio=True,
         height=123,
-        model="kling-2.5-audio",
+        model="kling-3.0",
         name="My Image To Video video",
         resolution="720p",
         style={
