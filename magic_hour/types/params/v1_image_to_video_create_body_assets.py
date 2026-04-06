@@ -15,10 +15,12 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     * **`ltx-2`**: Not supported
     * **`wan-2.2`**: Not supported
     * **`seedance`**: Supports 480p, 720p, 1080p.
+    * **`seedance-2.0`**: Supports 480p, 720p.
     * **`kling-2.5`**: Supports 1080p.
     * **`kling-3.0`**: Supports 1080p.
     * **`sora-2`**: Not supported
     * **`veo3.1`**: Not supported
+    * **`veo3.1-lite`**: Not supported
     
     Legacy models:
     * **`kling-1.6`**: Not supported
