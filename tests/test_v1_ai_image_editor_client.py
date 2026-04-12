@@ -36,7 +36,7 @@ def test_create_200_success_all_params() -> None:
         image_count=1.0,
         model="default",
         name="My Ai Image Editor image",
-        resolution="auto",
+        resolution="1k",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
@@ -79,7 +79,7 @@ async def test_await_create_200_success_all_params() -> None:
         image_count=1.0,
         model="default",
         name="My Ai Image Editor image",
-        resolution="auto",
+        resolution="1k",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
