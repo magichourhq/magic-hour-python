@@ -35,7 +35,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`kling-3.0`**: Toggle-able (can enable/disable)
     * **`sora-2`**: Automatically included with no extra credits
     * **`veo3.1`**: Toggle-able (can enable/disable)
-    * **`veo3.1-lite`**: Automatically included with no extra credits
+    * **`veo3.1-lite`**: Toggle-able (can enable/disable)
     
     Legacy models:
     * **`kling-1.6`**: Not supported
@@ -45,7 +45,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     """
     The total duration of the output video in seconds. Supported durations depend on the chosen model:
     
-    * **`ltx-2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
+    * **`ltx-2`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
     * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
     * **`seedance`**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
     * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
@@ -53,7 +53,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
     * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
     * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
-    * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
+    * **`veo3.1-lite`**: 8, 16, 24, 32, 40, 48, 56
     
     Legacy models:
     * **`kling-1.6`**: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60

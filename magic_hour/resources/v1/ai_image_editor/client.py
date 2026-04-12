@@ -165,7 +165,9 @@ class AiImageEditorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            typing.Optional[
+                typing_extensions.Literal["1k", "2k", "4k", "640px", "auto"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
@@ -184,40 +186,56 @@ class AiImageEditorClient:
 
         **Models:**
         - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
-        - `qwen-edit` - 10 credits/image
+        - `qwen-edit` - from 10 credits/image
+          - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 2
-        - `nano-banana` - 50 credits/image
+        - `nano-banana` - from 50 credits/image
+          - Supported resolutions: 640px, 1k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
-        - `nano-banana-2` - 100 credits/image
+        - `nano-banana-2` - from 100 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
-        - `seedream-v4` - 50 credits/image
+        - `seedream-v4` - from 40 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
-        - `nano-banana-pro` - 150 credits/image
+        - `nano-banana-pro` - from 150 credits/image
+          - Supported resolutions: 1k, 2k, 4k
           - Available for tiers: creator, pro, business
           - Image count allowed: 1, 4, 9, 16
           - Max additional input images: 9
-        - `seedream-v4.5` - 100 credits/image
+        - `seedream-v4.5` - from 50 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
 
             name: Give your image a custom name for easy identification.
-            resolution: Maximum resolution for the generated image.
+            resolution: Maximum resolution (longest edge) for the output image.
 
         **Options:**
-        - `auto` - Automatic resolution (all tiers, default)
-        - `2k` - Up to 2048px (requires Pro or Business tier)
-        - `4k` - Up to 4096px (requires Business tier)
+        - `640px` — up to 640px
+        - `1k` — up to 1024px
+        - `2k` — up to 2048px
+        - `4k` — up to 4096px
+        - `auto` — **Deprecated.** Mapped server-side from your subscription tier to the best matching resolution the model supports
 
-        Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
+        **Per-model support:**
+        - `qwen-edit` - 640px, 1k, 2k
+        - `nano-banana` - 640px, 1k
+        - `nano-banana-2` - 640px, 1k, 2k, 4k
+        - `seedream-v4` - 640px, 1k, 2k, 4k
+        - `nano-banana-pro` - 1k, 2k, 4k
+        - `seedream-v4.5` - 640px, 1k, 2k, 4k
+
+        Note: Resolution availability depends on the model and your subscription tier.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -240,7 +258,7 @@ class AiImageEditorClient:
             image_count=1.0,
             model="default",
             name="My Ai Image Editor image",
-            resolution="auto",
+            resolution="1k",
         )
         ```
         """
@@ -412,7 +430,9 @@ class AsyncAiImageEditorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            typing.Optional[
+                typing_extensions.Literal["1k", "2k", "4k", "640px", "auto"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
@@ -431,40 +451,56 @@ class AsyncAiImageEditorClient:
 
         **Models:**
         - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
-        - `qwen-edit` - 10 credits/image
+        - `qwen-edit` - from 10 credits/image
+          - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 2
-        - `nano-banana` - 50 credits/image
+        - `nano-banana` - from 50 credits/image
+          - Supported resolutions: 640px, 1k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
-        - `nano-banana-2` - 100 credits/image
+        - `nano-banana-2` - from 100 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
-        - `seedream-v4` - 50 credits/image
+        - `seedream-v4` - from 40 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: free, creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
-        - `nano-banana-pro` - 150 credits/image
+        - `nano-banana-pro` - from 150 credits/image
+          - Supported resolutions: 1k, 2k, 4k
           - Available for tiers: creator, pro, business
           - Image count allowed: 1, 4, 9, 16
           - Max additional input images: 9
-        - `seedream-v4.5` - 100 credits/image
+        - `seedream-v4.5` - from 50 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: creator, pro, business
-          - Image count allowed: 1
+          - Image count allowed: 1, 2, 3, 4
           - Max additional input images: 9
 
             name: Give your image a custom name for easy identification.
-            resolution: Maximum resolution for the generated image.
+            resolution: Maximum resolution (longest edge) for the output image.
 
         **Options:**
-        - `auto` - Automatic resolution (all tiers, default)
-        - `2k` - Up to 2048px (requires Pro or Business tier)
-        - `4k` - Up to 4096px (requires Business tier)
+        - `640px` — up to 640px
+        - `1k` — up to 1024px
+        - `2k` — up to 2048px
+        - `4k` — up to 4096px
+        - `auto` — **Deprecated.** Mapped server-side from your subscription tier to the best matching resolution the model supports
 
-        Note: Resolution availability depends on your subscription tier. Defaults to `auto` if not specified.
+        **Per-model support:**
+        - `qwen-edit` - 640px, 1k, 2k
+        - `nano-banana` - 640px, 1k
+        - `nano-banana-2` - 640px, 1k, 2k, 4k
+        - `seedream-v4` - 640px, 1k, 2k, 4k
+        - `nano-banana-pro` - 1k, 2k, 4k
+        - `seedream-v4.5` - 640px, 1k, 2k, 4k
+
+        Note: Resolution availability depends on the model and your subscription tier.
             assets: Provide the assets for image edit
             style: V1AiImageEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
@@ -487,7 +523,7 @@ class AsyncAiImageEditorClient:
             image_count=1.0,
             model="default",
             name="My Ai Image Editor image",
-            resolution="auto",
+            resolution="1k",
         )
         ```
         """
