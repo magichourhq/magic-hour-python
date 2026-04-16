@@ -21,6 +21,7 @@ from .v1_audio_projects_get_response_error import V1AudioProjectsGetResponseErro
 from .v1_auto_subtitle_generator_create_response import (
     V1AutoSubtitleGeneratorCreateResponse,
 )
+from .v1_body_swap_create_response import V1BodySwapCreateResponse
 from .v1_face_detection_create_response import V1FaceDetectionCreateResponse
 from .v1_face_detection_get_response import V1FaceDetectionGetResponse
 from .v1_face_detection_get_response_faces_item import (
@@ -72,6 +73,7 @@ __all__ = [
     "V1AudioProjectsGetResponseDownloadsItem",
     "V1AudioProjectsGetResponseError",
     "V1AutoSubtitleGeneratorCreateResponse",
+    "V1BodySwapCreateResponse",
     "V1FaceDetectionCreateResponse",
     "V1FaceDetectionGetResponse",
     "V1FaceDetectionGetResponseFacesItem",

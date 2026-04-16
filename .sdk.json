@@ -1,5 +1,5 @@
 {
-  "id": "a99332c4-395a-42e0-8a2d-833989f9bf84",
+  "id": "1be4520e-0bec-4a18-81cf-2488a9d303f8",
   "tracked_paths": [
     {
       "editable": true,
@@ -208,6 +208,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/auto_subtitle_generator/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/body_swap/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/body_swap/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/body_swap/client.py"
     },
     {
       "editable": true,
@@ -455,6 +467,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_body_swap_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_face_detection_create_response.py"
     },
     {
@@ -691,6 +707,14 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/params/v1_body_swap_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_body_swap_create_body_assets.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/params/v1_face_detection_create_body.py"
     },
     {
@@ -864,6 +888,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_auto_subtitle_generator_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_body_swap_client.py"
     },
     {
       "editable": false,

@@ -213,7 +213,7 @@ class ImageToVideoClient:
         * **`ltx-2`**: Automatically included with no extra credits
         * **`wan-2.2`**: Not supported
         * **`seedance`**: Not supported
-        * **`seedance-2.0`**: Not supported
+        * **`seedance-2.0`**: Automatically included with no extra credits
         * **`kling-2.5`**: Automatically included with no extra credits
         * **`kling-3.0`**: Toggle-able (can enable/disable)
         * **`sora-2`**: Automatically included with no extra credits
@@ -516,7 +516,7 @@ class AsyncImageToVideoClient:
         * **`ltx-2`**: Automatically included with no extra credits
         * **`wan-2.2`**: Not supported
         * **`seedance`**: Not supported
-        * **`seedance-2.0`**: Not supported
+        * **`seedance-2.0`**: Automatically included with no extra credits
         * **`kling-2.5`**: Automatically included with no extra credits
         * **`kling-3.0`**: Toggle-able (can enable/disable)
         * **`sora-2`**: Automatically included with no extra credits

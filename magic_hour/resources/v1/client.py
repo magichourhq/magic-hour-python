@@ -55,6 +55,7 @@ from magic_hour.resources.v1.auto_subtitle_generator import (
     AsyncAutoSubtitleGeneratorClient,
     AutoSubtitleGeneratorClient,
 )
+from magic_hour.resources.v1.body_swap import AsyncBodySwapClient, BodySwapClient
 from magic_hour.resources.v1.face_detection import (
     AsyncFaceDetectionClient,
     FaceDetectionClient,
@@ -138,6 +139,7 @@ class V1Client:
         self.ai_voice_generator = AiVoiceGeneratorClient(base_client=self._base_client)
         self.ai_voice_cloner = AiVoiceClonerClient(base_client=self._base_client)
         self.head_swap = HeadSwapClient(base_client=self._base_client)
+        self.body_swap = BodySwapClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -190,3 +192,4 @@ class AsyncV1Client:
         )
         self.ai_voice_cloner = AsyncAiVoiceClonerClient(base_client=self._base_client)
         self.head_swap = AsyncHeadSwapClient(base_client=self._base_client)
+        self.body_swap = AsyncBodySwapClient(base_client=self._base_client)

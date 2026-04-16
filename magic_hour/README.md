@@ -17,6 +17,7 @@
 - [animation](resources/v1/animation/README.md) - animation
 - [audio_projects](resources/v1/audio_projects/README.md) - audio_projects
 - [auto_subtitle_generator](resources/v1/auto_subtitle_generator/README.md) - auto_subtitle_generator
+- [body_swap](resources/v1/body_swap/README.md) - body_swap
 - [face_detection](resources/v1/face_detection/README.md) - face_detection
 - [face_swap](resources/v1/face_swap/README.md) - face_swap
 - [face_swap_photo](resources/v1/face_swap_photo/README.md) - face_swap_photo

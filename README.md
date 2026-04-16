@@ -238,6 +238,11 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/auto_subtitle_generator/README.md#create) - Auto Subtitle Generator
 - [generate](magic_hour/resources/v1/auto_subtitle_generator/README.md#generate) - Auto Subtitle Generator Generate Workflow
 
+### [v1.body_swap](magic_hour/resources/v1/body_swap/README.md)
+
+- [create](magic_hour/resources/v1/body_swap/README.md#create) - Body Swap
+- [generate](magic_hour/resources/v1/body_swap/README.md#generate) - Body Swap Generate Workflow
+
 ### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
 
 - [create](magic_hour/resources/v1/face_detection/README.md#create) - Face Detection
