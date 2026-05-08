@@ -151,6 +151,7 @@ class AiImageEditorClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
+                    "gpt-image-2",
                     "nano-banana",
                     "nano-banana-2",
                     "nano-banana-pro",
@@ -210,6 +211,10 @@ class AiImageEditorClient:
           - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: creator, pro, business
           - Max additional input images: 9
+        - `gpt-image-2` - from 50 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Max additional input images: 9
 
             name: Give your image a custom name for easy identification.
             resolution: Maximum resolution (longest edge) for the output image.
@@ -228,6 +233,7 @@ class AiImageEditorClient:
         - `seedream-v4` - 640px, 1k, 2k, 4k
         - `nano-banana-pro` - 1k, 2k, 4k
         - `seedream-v4.5` - 640px, 1k, 2k, 4k
+        - `gpt-image-2` - 640px, 1k, 2k, 4k
 
         Note: Resolution availability depends on the model and your subscription tier.
             assets: Provide the assets for image edit
@@ -410,6 +416,7 @@ class AsyncAiImageEditorClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
+                    "gpt-image-2",
                     "nano-banana",
                     "nano-banana-2",
                     "nano-banana-pro",
@@ -469,6 +476,10 @@ class AsyncAiImageEditorClient:
           - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: creator, pro, business
           - Max additional input images: 9
+        - `gpt-image-2` - from 50 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Max additional input images: 9
 
             name: Give your image a custom name for easy identification.
             resolution: Maximum resolution (longest edge) for the output image.
@@ -487,6 +498,7 @@ class AsyncAiImageEditorClient:
         - `seedream-v4` - 640px, 1k, 2k, 4k
         - `nano-banana-pro` - 1k, 2k, 4k
         - `seedream-v4.5` - 640px, 1k, 2k, 4k
+        - `gpt-image-2` - 640px, 1k, 2k, 4k
 
         Note: Resolution availability depends on the model and your subscription tier.
             assets: Provide the assets for image edit

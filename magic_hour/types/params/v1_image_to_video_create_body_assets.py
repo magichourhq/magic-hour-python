@@ -12,18 +12,16 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     """
     The image to use as the last frame of the video.
     
-    * **`ltx-2`**: Not supported
+    * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
     * **`wan-2.2`**: Not supported
+    * **`kling-2.5`**: Supports 1080p.
+    * **`kling-3.0`**: Supports 720p, 1080p, 4k.
+    * **`veo3.1-lite`**: Not supported
+    * **`veo3.1`**: Not supported
     * **`seedance`**: Supports 480p, 720p, 1080p.
     * **`seedance-2.0`**: Supports 480p, 720p.
-    * **`kling-2.5`**: Supports 1080p.
-    * **`kling-3.0`**: Supports 1080p.
     * **`sora-2`**: Not supported
-    * **`veo3.1`**: Not supported
-    * **`veo3.1-lite`**: Not supported
     
-    Legacy models:
-    * **`kling-1.6`**: Not supported
     """
 
     image_file_path: typing_extensions.Required[str]

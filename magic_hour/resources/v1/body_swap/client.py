@@ -17,6 +17,7 @@ from make_api_request import (
     type_utils,
 )
 
+
 logger = get_sdk_logger(__name__)
 
 
@@ -208,9 +209,7 @@ class AsyncBodySwapClient:
         assets["person_file_path"] = await file_client.upload_file(
             file=person_file_path
         )
-        assets["scene_file_path"] = await file_client.upload_file(
-            file=scene_file_path
-        )
+        assets["scene_file_path"] = await file_client.upload_file(file=scene_file_path)
 
         create_response = await self.create(
             assets=assets,
