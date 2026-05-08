@@ -107,7 +107,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="type",
     )
     """
-    The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, VIDEO_UPSCALER, EXTEND, AUDIO_TO_VIDEO, UGC_AD
+    The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, VIDEO_UPSCALER, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
     """
     width: int = pydantic.Field(
         alias="width",

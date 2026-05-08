@@ -39,6 +39,7 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
     model: typing_extensions.NotRequired[
         typing_extensions.Literal[
             "default",
+            "gpt-image-2",
             "nano-banana",
             "nano-banana-2",
             "nano-banana-pro",
@@ -76,6 +77,10 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
       - Supported resolutions: 640px, 1k, 2k, 4k
       - Available for tiers: creator, pro, business
       - Max additional input images: 9
+    - `gpt-image-2` - from 50 credits/image
+      - Supported resolutions: 640px, 1k, 2k, 4k
+      - Available for tiers: creator, pro, business
+      - Max additional input images: 9
     
     """
 
@@ -104,6 +109,7 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
     - `seedream-v4` - 640px, 1k, 2k, 4k
     - `nano-banana-pro` - 1k, 2k, 4k
     - `seedream-v4.5` - 640px, 1k, 2k, 4k
+    - `gpt-image-2` - 640px, 1k, 2k, 4k
     
     Note: Resolution availability depends on the model and your subscription tier.
     """
@@ -135,6 +141,7 @@ class _SerializerV1AiImageEditorCreateBody(pydantic.BaseModel):
     model: typing.Optional[
         typing_extensions.Literal[
             "default",
+            "gpt-image-2",
             "nano-banana",
             "nano-banana-2",
             "nano-banana-pro",

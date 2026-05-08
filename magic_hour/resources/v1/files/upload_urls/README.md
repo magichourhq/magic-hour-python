@@ -12,7 +12,7 @@ The response array will match the order of items in the request body.
 
 - video: mp4, m4v, mov, webm
 - audio: mp3, wav, aac, flac, webm, m4a
-- image: png, jpg, jpeg, heic, webp, avif, jp2, tiff, bmp
+- image: png, jpg, jpeg, heic, heif, webp, avif, jp2, tiff, bmp
 - gif: gif, webp, webm
 
 > Note: `gif` is only supported for face swap API `video_file_path` field.
