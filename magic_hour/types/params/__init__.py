@@ -157,6 +157,7 @@ from .v1_audio_to_video_create_body_style import (
     V1AudioToVideoCreateBodyStyle,
     _SerializerV1AudioToVideoCreateBodyStyle,
 )
+from .v1_audio_to_video_generate_body_assets import V1AudioToVideoGenerateBodyAssets
 from .v1_auto_subtitle_generator_create_body import (
     V1AutoSubtitleGeneratorCreateBody,
     _SerializerV1AutoSubtitleGeneratorCreateBody,
@@ -358,6 +359,7 @@ __all__ = [
     "V1AudioToVideoCreateBody",
     "V1AudioToVideoCreateBodyAssets",
     "V1AudioToVideoCreateBodyStyle",
+    "V1AudioToVideoGenerateBodyAssets",
     "V1AutoSubtitleGeneratorCreateBody",
     "V1AutoSubtitleGeneratorCreateBodyAssets",
     "V1AutoSubtitleGeneratorCreateBodyStyle",
