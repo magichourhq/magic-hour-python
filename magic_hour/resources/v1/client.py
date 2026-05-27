@@ -51,6 +51,10 @@ from magic_hour.resources.v1.audio_projects import (
     AsyncAudioProjectsClient,
     AudioProjectsClient,
 )
+from magic_hour.resources.v1.audio_to_video import (
+    AsyncAudioToVideoClient,
+    AudioToVideoClient,
+)
 from magic_hour.resources.v1.auto_subtitle_generator import (
     AsyncAutoSubtitleGeneratorClient,
     AutoSubtitleGeneratorClient,
@@ -140,6 +144,7 @@ class V1Client:
         self.ai_voice_cloner = AiVoiceClonerClient(base_client=self._base_client)
         self.head_swap = HeadSwapClient(base_client=self._base_client)
         self.body_swap = BodySwapClient(base_client=self._base_client)
+        self.audio_to_video = AudioToVideoClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -193,3 +198,4 @@ class AsyncV1Client:
         self.ai_voice_cloner = AsyncAiVoiceClonerClient(base_client=self._base_client)
         self.head_swap = AsyncHeadSwapClient(base_client=self._base_client)
         self.body_swap = AsyncBodySwapClient(base_client=self._base_client)
+        self.audio_to_video = AsyncAudioToVideoClient(base_client=self._base_client)

@@ -1,0 +1,47 @@
+import pydantic
+import typing
+import typing_extensions
+
+
+class V1AudioToVideoCreateBodyAssets(typing_extensions.TypedDict):
+    """
+    Provide the audio file and an optional reference image.
+    """
+
+    audio_file_path: typing_extensions.Required[str]
+    """
+    The path of the audio file. This value is either
+    - a direct URL to the video file
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
+    
+    """
+
+    image_file_path: typing_extensions.NotRequired[str]
+    """
+    Reference image for the initial frame of the video. This value is either
+    - a direct URL to the video file
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
+    
+    """
+
+
+class _SerializerV1AudioToVideoCreateBodyAssets(pydantic.BaseModel):
+    """
+    Serializer for V1AudioToVideoCreateBodyAssets handling case conversions
+    and file omissions as dictated by the API
+    """
+
+    model_config = pydantic.ConfigDict(
+        populate_by_name=True,
+    )
+
+    audio_file_path: str = pydantic.Field(
+        alias="audio_file_path",
+    )
+    image_file_path: typing.Optional[str] = pydantic.Field(
+        alias="image_file_path", default=None
+    )

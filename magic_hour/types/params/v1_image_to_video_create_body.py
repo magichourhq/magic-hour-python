@@ -49,7 +49,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
     * **`veo3.1-lite`**: 8, 16, 24, 32, 40, 48, 56
     * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
-    * **`seedance`**: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+    * **`seedance`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
     * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
     * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
     
@@ -84,7 +84,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     The AI model to use for video generation.
     
     * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
-    * `ltx-2.3`: Fast iteration with audio, lip-sync, and end frame
+    * `ltx-2.3`: Fast iteration with lip-sync & end frame
     * `wan-2.2`: Fast, strong visuals with effects
     * `kling-2.5`: Motion, action, and camera control
     * `kling-3.0`: Cinematic, multi-scene storytelling

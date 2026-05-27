@@ -1,5 +1,5 @@
 {
-  "id": "0270e04f-dd51-4f01-9578-99d683c4ee44",
+  "id": "2db416fc-d566-4b6b-a6a2-d7d8e5e2be0e",
   "tracked_paths": [
     {
       "editable": true,
@@ -196,6 +196,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/audio_projects/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/audio_to_video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/audio_to_video/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/audio_to_video/client.py"
     },
     {
       "editable": true,
@@ -463,6 +475,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_audio_to_video_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_auto_subtitle_generator_create_response.py"
     },
     {
@@ -691,6 +707,18 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/params/v1_audio_to_video_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_audio_to_video_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_audio_to_video_create_body_style.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/params/v1_auto_subtitle_generator_create_body.py"
     },
     {
@@ -884,6 +912,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_audio_projects_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_audio_to_video_client.py"
     },
     {
       "editable": false,

@@ -59,15 +59,15 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
       - Max additional input images: 2
     - `nano-banana` - from 50 credits/image
       - Supported resolutions: 640px, 1k
-      - Available for tiers: free, creator, pro, business
+      - Available for tiers: creator, pro, business
       - Max additional input images: 9
     - `nano-banana-2` - from 100 credits/image
       - Supported resolutions: 640px, 1k, 2k, 4k
-      - Available for tiers: free, creator, pro, business
+      - Available for tiers: creator, pro, business
       - Max additional input images: 9
     - `seedream-v4` - from 40 credits/image
       - Supported resolutions: 640px, 1k, 2k, 4k
-      - Available for tiers: free, creator, pro, business
+      - Available for tiers: creator, pro, business
       - Max additional input images: 9
     - `nano-banana-pro` - from 150 credits/image
       - Supported resolutions: 1k, 2k, 4k

@@ -145,6 +145,18 @@ from .v1_animation_create_body_style import (
     _SerializerV1AnimationCreateBodyStyle,
 )
 from .v1_animation_generate_body_assets import V1AnimationGenerateBodyAssets
+from .v1_audio_to_video_create_body import (
+    V1AudioToVideoCreateBody,
+    _SerializerV1AudioToVideoCreateBody,
+)
+from .v1_audio_to_video_create_body_assets import (
+    V1AudioToVideoCreateBodyAssets,
+    _SerializerV1AudioToVideoCreateBodyAssets,
+)
+from .v1_audio_to_video_create_body_style import (
+    V1AudioToVideoCreateBodyStyle,
+    _SerializerV1AudioToVideoCreateBodyStyle,
+)
 from .v1_auto_subtitle_generator_create_body import (
     V1AutoSubtitleGeneratorCreateBody,
     _SerializerV1AutoSubtitleGeneratorCreateBody,
@@ -343,6 +355,9 @@ __all__ = [
     "V1AnimationCreateBodyAssets",
     "V1AnimationCreateBodyStyle",
     "V1AnimationGenerateBodyAssets",
+    "V1AudioToVideoCreateBody",
+    "V1AudioToVideoCreateBodyAssets",
+    "V1AudioToVideoCreateBodyStyle",
     "V1AutoSubtitleGeneratorCreateBody",
     "V1AutoSubtitleGeneratorCreateBodyAssets",
     "V1AutoSubtitleGeneratorCreateBodyStyle",
@@ -422,6 +437,9 @@ __all__ = [
     "_SerializerV1AnimationCreateBody",
     "_SerializerV1AnimationCreateBodyAssets",
     "_SerializerV1AnimationCreateBodyStyle",
+    "_SerializerV1AudioToVideoCreateBody",
+    "_SerializerV1AudioToVideoCreateBodyAssets",
+    "_SerializerV1AudioToVideoCreateBodyStyle",
     "_SerializerV1AutoSubtitleGeneratorCreateBody",
     "_SerializerV1AutoSubtitleGeneratorCreateBodyAssets",
     "_SerializerV1AutoSubtitleGeneratorCreateBodyStyle",
