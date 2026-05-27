@@ -233,6 +233,10 @@ download_urls = result.downloads
 - [delete](magic_hour/resources/v1/audio_projects/README.md#delete) - Delete audio
 - [get](magic_hour/resources/v1/audio_projects/README.md#get) - Get audio details
 
+### [v1.audio_to_video](magic_hour/resources/v1/audio_to_video/README.md)
+
+- [create](magic_hour/resources/v1/audio_to_video/README.md#create) - Audio-to-Video
+
 ### [v1.auto_subtitle_generator](magic_hour/resources/v1/auto_subtitle_generator/README.md)
 
 - [create](magic_hour/resources/v1/auto_subtitle_generator/README.md#create) - Auto Subtitle Generator

@@ -183,15 +183,15 @@ class AiImageGeneratorClient:
           - Image count allowed: 1, 2, 3, 4
         - `seedream-v4` - from 40 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: free, creator, pro, business
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
         - `nano-banana` - from 50 credits/image
           - Supported resolutions: 640px, 1k
-          - Available for tiers: free, creator, pro, business
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
         - `nano-banana-2` - from 100 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: free, creator, pro, business
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 4, 9, 16
         - `nano-banana-pro` - from 150 credits/image
           - Supported resolutions: 1k, 2k, 4k
@@ -430,15 +430,15 @@ class AsyncAiImageGeneratorClient:
           - Image count allowed: 1, 2, 3, 4
         - `seedream-v4` - from 40 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: free, creator, pro, business
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
         - `nano-banana` - from 50 credits/image
           - Supported resolutions: 640px, 1k
-          - Available for tiers: free, creator, pro, business
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
         - `nano-banana-2` - from 100 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: free, creator, pro, business
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 4, 9, 16
         - `nano-banana-pro` - from 150 credits/image
           - Supported resolutions: 1k, 2k, 4k
