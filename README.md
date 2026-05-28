@@ -236,6 +236,7 @@ download_urls = result.downloads
 ### [v1.audio_to_video](magic_hour/resources/v1/audio_to_video/README.md)
 
 - [create](magic_hour/resources/v1/audio_to_video/README.md#create) - Audio-to-Video
+- [generate](magic_hour/resources/v1/audio_to_video/README.md#generate) - Audio To Video Generate Workflow
 
 ### [v1.auto_subtitle_generator](magic_hour/resources/v1/auto_subtitle_generator/README.md)
 

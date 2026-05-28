@@ -118,7 +118,7 @@ class AiImageUpscalerClient:
             scale_factor: How much to scale the image. Must be either 2 or 4.
 
         Note: 4x upscale is only available on Creator, Pro, or Business tier.
-            style: V1AiImageUpscalerCreateBodyStyle
+            style: Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -133,7 +133,7 @@ class AiImageUpscalerClient:
         client.v1.ai_image_upscaler.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
-            style={"enhancement": "Balanced"},
+            style={"mode": "creative"},
             name="My Image Upscaler image",
         )
         ```
@@ -255,7 +255,7 @@ class AsyncAiImageUpscalerClient:
             scale_factor: How much to scale the image. Must be either 2 or 4.
 
         Note: 4x upscale is only available on Creator, Pro, or Business tier.
-            style: V1AiImageUpscalerCreateBodyStyle
+            style: Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -270,7 +270,7 @@ class AsyncAiImageUpscalerClient:
         await client.v1.ai_image_upscaler.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
-            style={"enhancement": "Balanced"},
+            style={"mode": "creative"},
             name="My Image Upscaler image",
         )
         ```
