@@ -35,6 +35,9 @@ class V1AiImageUpscalerCreateBody(typing_extensions.TypedDict):
     """
 
     style: typing_extensions.Required[V1AiImageUpscalerCreateBodyStyle]
+    """
+    Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
+    """
 
 
 class _SerializerV1AiImageUpscalerCreateBody(pydantic.BaseModel):
