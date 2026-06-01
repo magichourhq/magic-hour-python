@@ -233,7 +233,7 @@ class ImageToVideoClient:
         * `kling-3.0`: Cinematic, multi-scene storytelling
         * `veo3.1-lite`: Fast, affordable, high-quality
         * `veo3.1`: Realistic visuals and prompt adherence
-        * `seedance`: Fast iteration and start/end frames
+        * `seedance`: Fast iteration
         * `seedance-2.0`: State-of-the-art quality and consistency
         * `sora-2`: Story-first concepts and creativity
 
@@ -528,7 +528,7 @@ class AsyncImageToVideoClient:
         * `kling-3.0`: Cinematic, multi-scene storytelling
         * `veo3.1-lite`: Fast, affordable, high-quality
         * `veo3.1`: Realistic visuals and prompt adherence
-        * `seedance`: Fast iteration and start/end frames
+        * `seedance`: Fast iteration
         * `seedance-2.0`: State-of-the-art quality and consistency
         * `sora-2`: Story-first concepts and creativity
 
