@@ -28,6 +28,7 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
     model: typing_extensions.NotRequired[
         typing_extensions.Literal[
             "default",
+            "flux-2-klein",
             "flux-schnell",
             "gpt-image-2",
             "nano-banana",
@@ -47,6 +48,10 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
       - Supported resolutions: 640px, 1k, 2k
       - Available for tiers: free, creator, pro, business
       - Image count allowed: 1, 2, 3, 4
+    - `flux-2-klein` - from 5 credits/image
+      - Supported resolutions: 640px, 1k, 2k
+      - Available for tiers: free, creator, pro, business
+      - Image count allowed: 1
     - `z-image-turbo` - from 5 credits/image
       - Supported resolutions: 640px, 1k, 2k
       - Available for tiers: free, creator, pro, business
@@ -106,6 +111,7 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
     
     **Per-model support:**
     - `flux-schnell` - 640px, 1k, 2k
+    - `flux-2-klein` - 640px, 1k, 2k
     - `z-image-turbo` - 640px, 1k, 2k
     - `seedream-v4` - 640px, 1k, 2k, 4k
     - `nano-banana` - 640px, 1k
@@ -141,6 +147,7 @@ class _SerializerV1AiImageGeneratorCreateBody(pydantic.BaseModel):
     model: typing.Optional[
         typing_extensions.Literal[
             "default",
+            "flux-2-klein",
             "flux-schnell",
             "gpt-image-2",
             "nano-banana",
