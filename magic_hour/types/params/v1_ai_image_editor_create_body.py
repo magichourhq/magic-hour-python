@@ -39,6 +39,7 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
     model: typing_extensions.NotRequired[
         typing_extensions.Literal[
             "default",
+            "flux-2-klein",
             "gpt-image-2",
             "nano-banana",
             "nano-banana-2",
@@ -57,6 +58,10 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
       - Supported resolutions: 640px, 1k, 2k
       - Available for tiers: free, creator, pro, business
       - Max additional input images: 2
+    - `flux-2-klein` - from 5 credits/image
+      - Supported resolutions: 640px, 1k, 2k
+      - Available for tiers: free, creator, pro, business
+      - Max additional input images: 5
     - `nano-banana` - from 50 credits/image
       - Supported resolutions: 640px, 1k
       - Available for tiers: creator, pro, business
@@ -104,6 +109,7 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
     
     **Per-model support:**
     - `qwen-edit` - 640px, 1k, 2k
+    - `flux-2-klein` - 640px, 1k, 2k
     - `nano-banana` - 640px, 1k
     - `nano-banana-2` - 640px, 1k, 2k, 4k
     - `seedream-v4` - 640px, 1k, 2k, 4k
@@ -141,6 +147,7 @@ class _SerializerV1AiImageEditorCreateBody(pydantic.BaseModel):
     model: typing.Optional[
         typing_extensions.Literal[
             "default",
+            "flux-2-klein",
             "gpt-image-2",
             "nano-banana",
             "nano-banana-2",
