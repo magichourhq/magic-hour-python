@@ -38,6 +38,10 @@ from magic_hour.resources.v1.ai_talking_photo import (
     AiTalkingPhotoClient,
     AsyncAiTalkingPhotoClient,
 )
+from magic_hour.resources.v1.ai_video_editor import (
+    AiVideoEditorClient,
+    AsyncAiVideoEditorClient,
+)
 from magic_hour.resources.v1.ai_voice_cloner import (
     AiVoiceClonerClient,
     AsyncAiVoiceClonerClient,
@@ -60,6 +64,10 @@ from magic_hour.resources.v1.auto_subtitle_generator import (
     AutoSubtitleGeneratorClient,
 )
 from magic_hour.resources.v1.body_swap import AsyncBodySwapClient, BodySwapClient
+from magic_hour.resources.v1.character_replace import (
+    AsyncCharacterReplaceClient,
+    CharacterReplaceClient,
+)
 from magic_hour.resources.v1.face_detection import (
     AsyncFaceDetectionClient,
     FaceDetectionClient,
@@ -145,6 +153,8 @@ class V1Client:
         self.head_swap = HeadSwapClient(base_client=self._base_client)
         self.body_swap = BodySwapClient(base_client=self._base_client)
         self.audio_to_video = AudioToVideoClient(base_client=self._base_client)
+        self.ai_video_editor = AiVideoEditorClient(base_client=self._base_client)
+        self.character_replace = CharacterReplaceClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -199,3 +209,7 @@ class AsyncV1Client:
         self.head_swap = AsyncHeadSwapClient(base_client=self._base_client)
         self.body_swap = AsyncBodySwapClient(base_client=self._base_client)
         self.audio_to_video = AsyncAudioToVideoClient(base_client=self._base_client)
+        self.ai_video_editor = AsyncAiVideoEditorClient(base_client=self._base_client)
+        self.character_replace = AsyncCharacterReplaceClient(
+            base_client=self._base_client
+        )

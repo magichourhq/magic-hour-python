@@ -111,6 +111,18 @@ from .v1_ai_talking_photo_create_body_style import (
     _SerializerV1AiTalkingPhotoCreateBodyStyle,
 )
 from .v1_ai_talking_photo_generate_body_assets import V1AiTalkingPhotoGenerateBodyAssets
+from .v1_ai_video_editor_create_body import (
+    V1AiVideoEditorCreateBody,
+    _SerializerV1AiVideoEditorCreateBody,
+)
+from .v1_ai_video_editor_create_body_assets import (
+    V1AiVideoEditorCreateBodyAssets,
+    _SerializerV1AiVideoEditorCreateBodyAssets,
+)
+from .v1_ai_video_editor_create_body_style import (
+    V1AiVideoEditorCreateBodyStyle,
+    _SerializerV1AiVideoEditorCreateBodyStyle,
+)
 from .v1_ai_voice_cloner_create_body import (
     V1AiVoiceClonerCreateBody,
     _SerializerV1AiVoiceClonerCreateBody,
@@ -184,6 +196,22 @@ from .v1_body_swap_create_body import (
 from .v1_body_swap_create_body_assets import (
     V1BodySwapCreateBodyAssets,
     _SerializerV1BodySwapCreateBodyAssets,
+)
+from .v1_character_replace_create_body import (
+    V1CharacterReplaceCreateBody,
+    _SerializerV1CharacterReplaceCreateBody,
+)
+from .v1_character_replace_create_body_assets import (
+    V1CharacterReplaceCreateBodyAssets,
+    _SerializerV1CharacterReplaceCreateBodyAssets,
+)
+from .v1_character_replace_create_body_style import (
+    V1CharacterReplaceCreateBodyStyle,
+    _SerializerV1CharacterReplaceCreateBodyStyle,
+)
+from .v1_character_replace_create_body_style_points_item import (
+    V1CharacterReplaceCreateBodyStylePointsItem,
+    _SerializerV1CharacterReplaceCreateBodyStylePointsItem,
 )
 from .v1_face_detection_create_body import (
     V1FaceDetectionCreateBody,
@@ -346,6 +374,9 @@ __all__ = [
     "V1AiTalkingPhotoCreateBodyAssets",
     "V1AiTalkingPhotoCreateBodyStyle",
     "V1AiTalkingPhotoGenerateBodyAssets",
+    "V1AiVideoEditorCreateBody",
+    "V1AiVideoEditorCreateBodyAssets",
+    "V1AiVideoEditorCreateBodyStyle",
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
@@ -367,6 +398,10 @@ __all__ = [
     "V1AutoSubtitleGeneratorGenerateBodyAssets",
     "V1BodySwapCreateBody",
     "V1BodySwapCreateBodyAssets",
+    "V1CharacterReplaceCreateBody",
+    "V1CharacterReplaceCreateBodyAssets",
+    "V1CharacterReplaceCreateBodyStyle",
+    "V1CharacterReplaceCreateBodyStylePointsItem",
     "V1FaceDetectionCreateBody",
     "V1FaceDetectionCreateBodyAssets",
     "V1FaceDetectionGenerateBodyAssets",
@@ -431,6 +466,9 @@ __all__ = [
     "_SerializerV1AiTalkingPhotoCreateBody",
     "_SerializerV1AiTalkingPhotoCreateBodyAssets",
     "_SerializerV1AiTalkingPhotoCreateBodyStyle",
+    "_SerializerV1AiVideoEditorCreateBody",
+    "_SerializerV1AiVideoEditorCreateBodyAssets",
+    "_SerializerV1AiVideoEditorCreateBodyStyle",
     "_SerializerV1AiVoiceClonerCreateBody",
     "_SerializerV1AiVoiceClonerCreateBodyAssets",
     "_SerializerV1AiVoiceClonerCreateBodyStyle",
@@ -448,6 +486,10 @@ __all__ = [
     "_SerializerV1AutoSubtitleGeneratorCreateBodyStyleCustomConfig",
     "_SerializerV1BodySwapCreateBody",
     "_SerializerV1BodySwapCreateBodyAssets",
+    "_SerializerV1CharacterReplaceCreateBody",
+    "_SerializerV1CharacterReplaceCreateBodyAssets",
+    "_SerializerV1CharacterReplaceCreateBodyStyle",
+    "_SerializerV1CharacterReplaceCreateBodyStylePointsItem",
     "_SerializerV1FaceDetectionCreateBody",
     "_SerializerV1FaceDetectionCreateBodyAssets",
     "_SerializerV1FaceSwapCreateBody",
