@@ -64,7 +64,7 @@ res = await client.v1.ai_image_upscaler.generate(
 
 ### AI Image Upscaler <a name="create"></a>
 
-Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale costs 200 credits.
+Upscale your image using AI. Each 2x upscale costs 50 credits for balanced/creative modes, and 25 credits for preserve. 4x upscale costs 200 and 100 credits respectively.
 
 **API Endpoint**: `POST /v1/ai-image-upscaler`
 
@@ -75,11 +75,11 @@ Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale co
 | `assets`             |    ✓     | Provide the assets for upscaling                                                                                                                                                                                                                                                                                                                                                                   | `{"image_file_path": "api-assets/id/1234.png"}` |
 | `└─ image_file_path` |    ✓     | The image to upscale. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. . The maximum input image size is 4096x4096px. | `"api-assets/id/1234.png"`                      |
 | `scale_factor`       |    ✓     | How much to scale the image. Must be either 2 or 4. Note: 4x upscale is only available on Creator, Pro, or Business tier.                                                                                                                                                                                                                                                                          | `2.0`                                           |
-| `style`              |    ✓     | Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.                                                                                                                                                                                                          | `{"mode": "creative"}`                          |
-| `└─ enhancement`     |    ✗     |                                                                                                                                                                                                                                                                                                                                                                                                    | `"Balanced"`                                    |
-| `└─ mode`            |    ✗     | The upscaling mode. `"pro"` is faster and does not require `enhancement`. `"creative"` requires `enhancement`. Defaults to `"creative"`.                                                                                                                                                                                                                                                           | `"creative"`                                    |
-| `└─ prompt`          |    ✗     | A prompt to guide the final image. This value is ignored if `enhancement` is not Creative                                                                                                                                                                                                                                                                                                          | `"string"`                                      |
 | `name`               |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                             | `"My Image Upscaler image"`                     |
+| `style`              |    ✗     | Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.                                                                                                                                                                                                                                                                                | `{"mode": "balanced"}`                          |
+| `└─ enhancement`     |    ✗     | Deprecated: use `mode` instead. `"Resemblance"` maps to `"preserve"`. `"Balanced"` and `"Creative"` map to the same-named modes.                                                                                                                                                                                                                                                                   | `"Balanced"`                                    |
+| `└─ mode`            |    ✗     | The upscaling mode. `"preserve"` uses the fast pro pipeline (1× credit multiplier). `"balanced"` and `"creative"` use the creative pipeline (2× credit multiplier). `"pro"` is deprecated and maps to `"preserve"`. Defaults to `"balanced"`.                                                                                                                                                      | `"balanced"`                                    |
+| `└─ prompt`          |    ✗     | A prompt to guide the final image. Only used when mode is `creative`.                                                                                                                                                                                                                                                                                                                              | `"string"`                                      |
 
 #### Synchronous Client
 
@@ -91,7 +91,6 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_upscaler.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     scale_factor=2.0,
-    style={"mode": "creative"},
     name="My Image Upscaler image",
 )
 ```
@@ -106,7 +105,6 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_upscaler.create(
     assets={"image_file_path": "api-assets/id/1234.png"},
     scale_factor=2.0,
-    style={"mode": "creative"},
     name="My Image Upscaler image",
 )
 ```

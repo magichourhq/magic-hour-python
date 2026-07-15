@@ -99,26 +99,29 @@ class AiImageUpscalerClient:
         *,
         assets: params.V1AiImageUpscalerCreateBodyAssets,
         scale_factor: float,
-        style: params.V1AiImageUpscalerCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1AiImageUpscalerCreateBodyStyle],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageUpscalerCreateResponse:
         """
         AI Image Upscaler
 
-        Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale costs 200 credits.
+        Upscale your image using AI. Each 2x upscale costs 50 credits for balanced/creative modes, and 25 credits for preserve. 4x upscale costs 200 and 100 credits respectively.
 
         POST /v1/ai-image-upscaler
 
         Args:
             name: Give your image a custom name for easy identification.
+            style: Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.
             assets: Provide the assets for upscaling
             scale_factor: How much to scale the image. Must be either 2 or 4.
 
         Note: 4x upscale is only available on Creator, Pro, or Business tier.
-            style: Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -133,7 +136,6 @@ class AiImageUpscalerClient:
         client.v1.ai_image_upscaler.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
-            style={"mode": "creative"},
             name="My Image Upscaler image",
         )
         ```
@@ -141,9 +143,9 @@ class AiImageUpscalerClient:
         _json = to_encodable(
             item={
                 "name": name,
+                "style": style,
                 "assets": assets,
                 "scale_factor": scale_factor,
-                "style": style,
             },
             dump_with=params._SerializerV1AiImageUpscalerCreateBody,
         )
@@ -236,26 +238,29 @@ class AsyncAiImageUpscalerClient:
         *,
         assets: params.V1AiImageUpscalerCreateBodyAssets,
         scale_factor: float,
-        style: params.V1AiImageUpscalerCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1AiImageUpscalerCreateBodyStyle],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1AiImageUpscalerCreateResponse:
         """
         AI Image Upscaler
 
-        Upscale your image using AI. Each 2x upscale costs 50 credits, and 4x upscale costs 200 credits.
+        Upscale your image using AI. Each 2x upscale costs 50 credits for balanced/creative modes, and 25 credits for preserve. 4x upscale costs 200 and 100 credits respectively.
 
         POST /v1/ai-image-upscaler
 
         Args:
             name: Give your image a custom name for easy identification.
+            style: Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.
             assets: Provide the assets for upscaling
             scale_factor: How much to scale the image. Must be either 2 or 4.
 
         Note: 4x upscale is only available on Creator, Pro, or Business tier.
-            style: Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -270,7 +275,6 @@ class AsyncAiImageUpscalerClient:
         await client.v1.ai_image_upscaler.create(
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
-            style={"mode": "creative"},
             name="My Image Upscaler image",
         )
         ```
@@ -278,9 +282,9 @@ class AsyncAiImageUpscalerClient:
         _json = to_encodable(
             item={
                 "name": name,
+                "style": style,
                 "assets": assets,
                 "scale_factor": scale_factor,
-                "style": style,
             },
             dump_with=params._SerializerV1AiImageUpscalerCreateBody,
         )

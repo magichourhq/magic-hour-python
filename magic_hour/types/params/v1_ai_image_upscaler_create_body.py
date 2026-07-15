@@ -34,9 +34,9 @@ class V1AiImageUpscalerCreateBody(typing_extensions.TypedDict):
     Note: 4x upscale is only available on Creator, Pro, or Business tier.
     """
 
-    style: typing_extensions.Required[V1AiImageUpscalerCreateBodyStyle]
+    style: typing_extensions.NotRequired[V1AiImageUpscalerCreateBodyStyle]
     """
-    Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
+    Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.
     """
 
 
@@ -57,6 +57,6 @@ class _SerializerV1AiImageUpscalerCreateBody(pydantic.BaseModel):
     scale_factor: float = pydantic.Field(
         alias="scale_factor",
     )
-    style: _SerializerV1AiImageUpscalerCreateBodyStyle = pydantic.Field(
-        alias="style",
+    style: typing.Optional[_SerializerV1AiImageUpscalerCreateBodyStyle] = (
+        pydantic.Field(alias="style", default=None)
     )

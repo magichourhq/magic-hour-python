@@ -11,8 +11,8 @@ The response array will match the order of items in the request body.
 **Valid file extensions per asset type**:
 
 - video: mp4, m4v, mov, webm
-- audio: mp3, wav, aac, flac, webm, m4a, opus, ogg, aiff, amr
-- image: png, jpg, jpeg, jfif, heic, heif, webp, avif, jp2, tiff, bmp
+- audio: mp3, wav, aac, flac, webm, weba, m4a, opus, ogg, oga, aiff, amr
+- image: png, jpg, jpeg, jfif, heic, heif, webp, avif, jp2, tiff, tif, bmp
 - gif: gif, webp, webm
 
 > Note: `gif` is only supported for face swap API `video_file_path` field.
