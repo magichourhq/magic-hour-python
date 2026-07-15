@@ -5,21 +5,26 @@ import typing_extensions
 
 class V1AiImageUpscalerCreateBodyStyle(typing_extensions.TypedDict):
     """
-    Style settings for the upscale. Use `mode` to select between `"pro"` (faster, no enhancement required) and `"creative"` (defaults to `"Balanced"` enhancement). Defaults to `"creative"`.
+    Style settings for the upscale. Use `mode` (`"preserve"`, `"balanced"`, or `"creative"`). Defaults to `"balanced"`.
     """
 
     enhancement: typing_extensions.NotRequired[
         typing_extensions.Literal["Balanced", "Creative", "Resemblance"]
     ]
-
-    mode: typing_extensions.NotRequired[typing_extensions.Literal["creative", "pro"]]
     """
-    The upscaling mode. `"pro"` is faster and does not require `enhancement`. `"creative"` requires `enhancement`. Defaults to `"creative"`.
+    Deprecated: use `mode` instead. `"Resemblance"` maps to `"preserve"`. `"Balanced"` and `"Creative"` map to the same-named modes.
+    """
+
+    mode: typing_extensions.NotRequired[
+        typing_extensions.Literal["balanced", "creative", "preserve", "pro"]
+    ]
+    """
+    The upscaling mode. `"preserve"` uses the fast pro pipeline (1× credit multiplier). `"balanced"` and `"creative"` use the creative pipeline (2× credit multiplier). `"pro"` is deprecated and maps to `"preserve"`. Defaults to `"balanced"`.
     """
 
     prompt: typing_extensions.NotRequired[str]
     """
-    A prompt to guide the final image. This value is ignored if `enhancement` is not Creative
+    A prompt to guide the final image. Only used when mode is `creative`.
     """
 
 
@@ -36,7 +41,7 @@ class _SerializerV1AiImageUpscalerCreateBodyStyle(pydantic.BaseModel):
     enhancement: typing.Optional[
         typing_extensions.Literal["Balanced", "Creative", "Resemblance"]
     ] = pydantic.Field(alias="enhancement", default=None)
-    mode: typing.Optional[typing_extensions.Literal["creative", "pro"]] = (
-        pydantic.Field(alias="mode", default=None)
-    )
+    mode: typing.Optional[
+        typing_extensions.Literal["balanced", "creative", "preserve", "pro"]
+    ] = pydantic.Field(alias="mode", default=None)
     prompt: typing.Optional[str] = pydantic.Field(alias="prompt", default=None)
