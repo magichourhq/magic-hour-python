@@ -214,9 +214,6 @@ from .v1_character_replace_create_body_style_points_item import (
     V1CharacterReplaceCreateBodyStylePointsItem,
     _SerializerV1CharacterReplaceCreateBodyStylePointsItem,
 )
-from .v1_character_replace_generate_body_assets import (
-    V1CharacterReplaceGenerateBodyAssets,
-)
 from .v1_face_detection_create_body import (
     V1FaceDetectionCreateBody,
     _SerializerV1FaceDetectionCreateBody,
@@ -407,7 +404,6 @@ __all__ = [
     "V1CharacterReplaceCreateBodyAssets",
     "V1CharacterReplaceCreateBodyStyle",
     "V1CharacterReplaceCreateBodyStylePointsItem",
-    "V1CharacterReplaceGenerateBodyAssets",
     "V1FaceDetectionCreateBody",
     "V1FaceDetectionCreateBodyAssets",
     "V1FaceDetectionGenerateBodyAssets",

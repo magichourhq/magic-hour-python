@@ -32,15 +32,17 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.character_replace.generate(
-    assets={
-        "image_file_path": "/path/to/5678.png",
-        "video_file_path": "/path/to/1234.mp4",
+    data={
+        "assets": {
+            "image_file_path": "/path/to/5678.png",
+            "video_file_path": "/path/to/1234.mp4",
+        },
+        "end_seconds": 15.0,
+        "name": "My Character Replace video",
+        "resolution": "720p",
+        "start_seconds": 0.0,
+        "style": {"mode": "replace", "selection_mode": "auto"},
     },
-    end_seconds=15.0,
-    name="My Character Replace video",
-    resolution="720p",
-    start_seconds=0.0,
-    style={"mode": "replace", "selection_mode": "auto"},
     wait_for_completion=True,
     download_outputs=True,
     download_directory=".",
@@ -55,15 +57,17 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.character_replace.generate(
-    assets={
-        "image_file_path": "/path/to/5678.png",
-        "video_file_path": "/path/to/1234.mp4",
+    data={
+        "assets": {
+            "image_file_path": "/path/to/5678.png",
+            "video_file_path": "/path/to/1234.mp4",
+        },
+        "end_seconds": 15.0,
+        "name": "My Character Replace video",
+        "resolution": "720p",
+        "start_seconds": 0.0,
+        "style": {"mode": "replace", "selection_mode": "auto"},
     },
-    end_seconds=15.0,
-    name="My Character Replace video",
-    resolution="720p",
-    start_seconds=0.0,
-    style={"mode": "replace", "selection_mode": "auto"},
     wait_for_completion=True,
     download_outputs=True,
     download_directory=".",
