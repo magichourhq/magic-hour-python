@@ -1,5 +1,11 @@
 import typing
 
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
+from magic_hour.resources.v1.video_projects.client import (
+    AsyncVideoProjectsClient,
+    VideoProjectsClient,
+)
 from magic_hour.types import models, params
 from make_api_request import (
     AsyncBaseClient,
@@ -11,9 +17,88 @@ from make_api_request import (
 )
 
 
+logger = get_sdk_logger(__name__)
+
+
 class AiVideoEditorClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def generate(
+        self,
+        *,
+        assets: params.V1AiVideoEditorGenerateBodyAssets,
+        end_seconds: float,
+        style: params.V1AiVideoEditorCreateBodyStyle,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ):
+        """
+        Generate AI video editor video (alias for create with additional functionality).
+
+        Create a Video Editor video. Credits are only charged for the frames that actually render.
+
+        Args:
+            name: Give your video a custom name for easy identification.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
+            assets: Provide the assets for video editing.
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
+            style: V1AiVideoEditorCreateBodyStyle
+            wait_for_completion: Whether to wait for the video project to complete
+            download_outputs: Whether to download the outputs
+            download_directory: The directory to download the outputs to. If not provided, the outputs will be downloaded to the current working directory
+            request_options: Additional options to customize the HTTP request
+
+        Returns:
+            V1VideoProjectsGetResponseWithDownloads: The response from the AI Video Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = client.v1.ai_video_editor.generate(
+            assets={"video_file_path": "path/to/video.mp4"},
+            end_seconds=5.0,
+            style={"prompt": "Change the car color to blue"},
+            name="My Video Editor video",
+            start_seconds=0.0,
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory=".",
+        )
+        ```
+        """
+
+        file_client = FilesClient(base_client=self._base_client)
+
+        video_file_path = assets["video_file_path"]
+        assets["video_file_path"] = file_client.upload_file(file=video_file_path)
+
+        create_response = self.create(
+            assets=assets,
+            end_seconds=end_seconds,
+            style=style,
+            name=name,
+            start_seconds=start_seconds,
+            request_options=request_options,
+        )
+        logger.info(f"AI Video Editor response: {create_response}")
+
+        video_projects_client = VideoProjectsClient(base_client=self._base_client)
+        response = video_projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
+
+        return response
 
     def create(
         self,
@@ -106,6 +191,82 @@ class AiVideoEditorClient:
 class AsyncAiVideoEditorClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def generate(
+        self,
+        *,
+        assets: params.V1AiVideoEditorGenerateBodyAssets,
+        end_seconds: float,
+        style: params.V1AiVideoEditorCreateBodyStyle,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ):
+        """
+        Generate AI video editor video (alias for create with additional functionality).
+
+        Create a Video Editor video. Credits are only charged for the frames that actually render.
+
+        Args:
+            name: Give your video a custom name for easy identification.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
+            assets: Provide the assets for video editing.
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
+            style: V1AiVideoEditorCreateBodyStyle
+            wait_for_completion: Whether to wait for the video project to complete
+            download_outputs: Whether to download the outputs
+            download_directory: The directory to download the outputs to. If not provided, the outputs will be downloaded to the current working directory
+            request_options: Additional options to customize the HTTP request
+
+        Returns:
+            V1VideoProjectsGetResponseWithDownloads: The response from the AI Video Editor API with the downloaded paths if `download_outputs` is True.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_video_editor.generate(
+            assets={"video_file_path": "path/to/video.mp4"},
+            end_seconds=5.0,
+            style={"prompt": "Change the car color to blue"},
+            name="My Video Editor video",
+            start_seconds=0.0,
+            wait_for_completion=True,
+            download_outputs=True,
+            download_directory=".",
+        )
+        ```
+        """
+
+        file_client = AsyncFilesClient(base_client=self._base_client)
+
+        video_file_path = assets["video_file_path"]
+        assets["video_file_path"] = await file_client.upload_file(file=video_file_path)
+
+        create_response = await self.create(
+            assets=assets,
+            end_seconds=end_seconds,
+            style=style,
+            name=name,
+            start_seconds=start_seconds,
+            request_options=request_options,
+        )
+        logger.info(f"AI Video Editor response: {create_response}")
+
+        video_projects_client = AsyncVideoProjectsClient(base_client=self._base_client)
+        response = await video_projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
+
+        return response
 
     async def create(
         self,

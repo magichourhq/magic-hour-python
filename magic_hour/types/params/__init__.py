@@ -123,6 +123,7 @@ from .v1_ai_video_editor_create_body_style import (
     V1AiVideoEditorCreateBodyStyle,
     _SerializerV1AiVideoEditorCreateBodyStyle,
 )
+from .v1_ai_video_editor_generate_body_assets import V1AiVideoEditorGenerateBodyAssets
 from .v1_ai_voice_cloner_create_body import (
     V1AiVoiceClonerCreateBody,
     _SerializerV1AiVoiceClonerCreateBody,
@@ -212,6 +213,9 @@ from .v1_character_replace_create_body_style import (
 from .v1_character_replace_create_body_style_points_item import (
     V1CharacterReplaceCreateBodyStylePointsItem,
     _SerializerV1CharacterReplaceCreateBodyStylePointsItem,
+)
+from .v1_character_replace_generate_body_assets import (
+    V1CharacterReplaceGenerateBodyAssets,
 )
 from .v1_face_detection_create_body import (
     V1FaceDetectionCreateBody,
@@ -377,6 +381,7 @@ __all__ = [
     "V1AiVideoEditorCreateBody",
     "V1AiVideoEditorCreateBodyAssets",
     "V1AiVideoEditorCreateBodyStyle",
+    "V1AiVideoEditorGenerateBodyAssets",
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
@@ -402,6 +407,7 @@ __all__ = [
     "V1CharacterReplaceCreateBodyAssets",
     "V1CharacterReplaceCreateBodyStyle",
     "V1CharacterReplaceCreateBodyStylePointsItem",
+    "V1CharacterReplaceGenerateBodyAssets",
     "V1FaceDetectionCreateBody",
     "V1FaceDetectionCreateBodyAssets",
     "V1FaceDetectionGenerateBodyAssets",
