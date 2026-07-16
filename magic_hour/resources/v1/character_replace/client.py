@@ -1,4 +1,5 @@
 import typing
+import typing_extensions
 
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
@@ -27,8 +28,21 @@ class CharacterReplaceClient:
     def generate(
         self,
         *,
-        data: typing.Union[
-            typing.Optional[params.V1CharacterReplaceCreateBody], type_utils.NotGiven
+        assets: params.V1CharacterReplaceGenerateBodyAssets,
+        end_seconds: float,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1CharacterReplaceCreateBodyStyle],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -41,7 +55,12 @@ class CharacterReplaceClient:
         Create a Character Replace video. Credits are only charged for the frames that actually render.
 
         Args:
-            data: V1CharacterReplaceCreateBody
+            name: Give your video a custom name for easy identification.
+            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
+            style: Optional style controls for replace vs animate mode and subject selection.
+            assets: Source video and reference character image for the job.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
             wait_for_completion: Whether to wait for the video project to complete
             download_outputs: Whether to download the outputs
             download_directory: The directory to download the outputs to. If not provided, the outputs will be downloaded to the current working directory
@@ -53,17 +72,15 @@ class CharacterReplaceClient:
         Examples:
         ```py
         response = client.v1.character_replace.generate(
-            data={
-                "assets": {
-                    "image_file_path": "path/to/image.png",
-                    "video_file_path": "path/to/video.mp4",
-                },
-                "end_seconds": 15.0,
-                "name": "My Character Replace video",
-                "resolution": "720p",
-                "start_seconds": 0.0,
-                "style": {"mode": "replace", "selection_mode": "auto"},
+            assets={
+                "image_file_path": "path/to/image.png",
+                "video_file_path": "path/to/video.mp4",
             },
+            end_seconds=15.0,
+            name="My Character Replace video",
+            resolution="720p",
+            start_seconds=0.0,
+            style={"mode": "replace", "selection_mode": "auto"},
             wait_for_completion=True,
             download_outputs=True,
             download_directory=".",
@@ -71,17 +88,20 @@ class CharacterReplaceClient:
         ```
         """
 
-        if data and "assets" in data:
-            file_client = FilesClient(base_client=self._base_client)
-            assets = data["assets"]
+        file_client = FilesClient(base_client=self._base_client)
 
-            image_file_path = assets["image_file_path"]
-            video_file_path = assets["video_file_path"]
-            assets["image_file_path"] = file_client.upload_file(file=image_file_path)
-            assets["video_file_path"] = file_client.upload_file(file=video_file_path)
+        image_file_path = assets["image_file_path"]
+        video_file_path = assets["video_file_path"]
+        assets["image_file_path"] = file_client.upload_file(file=image_file_path)
+        assets["video_file_path"] = file_client.upload_file(file=video_file_path)
 
         create_response = self.create(
-            data=data,
+            assets=assets,
+            end_seconds=end_seconds,
+            name=name,
+            resolution=resolution,
+            start_seconds=start_seconds,
+            style=style,
             request_options=request_options,
         )
         logger.info(f"Character Replace response: {create_response}")
@@ -99,8 +119,21 @@ class CharacterReplaceClient:
     def create(
         self,
         *,
-        data: typing.Union[
-            typing.Optional[params.V1CharacterReplaceCreateBody], type_utils.NotGiven
+        assets: params.V1CharacterReplaceCreateBodyAssets,
+        end_seconds: float,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1CharacterReplaceCreateBodyStyle],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1CharacterReplaceCreateResponse:
@@ -133,7 +166,12 @@ class CharacterReplaceClient:
         POST /v1/character-replace
 
         Args:
-            data: V1CharacterReplaceCreateBody
+            name: Give your video a custom name for easy identification.
+            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
+            style: Optional style controls for replace vs animate mode and subject selection.
+            assets: Source video and reference character image for the job.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -145,15 +183,28 @@ class CharacterReplaceClient:
 
         Examples:
         ```py
-        client.v1.character_replace.create()
+        client.v1.character_replace.create(
+            assets={
+                "image_file_path": "api-assets/id/5678.png",
+                "video_file_path": "api-assets/id/1234.mp4",
+            },
+            end_seconds=15.0,
+            name="My Character Replace video",
+            resolution="720p",
+            start_seconds=0.0,
+        )
         ```
         """
-        _json = (
-            to_encodable(
-                item=data, dump_with=params._SerializerV1CharacterReplaceCreateBody
-            )
-            if data
-            else None
+        _json = to_encodable(
+            item={
+                "name": name,
+                "resolution": resolution,
+                "start_seconds": start_seconds,
+                "style": style,
+                "assets": assets,
+                "end_seconds": end_seconds,
+            },
+            dump_with=params._SerializerV1CharacterReplaceCreateBody,
         )
         return self._base_client.request(
             method="POST",
@@ -172,8 +223,21 @@ class AsyncCharacterReplaceClient:
     async def generate(
         self,
         *,
-        data: typing.Union[
-            typing.Optional[params.V1CharacterReplaceCreateBody], type_utils.NotGiven
+        assets: params.V1CharacterReplaceGenerateBodyAssets,
+        end_seconds: float,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1CharacterReplaceCreateBodyStyle],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -186,7 +250,12 @@ class AsyncCharacterReplaceClient:
         Create a Character Replace video. Credits are only charged for the frames that actually render.
 
         Args:
-            data: V1CharacterReplaceCreateBody
+            name: Give your video a custom name for easy identification.
+            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
+            style: Optional style controls for replace vs animate mode and subject selection.
+            assets: Source video and reference character image for the job.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
             wait_for_completion: Whether to wait for the video project to complete
             download_outputs: Whether to download the outputs
             download_directory: The directory to download the outputs to. If not provided, the outputs will be downloaded to the current working directory
@@ -198,17 +267,15 @@ class AsyncCharacterReplaceClient:
         Examples:
         ```py
         response = await client.v1.character_replace.generate(
-            data={
-                "assets": {
-                    "image_file_path": "path/to/image.png",
-                    "video_file_path": "path/to/video.mp4",
-                },
-                "end_seconds": 15.0,
-                "name": "My Character Replace video",
-                "resolution": "720p",
-                "start_seconds": 0.0,
-                "style": {"mode": "replace", "selection_mode": "auto"},
+            assets={
+                "image_file_path": "path/to/image.png",
+                "video_file_path": "path/to/video.mp4",
             },
+            end_seconds=15.0,
+            name="My Character Replace video",
+            resolution="720p",
+            start_seconds=0.0,
+            style={"mode": "replace", "selection_mode": "auto"},
             wait_for_completion=True,
             download_outputs=True,
             download_directory=".",
@@ -216,21 +283,20 @@ class AsyncCharacterReplaceClient:
         ```
         """
 
-        if data and "assets" in data:
-            file_client = AsyncFilesClient(base_client=self._base_client)
-            assets = data["assets"]
+        file_client = AsyncFilesClient(base_client=self._base_client)
 
-            image_file_path = assets["image_file_path"]
-            video_file_path = assets["video_file_path"]
-            assets["image_file_path"] = await file_client.upload_file(
-                file=image_file_path
-            )
-            assets["video_file_path"] = await file_client.upload_file(
-                file=video_file_path
-            )
+        image_file_path = assets["image_file_path"]
+        video_file_path = assets["video_file_path"]
+        assets["image_file_path"] = await file_client.upload_file(file=image_file_path)
+        assets["video_file_path"] = await file_client.upload_file(file=video_file_path)
 
         create_response = await self.create(
-            data=data,
+            assets=assets,
+            end_seconds=end_seconds,
+            name=name,
+            resolution=resolution,
+            start_seconds=start_seconds,
+            style=style,
             request_options=request_options,
         )
         logger.info(f"Character Replace response: {create_response}")
@@ -248,8 +314,21 @@ class AsyncCharacterReplaceClient:
     async def create(
         self,
         *,
-        data: typing.Union[
-            typing.Optional[params.V1CharacterReplaceCreateBody], type_utils.NotGiven
+        assets: params.V1CharacterReplaceCreateBodyAssets,
+        end_seconds: float,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        style: typing.Union[
+            typing.Optional[params.V1CharacterReplaceCreateBodyStyle],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> models.V1CharacterReplaceCreateResponse:
@@ -282,7 +361,12 @@ class AsyncCharacterReplaceClient:
         POST /v1/character-replace
 
         Args:
-            data: V1CharacterReplaceCreateBody
+            name: Give your video a custom name for easy identification.
+            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            start_seconds: Start time of your clip (seconds). Must be ≥ 0.
+            style: Optional style controls for replace vs animate mode and subject selection.
+            assets: Source video and reference character image for the job.
+            end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -294,15 +378,28 @@ class AsyncCharacterReplaceClient:
 
         Examples:
         ```py
-        await client.v1.character_replace.create()
+        await client.v1.character_replace.create(
+            assets={
+                "image_file_path": "api-assets/id/5678.png",
+                "video_file_path": "api-assets/id/1234.mp4",
+            },
+            end_seconds=15.0,
+            name="My Character Replace video",
+            resolution="720p",
+            start_seconds=0.0,
+        )
         ```
         """
-        _json = (
-            to_encodable(
-                item=data, dump_with=params._SerializerV1CharacterReplaceCreateBody
-            )
-            if data
-            else None
+        _json = to_encodable(
+            item={
+                "name": name,
+                "resolution": resolution,
+                "start_seconds": start_seconds,
+                "style": style,
+                "assets": assets,
+                "end_seconds": end_seconds,
+            },
+            dump_with=params._SerializerV1CharacterReplaceCreateBody,
         )
         return await self._base_client.request(
             method="POST",
