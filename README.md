@@ -213,6 +213,10 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/ai_talking_photo/README.md#create) - AI Talking Photo
 - [generate](magic_hour/resources/v1/ai_talking_photo/README.md#generate) - Ai Talking Photo Generate Workflow
 
+### [v1.ai_video_editor](magic_hour/resources/v1/ai_video_editor/README.md)
+
+- [create](magic_hour/resources/v1/ai_video_editor/README.md#create) - AI Video Editor
+
 ### [v1.ai_voice_cloner](magic_hour/resources/v1/ai_voice_cloner/README.md)
 
 - [create](magic_hour/resources/v1/ai_voice_cloner/README.md#create) - AI Voice Cloner
@@ -247,6 +251,10 @@ download_urls = result.downloads
 
 - [create](magic_hour/resources/v1/body_swap/README.md#create) - Body Swap
 - [generate](magic_hour/resources/v1/body_swap/README.md#generate) - Body Swap Generate Workflow
+
+### [v1.character_replace](magic_hour/resources/v1/character_replace/README.md)
+
+- [create](magic_hour/resources/v1/character_replace/README.md#create) - Character Replace
 
 ### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
 
