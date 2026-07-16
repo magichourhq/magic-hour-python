@@ -216,6 +216,7 @@ download_urls = result.downloads
 ### [v1.ai_video_editor](magic_hour/resources/v1/ai_video_editor/README.md)
 
 - [create](magic_hour/resources/v1/ai_video_editor/README.md#create) - AI Video Editor
+- [generate](magic_hour/resources/v1/ai_video_editor/README.md#generate) - AI Video Editor Generate Workflow
 
 ### [v1.ai_voice_cloner](magic_hour/resources/v1/ai_voice_cloner/README.md)
 
@@ -255,6 +256,7 @@ download_urls = result.downloads
 ### [v1.character_replace](magic_hour/resources/v1/character_replace/README.md)
 
 - [create](magic_hour/resources/v1/character_replace/README.md#create) - Character Replace
+- [generate](magic_hour/resources/v1/character_replace/README.md#generate) - Character Replace Generate Workflow
 
 ### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
 

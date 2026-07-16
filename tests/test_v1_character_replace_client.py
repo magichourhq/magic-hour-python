@@ -27,21 +27,19 @@ def test_create_200_success_all_params() -> None:
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.character_replace.create(
-        data={
-            "assets": {
-                "image_file_path": "api-assets/id/5678.png",
-                "video_file_path": "api-assets/id/1234.mp4",
-            },
-            "end_seconds": 15.0,
-            "name": "My Character Replace video",
-            "resolution": "720p",
-            "start_seconds": 0.0,
-            "style": {
-                "mode": "replace",
-                "points": [{"position_x": 320, "position_y": 180, "time_seconds": 2.5}],
-                "selection_mode": "auto",
-            },
-        }
+        assets={
+            "image_file_path": "api-assets/id/5678.png",
+            "video_file_path": "api-assets/id/1234.mp4",
+        },
+        end_seconds=15.0,
+        name="My Character Replace video",
+        resolution="720p",
+        start_seconds=0.0,
+        style={
+            "mode": "replace",
+            "points": [{"position_x": 320, "position_y": 180, "time_seconds": 2.5}],
+            "selection_mode": "auto",
+        },
     )
     try:
         pydantic.TypeAdapter(models.V1CharacterReplaceCreateResponse).validate_python(
@@ -75,21 +73,19 @@ async def test_await_create_200_success_all_params() -> None:
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.character_replace.create(
-        data={
-            "assets": {
-                "image_file_path": "api-assets/id/5678.png",
-                "video_file_path": "api-assets/id/1234.mp4",
-            },
-            "end_seconds": 15.0,
-            "name": "My Character Replace video",
-            "resolution": "720p",
-            "start_seconds": 0.0,
-            "style": {
-                "mode": "replace",
-                "points": [{"position_x": 320, "position_y": 180, "time_seconds": 2.5}],
-                "selection_mode": "auto",
-            },
-        }
+        assets={
+            "image_file_path": "api-assets/id/5678.png",
+            "video_file_path": "api-assets/id/1234.mp4",
+        },
+        end_seconds=15.0,
+        name="My Character Replace video",
+        resolution="720p",
+        start_seconds=0.0,
+        style={
+            "mode": "replace",
+            "points": [{"position_x": 320, "position_y": 180, "time_seconds": 2.5}],
+            "selection_mode": "auto",
+        },
     )
     try:
         pydantic.TypeAdapter(models.V1CharacterReplaceCreateResponse).validate_python(
