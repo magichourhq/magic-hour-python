@@ -109,7 +109,7 @@ class BodySwapClient:
         """
         Body Swap
 
-        Swap a person into a scene image using Nano Banana 2. Credits depend on `resolution` (from 50 credits at 640px upward).
+        Swap a person into a scene image using Nano Banana 2 Lite (640px/1k) or Nano Banana 2 (2k/4k). Credits depend on `resolution` (from 50 credits at 640px upward).
 
         POST /v1/body-swap
 
@@ -242,7 +242,7 @@ class AsyncBodySwapClient:
         """
         Body Swap
 
-        Swap a person into a scene image using Nano Banana 2. Credits depend on `resolution` (from 50 credits at 640px upward).
+        Swap a person into a scene image using Nano Banana 2 Lite (640px/1k) or Nano Banana 2 (2k/4k). Credits depend on `resolution` (from 50 credits at 640px upward).
 
         POST /v1/body-swap
 
