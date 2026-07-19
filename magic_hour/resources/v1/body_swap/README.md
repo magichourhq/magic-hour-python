@@ -68,7 +68,7 @@ res = await client.v1.body_swap.generate(
 
 ### Body Swap <a name="create"></a>
 
-Swap a person into a scene image using Nano Banana 2. Credits depend on `resolution` (from 50 credits at 640px upward).
+Swap a person into a scene image using Nano Banana 2 Lite (640px/1k) or Nano Banana 2 (2k/4k). Credits depend on `resolution` (from 50 credits at 640px upward).
 
 **API Endpoint**: `POST /v1/body-swap`
 
