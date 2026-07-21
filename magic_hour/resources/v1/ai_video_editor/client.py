@@ -1,4 +1,5 @@
 import typing
+import typing_extensions
 
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
@@ -106,8 +107,16 @@ class AiVideoEditorClient:
         assets: params.V1AiVideoEditorCreateBodyAssets,
         end_seconds: float,
         style: params.V1AiVideoEditorCreateBodyStyle,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
@@ -143,7 +152,9 @@ class AiVideoEditorClient:
         POST /v1/ai-video-editor
 
         Args:
+            model: Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni` for paid. Use `ltx-2.3` for LTX video edit.
             name: Give your video a custom name for easy identification.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
             end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
@@ -163,14 +174,18 @@ class AiVideoEditorClient:
             assets={"video_file_path": "api-assets/id/1234.mp4"},
             end_seconds=5.0,
             style={"prompt": "Change the car color to blue"},
+            model="gemini-omni",
             name="My Video Editor video",
+            resolution="720p",
             start_seconds=0.0,
         )
         ```
         """
         _json = to_encodable(
             item={
+                "model": model,
                 "name": name,
+                "resolution": resolution,
                 "start_seconds": start_seconds,
                 "assets": assets,
                 "end_seconds": end_seconds,
@@ -274,8 +289,16 @@ class AsyncAiVideoEditorClient:
         assets: params.V1AiVideoEditorCreateBodyAssets,
         end_seconds: float,
         style: params.V1AiVideoEditorCreateBodyStyle,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
@@ -311,7 +334,9 @@ class AsyncAiVideoEditorClient:
         POST /v1/ai-video-editor
 
         Args:
+            model: Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni` for paid. Use `ltx-2.3` for LTX video edit.
             name: Give your video a custom name for easy identification.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
             end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
@@ -331,14 +356,18 @@ class AsyncAiVideoEditorClient:
             assets={"video_file_path": "api-assets/id/1234.mp4"},
             end_seconds=5.0,
             style={"prompt": "Change the car color to blue"},
+            model="gemini-omni",
             name="My Video Editor video",
+            resolution="720p",
             start_seconds=0.0,
         )
         ```
         """
         _json = to_encodable(
             item={
+                "model": model,
                 "name": name,
+                "resolution": resolution,
                 "start_seconds": start_seconds,
                 "assets": assets,
                 "end_seconds": end_seconds,

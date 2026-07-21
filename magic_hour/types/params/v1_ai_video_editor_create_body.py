@@ -27,9 +27,23 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
     End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
     """
 
+    model: typing_extensions.NotRequired[
+        typing_extensions.Literal["gemini-omni", "ltx-2.3"]
+    ]
+    """
+    Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni` for paid. Use `ltx-2.3` for LTX video edit.
+    """
+
     name: typing_extensions.NotRequired[str]
     """
     Give your video a custom name for easy identification.
+    """
+
+    resolution: typing_extensions.NotRequired[
+        typing_extensions.Literal["1080p", "480p", "720p"]
+    ]
+    """
+    Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
     """
 
     start_seconds: typing_extensions.NotRequired[float]
@@ -56,7 +70,13 @@ class _SerializerV1AiVideoEditorCreateBody(pydantic.BaseModel):
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
     )
+    model: typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]] = (
+        pydantic.Field(alias="model", default=None)
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
+    resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
+        pydantic.Field(alias="resolution", default=None)
+    )
     start_seconds: typing.Optional[float] = pydantic.Field(
         alias="start_seconds", default=None
     )
