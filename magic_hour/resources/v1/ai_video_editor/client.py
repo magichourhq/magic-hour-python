@@ -31,8 +31,16 @@ class AiVideoEditorClient:
         assets: params.V1AiVideoEditorGenerateBodyAssets,
         end_seconds: float,
         style: params.V1AiVideoEditorCreateBodyStyle,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
@@ -213,8 +221,16 @@ class AsyncAiVideoEditorClient:
         assets: params.V1AiVideoEditorGenerateBodyAssets,
         end_seconds: float,
         style: params.V1AiVideoEditorCreateBodyStyle,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
