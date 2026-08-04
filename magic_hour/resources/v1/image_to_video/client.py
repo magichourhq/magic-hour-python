@@ -215,7 +215,6 @@ class ImageToVideoClient:
         Audio support varies by model:
         * **`ltx-2.3`**: Toggle-able: no additional credits for audio
         * **`wan-2.2`**: Not supported
-        * **`kling-2.5`**: Toggle-able: no additional credits for audio
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
         * **`veo3.1-lite`**: Toggle-able: audio adds extra credits when enabled
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -232,7 +231,6 @@ class ImageToVideoClient:
         * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
         * `ltx-2.3`: Fastest output. Best for rapid iteration.
         * `wan-2.2`: Strong physics, camera moves, and motion.
-        * `kling-2.5`: Great for action, motion blur, and camera moves.
         * `kling-3.0`: Best overall quality for cinematic storytelling.
         * `veo3.1-lite`: Veo quality at a more accessible cost.
         * `veo3.1`: Google's model. Highest realism and detail.
@@ -247,7 +245,6 @@ class ImageToVideoClient:
 
         * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
         * **`wan-2.2`**: Supports 480p, 720p, 1080p.
-        * **`kling-2.5`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
         * **`veo3.1-lite`**: Supports 720p, 1080p.
         * **`veo3.1`**: Supports 720p, 1080p.
@@ -265,7 +262,6 @@ class ImageToVideoClient:
 
         * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
         * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
-        * **`kling-2.5`**: 5, 10
         * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -516,7 +512,6 @@ class AsyncImageToVideoClient:
         Audio support varies by model:
         * **`ltx-2.3`**: Toggle-able: no additional credits for audio
         * **`wan-2.2`**: Not supported
-        * **`kling-2.5`**: Toggle-able: no additional credits for audio
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
         * **`veo3.1-lite`**: Toggle-able: audio adds extra credits when enabled
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -533,7 +528,6 @@ class AsyncImageToVideoClient:
         * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
         * `ltx-2.3`: Fastest output. Best for rapid iteration.
         * `wan-2.2`: Strong physics, camera moves, and motion.
-        * `kling-2.5`: Great for action, motion blur, and camera moves.
         * `kling-3.0`: Best overall quality for cinematic storytelling.
         * `veo3.1-lite`: Veo quality at a more accessible cost.
         * `veo3.1`: Google's model. Highest realism and detail.
@@ -548,7 +542,6 @@ class AsyncImageToVideoClient:
 
         * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
         * **`wan-2.2`**: Supports 480p, 720p, 1080p.
-        * **`kling-2.5`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
         * **`veo3.1-lite`**: Supports 720p, 1080p.
         * **`veo3.1`**: Supports 720p, 1080p.
@@ -566,7 +559,6 @@ class AsyncImageToVideoClient:
 
         * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
         * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
-        * **`kling-2.5`**: 5, 10
         * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56

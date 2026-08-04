@@ -138,6 +138,7 @@ res = client.v1.character_replace.create(
     name="My Character Replace video",
     resolution="720p",
     start_seconds=0.0,
+    style={"mode": "replace", "selection_mode": "auto"},
 )
 ```
 
@@ -157,6 +158,7 @@ res = await client.v1.character_replace.create(
     name="My Character Replace video",
     resolution="720p",
     start_seconds=0.0,
+    style={"mode": "replace", "selection_mode": "auto"},
 )
 ```
 
