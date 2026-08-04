@@ -192,6 +192,7 @@ class CharacterReplaceClient:
             name="My Character Replace video",
             resolution="720p",
             start_seconds=0.0,
+            style={"mode": "replace", "selection_mode": "auto"},
         )
         ```
         """
@@ -387,6 +388,7 @@ class AsyncCharacterReplaceClient:
             name="My Character Replace video",
             resolution="720p",
             start_seconds=0.0,
+            style={"mode": "replace", "selection_mode": "auto"},
         )
         ```
         """
