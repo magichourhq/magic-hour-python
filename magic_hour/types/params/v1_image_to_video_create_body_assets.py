@@ -20,6 +20,7 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
     * **`seedance-2.0-mini`**: Supports 480p, 720p.
     * **`seedance-2.0`**: Supports 480p, 720p.
+    * **`seedance-2.5`**: Supports 480p, 720p.
     * **`sora-2`**: Not supported
     
     """
