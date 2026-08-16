@@ -105,7 +105,7 @@ class AiVoiceClonerClient:
         AI Voice Cloner
 
         Clone a voice from an audio sample and generate speech.
-        * Each character costs 0.05 credits.
+        * Each character costs 0.1 credits.
         * The cost is rounded up to the nearest whole number
 
         POST /v1/ai-voice-cloner
@@ -231,7 +231,7 @@ class AsyncAiVoiceClonerClient:
         AI Voice Cloner
 
         Clone a voice from an audio sample and generate speech.
-        * Each character costs 0.05 credits.
+        * Each character costs 0.1 credits.
         * The cost is rounded up to the nearest whole number
 
         POST /v1/ai-voice-cloner
