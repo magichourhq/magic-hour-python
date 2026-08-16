@@ -176,7 +176,15 @@ class AiImageGeneratorClient:
 
         **Models:**
         - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
-        - `flux-schnell` - from 5 credits/image
+        - `nano-banana-2` - from 100 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Image count allowed: 1, 4, 9, 16
+        - `gpt-image-2` - from 50 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `z-image-turbo` - from 5 credits/image
           - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
           - Image count allowed: 1, 2, 3, 4
@@ -184,9 +192,9 @@ class AiImageGeneratorClient:
           - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
           - Image count allowed: 1
-        - `z-image-turbo` - from 5 credits/image
-          - Supported resolutions: 640px, 1k, 2k
-          - Available for tiers: free, creator, pro, business
+        - `nano-banana-2-lite` - from 50 credits/image
+          - Supported resolutions: 640px, 1k
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
         - `seedream-v4` - from 40 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
@@ -200,21 +208,13 @@ class AiImageGeneratorClient:
           - Supported resolutions: 640px, 1k
           - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
-        - `nano-banana-2-lite` - from 50 credits/image
-          - Supported resolutions: 640px, 1k
-          - Available for tiers: creator, pro, business
-          - Image count allowed: 1, 2, 3, 4
-        - `nano-banana-2` - from 100 credits/image
-          - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: creator, pro, business
-          - Image count allowed: 1, 4, 9, 16
         - `nano-banana-pro` - from 150 credits/image
           - Supported resolutions: 1k, 2k, 4k
           - Available for tiers: creator, pro, business
           - Image count allowed: 1, 4, 9, 16
-        - `gpt-image-2` - from 50 credits/image
-          - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: creator, pro, business
+        - `flux-schnell` - from 5 credits/image
+          - Supported resolutions: 640px, 1k, 2k
+          - Available for tiers: free, creator, pro, business
           - Image count allowed: 1, 2, 3, 4
 
         **Deprecated Enum Values:**
@@ -234,16 +234,16 @@ class AiImageGeneratorClient:
         - `auto` — **Deprecated.** Mapped server-side from your subscription tier to the best matching resolution the model supports
 
         **Per-model support:**
-        - `flux-schnell` - 640px, 1k, 2k
-        - `flux-2-klein` - 640px, 1k, 2k
+        - `nano-banana-2` - 640px, 1k, 2k, 4k
+        - `gpt-image-2` - 640px, 1k, 2k, 4k
         - `z-image-turbo` - 640px, 1k, 2k
+        - `flux-2-klein` - 640px, 1k, 2k
+        - `nano-banana-2-lite` - 640px, 1k
         - `seedream-v4` - 640px, 1k, 2k, 4k
         - `seedream-v5-pro` - 640px, 1k, 2k
         - `nano-banana` - 640px, 1k
-        - `nano-banana-2-lite` - 640px, 1k
-        - `nano-banana-2` - 640px, 1k, 2k, 4k
         - `nano-banana-pro` - 1k, 2k, 4k
-        - `gpt-image-2` - 640px, 1k, 2k, 4k
+        - `flux-schnell` - 640px, 1k, 2k
 
         Note: Resolution availability depends on the model and your subscription tier.
             image_count: Number of images to generate. Maximum varies by model.
@@ -441,7 +441,15 @@ class AsyncAiImageGeneratorClient:
 
         **Models:**
         - `default` - Use the model we recommend, which will change over time. This is recommended unless you need a specific model. This is the default behavior.
-        - `flux-schnell` - from 5 credits/image
+        - `nano-banana-2` - from 100 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Image count allowed: 1, 4, 9, 16
+        - `gpt-image-2` - from 50 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Image count allowed: 1, 2, 3, 4
+        - `z-image-turbo` - from 5 credits/image
           - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
           - Image count allowed: 1, 2, 3, 4
@@ -449,9 +457,9 @@ class AsyncAiImageGeneratorClient:
           - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
           - Image count allowed: 1
-        - `z-image-turbo` - from 5 credits/image
-          - Supported resolutions: 640px, 1k, 2k
-          - Available for tiers: free, creator, pro, business
+        - `nano-banana-2-lite` - from 50 credits/image
+          - Supported resolutions: 640px, 1k
+          - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
         - `seedream-v4` - from 40 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
@@ -465,21 +473,13 @@ class AsyncAiImageGeneratorClient:
           - Supported resolutions: 640px, 1k
           - Available for tiers: creator, pro, business
           - Image count allowed: 1, 2, 3, 4
-        - `nano-banana-2-lite` - from 50 credits/image
-          - Supported resolutions: 640px, 1k
-          - Available for tiers: creator, pro, business
-          - Image count allowed: 1, 2, 3, 4
-        - `nano-banana-2` - from 100 credits/image
-          - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: creator, pro, business
-          - Image count allowed: 1, 4, 9, 16
         - `nano-banana-pro` - from 150 credits/image
           - Supported resolutions: 1k, 2k, 4k
           - Available for tiers: creator, pro, business
           - Image count allowed: 1, 4, 9, 16
-        - `gpt-image-2` - from 50 credits/image
-          - Supported resolutions: 640px, 1k, 2k, 4k
-          - Available for tiers: creator, pro, business
+        - `flux-schnell` - from 5 credits/image
+          - Supported resolutions: 640px, 1k, 2k
+          - Available for tiers: free, creator, pro, business
           - Image count allowed: 1, 2, 3, 4
 
         **Deprecated Enum Values:**
@@ -499,16 +499,16 @@ class AsyncAiImageGeneratorClient:
         - `auto` — **Deprecated.** Mapped server-side from your subscription tier to the best matching resolution the model supports
 
         **Per-model support:**
-        - `flux-schnell` - 640px, 1k, 2k
-        - `flux-2-klein` - 640px, 1k, 2k
+        - `nano-banana-2` - 640px, 1k, 2k, 4k
+        - `gpt-image-2` - 640px, 1k, 2k, 4k
         - `z-image-turbo` - 640px, 1k, 2k
+        - `flux-2-klein` - 640px, 1k, 2k
+        - `nano-banana-2-lite` - 640px, 1k
         - `seedream-v4` - 640px, 1k, 2k, 4k
         - `seedream-v5-pro` - 640px, 1k, 2k
         - `nano-banana` - 640px, 1k
-        - `nano-banana-2-lite` - 640px, 1k
-        - `nano-banana-2` - 640px, 1k, 2k, 4k
         - `nano-banana-pro` - 1k, 2k, 4k
-        - `gpt-image-2` - 640px, 1k, 2k, 4k
+        - `flux-schnell` - 640px, 1k, 2k
 
         Note: Resolution availability depends on the model and your subscription tier.
             image_count: Number of images to generate. Maximum varies by model.
