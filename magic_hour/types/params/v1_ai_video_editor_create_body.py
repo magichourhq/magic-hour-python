@@ -24,7 +24,7 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
+    End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration is 3 seconds. Maximum duration depends on model: `gemini-omni`: 10s, `ltx-2.3`: 45s.
     """
 
     model: typing_extensions.NotRequired[
