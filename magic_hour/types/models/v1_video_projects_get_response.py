@@ -94,6 +94,15 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
     )
     """
     The status of the video.
+    
+    - `draft` - the project was created but has not been submitted for rendering
+    - `queued` - the job is waiting for an available server
+    - `rendering` - the job is being processed; the `video.started` webhook event fires when rendering begins
+    - `complete` - the job finished successfully; fires `video.completed`
+    - `error` - the job failed during processing; fires `video.errored`
+    - `canceled` - the job was manually canceled (for example from the Magic Hour web app)
+    
+    **Note:** `rendering`, `complete`, and `error` have matching webhook events; `canceled` does not - a canceled job emits no webhook event, so poll this endpoint to detect cancellation.
     """
     total_frame_cost: int = pydantic.Field(
         alias="total_frame_cost",
@@ -107,7 +116,7 @@ class V1VideoProjectsGetResponse(pydantic.BaseModel):
         alias="type",
     )
     """
-    The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, AVATAR, VIDEO_UPSCALER, VIDEO_EDITOR, CHARACTER_REPLACE, VIDEO_COLORIZER, MUSIC_VIDEO, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
+    The type of the video project. Possible values are ANIMATION, AUTO_SUBTITLE, VIDEO_TO_VIDEO, FACE_SWAP, TEXT_TO_VIDEO, IMAGE_TO_VIDEO, LIP_SYNC, TALKING_PHOTO, AVATAR, VIDEO_UPSCALER, VIDEO_EDITOR, CHARACTER_REPLACE, VIDEO_COLORIZER, VIDEO_TRANSLATOR, MUSIC_VIDEO, EXTEND, AUDIO_TO_VIDEO, VIDEO_EXPANDER, UGC_AD
     """
     width: int = pydantic.Field(
         alias="width",
