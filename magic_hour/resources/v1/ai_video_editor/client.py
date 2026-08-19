@@ -165,7 +165,7 @@ class AiVideoEditorClient:
             resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
-            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration is 3 seconds. Maximum duration depends on model: `gemini-omni`: 10s, `ltx-2.3`: 45s.
             style: V1AiVideoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -355,7 +355,7 @@ class AsyncAiVideoEditorClient:
             resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
-            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Duration must be between 3 and 10 seconds.
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration is 3 seconds. Maximum duration depends on model: `gemini-omni`: 10s, `ltx-2.3`: 45s.
             style: V1AiVideoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
