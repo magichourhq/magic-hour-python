@@ -24,7 +24,7 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 180s, prompted 45s.
+    The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
     """
 
     max_resolution: typing_extensions.NotRequired[int]
@@ -39,7 +39,7 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     start_seconds: typing_extensions.Required[float]
     """
-    The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 180s, prompted 45s.
+    The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
     """
 
     style: typing_extensions.NotRequired[V1AiTalkingPhotoCreateBodyStyle]
