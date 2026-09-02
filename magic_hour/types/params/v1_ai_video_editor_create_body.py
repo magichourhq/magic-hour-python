@@ -24,14 +24,14 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni`: 3s, `ltx-2.3`: 0.5s. Maximum duration depends on model: `gemini-omni`: 10s, `ltx-2.3`: 45s.
+    End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, `ltx-2.3`: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, `ltx-2.3`: 45s.
     """
 
     model: typing_extensions.NotRequired[
-        typing_extensions.Literal["gemini-omni", "ltx-2.3"]
+        typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
     ]
     """
-    Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni` for paid. Use `ltx-2.3` for LTX video edit.
+    Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -43,7 +43,7 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
         typing_extensions.Literal["1080p", "480p", "720p"]
     ]
     """
-    Output resolution. Defaults to `480p` for free tier and `720p` for paid. Google Omni supports 720p only; LTX-2.3 supports 480p, 720p, and 1080p.
+    Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX-2.3 supports 480p, 720p, and 1080p.
     """
 
     start_seconds: typing_extensions.NotRequired[float]
@@ -70,9 +70,9 @@ class _SerializerV1AiVideoEditorCreateBody(pydantic.BaseModel):
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
     )
-    model: typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]] = (
-        pydantic.Field(alias="model", default=None)
-    )
+    model: typing.Optional[
+        typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+    ] = pydantic.Field(alias="model", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
         pydantic.Field(alias="resolution", default=None)
