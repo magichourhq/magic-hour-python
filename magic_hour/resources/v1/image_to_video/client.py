@@ -147,7 +147,7 @@ class ImageToVideoClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
-                    "google-omni-1.1",
+                    "gemini-omni-1.1",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -218,9 +218,11 @@ class ImageToVideoClient:
             audio: Whether to include audio in the video. Defaults to `false` if not specified.
 
         Audio support varies by model:
+        * **`gemini-omni-1.1`**: Not supported
         * **`kling-2.6`**: Not supported
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
         * **`ltx-2.3`**: Toggle-able: no additional credits for audio
+        * **`ltx-2.5`**: Toggle-able: no additional credits for audio
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
@@ -237,9 +239,11 @@ class ImageToVideoClient:
             model: The AI model to use for video generation.
 
         * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
+        * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
         * `ltx-2.3`: Fastest for general scenes, long clips, audio, and rapid iteration.
+        * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
@@ -254,9 +258,11 @@ class ImageToVideoClient:
             name: Give your video a custom name for easy identification.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
+        * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
         * **`kling-2.6`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
         * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
+        * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p.
@@ -274,9 +280,11 @@ class ImageToVideoClient:
             assets: Provide the assets for image-to-video. Sora 2 only supports images with an aspect ratio of `9:16` or `16:9`.
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
+        * **`gemini-omni-1.1`**: 3, 4, 5, 6, 7, 8, 9, 10
         * **`kling-2.6`**: 5, 10
         * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
+        * **`ltx-2.5`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
         * **`minimax-h3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
         * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
         * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
@@ -461,7 +469,7 @@ class AsyncImageToVideoClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
-                    "google-omni-1.1",
+                    "gemini-omni-1.1",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -532,9 +540,11 @@ class AsyncImageToVideoClient:
             audio: Whether to include audio in the video. Defaults to `false` if not specified.
 
         Audio support varies by model:
+        * **`gemini-omni-1.1`**: Not supported
         * **`kling-2.6`**: Not supported
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
         * **`ltx-2.3`**: Toggle-able: no additional credits for audio
+        * **`ltx-2.5`**: Toggle-able: no additional credits for audio
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
@@ -551,9 +561,11 @@ class AsyncImageToVideoClient:
             model: The AI model to use for video generation.
 
         * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.3`.
+        * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
         * `ltx-2.3`: Fastest for general scenes, long clips, audio, and rapid iteration.
+        * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
@@ -568,9 +580,11 @@ class AsyncImageToVideoClient:
             name: Give your video a custom name for easy identification.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
+        * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
         * **`kling-2.6`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
         * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
+        * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p.
@@ -588,9 +602,11 @@ class AsyncImageToVideoClient:
             assets: Provide the assets for image-to-video. Sora 2 only supports images with an aspect ratio of `9:16` or `16:9`.
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
+        * **`gemini-omni-1.1`**: 3, 4, 5, 6, 7, 8, 9, 10
         * **`kling-2.6`**: 5, 10
         * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
         * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
+        * **`ltx-2.5`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
         * **`minimax-h3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
         * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
         * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
