@@ -175,7 +175,9 @@ class ImageToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "4k", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
@@ -497,7 +499,9 @@ class AsyncImageToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "4k", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[

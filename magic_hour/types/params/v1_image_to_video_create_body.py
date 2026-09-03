@@ -125,7 +125,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     """
 
     resolution: typing_extensions.NotRequired[
-        typing_extensions.Literal["1080p", "480p", "4k", "720p"]
+        typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
     ]
     """
     Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
@@ -205,7 +205,7 @@ class _SerializerV1ImageToVideoCreateBody(pydantic.BaseModel):
     ] = pydantic.Field(alias="model", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
     resolution: typing.Optional[
-        typing_extensions.Literal["1080p", "480p", "4k", "720p"]
+        typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
     ] = pydantic.Field(alias="resolution", default=None)
     style: typing.Optional[_SerializerV1ImageToVideoCreateBodyStyle] = pydantic.Field(
         alias="style", default=None
