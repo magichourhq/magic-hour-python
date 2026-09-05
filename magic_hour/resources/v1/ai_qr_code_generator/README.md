@@ -112,5 +112,5 @@ res = await client.v1.ai_qr_code_generator.create(
 ##### Example
 
 ```python
-{"credits_charged": 0, "frame_cost": 0, "id": "cuid-example"}
+{"credits_charged": 0, "frame_cost": 123, "id": "cuid-example"}
 ```

@@ -182,5 +182,5 @@ res = await client.v1.video_to_video.create(
 ##### Example
 
 ```python
-{"credits_charged": 450, "estimated_frame_cost": 450, "id": "cuid-example"}
+{"credits_charged": 450, "estimated_frame_cost": 123, "id": "cuid-example"}
 ```

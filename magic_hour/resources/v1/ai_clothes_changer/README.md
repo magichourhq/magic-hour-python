@@ -125,5 +125,5 @@ res = await client.v1.ai_clothes_changer.create(
 ##### Example
 
 ```python
-{"credits_charged": 25, "frame_cost": 25, "id": "cuid-example"}
+{"credits_charged": 25, "frame_cost": 123, "id": "cuid-example"}
 ```

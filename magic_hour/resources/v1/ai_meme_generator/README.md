@@ -125,5 +125,5 @@ res = await client.v1.ai_meme_generator.create(
 ##### Example
 
 ```python
-{"credits_charged": 10, "frame_cost": 10, "id": "cuid-example"}
+{"credits_charged": 10, "frame_cost": 123, "id": "cuid-example"}
 ```
