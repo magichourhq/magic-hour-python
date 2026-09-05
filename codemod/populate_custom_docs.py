@@ -104,12 +104,16 @@ class CustomDocsPopulator:
         sync_generate_call = create_sync_params.replace(
             f"client.v1.{resource_name}.create(", f"client.v1.{resource_name}.generate("
         )
-        sync_generate_call = sync_generate_call + f"\n    {generate_params}\n)"
+        sync_generate_call = self._append_generate_parameters(
+            sync_generate_call, generate_params
+        )
 
         async_generate_call = create_async_params.replace(
             f"client.v1.{resource_name}.create(", f"client.v1.{resource_name}.generate("
         )
-        async_generate_call = async_generate_call + f"\n    {generate_params}\n)"
+        async_generate_call = self._append_generate_parameters(
+            async_generate_call, generate_params
+        )
 
         # Replace api-assets/id and image/id paths with /path/to paths in the code samples
         # Preserve the file ID and extension: api-assets/id/1234.mp4 -> /path/to/1234.mp4
@@ -171,6 +175,13 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 
         # Return the customized content - replacement will be handled by the caller
         return custom_docs_content
+
+    @staticmethod
+    def _append_generate_parameters(create_call: str, generate_params: str) -> str:
+        """Append generate-only parameters after a valid comma-separated create call."""
+        create_call = create_call.rstrip()
+        separator = "" if create_call.endswith(",") else ","
+        return f"{create_call}{separator}\n    {generate_params}\n)"
 
     def _fallback_customization(self, content: str, resource_name: str) -> str:
         """Fallback customization when create samples aren't found."""
