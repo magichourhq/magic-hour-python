@@ -191,5 +191,5 @@ res = await client.v1.ai_face_editor.create(
 ##### Example
 
 ```python
-{"credits_charged": 1, "frame_cost": 1, "id": "cuid-example"}
+{"credits_charged": 1, "frame_cost": 123, "id": "cuid-example"}
 ```

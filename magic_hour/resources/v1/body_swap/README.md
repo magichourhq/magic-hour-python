@@ -125,5 +125,5 @@ res = await client.v1.body_swap.create(
 ##### Example
 
 ```python
-{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}
+{"credits_charged": 50, "frame_cost": 123, "id": "cuid-example"}
 ```

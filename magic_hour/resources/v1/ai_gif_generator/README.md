@@ -112,5 +112,5 @@ res = await client.v1.ai_gif_generator.create(
 ##### Example
 
 ```python
-{"credits_charged": 50, "frame_cost": 50, "id": "cuid-example"}
+{"credits_charged": 50, "frame_cost": 123, "id": "cuid-example"}
 ```
