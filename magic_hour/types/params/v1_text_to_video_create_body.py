@@ -139,7 +139,7 @@ class V1TextToVideoCreateBody(typing_extensions.TypedDict):
     """
 
     resolution: typing_extensions.NotRequired[
-        typing_extensions.Literal["1080p", "480p", "4k", "720p"]
+        typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
     ]
     """
     Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
@@ -211,7 +211,7 @@ class _SerializerV1TextToVideoCreateBody(pydantic.BaseModel):
         typing_extensions.Literal["landscape", "portrait", "square"]
     ] = pydantic.Field(alias="orientation", default=None)
     resolution: typing.Optional[
-        typing_extensions.Literal["1080p", "480p", "4k", "720p"]
+        typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
     ] = pydantic.Field(alias="resolution", default=None)
     style: _SerializerV1TextToVideoCreateBodyStyle = pydantic.Field(
         alias="style",
