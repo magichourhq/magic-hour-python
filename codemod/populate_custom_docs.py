@@ -179,16 +179,9 @@ client = AsyncClient(token=getenv("API_TOKEN"))
     @staticmethod
     def _append_generate_parameters(create_call: str, generate_params: str) -> str:
         """Append generate-only parameters after a valid comma-separated create call."""
-        lines = create_call.split("\n")
-        for index in range(len(lines) - 1, -1, -1):
-            if not lines[index].strip():
-                continue
-            if not lines[index].rstrip().endswith(","):
-                lines[index] = f"{lines[index].rstrip()},"
-            break
-
-        create_call_with_comma = "\n".join(lines)
-        return f"{create_call_with_comma}\n    {generate_params}\n)"
+        create_call = create_call.rstrip()
+        separator = "" if create_call.endswith(",") else ","
+        return f"{create_call}{separator}\n    {generate_params}\n)"
 
     def _fallback_customization(self, content: str, resource_name: str) -> str:
         """Fallback customization when create samples aren't found."""
