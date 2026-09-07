@@ -163,6 +163,10 @@ download_urls = result.downloads
 
 ## Module Documentation and Snippets
 
+### [v1.account](magic_hour/resources/v1/account/README.md)
+
+- [list](magic_hour/resources/v1/account/README.md#list) - Get account details
+
 ### [v1.ai_clothes_changer](magic_hour/resources/v1/ai_clothes_changer/README.md)
 
 - [create](magic_hour/resources/v1/ai_clothes_changer/README.md#create) - AI Clothes Changer

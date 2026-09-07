@@ -1,3 +1,4 @@
+from magic_hour.resources.v1.account import AccountClient, AsyncAccountClient
 from magic_hour.resources.v1.ai_clothes_changer import (
     AiClothesChangerClient,
     AsyncAiClothesChangerClient,
@@ -155,6 +156,7 @@ class V1Client:
         self.audio_to_video = AudioToVideoClient(base_client=self._base_client)
         self.ai_video_editor = AiVideoEditorClient(base_client=self._base_client)
         self.character_replace = CharacterReplaceClient(base_client=self._base_client)
+        self.account = AccountClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -213,3 +215,4 @@ class AsyncV1Client:
         self.character_replace = AsyncCharacterReplaceClient(
             base_client=self._base_client
         )
+        self.account = AsyncAccountClient(base_client=self._base_client)
