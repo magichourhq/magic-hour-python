@@ -1,5 +1,5 @@
 {
-  "id": "3d6cb3a1-0777-4d71-9f1d-ee4c757afc03",
+  "id": "8535dd0e-5fe8-4908-8220-9772d176fe80",
   "tracked_paths": [
     {
       "editable": true,
@@ -28,6 +28,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/account/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/account/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/account/client.py"
     },
     {
       "editable": true,
@@ -432,6 +444,22 @@
     {
       "editable": true,
       "path": "magic_hour/types/models/__init__.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_account_list_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_account_list_response_subscription.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_account_list_response_subscription_discount.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_account_list_response_subscription_price.py"
     },
     {
       "editable": false,
@@ -916,6 +944,10 @@
     {
       "editable": true,
       "path": "pyproject.toml"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_account_client.py"
     },
     {
       "editable": false,
