@@ -33,6 +33,7 @@
 - [image_to_video](resources/v1/image_to_video/README.md) - image_to_video
 - [lip_sync](resources/v1/lip_sync/README.md) - lip_sync
 - [photo_colorizer](resources/v1/photo_colorizer/README.md) - photo_colorizer
+- [saved_items](resources/v1/saved_items/README.md) - saved_items
 - [text_to_video](resources/v1/text_to_video/README.md) - text_to_video
 - [video_projects](resources/v1/video_projects/README.md) - video_projects
 - [video_to_video](resources/v1/video_to_video/README.md) - video_to_video
