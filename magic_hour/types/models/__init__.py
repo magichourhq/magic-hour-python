@@ -56,6 +56,11 @@ from .v1_image_projects_get_response_error import V1ImageProjectsGetResponseErro
 from .v1_image_to_video_create_response import V1ImageToVideoCreateResponse
 from .v1_lip_sync_create_response import V1LipSyncCreateResponse
 from .v1_photo_colorizer_create_response import V1PhotoColorizerCreateResponse
+from .v1_saved_items_list_response import V1SavedItemsListResponse
+from .v1_saved_items_list_response_items_item import V1SavedItemsListResponseItemsItem
+from .v1_saved_items_list_response_items_item_assets_item import (
+    V1SavedItemsListResponseItemsItemAssetsItem,
+)
 from .v1_text_to_video_create_response import V1TextToVideoCreateResponse
 from .v1_video_projects_get_response import V1VideoProjectsGetResponse
 from .v1_video_projects_get_response_download import V1VideoProjectsGetResponseDownload
@@ -107,6 +112,9 @@ __all__ = [
     "V1ImageToVideoCreateResponse",
     "V1LipSyncCreateResponse",
     "V1PhotoColorizerCreateResponse",
+    "V1SavedItemsListResponse",
+    "V1SavedItemsListResponseItemsItem",
+    "V1SavedItemsListResponseItemsItemAssetsItem",
     "V1TextToVideoCreateResponse",
     "V1VideoProjectsGetResponse",
     "V1VideoProjectsGetResponseDownload",

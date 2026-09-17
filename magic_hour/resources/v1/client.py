@@ -97,6 +97,7 @@ from magic_hour.resources.v1.photo_colorizer import (
     AsyncPhotoColorizerClient,
     PhotoColorizerClient,
 )
+from magic_hour.resources.v1.saved_items import AsyncSavedItemsClient, SavedItemsClient
 from magic_hour.resources.v1.text_to_video import (
     AsyncTextToVideoClient,
     TextToVideoClient,
@@ -157,6 +158,7 @@ class V1Client:
         self.ai_video_editor = AiVideoEditorClient(base_client=self._base_client)
         self.character_replace = CharacterReplaceClient(base_client=self._base_client)
         self.account = AccountClient(base_client=self._base_client)
+        self.saved_items = SavedItemsClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -216,3 +218,4 @@ class AsyncV1Client:
             base_client=self._base_client
         )
         self.account = AsyncAccountClient(base_client=self._base_client)
+        self.saved_items = AsyncSavedItemsClient(base_client=self._base_client)

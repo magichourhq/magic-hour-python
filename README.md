@@ -317,6 +317,10 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/photo_colorizer/README.md#create) - Photo Colorizer
 - [generate](magic_hour/resources/v1/photo_colorizer/README.md#generate) - Photo Colorizer Generate Workflow
 
+### [v1.saved_items](magic_hour/resources/v1/saved_items/README.md)
+
+- [list](magic_hour/resources/v1/saved_items/README.md#list) - List saved items
+
 ### [v1.text_to_video](magic_hour/resources/v1/text_to_video/README.md)
 
 - [create](magic_hour/resources/v1/text_to_video/README.md#create) - Text-to-Video

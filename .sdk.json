@@ -1,5 +1,5 @@
 {
-  "id": "ed10f111-a01b-4244-a7c0-268b7e83ba90",
+  "id": "4cb2c833-ef6d-45d1-949f-40dea5e812de",
   "tracked_paths": [
     {
       "editable": true,
@@ -407,6 +407,18 @@
     },
     {
       "editable": true,
+      "path": "magic_hour/resources/v1/saved_items/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/saved_items/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/saved_items/client.py"
+    },
+    {
+      "editable": true,
       "path": "magic_hour/resources/v1/text_to_video/README.md"
     },
     {
@@ -604,6 +616,18 @@
     {
       "editable": false,
       "path": "magic_hour/types/models/v1_photo_colorizer_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_saved_items_list_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_saved_items_list_response_items_item.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_saved_items_list_response_items_item_assets_item.py"
     },
     {
       "editable": false,
@@ -1064,6 +1088,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_photo_colorizer_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_saved_items_client.py"
     },
     {
       "editable": false,
