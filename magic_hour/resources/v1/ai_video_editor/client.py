@@ -33,7 +33,9 @@ class AiVideoEditorClient:
         style: params.V1AiVideoEditorCreateBodyStyle,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+                typing_extensions.Literal[
+                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -95,7 +97,9 @@ class AiVideoEditorClient:
             assets=assets,
             end_seconds=end_seconds,
             style=style,
+            model=model,
             name=name,
+            resolution=resolution,
             start_seconds=start_seconds,
             request_options=request_options,
         )
@@ -229,7 +233,9 @@ class AsyncAiVideoEditorClient:
         style: params.V1AiVideoEditorCreateBodyStyle,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+                typing_extensions.Literal[
+                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -291,7 +297,9 @@ class AsyncAiVideoEditorClient:
             assets=assets,
             end_seconds=end_seconds,
             style=style,
+            model=model,
             name=name,
+            resolution=resolution,
             start_seconds=start_seconds,
             request_options=request_options,
         )

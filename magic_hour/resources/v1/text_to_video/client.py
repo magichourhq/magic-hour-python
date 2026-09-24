@@ -80,6 +80,10 @@ class TextToVideoClient:
         audio: typing.Union[
             typing.Optional[bool], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[typing.List[params.V1TextToVideoCreateBodyReferencesItem]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -127,6 +131,7 @@ class TextToVideoClient:
             model=model,
             aspect_ratio=aspect_ratio,
             audio=audio,
+            references=references,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")
@@ -430,6 +435,10 @@ class AsyncTextToVideoClient:
         audio: typing.Union[
             typing.Optional[bool], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[typing.List[params.V1TextToVideoCreateBodyReferencesItem]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -477,6 +486,7 @@ class AsyncTextToVideoClient:
             aspect_ratio=aspect_ratio,
             model=model,
             audio=audio,
+            references=references,
             request_options=request_options,
         )
         logger.info(f"Text-to-Video response: {create_response}")
