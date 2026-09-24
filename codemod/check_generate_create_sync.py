@@ -7,6 +7,8 @@ WHAT IT DOES:
 - Checks both sync and async client classes within each file
 - Compares parameters between the two methods for each client type
 - Reports any parameters in create() that are missing from generate()
+- Reports shared parameters whose type/default in generate() drifted from create()
+  (e.g. create() made a param optional or added new Literal values)
 - Ignores parameters specific to generate() (wait_for_completion, download_outputs, etc.)
 - Ignores 'assets' parameter (handled differently in generate vs create)
 - Ensures trailing params are always last in correct order
@@ -21,14 +23,15 @@ USAGE:
 
 EXIT CODES:
     0 - All generate methods are in sync with create methods
-    1 - Some generate methods are missing parameters from create
+    1 - Some generate methods are missing parameters from create, or have drifted definitions
 
 IMPLEMENTATION OVERVIEW:
 1. extract_method_params: Extracts parameter names from a method
 2. extract_param_definitions: Extracts full parameter definitions (with types)
 3. extract_all_generate_params: Categorizes params as regular vs trailing
-4. check_file: Checks for parameter mismatches
-5. fix_generate_method: Adds missing params to generate() and forwards to create()
+4. check_file: Checks for missing params and drifted param definitions
+5. fix_generate_method: Adds missing params to generate() and forwards to create(),
+   and replaces drifted param definitions with the ones from create()
    - _update_generate_signature: Updates method signature with correct param order
    - _update_create_call: Updates self.create() call to include new params
 """
@@ -212,9 +215,39 @@ def find_client_files_with_generate(base_dir: str) -> List[str]:
     return sorted(result)
 
 
-def check_file(
-    file_path: str, verbose: bool = True
-) -> Tuple[bool, List[Tuple[str, List[str]]]]:
+def _normalize_definition(definition: str) -> str:
+    """Normalize a param definition so formatting differences don't count as drift."""
+    compact = re.sub(r"\s+", "", definition).rstrip(",")
+    return re.sub(r",([\]\)])", r"\1", compact)
+
+
+def find_drifted_params(
+    content: str, class_name: str, param_names: Set[str]
+) -> List[str]:
+    """
+    Find params present in both generate() and create() whose definitions differ.
+
+    Returns:
+        Sorted list of parameter names whose type hint or default drifted
+    """
+    generate_defs = extract_param_definitions(
+        content, "generate", class_name, param_names
+    )
+    create_defs = extract_param_definitions(content, "create", class_name, param_names)
+    return sorted(
+        name
+        for name in param_names
+        if name in generate_defs
+        and name in create_defs
+        and _normalize_definition(generate_defs[name])
+        != _normalize_definition(create_defs[name])
+    )
+
+
+Issue = Tuple[str, List[str], List[str]]
+
+
+def check_file(file_path: str, verbose: bool = True) -> Tuple[bool, List[Issue]]:
     """
     Check a single client file for parameter mismatches in both sync and async clients.
 
@@ -224,7 +257,7 @@ def check_file(
 
     Returns:
         Tuple of (is_in_sync, list_of_issues)
-        where each issue is (client_type, missing_params)
+        where each issue is (client_type, missing_params, drifted_params)
     """
     with open(file_path, "r") as f:
         content = f.read()
@@ -248,9 +281,14 @@ def check_file(
                 generate_params - GENERATE_ONLY_PARAMS - IGNORED_PARAMS
             )
             missing_in_generate = create_params_to_check - generate_params_to_check
+            drifted = find_drifted_params(
+                content,
+                class_name,
+                create_params_to_check & generate_params_to_check,
+            )
 
-            if missing_in_generate:
-                issues.append((client_type, sorted(missing_in_generate)))
+            if missing_in_generate or drifted:
+                issues.append((client_type, sorted(missing_in_generate), drifted))
 
     return len(issues) == 0, issues
 
@@ -349,10 +387,14 @@ def _categorize_param(param_text: str, result: dict) -> None:
 
 
 def fix_generate_method(
-    content: str, class_name: str, missing_params: List[str]
+    content: str,
+    class_name: str,
+    missing_params: List[str],
+    drifted_params: Optional[List[str]] = None,
 ) -> str:
     """
     Add missing parameters to generate() method and forward them to create() call.
+    Drifted parameters keep their position but take create()'s definition.
 
     Ensures trailing params are always last in correct order:
     1. wait_for_completion
@@ -364,10 +406,13 @@ def fix_generate_method(
         content: File content
         class_name: Name of the client class (e.g., "AsyncAiGifGeneratorClient")
         missing_params: List of parameter names to add
+        drifted_params: List of parameter names whose definition to replace
 
     Returns:
         Updated file content with fixed generate() method
     """
+    drifted_params = drifted_params or []
+
     # Extract the class content
     class_pattern = rf"class\s+{class_name}\s*[:\(].*?(?=\nclass\s|\Z)"
     class_match = re.search(class_pattern, content, re.DOTALL)
@@ -379,7 +424,7 @@ def fix_generate_method(
 
     # Get full parameter definitions from create method
     param_defs = extract_param_definitions(
-        class_content, "create", None, set(missing_params)
+        class_content, "create", None, set(missing_params) | set(drifted_params)
     )
     if not param_defs:
         return content
@@ -395,7 +440,11 @@ def fix_generate_method(
     )
 
     # Update the self.create() call to include new parameters
-    updated_class_content = _update_create_call(updated_class_content, missing_params)
+    # (drifted params are already forwarded)
+    if missing_params:
+        updated_class_content = _update_create_call(
+            updated_class_content, missing_params
+        )
 
     # Replace in full content
     return (
@@ -543,13 +592,13 @@ def _update_create_call(class_content: str, missing_params: List[str]) -> str:
     )
 
 
-def fix_file(file_path: str, issues: List[Tuple[str, List[str]]]) -> bool:
+def fix_file(file_path: str, issues: List[Issue]) -> bool:
     """
     Fix parameter mismatches in a client file.
 
     Args:
         file_path: Path to the client file
-        issues: List of (client_type, missing_params) tuples
+        issues: List of (client_type, missing_params, drifted_params) tuples
 
     Returns:
         True if file was modified, False otherwise
@@ -560,11 +609,12 @@ def fix_file(file_path: str, issues: List[Tuple[str, List[str]]]) -> bool:
     original_content = content
     sync_class, async_class = extract_class_names(content)
 
-    for client_type, missing_params in issues:
-        if client_type == "sync" and sync_class:
-            content = fix_generate_method(content, sync_class, missing_params)
-        elif client_type == "async" and async_class:
-            content = fix_generate_method(content, async_class, missing_params)
+    for client_type, missing_params, drifted_params in issues:
+        class_name = sync_class if client_type == "sync" else async_class
+        if class_name:
+            content = fix_generate_method(
+                content, class_name, missing_params, drifted_params
+            )
 
     if content != original_content:
         with open(file_path, "w") as f:
@@ -572,6 +622,18 @@ def fix_file(file_path: str, issues: List[Tuple[str, List[str]]]) -> bool:
         return True
 
     return False
+
+
+def _print_issues(issues: List[Issue], indent: str) -> None:
+    for client_type, missing_params, drifted_params in issues:
+        if missing_params:
+            print(
+                f"{indent}{client_type} client - Missing in generate(): {', '.join(missing_params)}"
+            )
+        if drifted_params:
+            print(
+                f"{indent}{client_type} client - Definition differs from create(): {', '.join(drifted_params)}"
+            )
 
 
 def main():
@@ -614,10 +676,7 @@ def main():
             if verbose:
                 print(f"MISMATCH: {resource_name}")
                 print(f"  File: {file_path}")
-                for client_type, missing_params in client_issues:
-                    print(
-                        f"  {client_type} client - Missing in generate(): {', '.join(missing_params)}"
-                    )
+                _print_issues(client_issues, "  ")
                 print()
         elif verbose and not args.quiet:
             print(f"OK: {resource_name}")
@@ -638,10 +697,7 @@ def main():
             fixed_count = 0
             for resource_name, file_path, client_issues in issues:
                 print(f"  Fixing {resource_name}...")
-                for client_type, missing_params in client_issues:
-                    print(
-                        f"    {client_type} client - Adding: {', '.join(missing_params)}"
-                    )
+                _print_issues(client_issues, "    ")
 
                 if fix_file(file_path, client_issues):
                     fixed_count += 1
@@ -660,10 +716,7 @@ def main():
                 if not is_in_sync:
                     all_fixed = False
                     print(f"  {resource_name}: Still has issues")
-                    for client_type, missing_params in remaining_issues:
-                        print(
-                            f"    {client_type} client - Still missing: {', '.join(missing_params)}"
-                        )
+                    _print_issues(remaining_issues, "    ")
                 else:
                     print(f"  {resource_name}: ✓ All fixed")
 
@@ -676,10 +729,7 @@ def main():
         else:
             for resource_name, file_path, client_issues in issues:
                 print(f"  {resource_name}:")
-                for client_type, missing_params in client_issues:
-                    print(
-                        f"    {client_type} client - Missing: {', '.join(missing_params)}"
-                    )
+                _print_issues(client_issues, "    ")
                 print(f"    File: {file_path}")
                 print()
 

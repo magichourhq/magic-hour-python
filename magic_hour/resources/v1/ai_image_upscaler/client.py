@@ -29,7 +29,10 @@ class AiImageUpscalerClient:
         *,
         assets: params.V1AiImageUpscalerGenerateBodyAssets,
         scale_factor: float,
-        style: params.V1AiImageUpscalerCreateBodyStyle,
+        style: typing.Union[
+            typing.Optional[params.V1AiImageUpscalerCreateBodyStyle],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -168,7 +171,10 @@ class AsyncAiImageUpscalerClient:
         *,
         assets: params.V1AiImageUpscalerGenerateBodyAssets,
         scale_factor: float,
-        style: params.V1AiImageUpscalerCreateBodyStyle,
+        style: typing.Union[
+            typing.Optional[params.V1AiImageUpscalerCreateBodyStyle],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,

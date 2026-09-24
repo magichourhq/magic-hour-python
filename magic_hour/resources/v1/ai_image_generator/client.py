@@ -37,9 +37,18 @@ class AiImageGeneratorClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
+                    "flux-2-klein",
                     "flux-schnell",
+                    "gpt-image-2",
+                    "gpt-image-2.5-flare",
+                    "krea-2",
+                    "nano-banana",
+                    "nano-banana-2",
+                    "nano-banana-2-lite",
                     "nano-banana-pro",
                     "seedream",
+                    "seedream-v4",
+                    "seedream-v5-pro",
                     "z-image-turbo",
                 ]
             ],
@@ -55,7 +64,9 @@ class AiImageGeneratorClient:
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            typing.Optional[
+                typing_extensions.Literal["1k", "2k", "4k", "640px", "auto"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
@@ -311,7 +322,12 @@ class AsyncAiImageGeneratorClient:
         self,
         *,
         image_count: int,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         style: params.V1AiImageGeneratorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
@@ -324,16 +340,27 @@ class AsyncAiImageGeneratorClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
+                    "flux-2-klein",
                     "flux-schnell",
+                    "gpt-image-2",
+                    "gpt-image-2.5-flare",
+                    "krea-2",
+                    "nano-banana",
+                    "nano-banana-2",
+                    "nano-banana-2-lite",
                     "nano-banana-pro",
                     "seedream",
+                    "seedream-v4",
+                    "seedream-v5-pro",
                     "z-image-turbo",
                 ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            typing.Optional[
+                typing_extensions.Literal["1k", "2k", "4k", "640px", "auto"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,

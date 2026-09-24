@@ -115,14 +115,14 @@ jobs:
 
             const body = `## ⚠️ Parameter Sync Check Failed
 
-            The \`generate()\` methods are missing parameters that exist in \`create()\` methods.
+            The \`generate()\` methods are missing parameters that exist in \`create()\` methods, or their param types/defaults differ from \`create()\`.
 
 
             \`\`\`
             ${output}
             \`\`\`
 
-            **How to fix:** Add the missing parameters to the \`generate()\` method signature and forward them to \`self.create()\`.
+            **How to fix:** Run \`python codemod/check_generate_create_sync.py --fix\` and commit the result.
             `;
 
             // Check if we already commented
