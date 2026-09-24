@@ -1,5 +1,5 @@
 {
-  "id": "4cb2c833-ef6d-45d1-949f-40dea5e812de",
+  "id": "de9029f9-c66c-4ce9-b593-ff39bda797e9",
   "tracked_paths": [
     {
       "editable": true,
@@ -948,6 +948,10 @@
     {
       "editable": false,
       "path": "magic_hour/types/params/v1_text_to_video_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_text_to_video_create_body_references_item.py"
     },
     {
       "editable": false,
