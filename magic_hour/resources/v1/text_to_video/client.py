@@ -191,6 +191,10 @@ class TextToVideoClient:
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[typing.List[params.V1TextToVideoCreateBodyReferencesItem]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
             typing.Optional[
                 typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
@@ -233,7 +237,6 @@ class TextToVideoClient:
         * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
         * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
-        * **`ltx-2.3`**: Supports 9:16, 16:9, 1:1.
         * **`ltx-2.5`**: Supports 9:16, 16:9, 1:1.
         * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
         * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
@@ -252,7 +255,6 @@ class TextToVideoClient:
         * **`gemini-omni-1.1`**: Not supported
         * **`kling-2.6`**: Not supported
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
-        * **`ltx-2.3`**: Toggle-able: no additional credits for audio
         * **`ltx-2.5`**: Toggle-able: no additional credits for audio
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
@@ -271,7 +273,6 @@ class TextToVideoClient:
         * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
-        * `ltx-2.3`: Fastest for general scenes, long clips, audio, and rapid iteration.
         * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
@@ -287,18 +288,18 @@ class TextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
+            references: typing.List[V1TextToVideoCreateBodyReferencesItem]
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
         * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
         * **`kling-2.6`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
-        * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
         * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
-        * **`seedance-2.5`**: Supports 480p, 720p.
+        * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
         * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
         * **`veo3.1-lite`**: Supports 720p, 1080p.
@@ -307,16 +308,15 @@ class TextToVideoClient:
 
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
-        * **`gemini-omni-1.1`**: 3, 4, 5, 6, 7, 8, 9, 10
+        * **`gemini-omni-1.1`**: any integer from 3 to 10
         * **`kling-2.6`**: 5, 10
-        * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-        * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
-        * **`ltx-2.5`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
-        * **`minimax-h3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
-        * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
-        * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-        * **`seedance-2.0-mini`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-        * **`seedance-2.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+        * **`kling-3.0`**: any integer from 3 to 15
+        * **`ltx-2.5`**: any integer from 1 to 60
+        * **`minimax-h3`**: any integer from 1 to 30
+        * **`seedance-1.5`**: any integer from 4 to 12
+        * **`seedance-2.0`**: any integer from 4 to 15
+        * **`seedance-2.0-mini`**: any integer from 4 to 15
+        * **`seedance-2.5`**: any integer from 4 to 30
         * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -353,6 +353,7 @@ class TextToVideoClient:
                 "model": model,
                 "name": name,
                 "orientation": orientation,
+                "references": references,
                 "resolution": resolution,
                 "end_seconds": end_seconds,
                 "style": style,
@@ -540,6 +541,10 @@ class AsyncTextToVideoClient:
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[typing.List[params.V1TextToVideoCreateBodyReferencesItem]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
             typing.Optional[
                 typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
@@ -582,7 +587,6 @@ class AsyncTextToVideoClient:
         * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
         * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
-        * **`ltx-2.3`**: Supports 9:16, 16:9, 1:1.
         * **`ltx-2.5`**: Supports 9:16, 16:9, 1:1.
         * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
         * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
@@ -601,7 +605,6 @@ class AsyncTextToVideoClient:
         * **`gemini-omni-1.1`**: Not supported
         * **`kling-2.6`**: Not supported
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
-        * **`ltx-2.3`**: Toggle-able: no additional credits for audio
         * **`ltx-2.5`**: Toggle-able: no additional credits for audio
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
@@ -620,7 +623,6 @@ class AsyncTextToVideoClient:
         * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
-        * `ltx-2.3`: Fastest for general scenes, long clips, audio, and rapid iteration.
         * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
@@ -636,18 +638,18 @@ class AsyncTextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
+            references: typing.List[V1TextToVideoCreateBodyReferencesItem]
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
         * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
         * **`kling-2.6`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
-        * **`ltx-2.3`**: Supports 480p, 720p, 1080p.
         * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
-        * **`seedance-2.5`**: Supports 480p, 720p.
+        * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
         * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
         * **`veo3.1-lite`**: Supports 720p, 1080p.
@@ -656,16 +658,15 @@ class AsyncTextToVideoClient:
 
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
-        * **`gemini-omni-1.1`**: 3, 4, 5, 6, 7, 8, 9, 10
+        * **`gemini-omni-1.1`**: any integer from 3 to 10
         * **`kling-2.6`**: 5, 10
-        * **`kling-3.0`**: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-        * **`ltx-2.3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
-        * **`ltx-2.5`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60
-        * **`minimax-h3`**: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30
-        * **`seedance-1.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12
-        * **`seedance-2.0`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-        * **`seedance-2.0-mini`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
-        * **`seedance-2.5`**: 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+        * **`kling-3.0`**: any integer from 3 to 15
+        * **`ltx-2.5`**: any integer from 1 to 60
+        * **`minimax-h3`**: any integer from 1 to 30
+        * **`seedance-1.5`**: any integer from 4 to 12
+        * **`seedance-2.0`**: any integer from 4 to 15
+        * **`seedance-2.0-mini`**: any integer from 4 to 15
+        * **`seedance-2.5`**: any integer from 4 to 30
         * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -702,6 +703,7 @@ class AsyncTextToVideoClient:
                 "model": model,
                 "name": name,
                 "orientation": orientation,
+                "references": references,
                 "resolution": resolution,
                 "end_seconds": end_seconds,
                 "style": style,

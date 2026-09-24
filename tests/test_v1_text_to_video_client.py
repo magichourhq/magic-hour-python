@@ -34,6 +34,7 @@ def test_create_200_success_all_params() -> None:
         model="kling-3.0",
         name="My Text To Video video",
         orientation="landscape",
+        references=[{"file_path": "string", "name": "string"}],
         resolution="720p",
     )
     try:
@@ -75,6 +76,7 @@ async def test_await_create_200_success_all_params() -> None:
         model="kling-3.0",
         name="My Text To Video video",
         orientation="landscape",
+        references=[{"file_path": "string", "name": "string"}],
         resolution="720p",
     )
     try:

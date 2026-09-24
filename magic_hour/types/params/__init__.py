@@ -326,6 +326,10 @@ from .v1_text_to_video_create_body import (
     V1TextToVideoCreateBody,
     _SerializerV1TextToVideoCreateBody,
 )
+from .v1_text_to_video_create_body_references_item import (
+    V1TextToVideoCreateBodyReferencesItem,
+    _SerializerV1TextToVideoCreateBodyReferencesItem,
+)
 from .v1_text_to_video_create_body_style import (
     V1TextToVideoCreateBodyStyle,
     _SerializerV1TextToVideoCreateBodyStyle,
@@ -442,6 +446,7 @@ __all__ = [
     "V1PhotoColorizerCreateBodyAssets",
     "V1PhotoColorizerGenerateBodyAssets",
     "V1TextToVideoCreateBody",
+    "V1TextToVideoCreateBodyReferencesItem",
     "V1TextToVideoCreateBodyStyle",
     "V1VideoToVideoCreateBody",
     "V1VideoToVideoCreateBodyAssets",
@@ -520,6 +525,7 @@ __all__ = [
     "_SerializerV1PhotoColorizerCreateBody",
     "_SerializerV1PhotoColorizerCreateBodyAssets",
     "_SerializerV1TextToVideoCreateBody",
+    "_SerializerV1TextToVideoCreateBodyReferencesItem",
     "_SerializerV1TextToVideoCreateBodyStyle",
     "_SerializerV1VideoToVideoCreateBody",
     "_SerializerV1VideoToVideoCreateBodyAssets",

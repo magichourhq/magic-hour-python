@@ -119,7 +119,9 @@ class AiVideoEditorClient:
         style: params.V1AiVideoEditorCreateBodyStyle,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+                typing_extensions.Literal[
+                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -164,12 +166,12 @@ class AiVideoEditorClient:
         POST /v1/ai-video-editor
 
         Args:
-            model: Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
+            model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
             name: Give your video a custom name for easy identification.
-            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX-2.3 supports 480p, 720p, and 1080p.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX 2.5 supports 480p, 720p, and 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
-            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, `ltx-2.3`: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, `ltx-2.3`: 45s.
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, LTX 2.5: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, LTX 2.5: 45s.
             style: V1AiVideoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -313,7 +315,9 @@ class AsyncAiVideoEditorClient:
         style: params.V1AiVideoEditorCreateBodyStyle,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+                typing_extensions.Literal[
+                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -358,12 +362,12 @@ class AsyncAiVideoEditorClient:
         POST /v1/ai-video-editor
 
         Args:
-            model: Editing model. Defaults to `ltx-2.3` for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
+            model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
             name: Give your video a custom name for easy identification.
-            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX-2.3 supports 480p, 720p, and 1080p.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX 2.5 supports 480p, 720p, and 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
-            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, `ltx-2.3`: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, `ltx-2.3`: 45s.
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, LTX 2.5: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, LTX 2.5: 45s.
             style: V1AiVideoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
