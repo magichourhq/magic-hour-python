@@ -37,12 +37,27 @@ class ImageToVideoClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
+                    "gemini-omni-1.1",
                     "kling-1.6",
+                    "kling-2.5",
                     "kling-2.5-audio",
+                    "kling-2.6",
+                    "kling-3.0",
+                    "ltx-2",
+                    "ltx-2.3",
+                    "ltx-2.5",
+                    "minimax-h3",
                     "seedance",
+                    "seedance-1.5",
+                    "seedance-2.0",
+                    "seedance-2.0-mini",
+                    "seedance-2.5",
                     "sora-2",
                     "veo3.1",
                     "veo3.1-audio",
+                    "veo3.1-lite",
+                    "wan-2.2",
+                    "wan-3.0",
                 ]
             ],
             type_utils.NotGiven,
@@ -51,7 +66,9 @@ class ImageToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
@@ -366,7 +383,9 @@ class AsyncImageToVideoClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
@@ -379,12 +398,27 @@ class AsyncImageToVideoClient:
             typing.Optional[
                 typing_extensions.Literal[
                     "default",
+                    "gemini-omni-1.1",
                     "kling-1.6",
+                    "kling-2.5",
                     "kling-2.5-audio",
+                    "kling-2.6",
+                    "kling-3.0",
+                    "ltx-2",
+                    "ltx-2.3",
+                    "ltx-2.5",
+                    "minimax-h3",
                     "seedance",
+                    "seedance-1.5",
+                    "seedance-2.0",
+                    "seedance-2.0-mini",
+                    "seedance-2.5",
                     "sora-2",
                     "veo3.1",
                     "veo3.1-audio",
+                    "veo3.1-lite",
+                    "wan-2.2",
+                    "wan-3.0",
                 ]
             ],
             type_utils.NotGiven,

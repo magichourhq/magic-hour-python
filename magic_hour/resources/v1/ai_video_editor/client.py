@@ -32,7 +32,9 @@ class AiVideoEditorClient:
         end_seconds: float,
         style: params.V1AiVideoEditorCreateBodyStyle,
         model: typing.Union[
-            typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]],
+            typing.Optional[
+                typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
@@ -224,7 +226,9 @@ class AsyncAiVideoEditorClient:
         end_seconds: float,
         style: params.V1AiVideoEditorCreateBodyStyle,
         model: typing.Union[
-            typing.Optional[typing_extensions.Literal["gemini-omni", "ltx-2.3"]],
+            typing.Optional[
+                typing_extensions.Literal["gemini-omni", "gemini-omni-1.1", "ltx-2.3"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         name: typing.Union[
