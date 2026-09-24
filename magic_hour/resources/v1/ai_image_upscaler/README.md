@@ -34,7 +34,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_upscaler.generate(
     assets={"image_file_path": "/path/to/1234.png"},
     scale_factor=2.0,
-    style={"enhancement": "Balanced"},
+    style={"mode": "balanced"},
     name="Image Upscaler image",
     wait_for_completion=True,
     download_outputs=True,
@@ -52,7 +52,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_upscaler.generate(
     assets={"image_file_path": "/path/to/1234.png"},
     scale_factor=2.0,
-    style={"enhancement": "Balanced"},
+    style={"mode": "balanced"},
     name="Image Upscaler image",
     wait_for_completion=True,
     download_outputs=True,
