@@ -91,7 +91,7 @@ class TextToVideoClient:
         ```py
         response = client.v1.text_to_video.generate(
             end_seconds=5.0,
-            aspect_ratio="16:9",
+            orientation="landscape",
             style={"prompt": "a dog running through a meadow"},
             resolution="720p",
             wait_for_completion=True,
@@ -360,12 +360,7 @@ class AsyncTextToVideoClient:
         self,
         *,
         end_seconds: float,
-        orientation: typing.Union[
-            typing.Optional[
-                typing_extensions.Literal["landscape", "portrait", "square"]
-            ],
-            type_utils.NotGiven,
-        ] = type_utils.NOT_GIVEN,
+        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
         style: params.V1TextToVideoCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
@@ -423,7 +418,7 @@ class AsyncTextToVideoClient:
         ```py
         response = await client.v1.text_to_video.generate(
             end_seconds=5.0,
-            aspect_ratio="16:9",
+            orientation="landscape",
             style={"prompt": "a dog running through a meadow"},
             resolution="720p",
             wait_for_completion=True,

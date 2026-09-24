@@ -56,7 +56,7 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_generator.generate(
     image_count=1,
-    aspect_ratio="16:9",
+    orientation="landscape",
     style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     name="Ai Image image",
     wait_for_completion=True,

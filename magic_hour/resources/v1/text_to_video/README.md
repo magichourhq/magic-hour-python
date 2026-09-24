@@ -52,7 +52,7 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.text_to_video.generate(
     end_seconds=5.0,
-    aspect_ratio="16:9",
+    orientation="landscape",
     style={"prompt": "a dog running"},
     name="Text To Video video",
     resolution="720p",
