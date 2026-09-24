@@ -55,7 +55,9 @@ class AiImageGeneratorClient:
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            typing.Optional[
+                typing_extensions.Literal["1k", "2k", "4k", "640px", "auto"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
@@ -311,7 +313,12 @@ class AsyncAiImageGeneratorClient:
         self,
         *,
         image_count: int,
-        orientation: typing_extensions.Literal["landscape", "portrait", "square"],
+        orientation: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["landscape", "portrait", "square"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         style: params.V1AiImageGeneratorCreateBodyStyle,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
@@ -333,7 +340,9 @@ class AsyncAiImageGeneratorClient:
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["2k", "4k", "auto"]],
+            typing.Optional[
+                typing_extensions.Literal["1k", "2k", "4k", "640px", "auto"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
@@ -363,7 +372,7 @@ class AsyncAiImageGeneratorClient:
         ```py
         response = await client.v1.ai_image_generator.generate(
             image_count=1,
-            orientation="landscape",
+            aspect_ratio="16:9",
             style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             name="Generated Image",
             wait_for_completion=True,

@@ -40,7 +40,7 @@ res = client.v1.ai_image_generator.generate(
     aspect_ratio="1:1",
     model="default",
     name="My Ai Image image",
-    resolution="auto",
+    resolution="1k",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -56,7 +56,7 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_generator.generate(
     image_count=1,
-    orientation="landscape",
+    aspect_ratio="16:9",
     style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     name="Ai Image image",
     wait_for_completion=True,
