@@ -124,6 +124,14 @@ from .v1_ai_video_editor_create_body_style import (
     _SerializerV1AiVideoEditorCreateBodyStyle,
 )
 from .v1_ai_video_editor_generate_body_assets import V1AiVideoEditorGenerateBodyAssets
+from .v1_ai_video_translator_create_body import (
+    V1AiVideoTranslatorCreateBody,
+    _SerializerV1AiVideoTranslatorCreateBody,
+)
+from .v1_ai_video_translator_create_body_assets import (
+    V1AiVideoTranslatorCreateBodyAssets,
+    _SerializerV1AiVideoTranslatorCreateBodyAssets,
+)
 from .v1_ai_voice_cloner_create_body import (
     V1AiVoiceClonerCreateBody,
     _SerializerV1AiVoiceClonerCreateBody,
@@ -386,6 +394,8 @@ __all__ = [
     "V1AiVideoEditorCreateBodyAssets",
     "V1AiVideoEditorCreateBodyStyle",
     "V1AiVideoEditorGenerateBodyAssets",
+    "V1AiVideoTranslatorCreateBody",
+    "V1AiVideoTranslatorCreateBodyAssets",
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
@@ -480,6 +490,8 @@ __all__ = [
     "_SerializerV1AiVideoEditorCreateBody",
     "_SerializerV1AiVideoEditorCreateBodyAssets",
     "_SerializerV1AiVideoEditorCreateBodyStyle",
+    "_SerializerV1AiVideoTranslatorCreateBody",
+    "_SerializerV1AiVideoTranslatorCreateBodyAssets",
     "_SerializerV1AiVoiceClonerCreateBody",
     "_SerializerV1AiVoiceClonerCreateBodyAssets",
     "_SerializerV1AiVoiceClonerCreateBodyStyle",

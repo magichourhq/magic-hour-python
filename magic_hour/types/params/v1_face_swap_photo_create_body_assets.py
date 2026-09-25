@@ -25,8 +25,8 @@ class V1FaceSwapPhotoCreateBodyAssets(typing_extensions.TypedDict):
     ]
     """
     Choose how to swap faces:
-    **all-faces** (recommended) — swap all detected faces using one source image (`source_file_path` required)
-    +- **individual-faces** — specify exact mappings using `face_mappings`
+    - **all-faces** (recommended) — swap all detected faces using one source image (`source_file_path` required)
+    - **individual-faces** — specify exact mappings using `face_mappings`
     """
 
     source_file_path: typing_extensions.NotRequired[str]

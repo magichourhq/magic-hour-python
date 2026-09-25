@@ -7,14 +7,14 @@ from magic_hour.types import models
 
 
 def test_create_200_success_all_params() -> None:
-    """Tests a POST request to the /v1/ai-image-generator endpoint.
+    """Tests a POST request to the /v1/ai-video-translator endpoint.
 
     Operation: create
     Test Case ID: success_all_params
     Expected Status: 200
     Mode: Synchronous execution
 
-    Response : models.V1AiImageGeneratorCreateResponse
+    Response : models.V1AiVideoTranslatorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -26,21 +26,16 @@ def test_create_200_success_all_params() -> None:
     """
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = client.v1.ai_image_generator.create(
-        image_count=1,
-        style={
-            "prompt": "Cool image",
-            "quality_mode": "pro",
-            "tool": "ai-anime-generator",
-        },
-        aspect_ratio="1:1",
-        model="default",
-        name="My Ai Image image",
-        orientation="landscape",
-        resolution="1k",
+    response = client.v1.ai_video_translator.create(
+        assets={"video_file_path": "api-assets/id/1234.mp4"},
+        end_seconds=15.0,
+        target_language="Spanish",
+        name="My Video Translator video",
+        resolution="720p",
+        start_seconds=0.0,
     )
     try:
-        pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiVideoTranslatorCreateResponse).validate_python(
             response
         )
         is_valid_response_schema = True
@@ -51,14 +46,14 @@ def test_create_200_success_all_params() -> None:
 
 @pytest.mark.asyncio
 async def test_await_create_200_success_all_params() -> None:
-    """Tests a POST request to the /v1/ai-image-generator endpoint.
+    """Tests a POST request to the /v1/ai-video-translator endpoint.
 
     Operation: create
     Test Case ID: success_all_params
     Expected Status: 200
     Mode: Asynchronous execution
 
-    Response : models.V1AiImageGeneratorCreateResponse
+    Response : models.V1AiVideoTranslatorCreateResponse
 
     Validates:
     - Authentication requirements are satisfied
@@ -70,21 +65,16 @@ async def test_await_create_200_success_all_params() -> None:
     """
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
-    response = await client.v1.ai_image_generator.create(
-        image_count=1,
-        style={
-            "prompt": "Cool image",
-            "quality_mode": "pro",
-            "tool": "ai-anime-generator",
-        },
-        aspect_ratio="1:1",
-        model="default",
-        name="My Ai Image image",
-        orientation="landscape",
-        resolution="1k",
+    response = await client.v1.ai_video_translator.create(
+        assets={"video_file_path": "api-assets/id/1234.mp4"},
+        end_seconds=15.0,
+        target_language="Spanish",
+        name="My Video Translator video",
+        resolution="720p",
+        start_seconds=0.0,
     )
     try:
-        pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
+        pydantic.TypeAdapter(models.V1AiVideoTranslatorCreateResponse).validate_python(
             response
         )
         is_valid_response_schema = True

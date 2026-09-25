@@ -43,6 +43,10 @@ from magic_hour.resources.v1.ai_video_editor import (
     AiVideoEditorClient,
     AsyncAiVideoEditorClient,
 )
+from magic_hour.resources.v1.ai_video_translator import (
+    AiVideoTranslatorClient,
+    AsyncAiVideoTranslatorClient,
+)
 from magic_hour.resources.v1.ai_voice_cloner import (
     AiVoiceClonerClient,
     AsyncAiVoiceClonerClient,
@@ -159,6 +163,9 @@ class V1Client:
         self.character_replace = CharacterReplaceClient(base_client=self._base_client)
         self.account = AccountClient(base_client=self._base_client)
         self.saved_items = SavedItemsClient(base_client=self._base_client)
+        self.ai_video_translator = AiVideoTranslatorClient(
+            base_client=self._base_client
+        )
 
 
 class AsyncV1Client:
@@ -219,3 +226,6 @@ class AsyncV1Client:
         )
         self.account = AsyncAccountClient(base_client=self._base_client)
         self.saved_items = AsyncSavedItemsClient(base_client=self._base_client)
+        self.ai_video_translator = AsyncAiVideoTranslatorClient(
+            base_client=self._base_client
+        )
