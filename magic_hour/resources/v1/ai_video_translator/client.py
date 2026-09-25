@@ -104,8 +104,7 @@ class AiVideoTranslatorClient:
 
         ``assets["video_file_path"]`` accepts a local path, URL, or uploaded asset path.
         """
-        uploaded_assets = {
-            **assets,
+        uploaded_assets: params.V1AiVideoTranslatorCreateBodyAssets = {
             "video_file_path": FilesClient(base_client=self._base_client).upload_file(
                 file=assets["video_file_path"]
             ),
@@ -359,8 +358,7 @@ class AsyncAiVideoTranslatorClient:
 
         ``assets["video_file_path"]`` accepts a local path, URL, or uploaded asset path.
         """
-        uploaded_assets = {
-            **assets,
+        uploaded_assets: params.V1AiVideoTranslatorCreateBodyAssets = {
             "video_file_path": await AsyncFilesClient(
                 base_client=self._base_client
             ).upload_file(file=assets["video_file_path"]),
