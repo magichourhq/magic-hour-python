@@ -288,7 +288,7 @@ class AiImageGeneratorClient:
             aspect_ratio="1:1",
             model="default",
             name="My Ai Image image",
-            resolution="auto",
+            resolution="1k",
         )
         ```
         """
@@ -581,7 +581,7 @@ class AsyncAiImageGeneratorClient:
             aspect_ratio="1:1",
             model="default",
             name="My Ai Image image",
-            resolution="auto",
+            resolution="1k",
         )
         ```
         """

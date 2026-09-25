@@ -14,6 +14,7 @@
 - [ai_qr_code_generator](resources/v1/ai_qr_code_generator/README.md) - ai_qr_code_generator
 - [ai_talking_photo](resources/v1/ai_talking_photo/README.md) - ai_talking_photo
 - [ai_video_editor](resources/v1/ai_video_editor/README.md) - ai_video_editor
+- [ai_video_translator](resources/v1/ai_video_translator/README.md) - ai_video_translator
 - [ai_voice_cloner](resources/v1/ai_voice_cloner/README.md) - ai_voice_cloner
 - [ai_voice_generator](resources/v1/ai_voice_generator/README.md) - ai_voice_generator
 - [animation](resources/v1/animation/README.md) - animation

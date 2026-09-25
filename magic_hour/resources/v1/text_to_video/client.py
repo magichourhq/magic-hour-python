@@ -248,7 +248,6 @@ class TextToVideoClient:
         * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
-        * **`sora-2`**: Supports 9:16, 16:9.
         * **`veo3.1`**: Supports 9:16, 16:9.
         * **`veo3.1-lite`**: Supports 9:16, 16:9.
         * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.
@@ -266,7 +265,6 @@ class TextToVideoClient:
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
         * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
         * **`seedance-2.5`**: Toggle-able: no additional credits for audio
-        * **`sora-2`**: Toggle-able: no additional credits for audio
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
         * **`veo3.1-lite`**: Toggle-able: audio adds extra credits when enabled
         * **`wan-2.2`**: Not supported
@@ -284,7 +282,6 @@ class TextToVideoClient:
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
         * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
         * `seedance-2.5`: Best for premium realism, detail, and natural motion.
-        * `sora-2`: Best for creative concepts and longer clips with audio.
         * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
         * `veo3.1-lite`: Balanced realism and audio at a lower cost than Veo 3.1.
         * `wan-2.2`: Best for physical motion, action, and camera movement.
@@ -305,7 +302,6 @@ class TextToVideoClient:
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
         * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
-        * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
         * **`veo3.1-lite`**: Supports 720p, 1080p.
         * **`wan-2.2`**: Supports 480p, 720p, 1080p.
@@ -322,7 +318,6 @@ class TextToVideoClient:
         * **`seedance-2.0`**: any integer from 4 to 15
         * **`seedance-2.0-mini`**: any integer from 4 to 15
         * **`seedance-2.5`**: any integer from 4 to 30
-        * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15
@@ -603,7 +598,6 @@ class AsyncTextToVideoClient:
         * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
-        * **`sora-2`**: Supports 9:16, 16:9.
         * **`veo3.1`**: Supports 9:16, 16:9.
         * **`veo3.1-lite`**: Supports 9:16, 16:9.
         * **`wan-2.2`**: Supports 9:16, 16:9, 1:1.
@@ -621,7 +615,6 @@ class AsyncTextToVideoClient:
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
         * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
         * **`seedance-2.5`**: Toggle-able: no additional credits for audio
-        * **`sora-2`**: Toggle-able: no additional credits for audio
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
         * **`veo3.1-lite`**: Toggle-able: audio adds extra credits when enabled
         * **`wan-2.2`**: Not supported
@@ -639,7 +632,6 @@ class AsyncTextToVideoClient:
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
         * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
         * `seedance-2.5`: Best for premium realism, detail, and natural motion.
-        * `sora-2`: Best for creative concepts and longer clips with audio.
         * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
         * `veo3.1-lite`: Balanced realism and audio at a lower cost than Veo 3.1.
         * `wan-2.2`: Best for physical motion, action, and camera movement.
@@ -660,7 +652,6 @@ class AsyncTextToVideoClient:
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
         * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
-        * **`sora-2`**: Supports 720p.
         * **`veo3.1`**: Supports 720p, 1080p.
         * **`veo3.1-lite`**: Supports 720p, 1080p.
         * **`wan-2.2`**: Supports 480p, 720p, 1080p.
@@ -677,7 +668,6 @@ class AsyncTextToVideoClient:
         * **`seedance-2.0`**: any integer from 4 to 15
         * **`seedance-2.0-mini`**: any integer from 4 to 15
         * **`seedance-2.5`**: any integer from 4 to 30
-        * **`sora-2`**: 4, 8, 12, 24, 36, 48, 60
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`veo3.1-lite`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
         * **`wan-2.2`**: 3, 4, 5, 6, 7, 8, 9, 10, 15

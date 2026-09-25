@@ -1,5 +1,5 @@
 {
-  "id": "de9029f9-c66c-4ce9-b593-ff39bda797e9",
+  "id": "824c8e76-3377-4969-99f1-7054db429172",
   "tracked_paths": [
     {
       "editable": true,
@@ -172,6 +172,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/ai_video_editor/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_video_translator/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_video_translator/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_video_translator/client.py"
     },
     {
       "editable": true,
@@ -519,6 +531,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_ai_video_translator_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_ai_voice_cloner_create_response.py"
     },
     {
@@ -771,6 +787,14 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/params/v1_ai_video_translator_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_video_translator_create_body_assets.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/params/v1_ai_voice_cloner_create_body.py"
     },
     {
@@ -1020,6 +1044,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_ai_video_editor_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_video_translator_client.py"
     },
     {
       "editable": false,

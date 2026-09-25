@@ -222,6 +222,10 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/ai_video_editor/README.md#create) - AI Video Editor
 - [generate](magic_hour/resources/v1/ai_video_editor/README.md#generate) - AI Video Editor Generate Workflow
 
+### [v1.ai_video_translator](magic_hour/resources/v1/ai_video_translator/README.md)
+
+- [create](magic_hour/resources/v1/ai_video_translator/README.md#create) - AI Video Translator
+
 ### [v1.ai_voice_cloner](magic_hour/resources/v1/ai_voice_cloner/README.md)
 
 - [create](magic_hour/resources/v1/ai_voice_cloner/README.md#create) - AI Voice Cloner
