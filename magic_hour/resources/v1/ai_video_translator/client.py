@@ -1,6 +1,12 @@
 import typing
 import typing_extensions
 
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
+from magic_hour.resources.v1.video_projects.client import (
+    AsyncVideoProjectsClient,
+    VideoProjectsClient,
+)
 from magic_hour.types import models, params
 from make_api_request import (
     AsyncBaseClient,
@@ -12,9 +18,114 @@ from make_api_request import (
 )
 
 
+logger = get_sdk_logger(__name__)
+
+
 class AiVideoTranslatorClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def generate(
+        self,
+        *,
+        assets: params.V1AiVideoTranslatorGenerateBodyAssets,
+        end_seconds: float,
+        target_language: typing_extensions.Literal[
+            "Afrikaans",
+            "Arabic",
+            "Bengali",
+            "Bulgarian",
+            "Catalan",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
+            "Croatian",
+            "Czech",
+            "Danish",
+            "Dutch",
+            "English",
+            "Estonian",
+            "Finnish",
+            "French",
+            "German",
+            "Greek",
+            "Gujarati",
+            "Hebrew",
+            "Hindi",
+            "Hungarian",
+            "Indonesian",
+            "Italian",
+            "Japanese",
+            "Kannada",
+            "Kazakh",
+            "Korean",
+            "Latvian",
+            "Lithuanian",
+            "Malay",
+            "Malayalam",
+            "Marathi",
+            "Norwegian",
+            "Persian",
+            "Polish",
+            "Portuguese",
+            "Punjabi",
+            "Romanian",
+            "Russian",
+            "Serbian",
+            "Slovak",
+            "Slovenian",
+            "Spanish",
+            "Swahili",
+            "Swedish",
+            "Tamil",
+            "Telugu",
+            "Thai",
+            "Turkish",
+            "Ukrainian",
+            "Urdu",
+            "Vietnamese",
+            "Welsh",
+        ],
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ):
+        """Upload a video, create a translation job, and optionally wait and download.
+
+        ``assets["video_file_path"]`` accepts a local path, URL, or uploaded asset path.
+        """
+        uploaded_assets = {
+            **assets,
+            "video_file_path": FilesClient(base_client=self._base_client).upload_file(
+                file=assets["video_file_path"]
+            ),
+        }
+        create_response = self.create(
+            assets=uploaded_assets,
+            end_seconds=end_seconds,
+            target_language=target_language,
+            name=name,
+            resolution=resolution,
+            start_seconds=start_seconds,
+            request_options=request_options,
+        )
+        logger.info(f"AI Video Translator response: {create_response}")
+        return VideoProjectsClient(base_client=self._base_client).check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     def create(
         self,
@@ -168,6 +279,110 @@ class AiVideoTranslatorClient:
 class AsyncAiVideoTranslatorClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def generate(
+        self,
+        *,
+        assets: params.V1AiVideoTranslatorGenerateBodyAssets,
+        end_seconds: float,
+        target_language: typing_extensions.Literal[
+            "Afrikaans",
+            "Arabic",
+            "Bengali",
+            "Bulgarian",
+            "Catalan",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
+            "Croatian",
+            "Czech",
+            "Danish",
+            "Dutch",
+            "English",
+            "Estonian",
+            "Finnish",
+            "French",
+            "German",
+            "Greek",
+            "Gujarati",
+            "Hebrew",
+            "Hindi",
+            "Hungarian",
+            "Indonesian",
+            "Italian",
+            "Japanese",
+            "Kannada",
+            "Kazakh",
+            "Korean",
+            "Latvian",
+            "Lithuanian",
+            "Malay",
+            "Malayalam",
+            "Marathi",
+            "Norwegian",
+            "Persian",
+            "Polish",
+            "Portuguese",
+            "Punjabi",
+            "Romanian",
+            "Russian",
+            "Serbian",
+            "Slovak",
+            "Slovenian",
+            "Spanish",
+            "Swahili",
+            "Swedish",
+            "Tamil",
+            "Telugu",
+            "Thai",
+            "Turkish",
+            "Ukrainian",
+            "Urdu",
+            "Vietnamese",
+            "Welsh",
+        ],
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ):
+        """Upload a video, create a translation job, and optionally wait and download.
+
+        ``assets["video_file_path"]`` accepts a local path, URL, or uploaded asset path.
+        """
+        uploaded_assets = {
+            **assets,
+            "video_file_path": await AsyncFilesClient(
+                base_client=self._base_client
+            ).upload_file(file=assets["video_file_path"]),
+        }
+        create_response = await self.create(
+            assets=uploaded_assets,
+            end_seconds=end_seconds,
+            target_language=target_language,
+            name=name,
+            resolution=resolution,
+            start_seconds=start_seconds,
+            request_options=request_options,
+        )
+        logger.info(f"AI Video Translator response: {create_response}")
+        return await AsyncVideoProjectsClient(
+            base_client=self._base_client
+        ).check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     async def create(
         self,

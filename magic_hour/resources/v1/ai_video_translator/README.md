@@ -2,6 +2,28 @@
 
 ## Module Functions
 
+<!-- CUSTOM DOCS START -->
+
+### Generate video translation <a name="generate"></a>
+
+`generate` uploads a local video, creates a translation job, waits for completion, and downloads the output. `assets.video_file_path` also accepts a URL or previously uploaded `api-assets` path. Set `wait_for_completion=False` or `download_outputs=False` to skip either step.
+
+```python
+from magic_hour import Client
+
+client = Client(token="YOUR_API_TOKEN")
+res = client.v1.ai_video_translator.generate(
+    assets={"video_file_path": "/path/to/video.mp4"},
+    end_seconds=15.0,
+    target_language="Spanish",
+    start_seconds=0.0,
+)
+```
+
+Async clients support the same arguments with `await client.v1.ai_video_translator.generate(...)`.
+
+<!-- CUSTOM DOCS END -->
+
 ### AI Video Translator <a name="create"></a>
 
 **What this API does**

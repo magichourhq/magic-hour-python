@@ -132,6 +132,7 @@ from .v1_ai_video_translator_create_body_assets import (
     V1AiVideoTranslatorCreateBodyAssets,
     _SerializerV1AiVideoTranslatorCreateBodyAssets,
 )
+from .v1_ai_video_translator_generate_body_assets import V1AiVideoTranslatorGenerateBodyAssets
 from .v1_ai_voice_cloner_create_body import (
     V1AiVoiceClonerCreateBody,
     _SerializerV1AiVoiceClonerCreateBody,
@@ -396,6 +397,7 @@ __all__ = [
     "V1AiVideoEditorGenerateBodyAssets",
     "V1AiVideoTranslatorCreateBody",
     "V1AiVideoTranslatorCreateBodyAssets",
+    "V1AiVideoTranslatorGenerateBodyAssets",
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
