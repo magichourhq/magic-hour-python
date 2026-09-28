@@ -225,6 +225,7 @@ download_urls = result.downloads
 ### [v1.ai_video_translator](magic_hour/resources/v1/ai_video_translator/README.md)
 
 - [create](magic_hour/resources/v1/ai_video_translator/README.md#create) - AI Video Translator
+- [generate](magic_hour/resources/v1/ai_video_translator/README.md#generate) - Generate video translation
 
 ### [v1.ai_voice_cloner](magic_hour/resources/v1/ai_voice_cloner/README.md)
 
