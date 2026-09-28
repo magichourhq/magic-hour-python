@@ -34,7 +34,7 @@ class CharacterReplaceClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
@@ -42,6 +42,10 @@ class CharacterReplaceClient:
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
             typing.Optional[params.V1CharacterReplaceCreateBodyStyle],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["kling-3.0", "wan-animate"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
@@ -55,8 +59,12 @@ class CharacterReplaceClient:
         Create a Character Replace video. Credits are only charged for the frames that actually render.
 
         Args:
+            model: Model to use. Defaults to `wan-animate`.
+
+        * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
+        * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
             name: Give your video a custom name for easy identification.
-            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            resolution: Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             style: Optional style controls for replace vs animate mode and subject selection.
             assets: Source video and reference character image for the job.
@@ -77,6 +85,7 @@ class CharacterReplaceClient:
                 "video_file_path": "path/to/video.mp4",
             },
             end_seconds=15.0,
+            model="wan-animate",
             name="My Character Replace video",
             resolution="720p",
             start_seconds=0.0,
@@ -102,6 +111,7 @@ class CharacterReplaceClient:
             resolution=resolution,
             start_seconds=start_seconds,
             style=style,
+            model=model,
             request_options=request_options,
         )
         logger.info(f"Character Replace response: {create_response}")
@@ -121,11 +131,15 @@ class CharacterReplaceClient:
         *,
         assets: params.V1CharacterReplaceCreateBodyAssets,
         end_seconds: float,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["kling-3.0", "wan-animate"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
@@ -166,8 +180,12 @@ class CharacterReplaceClient:
         POST /v1/character-replace
 
         Args:
+            model: Model to use. Defaults to `wan-animate`.
+
+        * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
+        * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
             name: Give your video a custom name for easy identification.
-            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            resolution: Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             style: Optional style controls for replace vs animate mode and subject selection.
             assets: Source video and reference character image for the job.
@@ -189,6 +207,7 @@ class CharacterReplaceClient:
                 "video_file_path": "api-assets/id/1234.mp4",
             },
             end_seconds=15.0,
+            model="wan-animate",
             name="My Character Replace video",
             resolution="720p",
             start_seconds=0.0,
@@ -198,6 +217,7 @@ class CharacterReplaceClient:
         """
         _json = to_encodable(
             item={
+                "model": model,
                 "name": name,
                 "resolution": resolution,
                 "start_seconds": start_seconds,
@@ -230,7 +250,7 @@ class AsyncCharacterReplaceClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
@@ -238,6 +258,10 @@ class AsyncCharacterReplaceClient:
         ] = type_utils.NOT_GIVEN,
         style: typing.Union[
             typing.Optional[params.V1CharacterReplaceCreateBodyStyle],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["kling-3.0", "wan-animate"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
@@ -251,8 +275,12 @@ class AsyncCharacterReplaceClient:
         Create a Character Replace video. Credits are only charged for the frames that actually render.
 
         Args:
+            model: Model to use. Defaults to `wan-animate`.
+
+        * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
+        * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
             name: Give your video a custom name for easy identification.
-            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            resolution: Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             style: Optional style controls for replace vs animate mode and subject selection.
             assets: Source video and reference character image for the job.
@@ -273,6 +301,7 @@ class AsyncCharacterReplaceClient:
                 "video_file_path": "path/to/video.mp4",
             },
             end_seconds=15.0,
+            model="wan-animate",
             name="My Character Replace video",
             resolution="720p",
             start_seconds=0.0,
@@ -298,6 +327,7 @@ class AsyncCharacterReplaceClient:
             resolution=resolution,
             start_seconds=start_seconds,
             style=style,
+            model=model,
             request_options=request_options,
         )
         logger.info(f"Character Replace response: {create_response}")
@@ -317,11 +347,15 @@ class AsyncCharacterReplaceClient:
         *,
         assets: params.V1CharacterReplaceCreateBodyAssets,
         end_seconds: float,
+        model: typing.Union[
+            typing.Optional[typing_extensions.Literal["kling-3.0", "wan-animate"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
@@ -362,8 +396,12 @@ class AsyncCharacterReplaceClient:
         POST /v1/character-replace
 
         Args:
+            model: Model to use. Defaults to `wan-animate`.
+
+        * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
+        * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
             name: Give your video a custom name for easy identification.
-            resolution: Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+            resolution: Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             style: Optional style controls for replace vs animate mode and subject selection.
             assets: Source video and reference character image for the job.
@@ -385,6 +423,7 @@ class AsyncCharacterReplaceClient:
                 "video_file_path": "api-assets/id/1234.mp4",
             },
             end_seconds=15.0,
+            model="wan-animate",
             name="My Character Replace video",
             resolution="720p",
             start_seconds=0.0,
@@ -394,6 +433,7 @@ class AsyncCharacterReplaceClient:
         """
         _json = to_encodable(
             item={
+                "model": model,
                 "name": name,
                 "resolution": resolution,
                 "start_seconds": start_seconds,

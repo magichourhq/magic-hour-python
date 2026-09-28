@@ -27,14 +27,26 @@ class V1CharacterReplaceCreateBody(typing_extensions.TypedDict):
     End time of your clip (seconds). Must be greater than start_seconds.
     """
 
+    model: typing_extensions.NotRequired[
+        typing_extensions.Literal["kling-3.0", "wan-animate"]
+    ]
+    """
+    Model to use. Defaults to `wan-animate`.
+    
+    * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
+    * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
+    """
+
     name: typing_extensions.NotRequired[str]
     """
     Give your video a custom name for easy identification.
     """
 
-    resolution: typing_extensions.NotRequired[typing_extensions.Literal["480p", "720p"]]
+    resolution: typing_extensions.NotRequired[
+        typing_extensions.Literal["1080p", "480p", "720p"]
+    ]
     """
-    Output video resolution. Defaults to 480p, the lowest resolution available on your plan.
+    Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
     """
 
     start_seconds: typing_extensions.NotRequired[float]
@@ -64,8 +76,11 @@ class _SerializerV1CharacterReplaceCreateBody(pydantic.BaseModel):
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
     )
+    model: typing.Optional[typing_extensions.Literal["kling-3.0", "wan-animate"]] = (
+        pydantic.Field(alias="model", default=None)
+    )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    resolution: typing.Optional[typing_extensions.Literal["480p", "720p"]] = (
+    resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
         pydantic.Field(alias="resolution", default=None)
     )
     start_seconds: typing.Optional[float] = pydantic.Field(
