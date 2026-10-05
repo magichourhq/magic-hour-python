@@ -169,6 +169,7 @@ class AiImageEditorClient:
                     "nano-banana-2-lite",
                     "nano-banana-pro",
                     "qwen-edit",
+                    "qwen-image-2.1",
                     "seedream-v4",
                     "seedream-v4.5",
                     "seedream-v5-pro",
@@ -237,6 +238,10 @@ class AiImageEditorClient:
           - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
           - Max additional input images: 2
+        - `qwen-image-2.1` - from 10 credits/image
+          - Supported resolutions: 640px, 1k, 2k
+          - Available for tiers: free, creator, pro, business
+          - Max additional input images: 2
         - `seedream-v4` - from 40 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: creator, pro, business
@@ -270,6 +275,7 @@ class AiImageEditorClient:
         - `nano-banana-2-lite` - 640px, 1k
         - `nano-banana-pro` - 1k, 2k, 4k
         - `qwen-edit` - 640px, 1k, 2k
+        - `qwen-image-2.1` - 640px, 1k, 2k
         - `seedream-v4` - 640px, 1k, 2k, 4k
         - `seedream-v4.5` - 640px, 1k, 2k, 4k
         - `seedream-v5-pro` - 640px, 1k, 2k
@@ -473,6 +479,7 @@ class AsyncAiImageEditorClient:
                     "nano-banana-2-lite",
                     "nano-banana-pro",
                     "qwen-edit",
+                    "qwen-image-2.1",
                     "seedream-v4",
                     "seedream-v4.5",
                     "seedream-v5-pro",
@@ -541,6 +548,10 @@ class AsyncAiImageEditorClient:
           - Supported resolutions: 640px, 1k, 2k
           - Available for tiers: free, creator, pro, business
           - Max additional input images: 2
+        - `qwen-image-2.1` - from 10 credits/image
+          - Supported resolutions: 640px, 1k, 2k
+          - Available for tiers: free, creator, pro, business
+          - Max additional input images: 2
         - `seedream-v4` - from 40 credits/image
           - Supported resolutions: 640px, 1k, 2k, 4k
           - Available for tiers: creator, pro, business
@@ -574,6 +585,7 @@ class AsyncAiImageEditorClient:
         - `nano-banana-2-lite` - 640px, 1k
         - `nano-banana-pro` - 1k, 2k, 4k
         - `qwen-edit` - 640px, 1k, 2k
+        - `qwen-image-2.1` - 640px, 1k, 2k
         - `seedream-v4` - 640px, 1k, 2k, 4k
         - `seedream-v4.5` - 640px, 1k, 2k, 4k
         - `seedream-v5-pro` - 640px, 1k, 2k
