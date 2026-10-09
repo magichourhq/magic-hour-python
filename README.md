@@ -1,5 +1,7 @@
 # Magic Hour Python SDK
 
+Requires Python 3.10 or newer.
+
 [![PyPI - Version](https://img.shields.io/pypi/v/magic_hour)](https://pypi.org/project/magic_hour/)
 
 The Magic Hour Python Library provides convenient access to the Magic Hour API. This library offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
