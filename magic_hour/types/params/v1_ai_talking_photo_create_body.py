@@ -34,7 +34,7 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     name: typing_extensions.NotRequired[str]
     """
-    Give your image a custom name for easy identification.
+    Give your video a custom name for easy identification.
     """
 
     start_seconds: typing_extensions.Required[float]

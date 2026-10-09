@@ -129,13 +129,13 @@ class AiTalkingPhotoClient:
         """
         AI Talking Photo
 
-        Create a talking photo from an image and audio or text input.
+        Create a talking photo video from an image and an audio file.
 
         POST /v1/ai-talking-photo
 
         Args:
             max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
-            name: Give your image a custom name for easy identification.
+            name: Give your video a custom name for easy identification.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
             end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
@@ -159,7 +159,7 @@ class AiTalkingPhotoClient:
             end_seconds=15.0,
             start_seconds=0.0,
             max_resolution=1024,
-            name="My Talking Photo image",
+            name="My Talking Photo video",
         )
         ```
         """
@@ -293,13 +293,13 @@ class AsyncAiTalkingPhotoClient:
         """
         AI Talking Photo
 
-        Create a talking photo from an image and audio or text input.
+        Create a talking photo video from an image and an audio file.
 
         POST /v1/ai-talking-photo
 
         Args:
             max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
-            name: Give your image a custom name for easy identification.
+            name: Give your video a custom name for easy identification.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
             end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
@@ -323,7 +323,7 @@ class AsyncAiTalkingPhotoClient:
             end_seconds=15.0,
             start_seconds=0.0,
             max_resolution=1024,
-            name="My Talking Photo image",
+            name="My Talking Photo video",
         )
         ```
         """
