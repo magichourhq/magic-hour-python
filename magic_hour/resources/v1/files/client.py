@@ -232,7 +232,7 @@ class FilesClient:
 
             # Use the uploaded file in other API calls
             result = client.v1.ai_image_upscaler.create(
-                assets={"image_file_path": file_path}, style={"upscale_factor": 2}
+                assets={"image_file_path": file_path}, scale_factor=2
             )
             ```
 
@@ -360,7 +360,7 @@ class AsyncFilesClient:
 
                 # Use the uploaded file in other API calls
                 result = await client.v1.ai_image_upscaler.create(
-                    assets={"image_file_path": file_path}, style={"upscale_factor": 2}
+                    assets={"image_file_path": file_path}, scale_factor=2
                 )
 
 
