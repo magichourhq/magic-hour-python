@@ -38,6 +38,7 @@ class VideoProjectsClient:
         wait_for_completion: bool,
         download_outputs: bool,
         download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> V1VideoProjectsGetResponseWithDownloads:
         """
         Check the result of a video project with optional waiting and downloading.
@@ -51,12 +52,13 @@ class VideoProjectsClient:
             download_outputs: Whether to download the outputs
             download_directory: The directory to download the outputs to. If not provided,
                 the outputs will be downloaded to the current working directory
+            request_options: Additional options to customize each project-status HTTP request.
 
         Returns:
             V1VideoProjectsGetResponseWithDownloads: The video project response with optional
                 downloaded file paths included
         """
-        api_response = self.get(id=id)
+        api_response = self.get(id=id, request_options=request_options)
         if not wait_for_completion:
             response = V1VideoProjectsGetResponseWithDownloads(
                 **api_response.model_dump()
@@ -68,7 +70,7 @@ class VideoProjectsClient:
         status = api_response.status
 
         while status not in ["complete", "error", "canceled"]:
-            api_response = self.get(id=id)
+            api_response = self.get(id=id, request_options=request_options)
             status = api_response.status
             time.sleep(poll_interval)
 
@@ -178,6 +180,7 @@ class AsyncVideoProjectsClient:
         wait_for_completion: bool,
         download_outputs: bool,
         download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
     ) -> V1VideoProjectsGetResponseWithDownloads:
         """
         Check the result of a video project with optional waiting and downloading.
@@ -191,12 +194,13 @@ class AsyncVideoProjectsClient:
             download_outputs: Whether to download the outputs
             download_directory: The directory to download the outputs to. If not provided,
                 the outputs will be downloaded to the current working directory
+            request_options: Additional options to customize each project-status HTTP request.
 
         Returns:
             V1VideoProjectsGetResponseWithDownloads: The video project response with optional
                 downloaded file paths included
         """
-        api_response = await self.get(id=id)
+        api_response = await self.get(id=id, request_options=request_options)
         if not wait_for_completion:
             response = V1VideoProjectsGetResponseWithDownloads(
                 **api_response.model_dump()
@@ -208,7 +212,7 @@ class AsyncVideoProjectsClient:
         status = api_response.status
 
         while status not in ["complete", "error", "canceled"]:
-            api_response = await self.get(id=id)
+            api_response = await self.get(id=id, request_options=request_options)
             status = api_response.status
             time.sleep(poll_interval)
 

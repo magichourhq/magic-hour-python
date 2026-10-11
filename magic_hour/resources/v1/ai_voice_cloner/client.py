@@ -87,6 +87,7 @@ class AiVoiceClonerClient:
             wait_for_completion=wait_for_completion,
             download_outputs=download_outputs,
             download_directory=download_directory,
+            request_options=request_options,
         )
 
         return response
@@ -213,6 +214,7 @@ class AsyncAiVoiceClonerClient:
             wait_for_completion=wait_for_completion,
             download_outputs=download_outputs,
             download_directory=download_directory,
+            request_options=request_options,
         )
 
         return response

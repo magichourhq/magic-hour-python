@@ -80,14 +80,14 @@ class FaceDetectionClient:
 
         task_id = create_response.id
 
-        api_response = self.get(id=task_id)
+        api_response = self.get(id=task_id, request_options=request_options)
         if not wait_for_completion:
             return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
 
         poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
 
         while api_response.status not in ["complete", "error"]:
-            api_response = self.get(id=task_id)
+            api_response = self.get(id=task_id, request_options=request_options)
             time.sleep(poll_interval)
 
         if api_response.status != "complete":
@@ -255,14 +255,14 @@ class AsyncFaceDetectionClient:
 
         task_id = create_response.id
 
-        api_response = await self.get(id=task_id)
+        api_response = await self.get(id=task_id, request_options=request_options)
         if not wait_for_completion:
             return V1FaceDetectionGetResponseWithDownloads(**api_response.model_dump())
 
         poll_interval = float(os.getenv("MAGIC_HOUR_POLL_INTERVAL", "0.5"))
 
         while api_response.status not in ["complete", "error"]:
-            api_response = await self.get(id=task_id)
+            api_response = await self.get(id=task_id, request_options=request_options)
             await asyncio.sleep(poll_interval)
 
         if api_response.status != "complete":
