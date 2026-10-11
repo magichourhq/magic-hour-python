@@ -108,6 +108,7 @@ class FaceDetectionClient:
         downloaded_paths = download_files_sync(
             downloads=face_downloads,
             download_directory=download_directory,
+            project_id=api_response.id,
         )
 
         return V1FaceDetectionGetResponseWithDownloads(
@@ -283,6 +284,7 @@ class AsyncFaceDetectionClient:
         downloaded_paths = await download_files_async(
             downloads=face_downloads,
             download_directory=download_directory,
+            project_id=api_response.id,
         )
 
         return V1FaceDetectionGetResponseWithDownloads(

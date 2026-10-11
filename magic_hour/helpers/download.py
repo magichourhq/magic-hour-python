@@ -10,10 +10,14 @@ logger = logging.getLogger(__name__)
 
 
 def _compute_download_path(
-    url: str, download_directory: Union[str, None] = None
+    url: str,
+    download_directory: Union[str, None] = None,
+    project_id: Union[str, None] = None,
 ) -> str:
     url_path = urlparse(url).path
     filename = Path(url_path).name
+    if project_id:
+        filename = f"{Path(project_id).name}-{filename}"
     if download_directory:
         return os.path.join(download_directory, filename)
     return filename
@@ -26,6 +30,7 @@ def download_files_sync(
         List[models.V1AudioProjectsGetResponseDownloadsItem],
     ],
     download_directory: Union[str, None] = None,
+    project_id: Union[str, None] = None,
 ) -> List[str]:
     downloaded_paths: List[str] = []
 
@@ -35,7 +40,9 @@ def download_files_sync(
             download_response.raise_for_status()
 
             download_path = _compute_download_path(
-                download.url, download_directory=download_directory
+                download.url,
+                download_directory=download_directory,
+                project_id=project_id,
             )
 
             with open(download_path, "wb") as f:
@@ -55,6 +62,7 @@ async def download_files_async(
         List[models.V1AudioProjectsGetResponseDownloadsItem],
     ],
     download_directory: Union[str, None] = None,
+    project_id: Union[str, None] = None,
 ) -> List[str]:
     downloaded_paths: List[str] = []
 
@@ -64,7 +72,9 @@ async def download_files_async(
             download_response.raise_for_status()
 
             download_path = _compute_download_path(
-                download.url, download_directory=download_directory
+                download.url,
+                download_directory=download_directory,
+                project_id=project_id,
             )
 
             with open(download_path, "wb") as f:

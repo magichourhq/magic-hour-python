@@ -85,6 +85,7 @@ class VideoProjectsClient:
         downloaded_paths = download_files_sync(
             downloads=api_response.downloads,
             download_directory=download_directory,
+            project_id=api_response.id,
         )
 
         return V1VideoProjectsGetResponseWithDownloads(
@@ -225,6 +226,7 @@ class AsyncVideoProjectsClient:
         downloaded_paths = await download_files_async(
             downloads=api_response.downloads,
             download_directory=download_directory,
+            project_id=api_response.id,
         )
 
         return V1VideoProjectsGetResponseWithDownloads(

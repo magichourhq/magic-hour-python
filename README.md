@@ -102,6 +102,8 @@ The `generate()` function provides a complete end-to-end solution:
 - `download_outputs` (bool, default True): Whether to download the generated files
 - `download_directory` (str, optional): Directory to save downloaded files (defaults to current directory)
 
+Automatic downloads use filenames prefixed with the project ID. Use `response.downloaded_paths` to find saved files; downloading the same project again may overwrite its previous files.
+
 ```python
 # Generate function - handles everything automatically
 response = client.v1.ai_image_generator.generate(
