@@ -80,7 +80,7 @@ class AiImageEditorClient:
         """
         Generate edited image (alias for create with additional functionality).
 
-        Edit image using AI. Each edit costs 5 credits.
+        Edit images using AI. Credit cost depends on the selected model and resolution.
 
         Args:
             name: The name of image. This value is mainly used for your own identification of the image.
@@ -396,7 +396,7 @@ class AsyncAiImageEditorClient:
         """
         Generate edited image (alias for create with additional functionality).
 
-        Edit image using AI. Each edit costs 5 credits.
+        Edit images using AI. Credit cost depends on the selected model and resolution.
 
         Args:
             name: The name of image. This value is mainly used for your own identification of the image.

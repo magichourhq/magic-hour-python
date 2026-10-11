@@ -79,7 +79,7 @@ class AiImageGeneratorClient:
         """
         Generate AI images (alias for create with additional functionality).
 
-        Create AI images with text prompts. Each image costs 5 credits.
+        Create AI images with text prompts. Credit cost depends on model, resolution, and image count.
 
         Args:
             name: The name of image. This value is mainly used for your own identification of the image.
@@ -387,7 +387,7 @@ class AsyncAiImageGeneratorClient:
         """
         Generate AI images (alias for create with additional functionality).
 
-        Create AI images with text prompts. Each image costs 5 credits.
+        Create AI images with text prompts. Credit cost depends on model, resolution, and image count.
 
         Args:
             name: The name of image. This value is mainly used for your own identification of the image.
