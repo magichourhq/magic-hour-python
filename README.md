@@ -105,11 +105,12 @@ The `generate()` function provides a complete end-to-end solution:
 ```python
 # Generate function - handles everything automatically
 response = client.v1.ai_image_generator.generate(
+    image_count=1,
     style={"prompt": "A beautiful sunset over mountains"},
     name="Sunset Image",
     wait_for_completion=True,       # Wait for status to be complete/error/canceled
     download_outputs=True,          # Download files automatically
-    download_directory="./outputs/" # Where to save files
+    download_directory="."          # Where to save files
 )
 
 # You get both the API response AND downloaded file paths
@@ -129,6 +130,7 @@ The `create()` function provides granular control:
 ```python
 # Create function - only starts the process
 create_response = client.v1.ai_image_generator.create(
+    image_count=1,
     style={"prompt": "A beautiful sunset over mountains"},
     name="Sunset Image"
 )
@@ -139,7 +141,8 @@ print(f"Started project: {project_id}")
 
 # You must handle the rest:
 # 1. Poll for completion. We provide a helper function to handle polling for you
-result = client.v1.image_projects.check_status(
+result = client.v1.image_projects.check_result(
+    id=project_id,
     wait_for_completion=True,
     download_outputs=False,
 )
