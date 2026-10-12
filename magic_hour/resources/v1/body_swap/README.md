@@ -79,7 +79,7 @@ Swap a person into a scene image using Nano Banana 2 Lite (640px/1k) or Nano Ban
 | `assets`              |    ✓     | Person image and scene image for body swap                                                                                                                                                                                                                                                                                                                                 | `{"person_file_path": "api-assets/id/1234.png", "scene_file_path": "api-assets/id/5678.png"}` |
 | `└─ person_file_path` |    ✓     | Image of the person to place into the scene. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                                                                    |
 | `└─ scene_file_path`  |    ✓     | Original scene image (background). This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.           | `"api-assets/id/5678.png"`                                                                    |
-| `resolution`          |    ✓     | Output resolution. Determines credits charged for the run.                                                                                                                                                                                                                                                                                                                 | `"1k"`                                                                                        |
+| `resolution`          |    ✓     | Output resolution. Determines credits charged for the run.                                                                                                                                                                                                                                                                                                                 | `"640px"`                                                                                     |
 | `name`                |    ✗     | Give your image a custom name for easy identification.                                                                                                                                                                                                                                                                                                                     | `"My Body Swap image"`                                                                        |
 
 #### Synchronous Client
@@ -94,7 +94,7 @@ res = client.v1.body_swap.create(
         "person_file_path": "api-assets/id/1234.png",
         "scene_file_path": "api-assets/id/5678.png",
     },
-    resolution="1k",
+    resolution="640px",
     name="My Body Swap image",
 )
 ```
@@ -111,7 +111,7 @@ res = await client.v1.body_swap.create(
         "person_file_path": "api-assets/id/1234.png",
         "scene_file_path": "api-assets/id/5678.png",
     },
-    resolution="1k",
+    resolution="640px",
     name="My Body Swap image",
 )
 ```

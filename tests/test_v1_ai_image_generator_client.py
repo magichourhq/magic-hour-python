@@ -34,10 +34,10 @@ def test_create_200_success_all_params() -> None:
             "tool": "ai-anime-generator",
         },
         aspect_ratio="1:1",
-        model="default",
+        model="z-image-turbo",
         name="My Ai Image image",
         orientation="landscape",
-        resolution="1k",
+        resolution="640px",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(
@@ -78,10 +78,10 @@ async def test_await_create_200_success_all_params() -> None:
             "tool": "ai-anime-generator",
         },
         aspect_ratio="1:1",
-        model="default",
+        model="z-image-turbo",
         name="My Ai Image image",
         orientation="landscape",
-        resolution="1k",
+        resolution="640px",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageGeneratorCreateResponse).validate_python(

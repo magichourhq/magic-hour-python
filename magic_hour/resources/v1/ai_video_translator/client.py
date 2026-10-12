@@ -246,10 +246,10 @@ class AiVideoTranslatorClient:
         ```py
         client.v1.ai_video_translator.create(
             assets={"video_file_path": "api-assets/id/1234.mp4"},
-            end_seconds=15.0,
+            end_seconds=5.0,
             target_language="Spanish",
             name="My Video Translator video",
-            resolution="720p",
+            resolution="480p",
             start_seconds=0.0,
         )
         ```
@@ -502,10 +502,10 @@ class AsyncAiVideoTranslatorClient:
         ```py
         await client.v1.ai_video_translator.create(
             assets={"video_file_path": "api-assets/id/1234.mp4"},
-            end_seconds=15.0,
+            end_seconds=5.0,
             target_language="Spanish",
             name="My Video Translator video",
-            resolution="720p",
+            resolution="480p",
             start_seconds=0.0,
         )
         ```

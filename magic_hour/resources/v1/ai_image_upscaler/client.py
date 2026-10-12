@@ -140,6 +140,7 @@ class AiImageUpscalerClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
             name="My Image Upscaler image",
+            style={"mode": "preserve"},
         )
         ```
         """
@@ -282,6 +283,7 @@ class AsyncAiImageUpscalerClient:
             assets={"image_file_path": "api-assets/id/1234.png"},
             scale_factor=2.0,
             name="My Image Upscaler image",
+            style={"mode": "preserve"},
         )
         ```
         """

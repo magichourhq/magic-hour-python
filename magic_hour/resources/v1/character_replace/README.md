@@ -109,10 +109,10 @@ For detailed examples, see the [product page](https://magichour.ai/products/char
 | `assets`             |    ✓     | Source video and reference character image for the job.                                                                                                                                                                                                                                                                                                                                              | `{"image_file_path": "api-assets/id/5678.png", "video_file_path": "api-assets/id/1234.mp4"}` |
 | `└─ image_file_path` |    ✓     | Reference character image used as the replacement or animation target. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/5678.png"`                                                                   |
 | `└─ video_file_path` |    ✓     | Source video containing the subject to replace or animate. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.             | `"api-assets/id/1234.mp4"`                                                                   |
-| `end_seconds`        |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                                                 | `15.0`                                                                                       |
+| `end_seconds`        |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                                                 | `5.0`                                                                                        |
 | `model`              |    ✗     | Model to use. Defaults to `wan-animate`. * **`wan-animate`**: 480p, 720p. Supports `points` subject selection. * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.                                                                                                             | `"wan-animate"`                                                                              |
 | `name`               |    ✗     | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                               | `"My Character Replace video"`                                                               |
-| `resolution`         |    ✗     | Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.                                                                                                                                                                                                                                                                      | `"720p"`                                                                                     |
+| `resolution`         |    ✗     | Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.                                                                                                                                                                                                                                                                      | `"480p"`                                                                                     |
 | `start_seconds`      |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                                                                      | `0.0`                                                                                        |
 | `style`              |    ✗     | Optional style controls for replace vs animate mode and subject selection.                                                                                                                                                                                                                                                                                                                           | `{"mode": "replace", "selection_mode": "auto"}`                                              |
 | `└─ mode`            |    ✗     | Processing mode. `replace` swaps the detected subject with your reference character. `animate` transfers motion from the video onto your character image.                                                                                                                                                                                                                                            | `"replace"`                                                                                  |
@@ -131,10 +131,10 @@ res = client.v1.character_replace.create(
         "image_file_path": "api-assets/id/5678.png",
         "video_file_path": "api-assets/id/1234.mp4",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     model="wan-animate",
     name="My Character Replace video",
-    resolution="720p",
+    resolution="480p",
     start_seconds=0.0,
     style={"mode": "replace", "selection_mode": "auto"},
 )
@@ -152,10 +152,10 @@ res = await client.v1.character_replace.create(
         "image_file_path": "api-assets/id/5678.png",
         "video_file_path": "api-assets/id/1234.mp4",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     model="wan-animate",
     name="My Character Replace video",
-    resolution="720p",
+    resolution="480p",
     start_seconds=0.0,
     style={"mode": "replace", "selection_mode": "auto"},
 )

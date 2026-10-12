@@ -156,9 +156,9 @@ class AutoSubtitleGeneratorClient:
         ```py
         client.v1.auto_subtitle_generator.create(
             assets={"video_file_path": "api-assets/id/1234.mp4"},
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
-            style={},
+            style={"template": "karaoke"},
             name="My Auto Subtitle video",
         )
         ```
@@ -319,9 +319,9 @@ class AsyncAutoSubtitleGeneratorClient:
         ```py
         await client.v1.auto_subtitle_generator.create(
             assets={"video_file_path": "api-assets/id/1234.mp4"},
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
-            style={},
+            style={"template": "karaoke"},
             name="My Auto Subtitle video",
         )
         ```

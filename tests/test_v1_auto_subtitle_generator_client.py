@@ -28,7 +28,7 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.auto_subtitle_generator.create(
         assets={"video_file_path": "api-assets/id/1234.mp4"},
-        end_seconds=15.0,
+        end_seconds=5.0,
         start_seconds=0.0,
         style={
             "custom_config": {
@@ -42,7 +42,7 @@ def test_create_200_success_all_params() -> None:
                 "text_color": "#FFFFFF",
                 "vertical_position": "bottom",
             },
-            "template": "cinematic",
+            "template": "karaoke",
         },
         name="My Auto Subtitle video",
     )
@@ -79,7 +79,7 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.auto_subtitle_generator.create(
         assets={"video_file_path": "api-assets/id/1234.mp4"},
-        end_seconds=15.0,
+        end_seconds=5.0,
         start_seconds=0.0,
         style={
             "custom_config": {
@@ -93,7 +93,7 @@ async def test_await_create_200_success_all_params() -> None:
                 "text_color": "#FFFFFF",
                 "vertical_position": "bottom",
             },
-            "template": "cinematic",
+            "template": "karaoke",
         },
         name="My Auto Subtitle video",
     )

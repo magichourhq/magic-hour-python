@@ -29,7 +29,9 @@ def test_create_200_success_all_params() -> None:
     response = client.v1.ai_headshot_generator.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         name="My Ai Headshot image",
-        style={"prompt": "string"},
+        style={
+            "prompt": "Professional studio headshot with soft lighting and a neutral background"
+        },
     )
     try:
         pydantic.TypeAdapter(
@@ -65,7 +67,9 @@ async def test_await_create_200_success_all_params() -> None:
     response = await client.v1.ai_headshot_generator.create(
         assets={"image_file_path": "api-assets/id/1234.png"},
         name="My Ai Headshot image",
-        style={"prompt": "string"},
+        style={
+            "prompt": "Professional studio headshot with soft lighting and a neutral background"
+        },
     )
     try:
         pydantic.TypeAdapter(

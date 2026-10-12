@@ -300,9 +300,9 @@ class AiImageGeneratorClient:
             image_count=1,
             style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             aspect_ratio="1:1",
-            model="default",
+            model="z-image-turbo",
             name="My Ai Image image",
-            resolution="1k",
+            resolution="640px",
         )
         ```
         """
@@ -607,9 +607,9 @@ class AsyncAiImageGeneratorClient:
             image_count=1,
             style={"prompt": "Cool image", "tool": "ai-anime-generator"},
             aspect_ratio="1:1",
-            model="default",
+            model="z-image-turbo",
             name="My Ai Image image",
-            resolution="1k",
+            resolution="640px",
         )
         ```
         """

@@ -34,9 +34,9 @@ def test_create_200_success_all_params() -> None:
         style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
         aspect_ratio="1:1",
         image_count=1.0,
-        model="default",
+        model="flux-2-klein",
         name="My Ai Image Editor image",
-        resolution="1k",
+        resolution="640px",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(
@@ -77,9 +77,9 @@ async def test_await_create_200_success_all_params() -> None:
         style={"model": "Nano Banana", "prompt": "Give me sunglasses"},
         aspect_ratio="1:1",
         image_count=1.0,
-        model="default",
+        model="flux-2-klein",
         name="My Ai Image Editor image",
-        resolution="1k",
+        resolution="640px",
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageEditorCreateResponse).validate_python(

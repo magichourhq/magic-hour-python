@@ -205,18 +205,12 @@ class FaceSwapClient:
         ```py
         client.v1.face_swap.create(
             assets={
-                "face_mappings": [
-                    {
-                        "new_face": "api-assets/id/1234.png",
-                        "original_face": "api-assets/id/0-0.png",
-                    }
-                ],
                 "face_swap_mode": "all-faces",
-                "image_file_path": "image/id/1234.png",
+                "image_file_path": "api-assets/id/1234.png",
                 "video_file_path": "api-assets/id/1234.mp4",
                 "video_source": "file",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
             name="My Face Swap video",
             style={"version": "default"},
@@ -434,18 +428,12 @@ class AsyncFaceSwapClient:
         ```py
         await client.v1.face_swap.create(
             assets={
-                "face_mappings": [
-                    {
-                        "new_face": "api-assets/id/1234.png",
-                        "original_face": "api-assets/id/0-0.png",
-                    }
-                ],
                 "face_swap_mode": "all-faces",
-                "image_file_path": "image/id/1234.png",
+                "image_file_path": "api-assets/id/1234.png",
                 "video_file_path": "api-assets/id/1234.mp4",
                 "video_source": "file",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
             name="My Face Swap video",
             style={"version": "default"},

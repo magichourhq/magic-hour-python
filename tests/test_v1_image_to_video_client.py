@@ -34,9 +34,9 @@ def test_create_200_success_all_params() -> None:
         end_seconds=5.0,
         audio=True,
         height=123,
-        model="kling-3.0",
+        model="ltx-2.5",
         name="My Image To Video video",
-        resolution="720p",
+        resolution="480p",
         style={
             "high_quality": True,
             "prompt": "a dog running",
@@ -83,9 +83,9 @@ async def test_await_create_200_success_all_params() -> None:
         end_seconds=5.0,
         audio=True,
         height=123,
-        model="kling-3.0",
+        model="ltx-2.5",
         name="My Image To Video video",
-        resolution="720p",
+        resolution="480p",
         style={
             "high_quality": True,
             "prompt": "a dog running",
