@@ -142,6 +142,17 @@ class V1TextToVideoCreateBody(typing_extensions.TypedDict):
     references: typing_extensions.NotRequired[
         typing.List[V1TextToVideoCreateBodyReferencesItem]
     ]
+    """
+    Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
+    
+    Supported models and reference media:
+    * **`kling-3.0`**: Supports images, videos.
+    * **`minimax-h3`**: Supports images, videos, audio.
+    * **`seedance-2.0`**: Supports images, videos, audio.
+    * **`seedance-2.0-mini`**: Supports images, videos, audio.
+    * **`seedance-2.5`**: Supports images, videos, audio.
+    * **`wan-3.0`**: Supports images, videos, audio.
+    """
 
     resolution: typing_extensions.NotRequired[
         typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]

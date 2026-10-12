@@ -290,7 +290,15 @@ class TextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
-            references: typing.List[V1TextToVideoCreateBodyReferencesItem]
+            references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
+
+        Supported models and reference media:
+        * **`kling-3.0`**: Supports images, videos.
+        * **`minimax-h3`**: Supports images, videos, audio.
+        * **`seedance-2.0`**: Supports images, videos, audio.
+        * **`seedance-2.0-mini`**: Supports images, videos, audio.
+        * **`seedance-2.5`**: Supports images, videos, audio.
+        * **`wan-3.0`**: Supports images, videos, audio.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
         * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
@@ -340,9 +348,9 @@ class TextToVideoClient:
             style={"prompt": "a dog running"},
             aspect_ratio="16:9",
             audio=True,
-            model="kling-3.0",
+            model="ltx-2.5",
             name="My Text To Video video",
-            resolution="720p",
+            resolution="480p",
         )
         ```
         """
@@ -640,7 +648,15 @@ class AsyncTextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
-            references: typing.List[V1TextToVideoCreateBodyReferencesItem]
+            references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
+
+        Supported models and reference media:
+        * **`kling-3.0`**: Supports images, videos.
+        * **`minimax-h3`**: Supports images, videos, audio.
+        * **`seedance-2.0`**: Supports images, videos, audio.
+        * **`seedance-2.0-mini`**: Supports images, videos, audio.
+        * **`seedance-2.5`**: Supports images, videos, audio.
+        * **`wan-3.0`**: Supports images, videos, audio.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
         * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
@@ -690,9 +706,9 @@ class AsyncTextToVideoClient:
             style={"prompt": "a dog running"},
             aspect_ratio="16:9",
             audio=True,
-            model="kling-3.0",
+            model="ltx-2.5",
             name="My Text To Video video",
-            resolution="720p",
+            resolution="480p",
         )
         ```
         """

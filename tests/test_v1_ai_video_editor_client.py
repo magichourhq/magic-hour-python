@@ -30,9 +30,9 @@ def test_create_200_success_all_params() -> None:
         assets={"video_file_path": "api-assets/id/1234.mp4"},
         end_seconds=5.0,
         style={"prompt": "Change the car color to blue"},
-        model="gemini-omni-1.1",
+        model="ltx-2.5",
         name="My Video Editor video",
-        resolution="720p",
+        resolution="480p",
         start_seconds=0.0,
     )
     try:
@@ -70,9 +70,9 @@ async def test_await_create_200_success_all_params() -> None:
         assets={"video_file_path": "api-assets/id/1234.mp4"},
         end_seconds=5.0,
         style={"prompt": "Change the car color to blue"},
-        model="gemini-omni-1.1",
+        model="ltx-2.5",
         name="My Video Editor video",
-        resolution="720p",
+        resolution="480p",
         start_seconds=0.0,
     )
     try:

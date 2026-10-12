@@ -31,11 +31,11 @@ def test_create_200_success_all_params() -> None:
         style={"prompt": "a dog running", "quality_mode": "quick"},
         aspect_ratio="16:9",
         audio=True,
-        model="kling-3.0",
+        model="ltx-2.5",
         name="My Text To Video video",
         orientation="landscape",
-        references=[{"file_path": "string", "name": "string"}],
-        resolution="720p",
+        references=[{"file_path": "api-assets/id/1234.png", "name": "hero"}],
+        resolution="480p",
     )
     try:
         pydantic.TypeAdapter(models.V1TextToVideoCreateResponse).validate_python(
@@ -73,11 +73,11 @@ async def test_await_create_200_success_all_params() -> None:
         style={"prompt": "a dog running", "quality_mode": "quick"},
         aspect_ratio="16:9",
         audio=True,
-        model="kling-3.0",
+        model="ltx-2.5",
         name="My Text To Video video",
         orientation="landscape",
-        references=[{"file_path": "string", "name": "string"}],
-        resolution="720p",
+        references=[{"file_path": "api-assets/id/1234.png", "name": "hero"}],
+        resolution="480p",
     )
     try:
         pydantic.TypeAdapter(models.V1TextToVideoCreateResponse).validate_python(

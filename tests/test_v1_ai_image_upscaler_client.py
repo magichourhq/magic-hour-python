@@ -30,7 +30,11 @@ def test_create_200_success_all_params() -> None:
         assets={"image_file_path": "api-assets/id/1234.png"},
         scale_factor=2.0,
         name="My Image Upscaler image",
-        style={"enhancement": "Balanced", "mode": "balanced", "prompt": "string"},
+        style={
+            "enhancement": "Balanced",
+            "mode": "preserve",
+            "prompt": "Enhance fine details and keep the image natural",
+        },
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageUpscalerCreateResponse).validate_python(
@@ -67,7 +71,11 @@ async def test_await_create_200_success_all_params() -> None:
         assets={"image_file_path": "api-assets/id/1234.png"},
         scale_factor=2.0,
         name="My Image Upscaler image",
-        style={"enhancement": "Balanced", "mode": "balanced", "prompt": "string"},
+        style={
+            "enhancement": "Balanced",
+            "mode": "preserve",
+            "prompt": "Enhance fine details and keep the image natural",
+        },
     )
     try:
         pydantic.TypeAdapter(models.V1AiImageUpscalerCreateResponse).validate_python(

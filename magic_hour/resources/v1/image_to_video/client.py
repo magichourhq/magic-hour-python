@@ -329,9 +329,9 @@ class ImageToVideoClient:
             },
             end_seconds=5.0,
             audio=True,
-            model="kling-3.0",
+            model="ltx-2.5",
             name="My Image To Video video",
-            resolution="720p",
+            resolution="480p",
         )
         ```
         """
@@ -667,9 +667,9 @@ class AsyncImageToVideoClient:
             },
             end_seconds=5.0,
             audio=True,
-            model="kling-3.0",
+            model="ltx-2.5",
             name="My Image To Video video",
-            resolution="720p",
+            resolution="480p",
         )
         ```
         """

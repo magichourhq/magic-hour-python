@@ -156,9 +156,9 @@ class AiTalkingPhotoClient:
                 "audio_file_path": "api-assets/id/1234.mp3",
                 "image_file_path": "api-assets/id/1234.png",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
-            max_resolution=1024,
+            max_resolution=512,
             name="My Talking Photo video",
         )
         ```
@@ -320,9 +320,9 @@ class AsyncAiTalkingPhotoClient:
                 "audio_file_path": "api-assets/id/1234.mp3",
                 "image_file_path": "api-assets/id/1234.png",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
-            max_resolution=1024,
+            max_resolution=512,
             name="My Talking Photo video",
         )
         ```

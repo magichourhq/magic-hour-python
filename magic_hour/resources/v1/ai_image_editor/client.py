@@ -309,9 +309,9 @@ class AiImageEditorClient:
             style={"prompt": "Give me sunglasses"},
             aspect_ratio="1:1",
             image_count=1.0,
-            model="default",
+            model="flux-2-klein",
             name="My Ai Image Editor image",
-            resolution="1k",
+            resolution="640px",
         )
         ```
         """
@@ -627,9 +627,9 @@ class AsyncAiImageEditorClient:
             style={"prompt": "Give me sunglasses"},
             aspect_ratio="1:1",
             image_count=1.0,
-            model="default",
+            model="flux-2-klein",
             name="My Ai Image Editor image",
-            resolution="1k",
+            resolution="640px",
         )
         ```
         """

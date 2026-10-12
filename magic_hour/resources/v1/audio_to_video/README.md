@@ -109,9 +109,9 @@ For detailed examples, see the [product page](https://magichour.ai/products/audi
 | `assets`             |    ✓     | Provide the audio file and an optional reference image.                                                                                                                                                                                                                                                                                                                           | `{"audio_file_path": "api-assets/id/1234.mp3", "image_file_path": "api-assets/id/1234.png"}` |
 | `└─ audio_file_path` |    ✓     | The path of the audio file. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.                         | `"api-assets/id/1234.mp3"`                                                                   |
 | `└─ image_file_path` |    ✗     | Reference image for the initial frame of the video. This value is either - a direct URL to the video file - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.png"`                                                                   |
-| `end_seconds`        |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                              | `15.0`                                                                                       |
+| `end_seconds`        |    ✓     | End time of your clip (seconds). Must be greater than start_seconds.                                                                                                                                                                                                                                                                                                              | `5.0`                                                                                        |
 | `name`               |    ✗     | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                                                            | `"My Audio To Video video"`                                                                  |
-| `resolution`         |    ✗     | Output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.                                                                                                                                                                                                                                                                                               | `"720p"`                                                                                     |
+| `resolution`         |    ✗     | Output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.                                                                                                                                                                                                                                                                                               | `"480p"`                                                                                     |
 | `start_seconds`      |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                                                   | `0.0`                                                                                        |
 | `style`              |    ✗     | Attributes used to dictate the style of the output                                                                                                                                                                                                                                                                                                                                | `{"prompt": "Car driving through a city"}`                                                   |
 | `└─ prompt`          |    ✗     | Prompt to guide the visual style of the video.                                                                                                                                                                                                                                                                                                                                    | `"Car driving through a city"`                                                               |
@@ -128,9 +128,9 @@ res = client.v1.audio_to_video.create(
         "audio_file_path": "api-assets/id/1234.mp3",
         "image_file_path": "api-assets/id/1234.png",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     name="My Audio To Video video",
-    resolution="720p",
+    resolution="480p",
     start_seconds=0.0,
 )
 ```
@@ -147,9 +147,9 @@ res = await client.v1.audio_to_video.create(
         "audio_file_path": "api-assets/id/1234.mp3",
         "image_file_path": "api-assets/id/1234.png",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     name="My Audio To Video video",
-    resolution="720p",
+    resolution="480p",
     start_seconds=0.0,
 )
 ```

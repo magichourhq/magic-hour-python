@@ -31,9 +31,9 @@ def test_create_200_success_all_params() -> None:
             "audio_file_path": "api-assets/id/1234.mp3",
             "image_file_path": "api-assets/id/1234.png",
         },
-        end_seconds=15.0,
+        end_seconds=5.0,
         name="My Audio To Video video",
-        resolution="720p",
+        resolution="480p",
         start_seconds=0.0,
         style={"prompt": "Car driving through a city"},
     )
@@ -73,9 +73,9 @@ async def test_await_create_200_success_all_params() -> None:
             "audio_file_path": "api-assets/id/1234.mp3",
             "image_file_path": "api-assets/id/1234.png",
         },
-        end_seconds=15.0,
+        end_seconds=5.0,
         name="My Audio To Video video",
-        resolution="720p",
+        resolution="480p",
         start_seconds=0.0,
         style={"prompt": "Car driving through a city"},
     )

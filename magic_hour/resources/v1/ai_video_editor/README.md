@@ -103,9 +103,9 @@ For detailed examples, see the [product page](https://magichour.ai/products/ai-v
 | `end_seconds`        |    ✓     | End time of your clip in seconds. Must be greater than `start_seconds`. Minimum duration depends on model: `gemini-omni-1.1`: 3s, LTX 2.5: 0.5s. Maximum duration depends on model: `gemini-omni-1.1`: 10s, LTX 2.5: 20s.                                                                                                                        | `5.0`                                           |
 | `style`              |    ✓     |                                                                                                                                                                                                                                                                                                                                                  | `{"prompt": "Change the car color to blue"}`    |
 | `└─ prompt`          |    ✓     | The prompt used to edit the video.                                                                                                                                                                                                                                                                                                               | `"Change the car color to blue"`                |
-| `model`              |    ✗     | Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.                                                                                                                                                                                                     | `"gemini-omni-1.1"`                             |
+| `model`              |    ✗     | Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.                                                                                                                                                                                                     | `"ltx-2.5"`                                     |
 | `name`               |    ✗     | Give your video a custom name for easy identification.                                                                                                                                                                                                                                                                                           | `"My Video Editor video"`                       |
-| `resolution`         |    ✗     | Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX 2.5 supports 480p, 720p, and 1080p.                                                                                                                                                          | `"720p"`                                        |
+| `resolution`         |    ✗     | Output resolution. Defaults to `480p` for free tier and `720p` for paid. `gemini-omni-1.1` and deprecated `gemini-omni` support 720p and 1080p; LTX 2.5 supports 480p, 720p, and 1080p.                                                                                                                                                          | `"480p"`                                        |
 | `start_seconds`      |    ✗     | Start time of your clip (seconds). Must be ≥ 0.                                                                                                                                                                                                                                                                                                  | `0.0`                                           |
 
 #### Synchronous Client
@@ -119,9 +119,9 @@ res = client.v1.ai_video_editor.create(
     assets={"video_file_path": "api-assets/id/1234.mp4"},
     end_seconds=5.0,
     style={"prompt": "Change the car color to blue"},
-    model="gemini-omni-1.1",
+    model="ltx-2.5",
     name="My Video Editor video",
-    resolution="720p",
+    resolution="480p",
     start_seconds=0.0,
 )
 ```
@@ -137,9 +137,9 @@ res = await client.v1.ai_video_editor.create(
     assets={"video_file_path": "api-assets/id/1234.mp4"},
     end_seconds=5.0,
     style={"prompt": "Change the car color to blue"},
-    model="gemini-omni-1.1",
+    model="ltx-2.5",
     name="My Video Editor video",
-    resolution="720p",
+    resolution="480p",
     start_seconds=0.0,
 )
 ```

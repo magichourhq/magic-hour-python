@@ -31,7 +31,7 @@ def test_create_200_success_all_params() -> None:
             "person_file_path": "api-assets/id/1234.png",
             "scene_file_path": "api-assets/id/5678.png",
         },
-        resolution="1k",
+        resolution="640px",
         name="My Body Swap image",
     )
     try:
@@ -68,7 +68,7 @@ async def test_await_create_200_success_all_params() -> None:
             "person_file_path": "api-assets/id/1234.png",
             "scene_file_path": "api-assets/id/5678.png",
         },
-        resolution="1k",
+        resolution="640px",
         name="My Body Swap image",
     )
     try:
