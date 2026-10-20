@@ -169,7 +169,7 @@ class LipSyncClient:
 
         **Key options**
         - Inputs: usually a file, sometimes a YouTube link, depending on project type
-        - Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
+        - Resolution: output size and plan requirements vary by workflow and model. Some workflows derive output size from the input video.
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
@@ -389,7 +389,7 @@ class AsyncLipSyncClient:
 
         **Key options**
         - Inputs: usually a file, sometimes a YouTube link, depending on project type
-        - Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
+        - Resolution: output size and plan requirements vary by workflow and model. Some workflows derive output size from the input video.
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**

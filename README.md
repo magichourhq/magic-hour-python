@@ -219,6 +219,10 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/ai_talking_photo/README.md#create) - AI Talking Photo
 - [generate](magic_hour/resources/v1/ai_talking_photo/README.md#generate) - Ai Talking Photo Generate Workflow
 
+### [v1.ai_ugc_ad](magic_hour/resources/v1/ai_ugc_ad/README.md)
+
+- [create](magic_hour/resources/v1/ai_ugc_ad/README.md#create) - AI UGC Ad Generator
+
 ### [v1.ai_video_editor](magic_hour/resources/v1/ai_video_editor/README.md)
 
 - [create](magic_hour/resources/v1/ai_video_editor/README.md#create) - AI Video Editor

@@ -50,6 +50,7 @@ class TextToVideoClient:
                     "seedance",
                     "seedance-1.5",
                     "seedance-2.0",
+                    "seedance-2.0-fast",
                     "seedance-2.0-mini",
                     "seedance-2.5",
                     "sora-2",
@@ -175,6 +176,7 @@ class TextToVideoClient:
                     "seedance",
                     "seedance-1.5",
                     "seedance-2.0",
+                    "seedance-2.0-fast",
                     "seedance-2.0-mini",
                     "seedance-2.5",
                     "sora-2",
@@ -226,7 +228,7 @@ class TextToVideoClient:
 
         **Key options**
         - Inputs: usually a file, sometimes a YouTube link, depending on project type
-        - Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
+        - Resolution: output size and plan requirements vary by workflow and model. Some workflows derive output size from the input video.
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
@@ -237,7 +239,7 @@ class TextToVideoClient:
         POST /v1/text-to-video
 
         Args:
-            aspect_ratio: Determines the aspect ratio of the output video.
+            aspect_ratio: Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
 
         * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
@@ -246,6 +248,7 @@ class TextToVideoClient:
         * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
         * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
+        * **`seedance-2.0-fast`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
         * **`veo3.1`**: Supports 9:16, 16:9.
@@ -263,6 +266,7 @@ class TextToVideoClient:
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
+        * **`seedance-2.0-fast`**: Toggle-able: no additional credits for audio
         * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
         * **`seedance-2.5`**: Toggle-able: no additional credits for audio
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -280,6 +284,7 @@ class TextToVideoClient:
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
+        * `seedance-2.0-fast`: Fast reference-led clips with consistent motion and audio.
         * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
         * `seedance-2.5`: Best for premium realism, detail, and natural motion.
         * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
@@ -293,11 +298,14 @@ class TextToVideoClient:
             references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
 
         Supported models and reference media:
+        * **`gemini-omni-1.1`**: Supports images, videos. Up to 13 references.
         * **`kling-3.0`**: Supports images, videos.
         * **`minimax-h3`**: Supports images, videos, audio.
         * **`seedance-2.0`**: Supports images, videos, audio.
+        * **`seedance-2.0-fast`**: Supports images, videos, audio.
         * **`seedance-2.0-mini`**: Supports images, videos, audio.
         * **`seedance-2.5`**: Supports images, videos, audio.
+        * **`veo3.1`**: Supports images. Up to 3 references. Requires `end_seconds` of 8.
         * **`wan-3.0`**: Supports images, videos, audio.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
@@ -308,6 +316,7 @@ class TextToVideoClient:
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
+        * **`seedance-2.0-fast`**: Supports 480p, 720p.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
         * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
         * **`veo3.1`**: Supports 720p, 1080p.
@@ -324,6 +333,7 @@ class TextToVideoClient:
         * **`minimax-h3`**: any integer from 1 to 30
         * **`seedance-1.5`**: any integer from 4 to 12
         * **`seedance-2.0`**: any integer from 4 to 15
+        * **`seedance-2.0-fast`**: any integer from 4 to 15
         * **`seedance-2.0-mini`**: any integer from 4 to 15
         * **`seedance-2.5`**: any integer from 4 to 30
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -423,6 +433,7 @@ class AsyncTextToVideoClient:
                     "seedance",
                     "seedance-1.5",
                     "seedance-2.0",
+                    "seedance-2.0-fast",
                     "seedance-2.0-mini",
                     "seedance-2.5",
                     "sora-2",
@@ -533,6 +544,7 @@ class AsyncTextToVideoClient:
                     "seedance",
                     "seedance-1.5",
                     "seedance-2.0",
+                    "seedance-2.0-fast",
                     "seedance-2.0-mini",
                     "seedance-2.5",
                     "sora-2",
@@ -584,7 +596,7 @@ class AsyncTextToVideoClient:
 
         **Key options**
         - Inputs: usually a file, sometimes a YouTube link, depending on project type
-        - Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
+        - Resolution: output size and plan requirements vary by workflow and model. Some workflows derive output size from the input video.
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
@@ -595,7 +607,7 @@ class AsyncTextToVideoClient:
         POST /v1/text-to-video
 
         Args:
-            aspect_ratio: Determines the aspect ratio of the output video.
+            aspect_ratio: Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
 
         * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
@@ -604,6 +616,7 @@ class AsyncTextToVideoClient:
         * **`minimax-h3`**: Supports 16:9, 9:16, 1:1.
         * **`seedance-1.5`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.0`**: Supports 9:16, 16:9, 1:1.
+        * **`seedance-2.0-fast`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.0-mini`**: Supports 9:16, 16:9, 1:1.
         * **`seedance-2.5`**: Supports 9:16, 16:9, 1:1.
         * **`veo3.1`**: Supports 9:16, 16:9.
@@ -621,6 +634,7 @@ class AsyncTextToVideoClient:
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
+        * **`seedance-2.0-fast`**: Toggle-able: no additional credits for audio
         * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
         * **`seedance-2.5`**: Toggle-able: no additional credits for audio
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -638,6 +652,7 @@ class AsyncTextToVideoClient:
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
+        * `seedance-2.0-fast`: Fast reference-led clips with consistent motion and audio.
         * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
         * `seedance-2.5`: Best for premium realism, detail, and natural motion.
         * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
@@ -651,11 +666,14 @@ class AsyncTextToVideoClient:
             references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
 
         Supported models and reference media:
+        * **`gemini-omni-1.1`**: Supports images, videos. Up to 13 references.
         * **`kling-3.0`**: Supports images, videos.
         * **`minimax-h3`**: Supports images, videos, audio.
         * **`seedance-2.0`**: Supports images, videos, audio.
+        * **`seedance-2.0-fast`**: Supports images, videos, audio.
         * **`seedance-2.0-mini`**: Supports images, videos, audio.
         * **`seedance-2.5`**: Supports images, videos, audio.
+        * **`veo3.1`**: Supports images. Up to 3 references. Requires `end_seconds` of 8.
         * **`wan-3.0`**: Supports images, videos, audio.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
@@ -666,6 +684,7 @@ class AsyncTextToVideoClient:
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
+        * **`seedance-2.0-fast`**: Supports 480p, 720p.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
         * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
         * **`veo3.1`**: Supports 720p, 1080p.
@@ -682,6 +701,7 @@ class AsyncTextToVideoClient:
         * **`minimax-h3`**: any integer from 1 to 30
         * **`seedance-1.5`**: any integer from 4 to 12
         * **`seedance-2.0`**: any integer from 4 to 15
+        * **`seedance-2.0-fast`**: any integer from 4 to 15
         * **`seedance-2.0-mini`**: any integer from 4 to 15
         * **`seedance-2.5`**: any integer from 4 to 30
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56

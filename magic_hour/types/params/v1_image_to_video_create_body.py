@@ -34,6 +34,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`minimax-h3`**: Toggle-able: no additional credits for audio
     * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
     * **`seedance-2.0`**: Toggle-able: no additional credits for audio
+    * **`seedance-2.0-fast`**: Toggle-able: no additional credits for audio
     * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
     * **`seedance-2.5`**: Toggle-able: no additional credits for audio
     * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -54,6 +55,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`minimax-h3`**: any integer from 1 to 30
     * **`seedance-1.5`**: any integer from 4 to 12
     * **`seedance-2.0`**: any integer from 4 to 15
+    * **`seedance-2.0-fast`**: any integer from 4 to 15
     * **`seedance-2.0-mini`**: any integer from 4 to 15
     * **`seedance-2.5`**: any integer from 4 to 30
     * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -86,6 +88,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
             "seedance",
             "seedance-1.5",
             "seedance-2.0",
+            "seedance-2.0-fast",
             "seedance-2.0-mini",
             "seedance-2.5",
             "sora-2",
@@ -107,6 +110,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
     * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
     * `seedance-2.0`: Best for reference-led clips with precise subject control.
+    * `seedance-2.0-fast`: Fast reference-led clips with consistent motion and audio.
     * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
     * `seedance-2.5`: Best for premium realism, detail, and natural motion.
     * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
@@ -135,6 +139,7 @@ class V1ImageToVideoCreateBody(typing_extensions.TypedDict):
     * **`minimax-h3`**: Supports 480p, 720p, 1080p.
     * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
     * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
+    * **`seedance-2.0-fast`**: Supports 480p, 720p.
     * **`seedance-2.0-mini`**: Supports 480p, 720p.
     * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
     * **`veo3.1`**: Supports 720p, 1080p.
@@ -191,6 +196,7 @@ class _SerializerV1ImageToVideoCreateBody(pydantic.BaseModel):
             "seedance",
             "seedance-1.5",
             "seedance-2.0",
+            "seedance-2.0-fast",
             "seedance-2.0-mini",
             "seedance-2.5",
             "sora-2",

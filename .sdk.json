@@ -1,5 +1,5 @@
 {
-  "id": "adf522eb-8026-4017-8244-0e110c2d9aff",
+  "id": "df69834c-08cc-4981-8694-57b835dbc30e",
   "tracked_paths": [
     {
       "editable": true,
@@ -160,6 +160,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/ai_talking_photo/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_ugc_ad/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_ugc_ad/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/ai_ugc_ad/client.py"
     },
     {
       "editable": true,
@@ -527,6 +539,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_ai_ugc_ad_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_ai_video_editor_create_response.py"
     },
     {
@@ -772,6 +788,14 @@
     {
       "editable": false,
       "path": "magic_hour/types/params/v1_ai_talking_photo_create_body_style.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_ugc_ad_create_body.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_ugc_ad_create_body_assets.py"
     },
     {
       "editable": false,
@@ -1040,6 +1064,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_ai_talking_photo_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_ai_ugc_ad_client.py"
     },
     {
       "editable": false,
