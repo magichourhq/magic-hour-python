@@ -1,6 +1,13 @@
 import typing
 import typing_extensions
 
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
+from magic_hour.resources.v1.video_projects.client import (
+    AsyncVideoProjectsClient,
+    VideoProjectsClient,
+    V1VideoProjectsGetResponseWithDownloads,
+)
 from magic_hour.types import models, params
 from make_api_request import (
     AsyncBaseClient,
@@ -11,10 +18,88 @@ from make_api_request import (
     type_utils,
 )
 
+logger = get_sdk_logger(__name__)
+
 
 class AiUgcAdClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def generate(
+        self,
+        *,
+        assets: params.V1AiUgcAdGenerateBodyAssets,
+        end_seconds: float,
+        script: str,
+        additional_properties: typing.Union[
+            typing.Optional[typing.Dict[str, typing.Any]], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["kling-3.0", "ltx-2.5", "veo3.1"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1VideoProjectsGetResponseWithDownloads:
+        """
+        Generate a UGC ad with automatic image upload, polling, and downloads.
+
+        Accepts the same parameters as create(). The image may be a local path,
+        URL, or an existing api-assets path. The prepared image is animated
+        using the supplied script, model, resolution, and duration.
+
+        Args:
+            assets: Prepared image to animate.
+            end_seconds: Video duration in seconds, subject to the model's limits.
+            script: The words the actor should speak.
+            additional_properties: Additional properties to include in the request.
+            model: Generation model. Defaults depend on your plan.
+            resolution: Output resolution. Defaults depend on your plan.
+            wait_for_completion: Whether to wait for the video project to complete.
+            download_outputs: Whether to download completed outputs.
+            download_directory: Output directory, or the current directory if omitted.
+            request_options: Additional options to customize the create request.
+
+        Returns:
+            The video project with downloaded paths when downloads are enabled.
+
+        Examples:
+        ```py
+        response = client.v1.ai_ugc_ad.generate(
+            assets={"image_file_path": "path/to/image.jpg"},
+            end_seconds=4.0,
+            script="Meet your new everyday essential.",
+        )
+        ```
+        """
+        file_client = FilesClient(base_client=self._base_client)
+        uploaded_image = file_client.upload_file(file=assets["image_file_path"])
+        create_response = self.create(
+            assets={**assets, "image_file_path": uploaded_image},
+            end_seconds=end_seconds,
+            script=script,
+            additional_properties=additional_properties,
+            model=model,
+            resolution=resolution,
+            request_options=request_options,
+        )
+        logger.info(f"AI UGC Ad response: {create_response}")
+
+        video_projects_client = VideoProjectsClient(base_client=self._base_client)
+        return video_projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     def create(
         self,
@@ -101,6 +186,82 @@ class AiUgcAdClient:
 class AsyncAiUgcAdClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def generate(
+        self,
+        *,
+        assets: params.V1AiUgcAdGenerateBodyAssets,
+        end_seconds: float,
+        script: str,
+        additional_properties: typing.Union[
+            typing.Optional[typing.Dict[str, typing.Any]], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        model: typing.Union[
+            typing.Optional[
+                typing_extensions.Literal["kling-3.0", "ltx-2.5", "veo3.1"]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1VideoProjectsGetResponseWithDownloads:
+        """
+        Generate a UGC ad with automatic image upload, polling, and downloads.
+
+        Accepts the same parameters as create(). The image may be a local path,
+        URL, or an existing api-assets path. The prepared image is animated
+        using the supplied script, model, resolution, and duration.
+
+        Args:
+            assets: Prepared image to animate.
+            end_seconds: Video duration in seconds, subject to the model's limits.
+            script: The words the actor should speak.
+            additional_properties: Additional properties to include in the request.
+            model: Generation model. Defaults depend on your plan.
+            resolution: Output resolution. Defaults depend on your plan.
+            wait_for_completion: Whether to wait for the video project to complete.
+            download_outputs: Whether to download completed outputs.
+            download_directory: Output directory, or the current directory if omitted.
+            request_options: Additional options to customize the create request.
+
+        Returns:
+            The video project with downloaded paths when downloads are enabled.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_ugc_ad.generate(
+            assets={"image_file_path": "path/to/image.jpg"},
+            end_seconds=4.0,
+            script="Meet your new everyday essential.",
+        )
+        ```
+        """
+        file_client = AsyncFilesClient(base_client=self._base_client)
+        uploaded_image = await file_client.upload_file(file=assets["image_file_path"])
+        create_response = await self.create(
+            assets={**assets, "image_file_path": uploaded_image},
+            end_seconds=end_seconds,
+            script=script,
+            additional_properties=additional_properties,
+            model=model,
+            resolution=resolution,
+            request_options=request_options,
+        )
+        logger.info(f"AI UGC Ad response: {create_response}")
+
+        video_projects_client = AsyncVideoProjectsClient(base_client=self._base_client)
+        return await video_projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     async def create(
         self,

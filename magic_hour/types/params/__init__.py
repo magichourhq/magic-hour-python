@@ -119,6 +119,7 @@ from .v1_ai_ugc_ad_create_body_assets import (
     V1AiUgcAdCreateBodyAssets,
     _SerializerV1AiUgcAdCreateBodyAssets,
 )
+from .v1_ai_ugc_ad_generate_body_assets import V1AiUgcAdGenerateBodyAssets
 from .v1_ai_video_editor_create_body import (
     V1AiVideoEditorCreateBody,
     _SerializerV1AiVideoEditorCreateBody,
@@ -403,6 +404,7 @@ __all__ = [
     "V1AiTalkingPhotoGenerateBodyAssets",
     "V1AiUgcAdCreateBody",
     "V1AiUgcAdCreateBodyAssets",
+    "V1AiUgcAdGenerateBodyAssets",
     "V1AiVideoEditorCreateBody",
     "V1AiVideoEditorCreateBodyAssets",
     "V1AiVideoEditorCreateBodyStyle",
