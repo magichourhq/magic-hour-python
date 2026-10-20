@@ -40,6 +40,10 @@ class AiTalkingPhotoClient:
         style: typing.Union[
             typing.Optional[params.V1AiTalkingPhotoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -96,6 +100,7 @@ class AiTalkingPhotoClient:
             max_resolution=max_resolution,
             name=name,
             style=style,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Talking Photo response: {create_response}")
@@ -214,6 +219,10 @@ class AsyncAiTalkingPhotoClient:
         style: typing.Union[
             typing.Optional[params.V1AiTalkingPhotoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -270,6 +279,7 @@ class AsyncAiTalkingPhotoClient:
             max_resolution=max_resolution,
             name=name,
             style=style,
+            resolution=resolution,
             request_options=request_options,
         )
         logger.info(f"AI Talking Photo response: {create_response}")
