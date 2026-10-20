@@ -177,6 +177,7 @@ class ImageToVideoClient:
                     "seedance",
                     "seedance-1.5",
                     "seedance-2.0",
+                    "seedance-2.0-fast",
                     "seedance-2.0-mini",
                     "seedance-2.5",
                     "sora-2",
@@ -224,7 +225,7 @@ class ImageToVideoClient:
 
         **Key options**
         - Inputs: usually a file, sometimes a YouTube link, depending on project type
-        - Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
+        - Resolution: output size and plan requirements vary by workflow and model. Some workflows derive output size from the input video.
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
@@ -245,6 +246,7 @@ class ImageToVideoClient:
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
+        * **`seedance-2.0-fast`**: Toggle-able: no additional credits for audio
         * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
         * **`seedance-2.5`**: Toggle-able: no additional credits for audio
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -265,6 +267,7 @@ class ImageToVideoClient:
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
+        * `seedance-2.0-fast`: Fast reference-led clips with consistent motion and audio.
         * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
         * `seedance-2.5`: Best for premium realism, detail, and natural motion.
         * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
@@ -283,6 +286,7 @@ class ImageToVideoClient:
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
+        * **`seedance-2.0-fast`**: Supports 480p, 720p.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
         * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
         * **`veo3.1`**: Supports 720p, 1080p.
@@ -304,6 +308,7 @@ class ImageToVideoClient:
         * **`minimax-h3`**: any integer from 1 to 30
         * **`seedance-1.5`**: any integer from 4 to 12
         * **`seedance-2.0`**: any integer from 4 to 15
+        * **`seedance-2.0-fast`**: any integer from 4 to 15
         * **`seedance-2.0-mini`**: any integer from 4 to 15
         * **`seedance-2.5`**: any integer from 4 to 30
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56
@@ -515,6 +520,7 @@ class AsyncImageToVideoClient:
                     "seedance",
                     "seedance-1.5",
                     "seedance-2.0",
+                    "seedance-2.0-fast",
                     "seedance-2.0-mini",
                     "seedance-2.5",
                     "sora-2",
@@ -562,7 +568,7 @@ class AsyncImageToVideoClient:
 
         **Key options**
         - Inputs: usually a file, sometimes a YouTube link, depending on project type
-        - Resolution: free users are limited to 576px; higher plans unlock HD and larger sizes
+        - Resolution: output size and plan requirements vary by workflow and model. Some workflows derive output size from the input video.
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
@@ -583,6 +589,7 @@ class AsyncImageToVideoClient:
         * **`minimax-h3`**: Toggle-able: no additional credits for audio
         * **`seedance-1.5`**: Toggle-able: audio adds extra credits when enabled
         * **`seedance-2.0`**: Toggle-able: no additional credits for audio
+        * **`seedance-2.0-fast`**: Toggle-able: no additional credits for audio
         * **`seedance-2.0-mini`**: Toggle-able: no additional credits for audio
         * **`seedance-2.5`**: Toggle-able: no additional credits for audio
         * **`veo3.1`**: Toggle-able: audio adds extra credits when enabled
@@ -603,6 +610,7 @@ class AsyncImageToVideoClient:
         * `minimax-h3`: Great for reference-driven clips with native audio and longer durations.
         * `seedance-1.5`: Best for smooth, consistent motion with an end frame.
         * `seedance-2.0`: Best for reference-led clips with precise subject control.
+        * `seedance-2.0-fast`: Fast reference-led clips with consistent motion and audio.
         * `seedance-2.0-mini`: Faster reference-led clips with consistent motion and audio.
         * `seedance-2.5`: Best for premium realism, detail, and natural motion.
         * `veo3.1`: Best for romantic interactions and expressive action, with realistic detail.
@@ -621,6 +629,7 @@ class AsyncImageToVideoClient:
         * **`minimax-h3`**: Supports 480p, 720p, 1080p.
         * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
         * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
+        * **`seedance-2.0-fast`**: Supports 480p, 720p.
         * **`seedance-2.0-mini`**: Supports 480p, 720p.
         * **`seedance-2.5`**: Supports 480p, 720p, 1080p.
         * **`veo3.1`**: Supports 720p, 1080p.
@@ -642,6 +651,7 @@ class AsyncImageToVideoClient:
         * **`minimax-h3`**: any integer from 1 to 30
         * **`seedance-1.5`**: any integer from 4 to 12
         * **`seedance-2.0`**: any integer from 4 to 15
+        * **`seedance-2.0-fast`**: any integer from 4 to 15
         * **`seedance-2.0-mini`**: any integer from 4 to 15
         * **`seedance-2.5`**: any integer from 4 to 30
         * **`veo3.1`**: 4, 6, 8, 16, 24, 32, 40, 48, 56

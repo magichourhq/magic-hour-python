@@ -29,12 +29,21 @@ class V1AiTalkingPhotoCreateBody(typing_extensions.TypedDict):
 
     max_resolution: typing_extensions.NotRequired[int]
     """
-    Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
+    Deprecated: use `resolution`. Still accepted as a larger-dimension cap, limited by your plan. Ignored when `resolution` is provided.
+    
+    After plan capping:
+    * Below 1280 maps to `480p` (intermediate values round down).
+    * 1280 or above maps to `720p`.
     """
 
     name: typing_extensions.NotRequired[str]
     """
     Give your video a custom name for easy identification.
+    """
+
+    resolution: typing_extensions.NotRequired[typing_extensions.Literal["480p", "720p"]]
+    """
+    Output preset. Overrides `max_resolution`. Defaults to 480p in prompted mode; realistic mode uses the mapped plan maximum.
     """
 
     start_seconds: typing_extensions.Required[float]
@@ -68,6 +77,9 @@ class _SerializerV1AiTalkingPhotoCreateBody(pydantic.BaseModel):
         alias="max_resolution", default=None
     )
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
+    resolution: typing.Optional[typing_extensions.Literal["480p", "720p"]] = (
+        pydantic.Field(alias="resolution", default=None)
+    )
     start_seconds: float = pydantic.Field(
         alias="start_seconds",
     )

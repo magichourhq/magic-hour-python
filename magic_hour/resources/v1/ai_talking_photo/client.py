@@ -1,4 +1,5 @@
 import typing
+import typing_extensions
 
 from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
@@ -121,6 +122,10 @@ class AiTalkingPhotoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         style: typing.Union[
             typing.Optional[params.V1AiTalkingPhotoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -134,8 +139,13 @@ class AiTalkingPhotoClient:
         POST /v1/ai-talking-photo
 
         Args:
-            max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
+            max_resolution: Deprecated: use `resolution`. Still accepted as a larger-dimension cap, limited by your plan. Ignored when `resolution` is provided.
+
+        After plan capping:
+        * Below 1280 maps to `480p` (intermediate values round down).
+        * 1280 or above maps to `720p`.
             name: Give your video a custom name for easy identification.
+            resolution: Output preset. Overrides `max_resolution`. Defaults to 480p in prompted mode; realistic mode uses the mapped plan maximum.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
             end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
@@ -158,8 +168,8 @@ class AiTalkingPhotoClient:
             },
             end_seconds=5.0,
             start_seconds=0.0,
-            max_resolution=512,
             name="My Talking Photo video",
+            resolution="480p",
         )
         ```
         """
@@ -167,6 +177,7 @@ class AiTalkingPhotoClient:
             item={
                 "max_resolution": max_resolution,
                 "name": name,
+                "resolution": resolution,
                 "style": style,
                 "assets": assets,
                 "end_seconds": end_seconds,
@@ -285,6 +296,10 @@ class AsyncAiTalkingPhotoClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        resolution: typing.Union[
+            typing.Optional[typing_extensions.Literal["480p", "720p"]],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         style: typing.Union[
             typing.Optional[params.V1AiTalkingPhotoCreateBodyStyle], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
@@ -298,8 +313,13 @@ class AsyncAiTalkingPhotoClient:
         POST /v1/ai-talking-photo
 
         Args:
-            max_resolution: Constrains the larger dimension (height or width) of the output video. Allows you to set a lower resolution than your plan's maximum if desired. The value is capped by your plan's max resolution.
+            max_resolution: Deprecated: use `resolution`. Still accepted as a larger-dimension cap, limited by your plan. Ignored when `resolution` is provided.
+
+        After plan capping:
+        * Below 1280 maps to `480p` (intermediate values round down).
+        * 1280 or above maps to `720p`.
             name: Give your video a custom name for easy identification.
+            resolution: Output preset. Overrides `max_resolution`. Defaults to 480p in prompted mode; realistic mode uses the mapped plan maximum.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
             end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
@@ -322,8 +342,8 @@ class AsyncAiTalkingPhotoClient:
             },
             end_seconds=5.0,
             start_seconds=0.0,
-            max_resolution=512,
             name="My Talking Photo video",
+            resolution="480p",
         )
         ```
         """
@@ -331,6 +351,7 @@ class AsyncAiTalkingPhotoClient:
             item={
                 "max_resolution": max_resolution,
                 "name": name,
+                "resolution": resolution,
                 "style": style,
                 "assets": assets,
                 "end_seconds": end_seconds,

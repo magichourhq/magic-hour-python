@@ -39,6 +39,7 @@ from magic_hour.resources.v1.ai_talking_photo import (
     AiTalkingPhotoClient,
     AsyncAiTalkingPhotoClient,
 )
+from magic_hour.resources.v1.ai_ugc_ad import AiUgcAdClient, AsyncAiUgcAdClient
 from magic_hour.resources.v1.ai_video_editor import (
     AiVideoEditorClient,
     AsyncAiVideoEditorClient,
@@ -166,6 +167,7 @@ class V1Client:
         self.ai_video_translator = AiVideoTranslatorClient(
             base_client=self._base_client
         )
+        self.ai_ugc_ad = AiUgcAdClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -229,3 +231,4 @@ class AsyncV1Client:
         self.ai_video_translator = AsyncAiVideoTranslatorClient(
             base_client=self._base_client
         )
+        self.ai_ugc_ad = AsyncAiUgcAdClient(base_client=self._base_client)

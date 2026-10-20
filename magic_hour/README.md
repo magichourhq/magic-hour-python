@@ -13,6 +13,7 @@
 - [ai_meme_generator](resources/v1/ai_meme_generator/README.md) - ai_meme_generator
 - [ai_qr_code_generator](resources/v1/ai_qr_code_generator/README.md) - ai_qr_code_generator
 - [ai_talking_photo](resources/v1/ai_talking_photo/README.md) - ai_talking_photo
+- [ai_ugc_ad](resources/v1/ai_ugc_ad/README.md) - ai_ugc_ad
 - [ai_video_editor](resources/v1/ai_video_editor/README.md) - ai_video_editor
 - [ai_video_translator](resources/v1/ai_video_translator/README.md) - ai_video_translator
 - [ai_voice_cloner](resources/v1/ai_voice_cloner/README.md) - ai_voice_cloner

@@ -33,8 +33,9 @@ def test_create_200_success_all_params() -> None:
         },
         end_seconds=5.0,
         start_seconds=0.0,
-        max_resolution=512,
+        max_resolution=123,
         name="My Talking Photo video",
+        resolution="480p",
         style={
             "generation_mode": "realistic",
             "intensity": 123.45,
@@ -79,8 +80,9 @@ async def test_await_create_200_success_all_params() -> None:
         },
         end_seconds=5.0,
         start_seconds=0.0,
-        max_resolution=512,
+        max_resolution=123,
         name="My Talking Photo video",
+        resolution="480p",
         style={
             "generation_mode": "realistic",
             "intensity": 123.45,
