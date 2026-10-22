@@ -1,5 +1,19 @@
 # v1.ai_video_upscaler
 
+## generate
+
+Creates the project, waits for completion, and downloads outputs by default. Accepts a local video path, direct URL, or existing `api-assets` path and uploads the video when needed.
+
+```python
+result = client.v1.ai_video_upscaler.generate(
+    assets={"video_file_path": "path/to/video.mp4"},
+    end_seconds=5,
+    resolution="1080p",
+)
+```
+
+Set `wait_for_completion=False` to return the current project status, or `download_outputs=False` to skip downloads. Use `download_directory` to choose the output folder. `AsyncClient` supports the same method with `await`.
+
 ## Module Functions
 
 ### AI Video Upscaler <a name="create"></a>

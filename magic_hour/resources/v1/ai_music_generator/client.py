@@ -1,5 +1,11 @@
 import typing
 
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.audio_projects.client import (
+    AsyncAudioProjectsClient,
+    AudioProjectsClient,
+    V1AudioProjectsGetResponseWithDownloads,
+)
 from magic_hour.types import models, params
 from make_api_request import (
     AsyncBaseClient,
@@ -11,9 +17,63 @@ from make_api_request import (
 )
 
 
+logger = get_sdk_logger(__name__)
+
+
 class AiMusicGeneratorClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def generate(
+        self,
+        *,
+        duration: int,
+        style: params.V1AiMusicGeneratorCreateBodyStyle,
+        additional_properties: typing.Union[
+            typing.Optional[typing.Dict[str, typing.Any]], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1AudioProjectsGetResponseWithDownloads:
+        """
+        Generate music with automatic polling and downloads.
+
+        Accepts the same parameters as create(), plus wait_for_completion,
+        download_outputs, and download_directory. These default to waiting
+        for completion and downloading outputs to the current directory.
+
+        Returns:
+            The audio project with downloaded_paths when downloads are enabled.
+
+        Examples:
+        ```py
+        response = client.v1.ai_music_generator.generate(
+            duration=120,
+            style={"prompt": "Dreamy synthwave with warm bass"},
+        )
+        ```
+        """
+        create_response = self.create(
+            duration=duration,
+            style=style,
+            additional_properties=additional_properties,
+            name=name,
+            request_options=request_options,
+        )
+        logger.info(f"Created ai_music_generator project {create_response.id}")
+
+        projects_client = AudioProjectsClient(base_client=self._base_client)
+        return projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     def create(
         self,
@@ -84,6 +144,57 @@ class AiMusicGeneratorClient:
 class AsyncAiMusicGeneratorClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def generate(
+        self,
+        *,
+        duration: int,
+        style: params.V1AiMusicGeneratorCreateBodyStyle,
+        additional_properties: typing.Union[
+            typing.Optional[typing.Dict[str, typing.Any]], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1AudioProjectsGetResponseWithDownloads:
+        """
+        Generate music with automatic polling and downloads.
+
+        Accepts the same parameters as create(), plus wait_for_completion,
+        download_outputs, and download_directory. These default to waiting
+        for completion and downloading outputs to the current directory.
+
+        Returns:
+            The audio project with downloaded_paths when downloads are enabled.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_music_generator.generate(
+            duration=120,
+            style={"prompt": "Dreamy synthwave with warm bass"},
+        )
+        ```
+        """
+        create_response = await self.create(
+            duration=duration,
+            style=style,
+            additional_properties=additional_properties,
+            name=name,
+            request_options=request_options,
+        )
+        logger.info(f"Created ai_music_generator project {create_response.id}")
+
+        projects_client = AsyncAudioProjectsClient(base_client=self._base_client)
+        return await projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     async def create(
         self,

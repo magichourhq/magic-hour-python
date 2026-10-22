@@ -1,6 +1,13 @@
 import typing
 import typing_extensions
 
+from magic_hour.helpers.logger import get_sdk_logger
+from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
+from magic_hour.resources.v1.video_projects.client import (
+    AsyncVideoProjectsClient,
+    VideoProjectsClient,
+    V1VideoProjectsGetResponseWithDownloads,
+)
 from magic_hour.types import models, params
 from make_api_request import (
     AsyncBaseClient,
@@ -12,9 +19,69 @@ from make_api_request import (
 )
 
 
+logger = get_sdk_logger(__name__)
+
+
 class AiVideoUpscalerClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+
+    def generate(
+        self,
+        *,
+        assets: params.V1AiVideoUpscalerGenerateBodyAssets,
+        end_seconds: float,
+        resolution: typing_extensions.Literal["1080p", "2k", "4k", "720p"],
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1VideoProjectsGetResponseWithDownloads:
+        """
+        Generate upscaled video with automatic upload, polling and downloads.
+
+        Accepts the same parameters as create(), plus wait_for_completion,
+        download_outputs, and download_directory. These default to waiting
+        for completion and downloading outputs to the current directory.
+        The source video may be a local path, URL, or existing api-assets path.
+
+        Returns:
+            The video project with downloaded_paths when downloads are enabled.
+
+        Examples:
+        ```py
+        response = client.v1.ai_video_upscaler.generate(
+            assets={"video_file_path": "path/to/video.mp4"},
+            end_seconds=5,
+            resolution="1080p",
+        )
+        ```
+        """
+        file_client = FilesClient(base_client=self._base_client)
+        uploaded_video = file_client.upload_file(file=assets["video_file_path"])
+        create_response = self.create(
+            assets={**assets, "video_file_path": uploaded_video},
+            end_seconds=end_seconds,
+            resolution=resolution,
+            name=name,
+            start_seconds=start_seconds,
+            request_options=request_options,
+        )
+        logger.info(f"Created ai_video_upscaler project {create_response.id}")
+
+        projects_client = VideoProjectsClient(base_client=self._base_client)
+        return projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     def create(
         self,
@@ -107,6 +174,63 @@ class AiVideoUpscalerClient:
 class AsyncAiVideoUpscalerClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+
+    async def generate(
+        self,
+        *,
+        assets: params.V1AiVideoUpscalerGenerateBodyAssets,
+        end_seconds: float,
+        resolution: typing_extensions.Literal["1080p", "2k", "4k", "720p"],
+        name: typing.Union[
+            typing.Optional[str], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        start_seconds: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        wait_for_completion: bool = True,
+        download_outputs: bool = True,
+        download_directory: typing.Optional[str] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> V1VideoProjectsGetResponseWithDownloads:
+        """
+        Generate upscaled video with automatic upload, polling and downloads.
+
+        Accepts the same parameters as create(), plus wait_for_completion,
+        download_outputs, and download_directory. These default to waiting
+        for completion and downloading outputs to the current directory.
+        The source video may be a local path, URL, or existing api-assets path.
+
+        Returns:
+            The video project with downloaded_paths when downloads are enabled.
+
+        Examples:
+        ```py
+        response = await client.v1.ai_video_upscaler.generate(
+            assets={"video_file_path": "path/to/video.mp4"},
+            end_seconds=5,
+            resolution="1080p",
+        )
+        ```
+        """
+        file_client = AsyncFilesClient(base_client=self._base_client)
+        uploaded_video = await file_client.upload_file(file=assets["video_file_path"])
+        create_response = await self.create(
+            assets={**assets, "video_file_path": uploaded_video},
+            end_seconds=end_seconds,
+            resolution=resolution,
+            name=name,
+            start_seconds=start_seconds,
+            request_options=request_options,
+        )
+        logger.info(f"Created ai_video_upscaler project {create_response.id}")
+
+        projects_client = AsyncVideoProjectsClient(base_client=self._base_client)
+        return await projects_client.check_result(
+            id=create_response.id,
+            wait_for_completion=wait_for_completion,
+            download_outputs=download_outputs,
+            download_directory=download_directory,
+        )
 
     async def create(
         self,

@@ -160,6 +160,9 @@ from .v1_ai_video_upscaler_create_body_assets import (
     V1AiVideoUpscalerCreateBodyAssets,
     _SerializerV1AiVideoUpscalerCreateBodyAssets,
 )
+from .v1_ai_video_upscaler_generate_body_assets import (
+    V1AiVideoUpscalerGenerateBodyAssets,
+)
 from .v1_ai_voice_cloner_create_body import (
     V1AiVoiceClonerCreateBody,
     _SerializerV1AiVoiceClonerCreateBody,

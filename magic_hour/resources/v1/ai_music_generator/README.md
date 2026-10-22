@@ -1,5 +1,18 @@
 # v1.ai_music_generator
 
+## generate
+
+Creates the project, waits for completion, and downloads outputs by default.
+
+```python
+result = client.v1.ai_music_generator.generate(
+    duration=120,
+    style={"prompt": "Dreamy synthwave with warm bass"},
+)
+```
+
+Set `wait_for_completion=False` to return the current project status, or `download_outputs=False` to skip downloads. Use `download_directory` to choose the output folder. `AsyncClient` supports the same method with `await`.
+
 ## Module Functions
 
 ### AI Music Generator <a name="create"></a>

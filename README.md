@@ -212,6 +212,7 @@ download_urls = result.downloads
 ### [v1.ai_music_generator](magic_hour/resources/v1/ai_music_generator/README.md)
 
 - [create](magic_hour/resources/v1/ai_music_generator/README.md#create) - AI Music Generator
+- [generate](magic_hour/resources/v1/ai_music_generator/README.md#generate) - AI Music Generator workflow
 
 ### [v1.ai_qr_code_generator](magic_hour/resources/v1/ai_qr_code_generator/README.md)
 
@@ -240,6 +241,7 @@ download_urls = result.downloads
 ### [v1.ai_video_upscaler](magic_hour/resources/v1/ai_video_upscaler/README.md)
 
 - [create](magic_hour/resources/v1/ai_video_upscaler/README.md#create) - AI Video Upscaler
+- [generate](magic_hour/resources/v1/ai_video_upscaler/README.md#generate) - AI Video Upscaler workflow
 
 ### [v1.ai_voice_cloner](magic_hour/resources/v1/ai_voice_cloner/README.md)
 
