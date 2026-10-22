@@ -89,6 +89,14 @@ from .v1_ai_meme_generator_create_body_style import (
     V1AiMemeGeneratorCreateBodyStyle,
     _SerializerV1AiMemeGeneratorCreateBodyStyle,
 )
+from .v1_ai_music_generator_create_body import (
+    V1AiMusicGeneratorCreateBody,
+    _SerializerV1AiMusicGeneratorCreateBody,
+)
+from .v1_ai_music_generator_create_body_style import (
+    V1AiMusicGeneratorCreateBodyStyle,
+    _SerializerV1AiMusicGeneratorCreateBodyStyle,
+)
 from .v1_ai_photo_editor_generate_body_assets import V1AiPhotoEditorGenerateBodyAssets
 from .v1_ai_qr_code_generator_create_body import (
     V1AiQrCodeGeneratorCreateBody,
@@ -143,6 +151,14 @@ from .v1_ai_video_translator_create_body_assets import (
 )
 from .v1_ai_video_translator_generate_body_assets import (
     V1AiVideoTranslatorGenerateBodyAssets,
+)
+from .v1_ai_video_upscaler_create_body import (
+    V1AiVideoUpscalerCreateBody,
+    _SerializerV1AiVideoUpscalerCreateBody,
+)
+from .v1_ai_video_upscaler_create_body_assets import (
+    V1AiVideoUpscalerCreateBodyAssets,
+    _SerializerV1AiVideoUpscalerCreateBodyAssets,
 )
 from .v1_ai_voice_cloner_create_body import (
     V1AiVoiceClonerCreateBody,
@@ -395,6 +411,8 @@ __all__ = [
     "V1AiImageUpscalerGenerateBodyAssets",
     "V1AiMemeGeneratorCreateBody",
     "V1AiMemeGeneratorCreateBodyStyle",
+    "V1AiMusicGeneratorCreateBody",
+    "V1AiMusicGeneratorCreateBodyStyle",
     "V1AiPhotoEditorGenerateBodyAssets",
     "V1AiQrCodeGeneratorCreateBody",
     "V1AiQrCodeGeneratorCreateBodyStyle",
@@ -412,6 +430,8 @@ __all__ = [
     "V1AiVideoTranslatorCreateBody",
     "V1AiVideoTranslatorCreateBodyAssets",
     "V1AiVideoTranslatorGenerateBodyAssets",
+    "V1AiVideoUpscalerCreateBody",
+    "V1AiVideoUpscalerCreateBodyAssets",
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
@@ -498,6 +518,8 @@ __all__ = [
     "_SerializerV1AiImageUpscalerCreateBodyStyle",
     "_SerializerV1AiMemeGeneratorCreateBody",
     "_SerializerV1AiMemeGeneratorCreateBodyStyle",
+    "_SerializerV1AiMusicGeneratorCreateBody",
+    "_SerializerV1AiMusicGeneratorCreateBodyStyle",
     "_SerializerV1AiQrCodeGeneratorCreateBody",
     "_SerializerV1AiQrCodeGeneratorCreateBodyStyle",
     "_SerializerV1AiTalkingPhotoCreateBody",
@@ -510,6 +532,8 @@ __all__ = [
     "_SerializerV1AiVideoEditorCreateBodyStyle",
     "_SerializerV1AiVideoTranslatorCreateBody",
     "_SerializerV1AiVideoTranslatorCreateBodyAssets",
+    "_SerializerV1AiVideoUpscalerCreateBody",
+    "_SerializerV1AiVideoUpscalerCreateBodyAssets",
     "_SerializerV1AiVoiceClonerCreateBody",
     "_SerializerV1AiVoiceClonerCreateBodyAssets",
     "_SerializerV1AiVoiceClonerCreateBodyStyle",

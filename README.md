@@ -209,6 +209,10 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/ai_meme_generator/README.md#create) - AI Meme Generator
 - [generate](magic_hour/resources/v1/ai_meme_generator/README.md#generate) - Ai Meme Generator Generate Workflow
 
+### [v1.ai_music_generator](magic_hour/resources/v1/ai_music_generator/README.md)
+
+- [create](magic_hour/resources/v1/ai_music_generator/README.md#create) - AI Music Generator
+
 ### [v1.ai_qr_code_generator](magic_hour/resources/v1/ai_qr_code_generator/README.md)
 
 - [create](magic_hour/resources/v1/ai_qr_code_generator/README.md#create) - AI QR Code Generator
@@ -232,6 +236,10 @@ download_urls = result.downloads
 
 - [create](magic_hour/resources/v1/ai_video_translator/README.md#create) - AI Video Translator
 - [generate](magic_hour/resources/v1/ai_video_translator/README.md#generate) - Generate video translation
+
+### [v1.ai_video_upscaler](magic_hour/resources/v1/ai_video_upscaler/README.md)
+
+- [create](magic_hour/resources/v1/ai_video_upscaler/README.md#create) - AI Video Upscaler
 
 ### [v1.ai_voice_cloner](magic_hour/resources/v1/ai_voice_cloner/README.md)
 

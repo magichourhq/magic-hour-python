@@ -232,7 +232,7 @@ class TextToVideoClient:
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
-        Credits are only charged for the frames that actually render. You'll see an estimate when the job is queued, and the final total after it's done.
+        Credits are charged when the job is queued (`credits_charged` in the response). Tools billed per frame charge an estimate and settle to the frames that actually render once the job finishes; tools billed per second charge the final amount upfront. Failed jobs are refunded.
 
         For detailed examples, see the [product page](https://magichour.ai/products/text-to-video).
 
@@ -298,7 +298,7 @@ class TextToVideoClient:
             references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
 
         Supported models and reference media:
-        * **`gemini-omni-1.1`**: Supports images, videos. Up to 13 references.
+        * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
         * **`kling-3.0`**: Supports images, videos.
         * **`minimax-h3`**: Supports images, videos, audio.
         * **`seedance-2.0`**: Supports images, videos, audio.
@@ -600,7 +600,7 @@ class AsyncTextToVideoClient:
         - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
         **Cost**
-        Credits are only charged for the frames that actually render. You'll see an estimate when the job is queued, and the final total after it's done.
+        Credits are charged when the job is queued (`credits_charged` in the response). Tools billed per frame charge an estimate and settle to the frames that actually render once the job finishes; tools billed per second charge the final amount upfront. Failed jobs are refunded.
 
         For detailed examples, see the [product page](https://magichour.ai/products/text-to-video).
 
@@ -666,7 +666,7 @@ class AsyncTextToVideoClient:
             references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
 
         Supported models and reference media:
-        * **`gemini-omni-1.1`**: Supports images, videos. Up to 13 references.
+        * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
         * **`kling-3.0`**: Supports images, videos.
         * **`minimax-h3`**: Supports images, videos, audio.
         * **`seedance-2.0`**: Supports images, videos, audio.
