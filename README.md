@@ -104,6 +104,8 @@ The `generate()` function provides a complete end-to-end solution:
 
 Downloads preserve existing files. If a filename is occupied, the SDK adds a numeric suffix, such as `output_1.png`. Use `downloaded_paths` for the saved filenames. Downloading a completed project again saves another copy.
 
+If a local write fails, the SDK attempts to remove that incomplete file when its identity still matches the file it created, then raises the original error. Earlier completed downloads remain. Cleanup can fail, leaving a partial file. Retry `check_result()` with the same project ID to download again without creating a new generation. Cleanup is not atomic against concurrent replacement of a path between the identity check and removal.
+
 ```python
 # Generate function - handles everything automatically
 response = client.v1.ai_image_generator.generate(
