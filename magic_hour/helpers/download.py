@@ -14,9 +14,27 @@ def _compute_download_path(
 ) -> str:
     url_path = urlparse(url).path
     filename = Path(url_path).name
+    if not filename or filename == "..":
+        raise ValueError("Download URL must include a filename")
     if download_directory:
         return os.path.join(download_directory, filename)
     return filename
+
+
+def _save_download(content: bytes, download_path: str) -> str:
+    path = Path(download_path)
+    candidate = download_path
+    suffix = 0
+    while True:
+        try:
+            file = open(candidate, "xb")
+        except FileExistsError:
+            suffix += 1
+            candidate = str(path.with_name(f"{path.stem}_{suffix}{path.suffix}"))
+            continue
+        with file:
+            file.write(content)
+        return candidate
 
 
 def download_files_sync(
@@ -38,8 +56,7 @@ def download_files_sync(
                 download.url, download_directory=download_directory
             )
 
-            with open(download_path, "wb") as f:
-                f.write(download_response.content)
+            download_path = _save_download(download_response.content, download_path)
 
             downloaded_paths.append(download_path)
 
@@ -67,8 +84,7 @@ async def download_files_async(
                 download.url, download_directory=download_directory
             )
 
-            with open(download_path, "wb") as f:
-                f.write(download_response.content)
+            download_path = _save_download(download_response.content, download_path)
 
             downloaded_paths.append(download_path)
 
