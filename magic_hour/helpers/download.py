@@ -32,8 +32,25 @@ def _save_download(content: bytes, download_path: str) -> str:
             suffix += 1
             candidate = str(path.with_name(f"{path.stem}_{suffix}{path.suffix}"))
             continue
-        with file:
+        identity = None
+        try:
+            identity = os.fstat(file.fileno())
             file.write(content)
+            file.close()
+        except BaseException:
+            # Preserve the write/close error even if closing or cleanup also fails.
+            try:
+                file.close()
+            except OSError:
+                pass
+            if identity is not None:
+                try:
+                    # lstat avoids following a replacement symlink's target.
+                    if os.path.samestat(identity, os.lstat(candidate)):
+                        os.unlink(candidate)
+                except OSError:
+                    pass
+            raise
         return candidate
 
 
