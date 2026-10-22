@@ -151,7 +151,7 @@ class V1TextToVideoCreateBody(typing_extensions.TypedDict):
     Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
     
     Supported models and reference media:
-    * **`gemini-omni-1.1`**: Supports images, videos. Up to 13 references.
+    * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
     * **`kling-3.0`**: Supports images, videos.
     * **`minimax-h3`**: Supports images, videos, audio.
     * **`seedance-2.0`**: Supports images, videos, audio.

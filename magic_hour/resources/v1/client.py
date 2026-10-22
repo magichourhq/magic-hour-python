@@ -31,6 +31,10 @@ from magic_hour.resources.v1.ai_meme_generator import (
     AiMemeGeneratorClient,
     AsyncAiMemeGeneratorClient,
 )
+from magic_hour.resources.v1.ai_music_generator import (
+    AiMusicGeneratorClient,
+    AsyncAiMusicGeneratorClient,
+)
 from magic_hour.resources.v1.ai_qr_code_generator import (
     AiQrCodeGeneratorClient,
     AsyncAiQrCodeGeneratorClient,
@@ -47,6 +51,10 @@ from magic_hour.resources.v1.ai_video_editor import (
 from magic_hour.resources.v1.ai_video_translator import (
     AiVideoTranslatorClient,
     AsyncAiVideoTranslatorClient,
+)
+from magic_hour.resources.v1.ai_video_upscaler import (
+    AiVideoUpscalerClient,
+    AsyncAiVideoUpscalerClient,
 )
 from magic_hour.resources.v1.ai_voice_cloner import (
     AiVoiceClonerClient,
@@ -168,6 +176,8 @@ class V1Client:
             base_client=self._base_client
         )
         self.ai_ugc_ad = AiUgcAdClient(base_client=self._base_client)
+        self.ai_music_generator = AiMusicGeneratorClient(base_client=self._base_client)
+        self.ai_video_upscaler = AiVideoUpscalerClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -232,3 +242,9 @@ class AsyncV1Client:
             base_client=self._base_client
         )
         self.ai_ugc_ad = AsyncAiUgcAdClient(base_client=self._base_client)
+        self.ai_music_generator = AsyncAiMusicGeneratorClient(
+            base_client=self._base_client
+        )
+        self.ai_video_upscaler = AsyncAiVideoUpscalerClient(
+            base_client=self._base_client
+        )

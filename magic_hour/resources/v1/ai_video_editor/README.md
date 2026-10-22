@@ -88,7 +88,7 @@ Create the same Video Editor you can make in the browser, but programmatically, 
 - Extra fields: e.g. `face_swap_mode`, `start_seconds`/`end_seconds`, or a text prompt
 
 **Cost**\
-Credits are only charged for the frames that actually render. You'll see an estimate when the job is queued, and the final total after it's done.
+Credits are charged when the job is queued (`credits_charged` in the response). Tools billed per frame charge an estimate and settle to the frames that actually render once the job finishes; tools billed per second charge the final amount upfront. Failed jobs are refunded.
 
 For detailed examples, see the [product page](https://magichour.ai/products/ai-video-editor).
 
