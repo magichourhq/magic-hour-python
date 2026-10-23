@@ -5,8 +5,8 @@ from magic_hour.helpers.logger import get_sdk_logger
 from magic_hour.resources.v1.files.client import AsyncFilesClient, FilesClient
 from magic_hour.resources.v1.video_projects.client import (
     AsyncVideoProjectsClient,
-    VideoProjectsClient,
     V1VideoProjectsGetResponseWithDownloads,
+    VideoProjectsClient,
 )
 from magic_hour.types import models, params
 from make_api_request import (
