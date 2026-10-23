@@ -24,7 +24,9 @@ def test_generate_uploads_video_and_returns_video_result(custom_options: bool) -
     base_client = Mock()
     base_client.request.return_value = SimpleNamespace(id="upscale-123")
     client = AiVideoUpscalerClient(base_client=base_client)
-    assets: params.V1AiVideoUpscalerGenerateBodyAssets = {"video_file_path": "local/video.mp4"}
+    assets: params.V1AiVideoUpscalerGenerateBodyAssets = {
+        "video_file_path": "local/video.mp4"
+    }
     result = object()
     options: GenerateOptions = (
         dict(
@@ -86,7 +88,9 @@ async def test_async_generate_uploads_video_and_returns_video_result(
     base_client = AsyncMock()
     base_client.request.return_value = SimpleNamespace(id="upscale-123")
     client = AsyncAiVideoUpscalerClient(base_client=base_client)
-    assets: params.V1AiVideoUpscalerGenerateBodyAssets = {"video_file_path": "local/video.mp4"}
+    assets: params.V1AiVideoUpscalerGenerateBodyAssets = {
+        "video_file_path": "local/video.mp4"
+    }
     result = object()
     options: GenerateOptions = (
         dict(

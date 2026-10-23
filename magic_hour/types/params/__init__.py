@@ -435,6 +435,7 @@ __all__ = [
     "V1AiVideoTranslatorGenerateBodyAssets",
     "V1AiVideoUpscalerCreateBody",
     "V1AiVideoUpscalerCreateBodyAssets",
+    "V1AiVideoUpscalerGenerateBodyAssets",
     "V1AiVoiceClonerCreateBody",
     "V1AiVoiceClonerCreateBodyAssets",
     "V1AiVoiceClonerCreateBodyStyle",
