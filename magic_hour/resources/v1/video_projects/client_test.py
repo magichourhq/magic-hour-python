@@ -1,3 +1,4 @@
+import asyncio
 import datetime
 import pytest
 import httpx
@@ -36,13 +37,15 @@ class DummyResponse(models.V1VideoProjectsGetResponse):
             created_at=datetime.datetime.now().isoformat(),
             credits_charged=0,
             download=None,
-            downloads=[
-                models.V1VideoProjectsGetResponseDownloadsItem(
-                    url=download_url, expires_at="2024-01-01T00:00:00Z"
-                )
-            ]
-            if download_url
-            else [],
+            downloads=(
+                [
+                    models.V1VideoProjectsGetResponseDownloadsItem(
+                        url=download_url, expires_at="2024-01-01T00:00:00Z"
+                    )
+                ]
+                if download_url
+                else []
+            ),
             enabled=True,
             end_seconds=10.0,
             error=error_obj,
@@ -329,7 +332,7 @@ async def test_async_check_result_no_wait_no_download(
 
 
 @pytest.mark.asyncio
-async def test_async_check_result_wait_until_complete(
+async def test_async_check_result_wait_until_complete_yields_to_other_tasks(
     mock_async_base_client: AsyncMock, monkeypatch: Any
 ) -> None:
     client = AsyncVideoProjectsClient(base_client=mock_async_base_client)
@@ -341,12 +344,15 @@ async def test_async_check_result_wait_until_complete(
         DummyResponse(status="complete"),
     ]
 
-    monkeypatch.setattr("time.sleep", lambda _: None)  # type: ignore
+    monkeypatch.setenv("MAGIC_HOUR_POLL_INTERVAL", "0")
+    heartbeat = asyncio.Event()
+    asyncio.get_running_loop().call_soon(heartbeat.set)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
     )
 
+    assert heartbeat.is_set(), "Polling blocked other event-loop tasks"
     assert resp.status == "complete"
     assert resp.downloaded_paths is None
 
@@ -441,13 +447,13 @@ async def test_async_check_result_poll_interval_default(
         DummyResponse(status="complete"),
     ]
 
-    # Mock time.sleep to track calls
+    # Track awaited polling intervals
     sleep_calls: List[float] = []
 
-    def mock_sleep(seconds: float) -> None:
+    async def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("time.sleep", mock_sleep)
+    monkeypatch.setattr("asyncio.sleep", mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -474,13 +480,13 @@ async def test_async_check_result_poll_interval_custom(
         DummyResponse(status="complete"),
     ]
 
-    # Mock time.sleep to track calls
+    # Track awaited polling intervals
     sleep_calls: List[float] = []
 
-    def mock_sleep(seconds: float) -> None:
+    async def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("time.sleep", mock_sleep)
+    monkeypatch.setattr("asyncio.sleep", mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
@@ -509,13 +515,13 @@ async def test_async_check_result_poll_interval_multiple_polls(
         DummyResponse(status="complete"),
     ]
 
-    # Mock time.sleep to track calls
+    # Track awaited polling intervals
     sleep_calls: List[float] = []
 
-    def mock_sleep(seconds: float) -> None:
+    async def mock_sleep(seconds: float) -> None:
         sleep_calls.append(seconds)
 
-    monkeypatch.setattr("time.sleep", mock_sleep)
+    monkeypatch.setattr("asyncio.sleep", mock_sleep)
 
     resp = await client.check_result(
         id="xyz", wait_for_completion=True, download_outputs=False
