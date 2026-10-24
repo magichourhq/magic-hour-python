@@ -139,7 +139,8 @@ print(f"Started project: {project_id}")
 
 # You must handle the rest:
 # 1. Poll for completion. We provide a helper function to handle polling for you
-result = client.v1.image_projects.check_status(
+result = client.v1.image_projects.check_result(
+    id=project_id,
     wait_for_completion=True,
     download_outputs=False,
 )
