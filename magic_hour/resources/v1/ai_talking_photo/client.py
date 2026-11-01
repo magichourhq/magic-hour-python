@@ -153,8 +153,8 @@ class AiTalkingPhotoClient:
             resolution: Output preset. Overrides `max_resolution`. Defaults to 480p in prompted mode; realistic mode uses the mapped plan maximum.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
-            end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
-            start_seconds: The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
+            end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 60s.
+            start_seconds: The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 60s.
             request_options: Additional options to customize the HTTP request
 
         Returns:
@@ -332,8 +332,8 @@ class AsyncAiTalkingPhotoClient:
             resolution: Output preset. Overrides `max_resolution`. Defaults to 480p in prompted mode; realistic mode uses the mapped plan maximum.
             style: Attributes used to dictate the style of the output
             assets: Provide the assets for creating a talking photo
-            end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
-            start_seconds: The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 45s.
+            end_seconds: The end time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 60s.
+            start_seconds: The start time of the input audio in seconds. Maximum clip length depends on style.generation_mode: realistic 300s, prompted 60s.
             request_options: Additional options to customize the HTTP request
 
         Returns:

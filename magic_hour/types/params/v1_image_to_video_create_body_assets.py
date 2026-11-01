@@ -15,6 +15,7 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
     * **`kling-2.6`**: Supports 1080p.
     * **`kling-3.0`**: Supports 720p, 1080p, 4k.
+    * **`kling-4.0`**: Supports 720p, 1080p.
     * **`ltx-2.5`**: Supports 480p, 720p, 1080p.
     * **`minimax-h3`**: Supports 480p, 720p, 1080p.
     * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
@@ -27,12 +28,18 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     * **`wan-2.2`**: Not supported
     * **`wan-3.0`**: Supports 480p, 720p, 1080p.
     
+    This value is either
+    - a direct URL to the file. The URL path must end in a supported file extension.
+    - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
+    
+    See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.
+    
     """
 
     image_file_path: typing_extensions.Required[str]
     """
     The path of the image file. This value is either
-    - a direct URL to the video file
+    - a direct URL to the file. The URL path must end in a supported file extension.
     - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls).
     
     See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details.

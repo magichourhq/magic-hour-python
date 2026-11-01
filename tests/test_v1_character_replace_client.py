@@ -39,6 +39,7 @@ def test_create_200_success_all_params() -> None:
         style={
             "mode": "replace",
             "points": [{"position_x": 320, "position_y": 180, "time_seconds": 2.5}],
+            "prompt": "string",
             "selection_mode": "auto",
         },
     )
@@ -86,6 +87,7 @@ async def test_await_create_200_success_all_params() -> None:
         style={
             "mode": "replace",
             "points": [{"position_x": 320, "position_y": 180, "time_seconds": 2.5}],
+            "prompt": "string",
             "selection_mode": "auto",
         },
     )
