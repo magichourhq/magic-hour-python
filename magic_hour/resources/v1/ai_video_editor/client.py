@@ -34,7 +34,7 @@ class AiVideoEditorClient:
         model: typing.Union[
             typing.Optional[
                 typing_extensions.Literal[
-                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"
+                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"
                 ]
             ],
             type_utils.NotGiven,
@@ -234,7 +234,7 @@ class AsyncAiVideoEditorClient:
         model: typing.Union[
             typing.Optional[
                 typing_extensions.Literal[
-                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5"
+                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"
                 ]
             ],
             type_utils.NotGiven,
