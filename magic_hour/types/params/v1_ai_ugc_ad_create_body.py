@@ -41,10 +41,10 @@ class V1AiUgcAdCreateBody(typing_extensions.TypedDict, total=False):
     script: typing_extensions.Required[str]
     """
     The words the actor should speak. Character limits apply after trimming:
-    * kling-3.0: 2500 characters.
+    * kling-3.0: 2304 characters.
     * ltx-2.5: 1804 characters.
     * veo3.1: 2500 characters.
-    LTX's dialogue wrapper counts toward its model prompt limit.
+    LTX and Kling dialogue wrappers count toward their model prompt limit.
     """
 
 
