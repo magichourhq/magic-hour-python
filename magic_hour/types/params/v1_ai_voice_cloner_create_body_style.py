@@ -9,7 +9,7 @@ class V1AiVoiceClonerCreateBodyStyle(typing_extensions.TypedDict):
 
     prompt: typing_extensions.Required[str]
     """
-    Text used to generate speech from the cloned voice. The character limit is 1000 characters.
+    Text used to generate speech from the cloned voice. The character limit is 5000 characters.
     """
 
 

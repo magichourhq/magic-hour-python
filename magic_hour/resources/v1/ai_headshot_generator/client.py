@@ -105,7 +105,7 @@ class AiHeadshotGeneratorClient:
         """
         AI Headshot Generator
 
-        Create an AI headshot. Each headshot costs 50 credits.
+        Create a 4:5 AI headshot. Each headshot costs 50 credits.
 
         POST /v1/ai-headshot-generator
 
@@ -229,7 +229,7 @@ class AsyncAiHeadshotGeneratorClient:
         """
         AI Headshot Generator
 
-        Create an AI headshot. Each headshot costs 50 credits.
+        Create a 4:5 AI headshot. Each headshot costs 50 credits.
 
         POST /v1/ai-headshot-generator
 
