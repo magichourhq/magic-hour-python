@@ -43,11 +43,19 @@ class AiVideoEditorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[
+                typing.List[params.V1AiVideoEditorCreateBodyReferencesItem]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -101,6 +109,7 @@ class AiVideoEditorClient:
             name=name,
             resolution=resolution,
             start_seconds=start_seconds,
+            references=references,
             request_options=request_options,
         )
         logger.info(f"AI Video Editor response: {create_response}")
@@ -255,11 +264,19 @@ class AsyncAiVideoEditorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[
+                typing.List[params.V1AiVideoEditorCreateBodyReferencesItem]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -313,6 +330,7 @@ class AsyncAiVideoEditorClient:
             name=name,
             resolution=resolution,
             start_seconds=start_seconds,
+            references=references,
             request_options=request_options,
         )
         logger.info(f"AI Video Editor response: {create_response}")

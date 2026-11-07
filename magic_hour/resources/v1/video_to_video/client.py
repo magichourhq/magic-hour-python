@@ -45,6 +45,9 @@ class VideoToVideoClient:
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        fps: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -116,6 +119,7 @@ class VideoToVideoClient:
             height=height,
             name=name,
             width=width,
+            fps=fps,
             request_options=request_options,
         )
         logger.info(f"Video-to-Video response: {create_response}")
@@ -263,6 +267,9 @@ class AsyncVideoToVideoClient:
         width: typing.Union[
             typing.Optional[int], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        fps: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
         download_directory: typing.Optional[str] = None,
@@ -336,6 +343,7 @@ class AsyncVideoToVideoClient:
             height=height,
             name=name,
             width=width,
+            fps=fps,
             request_options=request_options,
         )
         logger.info(f"Video-to-Video response: {create_response}")

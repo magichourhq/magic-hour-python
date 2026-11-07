@@ -50,6 +50,7 @@ class AiImageGeneratorClient:
                     "qwen-image-2.1",
                     "seedream",
                     "seedream-v4",
+                    "seedream-v4.5",
                     "seedream-v5-pro",
                     "z-image-turbo",
                 ]
@@ -373,6 +374,7 @@ class AsyncAiImageGeneratorClient:
                     "qwen-image-2.1",
                     "seedream",
                     "seedream-v4",
+                    "seedream-v4.5",
                     "seedream-v5-pro",
                     "z-image-turbo",
                 ]
