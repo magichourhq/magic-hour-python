@@ -123,6 +123,7 @@ from magic_hour.resources.v1.video_to_video import (
     AsyncVideoToVideoClient,
     VideoToVideoClient,
 )
+from magic_hour.resources.v1.voices import AsyncVoicesClient, VoicesClient
 from make_api_request import AsyncBaseClient, SyncBaseClient
 
 
@@ -178,6 +179,7 @@ class V1Client:
         self.ai_ugc_ad = AiUgcAdClient(base_client=self._base_client)
         self.ai_music_generator = AiMusicGeneratorClient(base_client=self._base_client)
         self.ai_video_upscaler = AiVideoUpscalerClient(base_client=self._base_client)
+        self.voices = VoicesClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -248,3 +250,4 @@ class AsyncV1Client:
         self.ai_video_upscaler = AsyncAiVideoUpscalerClient(
             base_client=self._base_client
         )
+        self.voices = AsyncVoicesClient(base_client=self._base_client)

@@ -300,13 +300,15 @@ class TextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
-            references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
+            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+
+        Reference media for video generation.
 
         Supported models and reference media:
         * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
         * **`kling-3.0`**: Supports images, videos.
         * **`kling-4.0`**: Supports images, videos. Up to 10 references.
-        * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full.
+        * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
         * **`seedance-2.0`**: Supports images, videos, audio.
         * **`seedance-2.0-fast`**: Supports images, videos, audio.
         * **`seedance-2.0-mini`**: Supports images, videos, audio.
@@ -676,13 +678,15 @@ class AsyncTextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
-            references: Reference media for video generation. Name references without @ and refer to them as @name in style.prompt. Maximum 10 references total.
+            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+
+        Reference media for video generation.
 
         Supported models and reference media:
         * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
         * **`kling-3.0`**: Supports images, videos.
         * **`kling-4.0`**: Supports images, videos. Up to 10 references.
-        * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full.
+        * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
         * **`seedance-2.0`**: Supports images, videos, audio.
         * **`seedance-2.0-fast`**: Supports images, videos, audio.
         * **`seedance-2.0-mini`**: Supports images, videos, audio.

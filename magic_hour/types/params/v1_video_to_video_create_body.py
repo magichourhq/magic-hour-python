@@ -27,6 +27,11 @@ class V1VideoToVideoCreateBody(typing_extensions.TypedDict):
     End time of your clip (seconds). Must be greater than start_seconds.
     """
 
+    fps: typing_extensions.NotRequired[float]
+    """
+    Source video FPS for v3 frame limits and estimated credits. Defaults to 30; final charges settle to rendered frames.
+    """
+
     fps_resolution: typing_extensions.NotRequired[
         typing_extensions.Literal["FULL", "HALF"]
     ]
@@ -38,9 +43,7 @@ class V1VideoToVideoCreateBody(typing_extensions.TypedDict):
 
     height: typing_extensions.NotRequired[typing.Optional[int]]
     """
-    `height` is deprecated and no longer influences the output video's resolution.
-    
-    This field is retained only for backward compatibility and will be removed in a future release.
+    Source video height in integer pixels. Required and positive for v3; ignored for v1/v2.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -57,9 +60,7 @@ class V1VideoToVideoCreateBody(typing_extensions.TypedDict):
 
     width: typing_extensions.NotRequired[typing.Optional[int]]
     """
-    `width` is deprecated and no longer influences the output video's resolution.
-    
-    This field is retained only for backward compatibility and will be removed in a future release.
+    Source video width in integer pixels. Required and positive for v3; ignored for v1/v2.
     """
 
 
@@ -79,6 +80,7 @@ class _SerializerV1VideoToVideoCreateBody(pydantic.BaseModel):
     end_seconds: float = pydantic.Field(
         alias="end_seconds",
     )
+    fps: typing.Optional[float] = pydantic.Field(alias="fps", default=None)
     fps_resolution: typing.Optional[typing_extensions.Literal["FULL", "HALF"]] = (
         pydantic.Field(alias="fps_resolution", default=None)
     )

@@ -6,6 +6,10 @@ from .v1_ai_video_editor_create_body_assets import (
     V1AiVideoEditorCreateBodyAssets,
     _SerializerV1AiVideoEditorCreateBodyAssets,
 )
+from .v1_ai_video_editor_create_body_references_item import (
+    V1AiVideoEditorCreateBodyReferencesItem,
+    _SerializerV1AiVideoEditorCreateBodyReferencesItem,
+)
 from .v1_ai_video_editor_create_body_style import (
     V1AiVideoEditorCreateBodyStyle,
     _SerializerV1AiVideoEditorCreateBodyStyle,
@@ -41,11 +45,20 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
     Give your video a custom name for easy identification.
     """
 
-    resolution: typing_extensions.NotRequired[
-        typing_extensions.Literal["1080p", "480p", "720p"]
+    references: typing_extensions.NotRequired[
+        typing.List[V1AiVideoEditorCreateBodyReferencesItem]
     ]
     """
-    Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 720p, 1080p; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+    Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+    
+    Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
+    """
+
+    resolution: typing_extensions.NotRequired[
+        typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+    ]
+    """
+    Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
     """
 
     start_seconds: typing_extensions.NotRequired[float]
@@ -78,9 +91,12 @@ class _SerializerV1AiVideoEditorCreateBody(pydantic.BaseModel):
         ]
     ] = pydantic.Field(alias="model", default=None)
     name: typing.Optional[str] = pydantic.Field(alias="name", default=None)
-    resolution: typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]] = (
-        pydantic.Field(alias="resolution", default=None)
-    )
+    references: typing.Optional[
+        typing.List[_SerializerV1AiVideoEditorCreateBodyReferencesItem]
+    ] = pydantic.Field(alias="references", default=None)
+    resolution: typing.Optional[
+        typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+    ] = pydantic.Field(alias="resolution", default=None)
     start_seconds: typing.Optional[float] = pydantic.Field(
         alias="start_seconds", default=None
     )

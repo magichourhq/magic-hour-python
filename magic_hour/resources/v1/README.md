@@ -40,3 +40,4 @@
 - [text_to_video](text_to_video/README.md) - text_to_video
 - [video_projects](video_projects/README.md) - video_projects
 - [video_to_video](video_to_video/README.md) - video_to_video
+- [voices](voices/README.md) - voices

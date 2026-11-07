@@ -39,6 +39,7 @@ from .v1_body_swap_create_response import V1BodySwapCreateResponse
 from .v1_character_replace_create_response import V1CharacterReplaceCreateResponse
 from .v1_face_detection_create_response import V1FaceDetectionCreateResponse
 from .v1_face_detection_get_response import V1FaceDetectionGetResponse
+from .v1_face_detection_get_response_error import V1FaceDetectionGetResponseError
 from .v1_face_detection_get_response_faces_item import (
     V1FaceDetectionGetResponseFacesItem,
 )
@@ -73,6 +74,8 @@ from .v1_video_projects_get_response_downloads_item import (
 )
 from .v1_video_projects_get_response_error import V1VideoProjectsGetResponseError
 from .v1_video_to_video_create_response import V1VideoToVideoCreateResponse
+from .v1_voices_list_response import V1VoicesListResponse
+from .v1_voices_list_response_voices_item import V1VoicesListResponseVoicesItem
 
 
 __all__ = [
@@ -107,6 +110,7 @@ __all__ = [
     "V1CharacterReplaceCreateResponse",
     "V1FaceDetectionCreateResponse",
     "V1FaceDetectionGetResponse",
+    "V1FaceDetectionGetResponseError",
     "V1FaceDetectionGetResponseFacesItem",
     "V1FaceSwapCreateResponse",
     "V1FaceSwapPhotoCreateResponse",
@@ -129,4 +133,6 @@ __all__ = [
     "V1VideoProjectsGetResponseDownloadsItem",
     "V1VideoProjectsGetResponseError",
     "V1VideoToVideoCreateResponse",
+    "V1VoicesListResponse",
+    "V1VoicesListResponseVoicesItem",
 ]

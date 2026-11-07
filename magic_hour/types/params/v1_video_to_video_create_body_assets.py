@@ -8,6 +8,11 @@ class V1VideoToVideoCreateBodyAssets(typing_extensions.TypedDict):
     Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
     """
 
+    initial_image_path: typing_extensions.NotRequired[str]
+    """
+    Required for v3: an uploaded reference image path, or a completed image output owned by you. The caller supplies this image; the API does not generate it.
+    """
+
     video_file_path: typing_extensions.NotRequired[str]
     """
     Your video file. Required if `video_source` is `file`. This value is either
@@ -41,6 +46,9 @@ class _SerializerV1VideoToVideoCreateBodyAssets(pydantic.BaseModel):
         populate_by_name=True,
     )
 
+    initial_image_path: typing.Optional[str] = pydantic.Field(
+        alias="initial_image_path", default=None
+    )
     video_file_path: typing.Optional[str] = pydantic.Field(
         alias="video_file_path", default=None
     )

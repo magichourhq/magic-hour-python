@@ -137,6 +137,9 @@ class VideoToVideoClient:
         end_seconds: float,
         start_seconds: float,
         style: params.V1VideoToVideoCreateBodyStyle,
+        fps: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         fps_resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["FULL", "HALF"]],
             type_utils.NotGiven,
@@ -178,19 +181,22 @@ class VideoToVideoClient:
 
         For detailed examples, see the [product page](https://magichour.ai/products/video-to-video).
 
+        V3 request example (upload both assets first):
+        ```json
+        {"start_seconds":0,"end_seconds":2,"width":1024,"height":704,"fps":30,"fps_resolution":"HALF","style":{"art_style":"Studio Ghibli","version":"v3","model":"default"},"assets":{"video_source":"file","video_file_path":"api-assets/id/video.mp4","initial_image_path":"api-assets/id/reference.png"}}
+        ```
+        V3 supports up to 1,200 output frames for square videos and 800 otherwise.
+
         POST /v1/video-to-video
 
         Args:
+            fps: Source video FPS for v3 frame limits and estimated credits. Defaults to 30; final charges settle to rendered frames.
             fps_resolution: Determines whether the resulting video will have the same frame per second as the original video, or half.
         * `FULL` - the result video will have the same FPS as the input video
         * `HALF` - the result video will have half the FPS as the input video
-            height: `height` is deprecated and no longer influences the output video's resolution.
-
-        This field is retained only for backward compatibility and will be removed in a future release.
+            height: Source video height in integer pixels. Required and positive for v3; ignored for v1/v2.
             name: Give your video a custom name for easy identification.
-            width: `width` is deprecated and no longer influences the output video's resolution.
-
-        This field is retained only for backward compatibility and will be removed in a future release.
+            width: Source video width in integer pixels. Required and positive for v3; ignored for v1/v2.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
@@ -206,27 +212,12 @@ class VideoToVideoClient:
 
         Examples:
         ```py
-        client.v1.video_to_video.create(
-            assets={
-                "video_file_path": "api-assets/id/1234.mp4",
-                "video_source": "file",
-            },
-            end_seconds=5.0,
-            start_seconds=0.0,
-            style={
-                "art_style": "Minecraft",
-                "model": "default",
-                "prompt": "A cinematic scene with warm lighting",
-                "prompt_type": "default",
-                "version": "default",
-            },
-            fps_resolution="HALF",
-            name="My Video To Video video",
-        )
+        client.v1.video_to_video.create(assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}, end_seconds=5.0, start_seconds=0.0, style={"art_style": "Minecraft", "model": "default", "prompt": "A cinematic scene with warm lighting", "prompt_type": "default", "version": "default"}, fps=30.0, fps_resolution="HALF", height=704, name="My Video To Video video", width=1024)
         ```
         """
         _json = to_encodable(
             item={
+                "fps": fps,
                 "fps_resolution": fps_resolution,
                 "height": height,
                 "name": name,
@@ -366,6 +357,9 @@ class AsyncVideoToVideoClient:
         end_seconds: float,
         start_seconds: float,
         style: params.V1VideoToVideoCreateBodyStyle,
+        fps: typing.Union[
+            typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
         fps_resolution: typing.Union[
             typing.Optional[typing_extensions.Literal["FULL", "HALF"]],
             type_utils.NotGiven,
@@ -407,19 +401,22 @@ class AsyncVideoToVideoClient:
 
         For detailed examples, see the [product page](https://magichour.ai/products/video-to-video).
 
+        V3 request example (upload both assets first):
+        ```json
+        {"start_seconds":0,"end_seconds":2,"width":1024,"height":704,"fps":30,"fps_resolution":"HALF","style":{"art_style":"Studio Ghibli","version":"v3","model":"default"},"assets":{"video_source":"file","video_file_path":"api-assets/id/video.mp4","initial_image_path":"api-assets/id/reference.png"}}
+        ```
+        V3 supports up to 1,200 output frames for square videos and 800 otherwise.
+
         POST /v1/video-to-video
 
         Args:
+            fps: Source video FPS for v3 frame limits and estimated credits. Defaults to 30; final charges settle to rendered frames.
             fps_resolution: Determines whether the resulting video will have the same frame per second as the original video, or half.
         * `FULL` - the result video will have the same FPS as the input video
         * `HALF` - the result video will have half the FPS as the input video
-            height: `height` is deprecated and no longer influences the output video's resolution.
-
-        This field is retained only for backward compatibility and will be removed in a future release.
+            height: Source video height in integer pixels. Required and positive for v3; ignored for v1/v2.
             name: Give your video a custom name for easy identification.
-            width: `width` is deprecated and no longer influences the output video's resolution.
-
-        This field is retained only for backward compatibility and will be removed in a future release.
+            width: Source video width in integer pixels. Required and positive for v3; ignored for v1/v2.
             assets: Provide the assets for video-to-video. For video, The `video_source` field determines whether `video_file_path` or `youtube_url` field is used
             end_seconds: End time of your clip (seconds). Must be greater than start_seconds.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
@@ -435,27 +432,12 @@ class AsyncVideoToVideoClient:
 
         Examples:
         ```py
-        await client.v1.video_to_video.create(
-            assets={
-                "video_file_path": "api-assets/id/1234.mp4",
-                "video_source": "file",
-            },
-            end_seconds=5.0,
-            start_seconds=0.0,
-            style={
-                "art_style": "Minecraft",
-                "model": "default",
-                "prompt": "A cinematic scene with warm lighting",
-                "prompt_type": "default",
-                "version": "default",
-            },
-            fps_resolution="HALF",
-            name="My Video To Video video",
-        )
+        await client.v1.video_to_video.create(assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}, end_seconds=5.0, start_seconds=0.0, style={"art_style": "Minecraft", "model": "default", "prompt": "A cinematic scene with warm lighting", "prompt_type": "default", "version": "default"}, fps=30.0, fps_resolution="HALF", height=704, name="My Video To Video video", width=1024)
         ```
         """
         _json = to_encodable(
             item={
+                "fps": fps,
                 "fps_resolution": fps_resolution,
                 "height": height,
                 "name": name,

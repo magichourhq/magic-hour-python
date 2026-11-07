@@ -27,7 +27,12 @@ def test_create_200_success_all_params() -> None:
     # tests calling sync method with example data
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_voice_generator.create(
-        style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
+        style={
+            "language": "spanish",
+            "prompt": "Hello, how are you?",
+            "speed": 1.15,
+            "voice_name": "Elon Musk",
+        },
         name="My Voice Generator audio",
     )
     try:
@@ -62,7 +67,12 @@ async def test_await_create_200_success_all_params() -> None:
     # tests calling async method with example data
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_voice_generator.create(
-        style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
+        style={
+            "language": "spanish",
+            "prompt": "Hello, how are you?",
+            "speed": 1.15,
+            "voice_name": "Elon Musk",
+        },
         name="My Voice Generator audio",
     )
     try:

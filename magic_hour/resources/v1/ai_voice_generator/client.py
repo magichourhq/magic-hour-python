@@ -111,7 +111,12 @@ class AiVoiceGeneratorClient:
         Examples:
         ```py
         client.v1.ai_voice_generator.create(
-            style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
+            style={
+                "language": "spanish",
+                "prompt": "Hello, how are you?",
+                "speed": 1.15,
+                "voice_name": "Elon Musk",
+            },
             name="My Voice Generator audio",
         )
         ```
@@ -222,7 +227,12 @@ class AsyncAiVoiceGeneratorClient:
         Examples:
         ```py
         await client.v1.ai_voice_generator.create(
-            style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
+            style={
+                "language": "spanish",
+                "prompt": "Hello, how are you?",
+                "speed": 1.15,
+                "voice_name": "Elon Musk",
+            },
             name="My Voice Generator audio",
         )
         ```

@@ -32,6 +32,7 @@ def test_create_200_success_all_params() -> None:
         style={"prompt": "Change the car color to blue"},
         model="ltx-2.5",
         name="My Video Editor video",
+        references=[{"file_path": "api-assets/id/1234.png", "name": "hero"}],
         resolution="480p",
         start_seconds=0.0,
     )
@@ -72,6 +73,7 @@ async def test_await_create_200_success_all_params() -> None:
         style={"prompt": "Change the car color to blue"},
         model="ltx-2.5",
         name="My Video Editor video",
+        references=[{"file_path": "api-assets/id/1234.png", "name": "hero"}],
         resolution="480p",
         start_seconds=0.0,
     )

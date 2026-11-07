@@ -127,7 +127,11 @@ class AiVoiceClonerClient:
         ```py
         client.v1.ai_voice_cloner.create(
             assets={"audio_file_path": "api-assets/id/1234.mp3"},
-            style={"prompt": "Hello, this is my cloned voice."},
+            style={
+                "language": "spanish",
+                "prompt": "Hello, this is my cloned voice.",
+                "speed": 1.15,
+            },
             name="My Voice Cloner audio",
         )
         ```
@@ -253,7 +257,11 @@ class AsyncAiVoiceClonerClient:
         ```py
         await client.v1.ai_voice_cloner.create(
             assets={"audio_file_path": "api-assets/id/1234.mp3"},
-            style={"prompt": "Hello, this is my cloned voice."},
+            style={
+                "language": "spanish",
+                "prompt": "Hello, this is my cloned voice.",
+                "speed": 1.15,
+            },
             name="My Voice Cloner audio",
         )
         ```

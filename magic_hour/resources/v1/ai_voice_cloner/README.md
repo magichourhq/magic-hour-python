@@ -13,13 +13,15 @@ Clone a voice from an audio sample and generate speech.
 
 #### Parameters
 
-| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                      | Example                                         |
-| -------------------- | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| `assets`             |    ✓     | Provide the assets for voice cloning.                                                                                                                                                                                                                                                                                                                                                                            | `{"audio_file_path": "api-assets/id/1234.mp3"}` |
-| `└─ audio_file_path` |    ✓     | The audio used to clone the voice. This value is either - a direct URL to the file. The URL path must end in a supported file extension. - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.mp3"`                      |
-| `style`              |    ✓     |                                                                                                                                                                                                                                                                                                                                                                                                                  | `{"prompt": "Hello, this is my cloned voice."}` |
-| `└─ prompt`          |    ✓     | Text used to generate speech from the cloned voice. The character limit is 5000 characters.                                                                                                                                                                                                                                                                                                                      | `"Hello, this is my cloned voice."`             |
-| `name`               |    ✗     | Give your audio a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                                           | `"My Voice Cloner audio"`                       |
+| Parameter            | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                      | Example                                                                               |
+| -------------------- | :------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `assets`             |    ✓     | Provide the assets for voice cloning.                                                                                                                                                                                                                                                                                                                                                                            | `{"audio_file_path": "api-assets/id/1234.mp3"}`                                       |
+| `└─ audio_file_path` |    ✓     | The audio used to clone the voice. This value is either - a direct URL to the file. The URL path must end in a supported file extension. - `file_path` field from the response of the [upload urls API](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls). See the [file upload guide](https://docs.magichour.ai/api-reference/files/generate-asset-upload-urls#input-file) for details. | `"api-assets/id/1234.mp3"`                                                            |
+| `style`              |    ✓     |                                                                                                                                                                                                                                                                                                                                                                                                                  | `{"language": "spanish", "prompt": "Hello, this is my cloned voice.", "speed": 1.15}` |
+| `└─ language`        |    ✗     | Spoken language. Use a canonical lowercase language name, or auto to detect the language from the text. Defaults to auto.                                                                                                                                                                                                                                                                                        | `"spanish"`                                                                           |
+| `└─ prompt`          |    ✓     | Text used to generate speech from the cloned voice. The character limit is 5000 characters.                                                                                                                                                                                                                                                                                                                      | `"Hello, this is my cloned voice."`                                                   |
+| `└─ speed`           |    ✗     | Speech speed multiplier, from 0.75 to 1.30 inclusive. Defaults to 1 (normal speed).                                                                                                                                                                                                                                                                                                                              | `1.15`                                                                                |
+| `name`               |    ✗     | Give your audio a custom name for easy identification.                                                                                                                                                                                                                                                                                                                                                           | `"My Voice Cloner audio"`                                                             |
 
 #### Synchronous Client
 
@@ -30,7 +32,11 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_voice_cloner.create(
     assets={"audio_file_path": "api-assets/id/1234.mp3"},
-    style={"prompt": "Hello, this is my cloned voice."},
+    style={
+        "language": "spanish",
+        "prompt": "Hello, this is my cloned voice.",
+        "speed": 1.15,
+    },
     name="My Voice Cloner audio",
 )
 ```
@@ -44,7 +50,11 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_voice_cloner.create(
     assets={"audio_file_path": "api-assets/id/1234.mp3"},
-    style={"prompt": "Hello, this is my cloned voice."},
+    style={
+        "language": "spanish",
+        "prompt": "Hello, this is my cloned voice.",
+        "speed": 1.15,
+    },
     name="My Voice Cloner audio",
 )
 ```
