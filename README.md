@@ -357,4 +357,8 @@ download_urls = result.downloads
 - [create](magic_hour/resources/v1/video_to_video/README.md#create) - Video-to-Video
 - [generate](magic_hour/resources/v1/video_to_video/README.md#generate) - Video To Video Generate Workflow
 
+### [v1.voices](magic_hour/resources/v1/voices/README.md)
+
+- [list](magic_hour/resources/v1/voices/README.md#list) - List voices
+
 <!-- MODULE DOCS END -->

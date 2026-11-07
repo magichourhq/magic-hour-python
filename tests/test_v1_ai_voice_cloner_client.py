@@ -28,7 +28,11 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.ai_voice_cloner.create(
         assets={"audio_file_path": "api-assets/id/1234.mp3"},
-        style={"prompt": "Hello, this is my cloned voice."},
+        style={
+            "language": "spanish",
+            "prompt": "Hello, this is my cloned voice.",
+            "speed": 1.15,
+        },
         name="My Voice Cloner audio",
     )
     try:
@@ -64,7 +68,11 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.ai_voice_cloner.create(
         assets={"audio_file_path": "api-assets/id/1234.mp3"},
-        style={"prompt": "Hello, this is my cloned voice."},
+        style={
+            "language": "spanish",
+            "prompt": "Hello, this is my cloned voice.",
+            "speed": 1.15,
+        },
         name="My Voice Cloner audio",
     )
     try:

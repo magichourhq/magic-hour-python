@@ -41,4 +41,5 @@
 - [text_to_video](resources/v1/text_to_video/README.md) - text_to_video
 - [video_projects](resources/v1/video_projects/README.md) - video_projects
 - [video_to_video](resources/v1/video_to_video/README.md) - video_to_video
+- [voices](resources/v1/voices/README.md) - voices
 - [v1](resources/v1/README.md) - v1

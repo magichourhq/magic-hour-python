@@ -43,11 +43,19 @@ class AiVideoEditorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[
+                typing.List[params.V1AiVideoEditorCreateBodyReferencesItem]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -101,6 +109,7 @@ class AiVideoEditorClient:
             name=name,
             resolution=resolution,
             start_seconds=start_seconds,
+            references=references,
             request_options=request_options,
         )
         logger.info(f"AI Video Editor response: {create_response}")
@@ -132,8 +141,16 @@ class AiVideoEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[
+                typing.List[params.V1AiVideoEditorCreateBodyReferencesItem]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
@@ -172,7 +189,10 @@ class AiVideoEditorClient:
         Args:
             model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `wan-3.0` requires a paid tier. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
             name: Give your video a custom name for easy identification.
-            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 720p, 1080p; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+
+        Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
             end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.1`: 3-10s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
@@ -203,6 +223,7 @@ class AiVideoEditorClient:
             item={
                 "model": model,
                 "name": name,
+                "references": references,
                 "resolution": resolution,
                 "start_seconds": start_seconds,
                 "assets": assets,
@@ -243,11 +264,19 @@ class AsyncAiVideoEditorClient:
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
             typing.Optional[float], type_utils.NotGiven
+        ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[
+                typing.List[params.V1AiVideoEditorCreateBodyReferencesItem]
+            ],
+            type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         wait_for_completion: bool = True,
         download_outputs: bool = True,
@@ -301,6 +330,7 @@ class AsyncAiVideoEditorClient:
             name=name,
             resolution=resolution,
             start_seconds=start_seconds,
+            references=references,
             request_options=request_options,
         )
         logger.info(f"AI Video Editor response: {create_response}")
@@ -332,8 +362,16 @@ class AsyncAiVideoEditorClient:
         name: typing.Union[
             typing.Optional[str], type_utils.NotGiven
         ] = type_utils.NOT_GIVEN,
+        references: typing.Union[
+            typing.Optional[
+                typing.List[params.V1AiVideoEditorCreateBodyReferencesItem]
+            ],
+            type_utils.NotGiven,
+        ] = type_utils.NOT_GIVEN,
         resolution: typing.Union[
-            typing.Optional[typing_extensions.Literal["1080p", "480p", "720p"]],
+            typing.Optional[
+                typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
+            ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
         start_seconds: typing.Union[
@@ -372,7 +410,10 @@ class AsyncAiVideoEditorClient:
         Args:
             model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `wan-3.0` requires a paid tier. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
             name: Give your video a custom name for easy identification.
-            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 720p, 1080p; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+
+        Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
             end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.1`: 3-10s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
@@ -403,6 +444,7 @@ class AsyncAiVideoEditorClient:
             item={
                 "model": model,
                 "name": name,
+                "references": references,
                 "resolution": resolution,
                 "start_seconds": start_seconds,
                 "assets": assets,

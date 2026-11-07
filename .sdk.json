@@ -1,5 +1,5 @@
 {
-  "id": "fec2456c-9ff6-4689-8c3e-d97a9941f703",
+  "id": "d1f37705-660f-41e3-8523-21f316b66366",
   "tracked_paths": [
     {
       "editable": true,
@@ -503,6 +503,18 @@
     },
     {
       "editable": true,
+      "path": "magic_hour/resources/v1/voices/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/voices/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/voices/client.py"
+    },
+    {
+      "editable": true,
       "path": "magic_hour/types/models/__init__.py"
     },
     {
@@ -631,6 +643,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_face_detection_get_response_error.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_face_detection_get_response_faces_item.py"
     },
     {
@@ -716,6 +732,14 @@
     {
       "editable": false,
       "path": "magic_hour/types/models/v1_video_to_video_create_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_voices_list_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_voices_list_response_voices_item.py"
     },
     {
       "editable": true,
@@ -844,6 +868,10 @@
     {
       "editable": false,
       "path": "magic_hour/types/params/v1_ai_video_editor_create_body_assets.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_ai_video_editor_create_body_references_item.py"
     },
     {
       "editable": false,
@@ -1220,6 +1248,10 @@
     {
       "editable": false,
       "path": "tests/test_v1_video_to_video_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_voices_client.py"
     }
   ]
 }

@@ -62,6 +62,8 @@ Get the details of a face detection task.
 
 Use this API to get the list of faces detected in the image or video to use in the [face swap photo](https://docs.magichour.ai/api-reference/image-projects/face-swap-photo) or [face swap video](https://docs.magichour.ai/api-reference/video-projects/face-swap-video) API calls for multi-face swaps.
 
+When `status` is `error`, the `error` field explains why (for example `nsfw` when the content-safety filter blocked the file). It is `null` otherwise.
+
 **API Endpoint**: `GET /v1/face-detection/{id}`
 
 #### Parameters
@@ -99,7 +101,7 @@ res = await client.v1.face_detection.get(id="uuid-example")
 ##### Example
 
 ```python
-{"credits_charged": 0, "faces": [{"path": "api-assets/id/0-0.png", "url": "https://videos.magichour.ai/api-assets/id/0-0.png"}], "id": "uuid-example", "status": "complete"}
+{"credits_charged": 0, "error": {"code": "no_source_face", "message": "Please use an image with a detectable face"}, "faces": [{"path": "api-assets/id/0-0.png", "url": "https://videos.magichour.ai/api-assets/id/0-0.png"}], "id": "uuid-example", "status": "complete"}
 ```
 
 ### Face Detection <a name="create"></a>

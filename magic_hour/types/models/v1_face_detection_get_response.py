@@ -2,6 +2,7 @@ import pydantic
 import typing
 import typing_extensions
 
+from .v1_face_detection_get_response_error import V1FaceDetectionGetResponseError
 from .v1_face_detection_get_response_faces_item import (
     V1FaceDetectionGetResponseFacesItem,
 )
@@ -22,6 +23,12 @@ class V1FaceDetectionGetResponse(pydantic.BaseModel):
     )
     """
     The credits charged for the task.
+    """
+    error: typing.Optional[V1FaceDetectionGetResponseError] = pydantic.Field(
+        alias="error",
+    )
+    """
+    Why the face detection failed. Present only when `status` is `error`; `null` otherwise.
     """
     faces: typing.List[V1FaceDetectionGetResponseFacesItem] = pydantic.Field(
         alias="faces",

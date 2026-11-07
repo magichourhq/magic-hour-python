@@ -28,6 +28,7 @@ def test_create_200_success_all_params() -> None:
     client = Client(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = client.v1.video_to_video.create(
         assets={
+            "initial_image_path": "api-assets/id/reference.png",
             "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
             "youtube_url": "http://www.example.com",
@@ -41,10 +42,11 @@ def test_create_200_success_all_params() -> None:
             "prompt_type": "default",
             "version": "default",
         },
+        fps=30.0,
         fps_resolution="HALF",
-        height=123,
+        height=704,
         name="My Video To Video video",
-        width=123,
+        width=1024,
     )
     try:
         pydantic.TypeAdapter(models.V1VideoToVideoCreateResponse).validate_python(
@@ -79,6 +81,7 @@ async def test_await_create_200_success_all_params() -> None:
     client = AsyncClient(token="API_TOKEN", environment=Environment.MOCK_SERVER)
     response = await client.v1.video_to_video.create(
         assets={
+            "initial_image_path": "api-assets/id/reference.png",
             "video_file_path": "api-assets/id/1234.mp4",
             "video_source": "file",
             "youtube_url": "http://www.example.com",
@@ -92,10 +95,11 @@ async def test_await_create_200_success_all_params() -> None:
             "prompt_type": "default",
             "version": "default",
         },
+        fps=30.0,
         fps_resolution="HALF",
-        height=123,
+        height=704,
         name="My Video To Video video",
-        width=123,
+        width=1024,
     )
     try:
         pydantic.TypeAdapter(models.V1VideoToVideoCreateResponse).validate_python(

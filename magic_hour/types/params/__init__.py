@@ -136,6 +136,10 @@ from .v1_ai_video_editor_create_body_assets import (
     V1AiVideoEditorCreateBodyAssets,
     _SerializerV1AiVideoEditorCreateBodyAssets,
 )
+from .v1_ai_video_editor_create_body_references_item import (
+    V1AiVideoEditorCreateBodyReferencesItem,
+    _SerializerV1AiVideoEditorCreateBodyReferencesItem,
+)
 from .v1_ai_video_editor_create_body_style import (
     V1AiVideoEditorCreateBodyStyle,
     _SerializerV1AiVideoEditorCreateBodyStyle,
@@ -428,6 +432,7 @@ __all__ = [
     "V1AiUgcAdGenerateBodyAssets",
     "V1AiVideoEditorCreateBody",
     "V1AiVideoEditorCreateBodyAssets",
+    "V1AiVideoEditorCreateBodyReferencesItem",
     "V1AiVideoEditorCreateBodyStyle",
     "V1AiVideoEditorGenerateBodyAssets",
     "V1AiVideoTranslatorCreateBody",
@@ -533,6 +538,7 @@ __all__ = [
     "_SerializerV1AiUgcAdCreateBodyAssets",
     "_SerializerV1AiVideoEditorCreateBody",
     "_SerializerV1AiVideoEditorCreateBodyAssets",
+    "_SerializerV1AiVideoEditorCreateBodyReferencesItem",
     "_SerializerV1AiVideoEditorCreateBodyStyle",
     "_SerializerV1AiVideoTranslatorCreateBody",
     "_SerializerV1AiVideoTranslatorCreateBodyAssets",
