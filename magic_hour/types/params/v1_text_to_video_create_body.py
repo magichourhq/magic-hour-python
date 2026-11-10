@@ -153,21 +153,21 @@ class V1TextToVideoCreateBody(typing_extensions.TypedDict):
         typing.List[V1TextToVideoCreateBodyReferencesItem]
     ]
     """
-    Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+    Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 50 references total. Omit for no references.
     
     Reference media for video generation.
     
     Supported models and reference media:
     * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
-    * **`kling-3.0`**: Supports images, videos.
+    * **`kling-3.0`**: Supports images, videos. Up to 10 references.
     * **`kling-4.0`**: Supports images, videos. Up to 10 references.
-    * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
-    * **`seedance-2.0`**: Supports images, videos, audio.
-    * **`seedance-2.0-fast`**: Supports images, videos, audio.
-    * **`seedance-2.0-mini`**: Supports images, videos, audio.
-    * **`seedance-2.5`**: Supports images, videos, audio.
+    * **`minimax-h3`**: Supports images, videos, audio. Up to 10 references. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
+    * **`seedance-2.0`**: Supports images, videos, audio. Up to 10 references.
+    * **`seedance-2.0-fast`**: Supports images, videos, audio. Up to 10 references.
+    * **`seedance-2.0-mini`**: Supports images, videos, audio. Up to 10 references.
+    * **`seedance-2.5`**: Supports images, videos, audio. Up to 50 references. Maximum 30 images, 10 videos and 10 audio references. The worker trims video references to 30 seconds combined and audio references to 30 seconds combined. Audio references require an image or video reference.
     * **`veo3.1`**: Supports images. Up to 3 references. Requires `end_seconds` of 8.
-    * **`wan-3.0`**: Supports images, videos, audio.
+    * **`wan-3.0`**: Supports images, videos, audio. Up to 10 references.
     """
 
     resolution: typing_extensions.NotRequired[

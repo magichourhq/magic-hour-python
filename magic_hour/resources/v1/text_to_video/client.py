@@ -300,21 +300,21 @@ class TextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
-            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 50 references total. Omit for no references.
 
         Reference media for video generation.
 
         Supported models and reference media:
         * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
-        * **`kling-3.0`**: Supports images, videos.
+        * **`kling-3.0`**: Supports images, videos. Up to 10 references.
         * **`kling-4.0`**: Supports images, videos. Up to 10 references.
-        * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
-        * **`seedance-2.0`**: Supports images, videos, audio.
-        * **`seedance-2.0-fast`**: Supports images, videos, audio.
-        * **`seedance-2.0-mini`**: Supports images, videos, audio.
-        * **`seedance-2.5`**: Supports images, videos, audio.
+        * **`minimax-h3`**: Supports images, videos, audio. Up to 10 references. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
+        * **`seedance-2.0`**: Supports images, videos, audio. Up to 10 references.
+        * **`seedance-2.0-fast`**: Supports images, videos, audio. Up to 10 references.
+        * **`seedance-2.0-mini`**: Supports images, videos, audio. Up to 10 references.
+        * **`seedance-2.5`**: Supports images, videos, audio. Up to 50 references. Maximum 30 images, 10 videos and 10 audio references. The worker trims video references to 30 seconds combined and audio references to 30 seconds combined. Audio references require an image or video reference.
         * **`veo3.1`**: Supports images. Up to 3 references. Requires `end_seconds` of 8.
-        * **`wan-3.0`**: Supports images, videos, audio.
+        * **`wan-3.0`**: Supports images, videos, audio. Up to 10 references.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
         * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
@@ -364,12 +364,19 @@ class TextToVideoClient:
         Examples:
         ```py
         client.v1.text_to_video.create(
-            end_seconds=5.0,
-            style={"prompt": "a dog running"},
+            end_seconds=4.0,
+            style={
+                "prompt": "Animate @hero with the motion of @motion and the sound of @sound."
+            },
             aspect_ratio="16:9",
             audio=True,
-            model="ltx-2.5",
+            model="seedance-2.5",
             name="My Text To Video video",
+            references=[
+                {"file_path": "api-assets/id/hero.png", "name": "hero"},
+                {"file_path": "api-assets/id/motion.mp4", "name": "motion"},
+                {"file_path": "api-assets/id/sound.wav", "name": "sound"},
+            ],
             resolution="480p",
         )
         ```
@@ -678,21 +685,21 @@ class AsyncTextToVideoClient:
         If you specify the deprecated model value that includes the `-audio` suffix, this will be the same as included `audio` as `true`.
             name: Give your video a custom name for easy identification.
             orientation: Deprecated. Use `aspect_ratio` instead.
-            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
+            references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 50 references total. Omit for no references.
 
         Reference media for video generation.
 
         Supported models and reference media:
         * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
-        * **`kling-3.0`**: Supports images, videos.
+        * **`kling-3.0`**: Supports images, videos. Up to 10 references.
         * **`kling-4.0`**: Supports images, videos. Up to 10 references.
-        * **`minimax-h3`**: Supports images, videos, audio. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
-        * **`seedance-2.0`**: Supports images, videos, audio.
-        * **`seedance-2.0-fast`**: Supports images, videos, audio.
-        * **`seedance-2.0-mini`**: Supports images, videos, audio.
-        * **`seedance-2.5`**: Supports images, videos, audio.
+        * **`minimax-h3`**: Supports images, videos, audio. Up to 10 references. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
+        * **`seedance-2.0`**: Supports images, videos, audio. Up to 10 references.
+        * **`seedance-2.0-fast`**: Supports images, videos, audio. Up to 10 references.
+        * **`seedance-2.0-mini`**: Supports images, videos, audio. Up to 10 references.
+        * **`seedance-2.5`**: Supports images, videos, audio. Up to 50 references. Maximum 30 images, 10 videos and 10 audio references. The worker trims video references to 30 seconds combined and audio references to 30 seconds combined. Audio references require an image or video reference.
         * **`veo3.1`**: Supports images. Up to 3 references. Requires `end_seconds` of 8.
-        * **`wan-3.0`**: Supports images, videos, audio.
+        * **`wan-3.0`**: Supports images, videos, audio. Up to 10 references.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
         * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
@@ -742,12 +749,19 @@ class AsyncTextToVideoClient:
         Examples:
         ```py
         await client.v1.text_to_video.create(
-            end_seconds=5.0,
-            style={"prompt": "a dog running"},
+            end_seconds=4.0,
+            style={
+                "prompt": "Animate @hero with the motion of @motion and the sound of @sound."
+            },
             aspect_ratio="16:9",
             audio=True,
-            model="ltx-2.5",
+            model="seedance-2.5",
             name="My Text To Video video",
+            references=[
+                {"file_path": "api-assets/id/hero.png", "name": "hero"},
+                {"file_path": "api-assets/id/motion.mp4", "name": "motion"},
+                {"file_path": "api-assets/id/sound.wav", "name": "sound"},
+            ],
             resolution="480p",
         )
         ```
