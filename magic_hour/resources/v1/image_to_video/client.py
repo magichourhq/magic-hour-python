@@ -265,7 +265,7 @@ class ImageToVideoClient:
         This field is retained only for backward compatibility and will be removed in a future release.
             model: The AI model to use for video generation.
 
-        * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
+        * `default`: automatically selects a model based on subscription tier, resolution and duration.
         * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
@@ -617,7 +617,7 @@ class AsyncImageToVideoClient:
         This field is retained only for backward compatibility and will be removed in a future release.
             model: The AI model to use for video generation.
 
-        * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
+        * `default`: automatically selects a model based on subscription tier, resolution and duration.
         * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
