@@ -34,7 +34,12 @@ class AiVideoEditorClient:
         model: typing.Union[
             typing.Optional[
                 typing_extensions.Literal[
-                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"
+                    "gemini-omni",
+                    "gemini-omni-1.1",
+                    "gemini-omni-1.2",
+                    "ltx-2.3",
+                    "ltx-2.5",
+                    "wan-3.0",
                 ]
             ],
             type_utils.NotGiven,
@@ -133,7 +138,12 @@ class AiVideoEditorClient:
         model: typing.Union[
             typing.Optional[
                 typing_extensions.Literal[
-                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"
+                    "gemini-omni",
+                    "gemini-omni-1.1",
+                    "gemini-omni-1.2",
+                    "ltx-2.3",
+                    "ltx-2.5",
+                    "wan-3.0",
                 ]
             ],
             type_utils.NotGiven,
@@ -187,15 +197,15 @@ class AiVideoEditorClient:
         POST /v1/ai-video-editor
 
         Args:
-            model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `wan-3.0` requires a paid tier. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
+            model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.2` for paid. `wan-3.0` requires a paid tier. `gemini-omni` and `gemini-omni-1.1` are deprecated and run on `gemini-omni-1.2`.
             name: Give your video a custom name for easy identification.
             references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
 
-        Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
-            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+        Reference images for gemini-omni-1.2, wan-3.0.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.2`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
-            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.1`: 3-10s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.2`: 3-15s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
             style: V1AiVideoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 
@@ -255,7 +265,12 @@ class AsyncAiVideoEditorClient:
         model: typing.Union[
             typing.Optional[
                 typing_extensions.Literal[
-                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"
+                    "gemini-omni",
+                    "gemini-omni-1.1",
+                    "gemini-omni-1.2",
+                    "ltx-2.3",
+                    "ltx-2.5",
+                    "wan-3.0",
                 ]
             ],
             type_utils.NotGiven,
@@ -354,7 +369,12 @@ class AsyncAiVideoEditorClient:
         model: typing.Union[
             typing.Optional[
                 typing_extensions.Literal[
-                    "gemini-omni", "gemini-omni-1.1", "ltx-2.3", "ltx-2.5", "wan-3.0"
+                    "gemini-omni",
+                    "gemini-omni-1.1",
+                    "gemini-omni-1.2",
+                    "ltx-2.3",
+                    "ltx-2.5",
+                    "wan-3.0",
                 ]
             ],
             type_utils.NotGiven,
@@ -408,15 +428,15 @@ class AsyncAiVideoEditorClient:
         POST /v1/ai-video-editor
 
         Args:
-            model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.1` for paid. `wan-3.0` requires a paid tier. `gemini-omni` is deprecated; use `gemini-omni-1.1` instead.
+            model: Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.2` for paid. `wan-3.0` requires a paid tier. `gemini-omni` and `gemini-omni-1.1` are deprecated and run on `gemini-omni-1.2`.
             name: Give your video a custom name for easy identification.
             references: Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
 
-        Reference images for gemini-omni-1.1, wan-3.0, gemini-omni.
-            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.1`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+        Reference images for gemini-omni-1.2, wan-3.0.
+            resolution: Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.2`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
             assets: Provide the assets for video editing.
-            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.1`: 3-10s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
+            end_seconds: End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.2`: 3-15s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
             style: V1AiVideoEditorCreateBodyStyle
             request_options: Additional options to customize the HTTP request
 

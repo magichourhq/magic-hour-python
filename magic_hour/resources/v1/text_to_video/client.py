@@ -38,6 +38,7 @@ class TextToVideoClient:
                 typing_extensions.Literal[
                     "default",
                     "gemini-omni-1.1",
+                    "gemini-omni-1.2",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -165,6 +166,7 @@ class TextToVideoClient:
                 typing_extensions.Literal[
                     "default",
                     "gemini-omni-1.1",
+                    "gemini-omni-1.2",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -243,7 +245,7 @@ class TextToVideoClient:
         Args:
             aspect_ratio: Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
 
-        * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
+        * **`gemini-omni-1.2`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
         * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
         * **`kling-4.0`**: Supports 9:16, 16:9, 1:1.
@@ -262,7 +264,7 @@ class TextToVideoClient:
             audio: Whether to include audio in the video. Defaults to `false` if not specified.
 
         Audio support varies by model:
-        * **`gemini-omni-1.1`**: Not supported
+        * **`gemini-omni-1.2`**: Not supported
         * **`kling-2.6`**: Not supported
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
         * **`kling-4.0`**: Toggle-able: no additional credits for audio
@@ -281,7 +283,7 @@ class TextToVideoClient:
             model: The AI model to use for video generation.
 
         * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
-        * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
+        * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
         * `kling-4.0`: Create cinematic videos with image and video references and optional audio.
@@ -305,7 +307,7 @@ class TextToVideoClient:
         Reference media for video generation.
 
         Supported models and reference media:
-        * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
+        * **`gemini-omni-1.2`**: Supports images, videos. Up to 10 references.
         * **`kling-3.0`**: Supports images, videos. Up to 10 references.
         * **`kling-4.0`**: Supports images, videos. Up to 10 references.
         * **`minimax-h3`**: Supports images, videos, audio. Up to 10 references. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
@@ -317,7 +319,7 @@ class TextToVideoClient:
         * **`wan-3.0`**: Supports images, videos, audio. Up to 10 references.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
-        * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
+        * **`gemini-omni-1.2`**: Supports 360p, 720p, 1080p, 4k.
         * **`kling-2.6`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
         * **`kling-4.0`**: Supports 720p, 1080p.
@@ -335,7 +337,7 @@ class TextToVideoClient:
 
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
-        * **`gemini-omni-1.1`**: any integer from 3 to 10
+        * **`gemini-omni-1.2`**: any integer from 3 to 15
         * **`kling-2.6`**: 5, 10
         * **`kling-3.0`**: any integer from 3 to 15
         * **`kling-4.0`**: any integer from 3 to 30
@@ -438,6 +440,7 @@ class AsyncTextToVideoClient:
                 typing_extensions.Literal[
                     "default",
                     "gemini-omni-1.1",
+                    "gemini-omni-1.2",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -550,6 +553,7 @@ class AsyncTextToVideoClient:
                 typing_extensions.Literal[
                     "default",
                     "gemini-omni-1.1",
+                    "gemini-omni-1.2",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -628,7 +632,7 @@ class AsyncTextToVideoClient:
         Args:
             aspect_ratio: Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
 
-        * **`gemini-omni-1.1`**: Supports 16:9, 9:16.
+        * **`gemini-omni-1.2`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
         * **`kling-3.0`**: Supports 9:16, 16:9, 1:1.
         * **`kling-4.0`**: Supports 9:16, 16:9, 1:1.
@@ -647,7 +651,7 @@ class AsyncTextToVideoClient:
             audio: Whether to include audio in the video. Defaults to `false` if not specified.
 
         Audio support varies by model:
-        * **`gemini-omni-1.1`**: Not supported
+        * **`gemini-omni-1.2`**: Not supported
         * **`kling-2.6`**: Not supported
         * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
         * **`kling-4.0`**: Toggle-able: no additional credits for audio
@@ -666,7 +670,7 @@ class AsyncTextToVideoClient:
             model: The AI model to use for video generation.
 
         * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
-        * `gemini-omni-1.1`: Best for precise short clips, first/last frames, and high-resolution output.
+        * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
         * `kling-4.0`: Create cinematic videos with image and video references and optional audio.
@@ -690,7 +694,7 @@ class AsyncTextToVideoClient:
         Reference media for video generation.
 
         Supported models and reference media:
-        * **`gemini-omni-1.1`**: Supports images, videos. Up to 10 references.
+        * **`gemini-omni-1.2`**: Supports images, videos. Up to 10 references.
         * **`kling-3.0`**: Supports images, videos. Up to 10 references.
         * **`kling-4.0`**: Supports images, videos. Up to 10 references.
         * **`minimax-h3`**: Supports images, videos, audio. Up to 10 references. Video references must be 2–15 seconds each and 15 seconds combined, and are used in full. Audio references must be 2–15 seconds each and are used in full.
@@ -702,7 +706,7 @@ class AsyncTextToVideoClient:
         * **`wan-3.0`**: Supports images, videos, audio. Up to 10 references.
             resolution: Controls the output video resolution. Defaults to `720p` on paid tiers and `480p` on free tiers.
 
-        * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
+        * **`gemini-omni-1.2`**: Supports 360p, 720p, 1080p, 4k.
         * **`kling-2.6`**: Supports 720p, 1080p.
         * **`kling-3.0`**: Supports 720p, 1080p, 4k.
         * **`kling-4.0`**: Supports 720p, 1080p.
@@ -720,7 +724,7 @@ class AsyncTextToVideoClient:
 
             end_seconds: The total duration of the output video in seconds. Supported durations depend on the chosen model:
 
-        * **`gemini-omni-1.1`**: any integer from 3 to 10
+        * **`gemini-omni-1.2`**: any integer from 3 to 15
         * **`kling-2.6`**: 5, 10
         * **`kling-3.0`**: any integer from 3 to 15
         * **`kling-4.0`**: any integer from 3 to 30
