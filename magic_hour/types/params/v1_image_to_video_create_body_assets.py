@@ -12,7 +12,7 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     """
     The image to use as the last frame of the video.
     
-    * **`gemini-omni-1.1`**: Supports 360p, 720p, 1080p, 4k.
+    * **`gemini-omni-1.2`**: Supports 360p, 720p, 1080p, 4k. Requires a duration of 10 seconds or less.
     * **`kling-2.6`**: Supports 1080p.
     * **`kling-3.0`**: Supports 720p, 1080p, 4k.
     * **`kling-4.0`**: Supports 720p, 1080p.
