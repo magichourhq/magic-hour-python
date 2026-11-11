@@ -243,7 +243,7 @@ class TextToVideoClient:
         POST /v1/text-to-video
 
         Args:
-            aspect_ratio: Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
+            aspect_ratio: Determines the aspect ratio of the output video.
 
         * **`gemini-omni-1.2`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
@@ -282,7 +282,7 @@ class TextToVideoClient:
 
             model: The AI model to use for video generation.
 
-        * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
+        * `default`: automatically selects a model based on subscription tier, resolution and duration.
         * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
@@ -366,19 +366,12 @@ class TextToVideoClient:
         Examples:
         ```py
         client.v1.text_to_video.create(
-            end_seconds=4.0,
-            style={
-                "prompt": "Animate @hero with the motion of @motion and the sound of @sound."
-            },
+            end_seconds=5.0,
+            style={"prompt": "a dog running"},
             aspect_ratio="16:9",
             audio=True,
-            model="seedance-2.5",
+            model="ltx-2.5",
             name="My Text To Video video",
-            references=[
-                {"file_path": "api-assets/id/hero.png", "name": "hero"},
-                {"file_path": "api-assets/id/motion.mp4", "name": "motion"},
-                {"file_path": "api-assets/id/sound.wav", "name": "sound"},
-            ],
             resolution="480p",
         )
         ```
@@ -630,7 +623,7 @@ class AsyncTextToVideoClient:
         POST /v1/text-to-video
 
         Args:
-            aspect_ratio: Provide `aspect_ratio` to set the video’s aspect ratio. Determines the aspect ratio of the output video.
+            aspect_ratio: Determines the aspect ratio of the output video.
 
         * **`gemini-omni-1.2`**: Supports 16:9, 9:16.
         * **`kling-2.6`**: Supports 9:16, 16:9, 1:1.
@@ -669,7 +662,7 @@ class AsyncTextToVideoClient:
 
             model: The AI model to use for video generation.
 
-        * `default`: uses our currently recommended model for general use. For paid tiers, defaults to `kling-3.0`. For free tiers, it defaults to `ltx-2.5`.
+        * `default`: automatically selects a model based on subscription tier, resolution and duration.
         * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output.
         * `kling-2.6`: Best for action, motion blur, and controlled camera moves.
         * `kling-3.0`: Best for cinematic stories, references, and optional audio.
@@ -753,19 +746,12 @@ class AsyncTextToVideoClient:
         Examples:
         ```py
         await client.v1.text_to_video.create(
-            end_seconds=4.0,
-            style={
-                "prompt": "Animate @hero with the motion of @motion and the sound of @sound."
-            },
+            end_seconds=5.0,
+            style={"prompt": "a dog running"},
             aspect_ratio="16:9",
             audio=True,
-            model="seedance-2.5",
+            model="ltx-2.5",
             name="My Text To Video video",
-            references=[
-                {"file_path": "api-assets/id/hero.png", "name": "hero"},
-                {"file_path": "api-assets/id/motion.mp4", "name": "motion"},
-                {"file_path": "api-assets/id/sound.wav", "name": "sound"},
-            ],
             resolution="480p",
         )
         ```

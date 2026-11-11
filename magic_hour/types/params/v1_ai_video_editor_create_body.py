@@ -28,7 +28,7 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
 
     end_seconds: typing_extensions.Required[float]
     """
-    End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.2`: 3-15s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p).
+    End time of your clip in seconds. Must be greater than `start_seconds`. Allowed duration depends on model: `gemini-omni-1.2`: 3-15s, `wan-3.0`: 2-15s, `ltx-2.5`: 0.5-60s (30s at 1080p), `kling-4.0`: 3-30s.
     """
 
     model: typing_extensions.NotRequired[
@@ -36,13 +36,19 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
             "gemini-omni",
             "gemini-omni-1.1",
             "gemini-omni-1.2",
+            "kling-4.0",
             "ltx-2.3",
             "ltx-2.5",
             "wan-3.0",
         ]
     ]
     """
-    Editing model. Defaults to LTX 2.5 for free tier and `gemini-omni-1.2` for paid. `wan-3.0` requires a paid tier. `gemini-omni` and `gemini-omni-1.1` are deprecated and run on `gemini-omni-1.2`.
+    The AI model to use for video editing. Defaults to `ltx-2.5` on free tiers and `gemini-omni-1.2` on paid tiers.
+    
+    * `gemini-omni-1.2`: Best for precise clips up to 15s, references, and high-resolution output. Requires a paid tier.
+    * `wan-3.0`: High-quality video with native audio, long clips, and end-frame control. Requires a paid tier.
+    * `ltx-2.5`: Fastest for general scenes, long clips, audio, and rapid iteration.
+    * `kling-4.0`: Create cinematic videos with image and video references and optional audio. Requires a paid tier.
     """
 
     name: typing_extensions.NotRequired[str]
@@ -56,14 +62,14 @@ class V1AiVideoEditorCreateBody(typing_extensions.TypedDict):
     """
     Name references without @ and refer to them as @name in style.prompt. Names must be unique, ignoring case. Maximum 10 references total. Omit for no references.
     
-    Reference images for gemini-omni-1.2, wan-3.0.
+    Reference images for gemini-omni-1.2, wan-3.0, kling-4.0.
     """
 
     resolution: typing_extensions.NotRequired[
         typing_extensions.Literal["1080p", "360p", "480p", "4k", "720p"]
     ]
     """
-    Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.2`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p.
+    Output resolution. Defaults to `480p` for free tier and `720p` for paid. Supported per model: `gemini-omni-1.2`: 360p, 720p, 1080p, 4k; `wan-3.0`: 480p, 720p, 1080p; `ltx-2.5`: 480p, 720p, 1080p; `kling-4.0`: 720p, 1080p.
     """
 
     start_seconds: typing_extensions.NotRequired[float]
@@ -95,6 +101,7 @@ class _SerializerV1AiVideoEditorCreateBody(pydantic.BaseModel):
             "gemini-omni",
             "gemini-omni-1.1",
             "gemini-omni-1.2",
+            "kling-4.0",
             "ltx-2.3",
             "ltx-2.5",
             "wan-3.0",
