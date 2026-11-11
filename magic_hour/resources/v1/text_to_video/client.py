@@ -38,6 +38,7 @@ class TextToVideoClient:
                 typing_extensions.Literal[
                     "default",
                     "gemini-omni-1.1",
+                    "gemini-omni-1.2",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
@@ -439,6 +440,7 @@ class AsyncTextToVideoClient:
                 typing_extensions.Literal[
                     "default",
                     "gemini-omni-1.1",
+                    "gemini-omni-1.2",
                     "kling-1.6",
                     "kling-2.5",
                     "kling-2.5-audio",
