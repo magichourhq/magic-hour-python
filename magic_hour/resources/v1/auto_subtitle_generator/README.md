@@ -33,9 +33,9 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.auto_subtitle_generator.generate(
     assets={"video_file_path": "/path/to/1234.mp4"},
-    end_seconds=15.0,
+    end_seconds=5.0,
     start_seconds=0.0,
-    style={},
+    style={"template": "karaoke"},
     name="Auto Subtitle video",
     wait_for_completion=True,
     download_outputs=True,
@@ -52,9 +52,9 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.auto_subtitle_generator.generate(
     assets={"video_file_path": "/path/to/1234.mp4"},
-    end_seconds=15.0,
+    end_seconds=5.0,
     start_seconds=0.0,
-    style={},
+    style={"template": "karaoke"},
     name="Auto Subtitle video",
     wait_for_completion=True,
     download_outputs=True,

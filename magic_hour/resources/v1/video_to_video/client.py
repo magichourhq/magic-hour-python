@@ -82,7 +82,7 @@ class VideoToVideoClient:
                 "video_file_path": "path/to/video.mp4",
                 "video_source": "file",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
             style={
                 "art_style": "3D Render",
@@ -304,7 +304,7 @@ class AsyncVideoToVideoClient:
                 "video_file_path": "path/to/video.mp4",
                 "video_source": "file",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
             style={
                 "art_style": "3D Render",

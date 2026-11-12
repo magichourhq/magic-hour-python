@@ -70,9 +70,9 @@ class AnimationClient:
                 "audio_source": "file",
                 "image_file_path": "path/to/image.png",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             fps=12.0,
-            height=960,
+            height=512,
             style={
                 "art_style": "Painterly Illustration",
                 "camera_effect": "Simple Zoom In",
@@ -260,9 +260,9 @@ class AsyncAnimationClient:
                 "audio_source": "file",
                 "image_file_path": "path/to/image.png",
             },
-            end_seconds=15.0,
+            end_seconds=5.0,
             fps=12.0,
-            height=960,
+            height=512,
             style={
                 "art_style": "Painterly Illustration",
                 "camera_effect": "Simple Zoom In",

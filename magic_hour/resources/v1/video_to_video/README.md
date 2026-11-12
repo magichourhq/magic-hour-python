@@ -33,7 +33,7 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.video_to_video.generate(
     assets={"video_file_path": "/path/to/1234.mp4", "video_source": "file"},
-    end_seconds=15.0,
+    end_seconds=5.0,
     start_seconds=0.0,
     style={
         "art_style": "3D Render",
@@ -59,7 +59,7 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.video_to_video.generate(
     assets={"video_file_path": "/path/to/1234.mp4", "video_source": "file"},
-    end_seconds=15.0,
+    end_seconds=5.0,
     start_seconds=0.0,
     style={
         "art_style": "3D Render",
