@@ -17,8 +17,8 @@ Create a spoken UGC video from a prepared image and script. Returns a project ID
 | `end_seconds`           |    ✓     | Video duration in seconds. Supported values by model: * kling-3.0: 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 seconds. * ltx-2.5: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60 seconds. * veo3.1: 4, 6, 8, 15, 22, 29, 36, 43, 50, 57, 64, 71, 78, 85, 92, 99, 106, 113, 120, 127, 134, 141 seconds. Free plans are limited to 5 seconds unless a credit pack has been purchased. | `4.0`                                            |
 | `script`                |    ✓     | The words the actor should speak. Character limits apply after trimming: * kling-3.0: 2304 characters. * ltx-2.5: 1804 characters. * veo3.1: 2500 characters. LTX and Kling dialogue wrappers count toward their model prompt limit.                                                                                                                                                                        | `"Meet your new everyday essential."`            |
 | `additional_properties` |    ✗     |                                                                                                                                                                                                                                                                                                                                                                                                             | `{}`                                             |
-| `model`                 |    ✗     | Defaults to kling-3.0 on paid plans and ltx-2.5 on free plans.                                                                                                                                                                                                                                                                                                                                              | `"kling-3.0"`                                    |
-| `resolution`            |    ✗     | Defaults to 720p on paid plans and 480p on free plans. Unsupported model/resolution combinations and resolutions unavailable for your plan are rejected.                                                                                                                                                                                                                                                    | `"1080p"`                                        |
+| `model`                 |    ✗     | Defaults to kling-3.0 on paid plans and ltx-2.5 on free plans.                                                                                                                                                                                                                                                                                                                                              | `"ltx-2.5"`                                      |
+| `resolution`            |    ✗     | Defaults to 720p on paid plans and 480p on free plans. Unsupported model/resolution combinations and resolutions unavailable for your plan are rejected.                                                                                                                                                                                                                                                    | `"480p"`                                         |
 
 #### Synchronous Client
 
@@ -31,6 +31,8 @@ res = client.v1.ai_ugc_ad.create(
     assets={"image_file_path": "api-assets/id/image.jpg"},
     end_seconds=4.0,
     script="Meet your new everyday essential.",
+    model="ltx-2.5",
+    resolution="480p",
 )
 ```
 
@@ -45,6 +47,8 @@ res = await client.v1.ai_ugc_ad.create(
     assets={"image_file_path": "api-assets/id/image.jpg"},
     end_seconds=4.0,
     script="Meet your new everyday essential.",
+    model="ltx-2.5",
+    resolution="480p",
 )
 ```
 

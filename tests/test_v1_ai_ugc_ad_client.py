@@ -30,8 +30,8 @@ def test_create_200_success_all_params() -> None:
         assets={"image_file_path": "api-assets/id/image.jpg"},
         end_seconds=4.0,
         script="Meet your new everyday essential.",
-        model="kling-3.0",
-        resolution="1080p",
+        model="ltx-2.5",
+        resolution="480p",
     )
     try:
         pydantic.TypeAdapter(models.V1AiUgcAdCreateResponse).validate_python(response)
@@ -66,8 +66,8 @@ async def test_await_create_200_success_all_params() -> None:
         assets={"image_file_path": "api-assets/id/image.jpg"},
         end_seconds=4.0,
         script="Meet your new everyday essential.",
-        model="kling-3.0",
-        resolution="1080p",
+        model="ltx-2.5",
+        resolution="480p",
     )
     try:
         pydantic.TypeAdapter(models.V1AiUgcAdCreateResponse).validate_python(response)
