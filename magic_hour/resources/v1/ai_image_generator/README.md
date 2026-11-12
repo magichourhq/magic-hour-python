@@ -33,12 +33,9 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_generator.generate(
     image_count=1,
-    style={
-        "prompt": "Cool image",
-        "tool": "ai-anime-generator",
-    },
+    style={"prompt": "Cool image", "tool": "ai-anime-generator"},
     aspect_ratio="1:1",
-    model="default",
+    model="z-image-turbo",
     name="My Ai Image image",
     resolution="640px",
     wait_for_completion=True,
@@ -56,9 +53,11 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_generator.generate(
     image_count=1,
-    aspect_ratio="16:9",
     style={"prompt": "Cool image", "tool": "ai-anime-generator"},
-    name="Ai Image image",
+    aspect_ratio="1:1",
+    model="z-image-turbo",
+    name="My Ai Image image",
+    resolution="640px",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

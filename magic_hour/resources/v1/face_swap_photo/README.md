@@ -37,7 +37,7 @@ res = client.v1.face_swap_photo.generate(
         "source_file_path": "/path/to/1234.png",
         "target_file_path": "/path/to/1234.png",
     },
-    name="Face Swap image",
+    name="My Face Swap image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -57,7 +57,7 @@ res = await client.v1.face_swap_photo.generate(
         "source_file_path": "/path/to/1234.png",
         "target_file_path": "/path/to/1234.png",
     },
-    name="Face Swap image",
+    name="My Face Swap image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

@@ -216,7 +216,7 @@ class VideoToVideoClient:
 
         Examples:
         ```py
-        client.v1.video_to_video.create(assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}, end_seconds=5.0, start_seconds=0.0, style={"art_style": "Minecraft", "model": "default", "prompt": "A cinematic scene with warm lighting", "prompt_type": "default", "version": "default"}, fps=30.0, fps_resolution="HALF", height=704, name="My Video To Video video", width=1024)
+        client.v1.video_to_video.create(assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}, end_seconds=5.0, start_seconds=0.0, style={"art_style": "3D Render", "model": "default", "prompt": "A cinematic scene with warm lighting", "prompt_type": "default", "version": "default"}, fps=30.0, fps_resolution="HALF", height=704, name="My Video To Video video", width=1024)
         ```
         """
         _json = to_encodable(
@@ -440,7 +440,7 @@ class AsyncVideoToVideoClient:
 
         Examples:
         ```py
-        await client.v1.video_to_video.create(assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}, end_seconds=5.0, start_seconds=0.0, style={"art_style": "Minecraft", "model": "default", "prompt": "A cinematic scene with warm lighting", "prompt_type": "default", "version": "default"}, fps=30.0, fps_resolution="HALF", height=704, name="My Video To Video video", width=1024)
+        await client.v1.video_to_video.create(assets={"video_file_path": "api-assets/id/1234.mp4", "video_source": "file"}, end_seconds=5.0, start_seconds=0.0, style={"art_style": "3D Render", "model": "default", "prompt": "A cinematic scene with warm lighting", "prompt_type": "default", "version": "default"}, fps=30.0, fps_resolution="HALF", height=704, name="My Video To Video video", width=1024)
         ```
         """
         _json = to_encodable(

@@ -37,13 +37,14 @@ res = client.v1.character_replace.generate(
         "video_file_path": "/path/to/1234.mp4",
     },
     end_seconds=5.0,
+    model="wan-animate",
     name="My Character Replace video",
     resolution="480p",
     start_seconds=0.0,
     style={"mode": "replace", "selection_mode": "auto"},
     wait_for_completion=True,
     download_outputs=True,
-    download_directory=".",
+    download_directory="."
 )
 ```
 
@@ -60,13 +61,14 @@ res = await client.v1.character_replace.generate(
         "video_file_path": "/path/to/1234.mp4",
     },
     end_seconds=5.0,
+    model="wan-animate",
     name="My Character Replace video",
     resolution="480p",
     start_seconds=0.0,
     style={"mode": "replace", "selection_mode": "auto"},
     wait_for_completion=True,
     download_outputs=True,
-    download_directory=".",
+    download_directory="."
 )
 ```
 

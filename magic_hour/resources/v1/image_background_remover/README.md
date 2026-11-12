@@ -36,7 +36,7 @@ res = client.v1.image_background_remover.generate(
         "background_image_file_path": "/path/to/1234.png",
         "image_file_path": "/path/to/1234.png",
     },
-    name="Background Remover image",
+    name="My Background Remover image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -55,7 +55,7 @@ res = await client.v1.image_background_remover.generate(
         "background_image_file_path": "/path/to/1234.png",
         "image_file_path": "/path/to/1234.png",
     },
-    name="Background Remover image",
+    name="My Background Remover image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

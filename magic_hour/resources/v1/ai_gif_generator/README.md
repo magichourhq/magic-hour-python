@@ -33,7 +33,7 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_gif_generator.generate(
     style={"prompt": "Cute dancing cat, pixel art"},
-    name="Ai Gif gif",
+    name="My Ai Gif gif",
     output_format="gif",
     wait_for_completion=True,
     download_outputs=True,
@@ -50,7 +50,7 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_gif_generator.generate(
     style={"prompt": "Cute dancing cat, pixel art"},
-    name="Ai Gif gif",
+    name="My Ai Gif gif",
     output_format="gif",
     wait_for_completion=True,
     download_outputs=True,

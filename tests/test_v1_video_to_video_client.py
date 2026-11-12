@@ -36,7 +36,7 @@ def test_create_200_success_all_params() -> None:
         end_seconds=5.0,
         start_seconds=0.0,
         style={
-            "art_style": "Minecraft",
+            "art_style": "3D Render",
             "model": "default",
             "prompt": "A cinematic scene with warm lighting",
             "prompt_type": "default",
@@ -89,7 +89,7 @@ async def test_await_create_200_success_all_params() -> None:
         end_seconds=5.0,
         start_seconds=0.0,
         style={
-            "art_style": "Minecraft",
+            "art_style": "3D Render",
             "model": "default",
             "prompt": "A cinematic scene with warm lighting",
             "prompt_type": "default",

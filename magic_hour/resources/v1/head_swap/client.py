@@ -137,7 +137,7 @@ class HeadSwapClient:
                 "body_file_path": "api-assets/id/1234.png",
                 "head_file_path": "api-assets/id/5678.png",
             },
-            max_resolution=1024,
+            max_resolution=512,
             name="My Head Swap image",
         )
         ```
@@ -273,7 +273,7 @@ class AsyncHeadSwapClient:
                 "body_file_path": "api-assets/id/1234.png",
                 "head_file_path": "api-assets/id/5678.png",
             },
-            max_resolution=1024,
+            max_resolution=512,
             name="My Head Swap image",
         )
         ```

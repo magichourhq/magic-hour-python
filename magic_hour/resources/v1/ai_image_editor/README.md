@@ -32,9 +32,13 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_image_editor.generate(
-    assets={"image_file_paths": ["/path/to/1234.png"]},
+    assets={"image_file_paths": ["api-assets/id/1234.png", "api-assets/id/1235.png"]},
     style={"prompt": "Give me sunglasses"},
-    name="Ai Image Editor image",
+    aspect_ratio="1:1",
+    image_count=1.0,
+    model="flux-2-klein",
+    name="My Ai Image Editor image",
+    resolution="640px",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -49,9 +53,13 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_image_editor.generate(
-    assets={"image_file_paths": ["/path/to/1234.png"]},
+    assets={"image_file_paths": ["api-assets/id/1234.png", "api-assets/id/1235.png"]},
     style={"prompt": "Give me sunglasses"},
-    name="Ai Image Editor image",
+    aspect_ratio="1:1",
+    image_count=1.0,
+    model="flux-2-klein",
+    name="My Ai Image Editor image",
+    resolution="640px",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

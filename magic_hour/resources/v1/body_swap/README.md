@@ -33,14 +33,14 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.body_swap.generate(
     assets={
-        "person_file_path": "/path/to/person.png",
-        "scene_file_path": "/path/to/scene.png",
+        "person_file_path": "/path/to/1234.png",
+        "scene_file_path": "/path/to/5678.png",
     },
     resolution="640px",
     name="My Body Swap image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory=".",
+    download_directory="."
 )
 ```
 
@@ -53,14 +53,14 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.body_swap.generate(
     assets={
-        "person_file_path": "/path/to/person.png",
-        "scene_file_path": "/path/to/scene.png",
+        "person_file_path": "/path/to/1234.png",
+        "scene_file_path": "/path/to/5678.png",
     },
     resolution="640px",
     name="My Body Swap image",
     wait_for_completion=True,
     download_outputs=True,
-    download_directory=".",
+    download_directory="."
 )
 ```
 

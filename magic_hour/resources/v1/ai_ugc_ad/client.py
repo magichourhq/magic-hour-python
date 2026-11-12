@@ -160,6 +160,8 @@ class AiUgcAdClient:
             assets={"image_file_path": "api-assets/id/image.jpg"},
             end_seconds=4.0,
             script="Meet your new everyday essential.",
+            model="ltx-2.5",
+            resolution="480p",
         )
         ```
         """
@@ -322,6 +324,8 @@ class AsyncAiUgcAdClient:
             assets={"image_file_path": "api-assets/id/image.jpg"},
             end_seconds=4.0,
             script="Meet your new everyday essential.",
+            model="ltx-2.5",
+            resolution="480p",
         )
         ```
         """

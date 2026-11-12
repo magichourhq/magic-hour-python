@@ -35,11 +35,13 @@ res = client.v1.ai_video_editor.generate(
     assets={"video_file_path": "/path/to/1234.mp4"},
     end_seconds=5.0,
     style={"prompt": "Change the car color to blue"},
+    model="ltx-2.5",
     name="My Video Editor video",
+    resolution="480p",
     start_seconds=0.0,
     wait_for_completion=True,
     download_outputs=True,
-    download_directory=".",
+    download_directory="."
 )
 ```
 
@@ -54,11 +56,13 @@ res = await client.v1.ai_video_editor.generate(
     assets={"video_file_path": "/path/to/1234.mp4"},
     end_seconds=5.0,
     style={"prompt": "Change the car color to blue"},
+    model="ltx-2.5",
     name="My Video Editor video",
+    resolution="480p",
     start_seconds=0.0,
     wait_for_completion=True,
     download_outputs=True,
-    download_directory=".",
+    download_directory="."
 )
 ```
 

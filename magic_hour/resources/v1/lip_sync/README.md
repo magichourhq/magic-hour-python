@@ -37,13 +37,10 @@ res = client.v1.lip_sync.generate(
         "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
-    style={
-        "generation_mode": "lite",
-    },
     end_seconds=5.0,
     start_seconds=0.0,
     max_fps_limit=12.0,
-    name="Lip Sync video",
+    name="My Lip Sync video",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -63,13 +60,10 @@ res = await client.v1.lip_sync.generate(
         "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
-    style={
-        "generation_mode": "lite",
-    },
     end_seconds=5.0,
     start_seconds=0.0,
     max_fps_limit=12.0,
-    name="Lip Sync video",
+    name="My Lip Sync video",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

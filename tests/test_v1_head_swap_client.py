@@ -31,7 +31,7 @@ def test_create_200_success_all_params() -> None:
             "body_file_path": "api-assets/id/1234.png",
             "head_file_path": "api-assets/id/5678.png",
         },
-        max_resolution=1024,
+        max_resolution=512,
         name="My Head Swap image",
     )
     try:
@@ -68,7 +68,7 @@ async def test_await_create_200_success_all_params() -> None:
             "body_file_path": "api-assets/id/1234.png",
             "head_file_path": "api-assets/id/5678.png",
         },
-        max_resolution=1024,
+        max_resolution=512,
         name="My Head Swap image",
     )
     try:

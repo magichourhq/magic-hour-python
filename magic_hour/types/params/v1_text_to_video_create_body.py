@@ -46,7 +46,7 @@ class V1TextToVideoCreateBody(typing_extensions.TypedDict):
     Whether to include audio in the video. Defaults to `false` if not specified.
     
     Audio support varies by model:
-    * **`gemini-omni-1.2`**: Not supported
+    * **`gemini-omni-1.2`**: Toggle-able: no additional credits for audio
     * **`kling-2.6`**: Not supported
     * **`kling-3.0`**: Toggle-able: audio adds extra credits when enabled
     * **`kling-4.0`**: Toggle-able: no additional credits for audio

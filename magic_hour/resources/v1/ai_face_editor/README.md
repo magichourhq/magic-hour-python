@@ -50,7 +50,7 @@ res = client.v1.ai_face_editor.generate(
         "mouth_purse": 0.0,
         "mouth_smile": 0.0,
     },
-    name="Face Editor image",
+    name="My Face Editor image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -83,7 +83,7 @@ res = await client.v1.ai_face_editor.generate(
         "mouth_purse": 0.0,
         "mouth_smile": 0.0,
     },
-    name="Face Editor image",
+    name="My Face Editor image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
