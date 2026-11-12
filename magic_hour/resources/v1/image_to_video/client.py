@@ -114,7 +114,7 @@ class ImageToVideoClient:
         response = client.v1.image_to_video.generate(
             assets={"image_file_path": "path/to/image.png"},
             end_seconds=5.0,
-            resolution="720p",
+            resolution="480p",
             wait_for_completion=True,
             download_outputs=True,
             download_directory=".",
@@ -466,7 +466,7 @@ class AsyncImageToVideoClient:
         response = await client.v1.image_to_video.generate(
             assets={"image_file_path": "path/to/image.png"},
             end_seconds=5.0,
-            resolution="720p",
+            resolution="480p",
             wait_for_completion=True,
             download_outputs=True,
             download_directory=".",

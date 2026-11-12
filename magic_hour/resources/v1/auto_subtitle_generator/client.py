@@ -72,9 +72,9 @@ class AutoSubtitleGeneratorClient:
         ```py
         response = client.v1.auto_subtitle_generator.generate(
             assets={"video_file_path": "path/to/video.mp4"},
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
-            style={},
+            style={"template": "karaoke"},
             name="Subtitled Video",
             wait_for_completion=True,
             download_outputs=True,
@@ -235,9 +235,9 @@ class AsyncAutoSubtitleGeneratorClient:
         ```py
         response = await client.v1.auto_subtitle_generator.generate(
             assets={"video_file_path": "path/to/video.mp4"},
-            end_seconds=15.0,
+            end_seconds=5.0,
             start_seconds=0.0,
-            style={},
+            style={"template": "karaoke"},
             name="Subtitled Video",
             wait_for_completion=True,
             download_outputs=True,

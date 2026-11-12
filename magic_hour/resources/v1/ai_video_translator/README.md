@@ -14,7 +14,7 @@ from magic_hour import Client
 client = Client(token="YOUR_API_TOKEN")
 res = client.v1.ai_video_translator.generate(
     assets={"video_file_path": "/path/to/video.mp4"},
-    end_seconds=15.0,
+    end_seconds=5.0,
     target_language="Spanish",
     start_seconds=0.0,
 )

@@ -37,9 +37,9 @@ res = client.v1.animation.generate(
         "audio_source": "file",
         "image_file_path": "/path/to/1234.png",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     fps=12.0,
-    height=960,
+    height=512,
     style={
         "art_style": "Painterly Illustration",
         "camera_effect": "Simple Zoom In",
@@ -68,9 +68,9 @@ res = await client.v1.animation.generate(
         "audio_source": "file",
         "image_file_path": "/path/to/1234.png",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     fps=12.0,
-    height=960,
+    height=512,
     style={
         "art_style": "Painterly Illustration",
         "camera_effect": "Simple Zoom In",

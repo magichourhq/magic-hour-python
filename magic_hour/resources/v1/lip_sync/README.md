@@ -40,7 +40,7 @@ res = client.v1.lip_sync.generate(
     style={
         "generation_mode": "lite",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     start_seconds=0.0,
     max_fps_limit=12.0,
     name="Lip Sync video",
@@ -66,7 +66,7 @@ res = await client.v1.lip_sync.generate(
     style={
         "generation_mode": "lite",
     },
-    end_seconds=15.0,
+    end_seconds=5.0,
     start_seconds=0.0,
     max_fps_limit=12.0,
     name="Lip Sync video",
