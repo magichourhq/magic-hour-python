@@ -32,9 +32,14 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.image_to_video.generate(
-    assets={"image_file_path": "/path/to/1234.png"},
+    assets={
+        "end_image_file_path": "/path/to/1234.png",
+        "image_file_path": "/path/to/1234.png",
+    },
     end_seconds=5.0,
-    name="Image To Video video",
+    audio=True,
+    model="ltx-2.5",
+    name="My Image To Video video",
     resolution="480p",
     wait_for_completion=True,
     download_outputs=True,
@@ -50,9 +55,14 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.image_to_video.generate(
-    assets={"image_file_path": "/path/to/1234.png"},
+    assets={
+        "end_image_file_path": "/path/to/1234.png",
+        "image_file_path": "/path/to/1234.png",
+    },
     end_seconds=5.0,
-    name="Image To Video video",
+    audio=True,
+    model="ltx-2.5",
+    name="My Image To Video video",
     resolution="480p",
     wait_for_completion=True,
     download_outputs=True,

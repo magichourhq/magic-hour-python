@@ -42,13 +42,14 @@ res = client.v1.animation.generate(
     height=512,
     style={
         "art_style": "Painterly Illustration",
+        "art_style_custom": "Watercolor painting with soft pastel colors",
         "camera_effect": "Simple Zoom In",
         "prompt": "Cyberpunk city",
         "prompt_type": "custom",
         "transition_speed": 5,
     },
     width=512,
-    name="Animation video",
+    name="My Animation video",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -73,13 +74,14 @@ res = await client.v1.animation.generate(
     height=512,
     style={
         "art_style": "Painterly Illustration",
+        "art_style_custom": "Watercolor painting with soft pastel colors",
         "camera_effect": "Simple Zoom In",
         "prompt": "Cyberpunk city",
         "prompt_type": "custom",
         "transition_speed": 5,
     },
     width=512,
-    name="Animation video",
+    name="My Animation video",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

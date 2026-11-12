@@ -38,7 +38,8 @@ res = client.v1.ai_talking_photo.generate(
     },
     end_seconds=5.0,
     start_seconds=0.0,
-    name="Talking Photo image",
+    name="My Talking Photo video",
+    resolution="480p",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -59,7 +60,8 @@ res = await client.v1.ai_talking_photo.generate(
     },
     end_seconds=5.0,
     start_seconds=0.0,
-    name="Talking Photo image",
+    name="My Talking Photo video",
+    resolution="480p",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

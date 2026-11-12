@@ -34,13 +34,13 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.face_swap.generate(
     assets={
         "face_swap_mode": "all-faces",
-        "image_file_path": "image/id/1234.png",
+        "image_file_path": "/path/to/1234.png",
         "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
     end_seconds=5.0,
     start_seconds=0.0,
-    name="Face Swap video",
+    name="My Face Swap video",
     style={"version": "default"},
     wait_for_completion=True,
     download_outputs=True,
@@ -58,13 +58,13 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.face_swap.generate(
     assets={
         "face_swap_mode": "all-faces",
-        "image_file_path": "image/id/1234.png",
+        "image_file_path": "/path/to/1234.png",
         "video_file_path": "/path/to/1234.mp4",
         "video_source": "file",
     },
     end_seconds=5.0,
     start_seconds=0.0,
-    name="Face Swap video",
+    name="My Face Swap video",
     style={"version": "default"},
     wait_for_completion=True,
     download_outputs=True,

@@ -34,7 +34,7 @@ client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_qr_code_generator.generate(
     content="https://magichour.ai",
     style={"art_style": "Watercolor"},
-    name="Qr Code image",
+    name="My Qr Code image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -51,7 +51,7 @@ client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_qr_code_generator.generate(
     content="https://magichour.ai",
     style={"art_style": "Watercolor"},
-    name="Qr Code image",
+    name="My Qr Code image",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."

@@ -33,9 +33,11 @@ from os import getenv
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.text_to_video.generate(
     end_seconds=5.0,
-    aspect_ratio="16:9",
     style={"prompt": "a dog running"},
-    name="Text To Video video",
+    aspect_ratio="16:9",
+    audio=True,
+    model="ltx-2.5",
+    name="My Text To Video video",
     resolution="480p",
     wait_for_completion=True,
     download_outputs=True,
@@ -52,9 +54,11 @@ from os import getenv
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.text_to_video.generate(
     end_seconds=5.0,
-    aspect_ratio="16:9",
     style={"prompt": "a dog running"},
-    name="Text To Video video",
+    aspect_ratio="16:9",
+    audio=True,
+    model="ltx-2.5",
+    name="My Text To Video video",
     resolution="480p",
     wait_for_completion=True,
     download_outputs=True,

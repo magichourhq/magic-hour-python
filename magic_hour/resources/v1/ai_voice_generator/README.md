@@ -4,7 +4,7 @@
 
 <!-- CUSTOM DOCS START -->
 
-### Ai Talking Photo Generate Workflow <a name="generate"></a>
+### Ai Voice Generator Generate Workflow <a name="generate"></a>
 
 The workflow performs the following action
 
@@ -32,8 +32,13 @@ from os import getenv
 
 client = Client(token=getenv("API_TOKEN"))
 res = client.v1.ai_voice_generator.generate(
-    style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
-    name="Voice Generator audio",
+    style={
+        "language": "spanish",
+        "prompt": "Hello, how are you?",
+        "speed": 1.15,
+        "voice_name": "Elon Musk",
+    },
+    name="My Voice Generator audio",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
@@ -48,8 +53,13 @@ from os import getenv
 
 client = AsyncClient(token=getenv("API_TOKEN"))
 res = await client.v1.ai_voice_generator.generate(
-    style={"prompt": "Hello, how are you?", "voice_name": "Elon Musk"},
-    name="Voice Generator audio",
+    style={
+        "language": "spanish",
+        "prompt": "Hello, how are you?",
+        "speed": 1.15,
+        "voice_name": "Elon Musk",
+    },
+    name="My Voice Generator audio",
     wait_for_completion=True,
     download_outputs=True,
     download_directory="."
