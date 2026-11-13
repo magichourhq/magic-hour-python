@@ -51,6 +51,7 @@ class AiImageGeneratorClient:
                     "seedream",
                     "seedream-v4",
                     "seedream-v4.5",
+                    "seedream-v5-flash",
                     "seedream-v5-pro",
                     "z-image-turbo",
                 ]
@@ -376,6 +377,7 @@ class AsyncAiImageGeneratorClient:
                     "seedream",
                     "seedream-v4",
                     "seedream-v4.5",
+                    "seedream-v5-flash",
                     "seedream-v5-pro",
                     "z-image-turbo",
                 ]

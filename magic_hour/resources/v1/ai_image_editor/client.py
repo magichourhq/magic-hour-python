@@ -58,6 +58,7 @@ class AiImageEditorClient:
                     "qwen-image-2.1",
                     "seedream-v4",
                     "seedream-v4.5",
+                    "seedream-v5-flash",
                     "seedream-v5-pro",
                 ]
             ],
@@ -378,6 +379,7 @@ class AsyncAiImageEditorClient:
                     "qwen-image-2.1",
                     "seedream-v4",
                     "seedream-v4.5",
+                    "seedream-v5-flash",
                     "seedream-v5-pro",
                 ]
             ],
