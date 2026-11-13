@@ -249,7 +249,7 @@ download_urls = result.downloads
 ### [v1.ai_voice_generator](magic_hour/resources/v1/ai_voice_generator/README.md)
 
 - [create](magic_hour/resources/v1/ai_voice_generator/README.md#create) - AI Voice Generator
-- [generate](magic_hour/resources/v1/ai_voice_generator/README.md#generate) - Ai Talking Photo Generate Workflow
+- [generate](magic_hour/resources/v1/ai_voice_generator/README.md#generate) - Ai Voice Generator Generate Workflow
 
 ### [v1.animation](magic_hour/resources/v1/animation/README.md)
 
