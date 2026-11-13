@@ -142,7 +142,7 @@ class AiUgcAdClient:
         Free plans are limited to 5 seconds unless a credit pack has been purchased.
             script: The words the actor should speak. Character limits apply after trimming:
         * kling-3.0: 2304 characters.
-        * ltx-2.5: 1804 characters.
+        * ltx-2.5: 3804 characters.
         * veo3.1: 2500 characters.
         LTX and Kling dialogue wrappers count toward their model prompt limit.
             request_options: Additional options to customize the HTTP request
@@ -306,7 +306,7 @@ class AsyncAiUgcAdClient:
         Free plans are limited to 5 seconds unless a credit pack has been purchased.
             script: The words the actor should speak. Character limits apply after trimming:
         * kling-3.0: 2304 characters.
-        * ltx-2.5: 1804 characters.
+        * ltx-2.5: 3804 characters.
         * veo3.1: 2500 characters.
         LTX and Kling dialogue wrappers count toward their model prompt limit.
             request_options: Additional options to customize the HTTP request
