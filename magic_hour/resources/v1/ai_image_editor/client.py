@@ -201,7 +201,7 @@ class AiImageEditorClient:
         POST /v1/ai-image-editor
 
         Args:
-            aspect_ratio: The aspect ratio of the output image(s). If not specified, defaults to `auto`.
+            aspect_ratio: The aspect ratio of the output image(s). If not specified, defaults to `auto`. Ignored for `krea-2` and `flux-2-klein` when an input image is provided; the output keeps the source image's aspect ratio.
             image_count: Number of images to generate. Maximum varies by model. Defaults to 1 if not specified.
             model: The AI model to use for image editing. Each model has different capabilities and costs.
 
@@ -521,7 +521,7 @@ class AsyncAiImageEditorClient:
         POST /v1/ai-image-editor
 
         Args:
-            aspect_ratio: The aspect ratio of the output image(s). If not specified, defaults to `auto`.
+            aspect_ratio: The aspect ratio of the output image(s). If not specified, defaults to `auto`. Ignored for `krea-2` and `flux-2-klein` when an input image is provided; the output keeps the source image's aspect ratio.
             image_count: Number of images to generate. Maximum varies by model. Defaults to 1 if not specified.
             model: The AI model to use for image editing. Each model has different capabilities and costs.
 
