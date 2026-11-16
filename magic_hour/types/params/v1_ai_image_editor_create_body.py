@@ -23,7 +23,7 @@ class V1AiImageEditorCreateBody(typing_extensions.TypedDict):
         ]
     ]
     """
-    The aspect ratio of the output image(s). If not specified, defaults to `auto`.
+    The aspect ratio of the output image(s). If not specified, defaults to `auto`. Ignored for `krea-2` and `flux-2-klein` when an input image is provided; the output keeps the source image's aspect ratio.
     """
 
     assets: typing_extensions.Required[V1AiImageEditorCreateBodyAssets]
