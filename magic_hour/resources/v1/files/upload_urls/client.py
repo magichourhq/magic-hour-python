@@ -40,8 +40,8 @@ class UploadUrlsClient:
         Example:
         
         ```
-        curl -X PUT --data '@/path/to/file/video.mp4' \
-          https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
+        curl -X PUT --data-binary '@/path/to/file/video.mp4' \
+          "https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>"
         ```
         
         
@@ -107,8 +107,8 @@ class AsyncUploadUrlsClient:
         Example:
         
         ```
-        curl -X PUT --data '@/path/to/file/video.mp4' \
-          https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
+        curl -X PUT --data-binary '@/path/to/file/video.mp4' \
+          "https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>"
         ```
         
         
