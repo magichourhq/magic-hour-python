@@ -22,8 +22,8 @@ Once you receive an upload URL, send a `PUT` request to upload the file directly
 Example:
 
 ```
-curl -X PUT --data '@/path/to/file/video.mp4' \
-  https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>
+curl -X PUT --data-binary '@/path/to/file/video.mp4' \
+  "https://videos.magichour.ai/api-assets/id/video.mp4?<auth params from the API response>"
 ```
 
 **API Endpoint**: `POST /v1/files/upload-urls`
