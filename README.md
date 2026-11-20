@@ -102,6 +102,8 @@ The `generate()` function provides a complete end-to-end solution:
 - `download_outputs` (bool, default True): Whether to download the generated files
 - `download_directory` (str, optional): Directory to save downloaded files (defaults to current directory)
 
+Downloads preserve existing files. If a filename is occupied, the SDK adds a numeric suffix, such as `output_1.png`. Use `downloaded_paths` for the saved filenames. Downloading a completed project again saves another copy.
+
 ```python
 # Generate function - handles everything automatically
 response = client.v1.ai_image_generator.generate(
