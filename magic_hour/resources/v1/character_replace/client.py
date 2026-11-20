@@ -46,7 +46,9 @@ class CharacterReplaceClient:
         ] = type_utils.NOT_GIVEN,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["kling-3.0", "minimax-h3", "wan-animate"]
+                typing_extensions.Literal[
+                    "kling-3.0", "kling-4.0", "minimax-h3", "wan-animate"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -270,7 +272,9 @@ class AsyncCharacterReplaceClient:
         ] = type_utils.NOT_GIVEN,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["kling-3.0", "minimax-h3", "wan-animate"]
+                typing_extensions.Literal[
+                    "kling-3.0", "kling-4.0", "minimax-h3", "wan-animate"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
