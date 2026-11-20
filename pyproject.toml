@@ -3,7 +3,8 @@ name = "magic_hour"
 version = "0.98.1"
 description = "Python SDK for Magic Hour API"
 readme = "README.md"
-authors = []
+authors = ["Magic Hour <support@magichour.ai>"]
+license = "MIT"
 packages = [{ include = "magic_hour" }]
 homepage = "https://magichour.ai"
 repository = "https://github.com/magichourhq/magic-hour-python"
@@ -23,6 +24,10 @@ keywords = [
     "lip-sync",
     "sdk",
     "api",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
 ]
 
 [tool.poetry.dependencies]
