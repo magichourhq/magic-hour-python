@@ -9,7 +9,7 @@ on:
 
 jobs:
   publish:
-    runs-on: blacksmith-2vcpu-ubuntu-2404
+    runs-on: ubuntu-latest # GitHub-hosted: supported env for pypa/gh-action-pypi-publish
     permissions:
       id-token: write # Required for PyPI trusted publishing
       contents: read
