@@ -1,4 +1,5 @@
-# This requires you to have a secret PYPI_TOKEN saved in your github environment
+# Publishes to PyPI via trusted publishing (OIDC); no PYPI_TOKEN secret needed.
+# Requires a trusted publisher on PyPI for this repo + publish.yml.
 
 name: Publish to PyPi
 
@@ -9,6 +10,9 @@ on:
 jobs:
   publish:
     runs-on: blacksmith-2vcpu-ubuntu-2404
+    permissions:
+      id-token: write # Required for PyPI trusted publishing
+      contents: read
     steps:
       #----------------------------------------------
       #  -----  checkout & setup python  -----
@@ -54,9 +58,10 @@ jobs:
       #------------------------------
       #  -----  publish to pypi -----
       #------------------------------
-      - name: build & publish
-        run: |
-          poetry publish --build --username __token__ --password=${{ secrets.PYPI_TOKEN }}
+      - name: build
+        run: poetry build
+      - name: publish
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
       #----------------------------------------------
       #  -----  mark SDK as released in Sideko  -----
       #----------------------------------------------
