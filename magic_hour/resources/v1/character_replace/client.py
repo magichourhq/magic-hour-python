@@ -46,7 +46,9 @@ class CharacterReplaceClient:
         ] = type_utils.NOT_GIVEN,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["kling-3.0", "minimax-h3", "wan-animate"]
+                typing_extensions.Literal[
+                    "kling-3.0", "kling-4.0", "minimax-h3", "wan-animate"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -135,7 +137,9 @@ class CharacterReplaceClient:
         end_seconds: float,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["kling-3.0", "minimax-h3", "wan-animate"]
+                typing_extensions.Literal[
+                    "kling-3.0", "kling-4.0", "minimax-h3", "wan-animate"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -187,8 +191,9 @@ class CharacterReplaceClient:
             model: Model to use. Defaults to `wan-animate`.
 
         * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
-        * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
-        * **`minimax-h3`**: 480p, 720p, 1080p. Clips of 1–30 seconds in `replace` mode or 1–60 seconds in `animate` mode. Subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
+        * **`kling-3.0`**: 720p, 1080p. Clips of 3–30 seconds in `animate` mode or 3–10 seconds in `replace` mode. Picks the main person automatically, so `points` are rejected.
+        * **`kling-4.0`**: 720p, 1080p. Clips of 3–30 seconds in `replace` mode. Picks the main person automatically, so `points` are rejected.
+        * **`minimax-h3`**: 480p, 720p, 1080p. Clips of 1–60 seconds in `animate` mode or 1–30 seconds in `replace` mode. Subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
             name: Give your video a custom name for easy identification.
             resolution: Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
@@ -267,7 +272,9 @@ class AsyncCharacterReplaceClient:
         ] = type_utils.NOT_GIVEN,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["kling-3.0", "minimax-h3", "wan-animate"]
+                typing_extensions.Literal[
+                    "kling-3.0", "kling-4.0", "minimax-h3", "wan-animate"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -356,7 +363,9 @@ class AsyncCharacterReplaceClient:
         end_seconds: float,
         model: typing.Union[
             typing.Optional[
-                typing_extensions.Literal["kling-3.0", "minimax-h3", "wan-animate"]
+                typing_extensions.Literal[
+                    "kling-3.0", "kling-4.0", "minimax-h3", "wan-animate"
+                ]
             ],
             type_utils.NotGiven,
         ] = type_utils.NOT_GIVEN,
@@ -408,8 +417,9 @@ class AsyncCharacterReplaceClient:
             model: Model to use. Defaults to `wan-animate`.
 
         * **`wan-animate`**: 480p, 720p. Supports `points` subject selection.
-        * **`kling-3.0`**: 720p, 1080p. Clips of 3–10 seconds in `replace` mode or 3–30 seconds in `animate` mode. Picks the main person automatically, so `points` are rejected.
-        * **`minimax-h3`**: 480p, 720p, 1080p. Clips of 1–30 seconds in `replace` mode or 1–60 seconds in `animate` mode. Subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
+        * **`kling-3.0`**: 720p, 1080p. Clips of 3–30 seconds in `animate` mode or 3–10 seconds in `replace` mode. Picks the main person automatically, so `points` are rejected.
+        * **`kling-4.0`**: 720p, 1080p. Clips of 3–30 seconds in `replace` mode. Picks the main person automatically, so `points` are rejected.
+        * **`minimax-h3`**: 480p, 720p, 1080p. Clips of 1–60 seconds in `animate` mode or 1–30 seconds in `replace` mode. Subject `points` are `replace`-only; `animate` with `selection_mode` `point` returns 422, and with `auto` or no `selection_mode` the points are ignored.
             name: Give your video a custom name for easy identification.
             resolution: Output video resolution. Must be supported by `model`. Defaults to the lowest resolution available on your plan for that model.
             start_seconds: Start time of your clip (seconds). Must be ≥ 0.
