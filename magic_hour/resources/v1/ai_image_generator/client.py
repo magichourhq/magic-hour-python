@@ -38,6 +38,7 @@ class AiImageGeneratorClient:
                 typing_extensions.Literal[
                     "default",
                     "flux-2-klein",
+                    "flux-3-klein",
                     "flux-schnell",
                     "gpt-image-2",
                     "gpt-image-2.5-flare",
@@ -370,6 +371,7 @@ class AsyncAiImageGeneratorClient:
                 typing_extensions.Literal[
                     "default",
                     "flux-2-klein",
+                    "flux-3-klein",
                     "flux-schnell",
                     "gpt-image-2",
                     "gpt-image-2.5-flare",

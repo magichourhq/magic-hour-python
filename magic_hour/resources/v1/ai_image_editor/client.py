@@ -46,6 +46,7 @@ class AiImageEditorClient:
                 typing_extensions.Literal[
                     "default",
                     "flux-2-klein",
+                    "flux-3-klein",
                     "gpt-image-2",
                     "gpt-image-2.5-flare",
                     "krea-2",
@@ -373,6 +374,7 @@ class AsyncAiImageEditorClient:
                 typing_extensions.Literal[
                     "default",
                     "flux-2-klein",
+                    "flux-3-klein",
                     "gpt-image-2",
                     "gpt-image-2.5-flare",
                     "krea-2",
