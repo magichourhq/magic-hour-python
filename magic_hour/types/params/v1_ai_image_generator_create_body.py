@@ -29,6 +29,7 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
         typing_extensions.Literal[
             "default",
             "flux-2-klein",
+            "flux-3-klein",
             "flux-schnell",
             "gpt-image-2",
             "gpt-image-2.5-flare",
@@ -56,6 +57,10 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
       - Supported resolutions: 640px, 1k, 2k
       - Available for tiers: free, creator, pro, business
       - Image count allowed: 1
+    - `flux-3-klein` - from 5 credits/image
+      - Supported resolutions: 640px, 1k, 2k
+      - Available for tiers: free, creator, pro, business
+      - Image count allowed: 1, 2, 3, 4
     - `flux-schnell` - from 5 credits/image
       - Supported resolutions: 640px, 1k, 2k
       - Available for tiers: free, creator, pro, business
@@ -147,6 +152,7 @@ class V1AiImageGeneratorCreateBody(typing_extensions.TypedDict):
     
     **Per-model support:**
     - `flux-2-klein` - 640px, 1k, 2k
+    - `flux-3-klein` - 640px, 1k, 2k
     - `flux-schnell` - 640px, 1k, 2k
     - `gpt-image-2` - 640px, 1k, 2k, 4k
     - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
@@ -191,6 +197,7 @@ class _SerializerV1AiImageGeneratorCreateBody(pydantic.BaseModel):
         typing_extensions.Literal[
             "default",
             "flux-2-klein",
+            "flux-3-klein",
             "flux-schnell",
             "gpt-image-2",
             "gpt-image-2.5-flare",
