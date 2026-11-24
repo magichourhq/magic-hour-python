@@ -39,3 +39,7 @@ res = await client.v1.account.list()
 ```python
 {"credits": 12500, "email": "user@example.com", "id": "cuid-example", "subscription": {"billing_interval": "month", "cancel_at_period_end": False, "current_period_end": "2026-10-01T00:00:00.000Z", "discount": {"amount_off": 123, "percent_off": 20.0}, "name": "Pro", "price": {"amount": 4900, "currency": "usd"}, "status": "active"}, "tier": "pro"}
 ```
+
+## Submodules
+
+- [checkout](checkout/README.md) - checkout

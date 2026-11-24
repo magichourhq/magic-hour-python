@@ -1,5 +1,5 @@
 {
-  "id": "aab0ca2e-7260-4554-80ac-b7d0498e9626",
+  "id": "32008b50-ddc2-4a62-a401-51fd86c63158",
   "tracked_paths": [
     {
       "editable": true,
@@ -36,6 +36,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/account/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/account/checkout/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/account/checkout/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/account/checkout/client.py"
     },
     {
       "editable": true,
@@ -519,6 +531,10 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_account_checkout_create_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_account_list_response.py"
     },
     {
@@ -744,6 +760,10 @@
     {
       "editable": true,
       "path": "magic_hour/types/params/__init__.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/params/v1_account_checkout_create_body.py"
     },
     {
       "editable": false,
@@ -1096,6 +1116,10 @@
     {
       "editable": true,
       "path": "pyproject.toml"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_account_checkout_client.py"
     },
     {
       "editable": false,

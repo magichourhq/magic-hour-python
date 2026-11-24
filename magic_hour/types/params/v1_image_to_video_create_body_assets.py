@@ -21,7 +21,7 @@ class V1ImageToVideoCreateBodyAssets(typing_extensions.TypedDict):
     * **`seedance-1.5`**: Supports 480p, 720p, 1080p.
     * **`seedance-2.0`**: Supports 480p, 720p, 1080p, 4k.
     * **`seedance-2.0-fast`**: Supports 480p, 720p.
-    * **`seedance-2.0-mini`**: Supports 480p, 720p.
+    * **`seedance-2.0-mini`**: Not supported
     * **`seedance-2.5`**: Supports 480p, 720p, 1080p, 4k.
     * **`veo3.1`**: Supports 720p, 1080p. Requires a duration of 8 seconds or less.
     * **`veo3.1-lite`**: Supports 720p, 1080p. Requires a duration of 8 seconds or less.
