@@ -1,5 +1,6 @@
 import typing
 
+from magic_hour.resources.v1.account.checkout import AsyncCheckoutClient, CheckoutClient
 from magic_hour.types import models
 from make_api_request import (
     AsyncBaseClient,
@@ -12,6 +13,7 @@ from make_api_request import (
 class AccountClient:
     def __init__(self, *, base_client: SyncBaseClient):
         self._base_client = base_client
+        self.checkout = CheckoutClient(base_client=self._base_client)
 
     def list(
         self, *, request_options: typing.Optional[RequestOptions] = None
@@ -50,6 +52,7 @@ class AccountClient:
 class AsyncAccountClient:
     def __init__(self, *, base_client: AsyncBaseClient):
         self._base_client = base_client
+        self.checkout = AsyncCheckoutClient(base_client=self._base_client)
 
     async def list(
         self, *, request_options: typing.Optional[RequestOptions] = None
