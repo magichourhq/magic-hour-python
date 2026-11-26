@@ -166,6 +166,20 @@ download_urls = result.downloads
 - You want to separate generation initiation from completion handling
 - You need fine-grained control over the entire workflow
 
+## Idempotent Requests
+
+Project create endpoints accept an `Idempotency-Key` header, so you can safely retry a request without creating or paying for a second project. Repeating a key within 24 hours returns the original project. Keys are shared across your account, so use a new key, such as a UUID, for each project.
+
+```python
+client.v1.ai_image_generator.create(
+    image_count=1,
+    style={"prompt": "Cool image"},
+    request_options={"additional_headers": {"Idempotency-Key": "5f3c1b9e-8a41-4a0e-9d3e-2f6a1c7b9e10"}},
+)
+```
+
+This also works with `generate()`.
+
 ## Module Documentation and Snippets
 
 ### [v1.account](magic_hour/resources/v1/account/README.md)
