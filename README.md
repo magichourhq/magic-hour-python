@@ -178,7 +178,15 @@ client.v1.ai_image_generator.create(
 )
 ```
 
-This also works with `generate()`.
+With `generate()`:
+
+```python
+client.v1.ai_image_generator.generate(
+    image_count=1,
+    style={"prompt": "Cool image"},
+    request_options={"additional_headers": {"Idempotency-Key": "5f3c1b9e-8a41-4a0e-9d3e-2f6a1c7b9e10"}},
+)
+```
 
 ## Module Documentation and Snippets
 
