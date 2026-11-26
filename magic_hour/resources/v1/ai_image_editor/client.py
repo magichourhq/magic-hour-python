@@ -233,6 +233,10 @@ class AiImageEditorClient:
           - Supported resolutions: 640px, 1k
           - Available for tiers: creator, pro, business
           - Max additional input images: 9
+        - `nano-banana-2` - from 100 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Max additional input images: 9
         - `nano-banana-2-lite` - from 50 credits/image
           - Supported resolutions: 640px, 1k
           - Available for tiers: creator, pro, business
@@ -287,6 +291,7 @@ class AiImageEditorClient:
         - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
         - `krea-2` - 640px, 1k
         - `nano-banana` - 640px, 1k
+        - `nano-banana-2` - 640px, 1k, 2k, 4k
         - `nano-banana-2-lite` - 640px, 1k
         - `nano-banana-2.1` - 640px, 1k, 2k, 4k
         - `nano-banana-pro` - 1k, 2k, 4k
@@ -560,6 +565,10 @@ class AsyncAiImageEditorClient:
           - Supported resolutions: 640px, 1k
           - Available for tiers: creator, pro, business
           - Max additional input images: 9
+        - `nano-banana-2` - from 100 credits/image
+          - Supported resolutions: 640px, 1k, 2k, 4k
+          - Available for tiers: creator, pro, business
+          - Max additional input images: 9
         - `nano-banana-2-lite` - from 50 credits/image
           - Supported resolutions: 640px, 1k
           - Available for tiers: creator, pro, business
@@ -614,6 +623,7 @@ class AsyncAiImageEditorClient:
         - `gpt-image-2.5-flare` - 640px, 1k, 2k, 4k
         - `krea-2` - 640px, 1k
         - `nano-banana` - 640px, 1k
+        - `nano-banana-2` - 640px, 1k, 2k, 4k
         - `nano-banana-2-lite` - 640px, 1k
         - `nano-banana-2.1` - 640px, 1k, 2k, 4k
         - `nano-banana-pro` - 1k, 2k, 4k
