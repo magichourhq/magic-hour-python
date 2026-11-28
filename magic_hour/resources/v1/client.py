@@ -82,6 +82,7 @@ from magic_hour.resources.v1.character_replace import (
     AsyncCharacterReplaceClient,
     CharacterReplaceClient,
 )
+from magic_hour.resources.v1.estimate import AsyncEstimateClient, EstimateClient
 from magic_hour.resources.v1.face_detection import (
     AsyncFaceDetectionClient,
     FaceDetectionClient,
@@ -180,6 +181,7 @@ class V1Client:
         self.ai_music_generator = AiMusicGeneratorClient(base_client=self._base_client)
         self.ai_video_upscaler = AiVideoUpscalerClient(base_client=self._base_client)
         self.voices = VoicesClient(base_client=self._base_client)
+        self.estimate = EstimateClient(base_client=self._base_client)
 
 
 class AsyncV1Client:
@@ -251,3 +253,4 @@ class AsyncV1Client:
             base_client=self._base_client
         )
         self.voices = AsyncVoicesClient(base_client=self._base_client)
+        self.estimate = AsyncEstimateClient(base_client=self._base_client)

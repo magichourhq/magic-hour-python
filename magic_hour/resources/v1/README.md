@@ -26,6 +26,7 @@
 - [auto_subtitle_generator](auto_subtitle_generator/README.md) - auto_subtitle_generator
 - [body_swap](body_swap/README.md) - body_swap
 - [character_replace](character_replace/README.md) - character_replace
+- [estimate](estimate/README.md) - estimate
 - [face_detection](face_detection/README.md) - face_detection
 - [face_swap](face_swap/README.md) - face_swap
 - [face_swap_photo](face_swap_photo/README.md) - face_swap_photo

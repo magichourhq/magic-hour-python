@@ -2,6 +2,7 @@ import pydantic
 import typing
 import typing_extensions
 
+from .v1_account_list_response_auto_reload import V1AccountListResponseAutoReload
 from .v1_account_list_response_subscription import V1AccountListResponseSubscription
 
 
@@ -15,6 +16,9 @@ class V1AccountListResponse(pydantic.BaseModel):
         populate_by_name=True,
     )
 
+    auto_reload: V1AccountListResponseAutoReload = pydantic.Field(
+        alias="auto_reload",
+    )
     credits: int = pydantic.Field(
         alias="credits",
     )
