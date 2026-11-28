@@ -39,7 +39,9 @@ from .v1_auto_subtitle_generator_create_response import (
 )
 from .v1_body_swap_create_response import V1BodySwapCreateResponse
 from .v1_character_replace_create_response import V1CharacterReplaceCreateResponse
+from .v1_estimate_audio_list_response import V1EstimateAudioListResponse
 from .v1_estimate_image_list_response import V1EstimateImageListResponse
+from .v1_estimate_video_list_response import V1EstimateVideoListResponse
 from .v1_face_detection_create_response import V1FaceDetectionCreateResponse
 from .v1_face_detection_get_response import V1FaceDetectionGetResponse
 from .v1_face_detection_get_response_error import V1FaceDetectionGetResponseError
@@ -113,7 +115,9 @@ __all__ = [
     "V1AutoSubtitleGeneratorCreateResponse",
     "V1BodySwapCreateResponse",
     "V1CharacterReplaceCreateResponse",
+    "V1EstimateAudioListResponse",
     "V1EstimateImageListResponse",
+    "V1EstimateVideoListResponse",
     "V1FaceDetectionCreateResponse",
     "V1FaceDetectionGetResponse",
     "V1FaceDetectionGetResponseError",

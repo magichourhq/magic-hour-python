@@ -1,5 +1,5 @@
 {
-  "id": "a95764a8-d3e0-4267-b7ae-51d10853e68f",
+  "id": "56fcae0a-b86c-4a0b-aa49-997ce1c91243",
   "tracked_paths": [
     {
       "editable": true,
@@ -343,6 +343,18 @@
     },
     {
       "editable": true,
+      "path": "magic_hour/resources/v1/estimate/audio/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/estimate/audio/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/estimate/audio/client.py"
+    },
+    {
+      "editable": true,
       "path": "magic_hour/resources/v1/estimate/client.py"
     },
     {
@@ -356,6 +368,18 @@
     {
       "editable": true,
       "path": "magic_hour/resources/v1/estimate/image/client.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/estimate/video/README.md"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/estimate/video/__init__.py"
+    },
+    {
+      "editable": true,
+      "path": "magic_hour/resources/v1/estimate/video/client.py"
     },
     {
       "editable": true,
@@ -679,7 +703,15 @@
     },
     {
       "editable": false,
+      "path": "magic_hour/types/models/v1_estimate_audio_list_response.py"
+    },
+    {
+      "editable": false,
       "path": "magic_hour/types/models/v1_estimate_image_list_response.py"
+    },
+    {
+      "editable": false,
+      "path": "magic_hour/types/models/v1_estimate_video_list_response.py"
     },
     {
       "editable": false,
@@ -1251,7 +1283,15 @@
     },
     {
       "editable": false,
+      "path": "tests/test_v1_estimate_audio_client.py"
+    },
+    {
+      "editable": false,
       "path": "tests/test_v1_estimate_image_client.py"
+    },
+    {
+      "editable": false,
+      "path": "tests/test_v1_estimate_video_client.py"
     },
     {
       "editable": false,

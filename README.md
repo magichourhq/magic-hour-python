@@ -310,9 +310,17 @@ client.v1.ai_image_generator.generate(
 - [create](magic_hour/resources/v1/character_replace/README.md#create) - Character Replace
 - [generate](magic_hour/resources/v1/character_replace/README.md#generate) - Character Replace Generate Workflow
 
+### [v1.estimate.audio](magic_hour/resources/v1/estimate/audio/README.md)
+
+- [list](magic_hour/resources/v1/estimate/audio/README.md#list) - Estimate audio credits
+
 ### [v1.estimate.image](magic_hour/resources/v1/estimate/image/README.md)
 
 - [list](magic_hour/resources/v1/estimate/image/README.md#list) - Estimate image credits
+
+### [v1.estimate.video](magic_hour/resources/v1/estimate/video/README.md)
+
+- [list](magic_hour/resources/v1/estimate/video/README.md#list) - Estimate video credits
 
 ### [v1.face_detection](magic_hour/resources/v1/face_detection/README.md)
 
